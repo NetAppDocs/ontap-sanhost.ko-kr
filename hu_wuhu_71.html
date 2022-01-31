@@ -1,0 +1,2756 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head class="at-element-marker">
+  <title>Windows Unified Host Utilities 7.1</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Windows Unified Host Utilities 7.1" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_wuhu_71.html" />
+	<meta property="og:description" content="Windows Unified Host Utilities에는 Windows 호스트에서 NetApp ONTAP 및 E-Series 플랫폼의 스토리지 시스템 동작을 올바르게 처리하도록 필요한 Windows 레지스트리 및 HBA 매개 변수를 설정하는 설치 프로그램이 포함되어 있습니다." />
+  <meta property="og:image" content="https://docs.netapp.com/ko-kr/ontap-sanhost/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="Windows Unified Host Utilities에는 Windows 호스트에서 NetApp ONTAP 및 E-Series 플랫폼의 스토리지 시스템 동작을 올바르게 처리하도록 필요한 Windows 레지스트리 및 HBA 매개 변수를 설정하는 설치 프로그램이 포함되어 있습니다.">
+  <meta name="keywords" content=" windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/ko-kr/ontap-sanhost/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/ko-kr/ontap-sanhost/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/ko-kr/ontap-sanhost/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/ko-kr/ontap-sanhost/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/ko-kr/ontap-sanhost/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/ko-kr/ontap-sanhost/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/ko-kr/ontap-sanhost/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/ko-kr/ontap-sanhost/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/ko-kr/ontap-sanhost/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/ko-kr/ontap-sanhost/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/ko-kr/ontap-sanhost/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/ko-kr/ontap-sanhost/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/ko-kr/ontap-sanhost/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/ko-kr/ontap-sanhost/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ko-kr/ontap-sanhost/css/tabbed-blocks.css" type="text/css">
+  <link rel="stylesheet" href='/ko-kr/ontap-sanhost/css/product-family.css' type="text/css">
+  
+
+  
+  <link rel='stylesheet' href='/ko-kr/ontap-sanhost/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/ko-kr/ontap-sanhost/js/na-search.js'></script>
+  
+
+  
+  <script src='/ko-kr/ontap-sanhost/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/ko-kr/ontap-sanhost/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/ko-kr/ontap-sanhost/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/ko-kr/ontap-sanhost/js/na-utility.js'></script>
+  <script src='/ko-kr/ontap-sanhost/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/ko-kr/ontap-sanhost/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/ko-kr/ontap-sanhost/js/toc.js'></script>
+  <script src='/ko-kr/ontap-sanhost/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/ko-kr/ontap-sanhost/js/version-dropdown.js'></script>
+  <script src='/ko-kr/ontap-sanhost/js/product-family.js'></script>
+  <script src='/ko-kr/ontap-sanhost/js/FileSaver.min.js'></script>
+  <script src='/ko-kr/ontap-sanhost/js/jszip-utils.min.js'></script>
+  <script src='/ko-kr/ontap-sanhost/js/jszip.min.js'></script>
+  <script src='/ko-kr/ontap-sanhost/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">제품 및 솔루션</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">지원 및 교육</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">커뮤니티</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">블로그</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">고객 성공 사례</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">연락처</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">연락처</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/ko-kr/ontap-sanhost/search.html"
+          data-type="widget" 
+          data-placeholder="설명서 검색" 
+          data-no-results-found="{query}에 대한 결과를 찾을 수 없음" 
+          data-did-you-mean="{suggestion}을(를) 검색해보십시오." 
+          data-no-results-found-did-you-mean="{query}에 대한 결과를 찾을 수 없습니다. {suggestion}을(를) 검색하려 하셨습니까?" 
+          data-results-found="{hitCount}개의 결과를 찾음"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">한국어</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_wuhu_71.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_wuhu_71.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_wuhu_71.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>사용 가능한 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        <a target="_blank" href="/ko-kr/ontap-sanhost/pdfs/fullsite-sidebar/ONTAP_SAN_호스트_구성.pdf" >
+          <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>이 문서 사이트의 PDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/SAN_호스트_유틸리티.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SAN 호스트 유틸리티
+          </a>
+          
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/ko-kr/ontap-sanhost/pdfs/pages/hu_wuhu_71.pdf" >
+    <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/NVMe_oF_호스트_구성.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            NVMe-oF 호스트 구성
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/NVMeoF_ESXi.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            ESXi
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/Oracle_Linux.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Oracle Linux
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/rhNVMeF_RHEL.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL을 참조하십시오
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/NVMeSLES.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SLES
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/Windows.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Windows
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/FCP_및_iSCSI_호스트_구성.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            FCP 및 iSCSI 호스트 구성
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/AIX_및_PowerVM_VIOS.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            AIX 및 PowerVM/VIOS
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/CentOS.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            CentOS
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/CentOS_8.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            CentOS 8
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/CentOS_7.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            CentOS 7
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/CentOS_6.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            CentOS 6
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/Citrix를_참조하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Citrix를 참조하십시오
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/ESXi.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            ESXi
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/HP_UX를_참조하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            HP-UX를 참조하십시오
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/Oracle_Linux.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Oracle Linux
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/열_8.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            열 8
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/열_7.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            열 7
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/열_6.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            열 6
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/RHEL을_참조하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL을 참조하십시오
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/RHEL_8.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL 8
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/RHEL_7.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL 7
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/RHEL_6.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL 6
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/Solaris.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Solaris
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/SLES.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SLES
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/SLES_15.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SLES 15
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/SLES_12.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SLES 12
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/Veritas.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Veritas
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/ontap-sanhost/pdfs/sidebar/Windows.pdf" 
+            
+          >
+            <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Windows
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/ko-kr/ontap-sanhost/images/pdf-zip.png" width="16" height="16"/>
+      <pre>별도의 PDF 문서 모음<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/index.html">
+        홈
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SAN 호스트 유틸리티</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_luhu_71.html">
+        Linux Unified Host Utilities를 참조하십시오
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_wuhu_71.html">
+        Windows Unified Host Utilities를 참조하십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_aix_61.html">
+        AIX 호스트 유틸리티
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NVMe-oF 호스트 구성</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ESXi</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_esxi_7.html">
+        7.x
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Oracle Linux</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_ol_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_ol_81.html">
+        8.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_ol_79.html">
+        7.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_ol_78.html">
+        7.8
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_ol_77.html">
+        7.7
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL을 참조하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_rhel_84.html">
+        8.4
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_rhel_83.html">
+        8.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_rhel_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_rhel_81.html">
+        8.1
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SLES</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_sles15_sp3.html">
+        15 SP3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_sles15_sp2.html">
+        15 SP2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_sles15_sp1.html">
+        15 SP1
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Windows</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_windows_2019.html">
+        2019년
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_windows_2016.html">
+        2016
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/nvme_windows_2012r2.html">
+        2012 R2
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> FCP 및 iSCSI 호스트 구성</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> AIX 및 PowerVM/VIOS</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_aix_72.html">
+        7.2/3.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_aix_71.html">
+        7.1
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CentOS</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CentOS 8</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_83.html">
+        8.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_81.html">
+        8.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_80.html">
+        8.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CentOS 7</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_79.html">
+        7.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_78.html">
+        7.8
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_77.html">
+        7.7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_76.html">
+        7.6
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_75.html">
+        7.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_74.html">
+        7.4
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_73.html">
+        7.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_72.html">
+        7.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_71.html">
+        7.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_70.html">
+        7.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CentOS 6</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_610.html">
+        6.10
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_69.html">
+        6.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_68.html">
+        6.8
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_67.html">
+        6.7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_66.html">
+        6.6
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_65.html">
+        6.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_centos_64.html">
+        6.4
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Citrix를 참조하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_citrix_8x.html">
+        하이퍼바이저 8
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_citrix_7x.html">
+        XenServer 7을 참조하십시오
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ESXi</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_vsphere_7.html">
+        VMware vSphere 7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_vsphere_6.html">
+        VMware vSphere 6.5 및 6.7
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> HP-UX를 참조하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_hpux_11iv3.html">
+        11i v3
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Oracle Linux</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 열 8</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_84.html">
+        8.4
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_83.html">
+        8.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_81.html">
+        8.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_80.html">
+        8.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 열 7</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_79.html">
+        7.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_78.html">
+        7.8
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_77.html">
+        7.7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_76.html">
+        7.6
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_75.html">
+        7.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_74.html">
+        7.4
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_73.html">
+        7.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_72.html">
+        7.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_71.html">
+        7.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_70.html">
+        7.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 열 6</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_610.html">
+        6.10
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_69.html">
+        6.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_68.html">
+        6.8
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_67.html">
+        6.7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_66.html">
+        6.6
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_65.html">
+        6.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_ol_64.html">
+        6.4
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL을 참조하십시오</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL 8</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_85.html">
+        8.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_84.html">
+        8.4
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_83.html">
+        8.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_81.html">
+        8.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_80.html">
+        8.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL 7</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_79.html">
+        7.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_78.html">
+        7.8
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_77.html">
+        7.7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_76.html">
+        7.6
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_75.html">
+        7.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_74.html">
+        7.4
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_73.html">
+        7.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_72.html">
+        7.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_71.html">
+        7.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_70.html">
+        7.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL 6</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_610.html">
+        6.10
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_69.html">
+        6.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_68.html">
+        6.8
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_67.html">
+        6.7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_66.html">
+        6.6
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_65.html">
+        6.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_64.html">
+        6.4
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Solaris</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_solaris_114.html">
+        11.4
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_solaris_113.html">
+        11.3
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SLES</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SLES 15</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_15SP3.html">
+        15 SP3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_15SP2.html">
+        15 SP2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_15SP1.html">
+        15 SP1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_15.html">
+        15
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SLES 12</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_12SP5.html">
+        SP 5 12개
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_12SP4.html">
+        12 SP 4
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_12SP3.html">
+        12 SP 3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_12SP2.html">
+        SP 2 12개
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_12SP1.html">
+        SP 1 12개
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_sles_12.html">
+        12
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Veritas</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_veritas_7x.html">
+        Infoscale 7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_veritas_6x.html">
+        스토리지 기반 6
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Windows</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_windows_2019.html">
+        2019년
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_windows_2016.html">
+        2016
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_windows_2012r2.html">
+        2012 R2
+      </a></li></ul></li></ul></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">홈</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">설명서</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ko-kr/ontap-sanhost/">SAN&nbsp;Host</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Windows Unified Host Utilities 7.1
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 본 한국어 번역은 사용자 편의를 위해 제공되는 기계 번역입니다. 영어 버전과 한국어 버전이 서로 어긋나는 경우에는 언제나 영어 버전이 우선합니다. </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Windows Unified Host Utilities 7.1</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-01-31 21:44:31 +0000">01/31/2022</time>
+    
+  
+
+<span>기여자
+  <a target="_blank" href="https://github.com/netapp-ranuk">
+    <img  class="avatar avatar-small"
+          alt="netapp-ranuk"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/80323433?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+  <a target="_blank" href="https://github.com/netapp-aoife">
+    <img  class="avatar avatar-small"
+          alt="netapp-aoife"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/92876203?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+</p>
+
+
+<div id="toc" class="toc">
+<div id="toctitle">목차</div>
+<ul class="sectlevel1">
+<li><a href="#windows-호스트-유틸리티의-정의">Windows 호스트 유틸리티의 정의</a></li>
+<li><a href="#host-utilities에서-지원되는-구성입니다">Host Utilities에서 지원되는 구성입니다</a></li>
+<li><a href="#호스트-및-스토리지-시스템-구성을-확인합니다">호스트 및 스토리지 시스템 구성을 확인합니다</a></li>
+<li><a href="#fc-hba-및-스위치-구성">FC HBA 및 스위치 구성</a></li>
+<li><a href="#host-utilities를-설치합니다">Host Utilities를 설치합니다</a></li>
+<li><a href="#host-utilities를-업그레이드합니다">Host Utilities를 업그레이드합니다</a></li>
+<li><a href="#windows-host-utilities-복구-및-제거">Windows Host Utilities 복구 및 제거</a></li>
+<li><a href="#host-utilities에서-사용하는-설정-개요">Host Utilities에서 사용하는 설정 개요</a></li>
+<li><a href="#windows-unified-host-utilities에서-설정한-레지스트리-값입니다">Windows Unified Host Utilities에서 설정한 레지스트리 값입니다</a></li>
+<li><a href="#windows-host-utilities에서-설정한-fc-hba-값입니다">Windows Host Utilities에서 설정한 FC HBA 값입니다</a></li>
+<li><a href="#문제-해결">문제 해결</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="windows-호스트-유틸리티의-정의">Windows 호스트 유틸리티의 정의</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Windows Unified Host Utilities에는 Windows 호스트에서 NetApp ONTAP 및 E-Series 플랫폼의 스토리지 시스템 동작을 올바르게 처리하도록 필요한 Windows 레지스트리 및 HBA(호스트 버스 어댑터) 매개 변수를 설정하는 설치 프로그램이 포함되어 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>Host Utilities 소프트웨어를 설치할 때 설치 관리자는 필요한 Windows 레지스트리 및 HBA(호스트 버스 어댑터) 매개 변수를 설정합니다.</p>
+</div>
+<div class="paragraph">
+<p>Windows 호스트 컴퓨터에 설치된 프로그램 및 파일은 다음과 같습니다. 기본 디렉토리는 'C:\Program Files\NetApp\Windows Host Utilities&#8217;입니다.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">프로그램</th>
+<th class="tableblock halign-left valign-top">목적</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">에멀렉스바 reg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">문제 해결 프로그램: 기술 지원 담당자가 지시한 경우에만 이 프로그램을 실행하십시오.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'\NetAppQCLI\fcconfig.exe'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설치 프로그램에서 HBA 매개 변수를 설정하는 데 사용됩니다.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'\NetAppQCLI\fcconfig.ini`</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설치 프로그램에서 HBA 매개 변수를 설정하는 데 사용됩니다.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'\NetAppQCLI\ *. *'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설치 프로그램에서 QLogic Fibre Channel HBA 매개변수를 설정하는 데 사용됩니다.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">san_version.exe를 선택합니다</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host Utilities 및 Fibre Channel HBA의 버전을 표시합니다.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="host-utilities에서-지원되는-구성입니다">Host Utilities에서 지원되는 구성입니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Host Utilities는 다양한 Windows 호스트 구성, 프로토콜 및 다중 경로 옵션을 지원합니다. 자세한 내용은 을 참조하십시오 <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"NetApp 상호 운용성 매트릭스 툴"</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="호스트-및-스토리지-시스템-구성을-확인합니다">호스트 및 스토리지 시스템 구성을 확인합니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Host Utilities를 설치하기 전에 Host Utilities 버전이 호스트 및 스토리지 시스템 구성을 지원하는지 확인하여 소프트웨어가 올바르게 설치되었는지 확인해야 합니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>에서 지원되는 구성을 확인합니다 <a href="http://mysupport.netapp.com/matrix" target="_blank" rel="noopener">"NetApp 상호 운용성 매트릭스 툴"</a>.</p>
+</li>
+<li>
+<p>San Host 설명서에서 해당 호스트에 필요한 핫픽스를 확인합니다.</p>
+</li>
+<li>
+<p>iSCSI 또는 FCP 라이센스를 추가하고 대상 서비스를 시작합니다.</p>
+<div class="paragraph">
+<p>파이버 채널 및 iSCSI 프로토콜은 SANtricity 스토리지 관리자를 사용하여 E-Series 스토리지 시스템에 대한 라이센스가 필요하지 않습니다.</p>
+</div>
+</li>
+<li>
+<p>케이블 연결을 확인합니다</p>
+<div class="paragraph">
+<p>를 참조하십시오 <a href="https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7" target="_blank" rel="noopener">"SAN 구성 가이드 를 참조하십시오"</a> ONTAP 또는 용 자세한 케이블 연결 및 구성 정보를 참조하십시오.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fc-hba-및-스위치-구성">FC HBA 및 스위치 구성</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>스토리지 시스템에 대한 Fibre Channel 접속을 위해 지원되는 하나 이상의 Fibre Channel HBA(호스트 버스 어댑터)를 설치하고 구성합니다.</p>
+</div>
+<div class="paragraph">
+<p>Windows Host Utilities 설치 프로그램에서 필요한 Fibre Channel HBA 설정을 설정합니다.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="참고">
+</td>
+<td class="content">
+HBA 설정을 수동으로 변경하지 마십시오.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>HBA 공급업체가 제공한 지침에 따라 하나 이상의 지원되는 Fibre Channel HBA(호스트 버스 어댑터)를 설치합니다.</p>
+</li>
+<li>
+<p>지원되는 HBA 드라이버 및 관리 유틸리티를 얻고 HBA 공급업체에서 제공하는 지침에 따라 설치합니다.</p>
+</li>
+<li>
+<p>HBA를 Fibre Channel 스위치에 접속하거나 스토리지 시스템에 직접 연결합니다.</p>
+</li>
+<li>
+<p>Fibre Channel 스위치 설명서에 따라 Fibre Channel 스위치에 영역을 생성합니다.</p>
+</li>
+<li>
+<p>ONTAP의 경우 WWPN으로 스위치를 조닝(Zoning)하십시오. 스토리지 컨트롤러의 물리적 포트가 아니라 LIF의 WWPN을 사용해야 합니다. 자세한 내용은 을 참조하십시오 <a href="https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7" target="_blank" rel="noopener">"SAN 구성 가이드 를 참조하십시오"</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="host-utilities를-설치합니다">Host Utilities를 설치합니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>설치 프로그램은 Host Utilities 패키지를 설치하고 Windows 레지스트리 및 HBA 설정을 설정합니다.</p>
+</div>
+<div class="paragraph">
+<p>Windows Unified Host Utilities 소프트웨어 패키지를 설치할 때 다중 경로 지원을 포함할지 여부를 지정해야 합니다. 설치 프로그램에서 다음 항목을 선택하라는 메시지가 나타납니다. Windows 명령 프롬프트에서 자동(무인) 설치를 실행할 수도 있습니다.</p>
+</div>
+<div class="ulist">
+<div class="title">다중 경로 지원</div>
+<ul>
+<li>
+<p>Windows 호스트 또는 가상 시스템에서 스토리지 시스템까지 경로가 둘 이상인 경우 MPIO 를 선택합니다.</p>
+</li>
+<li>
+<p>스토리지 시스템에 대한 단일 경로를 사용하는 경우에만 MPIO를 선택하지 않습니다.</p>
+</li>
+<li>
+<p>MPIO 선택은 Windows XP 및 Windows Vista 시스템에서는 사용할 수 없으며, 다중 경로 I/O는 이러한 게스트 운영 체제에서 지원되지 않습니다.</p>
+</li>
+<li>
+<p>Hyper-V 게스트의 경우 다중 경로 지원을 선택한 경우 원시(통과) 디스크가 게스트 OS에 나타나지 않습니다. 원시 디스크를 사용하거나 MPIO를 사용할 수 있지만 게스트 OS에서 둘 다 사용할 수는 없습니다.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="호스트-유틸리티를-대화식으로-설치합니다">호스트 유틸리티를 대화식으로 설치합니다</h3>
+<div class="paragraph">
+<p>Host Utilities 소프트웨어 패키지를 대화식으로 설치하려면 Host Utilities 설치 프로그램을 실행하고 화면에 나타난 지침을 따라야 합니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>에서 실행 파일을 다운로드합니다 <a href="https://mysupport.netapp.com/site/" target="_blank" rel="noopener">"NetApp Support 사이트"</a>.</p>
+</li>
+<li>
+<p>실행 파일을 다운로드한 디렉터리로 변경합니다.</p>
+</li>
+<li>
+<p>'NetApp_Windows_HOST_UTPITECTS_7.1_x64' 파일을 실행하고 화면의 지시를 따릅니다.</p>
+</li>
+<li>
+<p>메시지가 나타나면 Windows 호스트를 재부팅합니다.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="명령줄에서-host-utilities를-설치합니다">명령줄에서 Host Utilities를 설치합니다</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows 명령 프롬프트에 적절한 명령을 입력하여 Host Utilities의 자동(무인) 설치를 수행할 수 있습니다.</p>
+</li>
+<li>
+<p>Host Utilities 설치 패키지는 Windows 호스트에서 액세스할 수 있는 경로에 있어야 합니다.</p>
+</li>
+<li>
+<p>호스트 유틸리티를 대화식으로 설치하기 위한 지침에 따라 설치 패키지를 가져옵니다.</p>
+</li>
+<li>
+<p>설치가 완료되면 시스템이 자동으로 재부팅됩니다.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>Windows 명령 프롬프트에서 다음 명령을 입력합니다.</p>
+<div class="paragraph">
+<p>Msiexec /i installer.msi /quiet 다중경로 = {0|1} [INSTALLDIR=inst_path]'</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>여기서 installer는 CPU 아키텍처에 대한 '.msi' 파일의 이름입니다.</p>
+</li>
+<li>
+<p>다중 경로 는 MPIO 지원이 설치되었는지 여부를 지정합니다. 허용되는 값은 0이고, 1은 예입니다</p>
+</li>
+<li>
+<p>inst_path는 Host Utilities 파일이 설치된 경로입니다. 기본 경로는 'C:\Program Files\NetApp\Windows Host Utilities'입니다.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="참고">
+</td>
+<td class="content">
+로깅 및 기타 기능에 대한 표준 MSI(Microsoft Installer) 옵션을 보려면 Windows 명령 프롬프트에 'msiexec /help&#8217;를 입력합니다. 예: msiexec /i install.msi /quiet /l * v &lt;install.log&gt; LOGVERBOSE=1'
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="host-utilities를-업그레이드합니다">Host Utilities를 업그레이드합니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>새 Host Utilities 설치 패키지는 Windows 호스트에서 액세스할 수 있는 경로에 있어야 합니다. 호스트 유틸리티를 대화식으로 설치하기 위한 지침에 따라 설치 패키지를 가져옵니다.</p>
+</div>
+<div class="sect2">
+<h3 id="호스트-유틸리티를-대화식으로-업그레이드합니다">호스트 유틸리티를 대화식으로 업그레이드합니다</h3>
+<div class="paragraph">
+<p>Host Utilities 소프트웨어 패키지를 대화식으로 설치하려면 Host Utilities 설치 프로그램을 실행하고 화면에 나타난 지침을 따라야 합니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>실행 파일을 다운로드한 디렉터리로 변경합니다.</p>
+</li>
+<li>
+<p>실행 파일을 실행하고 화면의 지침을 따릅니다.</p>
+</li>
+<li>
+<p>메시지가 나타나면 Windows 호스트를 재부팅합니다.</p>
+</li>
+<li>
+<p>재부팅 후 Host Utility의 버전을 확인합니다.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>제어판 * 을 엽니다.</p>
+</li>
+<li>
+<p>프로그램 및 기능 * 으로 이동하여 호스트 유틸리티 버전을 확인합니다.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="명령줄에서-host-utilities를-업그레이드합니다">명령줄에서 Host Utilities를 업그레이드합니다</h3>
+<div class="paragraph">
+<p>Windows 명령 프롬프트에 적절한 명령을 입력하여 새 호스트 유틸리티의 자동(무인) 설치를 수행할 수 있습니다. 새 호스트 유틸리티 설치 패키지는 Windows 호스트에서 액세스할 수 있는 경로에 있어야 합니다. 호스트 유틸리티를 대화식으로 설치하기 위한 지침에 따라 설치 패키지를 가져옵니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>Windows 명령 프롬프트에서 다음 명령을 입력합니다.</p>
+<div class="paragraph">
+<p>Msiexec /i installer.msi /quiet 다중경로 = {0|1} [INSTALLDIR=inst_path]'</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>여기서 '설치 프로그램&#8217;은 CPU 아키텍처에 대한 '.msi' 파일의 이름입니다.</p>
+</li>
+<li>
+<p>다중 경로 는 MPIO 지원이 설치되었는지 여부를 지정합니다. 허용되는 값은 0이고, 1은 예입니다</p>
+</li>
+<li>
+<p>inst_path는 Host Utilities 파일이 설치된 경로입니다. 기본 경로는 'C:\Program Files\NetApp\Windows Host Utilities'입니다.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="참고">
+</td>
+<td class="content">
+로깅 및 기타 기능에 대한 표준 MSI(Microsoft Installer) 옵션을 보려면 Windows 명령 프롬프트에 'msiexec /help&#8217;를 입력합니다. 예: msiexec /i install.msi /quiet /l * v &lt;install.log&gt; LOGVERBOSE=1'
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>설치가 완료되면 시스템이 자동으로 재부팅됩니다.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="windows-host-utilities-복구-및-제거">Windows Host Utilities 복구 및 제거</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Host Utilities 설치 프로그램의 복구 옵션을 사용하여 HBA 및 Windows 레지스트리 설정을 업데이트할 수 있습니다. 호스트 유틸리티를 대화식으로 또는 Windows 명령줄에서 완전히 제거할 수 있습니다.</p>
+</div>
+<div class="sect2">
+<h3 id="대화식으로-windows-host-utilities를-복구하거나-제거합니다">대화식으로 Windows Host Utilities를 복구하거나 제거합니다</h3>
+<div class="paragraph">
+<p>복구 옵션은 Windows 레지스트리 및 Fibre Channel HBA를 필요한 설정으로 업데이트합니다. Host Utilities를 완전히 제거할 수도 있습니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>Windows * 프로그램 및 기능 * (Windows Server 2012 R2, Windows Server 2016, Windows Server 2019)을 엽니다.</p>
+</li>
+<li>
+<p>NetApp Windows Unified Host Utilities * 를 선택합니다.</p>
+</li>
+<li>
+<p>변경 * 을 클릭합니다.</p>
+</li>
+<li>
+<p>필요에 따라 * 복구 * 또는 * 제거 * 를 클릭합니다.</p>
+</li>
+<li>
+<p>화면의 지침을 따릅니다.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="명령줄에서-windows-host-utilities를-복구하거나-제거합니다">명령줄에서 Windows Host Utilities를 복구하거나 제거합니다</h3>
+<div class="paragraph">
+<p>복구 옵션은 Windows 레지스트리 및 Fibre Channel HBA를 필요한 설정으로 업데이트합니다. Windows 명령줄에서 Host Utilities를 완전히 제거할 수도 있습니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>Windows 명령줄에서 다음 명령을 입력하여 Windows Host Utilities를 복구합니다.</p>
+<div class="paragraph">
+<p>msiexec {/uninstall | /f] installer.msi[/quiet]'</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>'/uninstall&#8217;은 Host Utilities를 완전히 제거합니다.</p>
+</li>
+<li>
+<p>'/f&#8217;는 설치를 복구합니다.</p>
+</li>
+<li>
+<p>"installer.msi"는 시스템에 설치된 Windows Host Utilities 설치 프로그램의 이름입니다.</p>
+</li>
+<li>
+<p>'/quiet&#8217;은 모든 피드백을 억제하고 명령이 완료되면 확인 메시지 없이 시스템을 자동으로 재부팅합니다.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="host-utilities에서-사용하는-설정-개요">Host Utilities에서 사용하는 설정 개요</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Host Utilities는 Windows 호스트가 스토리지 시스템 동작을 올바르게 처리하도록 하기 위해 특정 레지스트리 및 매개 변수 설정이 필요합니다.</p>
+</div>
+<div class="paragraph">
+<p>Windows Host Utilities는 Windows 호스트가 데이터 지연 또는 손실에 대응하는 방식에 영향을 주는 매개 변수를 설정합니다. Windows 호스트가 스토리지 시스템에 있는 컨트롤러 중 하나의 페일오버와 같은 이벤트를 파트너 컨트롤러로 올바르게 처리하도록 특정 값을 선택했습니다.</p>
+</div>
+<div class="paragraph">
+<p>모든 값이 SANtricity 저장소 관리자용 DSM에 적용되는 것은 아니지만 호스트 유틸리티에서 설정한 값과 SANtricity 저장소 관리자용 DSM에서 설정한 값이 중복되지 않으면 충돌이 발생하지 않습니다. Fibre Channel 및 iSCSI HBA(호스트 버스 어댑터)에도 최상의 성능을 보장하고 스토리지 시스템 이벤트를 성공적으로 처리하도록 설정해야 하는 매개 변수가 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>Windows Unified Host Utilities와 함께 제공되는 설치 프로그램에서는 Windows 및 Fibre Channel HBA 매개 변수를 지원되는 값으로 설정합니다.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="참고">
+</td>
+<td class="content">
+iSCSI HBA 매개 변수를 수동으로 설정해야 합니다.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>설치 프로그램은 설치 프로그램을 실행할 때 MPIO(다중 경로 I/O) 지원을 지정하는지 여부에 따라 다른 값을 설정합니다.</p>
+</div>
+<div class="paragraph">
+<p>기술 지원 부서에서 지시하지 않는 한 이러한 값을 변경해서는 안 됩니다.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="windows-unified-host-utilities에서-설정한-레지스트리-값입니다">Windows Unified Host Utilities에서 설정한 레지스트리 값입니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Windows Unified Host Utilities 설치 프로그램은 설치하는 동안 선택한 항목에 따라 레지스트리 값을 자동으로 설정합니다. 이러한 레지스트리 값, 즉 운영 체제 버전을 알고 있어야 합니다. 다음 값은 Windows Unified Host Utilities 설치 프로그램에서 설정합니다. 달리 명시되지 않는 한 모든 값은 10진수입니다. HKLM은 HKEY_LOCAL_MACHINE의 약어입니다.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col style="width: 10%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">레지스트리 키</th>
+<th class="tableblock halign-left valign-top">값</th>
+<th class="tableblock halign-left valign-top">설정합니다</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumRetryTimeDuringStateTransition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumStateTransitionTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmlSupportedDeviceList</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"NETAPPLUN"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"NetApp LUN", "NetApp LUN C-Mode"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Control\Class{iSCSI_driver_GUID}\Instance_ID\Parameters\IPSecConfigTimeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data ONTAP DSM이 감지된 경우를 제외하고 항상</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Control\Class{iSCSI_driver_GUID}\Instance_ID\Parameters\LinkDownTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">항상</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\ClusDisk\Parameters\ManageDisksOnSystemBuses</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data ONTAP DSM이 감지된 경우를 제외하고 항상</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Control\Class{iSCSI_driver_GUID}\Instance_ID\Parameters\MaxRequestHoldTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원을 선택하지 않은 경우</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data ONTAP DSM이 감지된 경우를 제외하고 항상</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Control\MPDEV\MPIOSupportedDeviceList</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"NetApp LUN"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"NetApp LUN", "NetApp LUN C-Mode"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO가 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PathRecoveryInterval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016만 해당됩니다</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PathVerifyEnabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PathVerifyEnabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PathVerifyEnabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msiscdsm\Parameters\PathVerifyEnabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정되고 서버가 Windows Server 2003인 경우(Data ONTAP DSM이 감지된 경우는 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\PathVerifyEnabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PDORemovePeriodd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">130</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PDORemovePeriodd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">130</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msiscdsm\Parameters\PDORemovePeriodd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">130</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정되고 서버가 Windows Server 2003인 경우(Data ONTAP DSM이 감지된 경우는 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\PDORemovePeriod입니다</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">130</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\RetryCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msiscdsm\Parameters\RetryCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정되고 서버가 Windows Server 2003인 경우(Data ONTAP DSM이 감지된 경우는 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\RetryCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\RetryInterval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryInterval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\RetryInterval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\disk\TimeOutValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 선택되지 않은 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\UseCustomPathRecoveryInterval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016만 해당됩니다</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>을 참조하십시오 <a href="https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users" target="_blank" rel="noopener">"Microsoft 문서"</a> 레지스트리 매개 변수에 대한 자세한 내용은 를 참조하십시오.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="windows-host-utilities에서-설정한-fc-hba-값입니다">Windows Host Utilities에서 설정한 FC HBA 값입니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Fibre Channel을 사용하는 시스템에서 Host Utilities 설치 관리자는 Emulex 및 QLogic FC HBA에 필요한 시간 초과 값을 설정합니다. Emulex Fibre Channel HBA의 경우 MPIO를 선택할 때 설치 프로그램에서 다음 매개 변수를 설정합니다.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">속성 유형</th>
+<th class="tableblock halign-left valign-top">속성 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">링크 시간 초과</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NodeTimeOut을 참조하십시오</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Emulex Fibre Channel HBA의 경우 MPIO를 선택하지 않은 경우 설치 프로그램에서 다음 매개 변수를 설정합니다.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">속성 유형</th>
+<th class="tableblock halign-left valign-top">속성 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">링크 시간 초과</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NodeTimeOut을 참조하십시오</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>QLogic Fibre Channel HBA의 경우 MPIO를 선택할 때 설치 프로그램에서 다음 매개 변수를 설정합니다.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">속성 유형</th>
+<th class="tableblock halign-left valign-top">속성 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LinkDownTimeOut 을 참조하십시오</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PortDownRetryCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>QLogic Fibre Channel HBA의 경우 MPIO가 선택되지 않은 경우 설치 프로그램에서 다음 매개 변수를 설정합니다.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">속성 유형</th>
+<th class="tableblock halign-left valign-top">속성 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LinkDownTimeOut 을 참조하십시오</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PortDownRetryCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="참고">
+</td>
+<td class="content">
+매개 변수의 이름은 프로그램에 따라 약간 다를 수 있습니다. 예를 들어, QLogic QConvergeConsole 프로그램에서 이 매개변수는 "Link Down Timeout"으로 표시됩니다. Host Utilities의 fcconfig.ini` 파일은 MPIO 지정 여부에 따라 이 매개변수를 LinkDownTimeOut 또는 MPioLinkDownTimeOut으로 표시합니다. 그러나 이러한 이름은 모두 동일한 HBA 매개 변수를 나타냅니다.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>을 참조하십시오 <a href="https://www.broadcom.com/support/download-search" target="_blank" rel="noopener">"에뮬렉스"</a> 또는 Site(사이트) 를 클릭하여 시간 초과 매개 변수에 대해 자세히 알아보십시오.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="문제-해결">문제 해결</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>이 섹션에서는 Windows Host Utilities의 일반적인 문제 해결 기법을 설명합니다. 최신 릴리스 정보에서 알려진 문제 및 해결 방법을 확인하십시오.</p>
+</div>
+<div class="ulist">
+<div class="title">상호 운용성 문제를 식별할 수 있는 영역이 다릅니다</div>
+<ul>
+<li>
+<p>잠재적인 상호 운용성 문제를 식별하려면 호스트 유틸리티가 호스트 운영 체제 소프트웨어, 호스트 하드웨어, ONTAP 소프트웨어 및 스토리지 시스템 하드웨어의 조합을 지원하는지 확인해야 합니다.</p>
+</li>
+<li>
+<p>상호 운용성 매트릭스를 확인해야 합니다.</p>
+</li>
+<li>
+<p>올바른 iSCSI 구성이 있는지 확인해야 합니다.</p>
+</li>
+<li>
+<p>재부팅 후 iSCSI LUN을 사용할 수 없는 경우 Microsoft iSCSI 초기자 GUI의 영구 대상 탭에 대상이 영구 대상으로 나열되는지 확인해야 합니다.</p>
+</li>
+<li>
+<p>LUN을 사용하는 애플리케이션이 시작할 때 오류를 표시할 경우 애플리케이션이 iSCSI 서비스에 따라 구성되었는지 확인해야 합니다.</p>
+</li>
+<li>
+<p>ONTAP를 실행하는 스토리지 컨트롤러에 대한 파이버 채널 경로의 경우 FC 스위치가 노드의 물리적 포트에 대한 WWPN이 아니라 타겟 LIF의 WWPN을 사용하여 조닝(zoning)되는지 확인해야 합니다.</p>
+</li>
+<li>
+<p>을(를) 검토해야 합니다 <a href="https://library.netapp.com/ecm/ecm_download_file/ECMLP2789205" target="_blank" rel="noopener">"Windows Host Utilities 릴리스 정보"</a> 알려진 문제를 확인합니다. 릴리스 노트에는 알려진 문제와 제한 사항의 목록이 포함되어 있습니다.</p>
+</li>
+<li>
+<p>의 문제 해결 정보를 검토해야 합니다 <a href="https://docs.netapp.com/ontap-9/index.jsp" target="_blank" rel="noopener">"SAN 관리 가이드를 참조하십시오"</a> ONTAP 버전용.</p>
+</li>
+<li>
+<p>검색해야 합니다 <a href="https://mysupport.netapp.com/site/bugs-online/" target="_blank" rel="noopener">"온라인 버그"</a> 최근에 발견된 문제에 대해.</p>
+</li>
+<li>
+<p>버그 유형 필드의 고급 검색에서 iSCSI-Windows를 선택한 다음 이동을 클릭해야 합니다. 버그 유형 FCP - Windows에 대한 검색을 반복해야 합니다.</p>
+</li>
+<li>
+<p>시스템에 대한 정보를 수집해야 합니다.</p>
+</li>
+<li>
+<p>호스트 또는 스토리지 시스템 콘솔에 표시되는 오류 메시지를 기록합니다.</p>
+</li>
+<li>
+<p>호스트 및 스토리지 시스템 로그 파일을 수집합니다.</p>
+</li>
+<li>
+<p>문제가 발생하기 직전에 문제 증상 및 호스트 또는 스토리지 시스템의 변경 사항을 기록합니다.</p>
+</li>
+<li>
+<p>문제를 해결할 수 없는 경우 NetApp 기술 지원 팀에 문의할 수 있습니다.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="http://mysupport.netapp.com/matrix" target="_blank" rel="noopener">"NetApp 상호 운용성 매트릭스 툴"</a></p>
+</div>
+<div class="sect2">
+<h3 id="호스트-유틸리티의-fc-hba-드라이버-설정-변경-사항을-이해합니다">호스트 유틸리티의 FC HBA 드라이버 설정 변경 사항을 이해합니다</h3>
+<div class="paragraph">
+<p>FC 시스템에 필요한 Emulex 또는 QLogic HBA 드라이버를 설치하는 동안 여러 매개 변수를 확인하고 경우에 따라 수정합니다.</p>
+</div>
+<div class="paragraph">
+<p>Windows MPIO용 MS DSM이 감지된 경우 Host Utilities는 다음 매개변수에 대한 값을 설정합니다.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>LinkTimeOut - 물리적 링크가 중단된 후 호스트 포트가 입출력을 재개하기 전에 대기하는 시간(초)을 정의합니다.</p>
+</li>
+<li>
+<p>NodeTimeOut – 호스트 포트에서 타겟 디바이스와의 연결이 다운되었음을 인식하기 전의 시간(초)을 정의합니다.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>HBA 문제를 해결할 때 이러한 설정이 올바른 값인지 확인하십시오. 올바른 값은 다음 두 가지 요소에 따라 달라집니다.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>HBA 공급업체</p>
+</li>
+<li>
+<p>다중 경로 소프트웨어(MPIO)를 사용하는지 여부</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Windows Host Utilities 설치 프로그램의 복구 옵션을 실행하여 HBA 설정을 수정할 수 있습니다.</p>
+</div>
+<div class="sect3">
+<h4 id="fc-시스템에서-emulex-hba-드라이버-설정을-확인합니다">FC 시스템에서 Emulex HBA 드라이버 설정을 확인합니다</h4>
+<div class="paragraph">
+<p>Fibre Channel 시스템이 있는 경우 Emulex HBA 드라이버 설정을 확인해야 합니다. 이러한 설정은 HBA의 각 포트에 대해 존재해야 합니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>OnCommand 관리자를 엽니다.</p>
+</li>
+<li>
+<p>목록에서 적절한 HBA를 선택하고 * Driver Parameters * 탭을 클릭합니다.</p>
+<div class="paragraph">
+<p>드라이버 매개 변수가 나타납니다.</p>
+</div>
+</li>
+<li>
+<p>MPIO 소프트웨어를 사용하는 경우 다음과 같은 드라이버 설정이 있는지 확인합니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>링크 시간 초과 - 1</p>
+</li>
+<li>
+<p>NodeTimeOut-10</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>MPIO 소프트웨어를 사용하지 않는 경우 다음 드라이버 설정이 있는지 확인합니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>LinkTimeOut - 30</p>
+</li>
+<li>
+<p>NodeTimeOut-120</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="fc-시스템에서-qlogic-hba-드라이버-설정을-확인합니다">FC 시스템에서 QLogic HBA 드라이버 설정을 확인합니다</h4>
+<div class="paragraph">
+<p>FC 시스템에서 QLogic HBA 드라이버 설정을 확인해야 합니다. 이러한 설정은 HBA의 각 포트에 대해 존재해야 합니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>QConvergConsole을 열고 도구 모음에서 * Connect * 를 클릭합니다.</p>
+<div class="paragraph">
+<p>호스트에 연결 대화 상자가 나타납니다.</p>
+</div>
+</li>
+<li>
+<p>목록에서 적절한 호스트를 선택한 다음 * 연결 * 을 클릭합니다.</p>
+<div class="paragraph">
+<p>HBA 목록이 FC HBA 창에 나타납니다.</p>
+</div>
+</li>
+<li>
+<p>목록에서 적절한 HBA 포트를 선택한 다음 * 설정 * 탭을 클릭합니다.</p>
+</li>
+<li>
+<p>설정 선택 * 섹션에서 * 고급 HBA 포트 설정 * 을 선택합니다.</p>
+</li>
+<li>
+<p>MPIO 소프트웨어를 사용하는 경우 다음과 같은 드라이버 설정이 있는지 확인합니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>링크 다운 시간 제한(linkdwnto) - 1</p>
+</li>
+<li>
+<p>포트 다운 재시도 횟수(portdwnrc) - 10</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>MPIO 소프트웨어를 사용하지 않는 경우 다음과 같은 드라이버 설정이 있는지 확인합니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>링크 다운 시간 제한(linkdwnto) - 30</p>
+</li>
+<li>
+<p>포트 다운 재시도 횟수(portdwnrc) - 120</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[Windows Unified Host Utilities 7.1](https://docs.netapp.com/ko-kr/ontap-sanhost/hu_wuhu_71.html)" class="page-nav-contribute-link" role="button"><img src="/ko-kr/ontap-sanhost/images/discuss-sm.svg" class="github-icon" />문서 변경 요청</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_wuhu_71.adoc" class="page-nav-contribute-link" role="button"><img src="/ko-kr/ontap-sanhost/images/edit-sm.svg" class="github-icon" />이 페이지 편집</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ko-kr/ontap-sanhost/images/article-sm.svg" class="github-icon" />기여하는 방법 자세히 알아보기</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">이 페이지의 내용</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">웹 사이트에 대한 피드백이 있으십니까?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">의견을 공유해 주십시오</a>
+  <a href="https://docs.netapp.com/ko-kr/announcements/" class="n-footer__copyright">공지 사항</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ko-kr/ontap-sanhost/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ko-kr/ontap-sanhost/js/prism.js'></script>
+      <script type="text/javascript" src='/ko-kr/ontap-sanhost/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ko-kr/ontap-sanhost/js/www-ntap.js'></script>
+    <script src='/ko-kr/ontap-sanhost/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>
