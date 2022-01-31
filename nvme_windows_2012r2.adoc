@@ -1,0 +1,232 @@
+---
+sidebar: sidebar 
+permalink: nvme_windows_2012r2.html 
+keywords: nvme, windows, enterprise 
+summary: ONTAP가 있는 Windows Server 2012 R2에 대한 NVMe/FC 호스트 구성 
+---
+= ONTAP가 있는 Windows Server 2012 R2에 대한 NVMe/FC 호스트 구성
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 지원 가능성
+
+NVMe/FC는 Windows Server 2012용 ONTAP 9.7 이상에서 지원됩니다.
+
+Broadcom 이니시에이터는 동일한 32G FC 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 처리할 수 있습니다. FCP 및 FC/NVMe의 경우 Microsoft MPIO(다중 경로 I/O) 옵션으로 MSDSM을 사용합니다.
+
+를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 .
+
+
+
+== 알려진 제한 사항
+
+ONTAP는 현재 NVMe/FC의 영구 예약을 지원하지 않으므로 ONTAP NVMe/FC에서는 WFC(Windows 페일오버 클러스터)가 지원되지 않습니다.
+
+
+NOTE: Windows NVMe/FC용 Broadcom에서 제공하는 외부 드라이버는 진정한 NVMe/FC 드라이버가 아니라 이행형 SCSI 호스트 NVMe 드라이버입니다. 이 평행이동 오버헤드가 성능에 영향을 미치는 것은 아니지만 NVMe/FC의 성능 이점을 부정합니다. 따라서 Windows 서버에서는 NVMe/FC 및 FCP 성능이 FCP보다 훨씬 뛰어난 Linux와 같은 다른 운영 체제와 달리 NVMe/FC 및 FCP 성능이 동일합니다.
+
+
+
+== Windows 이니시에이터 호스트에서 NVMe/FC를 사용하도록 설정합니다
+
+Windows 이니시에이터 호스트에서 FC/NVMe를 활성화하려면 다음 단계를 수행하십시오.
+
+. Windows 호스트에 OneCommand Manager 유틸리티를 설치합니다.
+. 각 HBA 이니시에이터 포트에서 다음 HBA 드라이버 매개 변수를 설정합니다.
++
+** EnableNVMe=1
+** NVMeMode = 0
+** 림트랜스퍼크기 = 1
+
+
+. 호스트를 재부팅합니다.
+
+
+
+
+== Windows에서 NVMe/FC용 Broadcom FC 어댑터를 구성합니다
+
+Windows 환경에서 FC/NVMe용 Broadcom 어댑터를 사용하면 "+hostnqn+"가 각 HBA(호스트 버스 어댑터) 포트에 연결됩니다. '+hostnqn+'는 다음과 같이 포맷됩니다.
+
+....
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9765
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9766
+....
+
+
+=== Windows 호스트에서 NVMe 장치용 MPIO를 사용하도록 설정합니다
+
+. Windows Host Utility Kit 7.1을 설치하여 FC와 NVMe 모두에 공통되는 드라이버 매개 변수를 설정합니다.
+. MPIO 속성을 엽니다.
+. Discover Multi-Paths * 탭에서 NVMe에 나열된 장치 ID를 추가합니다.
++
+MPIO는 디스크 관리 아래에 표시되는 NVMe 장치를 인식합니다.
+
+. 디스크 관리 * 를 열고 * 디스크 속성 * 으로 이동합니다.
+. MPIO * 탭에서 * Details * 를 클릭합니다.
+. 다음 MSDSM 설정을 설정합니다.
++
+** PathVerifiedPeriod: * 10 *
+** PathVerifyEnabled: * 활성화 *
+** RetryCount: * 6 *
+** 재시도 간격: * 1 *
+** PDORemovedPeriod: * 130 *
+
+
+. MPIO Policy * Round Robin with Subset * 를 선택합니다.
+. 레지스트리 값을 변경합니다.
++
+[listing]
+----
+HKLM\SYSTEM\CurrentControlSet\Services\mpio\Parameters\PathRecoveryInterval DWORD -> 30
+
+HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\ UseCustomPathRecoveryInterval  DWORD-> 1
+----
+. 호스트를 재부팅합니다.
++
+이제 Windows 호스트에서 NVMe 구성이 완료되었습니다.
+
+
+
+
+
+== NVMe/FC를 검증합니다
+
+. 포트 유형이 FC + NVMe 인지 확인합니다.
++
+이제 NVMe가 활성화되면 다음과 같이 "+FC+NVMe+"로 나열된 '+Port Type+'가 표시됩니다.
+
++
+[listing]
+----
+PS C:\Program Files\Emulex\Util\OCManager> .\hbacmd listhba
+
+Manageable HBA List
+
+Port WWN       : 10:00:00:10:9b:1b:97:65
+Node WWN       : 20:00:00:10:9b:1b:97:65
+Fabric Name    : 10:00:c4:f5:7c:a5:32:e0
+Flags          : 8000e300
+Host Name      : INTEROP-57-159
+Mfg            : Emulex Corporation
+Serial No.     : FC71367217
+Port Number    : 0
+Mode           : Initiator
+PCI Bus Number : 94
+PCI Function   : 0
+Port Type      : FC+NVMe
+Model          : LPe32002-M2
+
+Port WWN       : 10:00:00:10:9b:1b:97:66
+Node WWN       : 20:00:00:10:9b:1b:97:66
+Fabric Name    : 10:00:c4:f5:7c:a5:32:e0
+Flags          : 8000e300
+Host Name      : INTEROP-57-159
+Mfg            : Emulex Corporation
+Serial No.     : FC71367217
+Port Number    : 1
+Mode           : Initiator
+PCI Bus Number : 94
+PCI Function   : 1
+Port Type      : FC+NVMe
+Model          : LPe32002-M2
+----
+. NVMe/FC 서브시스템이 검색되었는지 확인합니다.
++
+"+NVMe-list+" 명령은 NVMe/FC에서 검색된 하위 시스템을 나열합니다.
+
++
+[listing]
+----
+PS C:\Program Files\Emulex\Util\OCManager> .\hbacmd nvme-list 10:00:00:10:9b:1b:97:65
+
+Discovered NVMe Subsystems for 10:00:00:10:9b:1b:97:65
+
+NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
+Port WWN                :  20:09:d0:39:ea:14:11:04
+Node WWN                :  20:05:d0:39:ea:14:11:04
+Controller ID           :  0x0180
+Model Number            :  NetApp ONTAP Controller
+Serial Number           :  81CGZBPU5T/uAAAAAAAB
+Firmware Version        :  FFFFFFFF
+Total Capacity          :  Not Available
+Unallocated Capacity    :  Not Available
+
+NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
+Port WWN                :  20:06:d0:39:ea:14:11:04
+Node WWN                :  20:05:d0:39:ea:14:11:04
+Controller ID           :  0x0181
+Model Number            :  NetApp ONTAP Controller
+Serial Number           :  81CGZBPU5T/uAAAAAAAB
+Firmware Version        :  FFFFFFFF
+Total Capacity          :  Not Available
+Unallocated Capacity    :  Not Available
+Note: At present Namespace Management is not supported by NetApp Arrays.
+----
++
+[listing]
+----
+PS C:\Program Files\Emulex\Util\OCManager> .\hbacmd nvme-list 10:00:00:10:9b:1b:97:66
+
+Discovered NVMe Subsystems for 10:00:00:10:9b:1b:97:66
+
+NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
+Port WWN                :  20:07:d0:39:ea:14:11:04
+Node WWN                :  20:05:d0:39:ea:14:11:04
+Controller ID           :  0x0140
+Model Number            :  NetApp ONTAP Controller
+Serial Number           :  81CGZBPU5T/uAAAAAAAB
+Firmware Version        :  FFFFFFFF
+Total Capacity          :  Not Available
+Unallocated Capacity    :  Not Available
+
+NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
+Port WWN                :  20:08:d0:39:ea:14:11:04
+Node WWN                :  20:05:d0:39:ea:14:11:04
+Controller ID           :  0x0141
+Model Number            :  NetApp ONTAP Controller
+Serial Number           :  81CGZBPU5T/uAAAAAAAB
+Firmware Version        :  FFFFFFFF
+Total Capacity          :  Not Available
+Unallocated Capacity    :  Not Available
+
+Note: At present Namespace Management is not supported by NetApp Arrays.
+----
+. 네임스페이스가 만들어졌는지 확인합니다.
++
+'+NVMe-list-ns+' 명령은 호스트에 연결된 네임스페이스를 나열하는 지정된 NVMe 타겟의 네임스페이스를 나열합니다.
+
++
+[listing]
+----
+PS C:\Program Files\Emulex\Util\OCManager> .\HbaCmd.exe nvme-list-ns 10:00:00:10:9b:1b:97:66 20:08:d0:39:ea:14:11:04 nq
+.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159 0
+
+
+Active Namespaces (attached to controller 0x0141):
+
+                                       SCSI           SCSI           SCSI
+   NSID           DeviceName        Bus Number    Target Number     OS LUN
+-----------  --------------------  ------------  ---------------   ---------
+0x00000001   \\.\PHYSICALDRIVE9         0               1              0
+0x00000002   \\.\PHYSICALDRIVE10        0               1              1
+0x00000003   \\.\PHYSICALDRIVE11        0               1              2
+0x00000004   \\.\PHYSICALDRIVE12        0               1              3
+0x00000005   \\.\PHYSICALDRIVE13        0               1              4
+0x00000006   \\.\PHYSICALDRIVE14        0               1              5
+0x00000007   \\.\PHYSICALDRIVE15        0               1              6
+0x00000008   \\.\PHYSICALDRIVE16        0               1              7
+
+----
+

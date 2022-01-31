@@ -1,0 +1,413 @@
+---
+sidebar: sidebar 
+permalink: nvme_rhel_83.html 
+keywords: nvme, linux, rhel, red hat, enterprise 
+summary: ONTAP를 사용하여 RHEL 8.3에 대한 NVMe/FC 호스트를 구성하는 방법 
+---
+= ONTAP 지원 RHEL 8.3에 대한 NVMe/FC 호스트 구성
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 지원 가능성
+
+NVMe/FC는 RHEL 8.3에서 ONTAP 9.6 이상에서 지원됩니다. RHEL 8.3 호스트는 동일한 파이버 채널(FC) 이니시에이터 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행합니다. 를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 .
+
+
+
+== 알려진 제한 사항
+
+RHEL 8.3의 경우, 기본적으로 in-kernel NVMe multipath가 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다. 그 단계는 다음 섹션, "RHEL 8.3에서 NVMe/FC 활성화" 에 나와 있습니다.
+
+
+
+== RHEL 8.3에서 NVMe/FC를 사용하도록 설정하십시오
+
+. 서버에 Red Hat Enterprise Linux 8.3 GA를 설치합니다.
++
+yum update/upgrade를 사용하여 RHEL 8.2에서 RHEL 8.3으로 업그레이드하는 경우, '/etc/NVMe/host * ' 파일이 손실될 수 있습니다. 파일 손실을 방지하려면 다음을 수행합니다.
+
++
+.. '/etc/NVMe/host * ' 파일을 백업합니다.
+.. 수동으로 편집한 'udev' 규칙이 있는 경우 제거합니다.
++
+[listing]
+----
+/lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules
+----
+.. 업그레이드를 수행합니다.
+.. 업그레이드가 완료된 후 다음 명령을 실행합니다.
++
+[listing]
+----
+yum remove nvme-cli
+----
+.. '/etc/NVMe/'에서 호스트 파일을 복구합니다.
++
+[listing]
+----
+yum install nvmecli
+----
+.. 원래 '/etc/NVMe/host * ' 내용을 백업에서 '/etc/NVMe/'의 실제 호스트 파일로 복사합니다.
+
+
+. 설치가 완료되면 지정된 Red Hat Enterprise Linux 커널을 실행 중인지 확인합니다.
++
+[listing]
+----
+# uname -r
+4.18.0-240.el8.x86_64
+----
++
+를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 를 참조하십시오.
+
+. NVMe-CLI 패키지를 설치합니다.
++
+[listing]
+----
+# rpm -qa|grep nvme-cli
+nvme-cli-1.12-2.el8.x86_64
+----
+. 인커널 NVMe 다중 경로 지원
++
+[listing]
+----
+# grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-240.el8.x86_64
+----
+. RHEL 8.3 호스트에서 /etc/NVMe/hostnqn에 있는 호스트 NQN 문자열을 확인하고 ONTAP 어레이에 있는 해당 하위 시스템의 호스트 NQN 문자열과 일치하는지 확인합니다.
++
+[listing]
+----
+# cat /etc/nvme/hostnqn
+nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
+
+::> vserver nvme subsystem host show -vserver vs_fcnvme_141
+
+::> vserver nvme subsystem host show -vserver vs_fcnvme_141
+Vserver         Subsystem        Host           NQN
+-----------     --------------- ----------- ---------------
+vs_fcnvme_141    nvme_141_1                 nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
+----
++
+
+TIP: 호스트 NQN 문자열이 일치하지 않으면 "vserver modify" 명령을 사용하여 해당 ONTAP 어레이 하위 시스템의 호스트 NQN 문자열을 호스트의 /etc/NVMe/hostnqn에서 호스트 NQM 문자열과 일치하도록 업데이트합니다.
+
+. 호스트를 재부팅합니다.
+. Enable_Foreign 설정 _ (선택 사항) _ 을(를) 업데이트합니다.
++
+
+NOTE: 동일한 RHEL 8.3 공동 존재 호스트에서 NVMe 및 SCSI 트래픽을 모두 실행하려는 경우, 각각 ONTAP 네임스페이스와 ONTAP LUN용 dm-multipath에 in-kernel NVMe multipath를 사용하는 것이 좋습니다. 또한 dm-multipath에서 ONTAP 네임스페이스를 블랙리스트에 포함시켜 dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하게 해야 합니다. 아래와 같이 /etc/multipath.conf에 'enable_Foreign' 설정을 추가하여 이 작업을 수행합니다.
+
++
+[listing]
+----
+# cat /etc/multipath.conf
+defaults {
+   enable_foreign NONE
+}
+----
+. 'stemctl restart multipathd'를 실행하여 multipathd 데몬을 다시 시작합니다.
+
+
+
+
+== NVMe/FC를 검증합니다
+
+. 다음 NVMe/FC 설정을 확인하십시오.
++
+[listing]
+----
+# cat /sys/module/nvme_core/parameters/multipath
+Y
+----
++
+[listing]
+----
+# cat /sys/class/nvme-subsystem/nvme-subsys*/model
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
++
+[listing]
+----
+# cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+round-robin
+round-robin
+----
+. 네임스페이스가 생성되어 호스트에서 제대로 검색되는지 확인합니다.
++
+[listing]
+----
+/dev/nvme0n1     814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller                1                  85.90 GB / 85.90 GB     4 KiB + 0 B   FFFFFFFF
+/dev/nvme0n2     814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller                2                  85.90 GB / 85.90 GB     4 KiB + 0 B   FFFFFFFF
+/dev/nvme0n3     814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller                3                  85.90 GB / 85.90 GB     4 KiB + 0 B   FFFFFFFF
+----
+. ANA 경로 상태를 확인한다.
++
+[listing]
+----
+# nvme list-subsys /dev/nvme0n1
+nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:subsystem.nvme_141_1
+\
++- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
++- nvme1 fc traddr=nn-0x203700a098dfdd91:pn-0x203900a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
++- nvme2 fc traddr=nn-0x203700a098dfdd91:pn-0x203a00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
++- nvme3 fc traddr=nn-0x203700a098dfdd91:pn-0x203d00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
+----
+. ONTAP 장치용 NetApp 플러그인을 확인합니다.
++
+[listing]
+----
+# nvme netapp ontapdevices -o column
+Device               Vserver            Namespace Path                           NSID                      UUID                     Size
+--------------- --------------- ---------------------------------------------  -------- --------------------------------------  ---------
+/dev/nvme0n1      vs_fcnvme_141     /vol/fcnvme_141_vol_1_1_0/fcnvme_141_ns        1      72b887b1-5fb6-47b8-be0b-33326e2542e2    85.90GB
+/dev/nvme0n2      vs_fcnvme_141     /vol/fcnvme_141_vol_1_0_0/fcnvme_141_ns        2      04bf9f6e-9031-40ea-99c7-a1a61b2d7d08    85.90GB
+/dev/nvme0n3      vs_fcnvme_141     /vol/fcnvme_141_vol_1_1_1/fcnvme_141_ns        3      264823b1-8e03-4155-80dd-e904237014a4    85.90GB
+----
++
+[listing]
+----
+# nvme netapp ontapdevices -o json
+{
+"ONTAPdevices" : [
+    {
+        "Device" : "/dev/nvme0n1",
+        "Vserver" : "vs_fcnvme_141",
+        "Namespace_Path" : "/vol/fcnvme_141_vol_1_1_0/fcnvme_141_ns",
+        "NSID" : 1,
+        "UUID" : "72b887b1-5fb6-47b8-be0b-33326e2542e2",
+        "Size" : "85.90GB",
+        "LBA_Data_Size" : 4096,
+        "Namespace_Size" : 20971520
+    },
+    {
+        "Device" : "/dev/nvme0n2",
+        "Vserver" : "vs_fcnvme_141",
+        "Namespace_Path" : "/vol/fcnvme_141_vol_1_0_0/fcnvme_141_ns",
+        "NSID" : 2,
+        "UUID" : "04bf9f6e-9031-40ea-99c7-a1a61b2d7d08",
+        "Size" : "85.90GB",
+        "LBA_Data_Size" : 4096,
+        "Namespace_Size" : 20971520
+      },
+      {
+         "Device" : "/dev/nvme0n3",
+         "Vserver" : "vs_fcnvme_141",
+         "Namespace_Path" : "/vol/fcnvme_141_vol_1_1_1/fcnvme_141_ns",
+         "NSID" : 3,
+         "UUID" : "264823b1-8e03-4155-80dd-e904237014a4",
+         "Size" : "85.90GB",
+         "LBA_Data_Size" : 4096,
+         "Namespace_Size" : 20971520
+       },
+  ]
+----
+
+
+
+
+== NVMe/FC용 Broadcom FC 어댑터를 구성합니다
+
+지원되는 어댑터의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+
+. 지원되는 어댑터를 사용하고 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modelname
+LPe32002-M2
+LPe32002-M2
+----
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modeldesc
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+----
+. lpfc_enable_fc4_type이 " * 3 * "로 설정되어 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+3
+----
+. 이니시에이터 포트가 가동 및 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_name
+0x100000109b1c1204
+0x100000109b1c1205
+----
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_state
+Online
+Online
+----
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/nvme_info
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc0 WWPN x100000109b1c1204 WWNN x200000109b1c1204 DID x011d00 ONLINE
+NVME RPORT WWPN x203800a098dfdd91 WWNN x203700a098dfdd91 DID x010c07 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203900a098dfdd91 WWNN x203700a098dfdd91 DID x011507 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000f78 Cmpl 0000000f78 Abort 00000000
+LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000002fe29bba Issue 000000002fe29bc4 OutIO 000000000000000a
+abort 00001bc7 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00001e15 Err 0000d906
+NVME Initiator Enabled
+XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc1 WWPN x100000109b1c1205 WWNN x200000109b1c1205 DID x011900 ONLINE
+NVME RPORT WWPN x203d00a098dfdd91 WWNN x203700a098dfdd91 DID x010007 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203a00a098dfdd91 WWNN x203700a098dfdd91 DID x012a07 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000fa8 Cmpl 0000000fa8 Abort 00000000
+LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000002e14f170 Issue 000000002e14f17a OutIO 000000000000000a
+abort 000016bb noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00001f50 Err 0000d9f8
+----
+. 1MB 입출력 크기 설정 _ (선택 사항) _.
++
+lpfc 드라이버가 최대 1MB의 입출력 요청을 발급하려면 "lpfc_sg_seg_cnt" 매개변수를 256으로 설정해야 합니다.
+
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. dracut -f 명령을 실행한 다음 호스트를 재부팅합니다.
+. 호스트를 부팅한 후 lpfc_sg_seg_cnt가 256으로 설정되어 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+. 권장되는 Broadcom lpfc 펌웨어와 받은 편지함 드라이버를 사용하고 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/fwrev
+12.8.340.8, sli-4:2:c
+12.8.340.8, sli-4:2:c
+----
++
+[listing]
+----
+# cat /sys/module/lpfc/version
+0:12.8.0.1
+----
+. lpfc_enable_fc4_type이 " * 3 * "로 설정되어 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+3
+----
+. 이니시에이터 포트가 가동 및 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_name
+0x100000109b1c1204
+0x100000109b1c1205
+----
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_state
+Online
+Online
+----
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/nvme_info
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc0 WWPN x100000109b1c1204 WWNN x200000109b1c1204 DID x011d00 ONLINE
+NVME RPORT WWPN x203800a098dfdd91 WWNN x203700a098dfdd91 DID x010c07 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203900a098dfdd91 WWNN x203700a098dfdd91 DID x011507 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000f78 Cmpl 0000000f78 Abort 00000000
+LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000002fe29bba Issue 000000002fe29bc4 OutIO 000000000000000a
+abort 00001bc7 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00001e15 Err 0000d906
+NVME Initiator Enabled
+XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc1 WWPN x100000109b1c1205 WWNN x200000109b1c1205 DID x011900 ONLINE
+NVME RPORT WWPN x203d00a098dfdd91 WWNN x203700a098dfdd91 DID x010007 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203a00a098dfdd91 WWNN x203700a098dfdd91 DID x012a07 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000fa8 Cmpl 0000000fa8 Abort 00000000
+LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000002e14f170 Issue 000000002e14f17a OutIO 000000000000000a
+abort 000016bb noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00001f50 Err 0000d9f8
+----
+. 1MB 입출력 크기 설정 _ (선택 사항) _.
++
+lpfc 드라이버가 최대 1MB의 입출력 요청을 발급하려면 "lpfc_sg_seg_cnt" 매개변수를 256으로 설정해야 합니다.
+
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. dracut -f 명령을 실행한 다음 호스트를 재부팅합니다.
+. 호스트를 부팅한 후 lpfc_sg_seg_cnt가 256으로 설정되어 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+
+== lpfc Verbose 로깅
+
+. lpfc_log_verbose 드라이버 설정을 다음 값 중 한 값으로 설정하여 NVMe/FC 이벤트를 기록할 수 있습니다.
++
+[listing]
+----
+#define LOG_NVME 0x00100000 /* NVME general events. */
+#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
+#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
+#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
+----
+. 이러한 값을 설정한 후 dracut -f를 실행하고 호스트를 재부팅합니다.
+. 재부팅 후 설정을 확인합니다.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_log_verbose=0xf00083
+
+# cat /sys/module/lpfc/parameters/lpfc_log_verbose
+15728771
+----
+

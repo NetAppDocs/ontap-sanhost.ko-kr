@@ -1,0 +1,264 @@
+---
+sidebar: sidebar 
+permalink: nvme_sles15_sp1.html 
+keywords: nvme, linux, suse, sles, 15, sp1, server, enterprise 
+summary: ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP1에 대해 NVMe/FC를 구성하는 방법을 설명합니다 
+---
+= SUSE Linux Enterprise Server 15 SP1 및 ONTAP을 위한 NVMe/FC 호스트 구성
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 지원 가능성
+
+NVMe/FC는 다음 SLES 버전에 대해 ONTAP 9.6 이상에서 지원됩니다.
+
+* SLES15 SP1
++
+SLES15 SP1 호스트는 동일한 파이버 채널 이니시에이터 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 실행할 수 있습니다. 를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오.
+
++
+지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+
+
+
+
+
+== 알려진 제한 사항
+
+없음. 기본 NVMe/FC 자동 연결 스크립트가 NVMe-CLI 패키지에 포함되어 있습니다. SLES15 SP1에서 기본 받은 편지함 lpfc 드라이버를 사용할 수 있습니다.
+
+
+
+== SLES15 SP1에서 NVMe/FC를 사용하도록 설정합니다
+
+. 권장되는 SLES15 SP2 MU 커널로 업그레이드하십시오
+. 권장되는 NVMe-CLI MU 버전으로 업그레이드하십시오.
++
+이 NVMe-CLI 패키지에는 기본 NVMe/FC 자동 연결 스크립트가 포함되어 있으므로 SLES15 SP1 호스트에 Broadcom에서 제공하는 외부 NVMe/FC 자동 연결 스크립트를 설치할 필요가 없습니다. 또한 이 패키지에는 NVMe 다중 경로에 라운드 로빈 로드 밸런싱을 지원하는 ONTAP udev 규칙 및 ONTAP 장치용 NetApp 플러그인이 포함되어 있습니다.
+
++
+[listing]
+----
+# rpm -qa | grep nvme-cli
+nvme-cli-1.8.1-6.9.1.x86_64
+----
+. SLES15 SP1 호스트에서 '/etc/NVMe/hostnqn' 호스트의 NQN 문자열을 확인하여 ONTAP 배열의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다. 예를 들면 다음과 같습니다.
++
+[listing]
+----
+# cat /etc/nvme/hostnqn
+nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
+----
++
+[listing]
+----
+*> vserver nvme subsystem host show -vserver vs_nvme_10
+Vserver Subsystem Host NQN
+------- --------- -------------------------------------- -----------
+sles_117_nvme_ss_10_0
+nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
+----
+. 호스트를 재부팅합니다.
+
+
+
+
+== NVMe/FC용 Broadcom FC 어댑터를 구성합니다
+
+. 지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modelname
+LPe32002-M2
+LPe32002-M2
+----
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modeldesc
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+----
+. 권장되는 Broadcom lpfc 펌웨어 및 기본 받은 편지함 드라이버 버전을 사용하고 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/fwrev
+12.4.243.17, sil-4.2.c
+12.4.243.17, sil-4.2.c
+----
++
+[listing]
+----
+# cat /sys/module/lpfc/version
+0:12.6.0.0
+----
+. lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인합니다.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+3
+----
+. 이니시에이터 포트가 실행 중인지 확인합니다.
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_name
+0x10000090fae0ec61
+0x10000090fae0ec62
+----
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_state
+Online
+Online
+----
+. NVMe/FC 이니시에이터 포트가 활성화되어 실행 중이며 타겟 LIF를 볼 수 있는지 확인하십시오.
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/nvme_info
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 NVME 2947 SCSI 2977 ELS 250
+NVME LPORT lpfc0 WWPN x10000090fae0ec61 WWNN x20000090fae0ec61 DID x012000 ONLINE
+NVME RPORT WWPN x202d00a098c80f09 WWNN x202c00a098c80f09 DID x010201 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203100a098c80f09 WWNN x202c00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE
+NVME Statistics
+…
+----
+
+
+
+
+== NVMe/FC를 검증합니다
+
+. 다음 NVMe/FC 설정을 확인하십시오.
++
+[listing]
+----
+# cat /sys/module/nvme_core/parameters/multipath
+Y
+----
++
+[listing]
+----
+# cat /sys/class/nvme-subsystem/nvme-subsys*/model
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
++
+[listing]
+----
+# cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+round-robin
+round-robin
+----
+. 네임스페이스가 만들어졌는지 확인합니다.
++
+[listing]
+----
+# nvme list
+Node SN Model Namespace Usage Format FW Rev
+---------------- -------------------- -----------------------
+/dev/nvme0n1 80BADBKnB/JvAAAAAAAC NetApp ONTAP Controller 1 53.69 GB / 53.69 GB 4 KiB + 0 B FFFFFFFF
+----
+. ANA 경로 상태를 확인한다.
++
+[listing]
+----
+# nvme list-subsys/dev/nvme0n1
+Nvme-subsysf0 – NQN=nqn.1992-08.com.netapp:sn.341541339b9511e8a9b500a098c80f09:subsystem.sles_117_nvme_ss_10_0
+\
++- nvme0 fc traddr=nn-0x202c00a098c80f09:pn-0x202d00a098c80f09 host_traddr=nn-0x20000090fae0ec61:pn-0x10000090fae0ec61 live optimized
++- nvme1 fc traddr=nn-0x207300a098dfdd91:pn-0x207600a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
++- nvme2 fc traddr=nn-0x207300a098dfdd91:pn-0x207500a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
++- nvme3 fc traddr=nn-0x207300a098dfdd91:pn-0x207700a098dfdd91 host traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live inaccessible
+----
+. ONTAP 장치용 NetApp 플러그인을 확인합니다.
++
+[listing]
+----
+# nvme netapp ontapdevices -o column
+Device   Vserver  Namespace Path             NSID   UUID   Size
+-------  -------- -------------------------  ------ ----- -----
+/dev/nvme0n1   vs_nvme_10       /vol/sles_117_vol_10_0/sles_117_ns_10_0    1        55baf453-f629-4a18-9364-b6aee3f50dad   53.69GB
+
+# nvme netapp ontapdevices -o json
+{
+   "ONTAPdevices" : [
+   {
+        Device" : "/dev/nvme0n1",
+        "Vserver" : "vs_nvme_10",
+        "Namespace_Path" : "/vol/sles_117_vol_10_0/sles_117_ns_10_0",
+         "NSID" : 1,
+         "UUID" : "55baf453-f629-4a18-9364-b6aee3f50dad",
+         "Size" : "53.69GB",
+         "LBA_Data_Size" : 4096,
+         "Namespace_Size" : 13107200
+    }
+]
+----
+
+
+
+
+== Broadcom NVMe/FC에 대해 1MB I/O 크기를 활성화합니다
+
+호스트가 1MB 크기 입출력을 발급하려면 lpfc_sg_seg_cnt 매개 변수를 256으로 설정해야 합니다
+
+. lpfc_sg_seg_cnt 매개변수를 256으로 설정합니다.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. dracut -f 명령을 실행하고 호스트를 재부팅합니다.
+. lpfc_sg_seg_cnt가 256인지 확인합니다.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+
+== lpfc Verbose 로깅
+
+. lpfc_log_verbose 드라이버 설정을 다음 값 중 한 값으로 설정하여 NVMe/FC 이벤트를 기록할 수 있습니다.
++
+[listing]
+----
+#define LOG_NVME 0x00100000 /* NVME general events. */
+#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
+#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
+#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
+----
+. 이러한 값을 설정한 후 dracut -f를 실행하고 호스트를 재부팅합니다.
+. 재부팅 후 설정을 확인합니다.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_log_verbose=0xf00083
+
+# cat /sys/module/lpfc/parameters/lpfc_log_verbose
+15728771
+----
+

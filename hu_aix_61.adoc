@@ -1,0 +1,261 @@
+---
+sidebar: sidebar 
+permalink: hu_aix_61.html 
+keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
+summary: ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는 방법에 대해 설명합니다 
+---
+= AIX 호스트 유틸리티 6.1
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 필수 구성 요소
+
+.무엇을 &#8217;필요로 할거야
+* 안정적인 운영을 위해서는 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인해야 합니다.
++
+를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 를 눌러 구성을 확인합니다.
+
+
+
+
+
+== SAN 툴킷을 참조하십시오
+
+AIX Host Utilities는 IBM AIX 호스트에 명령줄 도구 키트를 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
+
+* 예 *
+
+다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
+
+[listing]
+----
+#sanlun lun show all
+
+controller(7mode)/ device host lun
+
+vserver(Cmode) lun-pathname filename adapter protocol size mode
+----------------------------------------------------------------
+data_vserver   /vol/vol1/lun1 hdisk0 fcs0    FCP      60g C
+data_vserver   /vol/vol2/lun2 hdisk0 fcs0    FCP      20g C
+data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
+data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
+----
+
+NOTE: 이 툴킷은 Host Utilities의 모든 구성 및 프로토콜에서 공통적으로 사용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.
+
+
+NOTE: SAN 툴킷은 AIX 및 PowerVM/VIOS OS OS 버전에서 지원됩니다.
+
+
+
+== AIX 호스트 유틸리티를 설치합니다
+
+NetApp AIX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host%2BUtilities%2B-%2BSAN&platform=Linux["NetApp Support 사이트"^] 압축된 tar.gz 파일
+
+AIX MPIO를 NetApp ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.
+
+NetApp Support 사이트에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다. 파일을 다운로드한 후 Host Utilities를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 가져오려면 파일의 압축을 풀어야 합니다.
+
+* 단계 *
+
+. 호스트에 로그인합니다.
++
+** AIX 호스트에서 * root * 로 로그인합니다.
+** PowerVM 호스트에서 * padmin * 으로 로그인한 다음 oem_setup_env 명령을 입력하여 root가 됩니다.
+
+
+. NetApp Support 사이트에서 Host Utilities가 포함된 압축 파일 복사본을 호스트의 디렉토리로 다운로드합니다.
+. 다운로드가 포함된 디렉터리로 이동합니다.
+. 파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지를 추출합니다.
++
+'tar-xvf ntap_aix_host_utilities_6.1.tar.gz'
+
++
+파일 압축을 풀 때 'tap_aix_host_utilities_6.1' 디렉토리가 생성됩니다. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 있습니다.
+
+. AIX MPIO를 설치합니다.
++
+'installp-aXYd/var/tmp/NTAP_aix_host_utilities_6.1/mpio NetApp.mpio_Host_Utilities_Kit'
+
+. SAN 툴킷을 설치합니다.
++
+'installp-aXYd/var/tmp/NTAP_aix_host_utilities_6.1/san_Tool_Kit NetApp.san_toolkit'
+
+. 호스트를 재부팅합니다.
+. 설치를 확인합니다.
++
+안런 버전
+
+
+
+
+
+== 명령 참조 예
+
+
+
+=== 호스트에 매핑된 모든 호스트 이니시에이터를 나열합니다
+
+[listing]
+----
+# sanlun fcp show adapter -v
+bash-3.2# sanlun fcp show adapter -v
+adapter name: fcs0
+WWPN: 100000109b22e143
+WWNN: 200000109b22e143
+driver name: /usr/lib/drivers/pci/emfcdd
+model: df1000e31410150
+model description: FC Adapter
+serial number: YA50HY79S117
+hardware version: Not Available
+driver version: 7.2.5.0
+firmware version: 00012000040025700027
+Number of ports: 1
+port type: Fabric
+port state: Operational
+supported speed: 16 GBit/sec
+negotiated speed: Unknown
+OS device name: fcs0
+adapter name: fcs1
+WWPN: 100000109b22e144
+WWNN: 200000109b22e144
+driver name: /usr/lib/drivers/pci/emfcdd
+model: df1000e31410150
+model description: FC Adapter
+serial number: YA50HY79S117
+hardware version: Not Available
+driver version: 7.2.5.0
+firmware version: 00012000040025700027
+Number of ports: 1
+port type: Fabric
+port state: Operational
+supported speed: 16 GBit/sec
+negotiated speed: Unknown
+OS device name: fcs1
+bash-3.2#
+----
+
+
+=== 호스트에 매핑된 모든 LUN을 나열합니다
+
+[listing]
+----
+# sanlun lun show -p -v all
+ONTAP Path: vs_aix_clus:/vol/gpfs_205p2_207p1_vol_0_8/aix_205p2_207p1_lun
+LUN: 88
+LUN Size: 15g
+Host Device: hdisk9
+Mode: C
+Multipath Provider: AIX Native
+Multipathing Algorithm: round_robin
+
+host    vserver  AIX   AIX MPIO
+path    path     MPIO  host      vserver      path
+state   type     path  adapter   LIF          priority
+-----------------------------------------------------
+up     primary   path0   fcs0    fc_aix_1     1
+up     primary   path1   fcs1    fc_aix_2     1
+up     secondary path2   fcs0    fc_aix_3     1
+up     secondary path3   fcs1    fc_aix_4     1
+----
+
+
+=== 해당 SVM에서 호스트에 매핑된 모든 LUN을 나열합니다
+
+[listing]
+----
+# sanlun lun show -p -v sanboot_unix
+
+ONTAP Path: sanboot_unix:/vol/aix_205p2_boot_0/boot_205p2_lun
+LUN: 0
+LUN Size: 80.0g
+Host Device: hdisk85
+Mode: C
+Multipath Provider: AIX Native
+Multipathing Algorithm: round_robin
+
+host    vserver    AIX   AIX MPIO
+path    path       MPIO  host    vserver    path
+state   type       path  adapter LIF        priority
+-------------------------------------------------
+up      primary    path0 fcs0    sanboot_1   1
+up      primary    path1 fcs1    sanboot_2   1
+up      secondary  path2 fcs0    sanboot_3   1
+up      secondary  path3 fcs1    sanboot_4   1
+----
+
+
+=== 호스트에 매핑된 특정 LUN의 모든 특성을 나열합니다
+
+[listing]
+----
+# sanlun lun show -p -v vs_aix_clus:/vol/gpfs_205p2_207p1_vol_0_8/aix_205p2_207p1_lun
+ONTAP Path: vs_aix_clus:/vol/gpfs_205p2_207p1_vol_0_8/aix_205p2_207p1_lun
+LUN: 88
+LUN Size: 15g
+Host Device: hdisk9
+Mode: C
+Multipath Provider: AIX Native
+Multipathing Algorithm: round_robin
+
+host     vserver   AIX   AIX MPIO
+path     path      MPIO  host     vserver   path
+state    type      path  adapter  LIF       priority
+---------------------------------------------------------
+up       primary   path0 fcs0    fc_aix_1   1
+up       primary   path1 fcs1    fc_aix_2   1
+up       secondary path2 fcs0    fc_aix_3   1
+up       secondary path3 fcs1    fc_aix_4   1
+----
+
+
+=== 호스트 디바이스 파일 이름별로 ONTAP LUN 특성을 나열합니다
+
+[listing]
+----
+#sanlun lun show -d /dev/hdisk1
+controller(7mode)/
+device host lun
+vserver(Cmode)     lun-pathname
+-----------------------------------------------------------------------------
+vs_aix_clus       /vol/gpfs_205p2_207p1_vol_0_0/aix_205p2_207p1_lun
+
+filename adapter protocol size mode
+-----------------------------------
+hdisk1    fcs0    FCP     15g  C
+----
+
+
+=== 호스트에 연결된 모든 SVM 타겟 LIF WWPN을 나열합니다
+
+[listing]
+----
+# sanlun lun show -wwpn
+controller(7mode)/
+target device host lun
+vserver(Cmode)          wwpn            lun-pathname
+--------------------------------------------------------------------------------
+
+vs_aix_clus          203300a098ba7afe  /vol/gpfs_205p2_207p1_vol_0_0/aix_205p2_207p1_lun
+vs_aix_clus          203300a098ba7afe  /vol/gpfs_205p2_207p1_vol_0_9/aix_205p2_207p1_lun
+vs_aix_clus          203300a098ba7afe  /vol/gpfs_205p2_207p1_vol_en_0_0/aix_205p2_207p1_lun_en
+vs_aix_clus          202f00a098ba7afe  /vol/gpfs_205p2_207p1_vol_en_0_1/aix_205p2_207p1_lun_en
+
+filename     adapter    size  mode
+-----------------------------------
+hdisk1       fcs0       15g    C
+hdisk10      fcs0       15g    C
+hdisk11      fcs0       15g    C
+hdisk12      fcs0       15g    C
+----

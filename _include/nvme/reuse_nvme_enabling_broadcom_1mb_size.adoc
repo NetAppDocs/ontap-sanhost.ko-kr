@@ -1,0 +1,21 @@
+= 
+
+
+호스트가 1MB 크기 입출력을 발급하려면 lpfc_sg_seg_cnt 매개 변수를 256으로 설정해야 합니다
+
+. lpfc_sg_seg_cnt 매개변수를 256으로 설정합니다.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. dracut -f 명령을 실행하고 호스트를 재부팅합니다.
+. lpfc_sg_seg_cnt가 256인지 확인합니다.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+

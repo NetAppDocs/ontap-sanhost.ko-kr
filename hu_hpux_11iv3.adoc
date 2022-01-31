@@ -1,0 +1,177 @@
+---
+sidebar: sidebar 
+permalink: hu_hpux_11iv3.html 
+keywords: host utilities, hp_ux, 11iv3, netapp, ontap 
+summary: ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는 방법에 대해 설명합니다 
+---
+= NetApp ONTAP에서 HP-UX 11i v3 사용
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== HP-UX Host Utilities 설치
+
+NetApp Support 사이트에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다. 파일을 가지고 나면 Host Utilities를 설치하는 데 필요한 소프트웨어 패키지를 가져오려면 파일의 압축을 해제해야 합니다.
+
+.단계
+. 에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 호스트의 디렉토리로 이동합니다.
+. 다운로드가 포함된 디렉터리로 이동합니다.
+. 파일의 압축을 풉니다.
++
+총집도 netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`
+
+. 소프트웨어를 설치하려면 다음 명령을 입력합니다.
++
+'swinstall-s /netapp_hpux_host_utilities_6.0_ia_pa.depot netapp_santoolkit
+
+. 호스트를 재부팅합니다.
+
+
+
+
+== SAN 툴킷을 참조하십시오
+
+이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
+
+다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
+
+[listing]
+----
+#sanlun lun show
+
+controller(7mode)/                            device                         host     lun
+vserver(Cmode)    lun-pathname               filename                       adapter protocol  size  mode
+--------------------------------------------------------------------------------
+sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c11t0d0 fcd0   FCP      150g   C
+sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c24t0d0 fcd1   FCP      150g   C
+sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c21t0d0 fcd1   FCP      150g   C
+sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c12t0d0 fcd0   FCP      150g   C
+----
+
+
+== SAN 부팅
+
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+
+SAN 부팅은 HP-UX 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다. Host Utilities는 HP-UX 환경에서 FC 및 FCoE 프로토콜을 통한 SAN 부팅을 지원합니다.
+
+
+
+== 다중 경로
+
+다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 네트워크 경로를 구성할 수 있습니다. 한 경로에 장애가 발생하면 트래픽이 나머지 경로에서 계속됩니다. 호스트에 LUN에 대한 경로가 여러 개인 경우 다중 경로를 활성화해야 합니다. HP-UX Host Utilities는 구성에 따라 다양한 다중 경로 솔루션을 지원합니다. 다음은 기본 경로 다중화 솔루션에 대한 것입니다.
+
+
+
+=== 비 ASA 구성
+
+비 ASA 구성의 경우 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+[listing]
+----
+# sanlun lun show -p vs39:/vol/vol24_3_0/lun24_0
+                    ONTAP Path: vs39:/vol/vol24_3_0/lun24_0
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: /dev/rdisk/disk942
+                          Mode: C
+              Multipath Policy: A/A
+            Multipath Provider: Native
+------- ---------- ------ ------- ---------- ---------- --------------
+host    vserver     /dev/dsk                            HP A/A
+path    path        filename          host    vserver   path failover
+state   type        or hardware path adapter    LIF     priority
+------- ---------- ------ ------- ---------- ---------- --------------
+up       primary    /dev/dsk/c39t4d5   fcd0    hpux_3     0
+up       primary    /dev/dsk/c41t4d5   fcd1    hpux_4     0
+up       secondary  /dev/dsk/c40t4d5   fcd0    hpux_3     1
+up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
+----
+
+
+=== 모든 SAN 어레이 구성
+
+모든 SAN 어레이(ASA) 구성에서 지정된 LUN(논리 유닛)에 대한 모든 경로가 활성 및 최적화됩니다. 즉, 모든 경로를 통해 동시에 I/O를 처리할 수 있으므로 성능이 향상됩니다.
+
+다음 예는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+
+NOTE: 모든 SAN 어레이(ASA) 구성은 HP-UX 11iv3용 ONTAP 9.8부터 지원됩니다
+
+[listing]
+----
+# sanlun lun show -p vs39:/vol/hpux_vol_1_1/hpux_lun
+
+                    ONTAP Path: vs39:/vol/hpux_vol_1_1/hpux_lun
+                           LUN: 2
+                      LUN Size: 30g
+                   Host Device: /dev/rdisk/disk25
+                          Mode: C
+            Multipath Provider: None
+-------- ---------- -------------------- ------- --------------
+host     vserver    /dev/dsk
+path     path       filename             host    vserver
+state    type       or hardware path     adapter LIF
+-------- ---------- -------------------- ------- --------------
+up       primary    /dev/dsk/c4t0d2      fcd0    248_1c_hp
+up       primary    /dev/dsk/c6t0d2      fcd0    246_1c_hp
+up       primary    /dev/dsk/c10t0d2     fcd1    246_1d_hp
+up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
+----
+
+
+== 권장 설정
+
+다음은 HPUX 11i v3 및 NetApp ONTAP LUN에 대한 몇 가지 권장 매개 변수 설정입니다. NetApp은 HP-UX에 대한 기본 설정을 사용합니다.
+
+[cols="2*"]
+|===
+| 매개 변수 | 기본값을 사용합니다 
+
+
+| transient_secs | 120 
+
+
+| leg_mpath_enable | 참 
+
+
+| 최대_q_깊이 | 8 
+
+
+| path_fail_secs | 120 
+
+
+| Load_bal_policy 를 참조하십시오 | round_robin(라운드 로빈 
+
+
+| Lua_enabled | 참 
+
+
+| ESD_초 | 30 
+|===
+
+
+== 알려진 문제 및 제한 사항
+
+[cols="4*"]
+|===
+| NetApp 버그 ID | 제목 | 설명 | 파트너 ID입니다 
+
+
+| 1344935 | ASA 설정에서 HPUX 11.31 호스트가 간헐적으로 경로 상태를 잘못 보고합니다. | ASA 구성과 관련된 경로 보고 문제 | 해당 없음 
+
+
+| 1306354)를 참조하십시오 | HPUX LVM 생성 시 블록 크기의 I/O가 1MB 이상으로 전송됩니다 | SCSI 최대 전송 길이 1MB는 ONTAP All SAN 어레이에 적용됩니다. ONTAP All SAN 어레이에 연결할 때 HP-UX 호스트에서 최대 전송 길이를 제한하려면 HP-UX SCSI 서브시스템에서 허용하는 최대 I/O 크기를 1MB로 설정해야 합니다. 자세한 내용은 HP-UX 공급업체 문서를 참조하십시오. | 해당 없음 
+|===

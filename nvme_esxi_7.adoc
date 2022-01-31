@@ -1,0 +1,215 @@
+---
+sidebar: sidebar 
+permalink: nvme_esxi_7.html 
+keywords: nvme, esxi, ontap 
+summary: ONTAP를 사용하여 ESXi 7.x용 NVMe-oF를 구성하는 방법에 대해 설명합니다 
+---
+= ONTAP를 사용하는 ESXi 7.x에 대한 NVMe-oF 호스트 구성
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 지원 가능성
+
+NVMe over Fibre Channel(NVMe/FC)은 ONTAP 9.7 이상에서 지원됩니다.
+
+
+
+== 피처
+
+* ESXi 이니시에이터 호스트는 동일한 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 실행할 수 있습니다. 를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 를 참조하십시오  를 참조하십시오.
+* ONTAP 9.9.1 P3부터 ESXi 7.0 업데이트 3에 대해 NVMe/FC 기능이 지원됩니다.
+* ESXi 7.0 이상 릴리즈의 경우 HPP(고성능 플러그인)가 NVMe 장치의 기본 플러그인입니다.
+
+
+
+
+== 알려진 제한 사항
+
+다음 구성은 지원되지 않습니다.
+
+* RDM 매핑
+* 활용
+
+
+
+
+== NVMe/FC를 사용하도록 설정합니다
+
+. ESXi 호스트 NQN 문자열을 확인하여 ONTAP 스토리지의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다.
++
+[listing]
+----
+# esxcli nvme  info get
+Host NQN: nqn.2014-08.com.vmware:nvme:nvme-esx
+
+# vserver nvme subsystem host show -vserver vserver_nvme
+  Vserver Subsystem             Host NQN
+  ------- ------------------- ----------------------------------------
+  vserver_nvme ss_vserver_nvme nqn.2014-08.com.vmware:nvme:nvme-esx
+----
+
+
+
+
+=== Broadcom/Emulex를 구성합니다
+
+. 를 참조하여 필수 드라이버/펌웨어에서 구성이 지원되는지 확인하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+. lpfc 드라이버에서 NVMe/FC 지원을 활성화하기 위해 lpfc 드라이버 매개변수 lpfc_enable_fp4_type=3'을 설정하고 호스트를 재부팅합니다.
+
+
+
+NOTE: vSphere 7.0 업데이트 3부터 "brcmnvmefc" 드라이버를 더 이상 사용할 수 없습니다. 따라서 이제 'lpfc' 드라이버에는 이전에 'brcmnvmefc' 드라이버와 함께 제공된 NVMe/FC(NVMe over Fibre Channel) 기능이 포함됩니다.
+
+
+NOTE: LPe35000 시리즈 어댑터의 경우 기본적으로 'lpfc_enable_fc4_type=3' 매개변수가 설정됩니다. LPe32000 시리즈 및 LPe31000 시리즈 어댑터에 대해 수동으로 설정하려면 다음 명령을 수행해야 합니다.
+
+[listing]
+----
+# esxcli system module parameters set -m lpfc -p lpfc_enable_fc4_type=3
+
+#esxcli system module parameters list  -m lpfc | grep lpfc_enable_fc4_type
+lpfc_enable_fc4_type              int     3      Defines what FC4 types are supported
+
+#esxcli storage core adapter list
+HBA Name  Driver   Link State  UID                                   Capabilities         Description
+--------  -------  ----------  ------------------------------------  -------------------  -----------
+vmhba1    lpfc     link-up     fc.200000109b95456f:100000109b95456f  Second Level Lun ID  (0000:86:00.0) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter    FC HBA
+vmhba2    lpfc     link-up     fc.200000109b954570:100000109b954570  Second Level Lun ID  (0000:86:00.1) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter    FC HBA
+vmhba64   lpfc     link-up     fc.200000109b95456f:100000109b95456f                       (0000:86:00.0) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter   NVMe HBA
+vmhba65   lpfc     link-up     fc.200000109b954570:100000109b954570                       (0000:86:00.1) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter   NVMe HBA
+----
+
+
+=== Marvell/QLogic을 구성합니다
+
+. 를 참조하여 필수 드라이버/펌웨어에서 구성이 지원되는지 확인하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+. "qlnaivefc" 드라이버에서 NVMe/FC 지원을 활성화하기 위해 "qlnaivefc" 드라이버 매개변수 "ql2xnvmesupport=1"을 설정하고 호스트를 재부팅합니다.
++
+'#esxcfg-module-s'ql2xnvmesupport=1'qlnativefc'
+
++
+
+NOTE: Qle 277x 시리즈 어댑터의 경우 기본적으로 "qlnativefc" 드라이버 매개 변수가 설정됩니다. Qle 277x 시리즈 어댑터에 대해 수동으로 설정하려면 다음 명령을 수행해야 합니다.
+
++
+[listing]
+----
+esxcfg-module -l | grep qlnativefc
+qlnativefc               4    1912
+----
+. 어댑터에서 NVMe가 활성화되었는지 확인합니다.
++
+[listing]
+----
+  #esxcli storage core adapter list
+HBA Name  Driver      Link State  UID                                   Capabilities         Description
+--------  ----------  ----------  ------------------------------------  -------------------  -----------
+ vmhba3    qlnativefc  link-up     fc.20000024ff1817ae:21000024ff1817ae  Second Level Lun ID  (0000:5e:00.0) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter    FC Adapter
+vmhba4    qlnativefc  link-up     fc.20000024ff1817af:21000024ff1817af  Second Level Lun ID  (0000:5e:00.1) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter FC Adapter
+vmhba64   qlnativefc  link-up     fc.20000024ff1817ae:21000024ff1817ae                       (0000:5e:00.0) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter  NVMe FC Adapter
+vmhba65   qlnativefc  link-up     fc.20000024ff1817af:21000024ff1817af                       (0000:5e:00.1) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter  NVMe FC Adapter
+----
+
+
+
+
+== NVMe/FC를 검증합니다
+
+. ESXi 호스트에 NVMe/FC 어댑터가 나열되는지 확인합니다.
++
+[listing]
+----
+# esxcli nvme adapter list
+
+Adapter  Adapter Qualified Name           Transport Type  Driver      Associated Devices
+-------  -------------------------------  --------------  ----------  ------------------
+vmhba64  aqn:qlnativefc:21000024ff1817ae  FC              qlnativefc
+vmhba65  aqn:qlnativefc:21000024ff1817af  FC              qlnativefc
+vmhba66  aqn:lpfc:100000109b579d9c 	      FC              lpfc
+vmhba67  aqn:lpfc:100000109b579d9d 	      FC              lpfc
+
+----
+. NVMe/FC 네임스페이스가 적절하게 생성되었는지 확인합니다.
++
+다음 예제의 UUID는 NVMe/FC 네임스페이스 장치를 나타냅니다.
+
++
+[listing]
+----
+# esxcfg-mpath -b
+uuid.5084e29a6bb24fbca5ba076eda8ecd7e : NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   vmhba65:C0:T0:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:69 WWPN: 21:00:34:80:0d:6d:72:69  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:2f:00:a0:98:df:e3:d1
+   vmhba65:C0:T1:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:69 WWPN: 21:00:34:80:0d:6d:72:69  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:1a:00:a0:98:df:e3:d1
+   vmhba64:C0:T0:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:68 WWPN: 21:00:34:80:0d:6d:72:68  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:18:00:a0:98:df:e3:d1
+   vmhba64:C0:T1:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:68 WWPN: 21:00:34:80:0d:6d:72:68  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:19:00:a0:98:df:e3:d1
+----
++
+
+NOTE: ONTAP 9.7에서 NVMe/FC 네임스페이스의 기본 블록 크기는 4K입니다. 이 기본 크기는 ESXi와 호환되지 않습니다. 따라서 ESXi에 대한 네임스페이스를 생성할 때 네임스페이스 블록 크기를 512b로 설정해야 합니다. 이 작업은 'vserver NVMe namespace create' 명령을 사용하여 수행할 수 있습니다.
+
++
+'vserver NVMe namespace create-vserver vs_1-path /vol/nsvol/Namespace1-size 100g-OSType VMware-block-size 512B'
+
++
+을 참조하십시오 link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr%2FGUID-5CB10C70-AC11-41C0-8C16-B4D0DF916E9B.html["ONTAP 9 명령 man 페이지"^] 를 참조하십시오.
+
+. 각 NVMe/FC 네임스페이스 장치의 개별 ANA 경로 상태를 확인하십시오.
++
+[listing]
+----
+esxcli storage hpp path list -d uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+fc.200034800d6d7268:210034800d6d7268-fc.201700a098dfe3d1:201800a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba64:C0:T0:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active
+   Path Config: {TPG_id=0,TPG_state=AO,RTP_id=0,health=UP}
+
+fc.200034800d6d7269:210034800d6d7269-fc.201700a098dfe3d1:201a00a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba65:C0:T1:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active
+   Path Config: {TPG_id=0,TPG_state=AO,RTP_id=0,health=UP}
+
+fc.200034800d6d7269:210034800d6d7269-fc.201700a098dfe3d1:202f00a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba65:C0:T0:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active unoptimized
+   Path Config: {TPG_id=0,TPG_state=ANO,RTP_id=0,health=UP}
+
+fc.200034800d6d7268:210034800d6d7268-fc.201700a098dfe3d1:201900a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba64:C0:T1:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active unoptimized
+   Path Config: {TPG_id=0,TPG_state=ANO,RTP_id=0,health=UP}
+----
+
+
+
+
+== 알려진 문제입니다
+
+* ESXi 7.0 U3 이상 NVMe/FC 지원은 ONTAP 9.9.1 P3 이상부터 제공됩니다. 이는 ONTAP 9.9.1 P3만 시작하는 데 사용할 수 있는 키 NVMe 중단(ESXi 7.0 U3 이상에서 실행) 문제 해결 때문입니다. 자세한 내용은 에서 해당 Burt 공개 보고서를 참조하십시오 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654[] 를 참조하십시오.
+
+
+
+
+== 관련 링크
+
+link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
+
+

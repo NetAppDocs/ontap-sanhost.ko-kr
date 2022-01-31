@@ -1,0 +1,266 @@
+---
+sidebar: sidebar 
+permalink: hu_veritas_7x.html 
+keywords: host utilities, veritas, infoscale, 7, netapp, ontap, sanhost, iscsi, red, hat linux, oracle, linux 
+summary: Veritas Infoscale 7 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다 
+---
+= NetApp ONTAP 기반의 Linux용 Veritas Infoscale 7 사용
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 소개
+
+이 문서에서는 FC, FCoE 및 iSCSI 프로토콜을 사용하는 Red Hat Enterprise Linux 및 Oracle Linux(RHCK 기반) 플랫폼용 Veritas Infoscale Storage Foundation 7 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다.
+
+
+
+== Linux Unified Host Utilities 설치
+
+NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 64비트 .rpm 파일
+
+Linux Unified Host Utilities를 설치하는 것이 좋지만 반드시 설치해야 하는 것은 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
+
+현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 또는 를 업그레이드해야 합니다. 이 유틸리티를 제거하고 다음 단계를 따라 최신 버전을 설치해야 합니다.
+
+.단계
+. 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 호스트에.
+. 다음 명령을 사용하여 소프트웨어 패키지를 설치합니다.
++
+"rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
+
+
+
+
+
+== SAN 툴킷을 참조하십시오
+
+이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
+
+다음 그림에서 'show' 명령은 LUN 정보를 반환합니다.
+
+[listing]
+----
+# sanlun show -p -v SFRAC:/vol/fen1/lun1
+
+              ONTAP Path: SFRAC:/vol/fen1/lun1
+                     LUN: 0
+                LUN Size: 10g
+                 Product: cDOT
+                DMP NODE: sfrac0_47
+      Multipath Provider: Veritas
+----------  ------  ---------  ------  -------------------------------------
+Veritas     host    vserver    host:
+path        path    path     /dev/   chan:     vserver           major:
+state       state   type     node    id:lun    LIF                   minor
+----------  ------  ---------  ------  -------------------------------------
+enabled     up      active/non-optimized sdea   14:0:1:0   lif_10    128:32
+enabled (a) up      active/optimized     sdcj   14:0:0:0   lif_2      69:112
+enabled (a) up      active/optimized     sdb    13:0:0:0   lif_1       8:16
+enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192
+----
+
+
+== SAN 부팅
+
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+
+SAN 부팅 구성 지원 가능성 및 알려진 주의 사항을 확인하려면 Veritas 지원 포털(제품 매트릭스, 플랫폼 조회, HCL 매트릭스)을 참조하십시오.
+
+.단계
+. SAN 부팅 LUN을 호스트에 매핑합니다.
+. 여러 경로를 사용할 수 있는지 확인합니다.
++
+여러 경로는 호스트 OS가 가동되어 경로에서 실행된 후에만 사용할 수 있습니다.
+
+. SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
++
+HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
+
+. 호스트를 재부팅하여 부팅이 성공했는지 확인합니다.
+
+
+
+
+== 다중 경로
+
+구성이 시스템 요구 사항을 충족하는지 확인해야 합니다. 자세한 내용은 를 참조하십시오 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] Veritas HCL Matrix를 참조하십시오.
+
+이 예에서는 "vxdmpadm" 명령을 사용하여 VxDMP 다중 경로에 ONTAP 대상 어레이가 연결되어 있는지 확인합니다.
+
+[listing]
+----
+# vxdmpadm listenclosure
+ENCLR_NAME   ENCLR_TYPE  ENCLR_SNO     STATUS      ARRAY_TYPE    LUN_COUNT    FIRMWARE
+=====================================================================================
+sfrac0       SFRAC       804Xw$PqE52h  CONNECTED   ALUA          43           9800
+----
+[listing]
+----
+# vxdmpadm getdmpnode
+NAME       STATE    ENCLR-TYPE  PATHS  ENBL  DSBL ENCLR-NAME
+===================================================================
+sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0
+----
+VxDMP(Veritas Dynamic Multipathing)를 사용하면 NetApp LUN을 Veritas Multipath Devices로 주장하는 구성 작업을 수행해야 합니다. Veritas가 NetApp 스토리지 시스템에 제공하는 ASL(Array Support Library) 및 APM(Array Policy Module) 패키지가 설치되어 있어야 합니다. Veritas Software Installation은 제품과 함께 기본 ASL APM 패키지를 로드하는 동안 Veritas 지원 포털에 나열된 최신 지원 패키지를 사용하는 것이 좋습니다.
+
+다음 예에서는 ASL(Veritas Support Library) 및 APM(Array Policy Module) 구성을 보여 줍니다.
+
+[listing]
+----
+# vxdmpadm list dmpnode dmpnodename=sfrac0_47 | grep asl
+asl        = libvxnetapp.so
+----
+[listing]
+----
+# vxddladm listversion |grep libvxnetapp.so
+libvxnetapp.so              vm-7.4-rev-1    6.1
+
+# rpm -qa |grep VRTSaslapm
+VRTSaslapm-x.x.x.0000-RHEL8.X86_64
+----
+[listing]
+----
+vxddladm listsupport libname=libvxnetapp.so
+ATTR_NAME   ATTR_VALUE
+=========================================
+LIBNAME     libvxnetapp.so
+VID         NETAPP
+PID         All
+ARRAY_TYPE  ALUA, A/A
+----
+
+
+=== 비 ASA 구성
+
+비 ASA 구성의 경우 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+[listing]
+----
+# vxdmpadm getsubpaths dmpnodename-sfrac0_47
+NAME  STATE[A]   PATH-TYPE[M]   CTLR-NAME   ENCLR-TYPE  ENCLR-NAME  ATTRS  PRIORITY
+===================================================================================
+sdas  ENABLED     Active/Non-Optimized c13   SFRAC       sfrac0     -      -
+sdb   ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
+sdcj  ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
+sdea  ENABLED     Active/Non-Optimized c14   SFRAC       sfrac0     -      -
+----
+
+NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.
+
+
+
+=== 권장 설정
+
+
+
+==== Veritas 다중 경로에 대한 설정
+
+NetApp은 스토리지 페일오버 작업에서 최적의 시스템 구성을 위해 다음과 같은 Veritas VxDMP 조정 기능을 권장합니다.
+
+[cols="2*"]
+|===
+| 매개 변수 | 설정 
+
+
+| dmp_lun_retry_timeout입니다 | 60 
+
+
+| dmp_path_age입니다 | 120 
+
+
+| dmp_restore_interval입니다 | 60 
+|===
+DMP 툰은 다음과 같이 "vxdmpadm" 명령을 사용하여 온라인으로 설정됩니다.
+
+'#vxdmpadm settune dmp_tunable=value'
+
+이러한 조정 가능한 값은 '#vxdmpadm gettune'을 사용하여 동적으로 확인할 수 있습니다.
+
+다음 예는 SAN 호스트의 효과적인 VxDMP 조정 기능을 보여줍니다.
+
+[listing]
+----
+# vxdmpadm gettune
+
+Tunable                    Current Value    Default Value
+dmp_cache_open                      on                on
+dmp_daemon_count                    10                10
+dmp_delayq_interval                 15                15
+dmp_display_alua_states             on                on
+dmp_fast_recovery                   on                on
+dmp_health_time                     60                60
+dmp_iostats_state              enabled           enabled
+dmp_log_level                        1                 1
+dmp_low_impact_probe                on                on
+dmp_lun_retry_timeout               60                30
+dmp_path_age                       120               300
+dmp_pathswitch_blks_shift            9                 9
+dmp_probe_idle_lun                  on                on
+dmp_probe_threshold                  5                 5
+dmp_restore_cycles                  10                10
+dmp_restore_interval                60               300
+dmp_restore_policy         check_disabled   check_disabled
+dmp_restore_state              enabled           enabled
+dmp_retry_count                      5                 5
+dmp_scsi_timeout                    20                20
+dmp_sfg_threshold                    1                 1
+dmp_stat_interval                    1                 1
+dmp_monitor_ownership               on                on
+dmp_monitor_fabric                  on                on
+dmp_native_support                 off               off
+----
+
+
+==== 프로토콜별 설정
+
+* FC/FCoE 전용: 기본 시간 초과 값을 사용합니다.
+* iSCSI만 해당: replacement_timeout' 매개변수 값을 120으로 설정합니다.
++
+iscsi replacement_timeout' 매개변수는 iSCSI 계층에서 명령이 실패하기 전에 시간 제한 시간 초과 경로 또는 세션이 다시 설정될 때까지 대기해야 하는 시간을 제어합니다. iSCSI 구성 파일에서 replacement_timeout 값을 120으로 설정하는 것이 좋습니다.
+
+
+
+.예
+[listing]
+----
+# grep replacement_timeout /etc/iscsi/iscsid.conf
+node.session.timeo.replacement_timeout = 120
+----
+
+
+==== OS 플랫폼별 설정입니다
+
+Red Hat Enterprise Linux 7 및 8 시리즈의 경우 스토리지 페일오버 시나리오에서 Veritas Infoscale 환경을 지원하도록 'udev rport' 값을 구성해야 합니다. 다음 파일 내용으로 파일 '/etc/udev/rules.d/40-rport.rules` 생성:
+
+[listing]
+----
+# cat /etc/udev/rules.d/40-rport.rules
+KERNEL=="rport-*", SUBSYSTEM=="fc_remote_ports", ACTION=="add", RUN+=/bin/sh -c 'echo 20 > /sys/class/fc_remote_ports/%k/fast_io_fail_tmo;echo 864000 >/sys/class/fc_remote_ports/%k/dev_loss_tmo'"
+----
+
+NOTE: Veritas와 관련된 다른 모든 설정은 표준 Veritas Infoscale 제품 설명서를 참조하십시오.
+
+
+
+== 다중 경로 공존
+
+Veritas Infoscale, Linux Native Device Mapper 및 LVM 볼륨 관리자를 비롯한 이기종 다중 경로 환경이 있는 경우 Veritas 제품 관리 가이드를 참조하여 구성 설정을 확인하십시오.
+
+
+
+== 알려진 문제 및 제한 사항
+
+알려진 문제와 제한 사항은 없습니다.

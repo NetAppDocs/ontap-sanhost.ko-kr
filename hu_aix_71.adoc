@@ -1,0 +1,213 @@
+---
+sidebar: sidebar 
+permalink: hu_aix_71.html 
+keywords: host utilities, aix, 7.1 netapp, ontap 
+summary: ONTAP에서 IBM AIX 7.1을 사용하는 방법에 대해 설명합니다 
+---
+= NetApp ONTAP와 함께 IBM AIX 7.1을 사용합니다
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== AIX Host Utilities를 설치합니다
+
+AIX MPIO를 NetApp ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.
+
+NetApp Support 사이트에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.
+
+.단계
+. 호스트에 로그인합니다.
++
+** AIX 호스트에서 * root * 로 로그인합니다.
+
+
+. NetApp Support 사이트에서 Host Utilities가 포함된 압축 파일 복사본을 호스트의 디렉토리로 다운로드합니다.
+. 다운로드가 포함된 디렉터리로 이동합니다.
+. 파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지를 추출합니다.
++
+'tar-xvf ntap_aix_host_utilities_6.1.tar.tgz'
+
++
+파일 압축을 풀 때 'tap_aix_host_utilities_6.1' 디렉토리가 생성됩니다. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 있습니다.
+
+. AIX MPIO를 설치합니다.
++
+'installp-aXYd/var/tmp/NTAP_aix_host_utilities_6.1/mpio NetApp.mpio_Host_Utilities_Kit'
+
+. SAN 툴킷을 설치합니다: 'installp-aXYd/var/tmp/ntap_aix_host_utilities_6.1/san_Tool_Kit NetApp.san_toolkit'
+. 호스트를 재부팅합니다.
+
+
+
+
+== SAN 툴킷을 참조하십시오
+
+이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
+
+다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
+
+[listing]
+----
+#sanlun lun show
+
+controller(7mode)/                  device      host       lun
+vserver(Cmode)    lun-pathname     filename    adapter   protocol   size   mode
+--------------------------------------------------------------------------------
+data_vserver      /vol/vol1/lun1    hdisk0      fcs0       FCP       60g    C
+data_vserver      /vol/vol2/lun2    hdisk0      fcs0       FCP       20g    C
+data_vserver      /vol/vol3/lun3    hdisk11     fcs0       FCP       20g    C
+data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
+
+----
+
+
+== SAN 부팅
+
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+
+SAN 부팅은 AIX 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다. FC 또는 FCoE 프로토콜을 사용하여 AIX Host Utilities를 실행하는 AIX MPIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 생성하고 AIX MPIO 환경에 새 OS 이미지를 설치하는 데 사용하는 방법은 사용 중인 프로토콜에 따라 다를 수 있습니다.
+
+
+
+== 다중 경로
+
+다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 네트워크 경로를 구성할 수 있습니다. 한 경로에 장애가 발생하면 트래픽이 나머지 경로에서 계속됩니다. Host Utilities의 AIX 환경에서는 AIX 기본 다중 경로 솔루션인 MPIO를 사용합니다.
+
+AIX의 경우 PCM(경로 컨트롤 모듈)은 여러 경로를 제어하는 역할을 합니다. PCM은 경로 관리를 처리하는 스토리지 공급업체에서 제공하는 코드입니다. Host Utilities 설치의 일부로 설치 및 활성화됩니다.
+
+
+
+=== 비 ASA 구성
+
+비 ASA 구성의 경우 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------- ---------- ------ ------- ---------- ----------
+host    vserver    AIX                        AIX MPIO
+path    path       MPIO   host    vserver         path
+state   type       path   adapter LIF         priority
+------- ---------- ------ ------- ---------- ----------
+up      secondary  path0  fcs0    fc_aix_1        1
+up      primary    path1  fcs0    fc_aix_2        1
+up      primary    path2  fcs1    fc_aix_3        1
+up      secondary  path3  fcs1    fc_aix_4        1
+
+----
+
+
+=== 모든 SAN 어레이 구성
+
+모든 SAN 어레이(ASA) 구성에서 지정된 LUN(논리 유닛)에 대한 모든 경로가 활성 및 최적화됩니다. 즉, 모든 경로를 통해 동시에 I/O를 처리할 수 있으므로 성능이 향상됩니다.
+
+다음 예는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+
+NOTE: 모든 SAN 어레이(ASA) 구성은 AIX 호스트용 ONTAP 9.8부터 지원됩니다.
+
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------ ------- ------ ------- --------- ----------
+host   vserver  AIX                      AIX MPIO
+path   path     MPIO   host    vserver     path
+state  type     path   adapter LIF       priority
+------ ------- ------ ------- --------- ----------
+up     primary  path0  fcs0    fc_aix_1     1
+up     primary  path1  fcs0    fc_aix_2     1
+up     primary  path2  fcs1    fc_aix_3     1
+up     primary  path3  fcs1    fc_aix_4     1
+----
+
+
+== 권장 설정
+
+다음은 NetApp ONTAP LUN의 몇 가지 권장 매개 변수 설정입니다. ONTAP 호스트 유틸리티 키트를 설치하면 LUN에 대한 중요 매개 변수가 자동으로 설정됩니다.
+
+[cols="4*"]
+|===
+| 매개 변수 | 방법입니다 | AIX의 값입니다 | 참고 
+
+
+| 알고리즘을 선택합니다 | MPIO | round_robin(라운드 로빈 | Host Utilities에서 설정합니다 
+
+
+| hcheck_cmd | MPIO | 문의 | Host Utilities에서 설정합니다 
+
+
+| hcheck_interval입니다 | MPIO | 30 | Host Utilities에서 설정합니다 
+
+
+| hcheck_mode를 선택합니다 | MPIO | 비활성 | Host Utilities에서 설정합니다 
+
+
+| lun_reset_spt입니다 | MPIO/비 MPIO | 예 | Host Utilities에서 설정합니다 
+
+
+| 최대 _ 전송 | MPIO/비 MPIO | FC LUN: 0x100000 바이트 | Host Utilities에서 설정합니다 
+
+
+| 아주 잘했습니다 | MPIO/비 MPIO | 2초 지연 | Host Utilities에서 설정합니다 
+
+
+| queue_depth(큐 깊이 | MPIO/비 MPIO | 64 | Host Utilities에서 설정합니다 
+
+
+| reserve_policy를 선택합니다 | MPIO/비 MPIO | no_reserve(예약 없음) | Host Utilities에서 설정합니다 
+
+
+| Re_timeout(디스크) | MPIO/비 MPIO | 30초 | OS 기본값을 사용합니다 
+
+
+| dyntrk | MPIO/비 MPIO | 예 | OS 기본값을 사용합니다 
+
+
+| fc_err_recov | MPIO/비 MPIO | fast_fail을 선택합니다 | OS 기본값을 사용합니다 
+
+
+| Q_TYPE | MPIO/비 MPIO | 단순함 | OS 기본값을 사용합니다 
+
+
+| num_cmd_elems입니다 | MPIO/비 MPIO | AIX의 경우 1024입니다 | FC EN1B, FC EN1C 
+
+
+| num_cmd_elems입니다 | MPIO/비 MPIO | AIX(독립 실행형/물리적)의 경우 500, VIOC의 경우 200 | FC EN0G 
+|===
+
+
+== MetroCluster에 대한 권장 설정
+
+기본적으로 AIX 운영 체제는 LUN에 대한 경로를 사용할 수 없는 경우 더 짧은 입출력 시간 초과를 적용합니다. 이러한 현상은 단일 스위치 SAN 패브릭과 MetroCluster 구성을 포함하여 예상치 못한 페일오버를 경험한 구성에서 발생할 수 있습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 을 참조하십시오 link:https://kb.netapp.com/app/answers/answer_view/a_id/1001318["NetApp KB1001318"^]
+
+
+
+== 알려진 문제 및 제한 사항
+
+알려진 문제와 제한 사항은 없습니다.

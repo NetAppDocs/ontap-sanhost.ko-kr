@@ -1,0 +1,339 @@
+---
+sidebar: sidebar 
+permalink: hu_vsphere_7.html 
+keywords: host utilities, veritas, infoscale, 7.3. 7.3.1, netapp, ontap 
+summary: ONTAP에서 Linux용 Veritas Infoscale 7.3을 사용하는 방법에 대해 설명합니다 
+---
+= NetApp ONTAP와 함께 VMware vSphere 7.x 사용
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 소개
+
+이 문서에서는 FC, FCoE 및 iSCSI 프로토콜을 사용하는 vSphere 7.x 릴리즈의 ONTAP SAN 호스트 구성 설정에 대해 설명합니다.
+
+
+
+== 하이퍼바이저 SAN 부팅
+
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+
+.단계
+. SAN 부팅 LUN을 호스트에 매핑합니다.
+. 여러 경로를 사용할 수 있는지 확인합니다.
++
+여러 경로는 호스트 OS가 가동되어 경로에서 실행된 후에만 사용할 수 있습니다.
+
+. SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
++
+HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
+
+. 호스트를 재부팅하여 부팅이 성공했는지 확인합니다.
+
+
+
+
+== 다중 경로
+
+ESXi는 하위 플러그인 SATP(Storage Array Type Plugins) 및 PSP(Path Selection Plugins)를 관리하는 NMP(Native Multipathing Plug-in)라는 확장 가능한 다중 경로 모듈을 제공합니다. 이러한 SATP 규칙은 ESXi에서 기본적으로 사용할 수 있습니다.
+
+NetApp ONTAP 스토리지의 경우 VMW_SATP_ALUA 플러그인은 기본적으로 VMW_PSP_RR에서 경로 선택 정책(PSP)으로 사용됩니다. 이 문제는 아래 명령을 사용하여 확인할 수 있습니다.
+
+* ``esxcli storage nmp SATP rule list -s VMW_SATP_ALUA' *
+
+[listing]
+----
+Name           Device  Vendor    Model         Driver  Transport  Options
+-------------  ------  --------  ------------  ------  ---------  --------------------------
+VMW_SATP_ALUA          NETAPP                                     reset_on_attempted_reserve
+
+
+Rule Group  Claim Options  Default PSP  PSP Options     Description
+ ----------  -------------  -----------  --------------  -----------
+system      tpgs_on        VMW_PSP_RR                   NetApp arrays with ALUA support
+----
+
+
+=== 비 ASA 구성
+
+비 ASA 구성의 경우 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+* ``esxcli storage nmp device list -d naa.600a098038313530772b4d673979372f' *
+
+[listing]
+----
+naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Storage Array Type: VMW_SATP_ALUA
+   Storage Array Type Device Config: {implicit_support=on; explicit_support=off; explicit_allow=on; alua_followover=on; action_OnRetryErrors=off; {TPG_id=1000,TPG_state=AO}{TPG_id=1001,TPG_state=ANO}}
+   Path Selection Policy: VMW_PSP_RR
+   Path Selection Policy Device Config: {policy=rr,iops=1,bytes=10485760,useANO=0; lastPathIndex=1: NumIOsPending=0,numBytesPending=0}
+   Path Selection Policy Device Custom Config:
+   Working Paths: vmhba3:C0:T3:L21, vmhba4:C0:T2:L21
+   Is USB: false
+----
+* ``esxcli storage nmp path list -d naa.600a098038313530772b4d673979372f' *
+
+[listing]
+----
+fc.20000090fae0ec8e:10000090fae0ec8e-fc.201000a098dfe3d1:200b00a098dfe3d1-naa.600a098038313530772b4d673979372f
+   Runtime Name: vmhba3:C0:T2:L21
+   Device: naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Group State: active unoptimized
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1001,TPG_state=ANO,RTP_id=29,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000090fae0ec8e:10000090fae0ec8e-fc.201000a098dfe3d1:200700a098dfe3d1-naa.600a098038313530772b4d673979372f
+   Runtime Name: vmhba3:C0:T3:L21
+   Device: naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1000,TPG_state=AO,RTP_id=25,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000090fae0ec8f:10000090fae0ec8f-fc.201000a098dfe3d1:200800a098dfe3d1-naa.600a098038313530772b4d673979372f
+   Runtime Name: vmhba4:C0:T2:L21
+   Device: naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1000,TPG_state=AO,RTP_id=26,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000090fae0ec8f:10000090fae0ec8f-fc.201000a098dfe3d1:200c00a098dfe3d1-naa.600a098038313530772b4d673979372f
+   Runtime Name: vmhba4:C0:T3:L21
+   Device: naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Group State: active unoptimized
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1001,TPG_state=ANO,RTP_id=30,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+----
+
+
+=== 모든 SAN 어레이 구성
+
+모든 SAN 어레이(ASA) 구성에서 지정된 LUN(논리 유닛)에 대한 모든 경로가 활성 및 최적화됩니다. 즉, 모든 경로를 통해 동시에 I/O를 처리할 수 있으므로 성능이 향상됩니다.
+
+다음 예는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+* ``esxcli storage nmp device list -d naa.600a098038304759563f4e7837574453' *
+
+[listing]
+----
+naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Storage Array Type: VMW_SATP_ALUA
+   Storage Array Type Device Config: {implicit_support=on; explicit_support=off; explicit_allow=on; alua_followover=on; action_OnRetryErrors=off; {TPG_id=1001,TPG_state=AO}{TPG_id=1000,TPG_state=AO}}
+   Path Selection Policy: VMW_PSP_RR
+   Path Selection Policy Device Config: {policy=rr,iops=1,bytes=10485760,useANO=0; lastPathIndex=2: NumIOsPending=0,numBytesPending=0}
+   Path Selection Policy Device Custom Config:
+   Working Paths: vmhba4:C0:T0:L9, vmhba3:C0:T1:L9, vmhba3:C0:T0:L9, vmhba4:C0:T1:L9
+   Is USB: false
+----
+* ``esxcli storage nmp device list -d naa.600a098038304759563f4e7837574453' *
+
+[listing]
+----
+fc.20000024ff171d37:21000024ff171d37-fc.202300a098ea5e27:204a00a098ea5e27-naa.600a098038304759563f4e7837574453
+   Runtime Name: vmhba4:C0:T0:L9
+   Device: naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1000,TPG_state=AO,RTP_id=6,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000024ff171d36:21000024ff171d36-fc.202300a098ea5e27:201d00a098ea5e27-naa.600a098038304759563f4e7837574453
+   Runtime Name: vmhba3:C0:T1:L9
+   Device: naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1001,TPG_state=AO,RTP_id=3,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000024ff171d36:21000024ff171d36-fc.202300a098ea5e27:201b00a098ea5e27-naa.600a098038304759563f4e7837574453
+   Runtime Name: vmhba3:C0:T0:L9
+   Device: naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1000,TPG_state=AO,RTP_id=1,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000024ff171d37:21000024ff171d37-fc.202300a098ea5e27:201e00a098ea5e27-naa.600a098038304759563f4e7837574453
+   Runtime Name: vmhba4:C0:T1:L9
+   Device: naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1001,TPG_state=AO,RTP_id=4,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+----
+
+
+== VVOL
+
+VVOL(가상 볼륨)은 가상 머신(VM) 디스크와 해당 스냅샷 및 고속 클론에 해당하는 VMware 오브젝트 유형입니다.
+
+VMware vSphere용 ONTAP 툴에는 VMware vCenter가 VVOL 기반 스토리지를 활용할 수 있도록 통합 지점을 제공하는 ONTAP용 VASA Provider가 포함되어 있습니다. ONTAP 툴 OVA를 구축하면 vCenter Server에 자동으로 등록되고 VASA Provider가 설정됩니다.
+
+vCenter 사용자 인터페이스를 사용하여 VVol 데이터 저장소를 생성하는 경우 Vols를 데이터 저장소의 백업 저장소로 생성하는 방법을 안내합니다. VVOL 데이터 저장소 내의 VVOL은 PE(프로토콜 엔드포인트)를 사용하여 ESXi 호스트에 의해 액세스합니다. SAN 환경에서는 PE로 사용하기 위해 데이터 저장소의 각 FlexVol에 4MB LUN이 하나씩 생성됩니다. SAN PE는 관리 논리 유닛(ALU)입니다. VVol은 SLU(법인논리 단위)입니다.
+
+VVOL을 사용할 때는 다음을 비롯한 SAN 환경에 대한 표준 요구사항 및 모범 사례가 적용됩니다(이에 국한되지 않음).
+
+. 사용하려는 SVM당 각 노드에 SAN LIF를 하나 이상 생성합니다. Best Practice는 노드당 최소 2개를 생성하는 것이지만 필요한 만큼 생성하는 것이 아닙니다.
+. 단일 장애 지점 제거 여러 가상 스위치를 사용할 때 NIC 팀을 사용하는 다른 네트워크 서브넷에서 여러 VMkernel 네트워크 인터페이스를 사용합니다. 또는 여러 물리적 스위치에 연결된 여러 물리적 NIC를 사용하여 HA를 제공하고 처리량을 높일 수 있습니다.
+. 호스트 연결에 필요한 경우 조닝 및/또는 VLAN을 구성합니다.
+. 필요한 모든 이니시에이터가 원하는 SVM의 타겟 LIF에 로그인되어 있는지 확인하십시오.
+
+
+
+NOTE: VASA Provider를 사용하려면 VMware vSphere용 ONTAP 툴을 구축해야 합니다. VASA Provider가 여러분을 위한 igroup 설정을 모두 관리하므로 VVOL 환경에서 igroup을 생성하거나 관리할 필요가 없습니다.
+
+현재 NetApp은 VVOL 설정을 기본값에서 변경하지 않는 것을 권장합니다.
+
+을 참조하십시오 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 특정 버전의 ONTAP 툴 또는 특정 버전의 vSphere 및 ONTAP를 위한 기존 VASA Provider에 대한 자세한 지원
+
+VVOL 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서도 참조하십시오 link:https://docs.netapp.com/us-en/netapp-solutions/hybrid-cloud/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] 및 
+
+
+
+== 권장 설정
+
+
+
+=== ATS 잠금
+
+VAAI 호환 스토리지와 업그레이드된 VMFS5의 경우 ATS 잠금은 * 필수 * 이며 ONTAP LUN의 적절한 상호 운용성과 최적의 VMFS 공유 스토리지 I/O 성능을 위해 필요합니다. ATS 잠금 활성화에 대한 자세한 내용은 VMware 설명서를 참조하십시오.
+
+[cols="4*"]
+|===
+| 설정 | 기본값 | ONTAP를 권장합니다 | 설명 
+
+
+| HardwareAcceleratedLocking | 1 | 1 | ATS(Atomic Test and Set) 잠금을 사용하는 데 도움이 됩니다 
+
+
+| 디스크 IOP | 1000입니다 | 1 | IOPS 제한: 라운드 로빈 PSP의 기본값은 IOPS 제한 1000입니다. 이 기본 사례에서는 1,000개의 I/O 작업이 실행된 후에 새 경로가 사용됩니다. 
+
+
+| 디스크/QFullSampleSize | 0 | 32 | ESXi가 임계치 조절을 시작하기 전에 전체 또는 사용 중인 대기열 수입니다. 
+|===
+
+NOTE: UNMAP을 작동하기 위해 VMware vSphere에 매핑된 모든 LUN에 대해 공간 할당 설정을 활성화합니다. 자세한 내용은 ONTAP 설명서를 참조하십시오.
+
+
+
+=== 게스트 OS 시간 초과
+
+권장 게스트 OS 튜닝을 사용하여 가상 머신을 수동으로 구성할 수 있습니다. 업데이트 조정 후 업데이트를 적용하려면 게스트를 재부팅해야 합니다.
+
+* GOS 시간 초과 값: *
+
+[cols="2*"]
+|===
+| 게스트 OS 유형입니다 | 시간 초과 
+
+
+| Linux 버전 | 디스크 시간 초과 = 60 
+
+
+| Windows | 디스크 시간 초과 = 60 
+
+
+| Solaris | 디스크 시간 초과 = 60 사용 중 재시도 = 300 준비 안 됨 재시도 = 300 재설정 재시도 = 30 최대 스로틀 = 32분 스로틀 = 8 
+|===
+
+
+=== 튜닝 가능한 vSphere 검증
+
+다음 명령을 사용하여 HardwareAcceleratedLocking 설정을 확인합니다.
+
+* "esxcli system settings advanced list--option/VMFS3/HardwareAcceleratedLocking" *
+
+[listing]
+----
+   Path: /VMFS3/HardwareAcceleratedLocking
+   Type: integer
+   Int Value: 1
+   Default Int Value: 1
+   Min Value: 0
+   Max Value: 1
+   String Value:
+   Default String Value:
+   Valid Characters:
+   Description: Enable hardware accelerated VMFS locking (requires compliant hardware). Please see http://kb.vmware.com/kb/2094604 before disabling this option.
+----
+
+
+=== 디스크 IOP 설정을 확인하는 중입니다
+
+다음 명령을 사용하여 IOP 설정을 확인합니다.
+
+* ``esxcli storage nmp device list -d naa.600a098038304731783f506670553355' *
+
+[listing]
+----
+naa.600a098038304731783f506670553355
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304731783f506670553355)
+   Storage Array Type: VMW_SATP_ALUA
+   Storage Array Type Device Config: {implicit_support=on; explicit_support=off; explicit_allow=on; alua_followover=on; action_OnRetryErrors=off; {TPG_id=1000,TPG_state=ANO}{TPG_id=1001,TPG_state=AO}}
+   Path Selection Policy: VMW_PSP_RR
+   Path Selection Policy Device Config: {policy=rr,iops=1,bytes=10485760,useANO=0; lastPathIndex=0: NumIOsPending=0,numBytesPending=0}
+   Path Selection Policy Device Custom Config:
+   Working Paths: vmhba4:C0:T0:L82, vmhba3:C0:T0:L82
+   Is USB: false
+----
+
+
+=== QFullSampleSize 유효성 검사
+
+다음 명령을 사용하여 QFullSampleSize를 확인합니다
+
+* "esxcli system settings advanced list--option /Disk/QFullSampleSize" *
+
+[listing]
+----
+   Path: /Disk/QFullSampleSize
+   Type: integer
+   Int Value: 32
+   Default Int Value: 0
+   Min Value: 0
+   Max Value: 64
+   String Value:
+   Default String Value:
+   Valid Characters:
+   Description: Default I/O samples to monitor for detecting non-transient queue full condition. Should be nonzero to enable queue depth throttling. Device specific QFull options will take precedence over this value if set.
+----
+
+
+== 알려진 문제
+
+알려진 문제가 없습니다.
+
+
+
+== 관련 링크
+
+* link:https://www.netapp.com/media/13550-tr4597.pdf["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
+* link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^]
+* link:https://kb.vmware.com/s/article/83370["VMware vMSC(vSphere Metro Storage Cluster)를 지원하는 NetApp ONTAP with NetApp SnapMirror SM-BC(Business Continuity)"^]
+

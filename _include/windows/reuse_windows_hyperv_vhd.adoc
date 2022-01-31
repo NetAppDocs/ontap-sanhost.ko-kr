@@ -1,0 +1,18 @@
+= 
+
+
+디스크 파티션의 데이터 블록 경계가 기본 LUN의 블록 경계에 맞지 않는 경우 스토리지 시스템은 모든 운영 체제 블록 읽기 또는 쓰기에 대해 두 개의 블록 읽기 또는 쓰기를 완료해야 하는 경우가 많습니다. 정렬 불량으로 인해 추가 블록 읽기 및 쓰기가 수행되면 심각한 성능 문제가 발생할 수 있습니다.
+
+정렬 불량은 마스터 부트 레코드에 의해 정의된 각 파티션의 시작 섹터 위치로 인해 발생합니다.
+
+
+NOTE: Windows Server 2016에서 생성된 파티션은 기본적으로 정렬되어야 합니다.
+
+ONTAP PowerShell Toolkit에서 Get-NaVirtualDiskAlignment cmdlet을 사용하여 파티션이 기본 LUN과 정렬되었는지 확인합니다. 파티션이 잘못 정렬된 경우 "Repair-NaVirtualDiskAlignment" cmdlet을 사용하여 올바른 정렬로 새 VHD 파일을 만듭니다. 이 cmdlet은 모든 파티션을 새 파일로 복사합니다. 원래 VHD 파일은 수정되거나 삭제되지 않습니다. 데이터가 복사되는 동안 가상 머신을 종료해야 합니다.
+
+NetApp 커뮤니티에서 ONTAP PowerShell 툴킷을 다운로드할 수 있습니다. 환경 변수 "%PSModulePath%"에 지정된 위치에 DataONTAP.zip 파일의 압축을 풀어야 합니다(또는 Install.ps1" 스크립트를 사용하여 파일을 압축 해제해야 합니다). 설치가 완료되면 'How-NaHelp' cmdlet을 사용하여 cmdlet에 대한 도움말을 볼 수 있습니다.
+
+PowerShell Toolkit은 MBR형 파티션이 있는 고정 크기 VHD 파일만 지원합니다. Windows 동적 디스크 또는 GPT 파티션을 사용하는 VHD는 지원되지 않습니다. 또한 PowerShell Toolkit에는 최소 파티션 크기가 4GB가 필요합니다. 작은 파티션은 올바르게 정렬할 수 없습니다.
+
+
+NOTE: VHD에서 GRUB 부팅 로더를 사용하는 Linux 가상 머신의 경우 PowerShell Toolkit을 실행한 후 부팅 구성을 업데이트해야 합니다.

@@ -1,0 +1,222 @@
+---
+sidebar: sidebar 
+permalink: hu_solaris_113.html 
+keywords: host utilities, solaris, 113, netapp, ontap 
+summary: Solaris 호스트 유틸리티를 설치하는 방법에 대해 설명합니다 
+---
+= Solaris 11.3과 NetApp ONTAP 사용
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== Solaris 호스트 유틸리티 설치
+
+NetApp Support 사이트에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.
+
+.단계
+. 에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 호스트의 디렉토리로 이동합니다.
+. 다운로드가 포함된 디렉터리로 이동합니다.
+. 파일의 압축을 풉니다.
++
+다음 예에서는 SPARC 시스템에 대한 파일의 압축을 해제합니다. x86-64 플랫폼의 경우 x86/x64 패키지를 사용합니다.
+
++
+'gunzip netapp_solaris_host_utilities_6_2N20170913_0304_sparc.tar.gz'
+
+. 파일의 압축을 해제하려면 'tar xvf' 명령을 사용합니다.
++
+'tar xvf netapp_solaris_host_utilities_6_2N20170913_0304_sparc.tar'
+
+. tar 파일에서 추출한 패키지를 호스트에 추가합니다.
++
+pkgadd-d NTAPtaggool.pkg
+
++
+패키지는 '/opt/ntap/soolkit/bin' 디렉토리에 추가됩니다.
+
++
+설치를 완료하려면 "host_config" 명령을 사용하여 사용자 환경(이 경우 MPxIO)에 대한 호스트 매개 변수를 구성해야 합니다.
+
++
+'host_config' 명령의 형식은 다음과 같습니다.
+
++
+'/opt/ntap/soolkit/bin/host_config\<-setup>\<-protocol fcp|iscsi|mixed>\<-multipath mpxio|dmp|non>[-noalua][-MCC 60|90|120]'
+
++
+'host_config' 명령은 다음과 같은 작업을 수행합니다.
+
++
+** x86 및 SPARC 시스템 모두에 대해 Fibre Channel 및 SCSI 드라이버의 설정을 변경합니다
+** MPxIO 구성에 대한 SCSI 시간 초과 설정을 제공합니다
+** VID/PID 정보를 설정합니다
+** ALUA를 설정하거나 해제합니다
+** MPxIO 및 x86 및 SPARC 시스템 모두에 대해 SCSI 드라이버에서 사용되는 ALUA 설정을 구성합니다.
+
+
+. 호스트를 재부팅합니다.
+
+
+
+
+== SAN 툴킷을 참조하십시오
+
+이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
+
+다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
+
+[listing]
+----
+#sanlun lun show
+
+controller(7mode)/                 device                                            host             lun
+vserver(Cmode)     lun-pathname    filename                                         adapter protocol  size  mode
+------------------------------------------------------------------------------------------------------
+data_vserver       /vol/vol1/lun1  /dev/rdsk/c0t600A098038314362692451465A2F4F39d0s2  qlc1  FCP       60g   C
+data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475d0s2  qlc1  FCP       20g   C
+----
+
+
+== SAN 부팅
+
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+
+SAN 부팅은 Solaris 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다.
+
+FC 프로토콜을 사용하고 Solaris 호스트 유틸리티를 실행하여 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 설정하는 방법은 볼륨 관리자 및 파일 시스템에 따라 다를 수 있습니다. 를 참조하십시오 link:https://library.netapp.com/ecmdocs/ECMLP2748974/html/frameset.html["Solaris 호스트 유틸리티 설치 및 설정 가이드"^] Solaris MPIO 환경에서 LUN을 부팅하는 SAN에 대한 자세한 내용은 를 참조하십시오.
+
+
+
+== 다중 경로
+
+다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 네트워크 경로를 구성할 수 있습니다. 한 경로에 장애가 발생하면 트래픽이 나머지 경로에서 계속됩니다.
+
+
+
+=== 비 ASA 구성
+
+비 ASA 구성의 경우 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+OS native mpathadm show lu <lun>' 명령의 각 LUN에 대한 * 액세스 상태 * 섹션에 대해 경로 우선 순위가 표시됩니다.
+
+
+
+=== 모든 SAN 어레이 구성
+
+모든 SAN 어레이(ASA) 구성에서 지정된 LUN(논리 유닛)에 대한 모든 경로가 활성 및 최적화됩니다. 즉, 모든 경로를 통해 동시에 I/O를 처리할 수 있으므로 성능이 향상됩니다.
+
+다음 예는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+'sanlun' 명령의 출력은 ASA 및 non-ASA 구성과 동일합니다.
+
+OS native mpathadm show lu <lun>' 명령의 각 LUN에 대한 * 액세스 상태 * 섹션에 대해 경로 우선 순위가 표시됩니다.
+
+[listing]
+----
+#sanlun lun show -pv sparc-s7-16-49:/vol/solaris_vol_1_0/solaris_lun
+
+                    ONTAP Path: sparc-s7-16-49:/vol/solaris_vol_1_0/solaris_lun
+                           LUN: 0
+                      LUN Size: 30g
+                   Host Device: /dev/rdsk/c0t600A098038314362692451465A2F4F39d0s2
+                          Mode: C
+            Multipath Provider: Sun Microsystems
+              Multipath Policy: Native
+----
+
+NOTE: 모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 지원됩니다.
+
+
+
+== 권장 설정
+
+다음은 Solaris 11.3 SPARC 및 x86_64(NetApp ONTAP LUN 포함)에 권장되는 일부 매개 변수 설정입니다. 이러한 매개 변수 값은 Host Utilities에서 설정합니다.
+
+[cols="2*"]
+|===
+| 매개 변수 | 값 
+
+
+| throttle_max | 8 
+
+
+| 준비 안 됨_재시도 | 300 
+
+
+| busy_reTRIES입니다 | 30 
+
+
+| reset_retries(재시도 재설정 | 30 
+
+
+| throttle_min | 2 
+
+
+| timeout_reTRIES | 10 
+
+
+| 물리적_블록_크기 | 4096 
+|===
+
+
+=== MetroCluster에 대한 권장 설정
+
+기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이는 fcp_offline_delay 파라미터에 의해 제어된다. "fcp_offline_delay"의 기본값은 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 "fcp_offline_delay"의 값을 * 120s * 로 증가시켜야 비계획 장애 조치를 포함한 작업 중에 입출력이 미리 시간 초과되지 않습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp을 참조하십시오 https://kb.netapp.com/app/answers/answer_view/a_id/1001373/loc/en_US["KB1001373"^].
+
+
+
+== Oracle Solaris 가상화
+
+* Solaris 가상화 옵션에는 Solaris Logical Domains(LDOM 또는 SPARC용 Oracle VM Server), Solaris Dynamic Domains, Solaris Zones 및 Solaris Containers가 있습니다. 이러한 기술은 서로 다른 아키텍처를 기반으로 하고 있음에도 불구하고 일반적으로 "Oracle Virtual Machines"로 재브랜딩되었습니다.
+* 경우에 따라 특정 Solaris 논리적 도메인 내의 Solaris 컨테이너와 같은 여러 옵션을 함께 사용할 수 있습니다.
+* NetApp은 일반적으로 전체 구성이 Oracle에서 지원되며 LUN에 직접 액세스할 수 있는 파티션이 에 나와 있는 가상화 기술의 사용을 지원합니다 https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스"^] 를 클릭합니다. 여기에는 루트 컨테이너, LDOM IO 도메인 및 NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.
+* 'vdsk'와 같이 가상화된 스토리지 리소스만 사용하는 파티션 및/또는 가상 머신은 NetApp LUN에 직접 액세스할 수 없는 특수 조건이 필요하지 않습니다. LDOM IO 도메인과 같은 기본 LUN에 직접 액세스할 수 있는 파티션/VM만 에서 찾을 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스"^].
+
+
+
+
+=== 가상화를 위한 권장 설정
+
+LDOM 내에서 LUN을 가상 디스크 디바이스로 사용할 경우 LUN의 소스는 가상화를 통해 마스킹되고 LDOM은 블록 크기를 제대로 감지하지 못합니다. 이 문제를 방지하려면 LDOM 운영 체제에 Oracle 버그 15824910 패치를 적용하고 가상 디스크의 블록 크기를 4096으로 설정하는 "vdc.conf" 파일을 만들어야 합니다. 자세한 내용은 Oracle Doc 2157669.1을 참조하십시오.
+
+패치를 확인하려면 다음을 수행합니다.
+
+. zpool을 생성합니다.
+. zdb-C를 zpool에 대해 실행하고 * ashift * 의 값이 12인지 확인합니다.
++
+shift * 값이 12가 아닌 경우 올바른 패치가 설치되었는지 확인하고 vdc.conf의 내용을 다시 확인하십시오.
+
++
+shift * 가 12의 값을 표시할 때까지 진행하지 마십시오.
+
+
+
+
+NOTE: 다양한 버전의 Solaris에서 Oracle 버그 15824910 패치를 사용할 수 있습니다. 최상의 커널 패치를 결정하는 데 지원이 필요한 경우 Oracle에 문의하십시오.
+
+
+
+== 알려진 문제 및 제한 사항
+
+[cols="4*"]
+|===
+| NetApp 버그 ID | 제목 | 설명 | Oracle ID입니다 
+
+
+| 1366780 | Solaris LIF 문제 - GB 중, x86 ARch의 Emulex 32G HBA에서 발생 | x86_64 플랫폼에서 Emulex 펌웨어 버전 12.6.x 이상에서 나타납니다 | SR 3-24746803021 
+
+
+| 1368957을 참조하십시오 | "Solaris 11.x 'cfgadm-c configure'로 인해 End-to-End Emulex 구성에서 I/O 오류가 발생했습니다." | Emulex End-to-End 구성에서 “cfgadm-c configure”를 실행하면 I/O 오류가 발생합니다. 이 문제는 9.5P17, 9.6P14, 9.7P13 및 9.8P2에서 고정됩니다 | 해당 없음 
+|===
