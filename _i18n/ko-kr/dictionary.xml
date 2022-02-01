@@ -2250,4 +2250,7 @@
   <block id="27467eebfd85deae554fa659c40d5f50" category="sidebar">Veritas</block>
   <block id="47d254fd002b7f1a6c06e1aa7c25a4ef" category="sidebar">Infoscale 7</block>
   <block id="66b0812a8cbedc46db133ed5327291bd" category="sidebar">스토리지 기반 6</block>
+  <block id="c22c65685ac3f8701da1a00c478b1333" category="cell">1447287</block>
+  <block id="778fd215ce10bd514de565e6df2b1758" category="cell">SM-BC 구성에서 격리된 마스터 클러스터의 AUFO 이벤트가 HP-UX 호스트에서 일시적으로 중단됩니다</block>
+  <block id="6f80f2e204ff92f2e954367d70413775" category="cell">이 문제는 SM-BC(SnapMirror Business Continuity) 구성의 격리된 마스터 클러스터에 자동 AUFO(비계획 페일오버) 이벤트가 있을 때 발생합니다. HP-UX 호스트에서 I/O를 재개하는 데 120초 이상 걸릴 수 있지만 이로 인해 I/O 중단 또는 오류 메시지가 발생하지는 않습니다. 이 문제로 인해 1차 클러스터와 2차 클러스터 간의 연결이 끊겼고 1차 클러스터와 중재자 사이의 연결도 손실되기 때문에 이중 이벤트 오류가 발생합니다. 이것은 다른 AUFO 이벤트와 달리 드문 사건으로 간주됩니다.</block>
 </blocks>
