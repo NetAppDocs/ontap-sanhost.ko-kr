@@ -66,13 +66,13 @@ Host Utilities를 설치하기 전에 Host Utilities 버전이 호스트 및 스
 
 . 케이블 연결을 확인합니다
 +
-를 참조하십시오 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN 구성 가이드 를 참조하십시오"^] ONTAP 또는 용 자세한 케이블 연결 및 구성 정보를 참조하십시오.
+를 참조하십시오 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN 구성 가이드 를 참조하십시오"^] ONTAP 또는 용 https://mysupport.netapp.com/ecm/ecm_get_file/ECMLP2773533["E-Series 하드웨어 케이블 연결 가이드 를 참조하십시오"^] 자세한 케이블 연결 및 구성 정보를 참조하십시오.
 
 
 
 
 
-== FC HBA 및 스위치 구성
+== FC HBA 및 스위치를 구성합니다
 
 스토리지 시스템에 대한 Fibre Channel 접속을 위해 지원되는 하나 이상의 Fibre Channel HBA(호스트 버스 어댑터)를 설치하고 구성합니다.
 
@@ -406,7 +406,7 @@ QLogic Fibre Channel HBA의 경우 MPIO가 선택되지 않은 경우 설치 프
 
 NOTE: 매개 변수의 이름은 프로그램에 따라 약간 다를 수 있습니다. 예를 들어, QLogic QConvergeConsole 프로그램에서 이 매개변수는 "Link Down Timeout"으로 표시됩니다. Host Utilities의 fcconfig.ini` 파일은 MPIO 지정 여부에 따라 이 매개변수를 LinkDownTimeOut 또는 MPioLinkDownTimeOut으로 표시합니다. 그러나 이러한 이름은 모두 동일한 HBA 매개 변수를 나타냅니다.
 
-을 참조하십시오 https://www.broadcom.com/support/download-search["에뮬렉스"^] 또는 Site(사이트) 를 클릭하여 시간 초과 매개 변수에 대해 자세히 알아보십시오.
+을 참조하십시오 https://www.broadcom.com/support/download-search["에뮬렉스"^] 또는 https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] Site(사이트) 를 클릭하여 시간 초과 매개 변수에 대해 자세히 알아보십시오.
 
 
 
@@ -433,8 +433,8 @@ NOTE: 매개 변수의 이름은 프로그램에 따라 약간 다를 수 있습
 
 
 http://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"^]
-
-
+https://mysupport.netapp.com/portal/documentation["NetApp 문서"^]
+https://mysupport.netapp.com/NOW/cgi-bin/bol["NetApp 온라인 버그"^]
 
 
 

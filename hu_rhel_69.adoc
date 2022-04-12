@@ -21,7 +21,7 @@ summary: ONTAP에서 Red Hat Enterprise Linux 6.9를 사용하는 방법을 설�
 
 == Linux Unified Host Utilities 설치
 
-NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support 사이트"^] 32비트 및 64비트 .rpm 파일 구성에 적합한 파일을 모르는 경우 를 사용합니다  필요한 것을 확인합니다.
+NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support 사이트"^] 32비트 및 64비트 .rpm 파일 구성에 적합한 파일을 모르는 경우 를 사용합니다 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 상호 운용성 매트릭스 툴"^] 필요한 것을 확인합니다.
 
 Linux Unified Host Utilities를 설치하는 것이 좋지만 반드시 설치해야 하는 것은 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 

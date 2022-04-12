@@ -1,0 +1,260 @@
+---
+sidebar: sidebar 
+permalink: hu_hpux_60.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방법에 대해 설명합니다 
+---
+= HPUX 호스트 유틸리티 6.0
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+.무엇을 &#8217;필요로 할거야
+* 안정적인 운영을 위해서는 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인해야 합니다.
+
+
+를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 를 눌러 구성을 확인합니다.
+
+
+
+== SAN 툴킷을 참조하십시오
+
+HPUX 호스트 유틸리티는 HPUX 호스트에 명령줄 도구 키트를 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
+
+다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
+
+[listing]
+----
+# sanlun lun show all
+
+controller(7mode)/ device host lun
+vserver(Cmode)           lun-pathname                   filename          adapter    protocol   size   mode
+------------------------------------------------------------------------------------------------------------
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c34t0d0  fclp1      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c23t0d0  fclp1      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c12t0d0  fclp0      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0      FCP        150g    C
+
+----
+
+NOTE: 이 툴킷은 Host Utilities의 모든 구성 및 프로토콜에서 공통적으로 사용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.
+
+
+
+== HPUX 호스트 유틸리티 설치
+
+NetApp HPUX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^] 압축 파일
+
+에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^]. 파일을 다운로드한 후 설치 전에 압축을 해제해야 합니다.
+
+.단계
+. 호스트에 로그인합니다.
+. 에서 HP-UX Host Utilities 파일( netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` )을 다운로드합니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^] HP-UX 호스트에
+. 다음 명령어를 입력하여 netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` 파일의 압축을 해제한다.
++
+(#gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`)
+
++
+압축을 푼 소프트웨어가 서비스 센터 파일의 압축을 푼 디렉토리에 저장됩니다.
+
+. 다음 명령을 입력하여 소프트웨어를 설치합니다.
++
+'#swinstall-s/depot_path'
+
++
+debot_path는 depot 파일의 경로와 이름을 제공합니다.
+
++
+'winstall' 명령어는 HP-UX 설정 상태를 확인하는 설치 스크립트를 실행합니다. 시스템이 요구 사항을 충족할 경우 이 스크립트는 '/opt/netapp/sandtools/bin' 디렉토리에 'sanlun' 유틸리티 및 진단 스크립트를 설치합니다.
+
+. 설치를 확인합니다.
++
+안런 버전
+
+
+
+
+
+== 명령 참조 예
+
+
+
+=== 호스트에 매핑된 모든 호스트 이니시에이터를 나열합니다
+
+[listing]
+----
+# sanlun fcp show adapter -v
+adapter name:      fclp2
+WWPN:              10000000c985ef92
+WWNN:              20000000c985ef92
+driver name:       fclp
+model:             AJ763-63001
+model description: HP 8Gb Dual Channel PCI-e 2.0 FC HBA
+serial number:     MY19034N9U
+hardware version:  3
+driver version:    @(#) FCLP: PCIe Fibre Channel driver (FibrChanl-02), B.11.31.1805, Feb  5 2018, FCLP_IFC (3,2)
+firmware version:  2.02X2 SLI-3 (U3D2.02X2)
+Number of ports:   1 of 2
+port type:         Unknown
+port state:        Link Down
+supported speed:   8 GBit/sec
+negotiated speed:  Speed not established
+OS device name:    /dev/fclp2
+
+adapter name:      fclp3
+WWPN:              10000000c985ef93
+WWNN:              20000000c985ef93
+driver name:       fclp
+model:             AJ763-63001
+model description: HP 8Gb Dual Channel PCI-e 2.0 FC HBA
+serial number:     MY19034N9U
+hardware version:  3
+driver version:    @(#) FCLP: PCIe Fibre Channel driver (FibrChanl-02), B.11.31.1805, Feb  5 2018, FCLP_IFC (3,2)
+firmware version:  2.02X2 SLI-3 (U3D2.02X2)
+Number of ports:   2 of 2
+port type:         Unknown
+port state:        Link Down
+supported speed:   8 GBit/sec
+negotiated speed:  Speed not established
+OS device name:    /dev/fclp3
+----
+
+
+=== 호스트에 매핑된 모든 LUN을 나열합니다
+
+[listing]
+----
+# sanlun lun show -p -v all
+\
+                    ONTAP Path: vs_hp_cluster:/vol/chathpux_217_vol_en_1_10/hp_en_217_lun
+                           LUN: 55
+                      LUN Size: 15g
+                   Host Device: /dev/rdisk/disk718
+                          Mode: C
+                            VG: /dev/vg_data
+              Multipath Policy: A/A
+            Multipath Provider: Native
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+host     vserver    /dev/dsk                                                                    HP A/A
+path     path       filename             host    vserver                                        path failover
+state    type       or hardware path     adapter LIF                                            priority
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+up       primary    /dev/dsk/c37t6d7     fclp0   hpux_7                                         0
+up       primary    /dev/dsk/c22t6d7     fclp1   hpux_8                                         0
+up       secondary  /dev/dsk/c36t6d7     fclp0   hpux_5                                         1
+up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                                         1
+
+----
+
+
+=== 해당 SVM에서 호스트에 매핑된 모든 LUN을 나열합니다
+
+[listing]
+----
+# sanlun lun show -p -v vs_hp_cluster
+                    ONTAP Path: vs_hp_cluster:/vol/chathpux_217_vol_en_1_10/hp_en_217_lun
+                           LUN: 55
+                      LUN Size: 15g
+                   Host Device: /dev/rdisk/disk718
+                          Mode: C
+                            VG: /dev/vg_data
+              Multipath Policy: A/A
+            Multipath Provider: Native
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+host     vserver    /dev/dsk                                                                    HP A/A
+path     path       filename             host    vserver                                        path failover
+state    type       or hardware path     adapter LIF                                            priority
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+up       primary    /dev/dsk/c37t6d7     fclp0   hpux_7                                         0
+up       primary    /dev/dsk/c22t6d7     fclp1   hpux_8                                         0
+up       secondary  /dev/dsk/c36t6d7     fclp0   hpux_5                                         1
+up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                                         1
+
+----
+
+
+=== 호스트에 매핑된 특정 LUN의 모든 특성을 나열합니다
+
+[listing]
+----
+
+# sanlun lun show -p -v vs_hp_cluster:/vol/chathpux_217_vol_en_1_5/hp_en_217_lun
+
+                    ONTAP Path: vs_hp_cluster:/vol/chathpux_217_vol_en_1_5/hp_en_217_lun
+                           LUN: 49
+                      LUN Size: 15g
+                   Host Device: /dev/rdisk/disk712
+                          Mode: C
+                            VG: /dev/vg_data
+              Multipath Policy: A/A
+            Multipath Provider: Native
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+host     vserver    /dev/dsk                                                                    HP A/A
+path     path       filename             host    vserver                                        path failover
+state    type       or hardware path     adapter LIF                                            priority
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+up       primary    /dev/dsk/c37t6d1     fclp0   hpux_7                                         0
+up       primary    /dev/dsk/c22t6d1     fclp1   hpux_8                                         0
+up       secondary  /dev/dsk/c36t6d1     fclp0   hpux_5                                         1
+up       secondary  /dev/dsk/c44t6d1     fclp1   hpux_6                                         1
+
+----
+
+
+=== 호스트 디바이스 파일 이름별로 ONTAP LUN 특성을 나열합니다
+
+[listing]
+----
+#sanlun lun show -dv /dev/rdisk/disk716
+                                                                 device             host                  lun
+vserver              lun-pathname                                filename           adapter    protocol   size    mode
+----------------------------------------------------------------------------------------------------------------------
+vs_hp_cluster        /vol/chathpux_217_vol_en_1_14/hp_en_217_lun /dev/rdisk/disk716 0          FCP        15g     C
+             LUN Serial number: 80D7l?NiNP5U
+         Controller Model Name: AFF-A800
+          Vserver FCP nodename: 208400a098ba7afe
+          Vserver FCP portname: 207e00a098ba7afe
+              Vserver LIF name: hpux_5
+            Vserver IP address: 10.141.54.30
+                                10.141.54.35
+                                10.141.54.37
+                                10.141.54.33
+                                10.141.54.31
+           Vserver volume name: chathpux_217_vol_en_1_14        MSID::0x00000000000000000000000080915935
+         Vserver snapshot name:
+----
+
+
+=== 호스트에 연결된 모든 SVM 타겟 LIF WWPN을 나열합니다
+
+[listing]
+----
+# sanlun lun show -wwpn
+
+controller(7mode)/
+vserver(Cmode)       target wwpn        lun-pathname                                  device filename
+--------------------------------------------------------------------------------------------------------
+vs_hp_cluster        208300a098ba7afe   /vol/chathpux_217_vol_en_1_10/hp_en_217_lun   /dev/rdsk/c22t6d7
+vs_hp_cluster        208100a098ba7afe   /vol/chathpux_217_vol_en_1_10/hp_en_217_lun   /dev/rdsk/c44t6d7
+vs_hp_cluster        208200a098ba7afe   /vol/chathpux_217_vol_en_1_10/hp_en_217_lun   /dev/rdsk/c37t6d7
+vs_hp_cluster        207e00a098ba7afe   /vol/chathpux_217_vol_en_1_10/hp_en_217_lun   /dev/rdsk/c36t6d7
+vs_hp_cluster        207d00a098ba7afe   /vol/chathpux_217_os/hp_217_os                /dev/rdsk/c18t7d4
+vs_hp_cluster        207f00a098ba7afe   /vol/chathpux_217_os/hp_217_os                /dev/rdsk/c42t7d4
+
+host adapter    lun size    mode
+---------------------------------
+fclp1           15g         C
+fclp1           15g         C
+fclp0           15g         C
+fclp0           15g         C
+fclp1           30g         C
+fclp0           30g         C
+----

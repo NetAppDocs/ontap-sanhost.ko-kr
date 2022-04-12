@@ -13,12 +13,16 @@ sidebar:
     url: "/index.html"
   - title: SAN 호스트 유틸리티
     entries:
-    - title: Linux Unified Host Utilities를 참조하십시오
-      url: "/hu_luhu_71.html"
-    - title: Windows Unified Host Utilities를 참조하십시오
-      url: "/hu_wuhu_71.html"
     - title: AIX 호스트 유틸리티
       url: "/hu_aix_61.html"
+    - title: HPUX 호스트 유틸리티
+      url: "/hu_hpux_60.html"
+    - title: Linux Unified Host Utilities를 참조하십시오
+      url: "/hu_luhu_71.html"
+    - title: Solaris 호스트 유틸리티
+      url: "/hu_solaris_62.html"
+    - title: Windows Unified Host Utilities를 참조하십시오
+      url: "/hu_wuhu_71.html"
   - title: NVMe-oF 호스트 구성
     entries:
     - title: ESXi

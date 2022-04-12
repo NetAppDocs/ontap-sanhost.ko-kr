@@ -866,7 +866,6 @@
   <block id="8cb9ee34636093f5ba25008ebc7b7287" category="inline-link">SAN 구성 가이드 를 참조하십시오</block>
   <block id="15ced0ef88b79c27417b95cc4a6474e1" category="inline-link">E-Series 하드웨어 케이블 연결 가이드 를 참조하십시오</block>
   <block id="cafd168860d065bea642129c676fb74b" category="paragraph">를 참조하십시오<block ref="2744dab6503b7f979c6d72cc92b97ead" category="inline-link-rx"></block> ONTAP 또는 용<block ref="7643eb4b4270eeecb6e78fb73c2b55ef" category="inline-link-rx"></block> 자세한 케이블 연결 및 구성 정보를 참조하십시오.</block>
-  <block id="93d35d1948374a90e0c2dc20afe8976a" category="section-title">FC HBA 및 스위치 구성</block>
   <block id="2e008f03754d21e3e30e89cf876e8ee9" category="paragraph">스토리지 시스템에 대한 Fibre Channel 접속을 위해 지원되는 하나 이상의 Fibre Channel HBA(호스트 버스 어댑터)를 설치하고 구성합니다.</block>
   <block id="e587941559542f4bb52a631692177820" category="paragraph">Windows Host Utilities 설치 프로그램에서 필요한 Fibre Channel HBA 설정을 설정합니다.</block>
   <block id="c3d598ac12a38035761ac67dd2d3b26c" category="admonition">HBA 설정을 수동으로 변경하지 마십시오.</block>
@@ -1551,9 +1550,6 @@
   <block id="ab066b3292d8ab61ef3b5c77169cdd19" category="section-title">추가 정보</block>
   <block id="77e0defdbacbcd12c42e7a582cf75709" category="paragraph">SAN 구성에 대한 자세한 내용은 다음 문서를 참조하십시오.</block>
   <block id="891d3d61b8fac48b3a3480b3a2f6d3c9" category="inline-link-macro">모든 SAN 어레이 소프트웨어 구성 가이드</block>
-  <block id="772d04265dc6e94b3e6f5c725fbf42e6" category="paragraph"><block ref="e1df9b7b8db07e2cb30146cd5a6e04ef" category="inline-link-macro-rx"></block>
-<block ref="414cc440da9b8860f85936c8ca7199d3" category="inline-link-macro-rx"></block>
-<block ref="c70054656a6156c5d554f172fbb27a7a" category="inline-link-macro-rx"></block></block>
   <block id="04dff1447143c8e4e6195f792be9979e" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 6.8을 사용하는 방법을 설명합니다</block>
   <block id="d7504c3f9edea18dc5689240f0d4eca3" category="doc">NetApp ONTAP와 함께 Red Hat Enterprise Linux 6.8 사용</block>
   <block id="d58ee726eea2726eefac984fb7e051d6" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.8의 경우 /etc/multipath.conf 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
@@ -2253,4 +2249,49 @@
   <block id="c22c65685ac3f8701da1a00c478b1333" category="cell">1447287</block>
   <block id="778fd215ce10bd514de565e6df2b1758" category="cell">SM-BC 구성에서 격리된 마스터 클러스터의 AUFO 이벤트가 HP-UX 호스트에서 일시적으로 중단됩니다</block>
   <block id="6f80f2e204ff92f2e954367d70413775" category="cell">이 문제는 SM-BC(SnapMirror Business Continuity) 구성의 격리된 마스터 클러스터에 자동 AUFO(비계획 페일오버) 이벤트가 있을 때 발생합니다. HP-UX 호스트에서 I/O를 재개하는 데 120초 이상 걸릴 수 있지만 이로 인해 I/O 중단 또는 오류 메시지가 발생하지는 않습니다. 이 문제로 인해 1차 클러스터와 2차 클러스터 간의 연결이 끊겼고 1차 클러스터와 중재자 사이의 연결도 손실되기 때문에 이중 이벤트 오류가 발생합니다. 이것은 다른 AUFO 이벤트와 달리 드문 사건으로 간주됩니다.</block>
+  <block id="71a803ec7e0a7413f38513eccfb51d23" category="doc">HPUX 호스트 유틸리티 6.0</block>
+  <block id="9e1ea4643210fa4abca0c804c4fe3eec" category="paragraph">를 사용할 수 있습니다 <block ref="1c6d071c1749743e8ebf715f1c64c2a1" category="inline-link-macro-rx"></block> 를 눌러 구성을 확인합니다.</block>
+  <block id="3112cdbeaee6d9032c13b95ac8d4dc32" category="paragraph">HPUX 호스트 유틸리티는 HPUX 호스트에 명령줄 도구 키트를 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.</block>
+  <block id="d4fafab7425136eae505dcc30fe94743" category="section-title">HPUX 호스트 유틸리티 설치</block>
+  <block id="235ab8a9f571fa3f1ae7daa2b9e3a1c3" category="paragraph">NetApp HPUX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 압축 파일</block>
+  <block id="e6836ae92ec45bf946aba470c3ee98e5" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block>. 파일을 다운로드한 후 설치 전에 압축을 해제해야 합니다.</block>
+  <block id="dd0ef0f389a16b505e475797a7b752ac" category="list-text">에서 HP-UX Host Utilities 파일( netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` )을 다운로드합니다 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> HP-UX 호스트에</block>
+  <block id="5eaf61000f0f261f2e4793f7e336889a" category="list-text">다음 명령어를 입력하여 netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` 파일의 압축을 해제한다.</block>
+  <block id="93b6e09e96afb8006209af84f438ca2b" category="paragraph">(#gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`)</block>
+  <block id="d10caeaed75e8947d0e8840674994b68" category="paragraph">압축을 푼 소프트웨어가 서비스 센터 파일의 압축을 푼 디렉토리에 저장됩니다.</block>
+  <block id="2a346f59c525e5728cec25bf9a377f2f" category="list-text">다음 명령을 입력하여 소프트웨어를 설치합니다.</block>
+  <block id="2d903390e509c4d2f6da1a4d0787b5b6" category="paragraph">'#swinstall-s/depot_path'</block>
+  <block id="999cc5e84fec57fdd157e6fdacc5c96a" category="paragraph">debot_path는 depot 파일의 경로와 이름을 제공합니다.</block>
+  <block id="e661cef1335457aaa4b6047327cfb656" category="paragraph">'winstall' 명령어는 HP-UX 설정 상태를 확인하는 설치 스크립트를 실행합니다. 시스템이 요구 사항을 충족할 경우 이 스크립트는 '/opt/netapp/sandtools/bin' 디렉토리에 'sanlun' 유틸리티 및 진단 스크립트를 설치합니다.</block>
+  <block id="96e0cae7407a65fe53018dd9c13dbbe7" category="section-title">FC HBA 및 스위치를 구성합니다</block>
+  <block id="4305e9936b83d45d04d4e15cb3f002d2" category="paragraph"><block ref="e5534403168e57c1e34879bb31a5b6d6" category="inline-link-macro-rx"></block>
+<block ref="414cc440da9b8860f85936c8ca7199d3" category="inline-link-macro-rx"></block>
+<block ref="c70054656a6156c5d554f172fbb27a7a" category="inline-link-macro-rx"></block></block>
+  <block id="13875804930272cb7e31a51605d09c65" category="doc">Solaris 호스트 유틸리티 6.2</block>
+  <block id="408c1c436b88f56a9e4cf815ca520ffc" category="list-text">안정적인 운영을 위해서는 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인해야 합니다.</block>
+  <block id="8f3b9d0cc42d20c0623a5f0990c4181e" category="paragraph">Solaris Host Utilities는 Oracle Solaris 호스트에서 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.</block>
+  <block id="ad13fbfcd593d66a0a805929eb221e19" category="section-title">Solaris 호스트 유틸리티 설치</block>
+  <block id="03b4fa4e47ce5a6711a2ad9d886d63b4" category="paragraph">Solaris Host Utilities 6.2는 여러 Solaris 환경 및 다중 프로토콜을 지원합니다. 기본 호스트 유틸리티 환경은 다음과 같습니다.</block>
+  <block id="4dae86ccd354e19dab3d36ea3289ddf9" category="list-text">SPARC 프로세서 또는 x86/64 프로세서를 사용하는 시스템에서 FC(Fibre Channel) 또는 iSCSI 프로토콜을 사용하는 MPxIO가 있는 네이티브 OS입니다.</block>
+  <block id="bcbce11571c35a16833e1cad61fe922b" category="list-text">SPARC 프로세서를 사용하는 시스템에서 FC 또는 iSCSI 프로토콜을 사용하는 DMP(Veritas Dynamic Multipathing)와 x86/64 프로세서를 사용하는 시스템의 iSCSI 프로토콜을 사용하는 DMP(Veritas Dynamic Multipathing)</block>
+  <block id="62f9b54c9ec5d04b22835a93b9aa1fa6" category="admonition">NetApp Solaris Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 프로세서를 위한 압축 파일 형식. 사용자 환경에 맞는 Host Utilities 소프트웨어 패키지를 Support 사이트에서 다운로드할 수 있습니다.</block>
+  <block id="fea59de608f0d3ad102d8ee095187049" category="list-text">호스트에 루트로 로그인합니다.</block>
+  <block id="9b81dac243940d3f9c3490234e86754f" category="list-text">에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 호스트의 디렉토리로 이동합니다.</block>
+  <block id="b2d33f0e0e850a2d778dfce3637f0b06" category="paragraph">이 문서를 준비할 때 압축된 파일은 다음과 같이 불렸습니다.</block>
+  <block id="9957056b4d6f0788b84485f7f408d79d" category="list-text">SPARC CPU:'NetApp_Solaris_HOST_UTPITUS_6_2_SPARC.tar.gz'</block>
+  <block id="8b2e8dcabd2803cfffe6d347e740d632" category="list-text">x86/x64 CPU:'NetApp_Solaris_host_utilities_6_2_AMD.tar.gz'</block>
+  <block id="4b9b8c4fa4d1eb96283d16c11c709e8e" category="list-text">gunzip 명령을 사용하여 파일의 압축을 풉니다</block>
+  <block id="1f2423b6dd7c87600c006dd4fe70055e" category="paragraph">'#gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz'</block>
+  <block id="72f9fed930907b19e060560561469054" category="list-text">파일의 압축을 풉니다. 이 작업을 수행하려면 'tar xvf' 명령을 사용할 수 있습니다.</block>
+  <block id="d35a857c138589666873eef37b70bd9c" category="paragraph">"#tar xvf NetApp_Solaris_host_utilities_6_2_SPARC.tar"</block>
+  <block id="963069b30b9e059f13bf53eb0a7cfbfe" category="list-text">tar 파일에서 추출한 패키지를 호스트에 추가합니다. pkgadd 명령을 사용하여 이 작업을 수행할 수 있습니다.</block>
+  <block id="0c91635f19857d5fe1642e137ecfe86f" category="paragraph">패키지는 '/opt/ntap/soolkit/bin' 디렉토리에 추가됩니다. 다음 예에서는 "pkgadd" 명령을 사용하여 Solaris 설치 패키지를 설치합니다.</block>
+  <block id="e0da89c5b7248a8324e10a5d7c6af64f" category="paragraph">pkgadd -d./NTAPsagtagool.pkg</block>
+  <block id="230a086a88f004fde1f1d6cfcc3f4f87" category="list-text">pkginfo 명령 또는 ls -al 명령을 사용하여 툴킷이 성공적으로 설치되었는지 확인합니다.</block>
+  <block id="43993f1d866abd26f6850284c50866b3" category="list-text">작업을 마친 후에는 '/opt/NTAP/sotoolkit/bin/host_config' 명령을 사용하여 환경에 대한 호스트 매개 변수를 구성해야 합니다.</block>
+  <block id="cdfd79e32ab8a821a843e89d91bdcd8d" category="list-text">MPxIO</block>
+  <block id="8ae046464e598978903e62c0c706373c" category="list-text">Veritas DMP</block>
+  <block id="a335fa6e5bef06439b229f8adabc7dfe" category="section-title">지정된 SVM에서 호스트에 매핑된 모든 LUN 나열/호스트에 매핑된 특정 LUN의 모든 특성 나열</block>
+  <block id="19b1462d6d0a4e6e5b814edb100a77c6" category="sidebar">HPUX 호스트 유틸리티</block>
+  <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris 호스트 유틸리티</block>
 </blocks>
