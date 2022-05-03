@@ -1,4 +1,5 @@
 = 
+:allow-uri-read: 
 
 
 호스트가 1MB 크기 입출력을 발급하려면 lpfc_sg_seg_cnt 매개 변수를 256으로 설정해야 합니다

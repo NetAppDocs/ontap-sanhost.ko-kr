@@ -8,6 +8,7 @@ summary: ONTAP에서 Linux용 Veritas Infoscale 6.5 및 6.7을 사용하는 방�
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

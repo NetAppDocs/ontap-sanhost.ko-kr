@@ -8,6 +8,7 @@ summary: 예를 들어 ONTAP가 포함된 Oracle Linux 8.1에 대한 VME/FC 호�
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

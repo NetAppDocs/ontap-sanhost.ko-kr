@@ -8,6 +8,7 @@ summary: ONTAP와 함께 Oracle Linux 8.1을 사용하는 방법에 대해 설�
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

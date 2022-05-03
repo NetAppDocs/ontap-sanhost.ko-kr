@@ -1,4 +1,5 @@
 = 모든 SAN 어레이 구성
+:allow-uri-read: 
 
 
 

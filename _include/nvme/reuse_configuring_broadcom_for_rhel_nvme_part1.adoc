@@ -1,4 +1,5 @@
 = 
+:allow-uri-read: 
 
 
 지원되는 어댑터의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].

@@ -1,4 +1,5 @@
 = 
+:allow-uri-read: 
 
 
 FC를 사용하는 시스템에서는 MPIO를 선택할 때 Emulex 및 QLogic FC HBA에 대해 다음 시간 초과 값이 필요합니다.

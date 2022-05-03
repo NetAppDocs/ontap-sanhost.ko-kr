@@ -1,4 +1,5 @@
 = 
+:allow-uri-read: 
 
 
 GRUB 부팅 로더를 사용하여 Linux 게스트 운영 체제에서 MBR을 PowerShell Toolkit과 일치시킬 수 있도록 디스크에 대한 'bralign'을 실행한 후 게스트 운영 체제가 올바르게 부팅되도록 GRUB를 다시 설치해야 합니다.

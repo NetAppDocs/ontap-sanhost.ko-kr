@@ -8,6 +8,7 @@ summary: ONTAP를 사용하여 Oracle Linux 7.7용 NVMe/FC를 구성하는 방�
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

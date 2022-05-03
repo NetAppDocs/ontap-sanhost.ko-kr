@@ -1,4 +1,5 @@
 = KVM 설정
+:allow-uri-read: 
 
 
 

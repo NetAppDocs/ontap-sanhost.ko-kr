@@ -8,6 +8,7 @@ summary: ONTAP와 함께 SUSE Linux Enterprise Server 15를 사용하는 방법�
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

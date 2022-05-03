@@ -8,6 +8,7 @@ summary: Solaris 호스트 유틸리티를 설치하는 방법에 대해 설명�
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

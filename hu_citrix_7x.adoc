@@ -8,6 +8,7 @@ summary: Citrix XenServer 7.x를 ONTAP와 함께 사용하는 방법에 대해 �
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

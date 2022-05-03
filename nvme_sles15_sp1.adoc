@@ -8,6 +8,7 @@ summary: ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP1에 대해 NVM
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

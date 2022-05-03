@@ -1,4 +1,5 @@
 = ASM 미러링
+:allow-uri-read: 
 
 
 

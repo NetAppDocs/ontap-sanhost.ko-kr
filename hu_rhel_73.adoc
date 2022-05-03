@@ -8,6 +8,7 @@ summary: ONTAP에서 Red Hat Enterprise Linux 7.3을 사용하는 방법을 설�
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

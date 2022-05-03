@@ -8,6 +8,7 @@ summary: ONTAP와 함께 Oracle Linux 6.6을 사용하는 방법을 설명합니
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

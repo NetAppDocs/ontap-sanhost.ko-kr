@@ -8,6 +8,7 @@ summary: ONTAP와 함께 SUSE Linux Enterprise Server 12 SP1을 사용하는 방
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

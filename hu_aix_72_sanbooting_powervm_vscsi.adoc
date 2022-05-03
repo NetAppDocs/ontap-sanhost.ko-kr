@@ -8,6 +8,7 @@ summary: 에서는 PowerVM vSCSI를 사용하여 LUN 검색 및 구성 방법을
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

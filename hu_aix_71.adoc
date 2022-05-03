@@ -8,6 +8,7 @@ summary: ONTAP에서 IBM AIX 7.1을 사용하는 방법에 대해 설명합니�
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

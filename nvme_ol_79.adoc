@@ -8,6 +8,7 @@ summary: 예를 들어 ONTAP를 사용하여 Oracle Linux 7.9용 VME/FC 호스�
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :toc: 
 :toclevels: 1
 :nofooter: 

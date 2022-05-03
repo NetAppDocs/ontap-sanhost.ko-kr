@@ -1,4 +1,5 @@
 = 
+:allow-uri-read: 
 
 
 Windows 이니시에이터 호스트에서 FC/NVMe를 활성화하려면 다음 단계를 수행하십시오.

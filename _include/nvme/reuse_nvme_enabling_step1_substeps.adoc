@@ -1,4 +1,5 @@
 = 
+:allow-uri-read: 
 
 
 . '/etc/NVMe/host * ' 파일을 백업합니다.
