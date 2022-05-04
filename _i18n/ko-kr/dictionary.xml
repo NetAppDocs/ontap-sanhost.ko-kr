@@ -2294,4 +2294,11 @@
   <block id="a335fa6e5bef06439b229f8adabc7dfe" category="section-title">지정된 SVM에서 호스트에 매핑된 모든 LUN 나열/호스트에 매핑된 특정 LUN의 모든 특성 나열</block>
   <block id="19b1462d6d0a4e6e5b814edb100a77c6" category="sidebar">HPUX 호스트 유틸리티</block>
   <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris 호스트 유틸리티</block>
+  <block id="072bbeb072deda2033d37a6e9af67b96" category="summary">Oracle Linux 8.5와 ONTAP를 사용하는 방법에 대해 설명합니다</block>
+  <block id="bebf74152cdc0b8f2233ff49a9112052" category="doc">Oracle Linux 8.5 및 NetApp ONTAP 사용</block>
+  <block id="5afff738a58f6889eebdd3efb2f2c405" category="paragraph">Oracle Linux(OL) 8.5의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. OL 8.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="d361bd25a0b2583985eb39dd89875090" category="paragraph">Oracle Linux 8.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. 다중경로 데몬을 시작하려면 'multipath.conf' 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다</block>
+  <block id="2e4318e2eccbd53d66a800f6dabff27f" category="admonition">Oracle Linux 8.5 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용하십시오 <block ref="7e47a54075763937d25ec51fa82726e1" category="inline-link-macro-rx"></block> RHEL(Red Hat Enterprise Linux) 8.5의 경우</block>
+  <block id="2e4b1a8e103650d2f0fe4c61f4f8d5fb" category="paragraph">Oracle Linux 8.5에는 알려진 문제가 없습니다.</block>
+  <block id="5d90071a09878a695a26d84f9a4f073b" category="admonition">Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 <block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block> 섹션을 참조하십시오.</block>
 </blocks>
