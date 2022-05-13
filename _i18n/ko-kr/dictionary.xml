@@ -95,7 +95,6 @@
   <block id="5dd03e8d039863e563e049be198c3fd3" category="section-title">릴리즈 노트</block>
   <block id="f25da2d4ec4aacff4750d97e83acec21" category="section-title">ASM 미러링</block>
   <block id="446548f2b1301893641e29657fc7fe53" category="inline-link-macro">ONTAP 기반의 Oracle 데이터베이스</block>
-  <block id="84ab437a6a1e12ed066bb64a998dbdff" category="paragraph">ASM 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="f87d076eb7d3558e4df3a472ec88d6f2" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 6.6을 사용하는 방법을 설명합니다</block>
   <block id="541a27f09949b345aba2634d6146896a" category="doc">NetApp ONTAP와 함께 Red Hat Enterprise Linux 6.6 사용</block>
   <block id="be07fd5a515d15ddc2960a66b75da141" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <block ref="5d0c5cfb6f99c570837d3b798f48dd99" category="inline-link-macro-rx"></block> 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.</block>
@@ -2371,4 +2370,15 @@
   <block id="73d4b705776db33e6478d2847ebc567c" category="paragraph">Oracle Linux 8.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="cb209f9eec3baeb4065409d39ca1f4d5" category="paragraph">Oracle Linux 8.3 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일되었습니다.</block>
   <block id="ce431e2558ea7b456c531991fb4a7e92" category="paragraph">Oracle Linux 8.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
+  <block id="c785c7cbae0a664e0cc339dfef33bde1" category="paragraph">ASM 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="3eeb371f92f74d2b6501646282092ca7" category="summary">ONTAP에서 CentOS 8.4를 사용하는 방법에 대해 설명합니다</block>
+  <block id="32d86924bbcb8820c9a350a7d741cbea" category="doc">NetApp ONTAP에서 CentOS 8.4 사용</block>
+  <block id="e5a962185d7bd63be4f29de827478b1c" category="paragraph">CentOS 8.4의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 8.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="ea4f6ca54725c6a00ccdbd33cafe2aa2" category="paragraph">CentOS 8.4는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
+  <block id="a90e366fa7d3040cef07cc0169093dcc" category="paragraph">CentOS 8.4에 대한 알려진 문제는 없습니다.</block>
+  <block id="c33b879e8a189cf4ded38992165273b7" category="summary">ONTAP에서 CentOS 8.5를 사용하는 방법에 대해 설명합니다</block>
+  <block id="d5af4406caf44199917cb9aa00203c40" category="doc">CentOS 8.5 및 NetApp ONTAP 사용</block>
+  <block id="60d0d78dbe9bb18e16690c35ce6867e1" category="paragraph">CentOS 8.5의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 8.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="fd586a803662833af2a4932bc04d30c2" category="paragraph">CentOS 8.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
+  <block id="18c14def8d42f0c0db0b8f08922c712b" category="paragraph">CentOS 8.5에 대한 알려진 문제는 없습니다.</block>
 </blocks>
