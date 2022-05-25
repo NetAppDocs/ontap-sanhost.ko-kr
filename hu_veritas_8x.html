@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head class="at-element-marker">
-  <title>NetApp ONTAP 기반의 Red Hat Enterprise Linux 7.1 사용</title>
+  <title>NetApp ONTAP 기반의 Linux용 Veritas Infoscale 8 사용</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="NetApp ONTAP 기반의 Red Hat Enterprise Linux 7.1 사용" />
+  <meta property="og:title" content="NetApp ONTAP 기반의 Linux용 Veritas Infoscale 8 사용" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_rhel_71.html" />
-	<meta property="og:description" content="ONTAP와 함께 Red Hat Enterprise Linux 7.1을 사용하는 방법을 설명합니다" />
+	<meta property="og:url" content="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_veritas_8x.html" />
+	<meta property="og:description" content="Veritas Infoscale 7 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다" />
   <meta property="og:image" content="https://docs.netapp.com/ko-kr/ontap-sanhost/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="ONTAP와 함께 Red Hat Enterprise Linux 7.1을 사용하는 방법을 설명합니다">
-  <meta name="keywords" content=" host utilities, red hat, rhel, linux, 7.1, netapp, ontap"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Veritas Infoscale 7 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다">
+  <meta name="keywords" content=" host utilities, veritas, infoscale, 8, netapp, ontap, sanhost, iscsi, red, hat linux, oracle, linux"><!-- Icons -->
   <link rel="icon" href="/ko-kr/ontap-sanhost/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -169,7 +169,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[NetApp ONTAP 기반의 Red Hat Enterprise Linux 7.1 사용](https://docs.netapp.com/ko-kr/ontap-sanhost/hu_rhel_71.html)" class="page-nav-contribute-link" role="button"><img src="/ko-kr/ontap-sanhost/images/discuss-sm.svg" class="github-icon" />문서 변경 요청</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_rhel_71.adoc" class="page-nav-contribute-link" role="button"><img src="/ko-kr/ontap-sanhost/images/edit-sm.svg" class="github-icon" />이 페이지 편집</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ko-kr/ontap-sanhost/images/article-sm.svg" class="github-icon" />기여하는 방법 자세히 알아보기</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[NetApp ONTAP 기반의 Linux용 Veritas Infoscale 8 사용](https://docs.netapp.com/ko-kr/ontap-sanhost/hu_veritas_8x.html)" class="page-nav-contribute-link" role="button"><img src="/ko-kr/ontap-sanhost/images/discuss-sm.svg" class="github-icon" />문서 변경 요청</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_veritas_8x.adoc" class="page-nav-contribute-link" role="button"><img src="/ko-kr/ontap-sanhost/images/edit-sm.svg" class="github-icon" />이 페이지 편집</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ko-kr/ontap-sanhost/images/article-sm.svg" class="github-icon" />기여하는 방법 자세히 알아보기</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">이 페이지의 내용</div>
@@ -292,15 +292,15 @@
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_rhel_71.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_veritas_8x.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_rhel_71.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_veritas_8x.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_rhel_71.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_veritas_8x.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_rhel_71.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_veritas_8x.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_rhel_71.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
+                  <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_veritas_8x.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -1113,15 +1113,6 @@
 
 
 
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/ko-kr/ontap-sanhost/pdfs/pages/hu_rhel_71.pdf" >
-    <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
-  
 
 
 
@@ -1323,6 +1314,15 @@
             Veritas
           </a>
           
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/ko-kr/ontap-sanhost/pdfs/pages/hu_veritas_8x.pdf" >
+    <img src="/ko-kr/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
 
 
 
@@ -1667,7 +1667,7 @@
         7.3
       </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_72.html">
         7.2
-      </a></li><li class="  active "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_71.html">
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_71.html">
         7.1
       </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_rhel_70.html">
         7.0
@@ -1727,7 +1727,7 @@
       </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Veritas</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_veritas_8x.html">
+      <ul><li class="  active "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_veritas_8x.html">
         Infoscale 8
       </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/hu_veritas_7x.html">
         Infoscale 7
@@ -1796,14 +1796,14 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">NetApp ONTAP 기반의 Red Hat Enterprise Linux 7.1 사용</h1>
+  <h1 class="n-doc__component-detail-heading">NetApp ONTAP 기반의 Linux용 Veritas Infoscale 8 사용</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-05-11 15:35:27 +0000">05/11/2022</time>
+    <time datetime="2022-05-25 10:36:06 +0000">05/25/2022</time>
     
   
 
@@ -1813,20 +1813,30 @@
 <div id="toc" class="toc">
 <div id="toctitle">목차</div>
 <ul class="sectlevel1">
+<li><a href="#소개">소개</a></li>
 <li><a href="#linux-unified-host-utilities-설치">Linux Unified Host Utilities 설치</a></li>
 <li><a href="#san-툴킷을-참조하십시오">SAN 툴킷을 참조하십시오</a></li>
 <li><a href="#san-부팅">SAN 부팅</a></li>
 <li><a href="#다중-경로">다중 경로</a></li>
-<li><a href="#권장-설정">권장 설정</a></li>
+<li><a href="#모든-san-어레이-구성">모든 SAN 어레이 구성</a></li>
+<li><a href="#비-asa-구성">비 ASA 구성</a></li>
+<li><a href="#다중-경로-공존">다중 경로 공존</a></li>
 <li><a href="#알려진-문제-및-제한-사항">알려진 문제 및 제한 사항</a></li>
-<li><a href="#릴리즈-노트">릴리즈 노트</a></li>
 </ul>
+</div>
+<div class="sect1">
+<h2 id="소개">소개</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>이 문서에서는 FC, FCoE 및 iSCSI 프로토콜을 사용하는 Red Hat Enterprise Linux 및 Oracle Linux(RHCK 기반) 플랫폼용 VERITAS Infoscale 스토리지 기반 8 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다.</p>
+</div>
+</div>
 </div>
 <div class="sect1">
 <h2 id="linux-unified-host-utilities-설치">Linux Unified Host Utilities 설치</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <a href="https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&amp;platform=Linux" target="_blank" rel="noopener">"NetApp Support 사이트"</a> 32비트 및 64비트 .rpm 파일 구성에 적합한 파일을 모르는 경우 를 사용합니다 <a href="https://mysupport.netapp.com/matrix/#welcome" target="_blank" rel="noopener">"NetApp 상호 운용성 매트릭스 툴"</a> 필요한 것을 확인합니다.</p>
+<p>NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"NetApp Support 사이트"</a> 64비트 .rpm 파일</p>
 </div>
 <div class="paragraph">
 <p>Linux Unified Host Utilities를 설치하는 것이 좋지만 반드시 설치해야 하는 것은 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.</p>
@@ -1835,9 +1845,10 @@
 <p>현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 또는 를 업그레이드해야 합니다. 이 유틸리티를 제거하고 다음 단계를 따라 최신 버전을 설치해야 합니다.</p>
 </div>
 <div class="olist arabic">
+<div class="title">단계</div>
 <ol class="arabic">
 <li>
-<p>에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 <a href="https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&amp;platform=Linux" target="_blank" rel="noopener">"NetApp Support 사이트"</a> 사이트를 호스트에 연결.</p>
+<p>에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"NetApp Support 사이트"</a> 호스트에.</p>
 </li>
 <li>
 <p>다음 명령을 사용하여 소프트웨어 패키지를 설치합니다.</p>
@@ -1856,18 +1867,27 @@
 <p>이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.</p>
 </div>
 <div class="paragraph">
-<p>다음 예제에서 'show lun show 명령&#8217;은 LUN 정보를 반환합니다.</p>
+<p>다음 그림에서 'show' 명령은 LUN 정보를 반환합니다.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># sanlun lun show all
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
--------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT</pre>
+<pre># sanlun show -p -v SFRAC:/vol/fen1/lun1
+
+              ONTAP Path: SFRAC:/vol/fen1/lun1
+                     LUN: 0
+                LUN Size: 10g
+                 Product: cDOT
+                DMP NODE: sfrac0_47
+      Multipath Provider: Veritas
+----------  ------  ---------  ------  -------------------------------------
+Veritas     host    vserver    host:
+path        path    path     /dev/   chan:     vserver           major:
+state       state   type     node    id:lun    LIF                   minor
+----------  ------  ---------  ------  -------------------------------------
+enabled     up      active/non-optimized sdea   14:0:1:0   lif_10    128:32
+enabled (a) up      active/optimized     sdcj   14:0:0:0   lif_2      69:112
+enabled (a) up      active/optimized     sdb    13:0:0:0   lif_1       8:16
+enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192</pre>
 </div>
 </div>
 </div>
@@ -1876,7 +1896,10 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 <h2 id="san-부팅">SAN 부팅</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=70064;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp 상호 운용성 매트릭스 툴"</a> 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.</p>
+<p>SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp 상호 운용성 매트릭스 툴"</a> 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.</p>
+</div>
+<div class="paragraph">
+<p>SAN 부팅 구성 지원 가능성 및 알려진 주의 사항을 확인하려면 Veritas 지원 포털(제품 매트릭스, 플랫폼 조회, HCL 매트릭스)을 참조하십시오.</p>
 </div>
 <div class="olist arabic">
 <div class="title">단계</div>
@@ -1907,13 +1930,52 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 <h2 id="다중-경로">다중 경로</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>RHEL(Red Hat Enterprise Linux) 7.1의 경우 /etc/multipath.conf 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 7.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</p>
+<p>구성이 시스템 요구 사항을 충족하는지 확인해야 합니다. 자세한 내용은 NetApp 상호 운용성 매트릭스 툴 및 Veritas HCL Matrix를 참조하십시오.</p>
 </div>
 <div class="paragraph">
-<p>'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.</p>
+<p>이 예에서는 "vxdmpadm" 명령을 사용하여 VxDMP 다중 경로에 ONTAP 대상 어레이가 연결되어 있는지 확인합니다.</p>
 </div>
-<div class="sect2">
-<h3 id="모든-san-어레이-구성">모든 SAN 어레이 구성</h3>
+<div class="listingblock">
+<div class="content">
+<pre># vxdmpadm listenclosure
+ENCLR_NAME   ENCLR_TYPE  ENCLR_SNO     STATUS      ARRAY_TYPE    LUN_COUNT    FIRMWARE
+=====================================================================================
+sfrac0       SFRAC       804Xw$PqE52h  CONNECTED   ALUA          43           9800
+# vxdmpadm getdmpnode
+NAME       STATE    ENCLR-TYPE  PATHS  ENBL  DSBL ENCLR-NAME
+===================================================================
+sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>VxDMP(Veritas Dynamic Multipathing)를 사용하면 NetApp LUN을 Veritas Multipath Devices로 주장하는 구성 작업을 수행해야 합니다. Veritas가 NetApp 스토리지 시스템에 제공하는 ASL(Array Support Library) 및 APM(Array Policy Module) 패키지가 설치되어 있어야 합니다. Veritas Software Installation은 제품과 함께 기본 ASL APM 패키지를 로드하는 동안 Veritas 지원 포털에 나열된 최신 지원 패키지를 사용하는 것이 좋습니다.</p>
+</div>
+<div class="paragraph">
+<p>다음 예에서는 ASL(Veritas Support Library) 및 APM(Array Policy Module) 구성을 보여 줍니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># vxdmpadm list dmpnode dmpnodename=sfrac0_47 | grep asl
+asl        = libvxnetapp.so
+# vxddladm listversion |grep libvxnetapp.so
+libvxnetapp.so                  vm-8.0.0-rev-1   8.0
+
+# rpm -qa |grep VRTSaslapm
+VRTSaslapm-x.x.x.0000-RHEL8.X86_64
+vxddladm listsupport libname=libvxnetapp.so
+ATTR_NAME   ATTR_VALUE
+=========================================
+LIBNAME     libvxnetapp.so
+VID         NETAPP
+PID         All
+ARRAY_TYPE  ALUA, A/A</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="모든-san-어레이-구성">모든 SAN 어레이 구성</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>모든 SAN 어레이(ASA) 구성에서 지정된 LUN(논리 유닛)에 대한 모든 경로가 활성 및 최적화됩니다. 즉, 모든 경로를 통해 동시에 I/O를 처리할 수 있으므로 성능이 향상됩니다.</p>
 </div>
@@ -1922,14 +1984,13 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G  features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-`-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running</pre>
+<pre># vxdmpadm getsubpaths dmpnodename-sfrac0_47
+NAME  STATE[A]   PATH-TYPE[M]   CTLR-NAME   ENCLR-TYPE  ENCLR-NAME  ATTRS  PRIORITY
+===================================================================================
+sdas  ENABLED (A)    Active/Optimized c13   SFRAC       sfrac0     -      -
+sdb   ENABLED(A) Active/Optimized     c14   SFRAC       sfrac0     -      -
+sdcj  ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
+sdea  ENABLED (A)    Active/Optimized c14   SFRAC       sfrac0     -</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1945,8 +2006,10 @@ size=80G  features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="비-asa-구성">비 ASA 구성</h3>
+</div>
+<div class="sect1">
+<h2 id="비-asa-구성">비 ASA 구성</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>비 ASA 구성의 경우 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</p>
 </div>
@@ -1955,15 +2018,13 @@ size=80G  features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle’ hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-| |- 11:0:1:0 sdj  8:144  active ready running
-| |- 11:0:2:0 sdr  65:16  active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:0:0 sdb  8:i6   active ready running
-  |- 12:0:0:0 sdz  65:144 active ready running</pre>
+<pre># vxdmpadm getsubpaths dmpnodename-sfrac0_47
+NAME  STATE[A]   PATH-TYPE[M]   CTLR-NAME   ENCLR-TYPE  ENCLR-NAME  ATTRS  PRIORITY
+===================================================================================
+sdas  ENABLED     Active/Non-Optimized c13   SFRAC       sfrac0     -      -
+sdb   ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
+sdcj  ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
+sdea  ENABLED     Active/Non-Optimized c14   SFRAC       sfrac0     -      -</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1978,81 +2039,12 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 </tr>
 </table>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="권장-설정">권장 설정</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="권장-설정">권장 설정</h3>
+<div class="sect3">
+<h4 id="veritas-다중-경로에-대한-설정">Veritas 다중 경로에 대한 설정</h4>
 <div class="paragraph">
-<p>RHEL 7.1 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일되었습니다.</p>
-</div>
-<div class="paragraph">
-<p>다중경로 데몬을 시작하려면 'multipath.conf' 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다</p>
-</div>
-<div class="paragraph">
-<p>이 파일을 처음 생성할 때 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># systemctl enable multipathd
-# systemctl start multipathd</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>다중 경로로 관리하지 않으려는 장치가 있거나 기본값을 덮어쓰는 기존 설정이 없는 경우 외에는 multipath.conf 파일에 아무것도 직접 추가할 필요가 없습니다.</p>
-</div>
-<div class="paragraph">
-<p>다음 구문을 'multitpath.conf' 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.</p>
-</div>
-<div class="paragraph">
-<p>'&lt;DevID&gt;'을(를) 제외할 장치의 WWID 문자열로 바꿉니다. 다음 명령을 사용하여 WWID를 확인하십시오.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>blacklist {
-        wwid &lt;DevId&gt;
-        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-        devnode "^hd[a-z]"
-        devnode "^cciss.*"
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>이 예에서 'da&#8217;는 블랙리스트가 필요한 로컬 SCSI 디스크입니다.</p>
-</div>
-<div class="olist arabic">
-<div class="title">단계</div>
-<ol class="arabic">
-<li>
-<p>다음 명령을 실행하여 WWID를 확인하십시오.</p>
-<div class="literalblock">
-<div class="content">
-<pre># /lib/udev/scsi_id -gud /dev/sda
-360030057024d0730239134810c0cb833</pre>
-</div>
-</div>
-</li>
-<li>
-<p>이 WWID를 '/etc/multipath.conf&#8217;의 블랙리스트 스탠자에 추가합니다.</p>
-<div class="literalblock">
-<div class="content">
-<pre>blacklist {
-     wwid   360030057024d0730239134810c0cb833
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>기본 설정을 재정의할 수 있는 기본 섹션에서 항상 '/etc/multipath.conf' 파일에서 기존 설정을 확인해야 합니다.</p>
-</div>
-<div class="paragraph">
-<p>아래 표에는 ONTAP LUN에 대한 중요 매개 변수와 필요한 값이 나와 있습니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의될 경우 ONTAP LUN에 특별히 적용되는 'multipath.conf&#8217;에서 나중에 stanzas로 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체에 문의하여 영향을 완전히 이해해야 합니다.</p>
+<p>NetApp은 스토리지 페일오버 작업에서 최적의 시스템 구성을 위해 다음과 같은 Veritas VxDMP 조정 기능을 권장합니다.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -2067,150 +2059,127 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">detect_prio(사전 감지)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">예</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dmp_lun_retry_timeout입니다</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DEV_Loss_TMO</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"무한대"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dmp_path_age입니다</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">장애 복구</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">즉시</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fast_IO_FAIL_TMO</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">피처</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"3 queue_if_no_path pg_init_retries 50"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Flush_on_last_del.(마지막 삭제 시 플러시</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"예"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hardware_handler를 선택합니다</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"0"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">no_path_retry 를 선택합니다</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">대기열</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">path_checker를 선택합니다</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"tur"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">path_grouping_policy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"group_by_prio(그룹 기준/원시)"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">경로 선택</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"서비스 시간 0"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">polling_interval입니다</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">프리오</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"ONTAP"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">제품</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LUN. *</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Retain_attached_hw_handler 를 참조하십시오</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">예</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RR_WEIGHT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"균일"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">사용자_친화적_이름</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">아니요</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">공급업체</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">넷엡</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dmp_restore_interval입니다</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 no_path_retry의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.</p>
+<p>DMP 툰은 다음과 같이 "vxdmpadm" 명령을 사용하여 온라인으로 설정됩니다.</p>
+</div>
+<div class="paragraph">
+<p>'#vxdmpadm settune dmp_tunable=value'</p>
+</div>
+<div class="paragraph">
+<p>이러한 조정 가능한 값은 '#vxdmpadm gettune&#8217;을 사용하여 동적으로 확인할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>다음 예는 SAN 호스트의 효과적인 VxDMP 조정 기능을 보여줍니다.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>defaults {
-   path_checker      readsector0
-   no_path_retry      fail
-}
+<pre># vxdmpadm gettune
 
-devices {
-   device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
-   }
-}</pre>
+Tunable                    Current Value    Default Value
+dmp_cache_open                      on                on
+dmp_daemon_count                    10                10
+dmp_delayq_interval                 15                15
+dmp_display_alua_states             on                on
+dmp_fast_recovery                   on                on
+dmp_health_time                     60                60
+dmp_iostats_state              enabled           enabled
+dmp_log_level                        1                 1
+dmp_low_impact_probe                on                on
+dmp_lun_retry_timeout               60                30
+dmp_path_age                       120               300
+dmp_pathswitch_blks_shift            9                 9
+dmp_probe_idle_lun                  on                on
+dmp_probe_threshold                  5                 5
+dmp_restore_cycles                  10                10
+dmp_restore_interval                60               300
+dmp_restore_policy         check_disabled   check_disabled
+dmp_restore_state              enabled           enabled
+dmp_retry_count                      5                 5
+dmp_scsi_timeout                    20                20
+dmp_sfg_threshold                    1                 1
+dmp_stat_interval                    1                 1
+dmp_monitor_ownership               on                on
+dmp_monitor_fabric                  on                on
+dmp_native_support                 off               off</pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="kvm-설정">KVM 설정</h3>
+</div>
+<div class="sect3">
+<h4 id="프로토콜별-설정">프로토콜별 설정</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>FC/FCoE 전용: 기본 시간 초과 값을 사용합니다.</p>
+</li>
+<li>
+<p>iSCSI만 해당: replacement_timeout' 매개변수 값을 120으로 설정합니다.</p>
 <div class="paragraph">
-<p>권장 설정을 사용하여 KVM(커널 기반 가상 시스템)도 구성할 수 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.</p>
+<p>iscsi replacement_timeout' 매개변수는 iSCSI 계층에서 명령이 실패하기 전에 시간 제한 시간 초과 경로 또는 세션이 다시 설정될 때까지 대기해야 하는 시간을 제어합니다. iSCSI 구성 파일에서 replacement_timeout 값을 120으로 설정하는 것이 좋습니다.</p>
 </div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">예</div>
+<div class="content">
+<pre># grep replacement_timeout /etc/iscsi/iscsid.conf
+node.session.timeo.replacement_timeout = 120</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="os-플랫폼별-설정입니다">OS 플랫폼별 설정입니다</h4>
+<div class="paragraph">
+<p>Red Hat Enterprise Linux 7 및 8 시리즈의 경우 스토리지 페일오버 시나리오에서 Veritas Infoscale 환경을 지원하도록 'udev rport' 값을 구성해야 합니다. 다음 파일 내용으로 파일 '/etc/udev/rules.d/40-rport.rules` 생성:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># cat /etc/udev/rules.d/40-rport.rules
+KERNEL=="rport-*", SUBSYSTEM=="fc_remote_ports", ACTION=="add", RUN+=/bin/sh -c 'echo 20 &gt; /sys/class/fc_remote_ports/%k/fast_io_fail_tmo;echo 864000 &gt;/sys/class/fc_remote_ports/%k/dev_loss_tmo'"</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="참고">
+</td>
+<td class="content">
+Veritas와 관련된 다른 모든 설정은 표준 Veritas Infoscale 제품 설명서를 참조하십시오.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="다중-경로-공존">다중 경로 공존</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Veritas Infoscale, Linux Native Device Mapper 및 LVM 볼륨 관리자를 비롯한 이기종 다중 경로 환경이 있는 경우 Veritas 제품 관리 가이드를 참조하여 구성 설정을 확인하십시오.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="알려진-문제-및-제한-사항">알려진 문제 및 제한 사항</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">NetApp 버그 ID</th>
-<th class="tableblock halign-left valign-top">제목</th>
-<th class="tableblock halign-left valign-top">설명</th>
-<th class="tableblock halign-left valign-top">Bugzilla ID입니다</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&amp;Display=799323" target="_blank" rel="noopener">"799323"</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Emulex FCoE(OCe10102-FX-D) 호스트 중단 또는 경로 장애가 스토리지 페일오버 작업 중 I/O에서 관찰되었습니다</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">스토리지 페일오버 작업이 포함된 I/O에서 Emulex 10G FCoE 호스트(OCe10102-FX-D)의 호스트 중단 또는 경로 장애가 관찰될 수 있습니다. 이러한 경우 "드라이버 버퍼 풀이 비어 있음, IO 작동 중 및 SCSI 계층 I/O 중단 요청 상태" 메시지가 표시될 수 있습니다.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1061755" target="_blank" rel="noopener">"1061755"</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&amp;Display=836875" target="_blank" rel="noopener">"836875"</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iSCSI 다중 경로 LUN에 설치된 RHEL 7.0 OS를 부팅하는 동안 IP 주소가 항상 할당되는 것은 아닙니다</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iSCSI 다중 경로(iSCI) LUN에 루트(/)를 설치할 때 이더넷 인터페이스의 IP 주소가 커널 명령줄에 지정되어 iSCSI 서비스가 시작되기 전에 IP 주소가 할당됩니다. 그러나 iSCSI 서비스가 시작되기 전에 dracut은 부팅 중에 모든 이더넷 포트에 IP 주소를 할당할 수 없습니다. 이로 인해 IP 주소가 없는 인터페이스에서 iSCSI 로그인이 실패합니다. iSCSI 서비스가 로그인을 여러 번 시도하여 OS 부팅 시간이 지연되는 것을 볼 수 있습니다.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1114966" target="_blank" rel="noopener">"1114966"</a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="릴리즈-노트">릴리즈 노트</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="asm-미러링">ASM 미러링</h3>
 <div class="paragraph">
-<p>ASM 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 <a href="https://www.netapp.com/us/media/tr-3633.pdf" target="_blank" rel="noopener">"ONTAP 기반의 Oracle 데이터베이스"</a> 를 참조하십시오.</p>
-</div>
+<p>알려진 문제와 제한 사항은 없습니다.</p>
 </div>
 </div>
 </div>
