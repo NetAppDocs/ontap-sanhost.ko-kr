@@ -234,11 +234,11 @@ NOTE: Oracle Linux 7.4 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
+| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. | 해당 없음 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1109468["1109468"^] | QLE8362 카드가 있는 OL7.4 하이퍼바이저에서 펌웨어 덤프를 발견했습니다 | OL7.4 하이퍼바이저에서 QLE8362 카드를 사용하여 스토리지 페일오버 작업을 수행하는 동안 펌웨어 덤프가 가끔 관찰됩니다. 펌웨어 덤프하면 호스트에서 I/O 중단이 발생할 수 있으며 이 경우 최대 500초가 될 수 있습니다. 어댑터가 펌웨어 덤프를 완료하면 I/O 작업이 정상적으로 재개됩니다. 호스트에 추가 복구 절차가 필요하지 않습니다. 펌웨어 덤프를 표시하기 위해 /var/log/message 파일에 다음 메시지가 표시됩니다. ql2xxx[0000:0c:00.3]-d001:8: 임시 버퍼에 저장된 펌웨어 덤프(8/ffc90008901000), 덤프 상태 플래그(0x3f) | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=16039["16039"^] 
 |===
-
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_74.html#known-problems-and-limitations["알려진 문제"] RHEL(Red Hat Enterprise Linux) 7.4의 경우
-
 
 
 == 릴리즈 노트

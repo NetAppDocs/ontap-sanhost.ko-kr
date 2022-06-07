@@ -271,6 +271,9 @@ devices {
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
+| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. | 해당 없음 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1139053["1139053"^] | 스토리지 페일오버 작업 중 RHEL7.5에서 QLogic QLE2672 16GB FC를 사용하여 커널이 중단됩니다 | QLogic QLE2672 16GB 파이버 채널 호스트 버스 어댑터를 사용하는 RHEL7U5 커널에서 스토리지 페일오버 작업 중에 커널 패닉이 발생합니다. 커널 패닉으로 인해 RHEL 7.5가 재부팅되어 애플리케이션 중단이 발생합니다. kdump가 구성된 경우 커널 패닉이 /var/crash/directory 아래에 vmcore 파일을 생성합니다. vmcore 파일은 실패의 원인을 이해하는 데 사용됩니다. 이 경우 커널 중단 후 "[exception RIP:get_next_timer_interrupt+440]" 문자열을 사용하여 vmcore 파일에 기록되는 "get_next_interrupt+440" 모듈에서 패닉이 관찰되었습니다. 호스트 운영 체제를 재부팅하고 필요에 따라 애플리케이션을 재시작하여 운영 체제를 복구할 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1542564["1542564)를 참조하십시오"^] 
 
 

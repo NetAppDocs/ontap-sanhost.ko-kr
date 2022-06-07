@@ -241,6 +241,9 @@ NOTE: Oracle Linux 7.8 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
+| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. | 해당 없음 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311575["1311575를 참조하십시오"^] | Qlogic QLE2672(16G)로 스토리지 페일오버 중 읽기/쓰기 작업이 보조 경로를 통해 전환되지 않아 IO 지연 발생 | QLogic QLE2672 16G HBA를 사용하는 Oracle Linux 7.7 커널(5.4.17-2011.0.7.el7uek.x86_6)에서 스토리지 페일오버 작업 중에 보조 경로를 통해 I/O 작업을 재개하지 못할 수 있습니다. 스토리지 페일오버 중 운영 경로가 차단되어 입출력 진행이 중지되는 경우 보조 경로를 통해 입출력 작업이 재개되지 않아 입출력 지연이 발생할 수 있습니다. I/O 작업은 스토리지 페일오버 반환 작업이 완료된 후 기본 경로가 온라인 상태가 된 후에만 다시 시작됩니다. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=17171["17171"^] 
 
 
@@ -252,5 +255,3 @@ NOTE: Oracle Linux 7.8 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327)을 참조하십시오"^] | Qlogic QLE2672(16G) 및 QLE2742(32G)를 사용한 스토리지 페일오버 중에 IO 지연이 관찰되고 Rports가 차단됨 상태로 전환되고 있음 | 스토리지 페일오버 작업 중에 RHEL(Red Hat Enterprise Linux) 7.6에서 QLogic QLE2672 16G 호스트를 사용하는 FC(Fibre Channel) 원격 포트가 차단될 수 있습니다. 스토리지 노드가 다운될 때 논리 인터페이스가 다운되기 때문에 원격 포트는 스토리지 노드 상태를 차단됨 으로 설정합니다. QLogic QLE2672 16G 호스트와 QLE2742 32Gb 파이버 채널(FC) 호스트 버스 어댑터(HBA)를 모두 실행하는 경우 차단된 포트로 인해 IO 진행이 중지될 수 있습니다. 스토리지 노드가 최적 상태로 돌아오면 논리 인터페이스도 함께 가동되고 원격 포트는 온라인 상태가 됩니다. 그러나 원격 포트는 여전히 차단되어 있을 수 있습니다. 이 차단된 상태는 다중 경로 계층의 LUN에 장애가 발생한 것으로 등록됩니다. 다음 명령을 사용하여 원격 포트의 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_stat 차단된 온라인 온라인 온라인 온라인 온라인 온라인 상태의 출력은 다음과 같습니다 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=16853["16853)을 참조하십시오"^] 
 |===
-
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_78.html#known-problems-and-limitations["알려진 문제"] RHEL(Red Hat Enterprise Linux) 7.8의 경우

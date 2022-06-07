@@ -252,6 +252,9 @@ devices {
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
+| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. | 해당 없음 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1186754["1186754"^] | QLogic QLE2742 호스트가 있는 RHEL7U6의 원격 포트 상태는 호스트 검색 중에 차단될 수 있습니다 | 호스트를 검색하는 동안 QLogic QLE2742 어댑터를 사용하는 RHEL7U6 호스트의 FC 원격 포트 상태가 차단됨 상태로 전환될 수 있습니다. 이러한 원격 포트가 차단되면 LUN에 대한 경로를 사용할 수 없게 될 수 있습니다. 스토리지 페일오버 중에 경로 이중화가 감소되어 I/O 중단이 발생할 수 있습니다. 다음 명령을 입력하여 원격 포트 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_state | link:https://bugzilla.redhat.com/show_bug.cgi?id=1628039["1628039"^] 
 
 

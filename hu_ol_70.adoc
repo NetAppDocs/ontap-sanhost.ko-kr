@@ -265,9 +265,6 @@ NOTE: Oracle Linux 7.0 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=916501["916501)을 참조하십시오"^] | IO를 통한 스토리지 페일오버 작업 중에 QLogic 10G FCoE(QLE8152) 호스트 커널 충돌이 관찰되었습니다 | 10G FCoE Qlogic(QLE8152) 호스트의 Qlogic 드라이버 모듈에서 커널 충돌이 관찰될 수 있습니다. 입출력의 스토리지 페일오버 작업 중에 충돌이 발생합니다. 이 충돌의 발생 가능성은 높아 호스트의 IO 중단 시간이 길어집니다. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=15019["15019"^] 
 |===
 
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_70.html#known-problems-and-limitations["알려진 문제"] Red Hat Enterprise Linux(RHEL) 7.0의 경우
-
-
 
 == 릴리즈 노트
 

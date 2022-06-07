@@ -271,6 +271,9 @@ devices {
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
+| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. | 해당 없음 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1258856["1258856을 참조하십시오"^] | 스토리지 페일오버 작업 중 Emulex LPe16002 16GB FC를 사용하는 RHEL7U7에서 원격 포트가 차단됨 상태로 전환되었습니다 | 스토리지 페일오버 작업 중에 원격 포트가 LPe16002 16GB FC 어댑터가 있는 RHEL 7.7 호스트에서 차단됨 상태로 전환될 수 있습니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로가 발생할 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1743667["1743667"^] 
 
 

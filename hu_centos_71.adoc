@@ -264,7 +264,7 @@ devices {
 
 == 알려진 문제 및 제한 사항
 
-CentOS(Red Hat 호환 커널) 알려진 문제는 를 참조하십시오 link:hu_rhel_71.html#known-problems-and-limitations["알려진 문제"] Red Hat Enterprise Linux(RHEL) 7.1의 경우
+CentOS 7.1에 대해 알려진 문제가 없습니다.
 
 
 

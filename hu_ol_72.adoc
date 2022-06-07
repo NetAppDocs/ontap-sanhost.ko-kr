@@ -247,9 +247,6 @@ NOTE: Oracle Linux 7.2 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사
 Oracle Linux 7.2에는 알려진 문제가 없습니다.
 
 
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_72.html#known-problems-and-limitations["알려진 문제"] Red Hat Enterprise Linux(RHEL) 7.2의 경우
-
-
 
 == 릴리즈 노트
 

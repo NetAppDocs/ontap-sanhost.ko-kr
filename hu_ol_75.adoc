@@ -234,11 +234,11 @@ NOTE: Oracle Linux 7.5 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
+| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. | 해당 없음 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1177239["1177239"^] | 스토리지 페일오버 작업 중에 OL7.5에서 Qlogic QLE2672 16G FC가 있는 커널 중단이 관찰되었습니다 | 커널 4.1.12-112.16.4.el7uek.x86_64 및 Qlogic QLE2672 HBA를 사용하는 Oracle Linux 7(OL7.5)에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 그러면 운영 체제를 재부팅하여 응용 프로그램이 중단됩니다. kdump가 구성된 경우 커널 중단은 /var/crash/ 디렉토리에 vmcore 파일을 생성합니다. 이러한 중단은 vmcore 파일에 기록되고 "exception RIP:kmem_cache_alloc+118" 문자열로 식별되는 모듈 "kmem_cache_alloc+118"에서 확인할 수 있습니다. 커널이 중단된 후에는 호스트 운영 체제를 재부팅하고 애플리케이션을 다시 시작하여 복구할 수 있습니다. |  
 |===
-
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_75.html#known-problems-and-limitations["알려진 문제"] RHEL(Red Hat Enterprise Linux) 7.5의 경우
-
 
 
 == 릴리즈 노트
