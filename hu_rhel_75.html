@@ -277,35 +277,27 @@
     </div>
   </div>
   <div class="n-property-bar__toolbar">
-    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
-      <div id="ie-i18n-menu">
-      <span class="ie-i18n-lang">한국어</span>
-        <button class="ie-i18n-icon-container" type="button">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">한국어</span>
           <svg class="n-globe__icon" aria-labelledby="title">
             <title>globe</title>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/ontap-sanhost/common/svg/sprite.svg#globe"></use>
           </svg>
         </button>
       </div>
-      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
-        <div class="n-language-selector-menu">
-          <ul class="n-menu__list">
-            <li class="n-menu__list-column">
-              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_rhel_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_rhel_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_rhel_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_rhel_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_rhel_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
-                </li></ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_rhel_75.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_rhel_75.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_rhel_75.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_rhel_75.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_rhel_75.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li></ul>
     </div><!-- End Language Selector -->
 
     <div class="n-property-bar__cta"></div>
@@ -1414,7 +1406,7 @@
     $("#toggleContainerPdf").toggle('display');
     $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
-</script><div class="sidebar-nav-container">
+</script><div class="sidebar-nav-container" id="mysidebardiv">
   <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ko-kr/ontap-sanhost/index.html">
         홈
       </a></li><li class="subfolders "><a href="#">
@@ -1803,7 +1795,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-11 15:35:27 +0000">05/11/2022</time>
+    <time datetime="2022-06-07 16:42:11 +0000">06/07/2022</time>
     
   
 
@@ -2188,6 +2180,12 @@ devices {
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1440718</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 <a href="https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7" target="_blank" rel="noopener">"NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">해당 없음</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&amp;Display=1139053" target="_blank" rel="noopener">"1139053"</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">스토리지 페일오버 작업 중 RHEL7.5에서 QLogic QLE2672 16GB FC를 사용하여 커널이 중단됩니다</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">QLogic QLE2672 16GB 파이버 채널 호스트 버스 어댑터를 사용하는 RHEL7U5 커널에서 스토리지 페일오버 작업 중에 커널 패닉이 발생합니다. 커널 패닉으로 인해 RHEL 7.5가 재부팅되어 애플리케이션 중단이 발생합니다. kdump가 구성된 경우 커널 패닉이 /var/crash/directory 아래에 vmcore 파일을 생성합니다. vmcore 파일은 실패의 원인을 이해하는 데 사용됩니다. 이 경우 커널 중단 후 "[exception RIP:get_next_timer_interrupt+440]" 문자열을 사용하여 vmcore 파일에 기록되는 "get_next_interrupt+440" 모듈에서 패닉이 관찰되었습니다. 호스트 운영 체제를 재부팅하고 필요에 따라 애플리케이션을 재시작하여 운영 체제를 복구할 수 있습니다.</p></td>
@@ -2372,4 +2370,5 @@ devices {
     </script>
     <script src='/ko-kr/ontap-sanhost/js/www-ntap.js'></script>
     <script src='/ko-kr/ontap-sanhost/js/tabbed-blocks.js'></script>
+    <script src='/ko-kr/ontap-sanhost/js/sidebar.js'></script>
   </body></html>
