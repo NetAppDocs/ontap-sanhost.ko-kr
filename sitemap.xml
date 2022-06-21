@@ -580,6 +580,13 @@
     </url>
   
     <url>
+      <loc>https://docs.netapp.com/ko-kr/ontap-sanhost/hu_rhel_86.html</loc>
+      
+      <lastmod>2022-06-21T14:17:40+00:00</lastmod>
+      
+    </url>
+  
+    <url>
       <loc>https://docs.netapp.com/ko-kr/ontap-sanhost/hu_sles_12.html</loc>
       
       <lastmod>2022-05-11T15:35:27+00:00</lastmod>
@@ -855,7 +862,7 @@
     <url>
       <loc>https://docs.netapp.com/ko-kr/ontap-sanhost//search.html</loc>
       
-      <lastmod>2022-06-14T14:28:43+00:00</lastmod>
+      <lastmod>2022-06-21T14:18:01+00:00</lastmod>
       
     </url>
   
