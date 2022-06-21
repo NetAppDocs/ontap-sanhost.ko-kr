@@ -2411,4 +2411,10 @@
   <block id="c0965c2d259d63a3e2cbab60c837eaaa" category="inline-link-macro">Host Utilities 호스트 구성</block>
   <block id="903a5a2a39aaeff84744ed68f14407d4" category="list-text"><block ref="903a5a2a39aaeff84744ed68f14407d4" category="inline-link-macro-rx"></block></block>
   <block id="2ee1fba4400a50245e66ef649b54d588" category="sidebar">AIX HU 6.1을 설치합니다</block>
+  <block id="b767aaa513fc8b09074940ccea06b212" category="summary">ONTAP에서 Red Hat Enterprise Linux 8.6을 사용하는 방법을 설명합니다</block>
+  <block id="0202939493cea9d89d8217a646a65b54" category="doc">NetApp ONTAP 기반의 Red Hat Enterprise Linux 8.6 사용</block>
+  <block id="be200813e91d3b0e3285391fd2e20825" category="paragraph">RHEL(Red Hat Enterprise Linux) 8.6의 경우, '/etc/multipath.conf' 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.6은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="98d83a607473e5d6dab1096f6758273a" category="paragraph">RHEL 8.6 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일되었습니다.</block>
+  <block id="18b8e1deb73eabf9425b04753d2b006d" category="paragraph">RHEL 8.6에는 알려진 문제가 없습니다.</block>
+  <block id="9b402891c0d38b9c654dcfa36df9d722" category="sidebar">8.6</block>
 </blocks>
