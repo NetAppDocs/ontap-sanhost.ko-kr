@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_aix_61_rn.html 
 keywords: host utilities, aix, 6.1 netapp, ontap 
-summary: Linux Unified Host Utilities 7.1 릴리스 정보 
+summary: AIX Host Utilities 6.1의 릴리스 정보 
 ---
 = AIX Host Utilities 6.1 릴리스 정보
 :toc: macro
