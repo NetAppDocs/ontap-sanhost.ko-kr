@@ -17,6 +17,8 @@ sidebar:
       entries:
       - title: AIX HU 6.1을 설치합니다
         url: "/hu_aix_61.html"
+      - title: 릴리즈 노트
+        url: "/hu_aix_61_rn.html"
     - title: HPUX 호스트 유틸리티
       url: "/hu_hpux_60.html"
     - title: Linux Unified Host Utilities를 참조하십시오
