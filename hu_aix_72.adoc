@@ -212,6 +212,16 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 
 
+== AIX 지원(SM-BC 포함
+
+ONTAP 9.11.1부터 AIX는 SM-BC에서 지원됩니다. AIX 구성에서 운영 클러스터는 "활성" 클러스터입니다.
+
+AIX 구성에서 페일오버는 중단을 야기합니다. 각 페일오버 시 호스트에서 재검색을 수행하여 I/O 작업을 재개해야 합니다.
+
+SM-BC용 AIX를 구성하려면 기술 자료 문서를 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["SnapMirror 비즈니스 연속성(SM-BC)에 대한 AIX 호스트를 구성하는 방법"^].
+
+
+
 == 알려진 문제 및 제한 사항
 
 [cols="4*"]

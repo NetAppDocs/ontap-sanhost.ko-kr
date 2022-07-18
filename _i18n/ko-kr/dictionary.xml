@@ -2426,4 +2426,9 @@
   <block id="805a476dee7a3e2c96d744778fabadf2" category="admonition">Oracle Linux 8.6 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용합니다 <block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.6의 경우</block>
   <block id="eb39e2dacde05fafa987d04a67eb15ff" category="paragraph">Oracle Linux 8.6에는 알려진 문제가 없습니다.</block>
   <block id="5ebe49302359fb6e4d762fdceb288864" category="admonition">Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 <block ref="10ee08d1b3d909bc389f3b317276174b" category="inline-link-macro-rx"></block> 섹션을 참조하십시오.</block>
+  <block id="c0555368ec9919ce9b1c9712c00dbb76" category="section-title">AIX 지원(SM-BC 포함</block>
+  <block id="a87c560166b76536072b61a847b883d2" category="paragraph">ONTAP 9.11.1부터 AIX는 SM-BC에서 지원됩니다. AIX 구성에서 운영 클러스터는 "활성" 클러스터입니다.</block>
+  <block id="244c37afdc307098d90d497c08f88069" category="paragraph">AIX 구성에서 페일오버는 중단을 야기합니다. 각 페일오버 시 호스트에서 재검색을 수행하여 I/O 작업을 재개해야 합니다.</block>
+  <block id="ba865279c8bb1f9a639935e3cb2406b0" category="inline-link-macro">SnapMirror 비즈니스 연속성(SM-BC)에 대한 AIX 호스트를 구성하는 방법</block>
+  <block id="ce41c78a17a5925101abf561eb152ad3" category="paragraph">SM-BC용 AIX를 구성하려면 기술 자료 문서를 참조하십시오 <block ref="bfd553e439e8f0adcfe76e0cf010b4a4" category="inline-link-macro-rx"></block>.</block>
 </blocks>
