@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_65.html 
-keywords: host utilities, red hat, rhel, linux, 6.5, netapp, ontap 
-summary: ONTAP와 함께 Red Hat Enterprise Linux 6.5를 사용하는 방법에 대해 설명합니다 
+permalink: hu_rhel_90.html 
+keywords: host utilities, red hat, rhel, linux, 8.6, netapp, ontap 
+summary: ONTAP에서 Red Hat Enterprise Linux 8.6을 사용하는 방법을 설명합니다 
 ---
-= NetApp ONTAP와 함께 Red Hat Enterprise Linux 6.5 사용
+= NetApp ONTAP와 함께 Red Hat Enterprise Linux 9.0 사용
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,15 +20,16 @@ summary: ONTAP와 함께 Red Hat Enterprise Linux 6.5를 사용하는 방법에 
 
 
 
-== Linux Unified Host Utilities 설치
+== Linux Unified Host Utilities를 설치합니다
 
-NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support 사이트"^] 32비트 및 64비트 .rpm 파일 구성에 적합한 파일을 모르는 경우 를 사용합니다 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 상호 운용성 매트릭스 툴"^] 필요한 것을 확인합니다.
+NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 64비트 .rpm 파일
 
 Linux Unified Host Utilities를 설치하는 것이 좋지만 반드시 설치해야 하는 것은 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 
 현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 또는 를 업그레이드해야 합니다. 이 유틸리티를 제거하고 다음 단계를 따라 최신 버전을 설치해야 합니다.
 
-. 에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support 사이트"^] 사이트를 호스트에 연결.
+.단계
+. 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 호스트에.
 . 다음 명령을 사용하여 소프트웨어 패키지를 설치합니다.
 +
 "rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
@@ -58,7 +59,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN 부팅
 
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=67197;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -77,18 +78,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 == 다중 경로
 
-RHEL(Red Hat Enterprise Linux) 6.5의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.
-
-. initrd-image의 백업을 생성합니다.
-. ' rdloaddriver=scsi_dh_ALUA'를 작동하려면 다음 매개 변수 값을 ALUA 및 비 ALUA용 커널에 추가하십시오
-+
-....
-kernel /vmlinuz-2.6.32-358.6.1.el6.x86_64 ro root=/dev/mapper/ vg_ibmx355021082-lv_root rd_NO_LUKS rd_LVM_LV=vg_ibmx355021082/ lv_root LANG=en_US.UTF-8 rd_LVM_LV=vg_ibmx355021082/lv_swap rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet rdloaddriver=scsi_dh_alua
-....
-. mkinitrd 명령을 사용하여 initrd-image를 다시 생성합니다. RHEL 6x 이상 버전에서는 mkinitrd -f /boot/initrd-"uname -r".img uname -r" 명령을 사용하거나 dracut -f 명령을 사용합니다
-. 호스트를 재부팅합니다.
-. 'cat/proc/CMDLINE' 명령의 출력을 확인하여 설정이 완료되었는지 확인합니다.
-
+RHEL(Red Hat Enterprise Linux) 9.0의 경우 '/etc/multipath.conf' 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 9.0은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
 
 'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.
 
@@ -103,13 +93,13 @@ kernel /vmlinuz-2.6.32-358.6.1.el6.x86_64 ro root=/dev/mapper/ vg_ibmx355021082-
 [listing]
 ----
 # multipath -ll
-3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
-size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='round-robin 0' prio=50 status=active
-|- 1:0:8:1  sdb 8:16 active ready running
-|- 2:0:8:1  sdd 8:48 active ready running
-|- 1:0:9:1  sdc 8:32 active ready running
-|- 2:0:9:1  sde 8:64 active ready running
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy  8:288     active ready running
+  |- 11:0:10:1  sdml 69:464   active ready running
+  |- 11:0:11:1  sdpt  131:304  active ready running
 ----
 
 NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.
@@ -125,14 +115,14 @@ NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가
 [listing]
 ----
 # multipath -ll
-3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
-size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='round-robin 0' prio=50 status=active
-| |- 1:0:8:1  sdb 8:16 active ready running
-| `- 2:0:8:1  sdd 8:48 active ready running
-`-+- policy='round-robin 0' prio=10 status=enabled
-  |- 1:0:9:1  sdc 8:32 active ready running
-  `- 2:0:9:1  sde 8:64 active ready running
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
 ----
 
 NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.
@@ -141,7 +131,7 @@ NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가
 
 == 권장 설정
 
-RHEL 6.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.
+RHEL 9.0 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.
 
 다중경로 데몬을 시작하려면 'multipath.conf' 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다
 
@@ -208,7 +198,7 @@ blacklist {
 | Fast_IO_FAIL_TMO | 5 
 
 
-| 피처 | "3 queue_if_no_path pg_init_retries 50" 
+| 피처 | "2 pg_init_retries 50" 
 
 
 | Flush_on_last_del.(마지막 삭제 시 플러시 | "예" 
@@ -226,7 +216,7 @@ blacklist {
 | path_grouping_policy | "group_by_prio(그룹 기준/원시)" 
 
 
-| 경로 선택 | "라운드 로빈 0" 
+| 경로 선택 | "서비스 시간 0" 
 
 
 | polling_interval입니다 | 5 
@@ -277,25 +267,8 @@ devices {
 
 == 알려진 문제 및 제한 사항
 
-[cols="4*"]
-|===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+RHEL 9.0에는 알려진 문제가 없습니다.
 
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=760515["760515를 참조하십시오"^] | 스토리지 페일오버 작업 중에 RHEL 6.5 8G Qlogic FC SAN 호스트에서 경로 장애 또는 호스트 작동이 멈춤을 관찰했습니다 | 스토리지 페일오버 작업 중에 RHEL 6.5 8G Qlogic FC SAN 호스트에서 경로 장애 또는 호스트 작동이 멈춤을 관찰했습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1033136["1033136)을 참조하십시오"^] 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=758271["758271"^] | 사용자 지정 initrd(dracut -f)로 부팅할 때 bnx2 펌웨어가 로드되지 않음 | 사용자 지정 initrd로 부팅하는 동안 bnx2 펌웨어가 로드되지 않아 Broadcom NetXtreme II 기가비트 컨트롤러 포트가 ping을 하지 않습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1007463["1007463)을 참조하십시오"^] 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799394["799394)를 참조하십시오"^] | RHEL 6U5: Emulex 16G FC(LPe16002B-M6) 호스트 충돌은 스토리지 페일오버 작업이 있는 I/O에서 관찰됩니다 | 스토리지 페일오버 작업이 수행되는 I/O 중에는 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 표시됩니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1063699["1063699"^] 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=786571["786571"^] | 스토리지 페일오버 작업 시 I/O 도중 RHEL 6.5에서 QLogic FCoE 호스트 중단/경로 장애가 관찰되었습니다 | 스토리지 페일오버 작업이 있는 I/O 동안 RHEL 6.5에서 QLogic FCoE(QLE8242) 호스트 중단/경로 오류가 관찰되었습니다. 이러한 경우 "Mailbox cmd timeout occurred, cmd=0x54, MB[0]=0x54"라는 메시지가 표시될 수 있습니다. ISP 중단 예약" 메시지가 호스트 중단/경로 오류로 이어집니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1068619["1068619)를 참조하십시오"^] 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=801580["801580"^] | 스토리지 페일오버 작업 중 I/O 중에 QLogic 16G FC 호스트가 중단되거나 RHEL 6.5에서 경로 장애가 관찰되었습니다 | 스토리지 페일오버 작업 중에 QLogic 16G FC 호스트(QLE2672)에서 600초 이상의 I/O 지연이 관찰됩니다. 이러한 경우 "Failed mbx[0] = 54, MB[1] = 0, MB[2] = 76b9, MB[3] = 5200, cmd = 54" 메시지가 표시됩니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1068622["1068622)를 참조하십시오"^] 
-|===
 
 
 == 릴리즈 노트

@@ -36,7 +36,7 @@ Host Utilities가 지원하는 운영 체제 버전 및 업데이트에 대한 �
 PowerVM 기능에 대한 자세한 내용은 IBM PowerVM Live Partition Mobility Red Book을 참조하십시오.
 
 ====
-Host Utilities 소프트웨어는 압축된 단일 파일로 패키징됩니다. 압축된 파일 및 문서는 NetApp Support 사이트에서 다운로드할 수 있습니다. ONTAP SAN 호스트 구성은 호스트 유틸리티를 설치 및 설정하여 사용자 환경 및 프로토콜에서 작동하도록 하는 지침을 제공합니다.
+Host Utilities 소프트웨어는 압축된 단일 파일로 패키징됩니다. 에서 압축된 파일 및 문서를 다운로드할 수 있습니다 link:link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^]. ONTAP SAN 호스트 구성은 호스트 유틸리티를 설치 및 설정하여 사용자 환경 및 프로토콜에서 작동하도록 하는 지침을 제공합니다.
 
 
 NOTE: Clustered Data ONTAP 배포를 위해 모든 FC 및 FCoE 이니시에이터에 동적 추적을 설정해야 합니다.
@@ -57,7 +57,7 @@ NOTE: Clustered Data ONTAP 배포를 위해 모든 FC 및 FCoE 이니시에이�
 | BugID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/872113["872113)을 참조하십시오"] | 'sanlun lun show –p' 명령을 실행하면 일부 버전의 AIX 호스트 OS에서 메모리 오류가 발생할 수 있습니다 | 'show -p' 명령을 실행하는 동안 AIX 코어 덤프의 간헐적 인스턴스가 보고됩니다. Sanlun의 "lun show -p" 옵션은 호스트에서 검색된 모든 LUN에 대한 경로 다중화 정보를 제공합니다. 이 정보는 LUN에서 가져온 SCSI 디바이스, 경로 상태(운영 또는 보조) 및 기타 세부 정보를 제공하는 데 사용됩니다. 그러나 일부 AIX 호스트에서 'sanlun lun show -p' 명령을 실행하면 메모리 오류가 발생할 수 있습니다. 이 문제는 '-p' 옵션으로 sanlun 명령을 실행할 때만 발생합니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/872113["872113)을 참조하십시오"^] | 'sanlun lun show –p' 명령을 실행하면 일부 버전의 AIX 호스트 OS에서 메모리 오류가 발생할 수 있습니다 | 'show -p' 명령을 실행하는 동안 AIX 코어 덤프의 간헐적 인스턴스가 보고됩니다. Sanlun의 "lun show -p" 옵션은 호스트에서 검색된 모든 LUN에 대한 경로 다중화 정보를 제공합니다. 이 정보는 LUN에서 가져온 SCSI 디바이스, 경로 상태(운영 또는 보조) 및 기타 세부 정보를 제공하는 데 사용됩니다. 그러나 일부 AIX 호스트에서 'sanlun lun show -p' 명령을 실행하면 메모리 오류가 발생할 수 있습니다. 이 문제는 '-p' 옵션으로 sanlun 명령을 실행할 때만 발생합니다. 
 |===
 
 
@@ -70,7 +70,7 @@ Host Utilities를 효율적으로 사용하려면 네트워크 같은 특정 기
 | 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"] | AIX HU Sanlun가 잘못된 HBA 속도를 보고합니다 | sanlun fcp show adapter –v 명령을 실행하는 동안 잘못된 HBA 속도를 표시하는 sandlun 인스턴스가 보고됩니다. 'anlun fcp show adapter –v' 명령은 어댑터의 지원되는 속도와 협상된 속도와 같은 HBA 카드 정보를 표시합니다. 이는 보고 문제일 뿐입니다. 실제 속도를 확인하려면 'fcstat fcsx' 명령을 사용합니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"^] | AIX HU Sanlun가 잘못된 HBA 속도를 보고합니다 | sanlun fcp show adapter –v 명령을 실행하는 동안 잘못된 HBA 속도를 표시하는 sandlun 인스턴스가 보고됩니다. 'anlun fcp show adapter –v' 명령은 어댑터의 지원되는 속도와 협상된 속도와 같은 HBA 카드 정보를 표시합니다. 이는 보고 문제일 뿐입니다. 실제 속도를 확인하려면 'fcstat fcsx' 명령을 사용합니다. 
 |===
 link:https://mysupport.netapp.com/site/["NetApp 온라인 버그"] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다. 사용할 수 있는 일부 키워드 조합과 버그 유형은 다음과 같습니다.
 
@@ -92,11 +92,11 @@ SAN Host Utilities 설명서는 에 포함되어 있습니다 link:https://docs.
 
 * ONTAP 스토리지 시스템 구성 및 관리 *
 
-* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["ONTAP 소프트웨어 설치 안내서"] ONTAP 버전용
-* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["ONTAP 산 관리 가이드"] ONTAP 버전용
-* 를 클릭합니다 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["ONTAP 릴리즈 노트"] ONTAP 버전용
-* link:https://mysupport.netapp.com/site/["NetApp 상호 운용성 매트릭스"]
-* link:https://hwu.netapp.com/["Hardware Universe"] (이전의 시스템 구성 가이드)
-* link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["지원되는 Fibre Channel SAN 토폴로지"]
-* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343["Host Utilities 호스트 구성"]
+* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["ONTAP 소프트웨어 설치 안내서"^] ONTAP 버전용
+* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["ONTAP 산 관리 가이드"^] ONTAP 버전용
+* 를 클릭합니다 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["ONTAP 릴리즈 노트"^] ONTAP 버전용
+* link:https://imt.netapp.com/matrix/#welcome["NetApp 상호 운용성 매트릭스"^]
+* link:https://hwu.netapp.com/["Hardware Universe"^] (이전의 시스템 구성 가이드)
+* link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["지원되는 Fibre Channel SAN 토폴로지"^]
+* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343["Host Utilities 호스트 구성"^]
 
