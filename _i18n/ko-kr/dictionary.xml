@@ -2531,4 +2531,21 @@
   <block id="a7a862c0d782706aace5e07821f4f4c9" category="sidebar">Solaris HU 6.2를 설치합니다</block>
   <block id="cf5f238fca8b6e155078aa41c175743a" category="sidebar">9.0</block>
   <block id="38aef0bc7cf230dfcf5476915774aa95" category="sidebar">RHEL 9</block>
+  <block id="3f11bd75d4bcc18b35f7eeb9b9966c9c" category="summary">ONTAP를 사용하여 RHEL 8.6에 대한 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="b9eb9bf81c2c715367e1e8b187ea1f75" category="doc">ONTAP가 있는 RHEL 8.6의 NVMe-oF 호스트 구성</block>
+  <block id="fefda4d440faefacdda0158d1d3fb686" category="paragraph">NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(비대칭 네임스페이스 액세스)가 포함된 RHEL 8.6에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 ALUA로, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. RHEL 8.6에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 자세한 내용은 여기 에 설명되어 있습니다.</block>
+  <block id="d5328c13c170a1ce1607fad34405b646" category="list-text">RHEL 8.6은 NVMe/FC 외에 NVMe/TCP(기술 미리 보기 기능)에 대한 지원을 포함합니다. 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시할 수 있습니다.</block>
+  <block id="8b247e50297ab7aed14b6a8ff2b845c9" category="list-text">RHEL 8.6의 경우, 기본적으로 in-kernel NVMe multipath가 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="be5312f4fb03f3ebb989659ec7b543ee" category="inline-link">RHEL 8.6 릴리즈 노트</block>
+  <block id="4e51b6ca34ea06c883ab4b1c963bee49" category="list-text">RHEL 8.6의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오<block ref="e25c0351018067ddae5b70edc45d84fc" category="inline-link-rx"></block> 를 참조하십시오.</block>
+  <block id="5060cc5b216e626855bc2ef2a9b98372" category="list-text">서버에 RHEL 8.6을 설치합니다. 설치가 완료되면 지정된 RHEL 8.6 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="67a7c2662b17653a8ac76448e703f0b7" category="list-text">설치가 완료되면 지정된 RHEL 8.6 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="71dcdd59971df1a5bb4dfbb60ffe2bad" category="list-text">이니시에이터 포트가 가동 및 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.</block>
+  <block id="95e3f3faa5bf8e48441621d165c05044" category="paragraph">RHEL 8.6 커널에 포함된 기본 받은 편지함 "qla2xxx" 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다.</block>
+  <block id="b964263fad43476391626a8c5994d66f" category="paragraph">SFO와 같은 ONTAP 장애 조치 이벤트를 편안하게 넘기 위해서는 Ctrl_Loss_TMO 타이머를 조정하여 30분 이상의 재시도 기간을 설정하는 것이 좋습니다. 다음은 세부 정보입니다.</block>
+  <block id="346a874868cfe5950cc070d607e10dda" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF combos가 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="7e4e5f748eea832eccfa25b6f84c9beb" category="list-text">노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 'NVMe connect-all' 명령을 실행합니다. 연결 중에 더 긴 "Ctrl_Loss_TMO" 기간(예: 30분, '-l 1800'을 통해 설정 가능)을 경과하여 경로 손실 시 더 긴 기간 동안 재시도해야 합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="3bb5487a25f2c91e7d62566cb6026b68" category="list-text">ONTAP 네임스페이스가 호스트에 제대로 반영되는지 확인합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="f2af591771f10d63662bd947024ee100" category="list-text">각 경로의 컨트롤러 상태가 라이브이고 적절한 ANA 상태인지 확인합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="c13733aade7c22e1d6c0fb7be8a8c754" category="list-text">NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다. 예를 들면 다음과 같습니다.</block>
 </blocks>
