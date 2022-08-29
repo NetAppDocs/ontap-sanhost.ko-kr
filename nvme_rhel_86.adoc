@@ -140,7 +140,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/module/lpfc/version
 0:14.0.0.4
 ----
-. lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인합니다
+. lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인한다
 +
 [listing]
 ----
@@ -316,7 +316,7 @@ sectype: none
 # cat /sys/module/nvme_core/parameters/multipath
 Y
 ----
-. 각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: "NetApp ONTAP Controller"로 설정된 모델 및 "라운드 로빈"으로 설정된 로드 밸런싱 지정값이 호스트에 올바르게 반영되는지 확인하십시오.
+. 각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: "NetApp ONTAP Controller"로 설정된 모델 및 "라운드 로빈"으로 설정된 로드 밸런싱 "iopolicy"가 호스트에 올바르게 반영되는지 확인합니다.
 +
 [listing]
 ----
@@ -474,17 +474,25 @@ NVME RPORT WWPN x200900a098c80f09 WWNN x200800a098c80f09 DID x010301 TARGET DISC
 NVME Statistics
 LS: Xmt 0000000000000006 Cmpl 0000000000000006
 FCP: Rd 0000000000000073 Wr 0000000000000005 IO 0000000000000031
-Cmpl 00000000000000a8 Outstanding 0000000000000001`
+Cmpl 00000000000000a8 Outstanding 0000000000000001
 ----
 * 타겟 LIF가 NVMe_info 출력에 위와 같이 표시되지 않으면 의심되는 NVMe/FC 오류에 대한 `/var/log/messages ' 및 dmesg ' 출력을 확인하여 그에 따라 보고 또는 수정하십시오.
 
 
 
 
-| 가져올 검색 로그 항목이 없습니다 | 일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 hostnqn 문자열이 해당 하위 시스템에 추가된 경우에 표시됩니다. | 정확한 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되었는지 확인합니다('vserver NVMe subsystem host show' 명령을 통해 확인). 
+| 가져올 검색 로그 항목이 없습니다  a| 
+일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 "hostnqn" 문자열이 해당 하위 시스템에 추가된 경우 표시됩니다.
+ a| 
+정확한 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되었는지 확인합니다('vserver NVMe subsystem host show' 명령을 통해 확인).
 
 
-| '/dev/NVMe-fabric에 쓸 수 없습니다: 작업이 이미 진행 중입니다. | 컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우 표시됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다. | 없음. NVMe 검색의 경우 잠시 후에 이 명령을 실행해 보십시오. NVMe connect and connect-all의 경우, "NVMe list" 명령을 실행하여 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인하십시오. 
+
+| '/dev/NVMe-fabric에 쓸 수 없습니다: 작업이 이미 진행 중입니다.  a| 
+컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우 표시됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.
+ a| 
+없음. "NVMe 검색"을 위해 잠시 후에 이 명령을 실행해 보십시오. NVMe CONNECT와 CONNECT-ALL의 경우 NVMe list 명령을 실행하여 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인합니다.
+
 |===
 
 

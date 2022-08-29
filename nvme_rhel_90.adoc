@@ -528,10 +528,16 @@ Cmpl 00000000000000a8 Outstanding 0000000000000001
 
 
 
-| NVMe discover, NVMe connect 또는 NVMe connect-all 중에 가져올 검색 로그 항목이 없습니다 | 이 오류 메시지는 일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 hostnqn 문자열이 해당 하위 시스템에 추가된 경우에 표시됩니다. | 정확한 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되었는지 확인합니다('vserver NVMe subsystem host show'를 통해 확인). 
+| NVMe discover, NVMe connect 또는 NVMe connect-all 중에 가져올 검색 로그 항목이 없습니다  a| 
+이 오류 메시지는 일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 "hostnqn" 문자열이 해당 하위 시스템에 추가된 경우에 표시됩니다.
+ a| 
+정확한 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되었는지 확인합니다('vserver NVMe subsystem host show'를 통해 확인).
 
 
-| NVMe Discover, NVMe connect 또는 NVMe connect-all에서 /dev/NVMe-fabric:Operation already in progress | 이 오류 메시지는 컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우에 표시됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다. | 없음. "NVMe 검색"을 위해 잠시 후에 이 명령을 실행해 보십시오. NVMe connect와 connect-all의 경우 NVMe list를 실행하여 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인합니다. 
+
+| NVMe Discover, NVMe connect 또는 NVMe connect-all에서 /dev/NVMe-fabric:Operation already in progress | 이 오류 메시지는 컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우에 표시됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.  a| 
+없음. "NVMe 검색"을 위해 잠시 후에 이 명령을 실행해 보십시오. NVMe connect와 connect-all의 경우 NVMe list를 실행하여 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인합니다.
+
 |===
 
 

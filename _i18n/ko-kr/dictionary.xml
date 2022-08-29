@@ -1197,7 +1197,6 @@
   <block id="3ea394f2d9cebf2dfc911ba5e025db7a" category="section-title">Broadcom/Emulex</block>
   <block id="558772c2923356166b7dbc78142c82d1" category="list-text">지원되는 어댑터를 사용하고 있는지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="b683fa7bfd2f7f01ea49576352757cd5" category="list-text">권장 Broadcom lpfc 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록을 확인하십시오.</block>
-  <block id="46e2b7cc014d11d7552d6921801d0753" category="list-text">lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인합니다</block>
   <block id="2defc9958244f438872605820e3ca11a" category="list-text">이니시에이터 포트가 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.</block>
   <block id="c0aa648bd7e5700f1ad07528684facf8" category="section-title">1MB I/O 크기 활성화(옵션)</block>
   <block id="ebca1c9e44630148af4439559839580e" category="paragraph">ONTAP는 컨트롤러 식별 데이터에 8의 MDTS(MAX Data 전송 크기)를 보고합니다. 즉, 최대 I/O 요청 크기는 최대 1MB여야 합니다. 그러나 Broadcom NVMe/FC 호스트에 대해 크기 1MB의 입출력 요청을 발급하려면 lpfc 매개 변수 "lpfc_sg_seg_cnt"를 기본값 64에서 최대 256까지 범프해야 합니다. 다음 지침에 따라 수행합니다.</block>
@@ -2460,7 +2459,6 @@
   <block id="0300a463a2779250716b195b0f15c1ba" category="paragraph">위 명령에 대한 적절한 인수(예: 적절한 WWNN 문자열, WWPN 문자열 등)를 전달했는지 확인하십시오. 인수가 올바르지만 여전히 이 오류가 표시되는 경우 NVMe 이니시에이터가 "Enabled"로 표시되고 NVMe/FC target LIF가 원격 포트 섹션 아래에 올바르게 표시되는지 '/sys/class/scsi_host/host * /NVMe_info' 출력이 올바른지 확인하십시오. 예를 들면, 다음과 같습니다.</block>
   <block id="ad02181fdbf4245ee0052cfb92cb8bcc" category="paragraph">해결책: 타겟 LIF가 "NVMe_info" 출력에서 위와 같이 표시되지 않으면 의심되는 NVMe/FC 오류에 대해 '/var/log/messages' 및 'dmesg' 출력을 확인하여 그에 따라 보고 또는 수정하십시오.</block>
   <block id="9f7680250af5452ad3bc6e1373a71a11" category="cell">NVMe discover, NVMe connect 또는 NVMe connect-all 중에 가져올 검색 로그 항목이 없습니다</block>
-  <block id="5bb9931249b357349ab3bbe1fedc8d23" category="cell">이 오류 메시지는 일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 hostnqn 문자열이 해당 하위 시스템에 추가된 경우에 표시됩니다.</block>
   <block id="6bd22b028f1c581999993ec8672aea1c" category="cell">정확한 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되었는지 확인합니다('vserver NVMe subsystem host show'를 통해 확인).</block>
   <block id="00443539b6acea3b81b118f7a7f62818" category="cell">NVMe Discover, NVMe connect 또는 NVMe connect-all에서 /dev/NVMe-fabric:Operation already in progress</block>
   <block id="796b7594f30be7947c1efffc9c471c02" category="cell">이 오류 메시지는 컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우에 표시됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.</block>
@@ -2548,4 +2546,19 @@
   <block id="3bb5487a25f2c91e7d62566cb6026b68" category="list-text">ONTAP 네임스페이스가 호스트에 제대로 반영되는지 확인합니다. 예를 들면 다음과 같습니다.</block>
   <block id="f2af591771f10d63662bd947024ee100" category="list-text">각 경로의 컨트롤러 상태가 라이브이고 적절한 ANA 상태인지 확인합니다. 예를 들면 다음과 같습니다.</block>
   <block id="c13733aade7c22e1d6c0fb7be8a8c754" category="list-text">NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="295d37bcf3aa6754427b612bea361663" category="paragraph">이 오류 메시지는 일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 "hostnqn" 문자열이 해당 하위 시스템에 추가된 경우에 표시됩니다.</block>
+  <block id="dcda2cb33413b9ab0c8373225de75578" category="summary">ONTAP에서 RHEL 8.5용 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="3ae77fb5b2d43b5802128bed00b85944" category="doc">ONTAP 8.5를 지원하는 RHEL용 NVMe-oF 호스트 구성</block>
+  <block id="9eea7fd01633455098385cd20b7dd183" category="paragraph">NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(비대칭 네임스페이스 액세스)가 포함된 RHEL 8.5에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 ALUA로, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. RHEL 8.5 및 ONTAP에서 타겟으로 ANA를 사용하는 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 자세한 내용은 여기 에 설명되어 있습니다.</block>
+  <block id="ec81597eac06c85c5ddfa44cc8fcbd52" category="list-text">RHEL 8.5에는 NVMe/FC 외에도 NVMe/TCP(기술 미리 보기 기능) 지원이 포함되어 있습니다. 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시할 수 있습니다.</block>
+  <block id="206f20ba4ee9fc54736165b9006258a5" category="list-text">RHEL 8.5의 경우, in-kernel NVMe multipath가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="46e2bc1ba1e17f9c87c8bdd0665dde6a" category="inline-link">RHEL 8.5 릴리스 정보</block>
+  <block id="ba53163a27cd9bc34ed5a326c3bcd717" category="list-text">RHEL 8.5의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오<block ref="e17db2abe54f171cfce139c1feeab28f" category="inline-link-rx"></block> 를 참조하십시오.</block>
+  <block id="9c7d4fd2f8e0f3f2d80343ad47595e46" category="list-text">서버에 RHEL 8.5 GA를 설치합니다. 설치가 완료되면 지정된 RHEL 8.5 GA 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="3010e81137392b43d689728401eb1ea9" category="list-text">lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인한다</block>
+  <block id="d5236e74852c6cce228c1229faf5ea4f" category="paragraph">RHEL 8.5 GA 커널에 포함된 기본 받은 편지함 "qla2xxx" 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다.</block>
+  <block id="e23d82164b7ed25abb97130635815a09" category="list-text">노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 'NVMe connect-all' 명령을 실행합니다. 연결 중에 더 긴 "Ctrl_Loss_TMO" 기간(예: 30분, '-l 1800'을 통해 설정 가능)을 경과하여 경로 손실 시 더 오랜 시간 재시도합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="431b68e6f738b5c8bf76d7972d17685f" category="paragraph">일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 "hostnqn" 문자열이 해당 하위 시스템에 추가된 경우 표시됩니다.</block>
+  <block id="d9062f55beecc22ab1e0baaa195b1f68" category="paragraph">없음. "NVMe 검색"을 위해 잠시 후에 이 명령을 실행해 보십시오. NVMe CONNECT와 CONNECT-ALL의 경우 NVMe list 명령을 실행하여 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인합니다.</block>
+  <block id="9b2d197e1555229882f18589d7c32cce" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: "NetApp ONTAP Controller"로 설정된 모델 및 "라운드 로빈"으로 설정된 로드 밸런싱 "iopolicy"가 호스트에 올바르게 반영되는지 확인합니다.</block>
 </blocks>
