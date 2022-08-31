@@ -17,7 +17,7 @@ sidebar:
       entries:
       - title: AIX HU 6.1을 설치합니다
         url: "/hu_aix_61.html"
-      - title: 릴리즈 노트
+      - title: 릴리스 정보
         url: "/hu_aix_61_rn.html"
     - title: HP-UX 호스트 유틸리티
       entries:
