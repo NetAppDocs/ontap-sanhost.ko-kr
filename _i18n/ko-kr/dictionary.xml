@@ -2568,4 +2568,14 @@
   <block id="e4dbb8bc2f2492f010d3f33dd68f00c8" category="list-text">NVMe/TCP 어댑터의 상태를 확인합니다.</block>
   <block id="d4babb87959d757516a4f480642224cf" category="list-text">NVMe/TCP 연결을 나열하려면 다음 명령을 사용합니다.</block>
   <block id="75d2257ae841105f67aa7e6940b3fccb" category="list-text">NVMe 네임스페이스에 대한 경로 수를 나열하려면 다음 명령을 사용합니다.</block>
+  <block id="d1672d22493ff360a1f07bc1cfac7524" category="doc">NetApp ONTAP와 함께 SUSE Linux Enterprise Server 15 SP4를 사용합니다</block>
+  <block id="aaf285a33d84d021ddb3cf7d93395617" category="paragraph">SUSE Linux Enterprise Server 15 SP4의 경우 '/etc/multipath.conf' 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. SUSE Linux Enterprise Server 15 SP4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="3dfda629d29a9eff997fc21c726b36da" category="paragraph">SUSE Linux Enterprise Server 15 SP4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정할 수 있도록 컴파일됩니다.</block>
+  <block id="bdb5443c5dd9643367f9496b5fb35d08" category="paragraph">다중경로 데몬을 시작하려면 'multipath.conf' 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다</block>
+  <block id="a96d8f77801154cf5d51080e06fa3215" category="paragraph">'&lt;DevID&gt;'을(를) 제외할 장치의 'WWID' 문자열로 바꿉니다. 다음 명령어를 이용하여 WWID를 결정한다.</block>
+  <block id="9d29c9f01ddee621ba147e8ccc4bc7b0" category="list-text">다음 명령어를 실행해 WWID를 결정한다.</block>
+  <block id="e97b2c87e2a473e6975fd85e7af8bc02" category="list-text">이 WWID를 '/etc/multipath.conf'의 블랙 리스트 스탠자에 추가하십시오.</block>
+  <block id="588664bdfe3aca23316ad7f26a08e2a5" category="paragraph">아래 표에는 ONTAP LUN에 대한 중요 다중 경로 매개 변수와 필요한 값이 나와 있습니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의될 경우 ONTAP LUN에 특별히 적용되는 'multipath.conf'에서 나중에 stanzas로 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체에 문의하여 영향을 완전히 이해해야 합니다.</block>
+  <block id="e1f518829ea0b48c92b1926c70a84380" category="paragraph">SUSE Linux Enterprise Server 15 SP4에는 알려진 문제가 없습니다.</block>
+  <block id="cf79be42f6c9a2f2225f202bfec080c2" category="sidebar">15 SP4</block>
 </blocks>
