@@ -2578,4 +2578,27 @@
   <block id="588664bdfe3aca23316ad7f26a08e2a5" category="paragraph">아래 표에는 ONTAP LUN에 대한 중요 다중 경로 매개 변수와 필요한 값이 나와 있습니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의될 경우 ONTAP LUN에 특별히 적용되는 'multipath.conf'에서 나중에 stanzas로 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체에 문의하여 영향을 완전히 이해해야 합니다.</block>
   <block id="e1f518829ea0b48c92b1926c70a84380" category="paragraph">SUSE Linux Enterprise Server 15 SP4에는 알려진 문제가 없습니다.</block>
   <block id="cf79be42f6c9a2f2225f202bfec080c2" category="sidebar">15 SP4</block>
+  <block id="8da61845fa1ac07e5d54097fe9d2a4cb" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP4용 NVMe/FC를 구성하는 방법에 대해 설명합니다</block>
+  <block id="8eb74debb51b4f25feba23cb4c810b37" category="doc">ONTAP가 포함된 SUSE Linux Enterprise Server 15 SP4용 NVMe-of 호스트 구성</block>
+  <block id="c75db19ac5a0dcb194a365e12ad2a6df" category="paragraph">NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(비대칭 네임스페이스 액세스)가 포함된 SUSE Linux Enterprise Server 15 SP4(SLES15 SP4)에서 지원됩니다. ANA는 NVMe-oF 환경에서 ALUA와 동등한 제품이며, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. SLES15 SP4 및 ONTAP에서 표적으로 ANA를 사용하여 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 자세한 내용은 여기 에 설명되어 있습니다.</block>
+  <block id="6bf6f26e72e1a43152386a3d529598cb" category="list-text">SLES15 SP4는 NVMe/FC 및 기타 전송을 지원합니다.</block>
+  <block id="142ea2bd2623f2c2d64d9ef53c347b24" category="list-text">NVMe-oF에 대한 선언은 지원되지 않습니다. 따라서 SLES15 SP4의 NVMe-of에 대한 LUHU는 지원되지 않습니다. 대신 기본 'NVMe-CLI'에 포함된 NetApp 플러그인을 사용할 수 있습니다. 이 작업은 모든 NVMe-oF 전송에서 작동합니다.</block>
+  <block id="10bc893eed35189e5092c4f181aedb5e" category="list-text">NVMe와 SCSI 트래픽을 모두 동일한 동일한 호스트에서 실행할 수 있습니다. 실제로 이는 일반적으로 배포되는 호스트 구성일 것으로 예상됩니다. 따라서 SCSI의 경우 SCSI LUN에 대해 평소처럼 dm-multipath를 구성하여 mpath 디바이스를 생성할 수 있지만, NVMe multipath를 사용하여 호스트에 NVMe-of multipath 장치를 구성할 수 있습니다.</block>
+  <block id="4b148e1d7f44cff075101f1edbc6a9fe" category="paragraph">을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 지원되는 구성에 대한 정확한 세부 정보</block>
+  <block id="b545ab3ca975cd0517fdd21a1729e795" category="paragraph">SLES15 SP4와 같은 SLES 호스트에서는 커널 내 NVMe 다중 경로가 기본적으로 활성화되어 있습니다. 따라서 여기서는 추가 설정이 필요하지 않습니다. 을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 지원되는 구성에 대한 정확한 세부 정보</block>
+  <block id="4933033127862860b194cbe455635310" category="list-text">SLES15 SP4 MU 호스트에 필수 커널과 'NVMe-CLI' 유지 관리 업데이트(MU) 패키지가 설치되어 있는지 확인합니다.</block>
+  <block id="c5887937b5b23714e6333cc2805b4864" category="list-text">호스트의 '/etc/NVMe/hostnqn'에서 hostnqn 문자열을 확인하고 ONTAP 배열의 해당 하위 시스템에 대한 "hostnqn" 문자열과 올바르게 일치하는지 확인합니다. 예를 들면, 다음과 같습니다.</block>
+  <block id="d9f4f7d9a9eb182e8b8863d6c183e841" category="paragraph">호스트에서 사용 중인 FC 어댑터에 따라 다음 단계를 수행합니다.</block>
+  <block id="75870a630c07f219a37133dad55f104f" category="paragraph">최신 lpfc 드라이버(수신함 및 아웃박스 모두)에는 이미 'lpfc_enable_fc4_type' 기본값이 3으로 설정되어 있으므로 더 이상 '/etc/modprobe.d/lpfc.conf'에서 명시적으로 설정하고 'initrd'를 다시 생성할 필요가 없습니다. lpfc NVMe 지원은 기본적으로 이미 활성화되어 있습니다.</block>
+  <block id="32ecb9890aed827558c7cd1a318fda14" category="paragraph">기존의 기본 받은 편지함 lpfc 드라이버는 이미 최신 버전이며 NVMe/FC와 호환됩니다. 따라서 lpfc Out of Box(OOB) 드라이버를 설치할 필요가 없습니다.</block>
+  <block id="ce48d43c1e6c7a418733e722925a43b8" category="list-text">NVMe/FC 이니시에이터 포트가 활성화되어 있고 타겟 포트를 볼 수 있으며 모두 작동 및 실행 중인지 확인합니다. 이 예에서는 출력에 표시된 대로 이니시에이터 포트 1개만 사용하도록 설정되고 2개의 타겟 LIF에 연결됩니다.</block>
+  <block id="bc1eafdc5546c34f6a9034570437fcc0" category="list-text">dracut -f 명령을 실행하고 호스트를 재부팅합니다.</block>
+  <block id="61efa8d63e1b266809e1e79422fed58f" category="paragraph">최신 SLES15 SP4 MU 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다.</block>
+  <block id="859c1dcdb0decd8fe22f184abe2b92f7" category="list-text">경로 복구 후 자동 재연결 안 함 NVMe/TCP는 경로 다운 후 10분 동안 기본 'Ctrl-Loss-TMO' 타이머 이후에 복구된 경로에 자동으로 다시 연결할 수 없습니다.</block>
+  <block id="1077e8ad3542ff8af32bed26b6b21ee8" category="list-text">호스트 부팅 중 자동 연결 없음 NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다.</block>
+  <block id="bf67db93bdc191f54bf3b60580bdafe9" category="paragraph">저장소 장애 조치(SFO) 같은 ONTAP 장애 조치 이벤트를 편안하게 넘기 위해서는 Ctrl_Loss_TMO 타이머를 조정하여 30분 등의 더 긴 재시도 기간을 설정하는 것이 좋습니다. 다음은 세부 정보입니다.</block>
+  <block id="bf093b1c5c4b0f979c7987042c56c3d8" category="list-text">노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 'NVMe connect-all' 명령을 실행합니다. 'CONNECT-ALL'이 진행되는 동안 'Ctrl_Loss_TMO' 기간(예: 30분 ~ -l 1800)을 더 길게 전달하여 경로 손실이 발생할 경우 더 오랜 기간 동안 재시도하도록 해야 합니다. 예를 들면, 다음과 같습니다.</block>
+  <block id="b2edbac4a48e893081ffbe4cda9a7dec" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMe-of 설정(예: 모델을 NetApp ONTAP 컨트롤러로 설정 및 로드 밸런싱 IPolicy를 라운드 로빈으로 설정)이 호스트에 올바로 반영되는지 확인합니다.</block>
+  <block id="0882578f9915da36a8ab5c612728ad30" category="paragraph">예 (A):</block>
+  <block id="07cf625ee23005956a460fdd83c0142d" category="list-text">타겟 LIF가 "NVMe_info" 출력에서 위와 같이 표시되지 않으면 의심되는 NVMe/FC 오류에 대한 '/var/log/messages' 및 'mesg' 출력을 확인하여 그에 따라 보고 또는 수정하십시오.</block>
 </blocks>
