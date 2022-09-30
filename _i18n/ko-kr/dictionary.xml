@@ -2653,4 +2653,22 @@
   <block id="12a5ebc16b45b2bf9a0ad400bc325b23" category="section-title">알려진 문제 및 해결 방법</block>
   <block id="806707e47ee8fe684a6d5e5b0898539a" category="sidebar">NVMeF OL</block>
   <block id="d1b92a4930d50c6ed1038655db0d2684" category="sidebar">모든 ONTAP 제품 설명서</block>
+  <block id="0b6a095cb9010243600ae8c7163d4eab" category="summary">ONTAP를 사용하여 Windows Server 2022용 NVMe/FC 호스트 구성</block>
+  <block id="3140d5ae29066c53a2abd430851c6993" category="paragraph">NVMe/FC는 Windows Server 2022용 ONTAP 9.7 이상에서 지원됩니다.</block>
+  <block id="29b512fbc4379581cd2fd8694ca529c4" category="summary">ONTAP와 함께 Windows Server 2022 사용</block>
+  <block id="8d1d5b8defd8dab28a7e51c7b4ff5d33" category="inline-link-macro">Microsoft Update 카탈로그 2022</block>
+  <block id="6ea674183040bb4a5f8bcd1659c019d0" category="admonition">로 이동합니다 <block ref="47dfbc363030c19b6fccb995dd42bb8c" category="inline-link-macro-rx"></block> 사용 중인 Windows 버전에 필요한 Windows 핫픽스를 구해서 설치하려면 웹 사이트를 방문하십시오.</block>
+  <block id="a0ca832c7bbe60482ff7b23217787e1b" category="admonition">MPIO 지원을 선택하면 Windows Unified Host Utilities가 Windows Server 2022에 포함된 MPIO 기능을 활성화합니다.</block>
+  <block id="9f4dcd7f7ce41a6a5b1dc642ee866ecf" category="paragraph">Windows Server 2022에는 알려진 문제가 없습니다.</block>
+  <block id="3a824154b16ed7dab899bf000b80eeee" category="sidebar">2022</block>
+  <block id="452d8ca267c17453aeeac8e238531175" category="sidebar">ol-FCP</block>
+  <block id="e6a493a32b49704e906197646788a842" category="sidebar">ol-8-FCP</block>
+  <block id="3ef2771cb2d57467dc2cdd1c03e0b795" category="sidebar">OL-7-FCP</block>
+  <block id="bfad018c3813e7bc5482c07db9347a41" category="sidebar">ol-6-FCP</block>
+  <block id="8479d6fad2633b26cf495862e89ca1c9" category="sidebar">RHEL-9-FCP</block>
+  <block id="c3491b1c6045b4ab49c098b050003b88" category="sidebar">RHEL-8-FCP</block>
+  <block id="219200e596813435a28215318a2e517d" category="sidebar">RHEL-7-FCP</block>
+  <block id="b3b940fc372d8951896f13c236f63d70" category="sidebar">RHEL-6-FCP</block>
+  <block id="c11de2cda31d67ed47c0182334a7ac91" category="sidebar">SLES-15 - FCP</block>
+  <block id="2f7ca50ec80cb8bec6ae8dd04c29748c" category="sidebar">Windows - FCP</block>
 </blocks>
