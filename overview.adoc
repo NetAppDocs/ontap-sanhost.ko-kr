@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: overview.html 
+keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle, linux, windows, enterprise, fc, fcp, isci, aix, powervm, vios, centos, citrix, hp-ux, solaris, veritas, cvo, cloud, volume, ontap, clients, configuration, FSx, instance, netapp 
+summary: 이 콘텐츠는 Cloud Volumes ONTAP에 연결된 클라우드 클라이언트 및 온-프레미스 ONTAP 스토리지에 연결된 ONTAP 및 SAN 호스트에 대한 Amazon FSx에 연결된 클라우드 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다. 
+---
+= SAN 호스트 구성 개요
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+이 콘텐츠는 ONTAP 스토리지에 접속된 SAN 호스트를 빠르게 구성하기 위한 호스트 및 버전별 Best Practice를 제공합니다.
+
+SAN 호스트 및 ONTAP 스토리지는 사내, 클라우드 또는 둘 모두에 있을 수 있습니다.
+
+
+NOTE: 클라우드 환경에서 호스트는 일반적으로 클라이언트라고 합니다. 이 콘텐츠의 모든 호스트별 정보는 클라우드 클라이언트에도 적용됩니다.
+
+예를 들어, 사내 ONTAP 스토리지를 구성하여 사내 SAN 호스트에 연결하거나 SAN 클라우드 클라이언트에 연결할 수 있습니다. 을(를) 구성할 수도 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 또는 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^] 사내 SAN 호스트에 접속하거나 SAN 클라우드 클라이언트에 접속하려면
+
+최상의 성능과 성공적인 페일오버를 위해서는 올바른 구성이 중요합니다.

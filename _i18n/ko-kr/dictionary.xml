@@ -1520,14 +1520,7 @@
   <block id="c61e89bea3bd59d60d354b2b2ee41bb6" category="cell">펌웨어 덤프는 QLogic QLE8362 HBA(호스트 버스 어댑터)가 있는 RHEL(Red Hat Enterprise Linux) 6.9 호스트에서 스토리지 페일오버 작업 중에 발생할 수 있으며 펌웨어 덤프가 가끔 관찰됩니다. 펌웨어 덤프는 최대 1200초 동안 지속될 수 있는 호스트에서 I/O 중단으로 나타날 수 있습니다. 어댑터가 펌웨어 코어 덤핑이 완료되면 I/O 작업이 정상적으로 재개됩니다. 호스트에 추가 복구 절차가 필요하지 않습니다. 펌웨어 덤프를 표시하기 위해 /var/log/message 파일에 다음 메시지가 표시됩니다. kernel: qla2xxx[0000:0c:00.3]-d001:3: 임시 버퍼에 저장된 펌웨어 덤프(3/ffc90018b01000), 덤프 상태 플래그(0x3f)</block>
   <block id="b720a262f078ee7e33e54643f48df1b0" category="inline-link-macro">1438711</block>
   <block id="bd70b4627500ea5c8939b9ea0e8ba9df" category="cell"><block ref="bd70b4627500ea5c8939b9ea0e8ba9df" category="inline-link-macro-rx"></block></block>
-  <block id="4a9d6f77a85370fcefc81c6198d55611" category="summary">SAN 호스트 설명서</block>
   <block id="79e721357e358d77c4700c25c863fc37" category="doc">ONTAP SAN 호스트 구성</block>
-  <block id="e86a7e3bea38d2583e3a667f01b9c8c1" category="paragraph">이 내용은 NVMe, iSCSI 및 FC 프로토콜을 위해 ONTAP SAN 호스트를 구성하는 방법에 대한 배포 고유의 지침을 제공합니다.</block>
-  <block id="ff45216534e3f7d14efcedbac9ce3e18" category="paragraph">최상의 성능을 제공하고 성공적인 페일오버를 보장하려면 ONTAP 스토리지를 사용하여 SAN 호스트를 올바르게 구성하는 것이 중요합니다. 이 문서에서는 모범 사례 구성을 빠르게 설정하는 방법을 보여 줍니다.</block>
-  <block id="47e46257d0b1fbf2e6359578f279e2e1" category="paragraph">iSCSI 및 FC의 경우 이 설명서는 기존의 Linux Unified Host Utilities 가이드를 대체합니다. 각 문서는 Linux의 배포 및 버전에 따라 다르며, 정확한 버전에 대한 정보만 볼 수 있습니다. Linux의 배포 및 버전이 아직 나열되어 있지 않으면 곧 다시 확인하십시오.</block>
-  <block id="ab066b3292d8ab61ef3b5c77169cdd19" category="section-title">추가 정보</block>
-  <block id="77e0defdbacbcd12c42e7a582cf75709" category="paragraph">SAN 구성에 대한 자세한 내용은 다음 문서를 참조하십시오.</block>
-  <block id="891d3d61b8fac48b3a3480b3a2f6d3c9" category="inline-link-macro">모든 SAN 어레이 소프트웨어 구성 가이드</block>
   <block id="04dff1447143c8e4e6195f792be9979e" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 6.8을 사용하는 방법을 설명합니다</block>
   <block id="d7504c3f9edea18dc5689240f0d4eca3" category="doc">NetApp ONTAP와 함께 Red Hat Enterprise Linux 6.8 사용</block>
   <block id="d58ee726eea2726eefac984fb7e051d6" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.8의 경우 /etc/multipath.conf 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
@@ -2131,15 +2124,8 @@
   <block id="082dbb21e0b198384fe053b2d5bdb626" category="paragraph">SUSE Linux Enterprise Server 12 SP1의 경우 /etc/multipath.conf 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. SUSE Linux Enterprise Server 12 SP1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="b3c2b9ddd28388c4e7fda075aa483125" category="paragraph">SUSE Linux Enterprise Server 12 SP1 OS는 컴파일되어 ONTAP LUN을 인식하고 모든 구성 매개 변수를 올바르게 자동 설정합니다. 다중경로 데몬을 시작하려면 'multipath.conf' 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다</block>
   <block id="b11a98375486489cb1837d76fcae9c17" category="paragraph">SUSE Linux Enterprise Server 12 SP1에는 알려진 문제가 없습니다.</block>
-  <block id="8cf04a9734132302f96da8e113e80ce5" category="sidebar">홈</block>
-  <block id="7b77ca74daebfde9d9723cc5ef879cf8" category="sidebar">SAN 호스트 유틸리티</block>
-  <block id="a4d5754af636a6318ee2ffcd80c52e27" category="sidebar">Linux Unified Host Utilities를 참조하십시오</block>
-  <block id="748753e893fd2f6b904a298d120af491" category="sidebar">Windows Unified Host Utilities를 참조하십시오</block>
-  <block id="069c43556e66148f1f1eeabd7e9e7872" category="sidebar">AIX 호스트 유틸리티</block>
-  <block id="c93b085fcb8e1f8bc98e8da71741e760" category="sidebar">NVMe-oF 호스트 구성</block>
   <block id="1aa66ef3a8e34a7a538960a80d2e1e31" category="sidebar">ESXi</block>
   <block id="7988dd645d080901aa85637adea3c152" category="sidebar">NVMeoF ESXi</block>
-  <block id="b1db54564fe54a4c74a975b18a791532" category="sidebar">7.x</block>
   <block id="fdcd362ac5f5f9817e70642dd2a48bfd" category="sidebar">Oracle Linux</block>
   <block id="2a568439f8e6ff92daa9925ce8a03adf" category="sidebar">8.2</block>
   <block id="d6422a625045167156b3c0d85ca23ebf" category="sidebar">8.1</block>
@@ -2147,7 +2133,6 @@
   <block id="90cc3a10dc0cf2e7e72098e531c4d970" category="sidebar">7.8</block>
   <block id="971455e5b307f416baac0cb24b710792" category="sidebar">7.7</block>
   <block id="8b6f93f33bce541c7f50f8aff637e2e1" category="sidebar">RHEL을 참조하십시오</block>
-  <block id="e0f04c85d16be7d67287c02eeb4c1ca8" category="sidebar">rhNVMeF RHEL</block>
   <block id="6762f053abca7510f6648c71492724a7" category="sidebar">8.4</block>
   <block id="5e20d6ed7744f334ad7deb3cea4d5905" category="sidebar">8.3</block>
   <block id="6450317152c5c108daebac9e8e1a387c" category="sidebar">SLES</block>
@@ -2158,7 +2143,6 @@
   <block id="ea6b2efbdd4255a9f1b3bbc6399b58f4" category="sidebar">2019년</block>
   <block id="95192c98732387165bf8e396c0f2dad2" category="sidebar">2016</block>
   <block id="f997434446ca6b2fcbb19d33852187d3" category="sidebar">2012 R2</block>
-  <block id="16b27b38be3c36e579e929b4c20b9fbd" category="sidebar">FCP 및 iSCSI 호스트 구성</block>
   <block id="9be5573ac1f42b7e45f53ea9bcbacde3" category="sidebar">AIX 및 PowerVM/VIOS</block>
   <block id="f418ab5fac16133ff4e30e12dffff5f7" category="sidebar">7.2/3.1</block>
   <block id="7cd31cf6820896d838535a73cafb15ca" category="sidebar">7.1</block>
@@ -2222,9 +2206,6 @@
   <block id="999cc5e84fec57fdd157e6fdacc5c96a" category="paragraph">debot_path는 depot 파일의 경로와 이름을 제공합니다.</block>
   <block id="e661cef1335457aaa4b6047327cfb656" category="paragraph">'winstall' 명령어는 HP-UX 설정 상태를 확인하는 설치 스크립트를 실행합니다. 시스템이 요구 사항을 충족할 경우 이 스크립트는 '/opt/netapp/sandtools/bin' 디렉토리에 'sanlun' 유틸리티 및 진단 스크립트를 설치합니다.</block>
   <block id="96e0cae7407a65fe53018dd9c13dbbe7" category="section-title">FC HBA 및 스위치를 구성합니다</block>
-  <block id="4305e9936b83d45d04d4e15cb3f002d2" category="paragraph"><block ref="e5534403168e57c1e34879bb31a5b6d6" category="inline-link-macro-rx"></block>
-<block ref="414cc440da9b8860f85936c8ca7199d3" category="inline-link-macro-rx"></block>
-<block ref="c70054656a6156c5d554f172fbb27a7a" category="inline-link-macro-rx"></block></block>
   <block id="13875804930272cb7e31a51605d09c65" category="doc">Solaris 호스트 유틸리티 6.2</block>
   <block id="408c1c436b88f56a9e4cf815ca520ffc" category="list-text">안정적인 운영을 위해서는 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인해야 합니다.</block>
   <block id="8f3b9d0cc42d20c0623a5f0990c4181e" category="paragraph">Solaris Host Utilities는 Oracle Solaris 호스트에서 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.</block>
@@ -2250,7 +2231,6 @@
   <block id="cdfd79e32ab8a821a843e89d91bdcd8d" category="list-text">MPxIO</block>
   <block id="8ae046464e598978903e62c0c706373c" category="list-text">Veritas DMP</block>
   <block id="a335fa6e5bef06439b229f8adabc7dfe" category="section-title">지정된 SVM에서 호스트에 매핑된 모든 LUN 나열/호스트에 매핑된 특정 LUN의 모든 특성 나열</block>
-  <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris 호스트 유틸리티</block>
   <block id="072bbeb072deda2033d37a6e9af67b96" category="summary">Oracle Linux 8.5와 ONTAP를 사용하는 방법에 대해 설명합니다</block>
   <block id="bebf74152cdc0b8f2233ff49a9112052" category="doc">Oracle Linux 8.5 및 NetApp ONTAP 사용</block>
   <block id="5afff738a58f6889eebdd3efb2f2c405" category="paragraph">Oracle Linux(OL) 8.5의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. OL 8.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
@@ -2522,7 +2502,6 @@
   <block id="13d4f4be1ab239d2cd36fb812fad5fc1" category="inline-link-macro">사용 중인 ONTAP 버전에 대한 ONTAP 릴리즈 노트</block>
   <block id="d7b5ae94e622a21572fe07c48e20da09" category="list-text">를 클릭합니다 <block ref="2ba744c2429cbcfc53bdb0428522a053" category="inline-link-macro-rx"></block></block>
   <block id="60cb9c3f22cf2b74a314e1d7baf48bef" category="paragraph">CentOS 8.4에 대해 알려진 문제가 없습니다.</block>
-  <block id="2cac689df6b99782e23a143c9bfa2346" category="sidebar">HP-UX 호스트 유틸리티</block>
   <block id="032f858f49a253e7a44870c242d0aa5b" category="sidebar">HP-UX HU 6.0을 설치합니다</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">릴리스 정보</block>
   <block id="a7a862c0d782706aace5e07821f4f4c9" category="sidebar">Solaris HU 6.2를 설치합니다</block>
@@ -2710,4 +2689,40 @@
   <block id="36cef896471a12b0f41c40926a1d02dc" category="cell">이 오류 메시지는 일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않은 경우에 표시됩니다. 또는 잘못된 hostnqn 문자열이 해당 하위 시스템에 추가되었습니다.</block>
   <block id="db0bd7baf16dc60d55f11a9b309bc749" category="cell">없음. "NVMe 검색"을 위해 잠시 후에 이 명령을 실행해 보십시오. NVMe connect와 connect-all의 경우 NVMe list 명령을 실행하여 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인하십시오.</block>
   <block id="9e9ad12d8f7b421ec7b07bcffb518755" category="paragraph">여전히 문제가 발생하는 경우 다음 파일 및 명령 출력을 수집하고 기술 지원 부서에 문의하여 추가 분류를 요청하십시오.</block>
+  <block id="c345c92c1db74865c1b5cb8dad478651" category="summary">이 내용은 ONTAP 스토리지에 연결된 SAN 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다.</block>
+  <block id="d1c811acf82829db30f1d8b3e6c940d6" category="doc">SAN 호스트 및 클라우드 클라이언트</block>
+  <block id="708c2a641aba7d3caf588312e9a41596" category="summary">이 콘텐츠는 Cloud Volumes ONTAP에 연결된 클라우드 클라이언트 및 온-프레미스 ONTAP 스토리지에 연결된 ONTAP 및 SAN 호스트에 대한 Amazon FSx에 연결된 클라우드 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다.</block>
+  <block id="be2f9317bef1b02401365be22d60a02b" category="doc">SAN 호스트 구성 개요</block>
+  <block id="08d0a34cb57428b1414232e7c1592ef5" category="paragraph">이 콘텐츠는 ONTAP 스토리지에 접속된 SAN 호스트를 빠르게 구성하기 위한 호스트 및 버전별 Best Practice를 제공합니다.</block>
+  <block id="ab5c1cc33879491a00632f6478216936" category="paragraph">SAN 호스트 및 ONTAP 스토리지는 사내, 클라우드 또는 둘 모두에 있을 수 있습니다.</block>
+  <block id="d99091ccf334938dd920fe960b4e1341" category="admonition">클라우드 환경에서 호스트는 일반적으로 클라이언트라고 합니다. 이 콘텐츠의 모든 호스트별 정보는 클라우드 클라이언트에도 적용됩니다.</block>
+  <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="inline-link-macro">Cloud Volumes ONTAP</block>
+  <block id="18cf072964a583150dd247485ba75b92" category="inline-link-macro">ONTAP용 Amazon FSx</block>
+  <block id="aad6098c26fd28acf5ce95db0964f759" category="paragraph">예를 들어, 사내 ONTAP 스토리지를 구성하여 사내 SAN 호스트에 연결하거나 SAN 클라우드 클라이언트에 연결할 수 있습니다. 을(를) 구성할 수도 있습니다 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 또는 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block> 사내 SAN 호스트에 접속하거나 SAN 클라우드 클라이언트에 접속하려면</block>
+  <block id="bd4300690dfdbe14b72c16ede45c8a40" category="paragraph">최상의 성능과 성공적인 페일오버를 위해서는 올바른 구성이 중요합니다.</block>
+  <block id="5206f5e3d376aae380267b11c8d7e8a0" category="sidebar">이 내용은 ONTAP 스토리지에 연결된 SAN 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다. SAN 클라이언트와 ONTAP 스토리지는 사내 또는 클라우드에 상주할 수 있습니다.</block>
+  <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">시작하십시오</block>
+  <block id="5547603ff69e3da92f703bcf50ce3f6b" category="sidebar">AIX 호스트 유틸리티 릴리스 노트</block>
+  <block id="07f600a27795dcb67160c1a6254ac955" category="sidebar">HP-UX 호스트 유틸리티 릴리즈 노트</block>
+  <block id="e5df731937a491dd8cd0cc7b6ebee041" category="sidebar">Linux 호스트 유틸리티 릴리스 정보</block>
+  <block id="6ef0df02f01fe0ace4a41985abbcac96" category="sidebar">Solaris 호스트 유틸리티 릴리스 정보</block>
+  <block id="bb27f844f9da131bbc413a981aac48b0" category="sidebar">FCP 및 iSCSI 호스트 구성</block>
+  <block id="5518a21314616fae9f003bf96e584f7f" category="sidebar">Red Hat Enterprise Linux 9.0</block>
+  <block id="28cf759ac2f6eab35d6588e5a7c44eac" category="sidebar">SUSE Linux Enterprise Server 15 SP4</block>
+  <block id="de547bcab0e20f54ec4d5e95ba44b0b1" category="sidebar">Windows Server 2022</block>
+  <block id="926f2d20f93d6be035bae2a94b2a5fc4" category="sidebar">IBM AIX 7.2 및 PowerVM(VIOS 3.1)</block>
+  <block id="48d339e5fe7e520b196955902fda50d4" category="sidebar">Oracle Solaris 11.4</block>
+  <block id="524d2ef3f81ea92b8da31f7bfb61fdfa" category="sidebar">NVMe-oF 호스트 구성</block>
+  <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">더 많은 리소스</block>
+  <block id="8f631f7b4d000947dcf86232c51cf147" category="sidebar">모든 SAN 어레이 소프트웨어 구성</block>
+  <block id="587c9aa3c6003c9a9fa1fc9c2ceb2eaa" category="sidebar">SAN 관리</block>
+  <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">SAN 호스트 및 클라우드 클라이언트를 구성합니다</block>
+  <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">개요</block>
+  <block id="bd2327e60e0cfdc7632cb188bd1c7293" category="sidebar">SAN 호스트 유틸리티</block>
+  <block id="db3a7c082080fd11b89a35d4b36694db" category="sidebar">AIX 호스트 유틸리티</block>
+  <block id="6644e7ab2de97becedaef22c5a1099e9" category="sidebar">HP-UX 호스트 유틸리티</block>
+  <block id="237e46c87c95b6d72dceaf420c603d90" category="sidebar">Linux 통합 호스트 유틸리티</block>
+  <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris 호스트 유틸리티</block>
+  <block id="bcc66daaa6f6f7ca19890b95ffa6b4c0" category="sidebar">Windows 통합 호스트 유틸리티</block>
+  <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">RHEL의 NVMeoF</block>
 </blocks>

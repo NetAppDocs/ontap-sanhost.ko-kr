@@ -1,10 +1,11 @@
 ---
+layout: astra 
 sidebar: sidebar 
 permalink: index.html 
-keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, 
-summary: SAN 호스트 설명서 
+keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle, linux, windows, enterprise, fc, fcp, isci, aix, powervm, vios, centos, citrix, hp-ux, solaris, veritas, cvo, cloud, volume, ontap, clients, configuration, FSx, instance, netapp 
+summary: 이 내용은 ONTAP 스토리지에 연결된 SAN 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다. 
 ---
-= ONTAP SAN 호스트 구성
+= SAN 호스트 및 클라우드 클라이언트
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -13,19 +14,3 @@ summary: SAN 호스트 설명서
 :imagesdir: ./media/
 
 
-[role="lead"]
-이 내용은 NVMe, iSCSI 및 FC 프로토콜을 위해 ONTAP SAN 호스트를 구성하는 방법에 대한 배포 고유의 지침을 제공합니다.
-
-최상의 성능을 제공하고 성공적인 페일오버를 보장하려면 ONTAP 스토리지를 사용하여 SAN 호스트를 올바르게 구성하는 것이 중요합니다. 이 문서에서는 모범 사례 구성을 빠르게 설정하는 방법을 보여 줍니다.
-
-iSCSI 및 FC의 경우 이 설명서는 기존의 Linux Unified Host Utilities 가이드를 대체합니다. 각 문서는 Linux의 배포 및 버전에 따라 다르며, 정확한 버전에 대한 정보만 볼 수 있습니다. Linux의 배포 및 버전이 아직 나열되어 있지 않으면 곧 다시 확인하십시오.
-
-
-
-== 추가 정보
-
-SAN 구성에 대한 자세한 내용은 다음 문서를 참조하십시오.
-
-link:https://docs.netapp.com/us-en/ontap/task_asa_software_configuration.html["모든 SAN 어레이 소프트웨어 구성 가이드"^]
-link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanag/home.html["SAN 관리 가이드를 참조하십시오"^]
-link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html["SAN 구성 가이드 를 참조하십시오"^]

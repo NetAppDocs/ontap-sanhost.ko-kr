@@ -1,0 +1,51 @@
+---
+indexpage:
+  lead: 이 내용은 ONTAP 스토리지에 연결된 SAN 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다. SAN 클라이언트와 ONTAP
+    스토리지는 사내 또는 클라우드에 상주할 수 있습니다.
+  tiles:
+  - title: 시작하십시오
+    links:
+    - title: AIX 호스트 유틸리티 릴리스 노트
+      url: "/hu_aix_61_rn.html"
+    - title: HP-UX 호스트 유틸리티 릴리즈 노트
+      url: "/hu_hpux_60_rn.html"
+    - title: Linux 호스트 유틸리티 릴리스 정보
+      url: "/hu_luhu_71_rn.html"
+    - title: Solaris 호스트 유틸리티 릴리스 정보
+      url: "/hu_solaris_62_rn.html"
+  - title: FCP 및 iSCSI 호스트 구성
+    links:
+    - title: VMware vSphere 7
+      url: "/hu_vsphere_7.html"
+    - title: Red Hat Enterprise Linux 9.0
+      url: "/hu_rhel_90.html"
+    - title: SUSE Linux Enterprise Server 15 SP4
+      url: "/hu_sles_15SP4.html"
+    - title: Windows Server 2022
+      url: "/hu_windows_2022.html"
+    - title: IBM AIX 7.2 및 PowerVM(VIOS 3.1)
+      url: "/hu_aix_72.html"
+    - title: Oracle Solaris 11.4
+      url: "/hu_solaris_114.html"
+  - title: NVMe-oF 호스트 구성
+    links:
+    - title: VMware vSphere 7
+      url: "/nvme_esxi_7.html"
+    - title: Red Hat Enterprise Linux 9.0
+      url: "/nvme_rhel_90.html"
+    - title: SUSE Linux Enterprise Server 15 SP4
+      url: "/nvme_sles15_sp4.html"
+    - title: Windows Server 2022
+      url: "/nvme_windows_2022.html"
+  - title: 더 많은 리소스
+    links:
+    - title: Cloud Volumes ONTAP
+      url: https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html
+    - title: ONTAP용 Amazon FSx
+      url: https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html
+    - title: 모든 SAN 어레이 소프트웨어 구성
+      url: https://docs.netapp.com/us-en/ontap/task_asa_software_configuration.html
+    - title: SAN 관리
+      url: https://docs.netapp.com/us-en/ontap/san-admin/index.html
+    - title: SAN 구성
+      url: https://docs.netapp.com/us-en/ontap-metrocluster/

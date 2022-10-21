@@ -1,6 +1,6 @@
 ---
 settings:
-  name: SAN Host
+  name: SAN hosts and cloud clients
   internal:
     pdf_enabled: true
   prod:
@@ -9,8 +9,10 @@ settings:
   langs: ko-kr,us-en,ja-jp,zh-cn,zh-tw
 sidebar:
   entries:
-  - title: 홈
+  - title: SAN 호스트 및 클라우드 클라이언트를 구성합니다
     url: "/index.html"
+  - title: 개요
+    url: "/overview.html"
   - title: SAN 호스트 유틸리티
     entries:
     - title: AIX 호스트 유틸리티
@@ -25,26 +27,26 @@ sidebar:
         url: "/hu_hpux_60.html"
       - title: 릴리스 정보
         url: "/hu_hpux_60_rn.html"
-    - title: Linux Unified Host Utilities를 참조하십시오
+    - title: Linux 통합 호스트 유틸리티
       entries:
       - title: LUHU 7.1을 설치합니다
         url: "/hu_luhu_71.html"
-      - title: 릴리즈 노트
+      - title: 릴리스 정보
         url: "/hu_luhu_71_rn.html"
     - title: Solaris 호스트 유틸리티
       entries:
       - title: Solaris HU 6.2를 설치합니다
         url: "/hu_solaris_62.html"
-      - title: 릴리즈 노트
+      - title: 릴리스 정보
         url: "/hu_solaris_62_rn.html"
-    - title: Windows Unified Host Utilities를 참조하십시오
+    - title: Windows 통합 호스트 유틸리티
       url: "/hu_wuhu_71.html"
   - title: NVMe-oF 호스트 구성
     entries:
     - title: ESXi
       pdf-filename: NVMeoF ESXi
       entries:
-      - title: 7.x
+      - title: VMware vSphere 7
         url: "/nvme_esxi_7.html"
     - title: Oracle Linux
       entries:
@@ -68,7 +70,7 @@ sidebar:
         - title: '7.7'
           url: "/nvme_ol_77.html"
     - title: RHEL을 참조하십시오
-      pdf-filename: rhNVMeF RHEL
+      pdf-filename: RHEL의 NVMeoF
       entries:
       - title: RHEL 9
         entries:
