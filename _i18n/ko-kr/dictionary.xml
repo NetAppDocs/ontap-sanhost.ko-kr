@@ -2725,4 +2725,6 @@
   <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris 호스트 유틸리티</block>
   <block id="bcc66daaa6f6f7ca19890b95ffa6b4c0" category="sidebar">Windows 통합 호스트 유틸리티</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">RHEL의 NVMeoF</block>
+  <block id="8200a3db147155676a7739eb43b685c9" category="admonition">이 컨텐츠에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 및 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>.</block>
+  <block id="f561aaf6ef0bf14d4208bb46a4ccb3ad" category="paragraph">XXX</block>
 </blocks>

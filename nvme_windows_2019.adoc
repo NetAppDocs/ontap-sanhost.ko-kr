@@ -29,6 +29,9 @@ Broadcom 이니시에이터는 동일한 32G FC 어댑터 포트를 통해 NVMe/
 를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
 
 
+NOTE: 이 컨텐츠에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+
+
 
 == 알려진 제한 사항
 

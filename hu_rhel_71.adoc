@@ -36,6 +36,9 @@ Linux Unified Host Utilities를 설치하는 것이 좋지만 반드시 설치�
 
 
 
+NOTE: 이 컨텐츠에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+
+
 
 == SAN 툴킷을 참조하십시오
 

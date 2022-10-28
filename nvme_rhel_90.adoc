@@ -26,6 +26,9 @@ summary: ONTAP를 사용하여 RHEL 9.0용 NVMe-oF 호스트를 구성하는 방
 NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상적인 스토리지 장애 조치(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 있는 RHEL 9.0에서 지원됩니다. ANA는 NVM-of 환경에서 ALUA와 동등한 제품이며 현재 In-kernel NVMe Multipath로 구현되고 있습니다. 이 문서에는 RHEL 9.0에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 세부 정보가 포함되어 있습니다.
 
 
+NOTE: 이 컨텐츠에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+
+
 
 == 피처
 
