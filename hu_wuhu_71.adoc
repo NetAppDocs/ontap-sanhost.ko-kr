@@ -60,7 +60,11 @@ Host Utilities를 설치하기 전에 Host Utilities 버전이 호스트 및 스
 
 .단계
 . 에서 지원되는 구성을 확인합니다 http://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"^].
-. San Host 설명서에서 해당 호스트에 필요한 핫픽스를 확인합니다.
+. 의 해당 호스트에 필요한 핫픽스를 확인합니다 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN 호스트 Windows 설명서"].
++
+
+NOTE: link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["ONTAP와 함께 Windows Server 2022 사용"] 에 대한 지침은 에 나와 있습니다 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["Windows 핫픽스 설치 중"] Windows Server 2022의 경우. 이전 버전의 Windows 서버에 대한 관련 핫픽스 정보를 찾으려면 호스트 구성 범주의 Windows 문서를 참조하십시오.
+
 . iSCSI 또는 FCP 라이센스를 추가하고 대상 서비스를 시작합니다.
 +
 파이버 채널 및 iSCSI 프로토콜은 SANtricity 스토리지 관리자를 사용하여 E-Series 스토리지 시스템에 대한 라이센스가 필요하지 않습니다.

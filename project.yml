@@ -39,8 +39,12 @@ sidebar:
         url: "/hu_solaris_62.html"
       - title: 릴리스 정보
         url: "/hu_solaris_62_rn.html"
-    - title: Windows 통합 호스트 유틸리티
-      url: "/hu_wuhu_71.html"
+    - title: Windows Unified Host Utilities를 참조하십시오
+      entries:
+      - title: Wuhu 7.1을 설치합니다
+        url: "/hu_wuhu_71.html"
+      - title: 릴리즈 노트
+        url: "/hu_wuhu_71_rn.html"
   - title: NVMe-oF 호스트 구성
     entries:
     - title: ESXi
