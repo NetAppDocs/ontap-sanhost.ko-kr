@@ -30,7 +30,7 @@ blacklist {
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
 ....
-. 이 WWID를 /etc/multipath.conf의 블랙리스트 스탠자에 추가합니다.
+. 이 WWID를 /etc/multipath.conf의 "blacklist" 스탠자에 추가합니다.
 +
 ....
 blacklist {

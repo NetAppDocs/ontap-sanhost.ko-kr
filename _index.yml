@@ -13,6 +13,8 @@ indexpage:
       url: "/hu_luhu_71_rn.html"
     - title: Solaris 호스트 유틸리티 릴리스 정보
       url: "/hu_solaris_62_rn.html"
+    - title: Windows 호스트 유틸리티 릴리스 정보
+      url: "/hu_wuhu_71_rn.html"
   - title: FCP 및 iSCSI 호스트 구성
     links:
     - title: VMware vSphere 7

@@ -153,7 +153,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == 권장 설정
 
-다음은 NetApp ONTAP LUN의 몇 가지 권장 매개 변수 설정입니다. ONTAP LUN에 대한 중요 매개 변수는 NetApp 호스트 유틸리티 키트를 설치한 후 자동으로 설정됩니다.
+다음은 NetApp ONTAP LUN의 몇 가지 권장 매개 변수 설정입니다. ONTAP 호스트 유틸리티 키트를 설치하면 LUN에 대한 중요 매개 변수가 자동으로 설정됩니다.
 
 [cols="4*"]
 |===

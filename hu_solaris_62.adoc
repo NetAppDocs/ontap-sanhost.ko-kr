@@ -77,7 +77,7 @@ NOTE: NetApp Solaris Host Utilities 소프트웨어 패키지는 에서 사용�
 +
 '#gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz'
 
-. 파일의 압축을 풉니다. 이 작업을 수행하려면 'tar xvf' 명령을 사용할 수 있습니다.
+. 파일의 압축을 풉니다. 를 사용할 수 있습니다 `tar xvf` 명령을 사용하여 이 작업을 수행합니다.
 +
 "#tar xvf NetApp_Solaris_host_utilities_6_2_SPARC.tar"
 

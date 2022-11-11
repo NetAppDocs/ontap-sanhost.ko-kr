@@ -82,6 +82,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 Oracle Linux 6.4의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.
 
+.단계
 . initrd-image의 백업을 생성합니다.
 . ' rdloaddriver=scsi_dh_ALUA'를 작동하려면 다음 매개 변수 값을 ALUA 및 비 ALUA용 커널에 추가하십시오
 +
@@ -90,7 +91,7 @@ kernel /vmlinuz-3.8.13-68.1.2.el6uek.x86_64 ro root=/dev/mapper/vg_ibmx3550m4210
 ....
 . mkinitrd 명령을 사용하여 initrd-image를 다시 생성합니다. Oracle 6x 이상 버전에서는 mkinitrd -f /boot/initrd-"uname -r".img uname -r" 명령을 사용하거나 dracut -f 명령을 사용합니다
 . 호스트를 재부팅합니다.
-. 'cat/proc/CMDLINE' 명령의 출력을 확인하여 설정이 완료되었는지 확인합니다. 'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
+. 의 출력을 확인합니다 `cat /proc/cmdline` 명령을 사용하여 설정이 완료되었는지 확인합니다. 를 사용할 수 있습니다 `multipath -ll` 명령을 사용하여 ONTAP LUN의 설정을 확인합니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
 
 
 다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
@@ -144,7 +145,7 @@ blacklist {
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
 ....
-. 이 WWID를 /etc/multipath.conf의 블랙리스트 스탠자에 추가합니다.
+. 이 WWID를 /etc/multipath.conf의 "blacklist" 스탠자에 추가합니다.
 +
 ....
 blacklist {
