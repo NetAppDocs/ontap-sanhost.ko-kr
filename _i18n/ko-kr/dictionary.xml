@@ -45,7 +45,6 @@
   <block id="6e7eef95f0e9ee9b717340ce72d65e5b" category="paragraph">다중 경로로 관리하지 않으려는 장치가 있거나 기본값을 덮어쓰는 기존 설정이 없는 경우 외에는 multipath.conf 파일에 아무것도 직접 추가할 필요가 없습니다.</block>
   <block id="36da0e0b56843a1256e96e81029390fa" category="paragraph">다음 구문을 'multitpath.conf' 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.</block>
   <block id="32fdadaf90804487f6b463983fc1c553" category="paragraph">'&lt;DevID&gt;'을(를) 제외할 장치의 WWID 문자열로 바꿉니다. 다음 명령을 사용하여 WWID를 확인하십시오.</block>
-  <block id="090f01b46aada524696024ccba0a31de" category="paragraph">이 예에서 'da'는 블랙리스트가 필요한 로컬 SCSI 디스크입니다.</block>
   <block id="4d70a817ac85626aff88bbc73d0a2deb" category="list-text">다음 명령을 실행하여 WWID를 확인하십시오.</block>
   <block id="ff73d7e0f0c6051bbd80575105bb1cb1" category="list-text">이 WWID를 '/etc/multipath.conf'의 블랙리스트 스탠자에 추가합니다.</block>
   <block id="21613f1f81985ce9edca2dc6272a765e" category="paragraph">기본 설정을 재정의할 수 있는 기본 섹션에서 항상 '/etc/multipath.conf' 파일에서 기존 설정을 확인해야 합니다. 아래 표에는 ONTAP LUN에 대한 중요 매개 변수와 필요한 값이 나와 있습니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의될 경우 ONTAP LUN에 특별히 적용되는 'multipath.conf'에서 나중에 stanzas로 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체에 문의하여 영향을 완전히 이해해야 합니다.</block>
@@ -770,7 +769,6 @@
   <block id="eed881bb2a34d1ee7f7f847943028439" category="paragraph">다중 경로 데몬을 시작하려면 multipath.conf 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다. 이 파일을 처음 생성할 때 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.</block>
   <block id="3e62478acd97c41a7fea67ffea8ef9a1" category="paragraph">multipath.conf에 직접 추가할 필요는 없습니다. 다중 경로를 통해 관리하지 않으려는 장치가 있거나 기본값을 덮어쓰는 기존 설정이 있는 경우에는 예외입니다. 다음 구문을 multipath.conf 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.</block>
   <block id="3bd7fde20a9abc176890c7422cf0f77f" category="admonition">DevID&gt;를 제외할 장치의 WWID 문자열로 바꿉니다. 다음 명령을 사용하여 WWID를 확인하십시오.</block>
-  <block id="58449f79b301eee405bcc04689e38467" category="paragraph">이 예에서 sda는 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
   <block id="ccda5c6e00d9467a80e095e0a00e92d1" category="admonition">Oracle Linux 6.5 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용합니다 <block ref="d9929df24012e2c19b3258bd0a117bc4" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 6.5의 경우</block>
   <block id="7c6d19ca68cd84cbf89340556bd048a2" category="paragraph">Oracle 6.5에는 알려진 문제가 없습니다.</block>
   <block id="834597fc454ac7d366bc8af44fcf5609" category="admonition">Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 <block ref="0158dc1052dab85818a92b1a427c95b7" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 6.5의 경우</block>
@@ -1199,10 +1197,8 @@
   <block id="02ec5a6431274b50044361aad326cbdc" category="paragraph">NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. Linux NVMe/TCP 호스트에는 다음과 같은 두 가지 주요 제한 사항이 있습니다.</block>
   <block id="524fa08703d908aeca5cccda70508020" category="list-text">* 경로 복구 후 자동 재연결 불가 * NVMe/TCP는 경로 다운 후 10분 동안 기본 'Ctrl-Loss-TMO' 타이머 이후에 복구된 경로에 자동으로 다시 연결할 수 없습니다.</block>
   <block id="5ac8d4417219a758cb216b44e499a52a" category="list-text">* 호스트 부팅 중 자동 연결 없음 * 호스트 부팅 중에 NVMe/TCP도 자동으로 연결할 수 없습니다.</block>
-  <block id="237af845a336c688dd92384a771f5c92" category="paragraph">SFO와 같은 ONTAP 장애 조치 이벤트를 편안하게 넘기 위해서는 Ctrl_Loss_TMO 타이머를 조정하여 30분 등 더 긴 재시도 시간을 설정하는 것이 좋습니다. 다음은 세부 정보입니다.</block>
   <block id="9f291dc2ffc26a15b15d66dfbe7c03c7" category="list-text">이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.</block>
   <block id="cdad7a1e7e4e6d6a5603c6ee5b84a18b" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF combos가 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다. 예를 들면, 다음과 같습니다.</block>
-  <block id="c3f202b40a54d75b57fbe1fedd71b1e7" category="list-text">노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 'NVMe connect-all' 명령을 실행합니다. 연결 중에 더 긴 "Ctrl_Loss_TMO" 기간(예: 30분, '-l 1800'을 통해 설정 가능)을 경과하여 경로 손실 시 더 긴 기간 동안 재시도해야 합니다. 예를 들면, 다음과 같습니다.</block>
   <block id="55ab77cd94d55aaa364453f7cf104285" category="section-title">NVMe-oF를 검증합니다</block>
   <block id="a0eb26e72e628156638ad8b9cea45ac5" category="list-text">다음을 확인하여 In-kernel NVMe multipath가 실제로 활성화되어 있는지 확인합니다.</block>
   <block id="d59a70bb68888f817286630067489719" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: "NetApp ONTAP Controller"로 설정된 모델 및 "라운드 로빈"으로 설정된 로드 밸런싱 지정값이 호스트에 올바르게 반영되는지 확인하십시오.</block>
@@ -1931,7 +1927,6 @@
   <block id="410267f88a5f79f5d40838a8e7a35e62" category="paragraph">XenCenter Management Portal*에서 호스트 다중 경로 서비스를 활성화하고 다중 경로 서비스가 활성화되어 실행 중인지 확인합니다.</block>
   <block id="4d9e4d5a080304464911deeebee0a0b3" category="paragraph">다중 경로를 통해 관리하지 않으려는 디바이스가 있거나 기본값을 재정의하는 기존 설정이 있는 경우를 제외하고 "/etc/multipath.conf" 파일에 콘텐츠를 추가할 필요는 없습니다. 다음 구문을 multipath.conf 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.</block>
   <block id="b00ab7c17a141468a5921157cdf11ec3" category="admonition">DevID&gt; * 를 제외할 장치의 WWID 문자열로 바꿉니다.</block>
-  <block id="258e01d6ca463cd89e79be409a5b9398" category="paragraph">이 Citrix Hypervisor 8.x의 경우 'da'는 블랙리스트에 필요한 로컬 SCSI 디스크입니다.</block>
   <block id="aea5fd959632948a3225c2ddd5323d43" category="paragraph">다음 표에는 ONTAP LUN에 대한 중요 * multipathd * 매개 변수와 필요한 값이 나와 있습니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 덮어쓴 경우 ONTAP LUN에 특별히 적용되는 * multipath.conf * 에서 나중에 Stanzas를 통해 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 다음 기본값은 NetApp 및/또는 OS 공급업체에 문의하여 영향을 완전히 이해해야 합니다.</block>
   <block id="093280d0b1b888a2d2861cdc763f5f54" category="cell">"제_영주"를 선택합니다</block>
   <block id="d4f9e6cd04344d6033229cebcf82d8e6" category="cell">DEV_Loss_TMO</block>
@@ -2000,7 +1995,6 @@
   <block id="614673c0b1eeb91e8ffc86cde6faa93b" category="paragraph">통합 다중 경로 관리 아키텍처와의 비호환성 때문에 Citrix XenCenter 애플리케이션을 사용하여 스토리지 구성을 관리하는 것이 좋습니다. 장치 매퍼 테이블의 상태를 수동으로 쿼리하거나 시스템의 활성 장치 매퍼 다중 경로 노드를 나열해야 하는 경우 "/sbin/mpathutil status" 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 자세한 내용은 Citrix XenServer의 표준 공급업체 설명서를 참조하십시오.</block>
   <block id="9fc86c956b59ea355d470ac30580447a" category="paragraph">Citrix XenServer 7.x OS는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. Citrix XenServer 7.x의 경우 빈 zerobyte '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다.</block>
   <block id="cd96c3aa1c1e2627c438d2fe6fda056c" category="paragraph">다중 경로를 통해 관리하지 않으려는 디바이스가 있거나 기본값을 재정의하는 기존 설정이 있는 경우를 제외하고 "/etc/multipath.conf" 파일에 콘텐츠를 추가할 필요는 없습니다. 다음 구문을 'multitpath.conf' 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.</block>
-  <block id="71b9d2719d4bd590da83c5da238b05fc" category="paragraph">이 Citrix XenServer 7.x의 경우 'da'는 블랙리스트에 필요한 로컬 SCSI 디스크입니다.</block>
   <block id="ec8b35f300ba884a5dff762db20c0a35" category="paragraph">'$multipathd show config' 명령을 사용하여 multipath 매개 변수 런타임 구성을 참조하십시오. 기본 설정을 재정의할 수 있는 레거시 설정, 특히 기본 섹션에서 실행 중인 구성을 항상 확인해야 합니다.</block>
   <block id="73087707ff2bdcd46af8a5eca4a750f8" category="admonition">Citrix XenServer에서는 지원되는 구성을 위해 모든 Linux 및 Windows 기반 게스트 VM에 Citrix VM 도구를 사용할 것을 권장합니다.</block>
   <block id="a6dc6c62ee31196ca4228a01ceaf054f" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 7.6을 사용하는 방법을 설명합니다</block>
@@ -2383,7 +2377,6 @@
   <block id="e646e16bee8b32e6ea29e30d01970a6c" category="section-title">제한 사항</block>
   <block id="8dc2bb86558c5fa9a6925f0d8bd82e21" category="list-text">NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. 이는 Linux 호스트에서 다음과 같은 두 가지 주요 제한 사항을 반영합니다.</block>
   <block id="b7c3db78c3a82d963056f99e4aa58d39" category="list-text">경로가 복구되면 자동 재연결되지 않음 - NVMe/TCP는 경로가 다운된 후 10분 동안 기본 'Ctrl-Loss-TMO'를 벗어나 복원되는 경로에 자동으로 다시 연결할 수 없습니다.</block>
-  <block id="fa4425742c4d1fb5d8e39e4339d06d6e" category="list-text">호스트 부팅 중에 자동 연결 안 됨 - NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다. NVMe/TCP용 SFO와 같은 ONTAP 장애 조치 이벤트를 편안하게 넘기 위해서는 Ctrl_Loss_TMO 타이머를 조정하여 30분 등 더 긴 재시도 시간을 설정하는 것이 좋습니다.</block>
   <block id="140268ba3849abd78f34f907f067407f" category="paragraph">을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 지원되는 구성에 대한 자세한 내용은 를 참조하십시오.</block>
   <block id="061e98174e60e8e432e858a83311d44d" category="list-text">서버에 RHEL 9.0을 설치합니다. 설치가 완료되면 지정된 RHEL 9.0 커널을 실행 중인지 확인합니다. 을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="aa752093cf87ece20a99a98640048b70" category="list-text">설치가 완료되면 지정된 RHEL 9.0 커널을 실행 중인지 확인합니다. 을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
@@ -2398,7 +2391,6 @@
   <block id="7f905df84e3f641e977ad2d5240dee4b" category="list-text">호스트 부팅 후 lpfc_sg_seg_cnt가 256으로 설정되어 있는지 확인합니다.</block>
   <block id="73a7814e5695a25d9824e6de50fe0979" category="paragraph">RHEL 9.0 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
   <block id="b3cc0f8131b6dd17671baba8c63d88b6" category="paragraph">NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. Linux NVMe/TCP 호스트에 대한 두 가지 주요 제한 사항이 반영되어 있습니다.</block>
-  <block id="828f6c28a4d526b6783eecef0ac05b8a" category="list-text">호스트 부팅 중에 자동 연결 안 됨 - NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다. SFO와 같은 ONTAP 장애 조치 이벤트를 편안하게 넘기 위해서는 Ctrl_Loss_TMO 타이머를 조정하여 30분 등 더 긴 재시도 시간을 설정하는 것이 좋습니다. 다음은 세부 정보입니다.</block>
   <block id="055436915aa042f3fdf8045e013acbb5" category="list-text">이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.</block>
   <block id="351f4726c12d45250df101c8bd9578d6" category="list-text">마찬가지로, 다른 NVMe/TCP 이니시에이터 타겟 LIF 콤보에서 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인하십시오. 예를 들면, 다음과 같습니다.</block>
   <block id="7ce841894f1ef8447498c5c8f5b1f19a" category="section-title">NVMf 확인</block>
@@ -2498,9 +2490,7 @@
   <block id="67a7c2662b17653a8ac76448e703f0b7" category="list-text">설치가 완료되면 지정된 RHEL 8.6 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="71dcdd59971df1a5bb4dfbb60ffe2bad" category="list-text">이니시에이터 포트가 가동 및 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.</block>
   <block id="95e3f3faa5bf8e48441621d165c05044" category="paragraph">RHEL 8.6 커널에 포함된 기본 받은 편지함 "qla2xxx" 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다.</block>
-  <block id="b964263fad43476391626a8c5994d66f" category="paragraph">SFO와 같은 ONTAP 장애 조치 이벤트를 편안하게 넘기 위해서는 Ctrl_Loss_TMO 타이머를 조정하여 30분 이상의 재시도 기간을 설정하는 것이 좋습니다. 다음은 세부 정보입니다.</block>
   <block id="346a874868cfe5950cc070d607e10dda" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF combos가 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다. 예를 들면 다음과 같습니다.</block>
-  <block id="7e4e5f748eea832eccfa25b6f84c9beb" category="list-text">노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 'NVMe connect-all' 명령을 실행합니다. 연결 중에 더 긴 "Ctrl_Loss_TMO" 기간(예: 30분, '-l 1800'을 통해 설정 가능)을 경과하여 경로 손실 시 더 긴 기간 동안 재시도해야 합니다. 예를 들면 다음과 같습니다.</block>
   <block id="3bb5487a25f2c91e7d62566cb6026b68" category="list-text">ONTAP 네임스페이스가 호스트에 제대로 반영되는지 확인합니다. 예를 들면 다음과 같습니다.</block>
   <block id="f2af591771f10d63662bd947024ee100" category="list-text">각 경로의 컨트롤러 상태가 라이브이고 적절한 ANA 상태인지 확인합니다. 예를 들면 다음과 같습니다.</block>
   <block id="c13733aade7c22e1d6c0fb7be8a8c754" category="list-text">NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다. 예를 들면 다음과 같습니다.</block>
@@ -2515,7 +2505,6 @@
   <block id="9c7d4fd2f8e0f3f2d80343ad47595e46" category="list-text">서버에 RHEL 8.5 GA를 설치합니다. 설치가 완료되면 지정된 RHEL 8.5 GA 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="3010e81137392b43d689728401eb1ea9" category="list-text">lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인한다</block>
   <block id="d5236e74852c6cce228c1229faf5ea4f" category="paragraph">RHEL 8.5 GA 커널에 포함된 기본 받은 편지함 "qla2xxx" 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다.</block>
-  <block id="e23d82164b7ed25abb97130635815a09" category="list-text">노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 'NVMe connect-all' 명령을 실행합니다. 연결 중에 더 긴 "Ctrl_Loss_TMO" 기간(예: 30분, '-l 1800'을 통해 설정 가능)을 경과하여 경로 손실 시 더 오랜 시간 재시도합니다. 예를 들면 다음과 같습니다.</block>
   <block id="431b68e6f738b5c8bf76d7972d17685f" category="paragraph">일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 "hostnqn" 문자열이 해당 하위 시스템에 추가된 경우 표시됩니다.</block>
   <block id="d9062f55beecc22ab1e0baaa195b1f68" category="paragraph">없음. "NVMe 검색"을 위해 잠시 후에 이 명령을 실행해 보십시오. NVMe CONNECT와 CONNECT-ALL의 경우 NVMe list 명령을 실행하여 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인합니다.</block>
   <block id="9b2d197e1555229882f18589d7c32cce" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: "NetApp ONTAP Controller"로 설정된 모델 및 "라운드 로빈"으로 설정된 로드 밸런싱 "iopolicy"가 호스트에 올바르게 반영되는지 확인합니다.</block>
@@ -2554,8 +2543,6 @@
   <block id="61efa8d63e1b266809e1e79422fed58f" category="paragraph">최신 SLES15 SP4 MU 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다.</block>
   <block id="859c1dcdb0decd8fe22f184abe2b92f7" category="list-text">경로 복구 후 자동 재연결 안 함 NVMe/TCP는 경로 다운 후 10분 동안 기본 'Ctrl-Loss-TMO' 타이머 이후에 복구된 경로에 자동으로 다시 연결할 수 없습니다.</block>
   <block id="1077e8ad3542ff8af32bed26b6b21ee8" category="list-text">호스트 부팅 중 자동 연결 없음 NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다.</block>
-  <block id="bf67db93bdc191f54bf3b60580bdafe9" category="paragraph">저장소 장애 조치(SFO) 같은 ONTAP 장애 조치 이벤트를 편안하게 넘기 위해서는 Ctrl_Loss_TMO 타이머를 조정하여 30분 등의 더 긴 재시도 기간을 설정하는 것이 좋습니다. 다음은 세부 정보입니다.</block>
-  <block id="bf093b1c5c4b0f979c7987042c56c3d8" category="list-text">노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 'NVMe connect-all' 명령을 실행합니다. 'CONNECT-ALL'이 진행되는 동안 'Ctrl_Loss_TMO' 기간(예: 30분 ~ -l 1800)을 더 길게 전달하여 경로 손실이 발생할 경우 더 오랜 기간 동안 재시도하도록 해야 합니다. 예를 들면, 다음과 같습니다.</block>
   <block id="b2edbac4a48e893081ffbe4cda9a7dec" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMe-of 설정(예: 모델을 NetApp ONTAP 컨트롤러로 설정 및 로드 밸런싱 IPolicy를 라운드 로빈으로 설정)이 호스트에 올바로 반영되는지 확인합니다.</block>
   <block id="0882578f9915da36a8ab5c612728ad30" category="paragraph">예 (A):</block>
   <block id="07cf625ee23005956a460fdd83c0142d" category="list-text">타겟 LIF가 "NVMe_info" 출력에서 위와 같이 표시되지 않으면 의심되는 NVMe/FC 오류에 대한 '/var/log/messages' 및 'mesg' 출력을 확인하여 그에 따라 보고 또는 수정하십시오.</block>
@@ -2766,4 +2753,16 @@
   <block id="94ed2eb93c1ea841359ebf631638ec66" category="paragraph">우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="a667026321ffb956d941d648c0ad659f" category="paragraph">각 Linux 배포에서 사용할 수 있는 rpm 패키지 "libhbaapi" 및 "libhbalinux"는 호스트 OS에 설치해야 합니다.</block>
   <block id="2e2f435df31672c9332b32b2b69afe2a" category="sidebar">Windows 호스트 유틸리티 릴리스 정보</block>
+  <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">이 예에서는<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
+  <block id="83b4ba657748695cb0894283702e0f3e" category="list-text">호스트 부팅 중에 자동 연결 안 됨 - NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다.</block>
+  <block id="f0f82e2793c63d13158f3daced159083" category="list-text">호스트 부팅 중에 자동 연결 안 됨 - NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.</block>
+  <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 동안 다시 시도하도록 합니다. 예를 들면, 다음과 같습니다.</block>
+  <block id="30058c2cccf9fdeeb47f9d3fbf9108bf" category="paragraph">이 예에서 sda는 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
+  <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.</block>
+  <block id="9ac1e2761e536d1b08b677a24976cad9" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 에서 타이머 재시도 기간(예: 30분, -l 1800까지 설정 가능)입니다<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 따라서 경로 손실이 발생할 경우 더 오랜 시간 동안 재시도합니다. 예를 들면, 다음과 같습니다.</block>
+  <block id="1272c37c0c38bd618d6d76d763f54041" category="paragraph">이 Citrix Hypervisor 8.x의 경우,<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
+  <block id="1de6caecfe16b961f2f1c858579203f0" category="list-text">를 실행합니다<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 재시도합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="557c4124a10a18982aa7103d5c4f8b02" category="paragraph">이 Citrix XenServer 7.x의 경우<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
+  <block id="ad6d243201e40d0f0153f9cf8a6eca49" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 동안 다시 시도하도록 합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="96e313a007231cc32cb878d3d92047fb" category="paragraph">시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.</block>
 </blocks>

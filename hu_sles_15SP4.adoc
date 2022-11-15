@@ -145,7 +145,7 @@ SUSE Linux Enterprise Server 15 SP4 OS는 ONTAP LUN을 인식하여 ASA 및 비 
 
 '<DevID>'을(를) 제외할 장치의 'WWID' 문자열로 바꿉니다. 다음 명령어를 이용하여 WWID를 결정한다.
 
-이 예에서 'da'는 블랙리스트가 필요한 로컬 SCSI 디스크입니다.
+이 예에서는 `sda` 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.
 
 .단계
 . 다음 명령어를 실행해 WWID를 결정한다.

@@ -139,7 +139,7 @@ blacklist {
 
 NOTE: DevID> * 를 제외할 장치의 WWID 문자열로 바꿉니다.
 
-이 Citrix XenServer 7.x의 경우 'da'는 블랙리스트에 필요한 로컬 SCSI 디스크입니다.
+이 Citrix XenServer 7.x의 경우 `sda` 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.
 
 . 다음 명령을 실행하여 WWID를 확인하십시오.
 +
