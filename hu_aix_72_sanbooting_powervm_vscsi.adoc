@@ -108,6 +108,7 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 'OEM_setup_env' 모드로 들어가면 명령행 프롬프트가 달러 표시에서 파운드 기호로 바뀌고 종료 등의 명령을 입력하여 중단할 때까지 OEM_setup_env 모드로 유지됩니다.
 
 +
+.예
 ``vioserver$OEM_setup_env'
 
 . 구성에서 ALUA를 지원하는 경우 이 구성을 사용하여 경로 우선 순위를 설정할 수 있습니다. ALUA가 설정되었는지 확인합니다.
@@ -156,6 +157,7 @@ vioserver#
 sandlun lun show -p
 
 +
+.예
 이 예에서는 직접 연결 구성에 대한 'lun lun show -p' 명령의 일반적인 출력을 보여 줍니다. 또한 hdisk9에 대한 정보를 표시하는 'show -d hdisk9 -v' 명령을 포함합니다. 이 명령의 출력이 잘렸습니다.
 
 +

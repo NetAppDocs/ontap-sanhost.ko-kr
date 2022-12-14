@@ -131,6 +131,7 @@ Dotpaths[-HQV][hdiskN...]'을 선택합니다
 sandlun lun show를 참조하십시오
 
 +
+.예
 이 예제는 MPIO 다중 경로 환경에서 'show'를 사용한 일반적인 명령의 출력을 보여 줍니다.
 
 +

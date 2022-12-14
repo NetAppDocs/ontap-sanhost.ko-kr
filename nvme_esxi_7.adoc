@@ -164,6 +164,7 @@ uuid.5084e29a6bb24fbca5ba076eda8ecd7e : NVMe Fibre Channel Disk (uuid.5084e29a6b
 NOTE: ONTAP 9.7에서 NVMe/FC 네임스페이스의 기본 블록 크기는 4K입니다. 이 기본 크기는 ESXi와 호환되지 않습니다. 따라서 ESXi에 대한 네임스페이스를 생성할 때 네임스페이스 블록 크기를 512b로 설정해야 합니다. 이 작업은 'vserver NVMe namespace create' 명령을 사용하여 수행할 수 있습니다.
 
 +
+.예
 'vserver NVMe namespace create-vserver vs_1-path /vol/nsvol/Namespace1-size 100g-OSType VMware-block-size 512B'
 
 +

@@ -22,6 +22,7 @@ blacklist {
         devnode "^cciss.*"
 }
 ....
+.예
 이 예에서 sda는 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.
 
 . 다음 명령을 실행하여 WWID를 확인하십시오.

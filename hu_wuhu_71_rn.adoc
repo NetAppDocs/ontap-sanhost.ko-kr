@@ -93,6 +93,7 @@ SAN Host Utilities 설명서는 에 포함되어 있습니다 link:https://docs.
 
 모든 NetApp 제품에 대한 문서에 액세스하고 NetApp 기업 사이트의 제품 설명서 페이지에서 기술 보고서, 백서 등의 기타 제품 정보 리소스를 찾을 수 있습니다.
 
+.관련 정보
 * ONTAP 스토리지 시스템 구성 및 관리 *
 
 * 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["ONTAP 소프트웨어 설치 안내서"^] ONTAP 버전용

@@ -25,6 +25,7 @@ blacklist {
         devnode "^cciss.*"
 }
 ....
+.예
 이 예에서는 `sda` 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.
 
 .단계
