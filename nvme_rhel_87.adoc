@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_rhel_85.html 
+permalink: nvme_rhel_87.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: ONTAP에서 RHEL 8.5용 NVMe-oF 호스트를 구성하는 방법 
+summary: ONTAP를 사용하여 RHEL 8.7용 NVMe-oF 호스트를 구성하는 방법 
 ---
-= ONTAP 8.5를 지원하는 RHEL용 NVMe-oF 호스트 구성
+= ONTAP가 있는 RHEL 8.7용 NVMe-oF 호스트 구성
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -23,7 +23,7 @@ summary: ONTAP에서 RHEL 8.5용 NVMe-oF 호스트를 구성하는 방법
 
 == 지원 가능성
 
-NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(비대칭 네임스페이스 액세스)가 포함된 RHEL 8.5에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 ALUA로, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. RHEL 8.5 및 ONTAP에서 타겟으로 ANA를 사용하는 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 자세한 내용은 여기 에 설명되어 있습니다.
+NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(Asymmetric Namespace Access)가 있는 RHEL 8.7에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 ALUA로, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. RHEL 8.7에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 자세한 내용은 여기 에 설명되어 있습니다.
 
 
 NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
@@ -32,15 +32,14 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 
 == 피처
 
-* RHEL 8.5에는 NVMe/FC 외에도 NVMe/TCP(기술 미리 보기 기능) 지원이 포함되어 있습니다. 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시할 수 있습니다.
-
+RHEL 8.7에는 NVMe/FC 외에 NVMe/TCP(기술 미리 보기 기능)에 대한 지원이 포함되어 있습니다. 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시할 수 있습니다.
 
 
 
 == 알려진 제한 사항
 
-* RHEL 8.5의 경우, in-kernel NVMe multipath가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.
-* RHEL 8.5의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.5_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.5 릴리스 정보"^] 를 참조하십시오.
+* RHEL 8.7의 경우 커널 내 NVMe 다중 경로가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.
+* RHEL 8.7의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오 link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.7_release_notes/index["RHEL 8.7 릴리즈 노트"^] 를 참조하십시오.
 
 
 
@@ -53,7 +52,9 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 
 == In-kernel NVMe Multipath를 활성화합니다
 
-. 서버에 RHEL 8.5 GA를 설치합니다. 설치가 완료되면 지정된 RHEL 8.5 GA 커널을 실행 중인지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 를 참조하십시오.
+.단계
+. RHEL 8.7을 서버에 설치합니다. 설치가 완료되면 지정된 RHEL 8.7 커널을 실행 중인지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 를 참조하십시오.
+. 설치가 완료되면 지정된 RHEL 8.7 커널을 실행 중인지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 를 참조하십시오.
 +
 예:
 
@@ -61,7 +62,7 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 [listing]
 ----
 # uname -r
-4.18.0-348.el8.x86_64
+4.18.0-425.3.1.el8.x86_64
 ----
 . "NVMe-CLI" 패키지를 설치합니다.
 +
@@ -71,13 +72,13 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 [listing]
 ----
 # rpm -qa|grep nvme-cli
-nvme-cli-1.14-3.el8.x86_64
+nvme-cli-1.16-5.el8.x86_64
 ----
 . 인커널 NVMe 다중 경로 지원:
 +
 [listing]
 ----
-# grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-348.el8.x86_64
+# grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-425.3.1.el8.x86_64
 ----
 . 호스트에서 '/etc/NVMe/hostnqn'의 호스트 NQN 문자열을 확인하고 ONTAP 배열의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다. 예:
 +
@@ -85,11 +86,13 @@ nvme-cli-1.14-3.el8.x86_64
 ----
 
 # cat /etc/nvme/hostnqn
-nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
-::> vserver nvme subsystem host show -vserver vs_fcnvme_141
+
+          nqn.2014-08.org.nvmexpress:uuid:a7f7a1d4-311a-11e8-b634-            7ed30aef10b7
+
+::> vserver nvme subsystem host show -vserver vs_nvme167
 Vserver     Subsystem       Host NQN
------------ --------------- ----------------------------------------------------------
-vs_fcnvme_14 nvme_141_1     nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
+----------- --------------- ----------------
+vs_nvme167 rhel_167_LPe35002  nqn.2014-08.org.nvmexpress:uuid: a7f7a1d4-311a-11e8-b634-7ed30aef10b7
 
 ----
 +
@@ -100,7 +103,7 @@ NOTE: 호스트 NQN 문자열이 일치하지 않으면 "vserver modify" 명령�
 +
 [NOTE]
 ====
-동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 모두 실행하려는 경우 ONTAP 네임스페이스에는 인커널 NVMe 다중 경로, ONTAP LUN에는 dm-multipath를 각각 사용하는 것이 좋습니다. 즉, dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하도록 ONTAP 네임스페이스를 dm-multipath에서 제외해야 합니다. 이렇게 하려면 enable_Foreign 설정을 '/etc/multipath.conf' 파일에 추가합니다.
+동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우 ONTAP 네임스페이스에는 인커널 NVMe 다중 경로, ONTAP LUN에는 dm-multipath를 각각 사용하는 것이 좋습니다. 즉, dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하도록 ONTAP 네임스페이스를 dm-multipath에서 제외해야 합니다. 이 작업은 에 enable_Foreign 설정을 추가하여 수행할 수 있습니다 `/etc/multipath.conf` 파일:
 
 [listing]
 ----
@@ -121,26 +124,27 @@ defaults {
 
 === Broadcom/Emulex
 
+.단계
 . 지원되는 어댑터를 사용하고 있는지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 를 참조하십시오.
 +
 [listing]
 ----
 # cat /sys/class/scsi_host/host*/modelname
-LPe32002-M2
-LPe32002-M2
+LPe35002-M2
+LPe35002-M2
 # cat /sys/class/scsi_host/host*/modeldesc
-Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
-Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LightPulse LPe35002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LightPulse LPe35002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
 . 권장 Broadcom lpfc 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록을 확인하십시오.
 +
 [listing]
 ----
 # cat /sys/class/scsi_host/host*/fwrev
-12.8.351.47, sli-4:2:c
-12.8.351.47, sli-4:2:c
+14.0.505.12, sli-4:6:d
+14.0.505.12, sli-4:6:d
 # cat /sys/module/lpfc/version
-0:12.8.0.10
+0:14.0.0.15
 ----
 . lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인한다
 +
@@ -151,43 +155,40 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
 . 이니시에이터 포트가 가동 및 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.
 +
-[listing, subs="+quotes"]
+[listing]
 ----
 # cat /sys/class/fc_host/host*/port_name
-0x100000109b1c1204
-0x100000109b1c1205
-
+0x100000109b95467c
+0x100000109b95467b
 # cat /sys/class/fc_host/host*/port_state
 Online
 Online
-
 # cat /sys/class/scsi_host/host*/nvme_info
+NVME Initiator Enabled
+XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc1 WWPN x100000109b95467c WWNN x200000109b95467c DID x0a1500 ONLINE
+NVME RPORT       WWPN x2071d039ea36a105 WWNN x206ed039ea36a105 DID x0a0907 TARGET DISCSRVC ONLINE
+NVME RPORT       WWPN x2072d039ea36a105 WWNN x206ed039ea36a105 DID x0a0805 TARGET DISCSRVC ONLINE
+
+NVME Statistics
+LS: Xmt 00000001c7 Cmpl 00000001c7 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 0000000004909837 Issue 0000000004908cfc OutIO fffffffffffff4c5
+abort 0000004a noxri 00000000 nondlp 00000458 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000061 Err 00017f43
 
 NVME Initiator Enabled
 XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc0 WWPN x100000109b1c1204 WWNN x200000109b1c1204 DID x011d00 ONLINE
-NVME RPORT WWPN x203800a098dfdd91 WWNN x203700a098dfdd91 DID x010c07 TARGET DISCSRVC ONLINE
-NVME RPORT WWPN x203900a098dfdd91 WWNN x203700a098dfdd91 DID x011507 TARGET DISCSRVC ONLINE
+NVME LPORT lpfc0 WWPN x100000109b95467b WWNN x200000109b95467b DID x0a1100 ONLINE
+NVME RPORT       WWPN x2070d039ea36a105 WWNN x206ed039ea36a105 DID x0a1007 TARGET DISCSRVC ONLINE
+NVME RPORT       WWPN x206fd039ea36a105 WWNN x206ed039ea36a105 DID x0a0c05 TARGET DISCSRVC ONLINE
 
 NVME Statistics
-LS: Xmt 0000000f78 Cmpl 0000000f78 Abort 00000000
-LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 000000002fe29bba Issue 000000002fe29bc4 OutIO 000000000000000a
-abort 00001bc7 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00001e15 Err 0000d906
-
-NVME Initiator Enabled
-XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc1 WWPN x100000109b1c1205 WWNN x200000109b1c1205 DID x011900 ONLINE
-NVME RPORT WWPN x203d00a098dfdd91 WWNN x203700a098dfdd91 DID x010007 TARGET DISCSRVC ONLINE
-NVME RPORT WWPN x203a00a098dfdd91 WWNN x203700a098dfdd91 DID x012a07 TARGET DISCSRVC ONLINE
-
-NVME Statistics
-LS: Xmt 0000000fa8 Cmpl 0000000fa8 Abort 00000000
-LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 000000002e14f170 Issue 000000002e14f17a OutIO 000000000000000a
-abort 000016bb noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00001f50 Err 0000d9f8
+LS: Xmt 00000001c7 Cmpl 00000001c7 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 0000000004909464 Issue 0000000004908531 OutIO fffffffffffff0cd
+abort 0000004f noxri 00000000 nondlp 00000361 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 0000006b Err 00017f99
 ----
 
 
@@ -197,6 +198,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 
 ONTAP는 컨트롤러 식별 데이터에 8의 MDTS(MAX Data 전송 크기)를 보고합니다. 즉, 최대 I/O 요청 크기는 최대 1MB여야 합니다. 그러나 Broadcom NVMe/FC 호스트에 대해 크기 1MB의 입출력 요청을 발급하려면 lpfc 매개 변수 "lpfc_sg_seg_cnt"를 기본값 64에서 최대 256까지 범프해야 합니다. 다음 지침에 따라 수행합니다.
 
+.단계
 . 해당 'modprobe lpfc.conf' 파일에 값 256을 추가합니다.
 +
 [listing]
@@ -221,15 +223,15 @@ options lpfc lpfc_sg_seg_cnt=256
 
 === Marvell/QLogic
 
-RHEL 8.5 GA 커널에 포함된 기본 받은 편지함 "qla2xxx" 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다.
+기본 받은 편지함입니다 `qla2xxx` RHEL 8.7 커널에 포함된 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 있습니다.
 
 . 다음 명령을 사용하여 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행 중인지 확인합니다.
 +
 [listing]
 ----
 # cat /sys/class/fc_host/host*/symbolic_name
-QLE2742 FW:v9.06.02 DVR:v10.02.00.106-k
-QLE2742 FW:v9.06.02 DVR:v10.02.00.106-k
+QLE2772 FW:v9.08.02 DVR:v10.02.07.400-k-debug
+QLE2772 FW:v9.08.02 DVR:v10.02.07.400-k-debug
 ----
 . Marvell 어댑터가 다음 명령을 사용하여 NVMe/FC 이니시에이터로 작동할 수 있도록 하는 "ql2xnvmeenable"이 설정되어 있는지 확인합니다.
 +
@@ -257,57 +259,114 @@ NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. Linux NVM
 +
 [listing]
 ----
-# nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.51
-Discovery Log Number of Records 10, Generation counter 119
+# nvme discover -t tcp -w 192.168.211.5 -a 192.168.211.14
+
+Discovery Log Number of Records 8, Generation counter 10
+
 =====Discovery Log Entry 0======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 0
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_1
-traddr: 192.168.2.56
+trtype:  tcp
+adrfam:  ipv4
+subtype: unrecognized
+treq:    not specified
+portid:  0
+trsvcid: 8009
+subnqn:  nqn.199208.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:discovery
+traddr:  192.168.211.15
 sectype: none
 =====Discovery Log Entry 1======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 1
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_1
-traddr: 192.168.1.51
+trtype:  tcp
+adrfam:  ipv4
+subtype: unrecognized
+treq:    not specified
+portid:  1
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:discovery
+traddr:  192.168.111.15
 sectype: none
 =====Discovery Log Entry 2======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 0
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_2
-traddr: 192.168.2.56
+trtype:  tcp
+adrfam:  ipv4
+subtype: unrecognized
+treq:    not specified
+portid:  2
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:discovery
+traddr:  192.168.211.14
 sectype: none
-...
+=====Discovery Log Entry 3======
+trtype:  tcp
+adrfam:  ipv4
+subtype: unrecognized
+treq:    not specified
+portid:  3
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:discovery
+traddr:  192.168.111.14
+sectype: none
+=====Discovery Log Entry 4======
+trtype:  tcp
+adrfam:  ipv4
+subtype: nvme subsystem
+treq:    not specified
+portid:  0
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:subsystem.rhel_tcp_165
+traddr:  192.168.211.15
+sectype: none
+=====Discovery Log Entry 5======
+trtype:  tcp
+adrfam:  ipv4
+subtype: nvme subsystem
+treq:    not specified
+portid:  1
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:subsystem.rhel_tcp_165
+traddr:  192.168.111.15
+sectype: none
+=====Discovery Log Entry 6======
+
+trtype:  tcp
+adrfam:  ipv4
+subtype: nvme subsystem
+treq:    not specified
+portid:  2
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:subsystem.rhel_tcp_165
+traddr:  192.168.211.14
+sectype: none
+
+=====Discovery Log Entry 7======
+trtype:  tcp
+adrfam:  ipv4
+subtype: nvme subsystem
+treq:    not specified
+
+   portid:  3
+
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:subsystem.rhel_tcp_165
+traddr:  192.168.111.14
+sectype: none
+[root@R650-13-79 ~]#
 ----
 . 다른 NVMe/TCP 이니시에이터-타겟 LIF combos가 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다. 예를 들면 다음과 같습니다.
 +
 [listing]
 ----
-# nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.51
-# nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.52
-# nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.56
-# nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.57
+# nvme discover -t tcp -w 192.168.211.5 -a 192.168.211.14
+# nvme discover -t tcp -w 192.168.211.5 -a 192.168.211.15
+# nvme discover -t tcp -w 192.168.111.5 -a 192.168.111.14
+# nvme discover -t tcp -w 192.168.111.5 -a 192.168.111.15
+
 ----
-. 를 실행합니다 `nvme connect-all` 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오 `ctrl_loss_tmo` 타이머 재시도 기간(예: 에서 설정할 수 있는 30분 `-l 1800`) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 재시도합니다. 예를 들면 다음과 같습니다.
+. 실행 `nvme connect-all` 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오 `ctrl_loss_tmo` 타이머 재시도 기간(예: 에서 설정할 수 있는 30분 `-l 1800`) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 동안 다시 시도하도록 합니다. 예를 들면 다음과 같습니다.
 +
 [listing]
 ----
-# nvme connect-all -t tcp -w 192.168.1.8 -a 192.168.1.51 -l 1800
-# nvme connect-all -t tcp -w 192.168.1.8 -a 192.168.1.52 -l 1800
-# nvme connect-all -t tcp -w 192.168.2.9 -a 192.168.2.56 -l 1800
-# nvme connect-all -t tcp -w 192.168.2.9 -a 192.168.2.57 -l 1800
+# nvme connect-all -t tcp -w 192.168.211.5-a 192.168.211.14 -l 1800
+# nvme connect-all -t tcp -w 192.168.211.5 -a 192.168.211.15 -l 1800
+# nvme connect-all -t tcp -w 192.168.111.5 -a 192.168.111.14 -l 1800
+# nvme connect-all -t tcp -w 192.168.111.5 -a 192.168.111.15 -l 1800
 ----
 
 
@@ -315,6 +374,7 @@ sectype: none
 
 == NVMe-oF를 검증합니다
 
+.단계
 . 다음을 확인하여 In-kernel NVMe multipath가 실제로 활성화되어 있는지 확인합니다.
 +
 [listing]
@@ -322,7 +382,7 @@ sectype: none
 # cat /sys/module/nvme_core/parameters/multipath
 Y
 ----
-. 각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: "NetApp ONTAP Controller"로 설정된 모델 및 "라운드 로빈"으로 설정된 로드 밸런싱 지정값이 호스트에 올바르게 반영되는지 확인하십시오.
+. 각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: "NetApp ONTAP Controller"로 설정된 모델 및 "라운드 로빈"으로 설정된 로드 밸런싱 "iopolicy"가 호스트에 올바르게 반영되는지 확인합니다.
 +
 [listing]
 ----
@@ -341,52 +401,62 @@ round-robin
 # nvme list
 Node           SN                    Model                   Namespace
 ------------   --------------------- ---------------------------------
-/dev/nvme0n1    814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller   1
+/dev/nvme0n1   81Gx7NSiKSRNAAAAAAAB   NetApp ONTAP Controller   1
 
 Usage                Format         FW Rev
 -------------------  -----------    --------
-85.90 GB / 85.90 GB  4 KiB + 0 B    FFFFFFFF
+21.47  GB /  21.47  GB  4 KiB + 0 B    FFFFFFFF
 ----
 . 각 경로의 컨트롤러 상태가 라이브이고 적절한 ANA 상태인지 확인합니다. 예를 들면 다음과 같습니다.
 +
 [listing, subs="+quotes"]
 ----
-# nvme list-subsys /dev/nvme0n1
-nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:subsystem.nvme_141_1
+# nvme list-subsys /dev/nvme1n1
+
+nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:subsystem.rhel_tcp_165
+
 \
-+- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 *live inaccessible*
-+- nvme1 fc traddr=nn-0x203700a098dfdd91:pn-0x203900a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 *live inaccessible*
-+- nvme2 fc traddr=nn-0x203700a098dfdd91:pn-0x203a00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 *live optimized*
-+- nvme3 fc traddr=nn-0x203700a098dfdd91:pn-0x203d00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 *live optimized*
+
+ +- nvme0 tcp traddr=192.168.211.15 trsvcid=4420 host_traddr=192.168.211.5 live non-optimized
+
+ +- nvme1 tcp traddr=192.168.211.14 trsvcid=4420 host_traddr=192.168.211.5 live optimized
+
+ +- nvme2 tcp traddr=192.168.111.15 trsvcid=4420 host_traddr=192.168.111.5 live non-optimized
+
+ +- nvme3 tcp traddr=192.168.111.14 trsvcid=4420 host_traddr=192.168.111.5 live optimized
 ----
-. NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다. 예를 들면, 다음과 같습니다.
+. NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다. 예를 들면 다음과 같습니다.
 +
 [listing]
 ----
 # nvme netapp ontapdevices -o column
 Device       Vserver          Namespace Path
 ---------    -------          --------------------------------------------------
-/dev/nvme0n1 vs_fcnvme_141  vol/fcnvme_141_vol_1_1_0/fcnvme_141_ns
+/dev/nvme0n1 vs_tcp79     /vol/vol1/ns1 
 
 NSID  UUID                                   Size
 ----  ------------------------------         ------
-1     72b887b1-5fb6-47b8-be0b-33326e2542e2  85.90GB
+1     79c2c569-b7fa-42d5-b870-d9d6d7e5fa84  21.47GB
 
 
 # nvme netapp ontapdevices -o json
 {
-"ONTAPdevices" : [
-    {
-        "Device" : "/dev/nvme0n1",
-        "Vserver" : "vs_fcnvme_141",
-        "Namespace_Path" : "/vol/fcnvme_141_vol_1_1_0/fcnvme_141_ns",
-        "NSID" : 1,
-        "UUID" : "72b887b1-5fb6-47b8-be0b-33326e2542e2",
-        "Size" : "85.90GB",
-        "LBA_Data_Size" : 4096,
-        "Namespace_Size" : 20971520
-    }
-  ]
+
+  "ONTAPdevices" : [
+  {
+
+      "Device" : "/dev/nvme0n1",
+      "Vserver" : "vs_tcp79",
+      "Namespace_Path" : "/vol/vol1/ns1",
+      "NSID" : 1,
+      "UUID" : "79c2c569-b7fa-42d5-b870-d9d6d7e5fa84",
+      "Size" : "21.47GB",
+      "LBA_Data_Size" : 4096,
+      "Namespace_Size" : 5242880
+    },
+
+]
+
 }
 ----
 
@@ -401,6 +471,7 @@ NVMe/FC 오류에 대한 문제 해결을 시작하기 전에 IMT 사양을 준�
 
 === lpfc Verbose 로깅
 
+.단계
 . "lpfc_log_verbose" 드라이버 설정을 다음 값 중 한 값으로 설정하여 NVMe/FC 이벤트를 기록할 수 있습니다.
 +
 [listing]
@@ -417,9 +488,9 @@ NVMe/FC 오류에 대한 문제 해결을 시작하기 전에 IMT 사양을 준�
 +
 [listing]
 ----
-
 # cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_log_verbose=0xf00083
+
 
 # cat /sys/module/lpfc/parameters/lpfc_log_verbose
 15728771
@@ -432,6 +503,7 @@ options lpfc lpfc_log_verbose=0xf00083
 
 lpfc 드라이버에 대한 NVMe/FC에 대한 유사한 특정 qla2xxx 로깅이 없습니다. 따라서 다음 단계를 사용하여 일반 qla2xxx 로깅 수준을 설정할 수 있습니다.
 
+.단계
 . 해당 modprobe qla2xxx conf 파일에 "ql2xextended_error_logging=0x1e400000" 값을 추가합니다.
 . dracut -f 명령을 실행하여 initramfs를 재생성한 다음 호스트를 재부팅합니다.
 . 재부팅 후 상세 로깅이 다음과 같이 적용되었는지 확인합니다.
@@ -447,6 +519,17 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 
 
 
+== 알려진 문제 및 제한 사항
+
+[cols="10,30,30,10"]
+|===
+| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+
+
+| 1479047 | RHEL 8.x NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다 | NVMe-oF(NVMe over Fabrics) 호스트에서는 를 제공하여 PDC(영구적 검색 컨트롤러)를 생성할 수 있습니다 `-p` 에 대한 옵션 `nvme discover` 명령. 지정된 초기자-대상 조합의 경우 각 호출을 통해 PDC 하나를 만들어야 합니다 `nvme discover` 명령. 그러나 ONTAP 9.10.1.1부터 RHEL(Red Hat Enterprise Linux) 8.x NVMe-of 호스트의 경우 각 호출을 통해 중복 PDC가 생성됩니다 `nvme discover` 명령과 함께 `-p` 옵션을 선택합니다. 이로 인해 호스트와 타겟 모두에서 리소스가 낭비됩니다. | 2087000 
+|===
+
+
 === 일반적인 NVMe-CLI 오류 및 해결 방법
 
 다음 표에는 NVMe 검색, NVMe 연결 또는 NVMe 연결 모든 작업 중에 "NVMe-CLI"로 표시되는 오류와 해결 방법이 나와 있습니다.
@@ -459,8 +542,8 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 | '/dev/NVMe-fabric에 쓸 수 없음: 잘못된 인수. | 구문이 잘못되었습니다 | 위의 NVMe 명령에 올바른 구문을 사용하고 있는지 확인하십시오. 
 
 
-| '/dev/NVMe-fabric에 쓰지 못함: 해당 파일 또는 디렉토리가 없습니다. | 여러 가지 문제로 인해 이 문제가 발생할 수 있습니다. 일반적인 원인 중 하나는 NVMe 명령에 잘못된 인수를 전달하는 것입니다.  a| 
-* 올바른 인수(예: WWNN 문자열, WWPN 문자열 등)를 명령에 전달했는지 확인하십시오.
+| '/dev/NVMe-fabric에 쓰지 못함: 해당 파일 또는 디렉토리가 없습니다. | 여러 가지 문제로 인해 이 문제가 발생할 수 있습니다. NVMe 명령에 잘못된 인수를 제공하는 것이 일반적인 원인 중 하나입니다.  a| 
+* 명령에 올바른 인수(예: WWNN 문자열, WWPN 문자열 등)를 전달했는지 확인하십시오.
 * 인수가 올바르지만 여전히 이 오류가 표시되면 '/sys/class/scsi_host/host * /NVMe_info' 출력이 올바른지, NVMe 이니시에이터가 'Enabled'로 표시되는지, NVMe/FC 타겟 LIF가 원격 포트 섹션 아래에 제대로 표시되는지 확인하십시오. 예:
 +
 [listing]
@@ -490,12 +573,12 @@ Cmpl 00000000000000a8 Outstanding 0000000000000001
 | 가져올 검색 로그 항목이 없습니다  a| 
 일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 "hostnqn" 문자열이 해당 하위 시스템에 추가된 경우 표시됩니다.
  a| 
-정확한 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되었는지 확인합니다('vserver NVMe subsystem host show' 명령을 통해 확인).
+를 정확하게 확인합니다 `/etc/nvme/hostnqn` NetApp 어레이의 해당 하위 시스템에 문자열이 추가됩니다(을 통해 확인) `vserver nvme subsystem host show` 명령 참조).
 
 
 
 | '/dev/NVMe-fabric에 쓸 수 없습니다: 작업이 이미 진행 중입니다.  a| 
-컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우 표시됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.
+컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 것을 확인했습니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.
  a| 
 없음. "NVMe 검색"을 위해 잠시 후에 이 명령을 실행해 보십시오. NVMe CONNECT와 CONNECT-ALL의 경우 NVMe list 명령을 실행하여 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인합니다.
 
