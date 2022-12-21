@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: nvme_ol_85.html 
+keywords: nvme, linux, oracle, 
+summary:  
+---
+= Oracle Linux 8.5 및 ONTAP용 NVMe/FC 호스트 구성
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Oracle 8.5에 대한 NVMe/FC 호스트 구성 세부 정보는 Oracle의 NVMe/FC 지원이 이 호스트 OS 버전에 대해 정규화된 경우에 게시됩니다.
