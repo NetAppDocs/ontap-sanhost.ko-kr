@@ -2371,9 +2371,6 @@
   <block id="d5a9179e304fd13ff8268ac2240e3ef4" category="paragraph">NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상적인 스토리지 장애 조치(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 있는 RHEL 9.0에서 지원됩니다. ANA는 NVM-of 환경에서 ALUA와 동등한 제품이며 현재 In-kernel NVMe Multipath로 구현되고 있습니다. 이 문서에는 RHEL 9.0에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 세부 정보가 포함되어 있습니다.</block>
   <block id="95369a4b9030e2f901d021df167f021b" category="list-text">RHEL 9.0부터 NVMe/TCP는 더 이상 기술 미리 보기 기능(RHEL 8과 다름)이 아니라 완전히 지원되는 엔터프라이즈 기능 자체입니다.</block>
   <block id="c1e6aa7090af15f8d8efefa50c5ebbb9" category="list-text">RHEL 9.0부터는 명시적 설정 없이 커널 내 NVMe 다중 경로가 기본적으로 NVMe 네임스페이스에 대해 활성화됩니다(RHEL 8과 다름).</block>
-  <block id="e646e16bee8b32e6ea29e30d01970a6c" category="section-title">제한 사항</block>
-  <block id="8dc2bb86558c5fa9a6925f0d8bd82e21" category="list-text">NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. 이는 Linux 호스트에서 다음과 같은 두 가지 주요 제한 사항을 반영합니다.</block>
-  <block id="b7c3db78c3a82d963056f99e4aa58d39" category="list-text">경로가 복구되면 자동 재연결되지 않음 - NVMe/TCP는 경로가 다운된 후 10분 동안 기본 'Ctrl-Loss-TMO'를 벗어나 복원되는 경로에 자동으로 다시 연결할 수 없습니다.</block>
   <block id="140268ba3849abd78f34f907f067407f" category="paragraph">을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 지원되는 구성에 대한 자세한 내용은 를 참조하십시오.</block>
   <block id="061e98174e60e8e432e858a83311d44d" category="list-text">서버에 RHEL 9.0을 설치합니다. 설치가 완료되면 지정된 RHEL 9.0 커널을 실행 중인지 확인합니다. 을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="aa752093cf87ece20a99a98640048b70" category="list-text">설치가 완료되면 지정된 RHEL 9.0 커널을 실행 중인지 확인합니다. 을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
@@ -2387,7 +2384,6 @@
   <block id="99e650add6ead46b272ac60ccc4c6184" category="paragraph">lpfc 드라이버가 입출력 요청을 1MB 크기로 발급하려면 lpfc_sg_seg_cnt 매개변수를 256으로 설정해야 합니다.</block>
   <block id="7f905df84e3f641e977ad2d5240dee4b" category="list-text">호스트 부팅 후 lpfc_sg_seg_cnt가 256으로 설정되어 있는지 확인합니다.</block>
   <block id="73a7814e5695a25d9824e6de50fe0979" category="paragraph">RHEL 9.0 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
-  <block id="b3cc0f8131b6dd17671baba8c63d88b6" category="paragraph">NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. Linux NVMe/TCP 호스트에 대한 두 가지 주요 제한 사항이 반영되어 있습니다.</block>
   <block id="055436915aa042f3fdf8045e013acbb5" category="list-text">이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.</block>
   <block id="351f4726c12d45250df101c8bd9578d6" category="list-text">마찬가지로, 다른 NVMe/TCP 이니시에이터 타겟 LIF 콤보에서 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인하십시오. 예를 들면, 다음과 같습니다.</block>
   <block id="7ce841894f1ef8447498c5c8f5b1f19a" category="section-title">NVMf 확인</block>
@@ -2660,8 +2656,6 @@
   <block id="a667026321ffb956d941d648c0ad659f" category="paragraph">각 Linux 배포에서 사용할 수 있는 rpm 패키지 "libhbaapi" 및 "libhbalinux"는 호스트 OS에 설치해야 합니다.</block>
   <block id="2e2f435df31672c9332b32b2b69afe2a" category="sidebar">Windows 호스트 유틸리티 릴리스 정보</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">이 예에서는<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
-  <block id="83b4ba657748695cb0894283702e0f3e" category="list-text">호스트 부팅 중에 자동 연결 안 됨 - NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다.</block>
-  <block id="f0f82e2793c63d13158f3daced159083" category="list-text">호스트 부팅 중에 자동 연결 안 됨 - NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 동안 다시 시도하도록 합니다. 예를 들면, 다음과 같습니다.</block>
   <block id="30058c2cccf9fdeeb47f9d3fbf9108bf" category="paragraph">이 예에서 sda는 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
   <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.</block>
@@ -2693,8 +2687,6 @@
   <block id="18364f61161412813e05ad8b27bed23e" category="paragraph">NVMe/FC 오류에 대한 문제 해결을 시작하기 전에 IMT 사양을 준수하는 구성을 실행하고 있는지 확인한 후 다음 단계를 수행하여 호스트 측 문제를 디버깅하십시오.</block>
   <block id="3a3b7ac2e39541ea05707ccd6eb054d4" category="section-title">알려진 문제 및 제한 사항</block>
   <block id="4c865e0cb70fa33868e69a5e88daad47" category="cell">1479047</block>
-  <block id="cf6366d36f548ad4fbfb319ac121f2a5" category="cell">RHEL 8.x NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
-  <block id="c58f4b32e0b4018e032143845aa6c3e4" category="cell">NVMe-oF(NVMe over Fabrics) 호스트에서는 를 제공하여 PDC(영구적 검색 컨트롤러)를 생성할 수 있습니다<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 에 대한 옵션<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령. 지정된 초기자-대상 조합의 경우 각 호출을 통해 PDC 하나를 만들어야 합니다<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령. 그러나 ONTAP 9.10.1.1부터 RHEL(Red Hat Enterprise Linux) 8.x NVMe-of 호스트의 경우 각 호출을 통해 중복 PDC가 생성됩니다<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령과 함께<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 옵션을 선택합니다. 이로 인해 호스트와 타겟 모두에서 리소스가 낭비됩니다.</block>
   <block id="f890a2d3eb444832b655a9838102f3df" category="cell">2087000</block>
   <block id="3f4a3b3eec403674aa0cd9427d6deec9" category="cell">위의 NVMe 명령에 올바른 구문을 사용하고 있는지 확인하십시오.</block>
   <block id="e0f847d0d970d13348c3311998e2e15c" category="cell">여러 가지 문제로 인해 이 문제가 발생할 수 있습니다. NVMe 명령에 잘못된 인수를 제공하는 것이 일반적인 원인 중 하나입니다.</block>
@@ -2702,12 +2694,7 @@
   <block id="de63239808aba6bc3b6e058c280e2334" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 8.7을 사용하는 방법을 설명합니다</block>
   <block id="054dec9601134c2039198642192ad5cd" category="doc">NetApp ONTAP와 함께 Red Hat Enterprise Linux 8.7 사용</block>
   <block id="42629720f0dd50e499b39533a5c8c6c6" category="paragraph">RHEL(Red Hat Enterprise Linux) 8.7의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.7은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="3563f88528058cb4204fdaa22c14f966" category="cell">1501048</block>
-  <block id="dcda3b905d6ce3cc8adfc8ef13a4e227" category="cell">FC 전송 계층 시간 초과 매개 변수입니다<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> 원격 SCSI 타겟 포트의 경우 음수 값(-1)을 보고합니다.</block>
-  <block id="5b876ec80b215faac6b29b80c4b9ccb3" category="inline-link-macro">2124297</block>
-  <block id="06f7b53dab389e67432643a56b42a885" category="cell"><block ref="06f7b53dab389e67432643a56b42a885" category="inline-link-macro-rx"></block></block>
   <block id="c7ed23f5281d7f5b606a1019ecd9fd97" category="sidebar">8.7</block>
-  <block id="cf240b20959199d80c7416984bf7bcbe" category="admonition">이 항목에서 제공하는 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 및 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>.</block>
   <block id="fc410d61e7ecc158420724cd4cfa51e2" category="paragraph">NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(Asymmetric Namespace Access)가 있는 RHEL 8.7에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 ALUA로, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. 이 항목에서는 RHEL 8.7에서 ANA를 사용하고 ONTAP를 대상으로 사용하는 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대해 자세히 설명합니다.</block>
   <block id="58640a39ebacf1c649f790a018923dc7" category="list-text">RHEL 8.7을 서버에 설치합니다.</block>
   <block id="41e09c9ea0ff8203b49cf60b08453bc3" category="section-title">1MB I/O 크기 활성화(선택 사항)</block>
@@ -2717,9 +2704,54 @@
   <block id="55cf75d4c35a2f0318cd0878633a2b64" category="list-text">명령에 올바른 인수(예: WWNN 문자열, WWPN 문자열 등)를 전달했는지 확인하십시오.</block>
   <block id="d3ac6c9b9f08add73cc79ed8987c7638" category="paragraph">를 정확하게 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> NetApp 어레이의 해당 하위 시스템에 문자열이 추가됩니다(을 통해 확인)<block ref="0e04d4bf4054a77eef58ff3d9b9e59ae" prefix=" " category="inline-code"></block> 명령 참조).</block>
   <block id="0fffdf54ff26eafef72a1df48bb79f76" category="paragraph">RHEL 8.7 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="e2a722d31e0e80f2dd094823eb24d448" category="cell"><block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix="" category="inline-code"></block> timeout 매개 변수는 FC 전송이 원격 포트의 손실을 방지하기 위해 절연되어야 하는 기본 시간(초)을 나타냅니다. 이 값을 초과하면 SCSI 타겟이 호스트에서 제거됩니다. 이 매개 변수 값은 양의 정수 값이어야 합니다. 하지만 RHEL 8.7에서는<block ref="58fa55ed07383d23de64a931619c03fe" prefix=" " category="inline-code"></block> 파일 시스템은 에 대해 음수 값(-1)을 반환합니다<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> SCSI 디바이스에 대한 시간 초과 매개 변수입니다. 다음은 를 확인하는 명령줄 예입니다<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> 작업 호스트의 매개 변수:<block ref="227979672a108771b68f10c269922312" prefix=" " category="inline-code"></block>. RHEL 8.7에서는 이 문제에 대한 해결 방법이 없습니다.</block>
   <block id="0dea8ccda08dc1647ed0a458849e5cda" category="doc">Oracle Linux 8.6 with ONTAP용 NVMe/FC 호스트 구성</block>
   <block id="6b9300bd0ee78fc87c33ec2c07cd7201" category="paragraph">Oracle 8.6에 대한 NVMe/FC 호스트 구성 세부 정보는 Oracle의 NVMe/FC 지원이 이 호스트 OS 버전에 대해 정규화된 경우에 게시됩니다.</block>
   <block id="309cf24349edc5122d2f31c53280bf27" category="doc">Oracle Linux 8.5 및 ONTAP용 NVMe/FC 호스트 구성</block>
   <block id="0d0f40ef84bd491b0391f725ee2511e1" category="paragraph">Oracle 8.5에 대한 NVMe/FC 호스트 구성 세부 정보는 Oracle의 NVMe/FC 지원이 이 호스트 OS 버전에 대해 정규화된 경우에 게시됩니다.</block>
+  <block id="50d880869dbad54df4986a506d8e811c" category="admonition">이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 및 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>.</block>
+  <block id="cc455daeb9e2e22ef5b2182030983b44" category="doc">ONTAP가 있는 RHEL 9.1용 NVMe-oF 호스트 구성</block>
+  <block id="6f8b8f782bb2e1f5374f4c0c6a78046a" category="paragraph">NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상 작동하는 스토리지 페일오버(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 포함된 RHEL 9.1에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 비대칭 논리 유닛 액세스(ALUA)이며, 현재 In-kernel NVMe Multipath를 통해 구현되고 있습니다. 이 문서에는 RHEL 9.1 및 ONTAP에서 ANA를 타겟으로 사용하여 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 세부 정보가 포함되어 있습니다.</block>
+  <block id="5b567ce58b5a293a4e497c0fd053d9d5" category="list-text">RHEL 9.1에는 NVMe/FC뿐만 아니라 NVMe/TCP도 지원됩니다. 네이티브 의 NetApp 플러그인<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지에는 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보가 표시될 수 있습니다.</block>
+  <block id="362156721e24ceedbadf34c0abc7e007" category="list-text">RHEL 9.1에는 명시적 설정 없이 기본적으로 활성화된 NVMe 네임스페이스에 대한 인커널 NVMe 다중 경로 지원이 포함되어 있습니다.</block>
+  <block id="b08367cf0348d2ac07ce7d94bb17f61f" category="list-text">RHEL 9.1에서는 명시적 없이 특정 HBA 어댑터의 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용할 수 있습니다<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> NVMe 네임스페이스를 변경하지 못하도록 설정합니다.</block>
+  <block id="79d6a4c19ab1815ebac474c0cb176558" category="section-title">인커널 NVMe 다중 경로 지원</block>
+  <block id="a2ed8d7465615184444b1bd0263933b1" category="list-text">서버에 RHEL 9.1을 설치합니다. 설치가 완료되면 지정된 RHEL 9.1 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="c165a8a0999d73184de84d184b3cfb60" category="list-text">설치가 완료되면 지정된 RHEL 9.1 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="af93678559f055cf265aa9272c813836" category="paragraph">ONTAP는 컨트롤러 식별 데이터에 8의 MDTS(MAX Data 전송 크기)를 보고합니다. 즉, 최대 I/O 요청 크기는 최대 1MB여야 합니다. 그러나 Broadcom NVMe/FC 호스트에 대해 크기 1MB의 입출력 요청을 발급하려면 lpfc 매개 변수 lpfc_sg_seg_cnt도 기본값인 64에서 최대 256까지 충돌해야 합니다. 다음 지침에 따라 수행합니다.</block>
+  <block id="d8de9b016a8dece8e8d08e7b1fb7fbee" category="paragraph">기본 받은 편지함입니다<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block> RHEL 9.1 커널에 포함된 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 있습니다.</block>
+  <block id="2d012da343e217426e95ab334286ee04" category="list-text">확인합니다<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 다음 명령을 사용하여 Marvell 어댑터가 NVMe/FC 이니시에이터로 작동할 수 있도록 설정됩니다.</block>
+  <block id="9dad4a6c520f673cad34a45d1f3d4ad7" category="list-text">* 호스트 부팅 중 자동 연결 없음 * 호스트 부팅 중에 NVMe/TCP가 자동으로 연결되지 않습니다.</block>
+  <block id="01b19bacee71cf6f295d5e63067360d5" category="paragraph">시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. 의 값을 늘려 재시도 기간을 늘릴 수 있습니다<block ref="fc1d9ee021cfa58095593ab68c41f727" prefix=" " category="inline-code"></block> 다음 절차를 사용합니다.</block>
+  <block id="4b74cb8caf9869d9c39202f5a7c8cd4d" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF combos가 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="7912d4b61044915bf839431d678f055d" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정해야 합니다<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>)를 실행하는 동안<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 경로 손실이 발생할 경우 더 긴 시간 동안 재시도하도록 명령을 내립니다. 예를 들면 다음과 같습니다.</block>
+  <block id="8820bbf46f22897008878290f6060725" category="paragraph">예 (b)</block>
+  <block id="8ee542f1260df38017c8fcd1811b07cf" category="paragraph">NVMe/FC 오류에 대한 문제 해결을 시작하기 전에 상호 운용성 매트릭스 툴(IMT) 사양을 준수하는 구성을 실행 중인지 확인하고 다음 단계를 진행하여 호스트 측 문제를 디버깅하십시오.</block>
+  <block id="c93461d811b67f37d132425264a4d474" category="list-text">를 설정합니다<block ref="6a6d27f670629373aedb61a672b398f8" prefix=" " category="inline-code"></block> NVMe/FC 이벤트를 기록하도록 다음 값 중 하나에 대한 드라이버 설정:</block>
+  <block id="df474dd19781ab3788a85cc52bf31865" category="paragraph">의 경우 NVMe/FC에 대한 유사한 특정 qla2xxx 로깅이 없습니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 드라이버. 따라서 다음 단계를 사용하여 일반 qla2xxx 로깅 수준을 설정할 수 있습니다.</block>
+  <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
+  <block id="2f8adf6e51ddcf7b0618dad0e63a4144" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> 명령은 지정된 하위 시스템에 대해 반복되는 NVMe 컨트롤러 목록을 반환합니다</block>
+  <block id="95a3009a54be763a347295539b3b924d" category="cell">를 클릭합니다<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템과 관련된 NVMe 컨트롤러의 고유 목록을 반환해야 합니다. RHEL 9.1에서<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템에 속한 모든 네임스페이스에 대한 각 ANA 상태가 있는 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 이름 공간 당 속성이므로 지정된 네임스페이스에 대한 하위 시스템 명령 구문을 나열하는 경우 경로 상태로 고유한 NVMe 컨트롤러 항목을 표시하는 것이 좋습니다.</block>
+  <block id="83dccde7d3d49df72143822cd414e991" category="cell">2130106</block>
+  <block id="3f9c3f7f21b77382c688aa95e76f1ff4" category="paragraph">에 표시되는 오류입니다<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 를 참조하십시오<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>,<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 또는<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 작업 및 해결 방법은 다음 표에 나와 있습니다.</block>
+  <block id="9e9ad12d8f7b421ec7b07bcffb518755" category="paragraph">여전히 문제가 발생하는 경우 다음 파일 및 명령 출력을 수집하고 기술 지원 부서에 문의하여 추가 분류를 요청하십시오.</block>
+  <block id="54bb88571442321a8544c55cb834deb7" category="cell">RHEL 8.7 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
+  <block id="c66549c6038d3ebbf4c13fa9699ba9c4" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트를 사용하여 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 8.7을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="666e694f580810d83f5f40c26c2bb04c" category="summary">ONTAP에서 Red Hat Enterprise Linux 9.1을 사용하는 방법을 설명합니다</block>
+  <block id="0ead5c0058ad569b752f4737e6eec052" category="doc">NetApp ONTAP 기반의 Red Hat Enterprise Linux 9.1 사용</block>
+  <block id="61487574b79af0e445bb9b6a2353e6f4" category="paragraph">NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="79a5efacdd8155d1c0d2f7284cc3f087" category="inline-link-macro-rx"></block> 64비트 .rpm 파일</block>
+  <block id="641179201ab176df256f3cb5ec55e897" category="paragraph">NetApp에서는 Linux Unified Host Utilities를 설치하는 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.</block>
+  <block id="a19e7b541def6d38087c1a02b106bef9" category="paragraph">현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 업그레이드 또는 제거한 후 다음 단계에 따라 최신 버전을 설치해야 합니다.</block>
+  <block id="9c9e9d650c2c637a6eb987485cfd9382" category="list-text">에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 <block ref="330783be0d422b9930cc959c12faae82" category="inline-link-macro-rx"></block> 호스트에.</block>
+  <block id="a72a8c81440a1f3a15a9e6f5c9eafacd" category="list-text">소프트웨어 패키지를 설치합니다.<block ref="0ce047b108d02190b0f47590efe3805d" prefix=" " category="inline-code"></block></block>
+  <block id="766a9020817a37f247568a9683a4d01c" category="paragraph">RHEL(Red Hat Enterprise Linux) 9.1의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 9.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="bf334af2d50eb1249867f683f4a2a80b" category="paragraph">RHEL 9.1 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
+  <block id="2938598ecd7ea37f885251173aa43089" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우, 입니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일은 에 대한 값을 정의합니다<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 및<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN과 호환되지 않습니다. 다른 SAN 스토리지가 아직 호스트에 연결되어 있으므로 제거할 수 없는 경우 이러한 매개 변수를 특히 디바이스 스탠자가 있는 ONTAP LUN에 대해 수정할 수 있습니다.</block>
+  <block id="2fefce185e7d7498c7e3da22bac84294" category="cell">1508554</block>
+  <block id="11613812ad376f15dc5ee5a9f425cea1" category="cell">NetApp Linux Host Utilities CLI에서 Emulex HBA 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다</block>
+  <block id="dbb05aa69b81b84da4e6620226a55381" category="cell">RHEL 9.1에서 NetApp Linux SAN 호스트 유틸리티 CLI<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> HBA 검색을 지원하는 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
+  <block id="58cc994c670841fa2f2ecd4302d45e03" category="cell">RHEL 9.0 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
+  <block id="e4c38008038c9c0402e9f00d369b82ea" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 그러나 NVMe-oF 호스트를 가진 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 9.0을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="de92f8bcc4d493d57927d45de496dfcd" category="cell">RHEL 8.6 NVMe-oF 호스트에서는 중복 영구 검색 컨트롤러가 생성됩니다</block>
+  <block id="67eaffbea4f4f435b98dfd9d82b810fe" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트와 함께 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 8.6을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="796d3a90e43ce105cbf37298c5065f7e" category="sidebar">9.1</block>
 </blocks>

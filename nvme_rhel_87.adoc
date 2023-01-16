@@ -26,7 +26,7 @@ summary: ONTAP를 사용하여 RHEL 8.7용 NVMe-oF 호스트를 구성하는 방
 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(Asymmetric Namespace Access)가 있는 RHEL 8.7에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 ALUA로, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. 이 항목에서는 RHEL 8.7에서 ANA를 사용하고 ONTAP를 대상으로 사용하는 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대해 자세히 설명합니다.
 
 
-NOTE: 이 항목에서 제공하는 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
 
 
 
@@ -526,7 +526,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
-| 1479047 | RHEL 8.x NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다 | NVMe-oF(NVMe over Fabrics) 호스트에서는 를 제공하여 PDC(영구적 검색 컨트롤러)를 생성할 수 있습니다 `-p` 에 대한 옵션 `nvme discover` 명령. 지정된 초기자-대상 조합의 경우 각 호출을 통해 PDC 하나를 만들어야 합니다 `nvme discover` 명령. 그러나 ONTAP 9.10.1.1부터 RHEL(Red Hat Enterprise Linux) 8.x NVMe-of 호스트의 경우 각 호출을 통해 중복 PDC가 생성됩니다 `nvme discover` 명령과 함께 `-p` 옵션을 선택합니다. 이로 인해 호스트와 타겟 모두에서 리소스가 낭비됩니다. | 2087000 
+| 1479047 | RHEL 8.7 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다 | NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트를 사용하여 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 8.7을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다. | 2087000 
 |===
 
 

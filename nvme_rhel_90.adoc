@@ -26,7 +26,7 @@ summary: ONTAP를 사용하여 RHEL 9.0용 NVMe-oF 호스트를 구성하는 방
 NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상적인 스토리지 장애 조치(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 있는 RHEL 9.0에서 지원됩니다. ANA는 NVM-of 환경에서 ALUA와 동등한 제품이며 현재 In-kernel NVMe Multipath로 구현되고 있습니다. 이 문서에는 RHEL 9.0에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 세부 정보가 포함되어 있습니다.
 
 
-NOTE: 이 항목에서 제공하는 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
 
 
 
@@ -34,18 +34,6 @@ NOTE: 이 항목에서 제공하는 구성 설정을 사용하여 에 연결된 
 
 * RHEL 9.0부터 NVMe/TCP는 더 이상 기술 미리 보기 기능(RHEL 8과 다름)이 아니라 완전히 지원되는 엔터프라이즈 기능 자체입니다.
 * RHEL 9.0부터는 명시적 설정 없이 커널 내 NVMe 다중 경로가 기본적으로 NVMe 네임스페이스에 대해 활성화됩니다(RHEL 8과 다름).
-
-
-
-
-== 제한 사항
-
-* NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. 이는 Linux 호스트에서 다음과 같은 두 가지 주요 제한 사항을 반영합니다.
-+
-** 경로가 복구되면 자동 재연결되지 않음 - NVMe/TCP는 경로가 다운된 후 10분 동안 기본 'Ctrl-Loss-TMO'를 벗어나 복원되는 경로에 자동으로 다시 연결할 수 없습니다.
-** 호스트 부팅 중에 자동 연결 안 됨 - NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다.
-
-
 
 
 
@@ -232,11 +220,13 @@ Marvell 어댑터가 NVMe/FC Initiator로 작동하도록 하는 "ql2xnvmeenable
 
 == NVMe/TCP를 구성합니다
 
-NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. Linux NVMe/TCP 호스트에 대한 두 가지 주요 제한 사항이 반영되어 있습니다.
+NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. Linux NVMe/TCP 호스트에는 다음과 같은 두 가지 주요 제한 사항이 있습니다.
 
-* 경로가 복구되면 자동 재연결되지 않음 - NVMe/TCP는 경로가 다운된 후 10분 동안 기본 'Ctrl-Loss-TMO'를 벗어나 복원되는 경로에 자동으로 다시 연결할 수 없습니다.
-* 호스트 부팅 중에 자동 연결 안 됨 - NVMe/TCP는 호스트 부팅 중에도 자동으로 연결할 수 없습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.
+* * 경로 복구 후 자동 재연결 불가 * NVMe/TCP는 경로 다운 후 10분 동안 기본 'Ctrl-Loss-TMO' 타이머 이후에 복구된 경로에 자동으로 다시 연결할 수 없습니다.
+* * 호스트 부팅 중 자동 연결 없음 * 호스트 부팅 중에 NVMe/TCP도 자동으로 연결할 수 없습니다.
 
+
+시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.
 
 .단계
 . 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
@@ -302,6 +292,7 @@ sectype: none
 
 == NVMf 확인
 
+.단계
 . 다음을 확인하여 In-kernel NVMe multipath가 실제로 활성화되어 있는지 확인합니다.
 +
 [listing]
@@ -491,6 +482,17 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 # cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
 507510784
 ----
+
+
+== 알려진 문제
+
+[cols="10,30,30,10"]
+|===
+| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+
+
+| 1479047 | RHEL 9.0 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다 | NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 그러나 NVMe-oF 호스트를 가진 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 9.0을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다. | 2087000 
+|===
 
 
 === 일반적인 NVMe-CLI 오류 및 해결 방법
