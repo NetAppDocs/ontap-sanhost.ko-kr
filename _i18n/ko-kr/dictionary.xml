@@ -350,7 +350,6 @@
   <block id="bc8be72fdc9d6054f356bb2b7f80fd12" category="inline-link-macro">NetApp 상호 운용성 매트릭스</block>
   <block id="692dca145cf34dacba629a9ddf6d4c42" category="list-text">NetApp은 일반적으로 전체 구성이 Oracle에서 지원되며 LUN에 직접 액세스할 수 있는 파티션이 에 나와 있는 가상화 기술의 사용을 지원합니다 <block ref="e65d5dc611a70f61b74f4247aa5bf590" category="inline-link-macro-rx"></block> 를 클릭합니다. 여기에는 루트 컨테이너, LDOM IO 도메인 및 NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.</block>
   <block id="73710dbb0bb38e18d8eb3c739564246e" category="list-text">vdsk와 같은 가상화된 스토리지 리소스만 사용하는 파티션 및/또는 가상 머신은 NetApp LUN에 직접 액세스할 수 없는 특수 조건이 필요하지 않습니다. LDOM IO 도메인과 같은 기본 LUN에 직접 액세스할 수 있는 파티션/VM만 에서 찾을 수 있습니다 <block ref="e65d5dc611a70f61b74f4247aa5bf590" category="inline-link-macro-rx"></block>.</block>
-  <block id="5a691625528023b117e33add8f4779da" category="section-title">가상화를 위한 권장 설정</block>
   <block id="1014a6a04423d551549d409e08fbcc51" category="paragraph">LDOM 내에서 LUN을 가상 디스크 디바이스로 사용할 경우 LUN의 소스는 가상화를 통해 마스킹되고 LDOM은 블록 크기를 제대로 감지하지 못합니다. 이 문제를 방지하려면 LDOM 운영 체제에 Oracle 버그 15824910 패치를 적용해야 하며 가상 디스크의 블록 크기를 4096으로 설정하는 "vdc.conf" 파일을 만들어야 합니다. 자세한 내용은 Oracle Doc 2157669.1을 참조하십시오.</block>
   <block id="90fbed0fe328b6c16dbe12568b1cb193" category="paragraph">패치를 확인하려면 다음을 수행합니다.</block>
   <block id="9f6b080eca87f7396d496ea0c81b7e3e" category="list-text">zpool을 생성합니다.</block>
@@ -358,15 +357,9 @@
   <block id="26aa8c05766be362fe2c469284c66a45" category="paragraph">shashift * 값이 12가 아닌 경우 올바른 패치가 설치되었는지 확인하고 "vdc.conf"의 내용을 다시 확인하십시오.</block>
   <block id="e12f2377b359c4e907e0289ded101bbb" category="paragraph">shift * 가 12의 값을 표시할 때까지 진행하지 마십시오.</block>
   <block id="9dca40973dd4348be41eafe643b703ec" category="admonition">다양한 버전의 Solaris에서 Oracle 버그 15824910 패치를 사용할 수 있습니다. 최상의 커널 패치를 결정하는 데 지원이 필요한 경우 Oracle에 문의하십시오.</block>
-  <block id="83b783cc8aa7959a24d34b681bbc1fd2" category="section-title">SnapMirror 비즈니스 연속성에 대한 권장 설정</block>
-  <block id="0f82632d4a7c23010dbe44e368821348" category="paragraph">SM-BC(SnapMirror Business Continuity) 환경에서 계획되지 않은 사이트 페일오버 스위치오버가 발생할 때 Solaris 클라이언트 애플리케이션이 중단 없이 작동하도록 하려면 Solaris 11.4 호스트에 다음 설정을 구성해야 합니다. 이 설정은 모순을 감지하는 코드 경로가 실행되지 않도록 페일오버 모듈('f_tpgs')을 재정의합니다.</block>
-  <block id="2bde94f95676c1c2bd32242e8415c1f8" category="admonition">ONTAP 9.9.1부터 Solaris 11.4 호스트에서 SM-BC 설정 구성이 지원됩니다.</block>
   <block id="025006946b1c53786cbb29eef3d30229" category="paragraph">다음 지침에 따라 override 매개변수를 구성합니다.</block>
-  <block id="04b92c9c817cdf34e3eacbf5cd765484" category="list-text">호스트에 연결된 NetApp 스토리지 유형에 대해 다음과 유사한 항목을 사용하여 구성 파일 '/etc/driver/drv/scsi_vhci.conf'를 생성합니다.</block>
-  <block id="b6fdbb065aa5e5c1bf0f5af8ad73ca53" category="list-text">재정의가 성공적으로 적용되었는지 확인하려면 devprop 및 mdb 명령을 사용합니다.</block>
   <block id="570f5761e2e0bfb396196b06d19e21b0" category="paragraph">' root@host-a:~#devprop-v -n /scsi_vhci scsi -vhci -failover -override scsi -vhci -failover -override=NetApp lun+f_tpgs root@host -a:~#echo" * scsi_vhci_dip: print -xi vci vdev vci vci vci vci vci vci vip ti 출력 pi vdev vci vci vci vci vci vci vci vci vci vci vdi ti ti vprint tp.pi</block>
   <block id="5492ce934067a932652b5c7aa5dd991b" category="inline-link">Solaris 호스트 지원 SM-BC(SnapMirror Business Continuity) 구성에서 권장되는 설정입니다</block>
-  <block id="2a8cf5b2d9486c637aaa9e7f5fb2bbf3" category="admonition">scsi-vhci-failover-override가 적용되면 conf는 sVL_FOPS_NAME에 추가된다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오<block ref="0b0122d84e6b5077349fe91550e086e2" category="inline-link-rx"></block>.</block>
   <block id="36ab1d57f4ac9530d3a3340c5c45fa71" category="cell">Oracle ID입니다</block>
   <block id="dd1e6355fcc2ca3c16ece42015663e00" category="cell">1362435</block>
   <block id="393cfee0a3b5d3e706f8a0cdeefa3ed8" category="cell">HUK 6.2 및 Solaris_11.4 FC 드라이버 바인딩 변경</block>
@@ -2768,4 +2761,15 @@
   <block id="c25aa2a919e3a63ca18f5d2ba0d93494" category="paragraph">가 정확한지 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> NetApp 어레이의 해당 하위 시스템에 문자열이 추가됩니다(을 사용하여 확인)<block ref="0e04d4bf4054a77eef58ff3d9b9e59ae" prefix=" " category="inline-code"></block> 명령 참조).</block>
   <block id="d517a34201e69d7cbd98e82863cbb016" category="paragraph">컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우에 관찰됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.</block>
   <block id="ed88a4dfde1eda848d0cd0880569e29d" category="paragraph">없음. 를 실행해 보십시오<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 잠시 후에 다시 명령을 내립니다. 용<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 및<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>를 실행합니다<block ref="b0f1705bbfcfb10368af21a019072318" prefix=" " category="inline-code"></block> 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인하는 명령입니다.</block>
+  <block id="46a8331e5e839c47acb3298049532616" category="section-title">Oracle Solaris 가상화</block>
+  <block id="1b047686d1675f4b3beb6b06153998c1" category="section-title">가상화를 위한 권장 설정</block>
+  <block id="23013fc45b1e28aeba8b4521f80156eb" category="section-title">SnapMirror 비즈니스 연속성에 대한 권장 설정</block>
+  <block id="32553d76838b87cefddf124e0799eafb" category="paragraph">SM-BC(SnapMirror Business Continuity) 환경에서 계획되지 않은 사이트 페일오버 스위치오버가 발생할 때 Solaris 클라이언트 애플리케이션이 중단 없이 작동하도록 하려면 Solaris 11.3 호스트에 다음 설정을 구성해야 합니다. 이 설정은 페일오버 모듈 – 을 재정의합니다<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 모순을 감지하는 코드 경로가 실행되지 않도록 합니다.</block>
+  <block id="0dfb4cdaba75a3cede493d07bb6a34a7" category="admonition">ONTAP 9.9.1부터 Solaris 11.3 호스트에서 SM-BC 설정 구성이 지원됩니다.</block>
+  <block id="7682043e346a0976ad107c7cb3989145" category="list-text">구성 파일을 생성합니다<block ref="2c50293ac08c6ad6b30ce2ba7a8fcd9c" prefix=" " category="inline-code"></block> 호스트에 연결된 NetApp 스토리지 유형에 대해 다음과 유사한 항목을 제공합니다.</block>
+  <block id="05e4ba462549c2424bbff74659b276f2" category="list-text">를 사용합니다<block ref="01fe732856e5259c0c505f9054c784ba" prefix=" " category="inline-code"></block> 및<block ref="801693b1d56b19d77272b3c6db46a751" prefix=" " category="inline-code"></block> override 매개 변수가 성공적으로 적용되었는지 확인하는 명령:</block>
+  <block id="7f7d67d4a4b1712dc7bf97b923fea01b" category="admonition"><block ref="3a8e4c06e471595f6eb262bb9b5582d9" prefix="" category="inline-code"></block> 이(가) 에 추가됩니다<block ref="552db9f221945d76c9e04206b850f3bc" prefix=" " category="inline-code"></block> 시기<block ref="ce0493257bc72d9f3741350d87a14b7d" prefix=" " category="inline-code"></block> 이(가) 적용되었습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오<block ref="0b0122d84e6b5077349fe91550e086e2" category="inline-link-rx"></block>.</block>
+  <block id="ca9ed2ccbdcc305e9773420d7547b568" category="paragraph">SM-BC(SnapMirror Business Continuity) 환경에서 계획되지 않은 사이트 페일오버 스위치오버가 발생할 때 Solaris 클라이언트 애플리케이션이 중단 없이 작동하도록 하려면 Solaris 11.4 호스트에 다음 설정을 구성해야 합니다. 이 설정은 페일오버 모듈 – 을 재정의합니다<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 모순을 감지하는 코드 경로가 실행되지 않도록 하기 위해서.</block>
+  <block id="976902513d73f70373bf832d81070379" category="admonition">ONTAP 9.9.1부터 Solaris 11.4 호스트에서 SM-BC 설정 구성이 지원됩니다.</block>
+  <block id="fbd29cc67321a256f7cc8237fc832a9b" category="list-text">사용<block ref="01fe732856e5259c0c505f9054c784ba" prefix=" " category="inline-code"></block> 및<block ref="801693b1d56b19d77272b3c6db46a751" prefix=" " category="inline-code"></block> override 매개 변수가 성공적으로 적용되었는지 확인하는 명령:</block>
 </blocks>
