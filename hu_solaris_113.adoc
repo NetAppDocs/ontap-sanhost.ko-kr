@@ -178,7 +178,7 @@ NOTE: 모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 �
 
 === MetroCluster에 대한 권장 설정입니다
 
-기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이는 fcp_offline_delay 파라미터에 의해 제어된다. "fcp_offline_delay"의 기본값은 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 "fcp_offline_delay"의 값을 * 120s * 로 증가시켜야 비계획 장애 조치를 포함한 작업 중에 입출력이 미리 시간 초과되지 않습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp을 참조하십시오 https://kb.netapp.com/app/answers/answer_view/a_id/1001373/loc/en_US["KB1001373"^].
+기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이 기능은 에 의해 제어됩니다 `fcp_offline_delay` 매개 변수. 의 기본값입니다 `fcp_offline_delay` 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 의 값은 입니다 `fcp_offline_delay` 비계획 페일오버 등 작업 중에 입출력이 조기에 시간 초과되지 않도록 * 120s * 로 늘려야 합니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp을 참조하십시오 https://kb.netapp.com/app/answers/answer_view/a_id/1001373/loc/en_US["KB1001373"^].
 
 
 
@@ -192,7 +192,7 @@ NOTE: 모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 �
 
 
 
-=== 가상화를 위한 권장 설정
+=== 가상화에 권장되는 설정입니다
 
 LDOM 내에서 LUN을 가상 디스크 디바이스로 사용할 경우 LUN의 소스는 가상화를 통해 마스킹되고 LDOM은 블록 크기를 제대로 감지하지 못합니다. 이 문제를 방지하려면 LDOM 운영 체제에 Oracle 버그 15824910 패치를 적용하고 가상 디스크의 블록 크기를 4096으로 설정하는 "vdc.conf" 파일을 만들어야 합니다. 자세한 내용은 Oracle Doc 2157669.1을 참조하십시오.
 
@@ -215,7 +215,7 @@ NOTE: 다양한 버전의 Solaris에서 Oracle 버그 15824910 패치를 사용�
 
 == SnapMirror 비즈니스 연속성에 대한 권장 설정
 
-SM-BC(SnapMirror Business Continuity) 환경에서 계획되지 않은 사이트 페일오버 스위치오버가 발생할 때 Solaris 클라이언트 애플리케이션이 중단 없이 작동하도록 하려면 Solaris 11.3 호스트에 다음 설정을 구성해야 합니다. 이 설정은 페일오버 모듈 – 을 재정의합니다 `f_tpgs` 모순을 감지하는 코드 경로가 실행되지 않도록 합니다.
+SM-BC(SnapMirror Business Continuity) 환경에서 계획되지 않은 사이트 페일오버 스위치오버가 발생할 때 Solaris 클라이언트 애플리케이션이 무중단 운영인지 확인하려면 Solaris 11.3 호스트에서 다음 설정을 구성해야 합니다. 이 설정은 페일오버 모듈을 재정의합니다 `f_tpgs` 모순을 감지하는 코드 경로의 실행을 방지합니다.
 
 
 NOTE: ONTAP 9.9.1부터 Solaris 11.3 호스트에서 SM-BC 설정 구성이 지원됩니다.
@@ -243,7 +243,7 @@ svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 
 
 
-NOTE: `conf` 이(가) 에 추가됩니다 `svl_fops_name` 시기 `scsi-vhci-failover-override` 이(가) 적용되었습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris 호스트 지원 SM-BC(SnapMirror Business Continuity) 구성에서 권장되는 설정입니다"^].
+NOTE: 이후 `scsi-vhci-failover-override` 이(가) 적용되었습니다. `conf` 이(가) 에 추가됩니다 `svl_fops_name`. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris 호스트 지원 SM-BC(SnapMirror Business Continuity) 구성에서 권장되는 설정입니다"^].
 
 
 

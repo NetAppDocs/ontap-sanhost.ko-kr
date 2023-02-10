@@ -2,6 +2,7 @@
 :allow-uri-read: 
 
 
+.단계
 . 를 설정합니다 `lpfc_log_verbose` 다음 값 중 하나에 대한 드라이버 설정을 사용하여 NVMe/FC 이벤트를 기록합니다.
 +
 [listing]

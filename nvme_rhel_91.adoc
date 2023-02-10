@@ -448,6 +448,17 @@ NSID UUID                                   Size
 
 
 
+== 알려진 문제
+
+[cols="10,30,30,10"]
+|===
+| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+
+
+| 1503468 | `nvme list-subsys` 명령은 지정된 하위 시스템에 대해 반복되는 NVMe 컨트롤러 목록을 반환합니다 | 를 클릭합니다 `nvme list-subsys` 명령은 지정된 하위 시스템과 관련된 NVMe 컨트롤러의 고유 목록을 반환해야 합니다. RHEL 9.1에서 `nvme list-subsys` 명령은 지정된 하위 시스템에 속한 모든 네임스페이스에 대한 각 ANA 상태가 있는 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 이름 공간 당 속성이므로 지정된 네임스페이스에 대한 하위 시스템 명령 구문을 나열하는 경우 경로 상태로 고유한 NVMe 컨트롤러 항목을 표시하는 것이 좋습니다. | 2130106 
+|===
+
+
 == 문제 해결
 
 NVMe/FC 오류에 대한 문제 해결을 시작하기 전에 상호 운용성 매트릭스 툴(IMT) 사양을 준수하는 구성을 실행 중인지 확인하고 다음 단계를 진행하여 호스트 측 문제를 디버깅하십시오.
@@ -457,25 +468,22 @@ NVMe/FC 오류에 대한 문제 해결을 시작하기 전에 상호 운용성 �
 === lpfc 세부 정보 로깅
 
 .단계
-. 를 설정합니다 `lpfc_log_verbose` NVMe/FC 이벤트를 기록하도록 다음 값 중 하나에 대한 드라이버 설정:
+. 를 설정합니다 `lpfc_log_verbose` 다음 값 중 하나에 대한 드라이버 설정을 사용하여 NVMe/FC 이벤트를 기록합니다.
 +
 [listing]
 ----
-
 #define LOG_NVME 0x00100000 /* NVME general events. */
 #define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
 #define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
 #define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
-
 ----
-. 이러한 값을 설정한 후 dracut -f 명령을 실행하여 initramfs를 다시 생성하고 호스트를 재부팅합니다.
-. 재부팅 후 설정을 확인합니다.
+. 값을 설정한 후 를 실행합니다 `dracut-f` 명령을 실행하여 호스트를 재부팅합니다.
+. 설정을 확인합니다.
 +
 [listing]
 ----
 # cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_log_verbose=0xf00083
-
 
 # cat /sys/module/lpfc/parameters/lpfc_log_verbose
 15728771
@@ -504,32 +512,21 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 
 
 
-== 알려진 문제
-
-[cols="10,30,30,10"]
-|===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
-
-
-| 1503468 | `nvme list-subsys` 명령은 지정된 하위 시스템에 대해 반복되는 NVMe 컨트롤러 목록을 반환합니다 | 를 클릭합니다 `nvme list-subsys` 명령은 지정된 하위 시스템과 관련된 NVMe 컨트롤러의 고유 목록을 반환해야 합니다. RHEL 9.1에서 `nvme list-subsys` 명령은 지정된 하위 시스템에 속한 모든 네임스페이스에 대한 각 ANA 상태가 있는 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 이름 공간 당 속성이므로 지정된 네임스페이스에 대한 하위 시스템 명령 구문을 나열하는 경우 경로 상태로 고유한 NVMe 컨트롤러 항목을 표시하는 것이 좋습니다. | 2130106 
-|===
-
-
 === 일반적인 NVMe-CLI 오류 및 해결 방법
 
-에 표시되는 오류입니다 `nvme-cli` 를 참조하십시오 `nvme discover`, `nvme connect` 또는 `nvme connect-all` 작업 및 해결 방법은 다음 표에 나와 있습니다.
+에 표시되는 오류입니다 `nvme-cli` 를 참조하십시오 `nvme discover`, `nvme connect`, 또는 `nvme connect-all` 작업 및 해결 방법은 다음 표에 나와 있습니다.
 
 [cols="20, 20, 50"]
 |===
 | NVMe-CLI에 표시되는 오류 | 가능한 원인 | 해결 방법 
 
 
-| '/dev/NVMe-fabric에 쓸 수 없음: 잘못된 인수. | 구문이 잘못되었습니다 | 위의 NVMe 명령에 올바른 구문을 사용하고 있는지 확인하십시오. 
+| '/dev/NVMe-fabric에 쓸 수 없음: 잘못된 인수. | 구문이 잘못되었습니다 | 에 대한 올바른 구문을 사용하고 있는지 확인합니다 `nvme discover`, `nvme connect`, 및 `nvme connect-all` 명령. 
 
 
-| '/dev/NVMe-fabric에 쓰지 못함: 해당 파일 또는 디렉토리가 없습니다. | 여러 가지 문제로 인해 이 문제가 발생할 수 있습니다. 일반적인 원인 중 하나는 NVMe 명령에 잘못된 인수를 전달하는 것입니다.  a| 
-* 올바른 인수(예: WWNN 문자열, WWPN 문자열 등)를 명령에 전달했는지 확인하십시오.
-* 인수가 올바르지만 여전히 이 오류가 표시되면 '/sys/class/scsi_host/host * /NVMe_info' 출력이 올바른지, NVMe 이니시에이터가 'Enabled'로 표시되는지, NVMe/FC 타겟 LIF가 원격 포트 섹션 아래에 제대로 표시되는지 확인하십시오. 예:
+| '/dev/NVMe-fabric에 쓰지 못함: 해당 파일 또는 디렉토리가 없습니다. | 예를 들어, 여러 문제로 인해 이 문제가 발생할 수 있습니다. NVMe 명령에 잘못된 인수를 제공하는 것은 일반적인 원인 중 하나입니다.  a| 
+* 올바른 인수(예: WWNN 문자열, WWPN 문자열 등)를 명령에 전달했는지 확인합니다.
+* 인수가 올바르지만 여전히 이 오류가 나타나면 를 확인합니다 `/sys/class/scsi_host/host*/nvme_info` 명령 출력이 올바르고 NVMe 이니시에이터가 으로 표시됩니다 `Enabled`및 NVMe/FC 타겟 LIF가 원격 포트 섹션 아래에 올바르게 표시됩니다. 예:
 +
 [listing]
 ----
@@ -550,22 +547,22 @@ LS: Xmt 0000000000000006 Cmpl 0000000000000006
 FCP: Rd 0000000000000073 Wr 0000000000000005 IO 0000000000000031
 Cmpl 00000000000000a8 Outstanding 0000000000000001
 ----
-* 타겟 LIF가 NVMe_info 출력에 위와 같이 표시되지 않으면 의심되는 NVMe/FC 오류에 대한 `/var/log/messages ' 및 dmesg ' 출력을 확인하여 그에 따라 보고 또는 수정하십시오.
+* 타겟 LIF가 에 나와 있는 것처럼 표시되지 않는 경우 `nvme_info` 명령 출력에서 를 확인합니다 `/var/log/messages` 및 `dmesg` 의심되는 NVMe/FC 오류에 대한 명령을 출력하고 그에 따라 보고하거나 수정합니다.
 
 
 
 
 | 가져올 검색 로그 항목이 없습니다  a| 
-일반적으로 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되지 않았거나 잘못된 "hostnqn" 문자열이 해당 하위 시스템에 추가된 경우 표시됩니다.
+는 일반적으로 에 관찰됩니다 `/etc/nvme/hostnqn` NetApp 어레이의 해당 하위 시스템에 문자열이 추가되지 않았거나 올바르지 않습니다 `hostnqn` 해당 하위 시스템에 문자열이 추가되었습니다.
  a| 
-정확한 '/etc/NVMe/hostnqn' 문자열이 NetApp 어레이의 해당 하위 시스템에 추가되었는지 확인합니다('vserver NVMe subsystem host show' 명령을 통해 확인).
+가 정확한지 확인합니다 `/etc/nvme/hostnqn` NetApp 어레이의 해당 하위 시스템에 문자열이 추가됩니다(을 사용하여 확인) `vserver nvme subsystem host show` 명령 참조).
 
 
 
 | '/dev/NVMe-fabric에 쓸 수 없습니다: 작업이 이미 진행 중입니다.  a| 
-컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우 표시됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.
+컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우에 관찰됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.
  a| 
-없음. "NVMe 검색"을 위해 잠시 후에 이 명령을 실행해 보십시오. NVMe CONNECT와 CONNECT-ALL의 경우 NVMe list 명령을 실행하여 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인합니다.
+없음. 를 실행해 보십시오 `nvme discover` 잠시 후에 다시 명령을 내립니다. 용 `nvme connect` 및 `connect-all`를 실행합니다 `nvme list` 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인하는 명령입니다.
 
 |===
 

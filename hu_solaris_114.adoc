@@ -215,7 +215,7 @@ NOTE: 다양한 버전의 Solaris에서 Oracle 버그 15824910 패치를 사용�
 
 == SnapMirror 비즈니스 연속성에 대한 권장 설정
 
-SM-BC(SnapMirror Business Continuity) 환경에서 계획되지 않은 사이트 페일오버 스위치오버가 발생할 때 Solaris 클라이언트 애플리케이션이 중단 없이 작동하도록 하려면 Solaris 11.4 호스트에 다음 설정을 구성해야 합니다. 이 설정은 페일오버 모듈 – 을 재정의합니다 `f_tpgs` 모순을 감지하는 코드 경로가 실행되지 않도록 하기 위해서.
+SM-BC(SnapMirror Business Continuity) 환경에서 계획되지 않은 사이트 페일오버 스위치오버가 발생할 때 Solaris 클라이언트 애플리케이션이 무중단 운영인지 확인하려면 Solaris 11.4 호스트에서 다음 설정을 구성해야 합니다. 이 설정은 페일오버 모듈을 재정의합니다 `f_tpgs` 모순을 감지하는 코드 경로의 실행을 방지합니다.
 
 
 NOTE: ONTAP 9.9.1부터 Solaris 11.4 호스트에서 SM-BC 설정 구성이 지원됩니다.
@@ -229,7 +229,7 @@ NOTE: ONTAP 9.9.1부터 Solaris 11.4 호스트에서 SM-BC 설정 구성이 지�
 scsi-vhci-failover-override =
 "NETAPP  LUN","f_tpgs"
 ----
-. 사용 `devprop` 및 `mdb` override 매개 변수가 성공적으로 적용되었는지 확인하는 명령:
+. 를 사용합니다 `devprop` 및 `mdb` override 매개 변수가 성공적으로 적용되었는지 확인하는 명령:
 +
 ' root@host-a:~#devprop-v -n /scsi_vhci scsi -vhci -failover -override scsi -vhci -failover -override=NetApp lun+f_tpgs root@host -a:~#echo" * scsi_vhci_dip: print -xi vci vdev vci vci vci vci vci vci vip ti 출력 pi vdev vci vci vci vci vci vci vci vci vci vci vdi ti ti vprint tp.pi
 
@@ -242,7 +242,7 @@ svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 
 
 
-NOTE: `conf` 이(가) 에 추가됩니다 `svl_fops_name` 시기 `scsi-vhci-failover-override` 이(가) 적용되었습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris 호스트 지원 SM-BC(SnapMirror Business Continuity) 구성에서 권장되는 설정입니다"^].
+NOTE: 이후 `scsi-vhci-failover-override` 이(가) 적용되었습니다. `conf` 이(가) 에 추가됩니다 `svl_fops_name` . 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris 호스트 지원 SM-BC(SnapMirror Business Continuity) 구성에서 권장되는 설정입니다"^].
 
 
 
