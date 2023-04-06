@@ -2859,4 +2859,26 @@
   <block id="2777856007ced53036238eb6ac77a35c" category="cell">Oracle Linux 8.5 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
   <block id="2f0abad3e4805563c626305c7ea008ba" category="cell">Oracle Linux 8.5 NVMe over Fabrics (NVMe-oF) 호스트에서 를 사용할 수 있습니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> PDC(영구적 검색 컨트롤러)를 생성하는 명령입니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 ONTAP 9.10.1 및 Oracle Linux 8.5를 NVMe-oF 호스트와 함께 실행하는 경우, 매번 중복 PDC가 생성됩니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 실행됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="049cf7a01c96a6039648d00060516545" category="paragraph">NVMe/FC의 장애를 해결하기 전에 IMT 사양을 준수하는 구성을 실행 중인지 확인하고 다음 단계를 수행하여 호스트측 문제를 해결하십시오.</block>
+  <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="summary">법적 고지 사항은 저작권 선언, 상표, 특허 등에 대한 액세스를 제공합니다.</block>
+  <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">법적 고지</block>
+  <block id="6016a2b341113bf496b719905398ecd2" category="section-title">저작권</block>
+  <block id="de6edae22bc37b97b38a15c7f8af62e2" category="paragraph"><block ref="de6edae22bc37b97b38a15c7f8af62e2" category="inline-link-rx"></block></block>
+  <block id="126a02652da6de02962cf1b654fd6376" category="section-title">상표</block>
+  <block id="c4ce4761e466527d26b3e3d5ed1006fd" category="paragraph">NetApp, NetApp 로고, NetApp 상표 페이지에 나열된 마크는 NetApp Inc.의 상표입니다. 기타 회사 및 제품 이름은 해당 소유자의 상표일 수 있습니다.</block>
+  <block id="a93bc0a57623c2facaa010825c808507" category="paragraph"><block ref="a93bc0a57623c2facaa010825c808507" category="inline-link-rx"></block></block>
+  <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">특허</block>
+  <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">NetApp 소유 특허 목록은 다음 사이트에서 확인할 수 있습니다.</block>
+  <block id="547ea2e305891e64d8e744949b0aca2c" category="paragraph"><block ref="547ea2e305891e64d8e744949b0aca2c" category="inline-link-rx"></block></block>
+  <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">개인 정보 보호 정책</block>
+  <block id="50921fca0d376fca62102a5e608994e2" category="paragraph"><block ref="50921fca0d376fca62102a5e608994e2" category="inline-link-rx"></block></block>
+  <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">오픈 소스</block>
+  <block id="6de6f1db3c6d9273da9d8e254b666753" category="paragraph">이 제품에 사용된 타사 저작권 및 라이센스에 대한 정보를 제공합니다.</block>
+  <block id="b3299575ec25f288b8a86816f1af45af" category="inline-link-macro">AIX에 대한 고지 사항</block>
+  <block id="052ed5f67b081d47dbc2b3895228d738" category="list-text"><block ref="052ed5f67b081d47dbc2b3895228d738" category="inline-link-macro-rx"></block></block>
+  <block id="427a239761c886d37a93bd4b61520766" category="inline-link-macro">Linux에 대한 고지 사항</block>
+  <block id="a9e1c34a219d92c373cbc90dfdb82cf1" category="list-text"><block ref="a9e1c34a219d92c373cbc90dfdb82cf1" category="inline-link-macro-rx"></block></block>
+  <block id="cacc0e75410f25ef36bc2b6e76334eca" category="inline-link-macro">Solaris에 대한 고지 사항</block>
+  <block id="acad552cc1f69d130b13381f823afd65" category="list-text"><block ref="acad552cc1f69d130b13381f823afd65" category="inline-link-macro-rx"></block></block>
+  <block id="c44700394b9a4063439bc92ea42d5e41" category="inline-link-macro">Windows에 대한 고지 사항</block>
+  <block id="9d9a9c7064b8193ac433a5365fe1afdb" category="list-text"><block ref="9d9a9c7064b8193ac433a5365fe1afdb" category="inline-link-macro-rx"></block></block>
 </blocks>
