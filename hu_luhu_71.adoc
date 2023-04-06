@@ -54,6 +54,11 @@ Linux Unified Host Utilities는 Linux 호스트에 명령줄 도구 키트를 �
 [listing]
 ----
 # sanlun lun show all
+----
+예제 출력:
+
+[listing]
+----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------

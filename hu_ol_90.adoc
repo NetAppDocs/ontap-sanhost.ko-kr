@@ -1,16 +1,16 @@
 ---
 sidebar: sidebar 
-permalink: hu_ol_80.html 
-keywords: host utilities, oracle, linux, 8.0, netapp, ontap 
-summary: ONTAP에서 Oracle Linux 8.0을 사용하는 방법에 대해 설명합니다 
+permalink: hu_ol_90.html 
+keywords: host utilities, oracle, linux, 9.0, netapp, ontap 
+summary: ONTAP와 함께 Oracle Linux 9.0을 사용하는 방법에 대해 설명합니다 
 ---
-= Oracle Linux 8.0과 NetApp ONTAP 사용
+= NetApp ONTAP와 함께 Oracle Linux 9.0 사용
 :toc: macro
 :hardbreaks:
-:toclevels: 1
+:toclevels: 1P
 :allow-uri-read: 
 :toc: 
-:toclevels: 1
+:toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -20,7 +20,7 @@ summary: ONTAP에서 Oracle Linux 8.0을 사용하는 방법에 대해 설명합
 
 
 
-== Linux Unified Host Utilities 설치
+== Linux Unified Host Utilities를 설치합니다
 
 NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 64비트 .rpm 파일
 
@@ -38,16 +38,12 @@ Linux Unified Host Utilities를 설치하는 것이 좋지만 반드시 설치�
 
 
 
-NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
 
+== SAN 툴킷
 
+이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN 및 HBA를 관리하는 데 도움이 되는 sandlun 유틸리티를 제공합니다. sandlun 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
 
-== SAN 툴킷을 참조하십시오
-
-이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
-
-.예
-다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
+다음 예제에서 sanlun lun show 명령은 LUN 정보를 반환합니다.
 
 [listing]
 ----
@@ -60,17 +56,17 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       80.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       80.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       80.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       80.0g  cDOT
 ----
 
 
 == SAN 부팅
 
 .필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=89523;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -89,9 +85,40 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 == 다중 경로
 
-Oracle Linux 8.0의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 8.0은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
+Oracle Linux(OL) 9.0의 경우 `/etc/multipath.conf` 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. OL 9.0은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
 
-를 사용할 수 있습니다 `multipath -ll` 명령을 사용하여 ONTAP LUN의 설정을 확인합니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
+'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다.
+
+다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.
+
+
+
+=== 모든 SAN 어레이 구성
+
+모든 SAN 어레이(ASA) 구성에서 지정된 LUN(논리 유닛)에 대한 모든 경로가 활성 및 최적화됩니다. 즉, 모든 경로를 통해 동시에 I/O를 처리할 수 있으므로 성능이 향상됩니다.
+
+.예
+다음 예는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+[listing]
+----
+# multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
+----
+
+NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.
+
+
+
+=== 비 ASA 구성
+
+비 ASA 구성의 경우 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
 
 .예
 다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
@@ -99,14 +126,14 @@ Oracle Linux 8.0의 경우 /etc/multipath.conf 파일이 있어야 하지만 파
 [listing]
 ----
 # multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 16:0:6:35 sdwb 69:624 active ready running
-| |- 16:0:5:35 sdun 66:752 active ready running
-|-+- policy='service-time 0' prio=10 status=enabled
-|- 15:0:0:35 sdaj 66:48 active ready running
-|- 15:0:1:35 sdbx 68:176 active ready running
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
 ----
 
 NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.
@@ -115,7 +142,7 @@ NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가
 
 == 권장 설정
 
-Oracle Linux 8.0 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일됩니다.
+Oracle Linux 9.0 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.
 
 다중경로 데몬을 시작하려면 'multipath.conf' 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다
 
@@ -174,7 +201,7 @@ blacklist {
 | detect_prio(사전 감지) | 예 
 
 
-| DEV_Loss_TMO | "무한대" 
+| DEV_Loss_TMO | 무한대 
 
 
 | 장애 복구 | 즉시 
@@ -183,31 +210,31 @@ blacklist {
 | Fast_IO_FAIL_TMO | 5 
 
 
-| 피처 | "2 pg_init_retries 50" 
+| 피처 | 2 pg_init_retries 50 
 
 
-| Flush_on_last_del.(마지막 삭제 시 플러시 | "예" 
+| Flush_on_last_del.(마지막 삭제 시 플러시 | 예 
 
 
-| hardware_handler를 선택합니다 | "0" 
+| hardware_handler를 선택합니다 | 0 
 
 
 | no_path_retry 를 선택합니다 | 대기열 
 
 
-| path_checker를 선택합니다 | "tur" 
+| path_checker를 선택합니다 | 고객 
 
 
-| path_grouping_policy | "group_by_prio(그룹 기준/원시)" 
+| path_grouping_policy | Group_by_prio(그룹 기준/원시) 
 
 
-| 경로 선택 | "서비스 시간 0" 
+| 경로 선택 | 서비스 시간 0 
 
 
 | polling_interval입니다 | 5 
 
 
-| 프리오 | "ONTAP" 
+| 프리오 | ONTAP 
 
 
 | 제품 | LUN. * 
@@ -216,7 +243,7 @@ blacklist {
 | Retain_attached_hw_handler 를 참조하십시오 | 예 
 
 
-| RR_WEIGHT | "균일" 
+| RR_WEIGHT | 균일 
 
 
 | 사용자_친화적_이름 | 아니요 
@@ -243,16 +270,19 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 8.0 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용하십시오 link:hu_rhel_80.html#recommended-settings["권장 설정"] Red Hat Enterprise Linux(RHEL) 8.0의 경우
+NOTE: Oracle Linux 9.0 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용합니다 link:hu_rhel_86.html#recommended-settings["권장 설정"] Red Hat Enterprise Linux(RHEL) 9.0의 경우
 
 
 
-== 알려진 문제 및 제한 사항
+== KVM 설정
 
-Oracle Linux 8.0에는 알려진 문제가 없습니다.
+권장 설정을 사용하여 KVM(커널 기반 가상 시스템)도 구성할 수 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.
 
 
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_80.html#known-problems-and-limitations["알려진 문제"] Red Hat Enterprise Linux(RHEL) 8.0의 경우
+
+== 알려진 문제
+
+Oracle Linux 9.0에는 알려진 문제가 없습니다.
 
 
 
@@ -262,4 +292,4 @@ NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 �
 
 === ASM 미러링
 
-ASM 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 link:https://www.netapp.com/us/media/tr-3633.pdf["ONTAP 기반의 Oracle 데이터베이스"^] 를 참조하십시오.
+ASM 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 자세한 내용은 ONTAP에서 Oracle 데이터베이스 를 참조하십시오.

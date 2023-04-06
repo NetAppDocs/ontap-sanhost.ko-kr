@@ -52,6 +52,11 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 [listing]
 ----
 # sanlun lun show all
+----
+예제 출력:
+
+[listing]
+----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------
