@@ -29,7 +29,7 @@ summary: ONTAP에서 Linux용 Veritas Infoscale 7.3을 사용하는 방법에 �
 == 하이퍼바이저 SAN 부팅
 
 .필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 https://["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -214,9 +214,9 @@ NOTE: VASA Provider를 사용하려면 VMware vSphere용 ONTAP 툴을 구축해�
 
 현재 NetApp은 VVOL 설정을 기본값에서 변경하지 않는 것을 권장합니다.
 
-을 참조하십시오 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 특정 버전의 ONTAP 툴 또는 특정 버전의 vSphere 및 ONTAP를 위한 기존 VASA Provider에 대한 자세한 지원
+을 참조하십시오 https://["NetApp 상호 운용성 매트릭스 툴"^] 특정 버전의 ONTAP 툴 또는 특정 버전의 vSphere 및 ONTAP를 위한 기존 VASA Provider에 대한 자세한 지원
 
-VVOL 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서도 참조하십시오 link:https://docs.netapp.com/us-en/netapp-solutions/hybrid-cloud/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] 및 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^]
+VVOL 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서도 참조하십시오 link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^] 및 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^]
 
 
 
@@ -337,7 +337,7 @@ naa.600a098038304731783f506670553355
 
 == 관련 링크
 
-* link:https://www.netapp.com/media/13550-tr4597.pdf["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
+* link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
 * link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^]
 * link:https://kb.vmware.com/s/article/83370["VMware vMSC(vSphere Metro Storage Cluster)를 지원하는 NetApp ONTAP with NetApp SnapMirror SM-BC(Business Continuity)"^]
 

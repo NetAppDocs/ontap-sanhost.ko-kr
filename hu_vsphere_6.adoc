@@ -29,7 +29,7 @@ summary: ONTAP에서 Linux용 Veritas Infoscale 6.5 및 6.7을 사용하는 방�
 == 하이퍼바이저 SAN 부팅
 
 .필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 https://["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -188,13 +188,13 @@ VVOL을 사용할 때는 다음을 비롯한 SAN 환경에 대한 표준 요구�
 
 
 
-NOTE: VASA Provider를 설정하려면 VMware vSphere용 ONTAP 툴을 구축해야 합니다. VASA Provider가 여러분을 위한 igroup 설정을 모두 관리하므로 VVOL 환경에서 igroup을 생성하거나 관리할 필요가 없습니다.
+NOTE: VASA Provider를 설정하려면 VMware vSphere용 ONTAP 툴을 구축해야 합니다. VASA Provider는 모든 igroup 설정을 관리하므로 VVOL 환경에서 iGroup을 생성하거나 관리할 필요가 없습니다.
 
 현재 NetApp은 VVOL 설정을 기본값에서 변경하지 않는 것을 권장합니다.
 
-을 참조하십시오 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 특정 버전의 ONTAP 툴 또는 특정 버전의 vSphere 및 ONTAP를 위한 기존 VASA Provider에 대한 자세한 지원
+을 참조하십시오 https://["NetApp 상호 운용성 매트릭스 툴"^] 특정 버전의 ONTAP 툴 또는 특정 버전의 vSphere 및 ONTAP를 위한 기존 VASA Provider에 대한 자세한 지원
 
-VVOL 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서도 참조하십시오 link:https://docs.netapp.com/us-en/netapp-solutions/hybrid-cloud/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] 및 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^]
+VVOL 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서도 참조하십시오 https://["TR-4597"^] 및 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^]
 
 
 
@@ -220,7 +220,7 @@ VAAI 호환 스토리지와 업그레이드된 VMFS5의 경우 ATS 잠금은 * �
 | 디스크/QFullSampleSize | 0 | 32 | ESXi가 임계치 조절을 시작하기 전에 전체 또는 사용 중인 대기열 수입니다. 
 |===
 
-NOTE: UNMAP을 작동하기 위해 VMware vSphere에 매핑된 모든 LUN에 대해 공간 할당 설정을 활성화합니다. 자세한 내용은 을 참조하십시오 https://docs.netapp.com/ontap-9/index.jsp["ONTAP 문서"^].
+NOTE: UNMAP을 작동하기 위해 VMware vSphere에 매핑된 모든 LUN에 대해 공간 할당 설정을 활성화합니다. 자세한 내용은 을 참조하십시오 https://["ONTAP 문서"^].
 
 
 
@@ -323,7 +323,7 @@ naa.600a098038304731783f506670553355
 
 == 관련 링크
 
-* ONTAP를 사용하여 TR-4597-VMware vSphere에 액세스하려면 를 참조하십시오 link:https://cert.vmware.com/caas/support/case/00088028["고객 사례 - 00088028"^] 및 link:https://cert.vmware.com/caas/support/case/00088029["고객 사례 - 00088029"^]
+* link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
 * link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^]
 * link:https://kb.vmware.com/s/article/83370["VMware vMSC(vSphere Metro Storage Cluster)를 지원하는 NetApp ONTAP with NetApp SnapMirror SM-BC(Business Continuity)"^]
 

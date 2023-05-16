@@ -36,7 +36,7 @@ Linux Unified Host Utilities를 설치하는 것이 좋지만 반드시 설치�
 현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 또는 를 업그레이드해야 합니다. 이 유틸리티를 제거하고 다음 단계를 따라 최신 버전을 설치해야 합니다.
 
 .단계
-. 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 호스트에.
+. 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://["NetApp Support 사이트"^] 호스트에.
 . 다음 명령을 사용하여 소프트웨어 패키지를 설치합니다.
 +
 "rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
@@ -77,7 +77,7 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192
 == SAN 부팅
 
 .필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 https://["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
 
 SAN 부팅 구성 지원 가능성 및 알려진 주의 사항을 확인하려면 Veritas 지원 포털(제품 매트릭스, 플랫폼 조회, HCL 매트릭스)을 참조하십시오.
 

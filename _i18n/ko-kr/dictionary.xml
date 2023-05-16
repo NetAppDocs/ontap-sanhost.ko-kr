@@ -303,31 +303,22 @@
   <block id="193e9a3a22ec18786f1a8e1dccfdc4ac" category="list-text">에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block> 호스트의 디렉토리로 이동합니다.</block>
   <block id="c454d997c91275b70f2f0433fad3fe36" category="list-text">다운로드가 포함된 디렉터리로 이동합니다.</block>
   <block id="f814c4c509cfee1aaec985d122ae9223" category="list-text">파일의 압축을 풉니다.</block>
-  <block id="27fa30eecf4b6c982c54cf8b8457b1ae" category="paragraph">다음 예에서는 SPARC 시스템의 파일을 압축 해제합니다. x86-64 플랫폼의 경우 x86/x64 패키지를 사용합니다.</block>
   <block id="f6e9198a006ec354ae70027fd194c6a2" category="paragraph">'gunzip netapp_solaris_host_utilities_6_2N20170913_0304_sparc.tar.gz'</block>
   <block id="c21dc92fb61425e1ad5ebfa7842ddfd3" category="list-text">tar xvf 명령을 사용하여 파일의 압축을 풉니다.</block>
   <block id="cc3b132d19fd65d931654a8f68e6a763" category="paragraph">'tar xvf netapp_solaris_host_utilities_6_2N20170913_0304_sparc.tar'</block>
   <block id="5579afabd38a89da9e9a86d43642cb09" category="list-text">tar 파일에서 추출한 패키지를 호스트에 추가합니다.</block>
   <block id="63b3ac26a4b95703d93b29c78815132e" category="paragraph">pkgadd-d NTAPtaggool.pkg</block>
-  <block id="bfcf4c9fb40665b4e75185cfe6412160" category="paragraph">패키지는 /opt/ntap/soolkit/bin 디렉토리에 추가됩니다.</block>
-  <block id="449da45e57042ec00e617f9cb2c44720" category="paragraph">설치를 완료하려면 "host_config" 명령을 사용하여 사용자 환경(이 경우 MPxIO)에 대한 호스트 매개 변수를 구성해야 합니다.</block>
-  <block id="c95ed533eb41fc4a85cca0787c52530e" category="paragraph">host_config 명령의 형식은 다음과 같습니다.</block>
   <block id="70b7cc349994a5289908b02781aee538" category="paragraph">'/opt/ntap/soolkit/bin/host_config &lt;-setup&gt;&lt;-protocol fcp | iscsi | mixed&gt;&lt;-multipath mpxio | dmp | non&gt;[-noalua][-MCC 60|90|120]'</block>
-  <block id="d9fcab23624dae4606baf44f146b1fdc" category="paragraph">host_config 명령은 다음을 수행합니다.</block>
-  <block id="7fe49d85363417a51c8021e0f89e7738" category="list-text">x86 및 SPARC 시스템 모두에 대해 Fibre Channel 및 SCSI 드라이버의 설정을 변경합니다</block>
   <block id="2610c005c622702199776b8040e6ffd7" category="list-text">MPxIO 구성에 대한 SCSI 시간 초과 설정을 제공합니다</block>
   <block id="217eb929d03545e608e38137c6093b07" category="list-text">VID/PID 정보를 설정합니다</block>
   <block id="35d2d8916f36066d72523b66cbc092aa" category="list-text">ALUA를 설정하거나 해제합니다</block>
   <block id="8acf6be34fc54828b14850ddb21f6aac" category="list-text">MPxIO 및 x86 및 SPARC 시스템 모두에 대해 SCSI 드라이버에서 사용되는 ALUA 설정을 구성합니다.</block>
   <block id="8d3237fb2b6bc072b413d450b7bcf588" category="paragraph">다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.</block>
   <block id="2dde53d56f3621a460e634d6d12b32a5" category="paragraph">SAN 부팅은 Solaris 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다.</block>
-  <block id="5a7aaaebad4b1e6fdc00f4ada3d48417" category="inline-link-macro">Solaris 호스트 유틸리티 설치 및 설정 가이드</block>
-  <block id="72f260df571f27a8db9ec89d6a6496b6" category="paragraph">FC 프로토콜을 사용하고 Solaris 호스트 유틸리티를 실행하여 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 설정하는 방법은 볼륨 관리자 및 파일 시스템에 따라 다를 수 있습니다. 를 참조하십시오 <block ref="cf44bc918cdfd261cca787c802f63045" category="inline-link-macro-rx"></block> Solaris MPIO 환경에서 LUN을 부팅하는 SAN에 대한 자세한 내용은 를 참조하십시오.</block>
   <block id="7818dfcab7a1c05d51aa00ac15f3beac" category="paragraph">다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 네트워크 경로를 구성할 수 있습니다. 한 경로에 장애가 발생하면 트래픽이 나머지 경로에서 계속됩니다. Oracle Solaris MPxIO(I/O Multipathing)는 Solaris 11.4에서 기본적으로 활성화됩니다. '/kernel/drv/fp.conf'의 기본 설정은 mpxio-disable="no"로 변경됩니다.</block>
   <block id="a63b2b5307b2543c7245f5a90ff9c36a" category="paragraph">OS native mpathadm show lu &lt;lun&gt;' 명령의 각 LUN에 대한 * 액세스 상태 * 섹션에 대해 경로 우선 순위가 표시됩니다.</block>
   <block id="9736a41a8ee8c6b91a7dd1b18160526d" category="paragraph">'sanlun' 명령의 출력은 ASA 및 non-ASA 구성과 동일합니다.</block>
   <block id="27c76d8dc74b940e914489c7f1b1cbb0" category="admonition">모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 지원됩니다.</block>
-  <block id="ecfc86e5d43962233e80fa4638ea4b1e" category="paragraph">다음은 NetApp ONTAP LUN을 사용하는 Solaris 11.4 SPARC 및 x86_64에 권장되는 일부 매개 변수 설정입니다. 이러한 매개 변수 값은 Host Utilities에서 설정합니다. Solaris 11.4 시스템에 대한 추가 설정은 Oracle DOC ID: 2595926.1을 참조하십시오</block>
   <block id="689202409e48743b914713f96d93947c" category="cell">값</block>
   <block id="c0710e4c6669e9d9625063dae931aff1" category="cell">throttle_max</block>
   <block id="c9f0f895fb98ab9159f51fd0297e236d" category="cell">8</block>
@@ -342,15 +333,12 @@
   <block id="579c809b7cf293fc0f5db92d1dba3775" category="cell">물리적_블록_크기</block>
   <block id="f7efa4f864ae9b88d43527f4b14f750f" category="cell">4096</block>
   <block id="3d37ecaaa38a68cc4cb45fa6244e970c" category="section-title">MetroCluster에 대한 권장 설정</block>
-  <block id="cb99705ba926b18eb56469f75cc39c4c" category="inline-link-macro">KB1001373</block>
-  <block id="bb07e47b42aa48376a913354e1a94c0f" category="paragraph">기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이는 fcp_offline_delay 파라미터에 의해 제어된다. "fcp_offline_delay"의 기본값은 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 "fcp_offline_delay"의 값을 * 120s * 로 증가시켜야 비계획 장애 조치를 포함한 작업 중에 입출력이 미리 시간 초과되지 않습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp을 참조하십시오 <block ref="9c0611c5ceabd8da2106dbd75573cd48" category="inline-link-macro-rx"></block>.</block>
   <block id="8f9dff1e201aa562bc3dd3aafff4d268" category="section-title">Oracle Solaris 가상화</block>
   <block id="d73e6214e3336f5200c990aa71164cec" category="list-text">Solaris 가상화 옵션에는 Solaris Logical Domains(LDOM 또는 SPARC용 Oracle VM Server), Solaris Dynamic Domains, Solaris Zones 및 Solaris Containers가 있습니다. 이러한 기술은 서로 다른 아키텍처를 기반으로 하고 있음에도 불구하고 일반적으로 "Oracle Virtual Machines"로 재브랜딩되었습니다.</block>
   <block id="5526d07285513042d4092f2ededbb3d5" category="list-text">경우에 따라 특정 Solaris 논리적 도메인 내의 Solaris 컨테이너와 같은 여러 옵션을 함께 사용할 수 있습니다.</block>
   <block id="bc8be72fdc9d6054f356bb2b7f80fd12" category="inline-link-macro">NetApp 상호 운용성 매트릭스</block>
   <block id="692dca145cf34dacba629a9ddf6d4c42" category="list-text">NetApp은 일반적으로 전체 구성이 Oracle에서 지원되며 LUN에 직접 액세스할 수 있는 파티션이 에 나와 있는 가상화 기술의 사용을 지원합니다 <block ref="e65d5dc611a70f61b74f4247aa5bf590" category="inline-link-macro-rx"></block> 를 클릭합니다. 여기에는 루트 컨테이너, LDOM IO 도메인 및 NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.</block>
   <block id="73710dbb0bb38e18d8eb3c739564246e" category="list-text">vdsk와 같은 가상화된 스토리지 리소스만 사용하는 파티션 및/또는 가상 머신은 NetApp LUN에 직접 액세스할 수 없는 특수 조건이 필요하지 않습니다. LDOM IO 도메인과 같은 기본 LUN에 직접 액세스할 수 있는 파티션/VM만 에서 찾을 수 있습니다 <block ref="e65d5dc611a70f61b74f4247aa5bf590" category="inline-link-macro-rx"></block>.</block>
-  <block id="1014a6a04423d551549d409e08fbcc51" category="paragraph">LDOM 내에서 LUN을 가상 디스크 디바이스로 사용할 경우 LUN의 소스는 가상화를 통해 마스킹되고 LDOM은 블록 크기를 제대로 감지하지 못합니다. 이 문제를 방지하려면 LDOM 운영 체제에 Oracle 버그 15824910 패치를 적용해야 하며 가상 디스크의 블록 크기를 4096으로 설정하는 "vdc.conf" 파일을 만들어야 합니다. 자세한 내용은 Oracle Doc 2157669.1을 참조하십시오.</block>
   <block id="90fbed0fe328b6c16dbe12568b1cb193" category="paragraph">패치를 확인하려면 다음을 수행합니다.</block>
   <block id="9f6b080eca87f7396d496ea0c81b7e3e" category="list-text">zpool을 생성합니다.</block>
   <block id="1f80ff8a7f656ba475234df3ba5b12d0" category="list-text">zdb-C를 zpool에 대해 실행하고 * ashift * 의 값이 12인지 확인합니다.</block>
@@ -363,14 +351,12 @@
   <block id="36ab1d57f4ac9530d3a3340c5c45fa71" category="cell">Oracle ID입니다</block>
   <block id="dd1e6355fcc2ca3c16ece42015663e00" category="cell">1362435</block>
   <block id="393cfee0a3b5d3e706f8a0cdeefa3ed8" category="cell">HUK 6.2 및 Solaris_11.4 FC 드라이버 바인딩 변경</block>
-  <block id="b2868986ab4f89d873eb88548fa648bb" category="cell">Solaris 11.4 및 HUK 권장 사항. FC 드라이버 바인딩이 SSD(4D)에서 SD(4D)로 변경됩니다. Ssd.conf에 있는 구성을 Oracle(Doc ID 2595926.1)에 자세히 설명된 대로 s.conf로 이동합니다. 이 동작은 새로 설치된 Solaris 11.4 시스템에 따라 다르며 11.3 이하 버전에서 업그레이드됩니다.</block>
   <block id="8e831c271747ab1b149f40a1bfc61175" category="cell">(문서 ID 2595926.1)</block>
   <block id="00973b68a5065faa4a281a0e725eda56" category="cell">1366780</block>
   <block id="7e8e5478b94a9cb677c6d439dce145ce" category="cell">Solaris LIF 문제 - GB 중, x86 ARch의 Emulex 32G HBA에서 발생</block>
   <block id="09fbe9d1ed2fdf31b8ac5fe56aa3ffbb" category="cell">x86_64 플랫폼에서 Emulex 펌웨어 버전 12.6.x 이상에서 나타납니다</block>
   <block id="c0100c2009c306f8f4ee8e407477e33f" category="cell">SR 3-24746803021</block>
   <block id="a45d90a5f7a08888afb625a60a87c1fe" category="cell">1368957을 참조하십시오</block>
-  <block id="7fed5db563dfce62e3512e9c6fe716c1" category="cell">"Solaris 11.x "cfgadm-c configure"로 인해 End-to-End Emulex 구성에서 I/O 오류가 발생합니다."</block>
   <block id="8b30a2a046838a554ec8551f6130f395" category="cell">Emulex End-to-End 구성에서 'cfgadm-c configure'를 실행하면 I/O 오류가 발생합니다. 이 문제는 9.5P17, 9.6P14, 9.7P13 및 9.8P2에서 고정됩니다</block>
   <block id="d4cd0dabcf4caa22ad92fab40844c786" category="cell">해당 없음</block>
   <block id="78d3960bdb072ec713e8a4ab4adcd520" category="cell">1345622)를 참조하십시오</block>
@@ -1632,12 +1618,10 @@
   <block id="b9328f95dbad5a0758caa9d672f33531" category="list-text">단일 장애 지점 제거 여러 개의 가상 스위치를 사용하거나 여러 물리적 스위치에 연결된 여러 개의 물리적 NIC를 사용하여 HA와 향상된 처리량을 제공하는 경우 NIC 팀을 사용하는 서로 다른 네트워크 서브넷에서 여러 개의 VMkernel 네트워크 인터페이스를 사용합니다.</block>
   <block id="440254bef730e33b68bd146775dadae0" category="list-text">호스트 연결에 필요한 경우 조닝 및/또는 VLAN을 구성합니다.</block>
   <block id="c54b2333e9300746b11b3bf55a67e01e" category="list-text">필요한 모든 이니시에이터가 원하는 SVM의 타겟 LIF에 로그인되어 있는지 확인하십시오.</block>
-  <block id="2cc894dadbda2222156fcf16565d8776" category="admonition">VASA Provider를 설정하려면 VMware vSphere용 ONTAP 툴을 구축해야 합니다. VASA Provider가 여러분을 위한 igroup 설정을 모두 관리하므로 VVOL 환경에서 igroup을 생성하거나 관리할 필요가 없습니다.</block>
   <block id="305f59462ece50f24122d41e4561fcfa" category="paragraph">현재 NetApp은 VVOL 설정을 기본값에서 변경하지 않는 것을 권장합니다.</block>
   <block id="abbe770f7d2ca2eefbb79e84ca40a521" category="paragraph">을 참조하십시오<block ref="77ab0bbf377853176c70e55d32dcb81a" category="inline-link-rx"></block> 특정 버전의 ONTAP 툴 또는 특정 버전의 vSphere 및 ONTAP를 위한 기존 VASA Provider에 대한 자세한 지원</block>
   <block id="3dffa984dadf9ff0006ee9cebd3b04b9" category="inline-link-macro">TR-4597</block>
   <block id="7bc192063f45f04afc8d24a8ef003835" category="inline-link-macro">TR-4400</block>
-  <block id="6fa026cc896a9aa46993e867a29d973c" category="paragraph">VVOL 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서도 참조하십시오 <block ref="52e81e11040c41825151f9c7710055f2" category="inline-link-macro-rx"></block> 및 <block ref="a74613d919ef64732e37564f6282a452" category="inline-link-macro-rx"></block></block>
   <block id="2fc5bc49d904cb53f5585cd77321f50e" category="section-title">ATS 잠금</block>
   <block id="bc84423f783fae0183076ce886ba6bf5" category="paragraph">VAAI 호환 스토리지와 업그레이드된 VMFS5의 경우 ATS 잠금은 * 필수 * 이며 ONTAP LUN의 적절한 상호 운용성과 최적의 VMFS 공유 스토리지 I/O 성능을 위해 필요합니다. ATS 잠금 활성화에 대한 자세한 내용은 VMware 설명서를 참조하십시오.</block>
   <block id="f4f70727dc34561dfde1a3c529b6205c" category="cell">설정</block>
@@ -1684,9 +1668,6 @@
   <block id="4332d8f4566f029f69029c23562122fc" category="cell">ESXi 6.5.x 및 ESXi 6.7.x</block>
   <block id="280cb64ee585254458755a354d77aefc" category="cell">1256473</block>
   <block id="b9204431a0ed79e40e8c590858bc11e4" category="cell">Emulex 어댑터에서 테스트하는 동안 PLOGI 문제가 발생했습니다</block>
-  <block id="67b58a320d747fcd4cbacaf620e097ed" category="inline-link-macro">고객 사례 - 00088028</block>
-  <block id="812daa291d1c26c02bbf300bc7c1bc8d" category="inline-link-macro">고객 사례 - 00088029</block>
-  <block id="1ce6b82da1e4c8ef0696742f32ee8517" category="list-text">ONTAP를 사용하여 TR-4597-VMware vSphere에 액세스하려면 를 참조하십시오 <block ref="0b49ef6859bcc6d029643944be119d56" category="inline-link-macro-rx"></block> 및 <block ref="ea34cfa716537242c2b4837bb8c55109" category="inline-link-macro-rx"></block></block>
   <block id="52f50d0f0ab285059648c7da67b4b07f" category="inline-link-macro">NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원</block>
   <block id="8a515fe16331b7269862c5871e55c7e4" category="list-text"><block ref="8a515fe16331b7269862c5871e55c7e4" category="inline-link-macro-rx"></block></block>
   <block id="929c9a7053ca6d930b0835cb93342235" category="inline-link-macro">VMware vMSC(vSphere Metro Storage Cluster)를 지원하는 NetApp ONTAP with NetApp SnapMirror SM-BC(Business Continuity)</block>
@@ -1715,9 +1696,7 @@
   <block id="6c0dbd01652c6507117bd7f2e71f213c" category="paragraph">CentOS 7.6 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. 다중경로 데몬을 시작하려면 'multipath.conf' 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다</block>
   <block id="7466d31b9a4018d8f402bd6f92090e59" category="summary">Solaris 호스트 유틸리티를 설치하는 방법에 대해 설명합니다</block>
   <block id="e1084bfbacc7e9ee1de94f35fce4fca3" category="doc">Solaris 11.3과 NetApp ONTAP 사용</block>
-  <block id="f4d76a41ec782faaf93445d4818eaab2" category="paragraph">NetApp Support 사이트에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.</block>
   <block id="88a1748445927988a69d31c53331a565" category="list-text">파일의 압축을 풉니다.</block>
-  <block id="d18516a8d2909b9e174694d2d903b1be" category="paragraph">다음 예에서는 SPARC 시스템에 대한 파일의 압축을 해제합니다. x86-64 플랫폼의 경우 x86/x64 패키지를 사용합니다.</block>
   <block id="b95d86816560689a3b4b5773be73b5f0" category="list-text">파일의 압축을 해제하려면 'tar xvf' 명령을 사용합니다.</block>
   <block id="9edc8f09fd5b1e5afec2430fd6f561df" category="paragraph">패키지는 '/opt/ntap/soolkit/bin' 디렉토리에 추가됩니다.</block>
   <block id="6206b10fce149a43f48967cbbd4b4f8c" category="paragraph">'host_config' 명령의 형식은 다음과 같습니다.</block>
@@ -1731,8 +1710,6 @@
   <block id="d814467c80971fad7dc38d7544ce98d0" category="paragraph">패치를 확인하려면 다음을 수행합니다.</block>
   <block id="056c8d7c593315d3a152a1043acca1b4" category="paragraph">shift * 값이 12가 아닌 경우 올바른 패치가 설치되었는지 확인하고 vdc.conf의 내용을 다시 확인하십시오.</block>
   <block id="e84f6ac369848cb6d7e082d7741f9522" category="cell">x86_64 플랫폼에서 Emulex 펌웨어 버전 12.6.x 이상에서 나타납니다</block>
-  <block id="ad7a7ee02c1833f8de304fb448e63f7d" category="cell">"Solaris 11.x 'cfgadm-c configure'로 인해 End-to-End Emulex 구성에서 I/O 오류가 발생했습니다."</block>
-  <block id="dfbca5d94a0cbae9d4fce80b686be2a2" category="cell">Emulex End-to-End 구성에서 “cfgadm-c configure”를 실행하면 I/O 오류가 발생합니다. 이 문제는 9.5P17, 9.6P14, 9.7P13 및 9.8P2에서 고정됩니다</block>
   <block id="9a8a0895e5f69c5c06d82e847ceb32e9" category="summary">ONTAP에서 Red Hat Enterprise Linux 7.5를 사용하는 방법을 설명합니다</block>
   <block id="724f685b8e77a5417a8a2703b3d831b2" category="doc">NetApp ONTAP와 함께 Red Hat Enterprise Linux 7.5 사용</block>
   <block id="253f9a8620f20f372c2bbdf28eec14f4" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <block ref="de6f4b59a170663afff37b664d89bb37" category="inline-link-macro-rx"></block> 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.</block>
@@ -1970,7 +1947,6 @@
   <block id="b7c74c258f112727be39c4b747d743ec" category="paragraph">다음 명령을 사용하여 IOP 설정을 확인합니다.</block>
   <block id="32014634f5e91fea92881a76289729e4" category="paragraph">다음 명령을 사용하여 QFullSampleSize를 확인합니다</block>
   <block id="784c795c066fdf3c4713aae58af639ff" category="paragraph">알려진 문제가 없습니다.</block>
-  <block id="2f7555fd65fd6100208812dc33a35c6e" category="list-text"><block ref="2f7555fd65fd6100208812dc33a35c6e" category="inline-link-macro-rx"></block></block>
   <block id="33fb3916b5bbccadc7502b97d2b47e0a" category="summary">Citrix XenServer 7.x를 ONTAP와 함께 사용하는 방법에 대해 설명합니다</block>
   <block id="9873f1b83211d16cf532c7bbb3c830b9" category="doc">Citrix XenServer를 NetApp ONTAP와 함께 사용하여 Hyper-V를 사용하지 않으며</block>
   <block id="a51e3210f96458fa393e6f4bf88caabc" category="paragraph">Citrix XenServer의 다중 경로 지원은 Device Mapper multipathd 구성 요소를 기반으로 합니다. 디바이스 매퍼 노드는 XenServer에 제공된 모든 LUN에 대해 자동으로 생성되지 않으며 API(Storage Management Layer)에서 LUN을 적극적으로 사용하는 경우에만 프로비저닝됩니다. Citrix XenServer Storage Manager API 플러그인은 다중 경로 노드의 활성화 및 비활성화를 자동으로 처리합니다.</block>
@@ -2259,7 +2235,6 @@
   <block id="adacfb21d59059a5b9d11b1957fbacb1" category="list-text">사용 중인 SANtricity 버전에 맞는 SANtricity 스토리지 관리자 다중 경로 드라이버 안내서.</block>
   <block id="eb6dfbdfc2c6cfdacfb27a9630c40334" category="list-text">사용 중인 SANtricity 버전에 대한 SANtricity 저장소 관리자 릴리스 정보.</block>
   <block id="5f93f381aa8df330451fa5b834f54def" category="inline-link-macro">E-Series 설명서를 참조하십시오</block>
-  <block id="476ffa3f7602d624a09df7aa5753ffef" category="paragraph">로 이동합니다 <block ref="9baa7224a8255cea231b31bb3cb8d26c" category="inline-link-macro-rx"></block> SANtricity 관련 문서를 찾습니다.</block>
   <block id="2c0074fce84282581b2b52e56eacf78e" category="sidebar">LUHU 7.1을 설치합니다</block>
   <block id="3e88abad927ef9520e50cf89d3f1ddf7" category="paragraph">기본 설정을 재정의할 수 있는 기본 섹션에서 항상 '/etc/multipath.conf' 파일에서 기존 설정을 확인해야 합니다.</block>
   <block id="51f210eb8bfa53321744e9dca7258c87" category="paragraph">Oracle Linux 8.1 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일되었습니다.</block>
@@ -2584,7 +2559,6 @@
   <block id="63f871187249b3071dc36a54982c1e17" category="cell">iSCSI MCS(Multiple Connecting per session)로 iSCSI 소프트웨어 부팅을 사용하는 경우 iSCSI 부트 선행 연결은 보호되지 않습니다. 이로 인해 부팅 LUN 연결이 끊겨 호스트 충돌이 발생할 수 있습니다.</block>
   <block id="a77cd68a790d44f2359fe8a4dd45b1dc" category="cell">Microsoft는 iSCSI 소프트웨어 부팅 호스트에 대한 MCS를 지원하지 않습니다. MPIO를 고가용성 솔루션으로 사용합니다. MPIO와 MCS의 혼합은 지원되지 않습니다.</block>
   <block id="05aa4f4bc5b51efef2c52f4fb2ddc55f" category="paragraph"><block ref="06c8d471f4d0311b3446a94e54fc8a82" category="inline-link-macro-rx"></block> 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다.</block>
-  <block id="a64644439f45078aa7c8e54709b6fb99" category="paragraph">를 참조하십시오 <block ref="098b68c05e072d65de8b63c55177a5c6" category="inline-link-macro-rx"></block> SANtricity 관련 문서를 찾습니다.</block>
   <block id="748753e893fd2f6b904a298d120af491" category="sidebar">Windows Unified Host Utilities를 참조하십시오</block>
   <block id="7b4c9d36bd8121e0d136897711d66090" category="sidebar">Wuhu 7.1을 설치합니다</block>
   <block id="1f87ccc57172166c30629890b2884f0e" category="paragraph">를 사용할 수 있습니다<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 명령을 사용하여 ONTAP LUN의 설정을 확인합니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
@@ -2722,7 +2696,6 @@
   <block id="976902513d73f70373bf832d81070379" category="admonition">ONTAP 9.9.1부터 Solaris 11.4 호스트에서 SM-BC 설정 구성이 지원됩니다.</block>
   <block id="e49ccc598a2a177291bac4be5c852c5f" category="cell"><block ref="e49ccc598a2a177291bac4be5c852c5f" category="inline-link-macro-rx"></block></block>
   <block id="5b3496bb3deba2c2222970d5c975df4a" category="paragraph">NVMe/FC 오류에 대한 문제 해결을 시작하기 전에 상호 운용성 매트릭스 툴(IMT) 사양을 준수하는 구성을 실행 중인지 확인하고 다음 단계를 수행하여 호스트측 문제를 디버깅하십시오.</block>
-  <block id="872e3157142338f8780c9227100229cb" category="paragraph">기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이 기능은 에 의해 제어됩니다<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 매개 변수. 의 기본값입니다<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 의 값은 입니다<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 비계획 페일오버 등 작업 중에 입출력이 조기에 시간 초과되지 않도록 * 120s * 로 늘려야 합니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp을 참조하십시오<block ref="c1922a8e804b8190c0daa8263ddd5748" category="inline-link-rx"></block>.</block>
   <block id="edd08258c3c5f3718f84028ff5971d1d" category="section-title">Oracle Solaris 가상화</block>
   <block id="fd515dc1fb4215f1d4f9c5a754b19cab" category="section-title">가상화에 권장되는 설정입니다</block>
   <block id="c25aaa60cb981e43df9a60c24d76e170" category="paragraph">SM-BC(SnapMirror Business Continuity) 환경에서 계획되지 않은 사이트 페일오버 스위치오버가 발생할 때 Solaris 클라이언트 애플리케이션이 무중단 운영인지 확인하려면 Solaris 11.3 호스트에서 다음 설정을 구성해야 합니다. 이 설정은 페일오버 모듈을 재정의합니다<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 모순을 감지하는 코드 경로의 실행을 방지합니다.</block>
@@ -3054,4 +3027,31 @@
   <block id="b16d9e0da8fa9c56e92e63e0ef6c5e31" category="list-text">OL 9.0 호스트에서 다음 NVMe/FC 설정을 확인합니다.</block>
   <block id="d5946da4bef042fd1ecdafbb693027e4" category="paragraph">구성에 문제가 있는 경우 자세한 정보 로깅은 문제 해결에 필요한 필수 정보를 제공할 수 있습니다.</block>
   <block id="d6f0420e884ba06233920f24aeacd0b4" category="sidebar">Wuhu 7.2를 설치합니다</block>
+  <block id="c89f54db5376bd3f5d9ade2c6d3362fd" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.</block>
+  <block id="acabba98705eb29393554dc66f1ee4e2" category="paragraph">다음 예에서는 SPARC 시스템에 대한 파일의 압축을 해제합니다. x86-64 플랫폼의 경우 x86/x64 패키지를 사용합니다.</block>
+  <block id="7b80b257325a5b162e64740743f1f56b" category="paragraph">설치를 완료하려면 를 사용하여 사용자 환경의 호스트 매개 변수(이 경우 MPxIO)를 구성해야 합니다<block ref="3062dc928daa4d85f6e34b6dea110a00" prefix=" " category="inline-code"></block> 명령.</block>
+  <block id="2e6c1117a40c601f7b1e729219ae60d4" category="list-text">x86 및 SPARC 시스템 모두에 대한 Fibre Channel 및 SCSI 드라이버 설정을 변경합니다</block>
+  <block id="c4cad7deef0c16d999553f9114b69a38" category="inline-link">Solaris 호스트 유틸리티를 설치합니다</block>
+  <block id="f3fa3c55f6e1d616adca4cc7545092f0" category="paragraph">FC 프로토콜을 사용하고 Solaris 호스트 유틸리티를 실행하여 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 설정하는 방법은 볼륨 관리자 및 파일 시스템에 따라 다를 수 있습니다. 을 참조하십시오<block ref="b122ff225ade2e6fc15e0025cf78e2d2" category="inline-link-rx"></block> Solaris MPIO 환경에서 LUN을 부팅하는 SAN에 대한 자세한 내용은 를 참조하십시오.</block>
+  <block id="daa135326b602a4d4c5bd7b55808870a" category="inline-link">MetroCluster 구성에서 Solaris 호스트 지원 고려 사항</block>
+  <block id="c0fb739872dac94bedef68b1bae6c33c" category="paragraph">기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이 기능은 에 의해 제어됩니다<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 매개 변수. 의 기본값입니다<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 의 값은 입니다<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 비계획 페일오버 등 작업 중에 입출력이 조기에 시간 초과되지 않도록 * 120s * 로 늘려야 합니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오<block ref="193f3884faade962417df8b9640856de" category="inline-link-rx"></block>.</block>
+  <block id="8f4e34dd626d27db6da17b83e4d7f329" category="cell">Solaris 11.x 'cfgadm-c configure'로 인해 End-to-End Emulex 구성에서 I/O 오류가 발생합니다</block>
+  <block id="67618ee20fc9c9dc6bacf85ab256b07c" category="cell">실행 중입니다<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> Emulex 엔드-투-엔드 구성에서는 I/O 오류가 발생합니다. 이 문제는 9.5P17, 9.6P14, 9.7P13 및 9.8P2에서 고정됩니다</block>
+  <block id="05a2e5d38b7302b051a92c093ea62da1" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>. 파일이 있는 경우 Host Utilities를 설치하는 데 필요한 소프트웨어 패키지를 가져오려면 파일의 압축을 풀어야 합니다.</block>
+  <block id="a387e31363493fb3c0fbdcc0d7458c52" category="list-text">파일의 압축을 풉니다.</block>
+  <block id="8fe0dc9943c3dbce8070a7613545cb91" category="paragraph">다음 예에서는 SPARC 시스템에 대한 파일의 압축을 해제합니다. x86-64 플랫폼의 경우 를 사용합니다<block ref="2dea9af09f7e80915b8298deb9ca9b8a" prefix=" " category="inline-code"></block> 패키지.</block>
+  <block id="db3593f61ef4c56ea67fd06ebc7a6825" category="admonition">모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 지원됩니다.</block>
+  <block id="f8af07f878832a82df53431926e7c3f6" category="paragraph">다음은 NetApp ONTAP LUN을 사용하는 Solaris 11.4 SPARC 및 x86_64에 권장되는 일부 매개 변수 설정입니다. 이러한 매개 변수 값은 Host Utilities에서 설정합니다. Solaris 11.4 시스템에 대한 추가 설정은 Oracle DOC ID: 2595926.1을 참조하십시오</block>
+  <block id="df005c493acb8e00e9543058c5ac6269" category="paragraph">기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이 기능은 에 의해 제어됩니다<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 매개 변수. 의 기본값입니다<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 의 값은 입니다<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 비계획 페일오버 등 작업 중에 입출력이 조기에 시간 초과되지 않도록 * 120s * 로 늘려야 합니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오<block ref="193f3884faade962417df8b9640856de" category="inline-link-rx"></block>.</block>
+  <block id="64799ab49723d2dcfaeadf0cc963a0af" category="list-text">Solaris 가상화 옵션에는 Solaris Logical Domains(LDOM 또는 SPARC용 Oracle VM Server), Solaris Dynamic Domains, Solaris Zones 및 Solaris Containers가 있습니다. 이러한 기술은 다른 아키텍처를 기반으로 하지만 일반적으로 "Oracle Virtual Machines"로 재브랜딩되었습니다.</block>
+  <block id="3cdb50c8bf082811e79154b6cdabdb1f" category="paragraph">LDOM 내에서 LUN을 가상 디스크 디바이스로 사용할 경우 LUN의 소스는 가상화를 통해 마스킹되고 LDOM은 블록 크기를 제대로 감지하지 못합니다. 이 문제를 방지하려면 LDOM 운영 체제에 _Oracle 버그 15824910_ 및 A 패치를 적용해야 합니다<block ref="3328fba80b08b36663ffae0684f6c578" prefix=" " category="inline-code"></block> 가상 디스크의 블록 크기를 4096으로 설정하는 파일을 만들어야 합니다. 자세한 내용은 Oracle Doc 2157669.1을 참조하십시오.</block>
+  <block id="c39a85f8ec6b0a29f08919e66d066295" category="cell">Solaris 11.4 및 HUK 권장 사항을 따릅니다. FC 드라이버 바인딩이 SSD(4D)에서 SD(4D)로 변경됩니다. 에 있는 구성을 이동합니다<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 를 선택합니다<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> Oracle에 자세히 설명되어 있습니다(Doc ID 2595926.1). 이 동작은 새로 설치된 Solaris 11.4 시스템에 따라 다르며 11.3 이하 버전에서 업그레이드됩니다.</block>
+  <block id="cb5a5fbf7b377c4121e5a7dee7e950e5" category="cell">Solaris 11.x<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> End-to-End Emulex 구성에서 I/O 오류가 발생합니다</block>
+  <block id="a15ed55b009e93df31791bff39016875" category="paragraph">를 참조하십시오 <block ref="a39850964251401babb6e797f9dd15c1" category="inline-link-macro-rx"></block> SANtricity 관련 문서를 찾습니다.</block>
+  <block id="2f250814a775a0365f902dbe562032c6" category="paragraph">를 참조하십시오 <block ref="7f9ee14ffba4539bbbffe56322464e8d" category="inline-link-macro-rx"></block> SANtricity 관련 문서를 찾습니다.</block>
+  <block id="ad29963bc78eccf5ea7c4b874af41073" category="paragraph">VVOL 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서도 참조하십시오 <block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block> 및 <block ref="a74613d919ef64732e37564f6282a452" category="inline-link-macro-rx"></block></block>
+  <block id="f6bd0d7447ff66cc6b859603a88fbde9" category="section-title">관련 링크</block>
+  <block id="ec1f030f0caddb932644a46761f74630" category="list-text"><block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block></block>
+  <block id="e0ace13bee28a678ec04ad1b076b4b00" category="admonition">VASA Provider를 설정하려면 VMware vSphere용 ONTAP 툴을 구축해야 합니다. VASA Provider는 모든 igroup 설정을 관리하므로 VVOL 환경에서 iGroup을 생성하거나 관리할 필요가 없습니다.</block>
+  <block id="a2093eec2c1b326b4a76efce454cc95a" category="paragraph">VVOL 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서도 참조하십시오<block ref="fc9815e7b1405959c49ad47e9a23e3a5" category="inline-link-rx"></block> 및 <block ref="a74613d919ef64732e37564f6282a452" category="inline-link-macro-rx"></block></block>
 </blocks>

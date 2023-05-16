@@ -160,4 +160,4 @@ Linux 커널과 함께 번들로 제공되는 기본 받은 편지함 드라이�
 * 사용 중인 SANtricity 버전에 대한 SANtricity 저장소 관리자 릴리스 정보.
 
 
-로 이동합니다 link:https://docs.netapp.com/us-en/e-series/getting-started/index.html["E-Series 설명서를 참조하십시오"] SANtricity 관련 문서를 찾습니다.
+를 참조하십시오 link:https://docs.netapp.com/us-en/e-series/index.html["E-Series 설명서를 참조하십시오"] SANtricity 관련 문서를 찾습니다.

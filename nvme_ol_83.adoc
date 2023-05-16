@@ -48,14 +48,14 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 
 == 구성 요구 사항
 
-을 참조하십시오 http://mysupport.netapp.com/matrix3["NetApp 상호 운용성 매트릭스 툴(IMT)"^] 를 참조하십시오.
+을 참조하십시오 http://["NetApp 상호 운용성 매트릭스 툴(IMT)"^] 를 참조하십시오.
 
 
 
 == Oracle Linux 8.3에서 NVMe/FC를 사용하도록 설정합니다
 
 .단계
-. 서버에 Oracle Linux 8.3 GA를 설치합니다. 설치가 완료되면 지정된 Oracle Linux 8.3 GA 커널을 실행 중인지 확인합니다. 를 참조하십시오 https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^] 를 참조하십시오.
+. 서버에 Oracle Linux 8.3 GA를 설치합니다. 설치가 완료되면 지정된 Oracle Linux 8.3 GA 커널을 실행 중인지 확인합니다. 를 참조하십시오 https://["NetApp 상호 운용성 매트릭스 툴"^] 를 참조하십시오.
 +
 [listing]
 ----
@@ -109,7 +109,7 @@ systemctl restart multipathd_command를 실행하여 multipathd 데몬을 다시
 == NVMe/FC용 Broadcom FC 어댑터를 구성합니다
 
 .단계
-. 지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터의 최신 목록은 를 참조하십시오 https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+. 지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터의 최신 목록은 를 참조하십시오 https://["NetApp 상호 운용성 매트릭스 툴"^].
 +
 [listing]
 ----
@@ -124,7 +124,7 @@ LPe36002-M2
 Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 ----
-. 권장 Broadcom lpfc 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지 확인합니다. 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+. 권장 Broadcom lpfc 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지 확인합니다. 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 https://["NetApp 상호 운용성 매트릭스 툴"^].
 +
 [listing]
 ----
@@ -397,7 +397,7 @@ Device      Vserver         Namespace Path             NSID UUID                
 | NetApp 버그 ID | 제목 | 설명 | Oracle Bugzilla 
 
 
-| 1517321 | Oracle Linux 8.3 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 생성합니다 | Oracle Linux 8.3 NVMe over Fabrics (NVMe-oF) 호스트에서 를 사용할 수 있습니다 `nvme discover -p` PDC(영구적 검색 컨트롤러)를 생성하는 명령입니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 ONTAP 9.10.1 및 Oracle Linux 8.3을 NVMe-oF 호스트와 함께 실행하는 경우, 매번 중복 PDC가 생성됩니다 `nvme discover -p` 실행됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Oracle Linux 8.3 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 생성합니다 | Oracle Linux 8.3 NVMe over Fabrics (NVMe-oF) 호스트에서 를 사용할 수 있습니다 `nvme discover -p` PDC(영구적 검색 컨트롤러)를 생성하는 명령입니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 ONTAP 9.10.1 및 Oracle Linux 8.3을 NVMe-oF 호스트와 함께 실행하는 경우, 매번 중복 PDC가 생성됩니다 `nvme discover -p` 실행됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다. | https://["18118"^] 
 |===
 
 
