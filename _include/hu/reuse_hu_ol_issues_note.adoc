@@ -3,4 +3,4 @@
 
 
 
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 해당 섹션의 알려진 문제점 섹션을 참조하십시오 https://["Red Hat Enterprise Linux 릴리스"^] 문서화:
+NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 해당 섹션의 알려진 문제점 섹션을 참조하십시오 https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63146["Red Hat Enterprise Linux 릴리스"^] 문서화:

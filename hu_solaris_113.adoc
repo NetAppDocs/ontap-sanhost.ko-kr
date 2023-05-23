@@ -96,7 +96,7 @@ SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다.
 
 SAN 부팅은 Solaris 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다.
 
-FC 프로토콜을 사용하고 Solaris 호스트 유틸리티를 실행하여 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 설정하는 방법은 볼륨 관리자 및 파일 시스템에 따라 다를 수 있습니다. 을 참조하십시오 https://["Solaris 호스트 유틸리티를 설치합니다"^] Solaris MPIO 환경에서 LUN을 부팅하는 SAN에 대한 자세한 내용은 를 참조하십시오.
+FC 프로토콜을 사용하고 Solaris 호스트 유틸리티를 실행하여 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 설정하는 방법은 볼륨 관리자 및 파일 시스템에 따라 다를 수 있습니다. 을 참조하십시오 https://docs.netapp.com/us-en/ontap-sanhost/hu_solaris_62.html["Solaris 호스트 유틸리티를 설치합니다"^] Solaris MPIO 환경에서 LUN을 부팅하는 SAN에 대한 자세한 내용은 를 참조하십시오.
 
 
 
@@ -178,7 +178,7 @@ NOTE: 모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 �
 
 === MetroCluster에 대한 권장 설정입니다
 
-기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이 기능은 에 의해 제어됩니다 `fcp_offline_delay` 매개 변수. 의 기본값입니다 `fcp_offline_delay` 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 의 값은 입니다 `fcp_offline_delay` 비계획 페일오버 등 작업 중에 입출력이 조기에 시간 초과되지 않도록 * 120s * 로 늘려야 합니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 기술 자료 문서를 참조하십시오 https://["MetroCluster 구성에서 Solaris 호스트 지원 고려 사항"^].
+기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이 기능은 에 의해 제어됩니다 `fcp_offline_delay` 매개 변수. 의 기본값입니다 `fcp_offline_delay` 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 의 값은 입니다 `fcp_offline_delay` 비계획 페일오버 등 작업 중에 입출력이 조기에 시간 초과되지 않도록 * 120s * 로 늘려야 합니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 기술 자료 문서를 참조하십시오 https://kb.netapp.com/onprem/ontap/metrocluster/Solaris_host_support_considerations_in_a_MetroCluster_configuration["MetroCluster 구성에서 Solaris 호스트 지원 고려 사항"^].
 
 
 
@@ -186,8 +186,8 @@ NOTE: 모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 �
 
 * Solaris 가상화 옵션에는 Solaris Logical Domains(LDOM 또는 SPARC용 Oracle VM Server), Solaris Dynamic Domains, Solaris Zones 및 Solaris Containers가 있습니다. 이러한 기술은 서로 다른 아키텍처를 기반으로 하고 있음에도 불구하고 일반적으로 "Oracle Virtual Machines"로 재브랜딩되었습니다.
 * 경우에 따라 특정 Solaris 논리적 도메인 내의 Solaris 컨테이너와 같은 여러 옵션을 함께 사용할 수 있습니다.
-* NetApp은 일반적으로 전체 구성이 Oracle에서 지원되며 LUN에 직접 액세스할 수 있는 파티션이 에 나와 있는 가상화 기술의 사용을 지원합니다 https://["NetApp 상호 운용성 매트릭스"^] 를 클릭합니다. 여기에는 루트 컨테이너, LDOM IO 도메인 및 NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.
-* 'vdsk'와 같이 가상화된 스토리지 리소스만 사용하는 파티션 및/또는 가상 머신은 NetApp LUN에 직접 액세스할 수 없는 특수 조건이 필요하지 않습니다. LDOM IO 도메인과 같은 기본 LUN에 직접 액세스할 수 있는 파티션/VM만 에서 찾을 수 있습니다 https://["NetApp 상호 운용성 매트릭스"^].
+* NetApp은 일반적으로 전체 구성이 Oracle에서 지원되며 LUN에 직접 액세스할 수 있는 파티션이 에 나와 있는 가상화 기술의 사용을 지원합니다 https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스"^] 를 클릭합니다. 여기에는 루트 컨테이너, LDOM IO 도메인 및 NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.
+* 'vdsk'와 같이 가상화된 스토리지 리소스만 사용하는 파티션 및/또는 가상 머신은 NetApp LUN에 직접 액세스할 수 없는 특수 조건이 필요하지 않습니다. LDOM IO 도메인과 같은 기본 LUN에 직접 액세스할 수 있는 파티션/VM만 에서 찾을 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스"^].
 
 
 
@@ -244,7 +244,7 @@ svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 
 
 
-NOTE: 이후 `scsi-vhci-failover-override` 이(가) 적용되었습니다. `conf` 이(가) 에 추가됩니다 `svl_fops_name`. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오 https://["Solaris 호스트 지원 SM-BC(SnapMirror Business Continuity) 구성에서 권장되는 설정입니다"^].
+NOTE: 이후 `scsi-vhci-failover-override` 이(가) 적용되었습니다. `conf` 이(가) 에 추가됩니다 `svl_fops_name`. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris 호스트 지원 SM-BC(SnapMirror Business Continuity) 구성에서 권장되는 설정입니다"^].
 
 
 

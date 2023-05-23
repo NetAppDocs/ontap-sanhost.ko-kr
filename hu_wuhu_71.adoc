@@ -50,7 +50,7 @@ Windows 호스트 컴퓨터에 설치된 프로그램 및 파일은 다음과 �
 
 == Host Utilities에서 지원되는 구성입니다
 
-Host Utilities는 다양한 Windows 호스트 구성, 프로토콜 및 다중 경로 옵션을 지원합니다. 자세한 내용은 을 참조하십시오 https://["NetApp 상호 운용성 매트릭스 툴"^].
+Host Utilities는 다양한 Windows 호스트 구성, 프로토콜 및 다중 경로 옵션을 지원합니다. 자세한 내용은 을 참조하십시오 https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
 
 
 
@@ -59,7 +59,7 @@ Host Utilities는 다양한 Windows 호스트 구성, 프로토콜 및 다중 �
 Host Utilities를 설치하기 전에 Host Utilities 버전이 호스트 및 스토리지 시스템 구성을 지원하는지 확인하여 소프트웨어가 올바르게 설치되었는지 확인해야 합니다.
 
 .단계
-. 에서 지원되는 구성을 확인합니다 http://["NetApp 상호 운용성 매트릭스 툴"^].
+. 에서 지원되는 구성을 확인합니다 http://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"^].
 . 의 해당 호스트에 필요한 핫픽스를 확인합니다 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN 호스트 Windows 설명서"].
 +
 
@@ -71,7 +71,7 @@ NOTE: link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["ONT
 
 . 케이블 연결을 확인합니다
 +
-를 참조하십시오 https://["SAN 구성 가이드 를 참조하십시오"^] ONTAP 또는 용 https://["E-Series 하드웨어 케이블 연결 가이드 를 참조하십시오"^] 자세한 케이블 연결 및 구성 정보를 참조하십시오.
+를 참조하십시오 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN 구성 가이드 를 참조하십시오"^] ONTAP 또는 용 https://mysupport.netapp.com/ecm/ecm_get_file/ECMLP2773533["E-Series 하드웨어 케이블 연결 가이드 를 참조하십시오"^] 자세한 케이블 연결 및 구성 정보를 참조하십시오.
 
 
 
@@ -91,7 +91,7 @@ NOTE: HBA 설정을 수동으로 변경하지 마십시오.
 . 지원되는 HBA 드라이버 및 관리 유틸리티를 얻고 HBA 공급업체에서 제공하는 지침에 따라 설치합니다.
 . HBA를 Fibre Channel 스위치에 접속하거나 스토리지 시스템에 직접 연결합니다.
 . Fibre Channel 스위치 설명서에 따라 Fibre Channel 스위치에 영역을 생성합니다.
-. ONTAP의 경우 WWPN으로 스위치를 조닝(Zoning)하십시오. 스토리지 컨트롤러의 물리적 포트가 아니라 LIF의 WWPN을 사용해야 합니다. 자세한 내용은 을 참조하십시오 https://["SAN 구성 가이드 를 참조하십시오"^].
+. ONTAP의 경우 WWPN으로 스위치를 조닝(Zoning)하십시오. 스토리지 컨트롤러의 물리적 포트가 아니라 LIF의 WWPN을 사용해야 합니다. 자세한 내용은 을 참조하십시오 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN 구성 가이드 를 참조하십시오"^].
 
 
 
@@ -116,7 +116,7 @@ Windows Unified Host Utilities 소프트웨어 패키지를 설치할 때 다중
 Host Utilities 소프트웨어 패키지를 대화식으로 설치하려면 Host Utilities 설치 프로그램을 실행하고 화면에 나타난 지침을 따라야 합니다.
 
 .단계
-. 에서 실행 파일을 다운로드합니다 https://["NetApp Support 사이트"^].
+. 에서 실행 파일을 다운로드합니다 https://mysupport.netapp.com/site/["NetApp Support 사이트"^].
 . 실행 파일을 다운로드한 디렉터리로 변경합니다.
 . 'NetApp_Windows_HOST_UTPITECTS_7.1_x64' 파일을 실행하고 화면의 지시를 따릅니다.
 . 메시지가 나타나면 Windows 호스트를 재부팅합니다.
@@ -359,7 +359,7 @@ Windows Unified Host Utilities 설치 프로그램은 설치하는 동안 선택
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\UseCustomPathRecoveryInterval | 1 | 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016만 해당됩니다 
 |===
 .관련 정보
-을 참조하십시오 https://["Microsoft 문서"^] 레지스트리 매개 변수에 대한 자세한 내용은 를 참조하십시오.
+을 참조하십시오 https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users["Microsoft 문서"^] 레지스트리 매개 변수에 대한 자세한 내용은 를 참조하십시오.
 
 
 
@@ -413,7 +413,7 @@ QLogic Fibre Channel HBA의 경우 MPIO가 선택되지 않은 경우 설치 프
 NOTE: 매개 변수의 이름은 프로그램에 따라 약간 다를 수 있습니다. 예를 들어, QLogic QConvergeConsole 프로그램에서 이 매개변수는 "Link Down Timeout"으로 표시됩니다. Host Utilities의 fcconfig.ini` 파일은 MPIO 지정 여부에 따라 이 매개변수를 LinkDownTimeOut 또는 MPioLinkDownTimeOut으로 표시합니다. 그러나 이러한 이름은 모두 동일한 HBA 매개 변수를 나타냅니다.
 
 .관련 정보
-을 참조하십시오 https://["에뮬렉스"^] 또는 https://["QLogic"^] Site(사이트) 를 클릭하여 시간 초과 매개 변수에 대해 자세히 알아보십시오.
+을 참조하십시오 https://www.broadcom.com/support/download-search["에뮬렉스"^] 또는 https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] Site(사이트) 를 클릭하여 시간 초과 매개 변수에 대해 자세히 알아보십시오.
 
 
 
@@ -429,8 +429,8 @@ NOTE: 매개 변수의 이름은 프로그램에 따라 약간 다를 수 있습
 * LUN을 사용하는 애플리케이션이 시작할 때 오류를 표시할 경우 애플리케이션이 iSCSI 서비스에 따라 구성되었는지 확인해야 합니다.
 * ONTAP를 실행하는 스토리지 컨트롤러에 대한 파이버 채널 경로의 경우 FC 스위치가 노드의 물리적 포트에 대한 WWPN이 아니라 타겟 LIF의 WWPN을 사용하여 조닝(zoning)되는지 확인해야 합니다.
 * 을(를) 검토해야 합니다 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows Host Utilities 릴리스 정보"] 알려진 문제를 확인합니다. 릴리스 노트에는 알려진 문제와 제한 사항의 목록이 포함되어 있습니다.
-* 의 문제 해결 정보를 검토해야 합니다 https://["SAN 관리 가이드를 참조하십시오"^] ONTAP 버전용.
-* 검색해야 합니다 https://["온라인 버그"^] 최근에 발견된 문제에 대해.
+* 의 문제 해결 정보를 검토해야 합니다 https://docs.netapp.com/ontap-9/index.jsp["SAN 관리 가이드를 참조하십시오"^] ONTAP 버전용.
+* 검색해야 합니다 https://mysupport.netapp.com/site/bugs-online/["온라인 버그"^] 최근에 발견된 문제에 대해.
 * 버그 유형 필드의 고급 검색에서 iSCSI-Windows를 선택한 다음 이동을 클릭해야 합니다. 버그 유형 FCP - Windows에 대한 검색을 반복해야 합니다.
 * 시스템에 대한 정보를 수집해야 합니다.
 * 호스트 또는 스토리지 시스템 콘솔에 표시되는 오류 메시지를 기록합니다.
@@ -440,9 +440,9 @@ NOTE: 매개 변수의 이름은 프로그램에 따라 약간 다를 수 있습
 
 
 .관련 정보
-http://["NetApp 상호 운용성 매트릭스 툴"^]
-https://["NetApp 문서"^]
-https://["NetApp 온라인 버그"^]
+http://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"^]
+https://mysupport.netapp.com/portal/documentation["NetApp 문서"^]
+https://mysupport.netapp.com/NOW/cgi-bin/bol["NetApp 온라인 버그"^]
 
 
 

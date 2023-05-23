@@ -40,7 +40,7 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 == 알려진 제한 사항
 
 * RHEL 8.5의 경우, in-kernel NVMe multipath가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.
-* RHEL 8.5의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오 https://["RHEL 8.5 릴리스 정보"^] 를 참조하십시오.
+* RHEL 8.5의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.5_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.5 릴리스 정보"^] 를 참조하십시오.
 
 
 
