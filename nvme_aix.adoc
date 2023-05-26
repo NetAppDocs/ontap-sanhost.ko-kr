@@ -1,0 +1,495 @@
+---
+sidebar: sidebar 
+permalink: nvme_aix.html 
+keywords: nvme, linux, rhel, red hat, enterprise, aix, ontap 
+summary: ONTAP를 사용하여 AIX용 NVMe/FC 호스트를 구성하는 방법 
+---
+= ONTAP를 사용하는 AIX용 NVMe/FC 호스트 구성
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+ONTAP 스토리지를 타겟으로 사용하여 IBM AIX 및 VIOS/PowerVM 호스트에서 NVMe/FC를 활성화할 수 있습니다. 지원되는 구성에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+
+ONTAP가 있는 AIX 호스트의 NVMe/FC 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.
+
+* ONTAP 9.13.1 버전부터 NVMe/FC(NVMe over Fibre Channel) 지원이 IBM AIX 7.2 TL5 SP6, AIX 7.3 TL1 SP2 및 VIOS 3.1.4.21 릴리스에 추가되고, SAN 부팅이 물리적 스택과 가상 스택 모두에 지원됩니다. SAN 부팅 지원 설정에 대한 자세한 내용은 IBM 설명서를 참조하십시오.
+* NVMe/FC는 Power9 및 Power10 IBM 서버에서만 지원됩니다.
+* NVMe 장치에는 AIX SCSI MPIO 지원을 위한 huk와 같은 별도의 PCM(경로 제어 모듈)이 필요하지 않습니다.
+* NetApp(VIOS/PowerVM)의 가상화 지원은 VIOS 3.1.4.21에서 도입되었습니다. Power10 IBM 서버를 사용하는 NPIV(N_PortID Virtualization) 스토리지 가상화 모드를 통해 _OVJIT_SUPPORTED_SUPPORTED입니다.
+
+
+.필요한 것
+* 어댑터 펌웨어 12.4.257.30 이상 버전이 있는 32Gb FC Emulex 어댑터(EN1A, EN1B, EN1L, EN1M) 또는 64GB FC 어댑터(EN1N, EN1P)가 있는지 확인합니다.
+* MetroCluster 구성이 있는 경우 AIX 운영 시스템에서 더 짧은 I/O 시간 초과를 강제로 적용하는 것을 피하기 위해 MetroCluster 계획되지 않은 스위치오버 이벤트를 지원하기 위해 AIX NVMe/FC 기본 APD(모든 경로 중지) 시간을 변경하는 것이 좋습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 공개 보고서 1553249를 참조하십시오.
+* 기본적으로 AIX 호스트 OS의 ANATT 값은 30초입니다. IBM은 ANATT 값을 60초로 제한 Interim Fix(ifix)를 제공합니다. IBM 웹 사이트에서 ifix를 설치하여 모든 ONTAP 워크플로를 중단 없이 수행할 수 있도록 해야 합니다.
++
+
+NOTE: NVMe/FC AIX 지원을 위해서는 AIX OS의 GA 버전에 ifix를 설치해야 합니다. 이 작업은 VIOS/PowerVM OS에는 필요하지 않습니다.
+
++
+ifix 세부 정보는 다음과 같습니다.
+
++
+** AIX 레벨 72-TL5-SP6-2320의 경우 를 설치하십시오 `IJ46710s6a.230509.epkg.Z` 패키지.
+** AIX 레벨 73-TL1-SP2-2320의 경우 를 설치합니다 `IJ46711s2a.230509.epkg.Z` 패키지.
++
+접미사 관리에 대한 자세한 내용은 을 참조하십시오 link:http://www-01.ibm.com/support/docview.wss?uid=isg3T1012104["AIX에서 중간 수정 관리"^].
+
++
+
+NOTE: 이전에 설치된 접미사 없이 AIX 버전에 이 접미사 를 설치해야 합니다 `devices.pciex.pciexclass.010802.rte` 를 클릭합니다. 이러한 접미사 가 있으면 새 설치와 충돌하게 됩니다.
+
++
+다음 표에서는 AIX LPAR(AIX Logical Partition) 또는 비가상화 모드의 물리적/네이티브 스택에 할당된 HBA를 보여 줍니다.
+
++
+[cols="10,10,10,10,10"]
+|===
+| 호스트 OS | 파워 아치 | Power FW 버전 | 모드를 선택합니다 | 설명 
+
+
+.2+| AIX 7.2 TL5 SP6 | 전원9 | FW 950 이상 | 물리적 스택 | iFix는 TS012877410을 통해 제공됩니다. 
+
+
+| 전원10 | FW 1010 이상 | 물리적 스택 | SAN 부팅이 지원됩니다. iFix는 TS012877410을 통해 제공됩니다. 
+
+
+.2+| AIX 7.3 TL1 SP2 | 전원9 | FW 950 이상 | 물리적 스택 | iFix는 TS012877410을 통해 제공됩니다. 
+
+
+| 전원10 | FW 1010 이상 | 물리적 및 가상 스택 | iFix는 TS012877410을 통해 제공됩니다. 
+|===
++
+다음 표에는 가상화 모드에서 NPIV 지원 기능을 통해 VIOS에 할당된 HBA가 나와 있습니다.
+
++
+[cols="10,10,10,10,10"]
+|===
+| 호스트 OS | 파워 아치 | Power FW 버전 | 모드를 선택합니다 | 설명 
+
+
+| VIOS/PowerVM 3.1.4.21 | 전원10 | FW 1010 이상 | 가상 스택 | 지원은 VIOCc에 대한 AIX 7.3 TL1 SP2부터 시작됩니다 
+|===
+
+
+
+
+
+
+== 알려진 제한 사항
+
+ONTAP가 있는 AIX용 NVMe/FC 호스트 구성에는 다음과 같은 알려진 제한 사항이 있습니다.
+
+* AIX 호스트의 QLogic/Marvel 32G FC HBA는 NVMe/FC를 지원하지 않습니다.
+* Power9 IBM 서버를 사용하는 NVMe/FC 장치에는 SAN 부팅이 지원되지 않습니다.
+
+
+
+
+== 다중 경로
+
+NVMe 다중 경로에 사용되는 IBM MPIO(다중 경로 I/O)는 AIX OS를 설치할 때 기본적으로 제공됩니다.
+
+을 사용하여 AIX 호스트에 대해 NVMe 다중 경로가 활성화되어 있는지 확인할 수 있습니다 `lsmpio` 명령:
+
+[listing]
+----
+#[root@aix_server /]: lsmpio -l hdisk1
+----
+* 예제 출력 *
+
+[listing]
+----
+name     path_id  status   path_status  parent  connection
+hdisk1  8         Enabled  Sel,Opt       nvme12  fcnvme0, 9
+hdisk1  9         Enabled  Sel,Non       nvme65  fcnvme1, 9
+hdisk1  10        Enabled  Sel,Opt       nvme37  fcnvme1, 9
+hdisk1  11        Enabled  Sel,Non       nvme60  fcnvme0, 9
+----
+
+
+== NVMe/FC 구성
+
+다음 절차를 사용하여 Broadcom/Emulex 어댑터용 NVMe/FC를 구성할 수 있습니다.
+
+.단계
+. 지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+. 기본적으로 NVMe/FC 프로토콜 지원은 물리적 FC에서 활성화되어 있지만, 가상 I/O 서버(VIOS)의 VFC(가상 파이버 채널)에서 NVMe/FC 프로토콜 지원은 비활성화되어 있습니다. NVMe/FC 지원이 비활성화된 어댑터 목록을 검색합니다.
++
+[listing]
+----
+$ lsmap -all -npiv
+----
++
+* 예제 출력 *
+
++
+[listing]
+----
+Name          Physloc                            ClntID ClntName       ClntOS
+------------- ---------------------------------- ------ -------------- -------
+vfchost0      U9105.22A.785DB61-V2-C2                 4 s1022-iop-mcc- AIX
+Status:LOGGED_IN
+FC name:fcs4                    FC loc code:U78DA.ND0.WZS01UY-P0-C7-T0
+Ports logged in:3
+Flags:0xea<LOGGED_IN,STRIP_MERGE,SCSI_CLIENT,NVME_CLIENT>
+VFC client name:fcs0            VFC client DRC:U9105.22A.785DB61-V4-C2
+Name          Physloc                            ClntID ClntName       ClntOS
+------------- ---------------------------------- ------ -------------- -------
+vfchost1      U9105.22A.785DB61-V2-C3                 4
+Status:NOT_LOGGED_IN
+FC name:                        FC loc code:
+Ports logged in:0
+Flags:0x81<NOT_MAPPED,NOT_CONNECTED>
+VFC client name:                VFC client DRC:
+----
+. 를 실행하여 어댑터에서 NVMe/FC 프로토콜 지원을 설정합니다 `ioscli vfcctrl` VIOS의 명령:
++
+[listing]
+----
+$  vfcctrl -enable -protocol nvme -vadapter vfchost0
+----
++
+* 예제 출력 *
+
++
+[listing]
+----
+The "nvme" protocol for "vfchost0" is enabled.
+----
+. 어댑터에서 지원이 활성화되었는지 확인합니다.
++
+[listing]
+----
+# lsattr -El vfchost0
+----
++
+* 예제 출력 *
+
++
+[listing]
+----
+alt_site_wwpn       WWPN to use - Only set after migration   False
+current_wwpn  0     WWPN to use - Only set after migration   False
+enable_nvme   yes   Enable or disable NVME protocol for NPIV True
+label               User defined label                       True
+limit_intr    false Limit NPIV Interrupt Sources             True
+map_port      fcs4  Physical FC Port                         False
+num_per_nvme  0     Number of NPIV NVME queues per range     True
+num_per_range 0     Number of NPIV SCSI queues per range     True
+----
+. 현재 모든 어댑터 또는 선택한 어댑터에 대해 NVMe/FC 프로토콜을 활성화합니다.
++
+.. 모든 어댑터에 대해 NVMe/FC 프로토콜을 활성화합니다.
++
+... 를 변경합니다 `dflt_enabl_nvme` 의 속성 값 `viosnpiv0` 의사 디바이스 `yes`.
+... 를 설정합니다 `enable_nvme` 속성 값 `yes` 모든 VFC 호스트 디바이스에 대해
++
+[listing]
+----
+# chdev -l viosnpiv0 -a dflt_enabl_nvme=yes
+----
++
+[listing]
+----
+# lsattr -El viosnpiv0
+----
++
+* 예제 출력 *
+
++
+[listing]
+----
+bufs_per_cmd    10  NPIV Number of local bufs per cmd                    True
+dflt_enabl_nvme yes Default NVME Protocol setting for a new NPIV adapter True
+num_local_cmds  5   NPIV Number of local cmds per channel                True
+num_per_nvme    8   NPIV Number of NVME queues per range                 True
+num_per_range   8   NPIV Number of SCSI queues per range                 True
+secure_va_info  no  NPIV Secure Virtual Adapter Information              True
+----
+
+
+.. 를 변경하여 선택한 어댑터에 대해 NVMe/FC 프로토콜을 활성화합니다 `enable_nvme` 에 대한 VFC 호스트 디바이스 속성의 값입니다 `yes`.
+
+
+. 확인합니다 `FC-NVMe Protocol Device` 이(가) 서버에 생성되었습니다.
++
+[listing]
+----
+# [root@aix_server /]: lsdev |grep fcnvme
+----
++
+* 단풍나무 출력 *
+
++
+[listing]
+----
+fcnvme0       Available 00-00-02    FC-NVMe Protocol Device
+fcnvme1       Available 00-01-02    FC-NVMe Protocol Device
+----
+. 서버에서 호스트 NQN을 기록합니다.
++
+[listing]
+----
+# [root@aix_server /]: lsattr -El fcnvme0
+----
++
+* 예제 출력 *
+
++
+[listing]
+----
+attach     switch                                                               How this adapter is connected  False
+autoconfig available                                                            Configuration State            True
+host_nqn   nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8 Host NQN (NVMe Qualified Name) True
+----
++
+[listing]
+----
+[root@aix_server /]: lsattr -El fcnvme1
+----
++
+* 예제 출력 *
+
++
+[listing]
+----
+attach     switch                                                               How this adapter is connected  False
+autoconfig available                                                            Configuration State            True
+host_nqn   nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8 Host NQN (NVMe Qualified Name) True
+----
++
+.. 파티션 UUID 보기:
++
+[listing]
+----
+[root@aix_server /]: lsattr -El sys0 -a partition_uuid
+----
++
+* 예제 출력 *
+
++
+[listing]
+----
+partition_uuid 64e039bd-27d2-421c-858d-8a378dec31e8 Partition UUID False
+----
+
+
+. 호스트 NQN을 확인하고 ONTAP 스토리지의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다.
++
+[listing]
+----
+::> vserver nvme subsystem host show -vserver vs_s922-55-lpar2
+----
++
+* 예제 출력 *
+
++
+[listing]
+----
+Vserver         Subsystem                Host NQN
+------- --------- ----------------------------------------------------------
+vs_s922-55-lpar2 subsystem_s922-55-lpar2 nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8
+----
+. 이니시에이터 포트가 실행 중이며 타겟 LIF가 표시되는지 확인합니다.
+
+
+
+
+== NVMe/FC를 검증합니다
+
+ONTAP 네임스페이스가 호스트에 올바르게 반영되는지 확인해야 합니다. 다음 명령을 실행하여 이 작업을 수행합니다.
+
+[listing]
+----
+# [root@aix_server /]: lsdev -Cc disk |grep NVMe
+----
+* 예제 출력 *
+
+[listing]
+----
+hdisk1  Available 00-00-02 NVMe 4K Disk
+----
+경로 다중화 상태를 확인할 수 있습니다.
+
+[listing]
+----
+#[root@aix_server /]: lsmpio -l hdisk1
+----
+* 예제 출력 *
+
+[listing]
+----
+name     path_id  status   path_status  parent  connection
+hdisk1  8        Enabled  Sel,Opt      nvme12  fcnvme0, 9
+hdisk1  9        Enabled  Sel,Non      nvme65  fcnvme1, 9
+hdisk1  10       Enabled  Sel,Opt      nvme37  fcnvme1, 9
+hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
+----
+
+
+== 알려진 문제
+
+ONTAP가 있는 AIX용 NVMe/FC 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
+
+[cols="10,30,30"]
+|===
+| Burt ID를 참조하십시오 | 제목 | 설명 
+
+
+| 1553249 | MCC 계획되지 않은 Switchover 이벤트를 지원하기 위해 AIX NVMe/FC 기본 APD 시간을 수정해야 합니다 | 기본적으로 AIX 운영 체제는 NVMe/FC에 대해 APD(All Path Down) 시간 초과 값 20초를 사용합니다.  하지만 ONTAP MetroCluster 자동 비계획 전환(AUSO) 및 Tiebreaker가 시작한 스위치오버 워크플로우가 APD 시간 초과 기간보다 약간 오래 걸릴 수 있으며, 이로 인해 I/O 오류가 발생할 수 있습니다. 
+
+
+| 1546017 | AIX NVMe/FC는 ONTAP에서 광고한 120초 대신 60초 이내에 ANATT를 CAP 합니다 | ONTAP는 컨트롤러 ID의 ANA(비대칭 네임스페이스 액세스) 전환 시간 초과를 120초로 알립니다. 현재 ifix를 사용하여 AIX는 컨트롤러에서 ANA 전환 시간 제한을 읽지만, 이 제한을 초과하면 60초로 효과적으로 클램핑합니다. 
+
+
+| 1541386)을 참조하십시오 | AIX NVMe/FC는 ANATT 만료 후 EIO를 적중합니다 | 스토리지 페일오버(SFO) 이벤트의 경우 ANA(비대칭 네임스페이스 액세스) 전환이 지정된 경로에서 ANA 전환 시간 제한 한도를 초과할 경우, AIX NVMe/FC 호스트는 네임스페이스에 사용할 수 있는 대체 정상 경로가 있더라도 I/O 오류와 함께 실패합니다. 
+
+
+| 1541380)을 참조하십시오 | AIX NVMe/FC는 ANA ANN 이후 I/O를 재개하기 전에 반/전체 ANATT가 만료될 때까지 대기합니다 | IBM AIX NVMe/FC는 ONTAP가 게시하는 일부 비동기 알림(AIN)을 지원하지 않습니다. 이와 같이 최적화되지 않은 ANA 처리는 SFO 작업 중 성능 저하를 초래합니다. 
+|===
+
+
+== 문제 해결
+
+NVMe/FC 장애를 해결하기 전에 IMT 사양을 준수하는 구성을 실행 중인지 확인한 후 다음 단계를 수행하여 호스트측 문제를 디버깅하십시오.
+
+
+
+=== 자세한 정보 로깅을 사용합니다
+
+구성에 문제가 있는 경우 자세한 정보 로깅은 문제 해결에 필요한 필수 정보를 제공할 수 있습니다.
+
+.단계
+Qlogic(qla2xxx)에 대한 자세한 로깅 설정 절차는 lpfc 세부 정보 로깅 설정 절차와 다릅니다.
+
+[role="tabbed-block"]
+====
+.lpfc
+--
+.단계
+. 를 설정합니다 `lpfc_log_verbose` 다음 값 중 하나에 대한 드라이버 설정을 사용하여 NVMe/FC 이벤트를 기록합니다.
++
+[listing]
+----
+#define LOG_NVME 0x00100000 /* NVME general events. */
+#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
+#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
+#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
+----
+. 값을 설정한 후 를 실행합니다 `dracut-f` 명령을 실행하여 호스트를 재부팅합니다.
+. 설정을 확인합니다.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_log_verbose=0xf00083
+
+# cat /sys/module/lpfc/parameters/lpfc_log_verbose
+15728771
+----
+
+
+--
+.qla2xxx
+--
+의 경우 NVMe/FC에 대한 유사한 특정 qla2xxx 로깅이 없습니다 `lpfc` 드라이버. 따라서 다음 단계를 사용하여 일반 qla2xxx 로깅 수준을 설정할 수 있습니다.
+
+.단계
+. 해당 modprobe qla2xxx conf 파일에 "ql2xextended_error_logging=0x1e400000" 값을 추가합니다.
+. dracut -f 명령을 실행하여 initramfs를 재생성한 다음 호스트를 재부팅합니다.
+. 재부팅 후 상세 로깅이 다음과 같이 적용되었는지 확인합니다.
++
+[listing]
+----
+# cat /etc/modprobe.d/qla2xxx.conf
+options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
+# cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
+507510784
+----
+
+
+--
+====
+
+
+=== 일반적인 NVMe-CLI 오류 및 해결 방법
+
+에 표시되는 오류입니다 `nvme-cli` 를 참조하십시오 `nvme discover`, `nvme connect`, 또는 `nvme connect-all` 작업 및 해결 방법은 다음 표에 나와 있습니다.
+
+[cols="20, 20, 50"]
+|===
+| NVMe-CLI에 표시되는 오류 | 가능한 원인 | 해결 방법 
+
+
+| '/dev/NVMe-fabric에 쓸 수 없음: 잘못된 인수. | 구문이 잘못되었습니다 | 에 대한 올바른 구문을 사용하고 있는지 확인합니다 `nvme discover`, `nvme connect`, 및 `nvme connect-all` 명령. 
+
+
+| '/dev/NVMe-fabric에 쓰지 못함: 해당 파일 또는 디렉토리가 없습니다. | 예를 들어, 여러 문제로 인해 이 문제가 발생할 수 있습니다. NVMe 명령에 잘못된 인수를 제공하는 것은 일반적인 원인 중 하나입니다.  a| 
+* 올바른 인수(예: WWNN 문자열, WWPN 문자열 등)를 명령에 전달했는지 확인합니다.
+* 인수가 올바르지만 여전히 이 오류가 나타나면 를 확인합니다 `/sys/class/scsi_host/host*/nvme_info` 명령 출력이 올바르고 NVMe 이니시에이터가 으로 표시됩니다 `Enabled`및 NVMe/FC 타겟 LIF가 원격 포트 섹션 아래에 올바르게 표시됩니다. 예:
++
+[listing]
+----
+
+# cat /sys/class/scsi_host/host*/nvme_info
+NVME Initiator Enabled
+NVME LPORT lpfc0 WWPN x10000090fae0ec9d WWNN x20000090fae0ec9d DID x012000 ONLINE
+NVME RPORT WWPN x200b00a098c80f09 WWNN x200a00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000000000006 Cmpl 0000000000000006
+FCP: Rd 0000000000000071 Wr 0000000000000005 IO 0000000000000031
+Cmpl 00000000000000a6 Outstanding 0000000000000001
+NVME Initiator Enabled
+NVME LPORT lpfc1 WWPN x10000090fae0ec9e WWNN x20000090fae0ec9e DID x012400 ONLINE
+NVME RPORT WWPN x200900a098c80f09 WWNN x200800a098c80f09 DID x010301 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000000000006 Cmpl 0000000000000006
+FCP: Rd 0000000000000073 Wr 0000000000000005 IO 0000000000000031
+Cmpl 00000000000000a8 Outstanding 0000000000000001
+----
+* 타겟 LIF가 에 나와 있는 것처럼 표시되지 않는 경우 `nvme_info` 명령 출력에서 를 확인합니다 `/var/log/messages` 및 `dmesg` 의심되는 NVMe/FC 오류에 대한 명령을 출력하고 그에 따라 보고하거나 수정합니다.
+
+
+
+
+| 가져올 검색 로그 항목이 없습니다  a| 
+는 일반적으로 에 관찰됩니다 `/etc/nvme/hostnqn` NetApp 어레이의 해당 하위 시스템에 문자열이 추가되지 않았거나 올바르지 않습니다 `hostnqn` 해당 하위 시스템에 문자열이 추가되었습니다.
+ a| 
+가 정확한지 확인합니다 `/etc/nvme/hostnqn` NetApp 어레이의 해당 하위 시스템에 문자열이 추가됩니다(을 사용하여 확인) `vserver nvme subsystem host show` 명령 참조).
+
+
+
+| '/dev/NVMe-fabric에 쓸 수 없습니다: 작업이 이미 진행 중입니다.  a| 
+컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우에 관찰됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.
+ a| 
+없음. 를 실행해 보십시오 `nvme discover` 잠시 후에 다시 명령을 내립니다. 용 `nvme connect` 및 `connect-all`를 실행합니다 `nvme list` 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인하는 명령입니다.
+
+|===
+
+
+=== 기술 지원 문의 시기
+
+여전히 문제가 발생하는 경우 다음 파일 및 명령 출력을 수집하고 기술 지원 부서에 문의하여 추가 분류를 요청하십시오.
+
+[listing]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+/var/log/messages
+dmesg
+nvme discover output as in:
+nvme discover --transport=fc --traddr=nn-0x200a00a098c80f09:pn-0x200b00a098c80f09 --host-traddr=nn-0x20000090fae0ec9d:pn-0x10000090fae0ec9d
+nvme list
+nvme list-subsys /dev/nvmeXnY
+----
