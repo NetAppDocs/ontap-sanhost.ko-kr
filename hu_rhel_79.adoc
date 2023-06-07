@@ -146,7 +146,9 @@ NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가
 
 RHEL 7.9 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.
 
-다중경로 데몬을 시작하려면 'multipath.conf' 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다
+를 클릭합니다 `multipath.conf` 다중 경로 데몬을 시작하려면 파일이 있어야 하지만 다음 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다.
+
+`touch /etc/multipath.conf`
 
 이 파일을 처음 생성할 때 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
 
@@ -155,45 +157,50 @@ RHEL 7.9 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해
 # systemctl enable multipathd
 # systemctl start multipathd
 ----
-에 직접 추가할 필요는 없습니다 `multipath.conf` 파일 - 다중 경로를 통해 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우
-
-다음 구문을 'multitpath.conf' 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.
-
-를 교체합니다 `<DevId>` 제외할 장치의 WWID 문자열을 사용하여 다음을 수행합니다.
-
-....
+* 에 직접 추가할 필요는 없습니다 `multipath.conf` 파일 - 다중 경로를 통해 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우
+* 원치 않는 디바이스를 제외하려면 에 다음 구문을 추가합니다 `multipath.conf` 파일.
++
+[listing]
+----
 blacklist {
         wwid <DevId>
         devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
         devnode "^hd[a-z]"
         devnode "^cciss.*"
 }
-....
+----
++
+를 교체합니다 `<DevId>` 를 사용하여 `WWID` 제외할 장치의 문자열입니다.
+
+
+
 .예
 이 예에서는 `sda` 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.
 
 .단계
 . 다음 명령을 실행하여 WWID를 확인하십시오.
 +
-....
+[listing]
+----
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
-....
-. 이 WWID를 '/etc/multipath.conf'의 블랙리스트 스탠자에 추가합니다.
+----
+. 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
 +
-....
+[listing]
+----
 blacklist {
      wwid   360030057024d0730239134810c0cb833
      devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
      devnode "^hd[a-z]"
      devnode "^cciss.*"
 }
-....
+----
 
 
-을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일, 특히 기본값 섹션에 있는 파일입니다.
+을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일(특히 기본값 섹션에 있음)
 
-다음 표에서는 위험 요소를 보여 줍니다 `multipathd` ONTAP LUN에 대한 매개 변수 및 필수 값입니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의될 경우 에서 나중에 Stanzas를 사용하여 수정해야 합니다 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일입니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체에 문의하여 영향을 완전히 이해해야 합니다.
+다음 표에서는 위험 요소를 보여 줍니다 `multipathd` ONTAP LUN에 대한 매개 변수 및 필수 값입니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의될 경우 에서 나중에 Stanzas를 사용하여 수정해야 합니다 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일입니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체와 상담할 때만 재정의되어야 하며, 그 영향이 완전히 이해될 때만 재정의되어야 합니다.
 
 [cols="2*"]
 |===
