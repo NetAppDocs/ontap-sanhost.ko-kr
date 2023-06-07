@@ -17,8 +17,6 @@
   <block id="30882960e4e91384155a1bff6c886630" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <block ref="70efe35e64cc9ba99c6f021b1f4d02ec" category="inline-link-macro-rx"></block> 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">단계</block>
   <block id="12979f8a3c6b4227894a0c63e81784a9" category="list-text">SAN 부팅 LUN을 호스트에 매핑합니다.</block>
-  <block id="7ae7cf34d310673da37557313a55892d" category="list-text">여러 경로를 사용할 수 있는지 확인합니다.</block>
-  <block id="a744de0e861e6bf93c1b8497aee8c74b" category="paragraph">여러 경로는 호스트 OS가 가동되어 경로에서 실행된 후에만 사용할 수 있습니다.</block>
   <block id="ae2b455a54af72efa36eb66631dcf444" category="list-text">SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.</block>
   <block id="482fb3c22fb491f46c3f0e54cea6b9d1" category="paragraph">HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.</block>
   <block id="5a776bf93e0712efccb14ab4ad4ab170" category="list-text">호스트를 재부팅하여 부팅이 성공했는지 확인합니다.</block>
@@ -32,7 +30,6 @@
   <block id="fa75e27f7177881cb444c05d8eae6152" category="list-text">'cat/proc/CMDLINE' 명령의 출력을 확인하여 설정이 완료되었는지 확인합니다.</block>
   <block id="32ef1514a118a90d123d7385cc9d865f" category="paragraph">'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.</block>
   <block id="dba35953d3af1713968cdc2eba05813a" category="section-title">모든 SAN 어레이 구성</block>
-  <block id="718434eaab1a4acbc3513dfaac0abc65" category="paragraph">모든 SAN 어레이(ASA) 구성에서 지정된 LUN(논리 유닛)에 대한 모든 경로가 활성 및 최적화됩니다. 즉, 모든 경로를 통해 동시에 I/O를 처리할 수 있으므로 성능이 향상됩니다.</block>
   <block id="0ad7491bc01531fcac211e10a0f8a9a0" category="paragraph">다음 예는 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
   <block id="aa89a86e36a09e87ac1e23a259c8d26c" category="admonition">단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.</block>
   <block id="56dcd6f4fc148f38b926523ede2073aa" category="section-title">비 ASA 구성</block>
@@ -44,10 +41,8 @@
   <block id="639757de418f2423907f2b63fbc1458b" category="paragraph">이 파일을 처음 생성할 때 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.</block>
   <block id="6e7eef95f0e9ee9b717340ce72d65e5b" category="paragraph">다중 경로로 관리하지 않으려는 장치가 있거나 기본값을 덮어쓰는 기존 설정이 없는 경우 외에는 multipath.conf 파일에 아무것도 직접 추가할 필요가 없습니다.</block>
   <block id="36da0e0b56843a1256e96e81029390fa" category="paragraph">다음 구문을 'multitpath.conf' 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.</block>
-  <block id="32fdadaf90804487f6b463983fc1c553" category="paragraph">'&lt;DevID&gt;'을(를) 제외할 장치의 WWID 문자열로 바꿉니다. 다음 명령을 사용하여 WWID를 확인하십시오.</block>
   <block id="4d70a817ac85626aff88bbc73d0a2deb" category="list-text">다음 명령을 실행하여 WWID를 확인하십시오.</block>
   <block id="ff73d7e0f0c6051bbd80575105bb1cb1" category="list-text">이 WWID를 '/etc/multipath.conf'의 블랙리스트 스탠자에 추가합니다.</block>
-  <block id="21613f1f81985ce9edca2dc6272a765e" category="paragraph">기본 설정을 재정의할 수 있는 기본 섹션에서 항상 '/etc/multipath.conf' 파일에서 기존 설정을 확인해야 합니다. 아래 표에는 ONTAP LUN에 대한 중요 매개 변수와 필요한 값이 나와 있습니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의될 경우 ONTAP LUN에 특별히 적용되는 'multipath.conf'에서 나중에 stanzas로 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체에 문의하여 영향을 완전히 이해해야 합니다.</block>
   <block id="83f499a540b1323009c200d6f8cc9396" category="cell">매개 변수</block>
   <block id="51ac4bf63a0c6a9cefa7ba69b4154ef1" category="cell">설정</block>
   <block id="dbffbd283cd0d9c7937014167893297e" category="cell">detect_prio(사전 감지)</block>
@@ -739,9 +734,6 @@
   <block id="33d395db2629e42725961d07de66379b" category="paragraph">Oracle Linux 6.5의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
   <block id="4c489d4721694c4117162307ded4345c" category="list-text">mkinitrd 명령을 사용하여 initrd-image를 다시 생성합니다. Oracle 6x 이상 버전에서는 mkinitrd -f /boot/initrd-"uname -r".img uname -r" 명령을 사용하거나 dracut -f 명령을 사용합니다</block>
   <block id="b027f2cb101039990e34b69dadd64cc9" category="paragraph">Oracle Linux 6.5 OS는 ONTAP LUN을 인식하고 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="eed881bb2a34d1ee7f7f847943028439" category="paragraph">다중 경로 데몬을 시작하려면 multipath.conf 파일이 있어야 하지만 'touch/etc/multipath.conf' 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다. 이 파일을 처음 생성할 때 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.</block>
-  <block id="3e62478acd97c41a7fea67ffea8ef9a1" category="paragraph">multipath.conf에 직접 추가할 필요는 없습니다. 다중 경로를 통해 관리하지 않으려는 장치가 있거나 기본값을 덮어쓰는 기존 설정이 있는 경우에는 예외입니다. 다음 구문을 multipath.conf 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.</block>
-  <block id="3bd7fde20a9abc176890c7422cf0f77f" category="admonition">DevID&gt;를 제외할 장치의 WWID 문자열로 바꿉니다. 다음 명령을 사용하여 WWID를 확인하십시오.</block>
   <block id="ccda5c6e00d9467a80e095e0a00e92d1" category="admonition">Oracle Linux 6.5 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용합니다 <block ref="d9929df24012e2c19b3258bd0a117bc4" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 6.5의 경우</block>
   <block id="7c6d19ca68cd84cbf89340556bd048a2" category="paragraph">Oracle 6.5에는 알려진 문제가 없습니다.</block>
   <block id="834597fc454ac7d366bc8af44fcf5609" category="admonition">Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 <block ref="0158dc1052dab85818a92b1a427c95b7" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 6.5의 경우</block>
@@ -2243,7 +2235,6 @@
   <block id="73d4b705776db33e6478d2847ebc567c" category="paragraph">Oracle Linux 8.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="cb209f9eec3baeb4065409d39ca1f4d5" category="paragraph">Oracle Linux 8.3 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일되었습니다.</block>
   <block id="ce431e2558ea7b456c531991fb4a7e92" category="paragraph">Oracle Linux 8.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="c785c7cbae0a664e0cc339dfef33bde1" category="paragraph">ASM 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="3eeb371f92f74d2b6501646282092ca7" category="summary">ONTAP에서 CentOS 8.4를 사용하는 방법에 대해 설명합니다</block>
   <block id="32d86924bbcb8820c9a350a7d741cbea" category="doc">NetApp ONTAP에서 CentOS 8.4 사용</block>
   <block id="e5a962185d7bd63be4f29de827478b1c" category="paragraph">CentOS 8.4의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 8.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
@@ -2527,7 +2518,6 @@
   <block id="237e46c87c95b6d72dceaf420c603d90" category="sidebar">Linux 통합 호스트 유틸리티</block>
   <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris 호스트 유틸리티</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">RHEL의 NVMeoF</block>
-  <block id="f561aaf6ef0bf14d4208bb46a4ccb3ad" category="paragraph">XXX</block>
   <block id="47e2092f9d666fc24b67c7da02de84c7" category="paragraph">Windows 통합 호스트 유틸리티(Wuhu)는 NetApp SAN의 가상 디스크(LUN)에 호스트 컴퓨터를 연결할 수 있는 설명서와 함께 제공되는 소프트웨어 프로그램입니다. 최신 유틸리티 키트를 다운로드하여 설치하는 것이 좋습니다. Wuhu 구성 정보 및 지침은 을 참조하십시오 <block ref="f7fe1c204ed60a7e9dd594c09fd7b1a5" category="inline-link-macro-rx"></block>.</block>
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows 호스트 유틸리티 키트 7.1</block>
   <block id="47806b50157f4c2450dab9085e65bf42" category="list-text">설치합니다 <block ref="3da09c0cdee3c0d99e3c71a79e706ce0" category="inline-link-macro-rx"></block> FC 및 NVMe 모두에 공통되는 드라이버 매개 변수를 설정합니다.</block>
@@ -2581,7 +2571,6 @@
   <block id="2e2f435df31672c9332b32b2b69afe2a" category="sidebar">Windows 호스트 유틸리티 릴리스 정보</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">이 예에서는<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 동안 다시 시도하도록 합니다. 예를 들면, 다음과 같습니다.</block>
-  <block id="30058c2cccf9fdeeb47f9d3fbf9108bf" category="paragraph">이 예에서 sda는 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
   <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.</block>
   <block id="9ac1e2761e536d1b08b677a24976cad9" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 에서 타이머 재시도 기간(예: 30분, -l 1800까지 설정 가능)입니다<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 따라서 경로 손실이 발생할 경우 더 오랜 시간 동안 재시도합니다. 예를 들면, 다음과 같습니다.</block>
   <block id="1272c37c0c38bd618d6d76d763f54041" category="paragraph">이 Citrix Hypervisor 8.x의 경우,<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
@@ -2675,7 +2664,6 @@
   <block id="191896e66abb860542afaf3bc97289fc" category="section-title">SAN 툴킷</block>
   <block id="01281e2990c631b64037834e8b22bd4c" category="cell">rw_timeout(디스크)</block>
   <block id="a97f41c78bd6ac237cc0a78dbc8e3557" category="section-title">MetroCluster에 대한 권장 설정입니다</block>
-  <block id="ff1a4459902829746c9feae2fe88b4a7" category="paragraph">를 클릭합니다<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 호스트에서 1MB 크기 입출력을 발급하려면 매개 변수를 256으로 설정해야 합니다</block>
   <block id="53a86d5c1b5a726e2014e8e7789d3e96" category="list-text">를 설정합니다<block ref="6a6d27f670629373aedb61a672b398f8" prefix=" " category="inline-code"></block> 다음 값 중 하나에 대한 드라이버 설정을 사용하여 NVMe/FC 이벤트를 기록합니다.</block>
   <block id="ac680a7503424f513ba95ee46f269bd8" category="list-text">값을 설정한 후 를 실행합니다<block ref="212b9aebab74c7199bb59cfbc6fb92f9" prefix=" " category="inline-code"></block> 명령을 실행하여 호스트를 재부팅합니다.</block>
   <block id="814cc8b053fd0d3c9d35f87411477d5f" category="list-text">설정을 확인합니다.</block>
@@ -2857,16 +2845,12 @@
   <block id="52b5830420efb96c3a91beb52bac3b23" category="paragraph">* 출력 예: *</block>
   <block id="2dae71c1d86116eab552b9b056780e26" category="list-text">Oracle Linux 9.0 호스트에서 를 확인합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 에 문자열이 있습니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
   <block id="256141e56255da4626b3cd641b2f785a" category="list-text">를 확인합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 과 일치합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> ONTAP 배열의 해당 하위 시스템에 대한 문자열:</block>
-  <block id="79894377ddb5e7ce912ed785003b69fe" category="admonition">를 누릅니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치하지 않습니다. 을 사용해야 합니다<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 명령을 사용하여 를 업데이트합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 와 일치하는 해당 ONTAP 배열 하위 시스템의 문자열입니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열 시작<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트.</block>
-  <block id="d56e4e530b3041c524f4212efc9efc17" category="paragraph">Broadcom/Emulex 어댑터 또는 Marvell/Qlogic 어댑터용 NVMe/FC를 구성할 수 있습니다.</block>
   <block id="2f749c740a41c151c1485b84206264ca" category="list-text">지원되는 어댑터 모델을 사용하고 있는지 확인합니다.</block>
   <block id="fd3cbdb4a32644d25b951ee0b3bc5aae" category="open-title">NVMe/FC용 Marvell/QLogic FC 어댑터</block>
-  <block id="632cccb989f7ba938ccedab64dafd738" category="list-text">지원되는 어댑터 드라이버 및 펌웨어 버전을 실행 중인지 확인합니다. OL 9.0 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 있습니다.</block>
   <block id="61048cc84224cb0a87e2b824e5e313ea" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.</block>
   <block id="ce6047856868bd861d72aba06f0054ce" category="list-text">를 실행합니다<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 수행하고 최소 30분 또는 1800초 동안 컨트롤러 손실 시간 초과 기간을 설정합니다.</block>
   <block id="0121ea908d2a2cb95436d77156b96a8c" category="cell">Oracle Linux 9.0 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
   <block id="91ef9105de2091600f7c347406622a2e" category="cell">Oracle Linux 9.0 NVMe-oF(NVMe over Fabrics) 호스트에서는 을 사용할 수 있습니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> PDC(영구적 검색 컨트롤러)를 생성하는 명령입니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트와 함께 ONTAP 9.10.1 및 Oracle Linux 9.0을 실행하는 경우, 매번 중복 PDC가 생성됩니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 실행됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
-  <block id="f50972c35190e5df79b7272d295f432e" category="paragraph">NVMe/FC 장애를 해결하기 전에 IMT 사양을 준수하는 구성을 실행 중인지 확인한 후 다음 단계를 수행하여 호스트측 문제를 디버깅하십시오.</block>
   <block id="25f321fe018cf20163dc0c70e2eea888" category="section-title">자세한 정보 로깅을 사용합니다</block>
   <block id="65427f0cfd42249488837342e79863a2" category="paragraph">Qlogic(qla2xxx)에 대한 자세한 로깅 설정 절차는 lpfc 세부 정보 로깅 설정 절차와 다릅니다.</block>
   <block id="2401f6c892699dd24f7fa72c9a39b053" category="open-title">lpfc</block>
@@ -3192,4 +3176,65 @@
   <block id="e31c4b8d2ef22d8837e50793ada5f2e9" category="cell">기본적으로 AIX 운영 체제는 NVMe/FC에 대해 모든 경로 다운(APD) 시간 초과 값 20초를 사용합니다.  하지만 ONTAP MetroCluster 자동 비계획 전환(AUSO) 및 Tiebreaker가 시작한 스위치오버 워크플로우가 APD 시간 초과 기간보다 약간 오래 걸릴 수 있으며, 이로 인해 I/O 오류가 발생할 수 있습니다.</block>
   <block id="bf14ca0596cd773b04205ea1d53bcc29" category="paragraph">NVMe/FC 장애를 해결하기 전에 IMT 사양을 준수하는 구성을 실행 중인지 확인합니다.
 여전히 문제가 발생하는 경우 기술 지원 팀에 문의하여 추가 선별을 요청하십시오.</block>
+  <block id="9e10b0a5aea11686043890a4e7f7d67d" category="list-text">여러 경로를 사용할 수 있는지 확인합니다.</block>
+  <block id="f2e04893e244d58e7312b018d7c330cd" category="admonition">호스트 OS가 가동되고 경로에서 실행되면 여러 경로를 사용할 수 있습니다.</block>
+  <block id="159e1cf7b9f0c43c83e2d3d06cfe2786" category="list-text">호스트를 재부팅하여 부팅에 성공했는지 확인합니다.</block>
+  <block id="ddd1090ee13f345d376753ed7188e15e" category="section-title">모든 SAN 어레이 구성</block>
+  <block id="a8b4b0587b094d82b6d3386124d9175b" category="paragraph">ASA 구성에서는 지정된 LUN에 대한 모든 경로가 활성화되어 최적화되어 있습니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.</block>
+  <block id="e7110b576f4777e8b343b6406c8d4267" category="paragraph">비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
+  <block id="2fdc50cddff5dd159786d2a4d669a93d" category="paragraph">를 교체합니다<block ref="2f7ac3c5a9070e3fa18615d7bf03ce76" prefix=" " category="inline-code"></block> 제외할 장치의 WWID 문자열을 사용하여 다음을 수행합니다.</block>
+  <block id="8f9d6e3424d24a4eceeb55656ad594c9" category="paragraph">ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="b8aace167dae62ec049916430a97c733" category="paragraph">NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.</block>
+  <block id="d72f84b2b8b1587fe9b792507fec3ba3" category="paragraph">현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 업그레이드 또는 제거한 다음 다음 다음 단계에 따라 최신 버전을 설치해야 합니다.</block>
+  <block id="3b8031b77b02d24160100543956f1809" category="list-text">소프트웨어 패키지를 설치합니다.</block>
+  <block id="c2cf4076df2fdb507736cb2d40b34172" category="paragraph">ONTAP는 컨트롤러 식별 데이터에 8의 MDTS(MAX Data 전송 크기)를 보고합니다. 이는 최대 I/O 요청 크기가 1MB가 될 수 있음을 의미합니다. 그러나 Broadcom NVMe/FC 호스트에 대해 1MB의 입출력 요청을 발급하려면 을 늘려야 합니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 의 값<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 매개 변수를 기본값 64에서 256으로 설정합니다.</block>
+  <block id="479c56a6c2e71cd83eb8b7b82e7309de" category="admonition">Qlogic NVMe/FC 호스트에는 적용되지 않습니다.</block>
+  <block id="659d999dc67355a6fa94e75b8a8e6003" category="list-text">를 클릭합니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 다중 경로 데몬을 시작하려면 파일이 있어야 하지만 다음 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다.<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>.</block>
+  <block id="98d5ba10607d84ac10d9c3ea5eee402b" category="list-text">에 직접 추가할 필요는 없습니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일 - 다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 덮어쓰는 기존 설정이 없는 경우</block>
+  <block id="e960448316bedab459bbbe74933b507d" category="list-text">&lt;DevId&gt;를 제외할 장치의 WWID 문자열로 바꿉니다.</block>
+  <block id="af1ef0e83aa109eafcb65ba8de6fe152" category="paragraph">을 항상 확인해야 합니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 기본 설정을 재정의할 수 있는 레거시 설정 파일, 특히 기본값 섹션에 있는 파일입니다.</block>
+  <block id="d77c2caeeb43d7810cc481398a7ecf1e" category="paragraph">다음 표에서는 위험 요소를 보여 줍니다<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> ONTAP LUN에 대한 매개 변수 및 필수 값입니다. 호스트가 다른 공급업체의 LUN에 연결되어 있고 이러한 매개 변수 중 하나라도 재정의되면 에서 나중에 Stanzas를 통해 수정해야 합니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> ONTAP LUN에 특별히 적용되는 파일입니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체와 협의하여 완전히 이해될 때만 재정의해야 합니다.</block>
+  <block id="6661a67145b2acf190d629ce621384e0" category="summary">Oracle Linux 8.7을 ONTAP와 함께 사용하는 방법을 설명합니다</block>
+  <block id="3b9b21578c86f68c48f7ed6a98dc875a" category="doc">NetApp ONTAP와 함께 Oracle Linux 8.7을 사용합니다</block>
+  <block id="15d47787709114478b06814b72bcf21a" category="paragraph">이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 를 제공합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 유틸리티를 사용하면 LUN 및 호스트 버스 어댑터(HBA)를 관리하는 데 도움이 됩니다. 를 클릭합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.</block>
+  <block id="25a88a400c35827341a424c2bbeeb8bc" category="paragraph">OL(Oracle Linux) 8.7의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 합니다. OL 8.7은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일되므로 파일을 구체적으로 변경할 필요가 없습니다.</block>
+  <block id="f02ddfd1ea8ae7239f534d1963d46c47" category="paragraph">다음 섹션에서는 ASA(All SAN Array) 및 비 ASA 구성에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.</block>
+  <block id="6987a1bad074cdd087026411bcd73daf" category="admonition">단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않아야 합니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.</block>
+  <block id="0064eaa73c470581d9f79567a5552a2c" category="paragraph">Oracle Linux 8.7 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
+  <block id="7558802010b056df08332b675440eea8" category="admonition">Oracle Linux 8.7 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용합니다 <block ref="2799389175d462b609c459275109bc99" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.7의 경우</block>
+  <block id="73ba9729c9740db82f51a4f8954414ff" category="paragraph">권장 설정을 사용하여 KVM(커널 기반 가상 시스템)을 구성할 수도 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.</block>
+  <block id="8c7c84346d72ecc6e19907a700f38429" category="paragraph">Oracle Linux 8.7에는 알려진 문제가 없습니다.</block>
+  <block id="2c9a7203cf50b708a9ec676237f0b25d" category="paragraph">ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 자세한 내용은 ONTAP에서 Oracle 데이터베이스 를 참조하십시오.</block>
+  <block id="1918c14015c19cfe7ab5da89745a137f" category="doc">Oracle Linux 8.7 with ONTAP용 NVMe-oF 호스트 구성</block>
+  <block id="24aa52aa9699b501c3a8bed92978c144" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access)를 통해 OL(Oracle Linux) 8.7을 지원합니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
+  <block id="5e23e6a5bed72a0ca8cbff0598786db4" category="paragraph">OL 8.7 with ONTAP의 NVMe/FC 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
+  <block id="78fb8c6b55daa0ee01a1235c7fd352e3" category="list-text">NVMe/FC 외에 NVMe over TCP(NVMe/TCP) 지원 NetApp 플러그인은 기본 제공됩니다<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지에는 NVMe/FC 및 NVMe/TCP 네임스페이스에 대한 ONTAP 세부 정보가 표시됩니다.</block>
+  <block id="e92702d12f6aa1afc14988d919e8a06e" category="list-text">명시적 dm-multipath 설정 없이 특정 호스트 버스 어댑터(HBA)의 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용하여 NVMe 네임스페이스를 주장하지 못하게 합니다.</block>
+  <block id="be423ca367a6a52bc56a6355dfa45dfa" category="list-text">OL 8.7은 기본적으로 NVMe 네임스페이스를 위해 커널 내 NVMe 다중 경로를 사용하므로 명시적 설정이 필요하지 않습니다.</block>
+  <block id="1381d2ec04228d2932b3d66dd461b039" category="paragraph">다음 절차를 사용하여 지원되는 최소 OL 8.7 소프트웨어 버전을 확인할 수 있습니다.</block>
+  <block id="d5cfa1b99255a0dc13cc42ffb798fe70" category="list-text">서버에 OL 8.7 GA를 설치합니다. 설치가 완료되면 지정된 OL 8.7 GA 커널을 실행하고 있는지 확인합니다.</block>
+  <block id="56057f7ee5989c8fafa715ae010e22d2" category="list-text">Oracle Linux 8.7 호스트에서 를 확인합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 에 문자열이 있습니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
+  <block id="af362d93b6b79aab9ac6be9f1074a467" category="admonition">를 누릅니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치하지 않습니다. 을 사용할 수 있습니다<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 명령을 사용하여 를 업데이트합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 와 일치하는 해당 ONTAP 배열 하위 시스템의 문자열입니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열 시작<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트.</block>
+  <block id="f6f33242227bf5d079f46a94f3780b75" category="paragraph">Broadcom/Emulex 또는 Marvell/Qlogic 어댑터에 대해 NVMe/FC를 구성할 수 있습니다.</block>
+  <block id="10ce16d02c992727f1f013108c8de76e" category="list-text">권장 Broadcom을 사용하고 있는지 확인합니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 펌웨어 및 받은 편지함 드라이버:</block>
+  <block id="d5bfab963dcf3eb7acebfa1863c710ad" category="paragraph">지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block>.</block>
+  <block id="1b4a395375d9ded55e9f7026ae175a39" category="open-title">NVMe/FC용 Marvell/Qlogic FC 어댑터</block>
+  <block id="d2256c2fb21e806282ba1bbcf97e721e" category="list-text">OL 8.7 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
+  <block id="42d18363818951017351b676627b6308" category="list-text">확인합니다<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 가 설정됩니다. 그러면 Marvell 어댑터가 NVMe/FC Initiator로 작동할 수 있습니다.</block>
+  <block id="4985227ddc1cd987688d7fe0d8873ec8" category="section-title">1MB I/O 활성화(옵션)</block>
+  <block id="6be1ef1e13c4a8a41eb4b829efcce9f7" category="paragraph">다음 절차를 사용하여 NVMe-oF를 검증할 수 있습니다.</block>
+  <block id="dda2ba09426f9ec4c41c7c7170fe8abb" category="list-text">다음을 확인하여 In-kernel NVMe multipath가 활성화되어 있는지 확인합니다.</block>
+  <block id="e3fab3cc007d641ec4678592ba0d33a2" category="list-text">적절한 NVMe-oF 설정(예<block ref="20f35e630daf44dbfa4c3f68f5399d8c" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="756ad8952bac6a54235a8fd3a5378672" prefix=" " category="inline-code"></block> 부하 분산<block ref="9dcdd7789010499b5bf49690aa44b8e9" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>) 각 ONTAP 네임스페이스는 호스트에 올바르게 반영됩니다.</block>
+  <block id="26bcb9f1cb6f391f4b2c18e676bb458d" category="open-title">NVMe/FC</block>
+  <block id="8b7c42123642e2e4ea7dd426aeb2de58" category="open-title">NVMe/TCP</block>
+  <block id="1976d7f704de389d9fe064e08ea35b2d" category="open-title">열</block>
+  <block id="0ecd11c1d7a287401d148a23bbd7a2f8" category="open-title">JSON을 참조하십시오</block>
+  <block id="942bc9ba97662019cbc2b7e41f8381db" category="paragraph">OL 8.7 with ONTAP 릴리즈의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="4d85197b1029241623e97a28c5823630" category="cell">Oracle Linux 8.7 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 생성합니다</block>
+  <block id="07ad87616fe3ef97097ef4a56610ba36" category="cell">OL 8.7 NVMe-oF 호스트에서는 을 통과시켜 PDC(영구적 검색 컨트롤러)가 생성됩니다<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 에 대한 옵션<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령. 특정 초기자-대상 조합의 경우 의 각 호출과 함께 PDC가 하나만 작성되어야 합니다<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령. 하지만 OL 8.x부터 NVMe-of-host가 종료되어 의 각 호출을 통해 중복 PDC가 생성됩니다<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령과 함께<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 옵션을 선택합니다. 이렇게 하면 호스트와 타겟 모두에서 리소스가 낭비됩니다.</block>
+  <block id="e547a2a229ecff025ac8a9944e494a73" category="paragraph">NVMe-oF 장애를 해결하기 전에 IMT 사양을 준수하는 구성을 실행 중인지 확인하고 다음 단계를 진행하여 호스트 측 문제를 디버깅합니다.</block>
+  <block id="564a7e3459c5ede626fd0f47cac71ff3" category="list-text">OL 9.0 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
+  <block id="c48bd590bf88d48a24d60b6b5c163ad4" category="paragraph">ONTAP 릴리스가 포함된 Oracle Linux 9.0용 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="7fc2293e459de57e2832a921a712ac35" category="admonition">Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+XXX</block>
 </blocks>

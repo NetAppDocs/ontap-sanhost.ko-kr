@@ -24,14 +24,14 @@ summary: ONTAP와 함께 Oracle Linux 8.1을 사용하는 방법에 대해 설�
 
 NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 64비트 .rpm 파일
 
-Linux Unified Host Utilities를 설치하는 것이 좋지만 반드시 설치해야 하는 것은 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
+NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 
 .필요한 것
-현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 또는 를 업그레이드해야 합니다. 이 유틸리티를 제거하고 다음 단계를 따라 최신 버전을 설치해야 합니다.
+현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 업그레이드 또는 제거한 다음 다음 다음 단계에 따라 최신 버전을 설치해야 합니다.
 
 .단계
 . 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 호스트에.
-. 다음 명령을 사용하여 소프트웨어 패키지를 설치합니다.
+. 소프트웨어 패키지를 설치합니다.
 +
 "rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
 
@@ -76,13 +76,14 @@ SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다.
 . SAN 부팅 LUN을 호스트에 매핑합니다.
 . 여러 경로를 사용할 수 있는지 확인합니다.
 +
-여러 경로는 호스트 OS가 가동되어 경로에서 실행된 후에만 사용할 수 있습니다.
+
+NOTE: 호스트 OS가 가동되고 경로에서 실행되면 여러 경로를 사용할 수 있습니다.
 
 . SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
 +
 HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
 
-. 호스트를 재부팅하여 부팅이 성공했는지 확인합니다.
+. 호스트를 재부팅하여 부팅에 성공했는지 확인합니다.
 
 
 
@@ -130,7 +131,7 @@ Oracle Linux 8.1 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 
 
 다음 구문을 'multitpath.conf' 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.
 
-'<DevID>'을(를) 제외할 장치의 WWID 문자열로 바꿉니다. 다음 명령을 사용하여 WWID를 확인하십시오.
+를 교체합니다 `<DevId>` 제외할 장치의 WWID 문자열을 사용하여 다음을 수행합니다.
 
 ....
 blacklist {
@@ -262,4 +263,4 @@ NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 �
 
 === ASM 미러링
 
-ASM 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 link:https://www.netapp.com/us/media/tr-3633.pdf["ONTAP 기반의 Oracle 데이터베이스"^] 를 참조하십시오.
+ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 link:https://www.netapp.com/us/media/tr-3633.pdf["ONTAP 기반의 Oracle 데이터베이스"^] 를 참조하십시오.

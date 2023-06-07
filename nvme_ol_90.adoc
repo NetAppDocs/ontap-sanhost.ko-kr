@@ -103,7 +103,7 @@ vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3310-8
 ----
 +
 
-NOTE: 를 누릅니다 `hostnqn` 문자열이 일치하지 않습니다. 을 사용해야 합니다 `vserver modify` 명령을 사용하여 를 업데이트합니다 `hostnqn` 와 일치하는 해당 ONTAP 배열 하위 시스템의 문자열입니다 `hostnqn` 문자열 시작 `/etc/nvme/hostnqn` 호스트.
+NOTE: 를 누릅니다 `hostnqn` 문자열이 일치하지 않습니다. 을 사용할 수 있습니다 `vserver modify` 명령을 사용하여 를 업데이트합니다 `hostnqn` 와 일치하는 해당 ONTAP 배열 하위 시스템의 문자열입니다 `hostnqn` 문자열 시작 `/etc/nvme/hostnqn` 호스트.
 
 
 
@@ -111,7 +111,7 @@ NOTE: 를 누릅니다 `hostnqn` 문자열이 일치하지 않습니다. 을 사
 
 == NVMe/FC 구성
 
-Broadcom/Emulex 어댑터 또는 Marvell/Qlogic 어댑터용 NVMe/FC를 구성할 수 있습니다.
+Broadcom/Emulex 또는 Marvell/Qlogic 어댑터에 대해 NVMe/FC를 구성할 수 있습니다.
 
 [role="tabbed-block"]
 ====
@@ -147,7 +147,7 @@ LPe32002-M2
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. 권장 Broadcom을 사용하고 있는지 확인합니다 `lpfc` 펌웨어 및 받은 편지함 드라이버. 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^]:
+. 권장 Broadcom을 사용하고 있는지 확인합니다 `lpfc` 펌웨어 및 받은 편지함 드라이버:
 +
 [listing]
 ----
@@ -158,6 +158,9 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/module/lpfc/version
 0:12.8.0.11
 ----
++
+지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+
 . 확인합니다 `lpfc_enable_fc4_type` 가 로 설정되어 있습니다 `3`:
 +
 [listing]
@@ -205,7 +208,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 .NVMe/FC용 Marvell/QLogic FC 어댑터
 --
 .단계
-. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행 중인지 확인합니다. OL 9.0 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 있습니다.
+. OL 9.0 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
 +
 [listing]
 ----
@@ -224,6 +227,33 @@ QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
 
 --
 ====
+
+
+=== 1MB I/O 크기 활성화(옵션)
+
+ONTAP는 컨트롤러 식별 데이터에 8의 MDTS(MAX Data 전송 크기)를 보고합니다. 이는 최대 I/O 요청 크기가 1MB가 될 수 있음을 의미합니다. 그러나 Broadcom NVMe/FC 호스트에 대해 1MB의 입출력 요청을 발급하려면 을 늘려야 합니다 `lpfc` 의 값 `lpfc_sg_seg_cnt` 매개 변수를 기본값 64에서 256으로 설정합니다.
+
+.단계
+. lpfc_sg_seg_cnt 매개변수를 256으로 설정합니다.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. dracut -f 명령을 실행하고 호스트를 재부팅합니다.
+. lpfc_sg_seg_cnt가 256인지 확인합니다.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+NOTE: Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+
 
 
 == NVMe/TCP를 구성합니다
@@ -326,31 +356,9 @@ nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
 
 
 
-=== 1MB I/O 크기 활성화
-
-를 클릭합니다 `lpfc_sg_seg_cnt` 호스트에서 1MB 크기 입출력을 발급하려면 매개 변수를 256으로 설정해야 합니다
-
-.단계
-. lpfc_sg_seg_cnt 매개변수를 256으로 설정합니다.
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_sg_seg_cnt=256
-----
-. dracut -f 명령을 실행하고 호스트를 재부팅합니다.
-. lpfc_sg_seg_cnt가 256인지 확인합니다.
-+
-[listing]
-----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
-----
-
-
-
-
 == NVMe-oF를 검증합니다
+
+다음 절차를 사용하여 NVMe-oF를 검증할 수 있습니다.
 
 .단계
 . OL 9.0 호스트에서 다음 NVMe/FC 설정을 확인합니다.
@@ -480,6 +488,8 @@ NSID       UUID                                   Size
 
 == 알려진 문제
 
+ONTAP 릴리스가 포함된 Oracle Linux 9.0용 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
+
 [cols=""20"]
 |===
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
@@ -491,7 +501,7 @@ NSID       UUID                                   Size
 
 == 문제 해결
 
-NVMe/FC 장애를 해결하기 전에 IMT 사양을 준수하는 구성을 실행 중인지 확인한 후 다음 단계를 수행하여 호스트측 문제를 디버깅하십시오.
+NVMe-oF 장애를 해결하기 전에 IMT 사양을 준수하는 구성을 실행 중인지 확인하고 다음 단계를 진행하여 호스트 측 문제를 디버깅합니다.
 
 
 
