@@ -1,16 +1,16 @@
 ---
 sidebar: sidebar 
-permalink: hu_ol_91.html 
-keywords: host utilities, oracle, linux, 9.1, netapp, ontap 
-summary: ONTAP에서 Oracle Linux 9.1을 사용하는 방법을 설명합니다 
+permalink: hu_rhel_88.html 
+keywords: host utilities, red hat, rhel, linux, 8.8, netapp, ontap, rhel 
+summary: ONTAP에서 Red Hat Enterprise Linux 8.8을 사용하는 방법을 설명합니다 
 ---
-= NetApp ONTAP와 함께 Oracle Linux 9.1 사용
+= NetApp ONTAP와 함께 Red Hat Enterprise Linux 8.8을 사용합니다
 :toc: macro
 :hardbreaks:
-:toclevels: 1P
+:toclevels: 1
 :allow-uri-read: 
 :toc: 
-:toclevels: 1P
+:toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -39,10 +39,11 @@ NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장�
 
 
 
-== SAN 툴킷
+== SAN 툴 키트
 
 NetApp 호스트 유틸리티 패키지를 설치하면 도구 키트가 자동으로 설치됩니다. 이 키트는 를 제공합니다 `sanlun` 유틸리티를 사용하면 LUN 및 호스트 버스 어댑터(HBA)를 관리하는 데 도움이 됩니다. 를 클릭합니다 `sanlun` 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
 
+.예
 다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
 
 [listing]
@@ -56,17 +57,17 @@ NetApp 호스트 유틸리티 패키지를 설치하면 도구 키트가 자동�
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       80.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       80.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       80.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       80.0g  cDOT
+vs_163_32gQlc          /vol/vol1/lun1   /dev/sdb   host14   FCP       10.0g  cDOT
+vs_163_32gQlc          /vol/vol1/lun1   /dev/sdc   host15   FCP       10.0g  cDOT
+vs_163_32gQlc          /vol/vol2/lun2   /dev/sdd   host14   FCP       10.0g  cDOT
+vs_163_32gQlc          /vol/vol2/lun2   /dev/sde   host15   FCP       10.0g  cDOT
 ----
 
 
 == SAN 부팅
 
 .필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -86,11 +87,9 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 == 다중 경로
 
-OL 9.1 의 경우 `/etc/multipath.conf` 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. OL 9.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
+RHEL(Red Hat Enterprise Linux) 8.8의 경우 `/etc/multipath.conf` 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
 
-'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다.
-
-다음 섹션에서는 ASA 및 비 ASA 구성에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.
+'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.
 
 
 
@@ -104,13 +103,13 @@ ASA 구성에서는 지정된 LUN에 대한 모든 경로가 활성화되어 최
 [listing]
 ----
 # multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:6   sdbz 68:208  active ready running
-  |- 11:0:11:6  sddn 71:80   active ready running
-  |- 11:0:15:6  sdfb 129:208 active ready running
-  |- 12:0:1:6   sdgp 132:80  active ready running
+3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
+size=80G	features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi  130:64   active ready running
+  |- 11:0:9:1    sdiy  8:288    active ready running
+  |- 11:0:10:1   sdml  69:464   active ready running
+  |- 11:0:11:1   sdpt  131:304  active ready running
 ----
 
 NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.
@@ -127,14 +126,15 @@ NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가
 [listing]
 ----
 # multipath -ll
-3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a098038314837352453694b542f4a dm-0 NETAPP,LUN C-Mode
+size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 16:0:6:35 sdwb  69:624  active ready running
-| |- 16:0:5:35 sdun  66:752  active ready running
+| |- 14:0:3:0 sdbk 67:224 active ready running
+| `- 15:0:2:0 sdbl 67:240 active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 15:0:0:35 sdaj  66:48   active ready running
-  |- 15:0:1:35 sdbx  68:176  active ready running
+  |- 14:0:0:0 sda  8:0    active ready running
+  `- 15:0:1:0 sdv  65:80  active ready running
+
 ----
 
 NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.
@@ -143,7 +143,7 @@ NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가
 
 == 권장 설정
 
-Oracle Linux 9.1 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.
+RHEL 8.8 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.
 
 를 클릭합니다 `multipath.conf` 다중 경로 데몬을 시작하려면 파일이 있어야 하지만 다음 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다.
 
@@ -209,7 +209,7 @@ blacklist {
 | detect_prio(사전 감지) | 예 
 
 
-| DEV_Loss_TMO | 무한대 
+| DEV_Loss_TMO | "무한대" 
 
 
 | 장애 복구 | 즉시 
@@ -218,31 +218,31 @@ blacklist {
 | Fast_IO_FAIL_TMO | 5 
 
 
-| 피처 | 2 pg_init_retries 50 
+| 피처 | "2 pg_init_retries 50" 
 
 
-| Flush_on_last_del.(마지막 삭제 시 플러시 | 예 
+| Flush_on_last_del.(마지막 삭제 시 플러시 | "예" 
 
 
-| hardware_handler를 선택합니다 | 0 
+| hardware_handler를 선택합니다 | "0" 
 
 
 | no_path_retry 를 선택합니다 | 대기열 
 
 
-| path_checker를 선택합니다 | 고객 
+| path_checker를 선택합니다 | "tur" 
 
 
-| path_grouping_policy | Group_by_prio(그룹 기준/원시) 
+| path_grouping_policy | "group_by_prio(그룹 기준/원시)" 
 
 
-| 경로 선택 | 서비스 시간 0 
+| 경로 선택 | "서비스 시간 0" 
 
 
 | polling_interval입니다 | 5 
 
 
-| 프리오 | ONTAP 
+| 프리오 | "ONTAP" 
 
 
 | 제품 | LUN. * 
@@ -251,7 +251,7 @@ blacklist {
 | Retain_attached_hw_handler 를 참조하십시오 | 예 
 
 
-| RR_WEIGHT | 균일 
+| RR_WEIGHT | "균일" 
 
 
 | 사용자_친화적_이름 | 아니요 
@@ -265,48 +265,31 @@ blacklist {
 [listing]
 ----
 defaults {
- path_checker readsector0
- no_path_retry fail
- }
+   path_checker      readsector0
+   no_path_retry     fail
+}
+
 devices {
- device {
- vendor "NETAPP "
- product "LUN.*"
- no_path_retry queue
- path_checker tur
- }
+   device {
+      vendor         "NETAPP  "
+      product         "LUN.*"
+      no_path_retry    queue
+      path_checker     tur
+   }
 }
 ----
 
-NOTE: Oracle Linux 9.1 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용합니다 link:hu_rhel_91.html#recommended-settings["권장 설정"] RHEL(Red Hat Enterprise Linux) 9.1의 경우
 
+=== KVM 설정
 
-
-== KVM 설정
-
-권장 설정을 사용하여 KVM(커널 기반 가상 시스템)을 구성할 수도 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.
+권장 설정을 사용하여 KVM(커널 기반 가상 시스템)도 구성할 수 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.
 
 
 
 == 알려진 문제
 
-Oracle Linux 9.1 및 NetApp ONTAP 릴리즈에는 다음과 같은 알려진 문제가 있습니다.
+알려진 문제가 없습니다.
 
-[cols="10,30,30,10"]
-|===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
-
-
-| https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | Emulex HBA를 사용하는 SAN LUN 유틸리티에는 라이브러리 패키지의 심볼 링크가 필요합니다  a| 
-SAN 호스트에서 Linux Unified Host Utilities CLI 명령 " sanlun fcp show adapter -v "를 실행할 때 명령이 실패하고 HBA(호스트 버스 어댑터) 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시됩니다.
-
-[listing]
-----
-[root@hostname ~]# sanlun fcp show adapter -v
-Unable to locate /usr/lib64/libHBAAPI.so library
-Make sure the package installing the library is installed & loaded
-----| 해당 없음 
-|===
 
 
 == 릴리즈 노트

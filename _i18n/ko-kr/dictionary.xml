@@ -3303,7 +3303,6 @@ XXX</block>
 를 클릭합니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 다중 경로 데몬을 시작하려면 파일이 있어야 하지만 다음 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다.</block>
   <block id="43784ec2c1aaa42346ed96f22c8410b6" category="sidebar">9.2</block>
   <block id="30c9201611d0a0e2f87585a1866fa4bd" category="doc">ONTAP를 사용하는 Oracle Linux 9.1용 NVMe-oF 호스트 구성</block>
-  <block id="4f50054d9d230419cddd33dc0dfec902" category="paragraph">NVMe/FC 및 기타 전송을 포함한 NVMe over Fabrics(NVMe-oF)는 ANA(비대칭 네임스페이스 액세스)가 포함된 Oracle Linux(OL) 9.1에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
   <block id="de83b7a38e0f01ada520a571da1c0ae7" category="paragraph">OL 9.1 with ONTAP의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공됩니다.</block>
   <block id="3178ea29b080ab675001ea00192c87ef" category="list-text">Oracle Linux 9.1에는 기본적으로 NVMe 네임스페이스를 위해 커널 내 NVMe 다중 경로 기능이 활성화되어 있으므로 명시적 설정이 필요하지 않습니다.</block>
   <block id="6108d173e82e63fbc1c54d48885f9779" category="paragraph">다음 절차를 사용하여 지원되는 최소 OL 9.1 소프트웨어 버전을 확인할 수 있습니다.</block>
@@ -3313,7 +3312,6 @@ XXX</block>
   <block id="9cdf71978b23a4023a75f102c03f30d0" category="list-text">지원되는 어댑터 모델을 사용하고 있는지 확인합니다.</block>
   <block id="b7d859687cee13a86312666f61100178" category="list-text">OL 9.1 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
   <block id="30a04882c68a73c9cf9bda1fde81eb99" category="list-text">OL 9.1 호스트에서 다음 NVMe/FC 설정을 확인합니다.</block>
-  <block id="2fa1372c51233d5657736d3be228889f" category="paragraph">ONTAP 릴리즈 OL 9.1의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="bed8afd121bcc77f7679ad8aa66edc6e" category="cell">1536937)을 참조하십시오</block>
   <block id="277f83d9faff75a0f8017279fcf07969" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> 명령은 하위 시스템에 대해 반복되는 NVMe 컨트롤러를 인쇄합니다</block>
   <block id="8e34704e7af729eb74fd3ebaac0a9342" category="cell">를 클릭합니다<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템과 관련된 NVMe 컨트롤러의 고유 목록을 반환해야 합니다. Oracle Linux 9.1에서<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템에 속하는 모든 네임스페이스에 대한 ANA(비대칭 네임스페이스 액세스) 상태를 갖는 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 이름 공간 당 특성이므로 지정된 네임스페이스에 대한 하위 시스템 명령 구문을 나열하는 경우 경로 상태로 고유한 NVMe 컨트롤러 항목을 표시하는 것이 유용합니다.</block>
@@ -3321,17 +3319,47 @@ XXX</block>
   <block id="1c68cdd2e6afb2c09809c25810c520aa" category="cell"><block ref="1c68cdd2e6afb2c09809c25810c520aa" category="inline-link-macro-rx"></block></block>
   <block id="5cf8c44d0d04885f386e9f0d05461ec2" category="cell">1539101)을 참조하십시오</block>
   <block id="91a845901382406af3acfb27b99025ea" category="cell">Oracle Linux 9.1 NVMe-of-호스트에서 영구 검색 컨트롤러를 생성하지 못합니다</block>
-  <block id="465d3ac157f9559a71ac205312d4cf83" category="cell">Oracle Linux 9.1 NVMe over Fabrics (NVMe-oF) 호스트에서는 을 사용할 수 있습니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> PDC(영구적 검색 컨트롤러)를 생성하는 명령입니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 PDC 하나를 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Oracle Linux 9.1을 실행 중인 경우, 가 실행될 때 PDC 생성이 실패합니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 명령어가 수행된다.</block>
   <block id="86d73f9a9eafbf2a1bc89961929ab3e0" category="inline-link-macro">18196</block>
   <block id="84ccd25799ec2ea76f7f5faab8db9837" category="cell"><block ref="84ccd25799ec2ea76f7f5faab8db9837" category="inline-link-macro-rx"></block></block>
   <block id="533f5c2e4bcf35d9cefe9c97046f7654" category="summary">ONTAP에서 Oracle Linux 9.1을 사용하는 방법을 설명합니다</block>
   <block id="83b6364b5fed0880c85b1a8caf70b15f" category="doc">NetApp ONTAP와 함께 Oracle Linux 9.1 사용</block>
-  <block id="d1e17b610d12e40ce0477f24b702c3d2" category="paragraph">OL 9.1 의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. OL 9.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="2d3eb2d12b839784838915ca9789047f" category="paragraph">Oracle Linux 9.1 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
-  <block id="4c27689c3548176781daa0cf49fc86d5" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우, 입니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일은 에 대한 값을 정의합니다<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 및<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN과 호환되지 않습니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.</block>
   <block id="c6951501d0b58604dc509284a2398484" category="admonition">Oracle Linux 9.1 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용합니다 <block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block> RHEL(Red Hat Enterprise Linux) 9.1의 경우</block>
   <block id="1c50fcd4efa065aedf6e2667df8523f3" category="paragraph">Oracle Linux 9.1 및 NetApp ONTAP 릴리즈에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="da80aa62fc6cf6b66539a5a3933874a8" category="cell"><block ref="da80aa62fc6cf6b66539a5a3933874a8" category="inline-link-rx"></block></block>
-  <block id="00afbfe7fe5cea7d2316cbbc96e387c4" category="cell">Emulex HBA를 사용하는 SAN LUN 유틸리티에는 라이브러리 패키지의 심볼 링크가 필요합니다</block>
   <block id="20e1c7fed64a39ad5334f26be4f4d8c7" category="paragraph">SAN 호스트에서 Linux Unified Host Utilities CLI 명령 " sanlun fcp show adapter -v "를 실행할 때 명령이 실패하고 HBA(호스트 버스 어댑터) 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시됩니다.</block>
+  <block id="945ae6ecd5de8145a44bcea8e9d26556" category="summary">ONTAP에서 Red Hat Enterprise Linux 8.8을 사용하는 방법을 설명합니다</block>
+  <block id="0c3cf35e9d17d9797fe9f979cd114434" category="doc">NetApp ONTAP와 함께 Red Hat Enterprise Linux 8.8을 사용합니다</block>
+  <block id="03b42a28986c6f868e2df3814cdcbb0d" category="paragraph">NetApp 호스트 유틸리티 패키지를 설치하면 도구 키트가 자동으로 설치됩니다. 이 키트는 를 제공합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 유틸리티를 사용하면 LUN 및 호스트 버스 어댑터(HBA)를 관리하는 데 도움이 됩니다. 를 클릭합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.</block>
+  <block id="a2bd0f8150b6236d72e1f415a678cf78" category="paragraph">RHEL(Red Hat Enterprise Linux) 8.8의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="5dcf53fffd6ff60a6d2323ae00a871f3" category="paragraph">RHEL 8.8 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
+  <block id="b8aa99c2e58dbe6b9f5fbd80d2ef3c41" category="summary">ONTAP를 사용하여 RHEL 8.8에 대한 NVMe-of 호스트를 구성하는 방법</block>
+  <block id="2f2ef2920873b538ad7f28e5d18221a0" category="doc">ONTAP 기반의 RHEL 8.8에 대한 NVMe-oF 호스트 구성</block>
+  <block id="627fc5ce0d88e0997ea80bdeecc63bc3" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access) 8.8 기반의 RHEL(Red Hat Enterprise Linux)에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
+  <block id="ab15b05ddb0c07381067dd0a70972dfd" category="paragraph">ONTAP 기반의 RHEL 8.8에 대한 NVMe-oF 호스트 구성에 대해 다음 지원이 제공됩니다.</block>
+  <block id="ba770fdddd491fed0ed0aa2d9bce30bc" category="list-text">RHEL 8.8 NVMe-of 호스트에 대해 커널 내 NVMe 다중 경로가 기본적으로 비활성화됩니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="c55d87b5714812a0110cd0c2b93d2102" category="list-text">RHEL 8.8 호스트에서 NVMe/TCP는 미해결 문제로 인한 기술 미리보기 기능입니다.</block>
+  <block id="b533797bfe32a06fb40a831b72c0e6fc" category="section-title">인커널 다중 경로를 활성화합니다</block>
+  <block id="682268ee3623608f6aaa4d97948590b9" category="paragraph">다음 절차를 사용하여 커널 내 다중 경로를 활성화할 수 있습니다.</block>
+  <block id="79f5508560fcdeeb0f8f5e35cfeeb028" category="list-text">호스트 서버에 RHEL 8.8을 설치합니다.</block>
+  <block id="3f941eb23733b5fc256825fb8360af1e" category="list-text">설치가 완료된 후 지정된 RHEL 8.8 커널을 실행 중인지 확인합니다.</block>
+  <block id="0b2a1cf2bd4cdd2ea23a2f0ea592a4d6" category="list-text">NVMe-CLI 패키지를 설치합니다.</block>
+  <block id="22ac38109d566f08520d1c578277fad1" category="list-text">인커널 NVMe 다중 경로 지원:</block>
+  <block id="1c30079002b0176bf0beeaed68880244" category="list-text">호스트에서 에서 호스트 NQN 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
+  <block id="94ba0506900b15b89968be3bc20d71af" category="admonition">호스트 NQN 문자열이 일치하지 않으면 를 사용할 수 있습니다<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 명령을 사용하여 해당 ONTAP NVMe 하위 시스템에서 호스트 NQN 문자열을 호스트 NQN 문자열과 일치하도록 업데이트합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트.</block>
+  <block id="e6e7ba3eb589d8ecc8281c644469c6e5" category="paragraph">동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우, NetApp는 ONTAP 네임스페이스에 대한 인커널 NVMe 다중 경로와 ONTAP LUN에 대한 dm-multipath를 각각 사용할 것을 권장합니다. 즉, dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하도록 ONTAP 네임스페이스를 dm-multipath에서 제외해야 합니다. 이 작업은 를 추가하여 수행할 수 있습니다<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
+  <block id="a1574e96784ad2bd52bae70c14a998a2" category="list-text">RHEL 8.8 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
+  <block id="5aae5284420b8ceb0aa0f5d959c566bc" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.</block>
+  <block id="9bdba773d50bb88232e3e64ea6e985b9" category="list-text">적절한 NVMe-oF 설정(예:<block ref="20f35e630daf44dbfa4c3f68f5399d8c" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="756ad8952bac6a54235a8fd3a5378672" prefix=" " category="inline-code"></block> 부하 분산<block ref="9dcdd7789010499b5bf49690aa44b8e9" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>) 각 ONTAP 네임스페이스는 호스트에 올바르게 반영됩니다.</block>
+  <block id="d7442f3fc53686df869915abb03259d5" category="paragraph">RHEL 8.8 with ONTAP 릴리스에 대한 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="03ae8eb9222d50f723280c24049da8ff" category="cell">RHEL 8.8 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
+  <block id="1e33904ede6309a554b35640a5cef193" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다.  그러나 NVMe-oF 호스트에서 Red Hat Enterprise Linux(RHEL) 8.8을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="317bd3f8323d3750053ef303ee6f5813" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access)가 포함된 Oracle Linux(OL) 9.1에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
+  <block id="403f78a784ce2b6ea83a425d2530e736" category="paragraph">OL 9.1 및 ONTAP 릴리즈의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="c43b3026b84082f6f8a8e5dbf4fc8359" category="cell">Oracle Linux 9.1 NVMe-of 호스트에서는 을 사용할 수 있습니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> PDC(영구적 검색 컨트롤러)를 생성하는 명령입니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 PDC 하나를 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Oracle Linux 9.1을 실행 중인 경우, 가 실행될 때 PDC 생성이 실패합니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 명령어가 수행된다.</block>
+  <block id="5ba9d31ec6b8af7200bbbb91b8d169f3" category="paragraph">OL 9.1 의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. OL 9.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="a757398c74551ef32047b5af3026cb65" category="paragraph">다음 섹션에서는 ASA 및 비 ASA 구성에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.</block>
+  <block id="2d69d1a04ab1fce41548a0d0d311bd3d" category="paragraph">Oracle Linux 9.1 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
+  <block id="5df3ff7cb7b785e8c8bebccf076a731e" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우, 입니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일은 에 대한 값을 정의합니다<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 및<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN과 호환되지 않습니다. 다른 SAN 스토리지가 아직 호스트에 연결되어 있으므로 제거할 수 없는 경우 이러한 매개 변수를 특히 디바이스 스탠자가 있는 ONTAP LUN에 대해 수정할 수 있습니다.</block>
+  <block id="675cd8e52ba395fba110b2ae7c90675b" category="cell">Emulex HBA를 사용하는 SAN LUN 유틸리티에는 라이브러리 패키지의 심볼 링크가 필요합니다</block>
+  <block id="76da8e16b4b35b8424eb298d2b37d666" category="sidebar">8.8</block>
 </blocks>
