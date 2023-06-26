@@ -3362,4 +3362,19 @@ XXX</block>
   <block id="5df3ff7cb7b785e8c8bebccf076a731e" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우, 입니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일은 에 대한 값을 정의합니다<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 및<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN과 호환되지 않습니다. 다른 SAN 스토리지가 아직 호스트에 연결되어 있으므로 제거할 수 없는 경우 이러한 매개 변수를 특히 디바이스 스탠자가 있는 ONTAP LUN에 대해 수정할 수 있습니다.</block>
   <block id="675cd8e52ba395fba110b2ae7c90675b" category="cell">Emulex HBA를 사용하는 SAN LUN 유틸리티에는 라이브러리 패키지의 심볼 링크가 필요합니다</block>
   <block id="76da8e16b4b35b8424eb298d2b37d666" category="sidebar">8.8</block>
+  <block id="176cc9bb29c2c566372a62c8e2b9207f" category="summary">Oracle Linux 9.2용 NVMe-oF 호스트 구성(ONTAP 포함</block>
+  <block id="c21e5441440a02a8ac88bceeb45f2e62" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(비대칭 네임스페이스 액세스)가 포함된 Oracle Linux(OL) 9.2에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
+  <block id="82beb63f036c3b1abac405a0e61d475e" category="paragraph">OL 9.2 및 ONTAP의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공됩니다.</block>
+  <block id="cd79fc62c068824d6dc568dc509ac385" category="list-text">Oracle Linux 9.2에는 기본적으로 NVMe 네임스페이스를 위해 커널 내 NVMe 다중 경로 기능이 활성화되어 있으므로 명시적 설정이 필요하지 않습니다.</block>
+  <block id="8aedc35fcf91dcf2a275ceabc6729295" category="paragraph">다음 절차를 사용하여 지원되는 최소 OL 9.2 소프트웨어 버전을 확인할 수 있습니다.</block>
+  <block id="14374a8eee952ba9020eba6e85e99557" category="list-text">서버에 OL 9.2 GA를 설치합니다. 설치가 완료된 후 지정된 OL 9.2 GA 커널을 실행 중인지 확인합니다.</block>
+  <block id="1c5ecc74e916278d5c8a3b5c5d8285ee" category="list-text">Oracle Linux 9.2 호스트에서 를 확인합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 에 문자열이 있습니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
+  <block id="52b073397dc3c50d460ba25c1ff0ffdc" category="list-text">OL 9.2 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
+  <block id="50b3b109855fd86109ac2efd64fb0104" category="list-text">OL 9.2 호스트에서 다음 NVMe/FC 설정을 확인합니다.</block>
+  <block id="5ca07756ac4e8650b2d00a4453c23b6c" category="summary">ONTAP에서 Oracle Linux 9.2를 사용하는 방법에 대해 설명합니다</block>
+  <block id="0673df3f2f443598fc466c25c247d676" category="doc">NetApp ONTAP에서 Oracle Linux 9.2 사용</block>
+  <block id="a55c64674e30e11be44367361a197b70" category="paragraph">OL 9.2의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. ol 9.2는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="beb55dba3ba1d2be4056c146cb0bf458" category="paragraph">Oracle Linux 9.2 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
+  <block id="a706283e3f8c7062e0c4c4b423b93965" category="admonition">Oracle Linux 9.2 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용하십시오 <block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block> RHEL(Red Hat Enterprise Linux) 9.2의 경우</block>
+  <block id="01ae493ab1dc24745cd1c1e47aa25447" category="paragraph">NetApp ONTAP 릴리스가 포함된 Oracle Linux 9.2에는 다음과 같은 알려진 문제가 있습니다.</block>
 </blocks>
