@@ -4,7 +4,7 @@ permalink: hu_aix_71.html
 keywords: host utilities, aix, 7.1 netapp, ontap 
 summary: ONTAP에서 IBM AIX 7.1을 사용하는 방법에 대해 설명합니다 
 ---
-= NetApp ONTAP와 함께 IBM AIX 7.1을 사용합니다
+= ONTAP와 함께 IBM AIX 7.1을 사용하십시오
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -154,7 +154,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == 권장 설정
 
-다음은 NetApp ONTAP LUN의 몇 가지 권장 매개 변수 설정입니다. ONTAP 호스트 유틸리티 키트를 설치하면 LUN에 대한 중요 매개 변수가 자동으로 설정됩니다.
+다음은 ONTAP LUN에 권장되는 매개 변수 설정입니다.  ONTAP 호스트 유틸리티 키트를 설치하면 LUN에 대한 중요 매개 변수가 자동으로 설정됩니다.
 
 [cols="4*"]
 |===

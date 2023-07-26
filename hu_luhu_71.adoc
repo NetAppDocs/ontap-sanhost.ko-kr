@@ -22,10 +22,6 @@ summary: ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방
 
 == 필수 구성 요소
 
-* 안정적인 운영을 위해서는 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인해야 합니다.
-+
-를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 를 눌러 구성을 확인합니다.
-
 * 공급업체에서 제공하는 HBA 관리 패키지를 해당 웹 사이트에 설치해야 합니다.
 +
 관리 소프트웨어를 사용하면 SAN Tool 키트 명령을 통해 WWPN과 같은 FC HBA에 대한 정보를 수집할 수 있습니다. sanlun fcp show 어댑터가 작동하는 경우 다음 패키지가 설치되어 있는지 확인합니다.
@@ -79,7 +75,7 @@ NOTE: SAN 툴킷은 Citrix XenServer, Oracle VM 및 Red Hat Enterprise Virtualiz
 
 NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support 사이트"^] 32비트 또는 64비트 .rpm 파일
 
-Linux Unified Host Utilities를 설치하는 것이 좋지만 반드시 설치해야 하는 것은 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
+NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 
 .단계
 . 현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 다음 명령을 사용하여 제거합니다.

@@ -4,7 +4,7 @@ permalink: hu_rhel_83.html
 keywords: host utilities, red hat, rhel, linux, 8.3, netapp, ontap 
 summary: ONTAP에서 Red Hat Enterprise Linux 8.3을 사용하는 방법에 대해 설명합니다 
 ---
-= NetApp ONTAP 기반의 Red Hat Enterprise Linux 8.3 사용
+= ONTAP와 함께 Red Hat Enterprise Linux 8.3을 사용하십시오
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,7 +20,7 @@ summary: ONTAP에서 Red Hat Enterprise Linux 8.3을 사용하는 방법에 대�
 
 
 
-== Linux Unified Host Utilities 설치
+== Linux Unified Host Utilities를 설치합니다
 
 NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 64비트 .rpm 파일
 
@@ -291,13 +291,3 @@ devices {
 == 알려진 문제 및 제한 사항
 
 RHEL 8.3에는 알려진 문제가 없습니다.
-
-
-
-== 릴리즈 노트
-
-
-
-=== ASM 미러링
-
-ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 link:https://www.netapp.com/us/media/tr-3633.pdf["ONTAP 기반의 Oracle 데이터베이스"^] 를 참조하십시오.

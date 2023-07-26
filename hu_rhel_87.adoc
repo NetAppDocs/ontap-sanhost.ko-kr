@@ -4,7 +4,7 @@ permalink: hu_rhel_87.html
 keywords: host utilities, red hat, rhel, linux, 8.7, netapp, ontap, rhel 
 summary: ONTAP와 함께 Red Hat Enterprise Linux 8.7을 사용하는 방법을 설명합니다 
 ---
-= NetApp ONTAP와 함께 Red Hat Enterprise Linux 8.7 사용
+= ONTAP와 함께 Red Hat Enterprise Linux 8.7을 사용하십시오
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -285,13 +285,3 @@ devices {
 === KVM 설정
 
 권장 설정을 사용하여 KVM(커널 기반 가상 시스템)도 구성할 수 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.
-
-
-
-== 릴리즈 노트
-
-
-
-=== ASM 미러링
-
-ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 link:https://www.netapp.com/us/media/tr-3633.pdf["ONTAP 기반의 Oracle 데이터베이스"^] 를 참조하십시오.

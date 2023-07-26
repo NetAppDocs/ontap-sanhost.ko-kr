@@ -4,7 +4,7 @@ permalink: hu_ol_83.html
 keywords: host utilities, oracle, linux, 8.3, netapp, ontap 
 summary: Oracle Linux 8.3을 ONTAP와 함께 사용하는 방법에 대해 설명합니다 
 ---
-= Oracle Linux 8.3을 NetApp ONTAP와 함께 사용합니다
+= ONTAP와 함께 Oracle Linux 8.3을 사용하십시오
 :toc: macro
 :hardbreaks:
 :toclevels: 1P
@@ -20,7 +20,7 @@ summary: Oracle Linux 8.3을 ONTAP와 함께 사용하는 방법에 대해 설�
 
 
 
-== Linux Unified Host Utilities 설치
+== Linux Unified Host Utilities를 설치합니다
 
 NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 64비트 .rpm 파일
 

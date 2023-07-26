@@ -4,7 +4,7 @@ permalink: hu_citrix_8x.html
 keywords: host utilities, citrix, hypervisor, 8.0, 8.1, 8.2, netapp, ontap, sanhost 
 summary: ONTAP에서 Citrix Hypervisor 8.x를 사용하는 방법에 대해 설명합니다 
 ---
-= NetApp ONTAP에서 Citrix 하이퍼바이저 사용
+= ONTAP에서 Citrix Hypervisor 사용
 :toc: macro
 :hardbreaks:
 :toclevels: 1
