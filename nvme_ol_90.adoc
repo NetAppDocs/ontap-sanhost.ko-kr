@@ -488,7 +488,7 @@ NSID       UUID                                   Size
 
 == 알려진 문제
 
-ONTAP 릴리즈가 포함된 Oracle Linux 9.0의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
+ONTAP가 설치된 Oracle Linux 9.0의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols=""20"]
 |===

@@ -319,7 +319,7 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
 
 == 알려진 문제
 
-ONTAP 릴리즈가 설치된 AIX용 NVMe/FC 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
+ONTAP를 사용하는 AIX용 NVMe/FC 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="10,30,30"]
 |===

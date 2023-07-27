@@ -19,7 +19,7 @@ summary: ONTAP가 설치된 Windows Server 2016용 NVMe/FC 호스트 구성
 
 
 [role="lead"]
-Windows Server 2016 및 ONTAP를 타겟으로 실행하는 호스트에 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.
+ONTAP를 타겟으로 사용하여 Windows Server 2016을 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 구성할 수 있습니다.
 
 NVMe/FC는 Windows Server 2016의 ONTAP 9.7 이상에서 지원됩니다.
 

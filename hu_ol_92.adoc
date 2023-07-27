@@ -290,7 +290,7 @@ NOTE: Oracle Linux 9.2 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사
 
 == 알려진 문제
 
-Oracle Linux 9.2 및 NetApp ONTAP 릴리스에는 다음과 같은 알려진 문제가 있습니다.
+ONTAP가 설치된 Oracle Linux 9.2에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="10,30,30,10"]
 |===

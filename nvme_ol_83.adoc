@@ -395,7 +395,7 @@ Device      Vserver         Namespace Path             NSID UUID                
 
 == 알려진 문제
 
-OL 8.3 with ONTAP 릴리즈의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
+OL 8.3 및 ONTAP의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="20, 20, 50, 20"]
 |===

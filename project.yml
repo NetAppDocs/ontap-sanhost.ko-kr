@@ -23,24 +23,32 @@ sidebar:
         url: "/hu_aix_61_rn.html"
       - title: AIX HU 6.1을 설치합니다
         url: "/hu_aix_61.html"
+      - title: 명령 참조 예
+        url: "/hu_aix_61_cmd.html"
     - title: HP-UX 호스트 유틸리티
       entries:
       - title: 릴리스 정보
         url: "/hu_hpux_60_rn.html"
       - title: HP-UX HU 6.0을 설치합니다
         url: "/hu_hpux_60.html"
+      - title: 명령 참조 예
+        url: "/hu_hpux_60_cmd.html"
     - title: Linux Unified Host Utilities를 참조하십시오
       entries:
       - title: 릴리스 정보
         url: "/hu_luhu_71_rn.html"
       - title: LUHU 7.1을 설치합니다
         url: "/hu_luhu_71.html"
+      - title: 명령 참조 예
+        url: "/hu_luhu_71_cmd.html"
     - title: Solaris 호스트 유틸리티
       entries:
       - title: 릴리스 정보
         url: "/hu_solaris_62_rn.html"
       - title: Solaris HU 6.2를 설치합니다
         url: "/hu_solaris_62.html"
+      - title: 명령 참조 예
+        url: "/hu_solaris_62_cmd.html"
     - title: Windows Unified Host Utilities를 참조하십시오
       entries:
       - title: 릴리스 정보

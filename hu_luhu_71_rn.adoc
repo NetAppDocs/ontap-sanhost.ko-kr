@@ -19,72 +19,22 @@ summary: Linux Unified Host Utilities 7.1 릴리스 정보
 
 
 [role="lead"]
-이 릴리스 정보 문서에는 알려진 문제와 제한 사항, 중요한 주의 사항, 새로운 기능 및 향상된 기능에 대한 업데이트를 비롯하여 Linux Unified Host Utilities 7.1 릴리스에 대한 최신 정보가 포함되어 있습니다. 또한 Host Utilities가 출시된 이후에 발견된 문제에 대해서도 설명합니다.
+릴리즈 노트에서는 ONTAP 스토리지 시스템에서 특정 호스트를 구성 및 관리하기 위한 새로운 기능 및 향상된 기능, 알려진 문제 및 제한 사항, 중요한 주의 사항에 대해 설명합니다.
+
+Host Utilities가 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
 
 
 
-== Linux Unified Host Utilities 7.1 릴리스에 대해 설명합니다
+== 새로운 기능
 
-Linux Unified Host Utilities는 여러 Linux 운영 체제를 지원합니다. Host Utilities를 사용하면 Linux 호스트를 NetApp 스토리지 시스템에 연결할 수 있습니다.
+Linux Host Utilities 7.1 릴리스에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.
 
-Linux Unified Host Utilities 7.1은 다음 버전의 Linux를 계속 지원합니다.
-
-* Red Hat Enterprise Linux
-* SUSE Linux Enterprise Server
-* Oracle Linux
-* Oracle VM
-* Citrix XenServer를 참조하십시오
-* Veritas
-
-
-
-NOTE: Host Utilities가 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
-
-Host Utilities 소프트웨어는 32비트 및 64비트 .rpm 파일로 제공됩니다. 에서 호스트 아키텍처와 설명서에 맞는 .rpm 파일을 다운로드할 수 있습니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^].
-
-설치 및 설정에 대한 지침은 을 참조하십시오 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_luhu_71.html["Linux Unified Host Utilities 7.1 설치 가이드"].
-
-
-
-== 7.1 릴리스의 새로운 기능
-
-Linux 호스트 유틸리티는 SANtricity를 실행하는 NetApp E-Series 스토리지 시스템과 ONTAP을 실행하는 AFF 및 FAS 시스템을 지원하므로 _ Linux 통합 호스트 유틸리티라고 합니다.
-
+* Linux 호스트 유틸리티는 SANtricity를 실행하는 NetApp E-Series 스토리지 시스템과 ONTAP을 실행하는 AFF, FAS 및 ASA 시스템을 지원하기 때문에 이제 _ Linux 통합 호스트 유틸리티라고 합니다.
++
 
 NOTE: 이 문서에서 Host Utilities 또는 Linux Host Utilities에 대한 언급은 Linux Unified Host Utilities를 참조합니다.
 
-* 이 Linux Unified Host Utilities 릴리스는 Red Hat Enterprise Linux 6 및 7 호스트에서 서버 프로파일을 설정하고 I/O 성능을 개선하기 위해 조정된 패키지를 지원합니다.
-* Linux Unified Host Utilities 7.1은 다음 버전을 계속 지원합니다.
-+
-** Red Hat Enterprise Linux
-** SUSE Linux Enterprise Server
-** Oracle Linux
-** Oracle VM
-** Citrix XenServer를 참조하십시오
-** Veritas
-
-
-* Red Hat Enterprise Linux 6 및 7에는 현재 환경에 따라 호스트에 서로 다른 서버 프로필을 설정할 수 있도록 'tuned-adm' 명령이 포함된 조정된 패키지가 있습니다.
-+
-** 여기에는 엔터프라이즈 스토리지 어레이의 LUN이 사용되는 구성을 위한 엔터프라이즈 스토리지 프로파일이 포함됩니다. 또한 Red Hat Enterprise Linux용 가상 게스트 프로필을 게스트 가상 머신으로 사용할 수도 있습니다. 조정된 패키지를 사용하면 ONTAP의 처리량과 대기 시간이 크게 향상됩니다.
-
-
-
-
-
-NOTE: NetApp은 최초 릴리즈 이후에도 Host Utilities와 계속 협력하여 기능에 대한 지원을 추가합니다. 지원되는 기능 및 추가된 새 기능에 대한 최신 정보는 를 참조하십시오 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
-
-
-
-== 새로운 기능 및 향상된 기능
-
-새로운 정보가 공개되면 릴리즈 노트가 제품 릴리즈 간에 업데이트됩니다.
-
-
-
-=== 7.1 개선 사항
-
-* 이 릴리스에는 다음 사항에 대한 지원이 포함되어 있습니다.
+* 이제 다음 운영 체제가 지원됩니다.
 +
 ** SUSE Linux Enterprise Server 15 시리즈
 ** Oracle VM 3.2 시리즈
@@ -92,72 +42,39 @@ NOTE: NetApp은 최초 릴리즈 이후에도 Host Utilities와 계속 협력하
 ** Red Hat Enterprise Linux 6 및 7 시리즈
 ** SUSE Linux Enterprise Server 11 SP4
 ** KVM 및 XEN, RHEV 6.4 및 6.5
-** Citrix XenServer 매개 변수입니다
+** Citrix XenServer를 참조하십시오
 
 
-* Emulex 및 Qlogic의 32GB 파이버 채널 어댑터에 대한 지원을 추가합니다.
-* SLES12SP1, OL7.2, RHEL7.2 및 RHEL 6.8에서 Sanlun LUN show-p getting SIGABRT 수정
-* Red Hat Linux 6.8, Oracle Linux 6.8, XenServer 7.0, Oracle VM 3.3 시리즈 및 Oracle VM 3.4 시리즈 운영 체제에 대한 지원을 확장합니다.
+* RHEL(Red Hat Enterprise Linux) 6 및 RHEL 7 호스트에서 이제 서버 프로필 설정을 위한 조정된 패키지가 지원됩니다. 를 사용할 수 있습니다 `tuned-adm` 환경에 따라 다른 프로파일을 설정하는 명령입니다.  예를 들어, 가상 게스트 프로파일을 게스트 가상 머신으로 사용할 수도 있고 엔터프라이즈 스토리지 어레이의 LUN이 사용되는 구성에 엔터프라이즈 스토리지 프로파일을 사용할 수도 있습니다.  조정된 패키지를 사용하면 ONTAP의 처리량과 지연 시간이 개선될 수 있습니다.
+* Broadcom Emulex 및 Marvell Qlogic의 32GB 파이버 채널 어댑터에 대한 지원을 추가합니다.
 
+
+
+NOTE: NetApp은 최초 릴리즈 이후에도 Host Utilities와 계속 협력하여 기능에 대한 지원을 추가합니다. 지원되는 기능 및 추가된 새 기능에 대한 최신 정보는 를 참조하십시오 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
+
+
+
+== 이 릴리스에서 수정되었습니다
+
+를 실행할 때 간헐적으로 발생하는 호스트 OS 오류 문제입니다 `sanlun lun show -p` SLES12SP1, OL7.2, RHEL7.2 및 RHEL 6.8의 명령은 이 릴리즈에서 수정되었습니다.
 
 
 
 == 알려진 문제 및 제한 사항
 
-[cols="10, 30"]
+Linux Host Utilities 7.1 릴리스에는 다음과 같은 알려진 문제와 제한 사항이 있습니다.
+
+[cols="10, 30, 30"]
 |===
-| NetApp 버그 ID | 설명 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| 1457017 | Sanlun 설치는 libdevmapper.so와 libnl.so 라이브러리와 관련된 경고 메시지를 발행한다. 이러한 경고는 '선' 키트의 기능에 영향을 주지 않습니다. 
+| 1457017 | Sanlun 설치는 libdevmapper.so와 libnl.so 라이브러리와 관련된 경고 메시지를 발행한다. 이러한 경고는 '선' 키트의 기능에 영향을 주지 않습니다. | SAN 호스트에서 Linux Unified Host Utilities CLI 명령 " sanlun fcp show adapter -v "를 실행할 때 명령이 실패하고 HBA(호스트 버스 어댑터) 검색에 필요한 라이브러리 종속성이 로 표시되지 않는다는 오류 메시지가 표시됩니다
+위치:
+
+[root@hostname~]#sanlun fcp show adapter-v
+/usr/lib64/libHBAAPI.so 라이브러리를 찾을 수 없습니다
+라이브러리를 설치하는 패키지가 설치 및 로드되었는지 확인합니다
+공개 보고서 1508554를 참조하십시오. 
 |===
-link:https://mysupport.netapp.com/site/bugs-online/product["NetApp 온라인 버그"] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다.
-
-사용할 수 있는 일부 키워드 조합과 버그 유형은 다음과 같습니다.
-
-* FCP - Linux
-* iSCSI – Linux
-
-
-을 참조하십시오 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["ONTAP SAN 호스트 구성 설명서"] 호스트 OS 설정 및 구성에 대한 자세한 내용은 을 참조하십시오.
-
-
-
-== SAN 호스트 구성 설명서 정보
-
-SAN Host Utilities 설명서는 에 포함되어 있습니다 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["ONTAP SAN 호스트 구성 설명서"]. ONTAP SAN 호스트 구성 문서는 최신 SAN 호스트 릴리즈를 모두 포함하는 누적 문서입니다. 릴리스 간 기능 차이는 상황에 따라 다르게 표시됩니다.
-
-
-
-=== 추가 정보
-
-
-
-==== Linux 커널과 함께 번들로 제공되는 드라이버를 사용할 때 권장되는 기본값입니다
-
-Linux 커널과 함께 번들로 제공되는 기본 받은 편지함 드라이버를 사용하는 FC 환경을 설정할 때 드라이버의 기본값을 사용할 수 있습니다. iSCSI 솔루션 소프트웨어를 사용하는 iSCSI 환경에서는 사용 중인 OS 버전에 따라 특정 권장 값을 수동으로 설정해야 합니다.
-
-
-
-== 제품 설명서 및 기타 정보를 찾을 수 있는 위치
-
-모든 NetApp 제품에 대한 문서에 액세스하고 NetApp 기업 사이트의 제품 설명서 페이지에서 기술 보고서, 백서 등의 기타 제품 정보 리소스를 찾을 수 있습니다.
-
-.관련 정보
-* ONTAP 스토리지 시스템 구성 및 관리 *
-
-* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["ONTAP 소프트웨어 설치 안내서"^] ONTAP 버전용
-* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["ONTAP SAN 관리 가이드 를 참조하십시오"^] ONTAP 버전용
-* 를 클릭합니다 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["ONTAP 릴리즈 노트"^] ONTAP 버전용
-
-
-* E-Series 스토리지 시스템의 구성 및 관리 * 를 참조하십시오
-
-* 프로토콜에 적합한 SANtricity 스토리지 관리자 구성 및 Windows Express용 프로비저닝 가이드
-* 운영 체제, 프로토콜 및 SANtricity 버전에 대한 SANtricity 스토리지 관리자 구성 및 프로비저닝 익스프레스 가이드.
-* 사용 중인 SANtricity 버전에 맞는 SANtricity 스토리지 관리자 소프트웨어 설치 참조 안내서
-* 사용 중인 SANtricity 버전에 맞는 SANtricity 스토리지 관리자 다중 경로 드라이버 안내서.
-* 사용 중인 SANtricity 버전에 대한 SANtricity 저장소 관리자 릴리스 정보.
-
-
-를 참조하십시오 link:https://docs.netapp.com/us-en/e-series/index.html["E-Series 설명서를 참조하십시오"^] SANtricity 관련 문서를 찾습니다.
+link:https://mysupport.netapp.com/site/bugs-online/product["NetApp 온라인 버그"^] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다.

@@ -7,7 +7,7 @@
 .예
 다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
 
-[listing]
+[source, cli]
 ----
 # sanlun lun show all
 ----
