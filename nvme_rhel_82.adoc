@@ -371,6 +371,8 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
 
 == lpfc Verbose 로깅
 
+NVMe/FC용 lpfc 드라이버를 설정합니다.
+
 .단계
 . 를 설정합니다 `lpfc_log_verbose` 다음 값 중 하나에 대한 드라이버 설정을 사용하여 NVMe/FC 이벤트를 기록합니다.
 +

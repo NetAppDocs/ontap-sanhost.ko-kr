@@ -19,14 +19,10 @@ summary: ONTAP를 사용하여 RHEL 9.0용 NVMe-oF 호스트를 구성하는 방
 :toc-position: content
 
 
-
-
-== 지원 가능성
-
+[role="lead"]
 NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상적인 스토리지 장애 조치(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 있는 RHEL 9.0에서 지원됩니다. ANA는 NVM-of 환경에서 ALUA와 동등한 제품이며 현재 In-kernel NVMe Multipath로 구현되고 있습니다. 이 문서에는 RHEL 9.0에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 세부 정보가 포함되어 있습니다.
 
-
-NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+을 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 지원되는 구성에 대한 자세한 내용은 를 참조하십시오.
 
 
 
@@ -38,9 +34,9 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 
 
 
-== 구성 요구 사항
+== 알려진 제한 사항
 
-을 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 지원되는 구성에 대한 자세한 내용은 를 참조하십시오.
+알려진 제한은 없습니다.
 
 
 
@@ -439,134 +435,12 @@ NSID   UUID                               Size
 
 == 알려진 문제
 
+ONTAP 릴리즈가 포함된 RHEL 9.0의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
+
 [cols="10,30,30,10"]
 |===
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"] | RHEL 9.0 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다 | NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 그러나 NVMe-oF 호스트를 가진 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 9.0을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다. | 2087000 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 9.0 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다 | NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 그러나 NVMe-oF 호스트를 가진 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 9.0을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다. | 2087000 
 |===
-
-
-== 문제 해결
-
-NVMe/FC 오류에 대한 문제 해결을 시작하기 전에 상호 운용성 매트릭스 툴(IMT) 사양을 준수하는 구성을 실행 중인지 확인하고 다음 단계를 수행하여 호스트측 문제를 디버깅하십시오.
-
-
-
-=== lpfc 세부 정보 로깅
-
-.단계
-. 를 설정합니다 `lpfc_log_verbose` 다음 값 중 하나에 대한 드라이버 설정을 사용하여 NVMe/FC 이벤트를 기록합니다.
-+
-[listing]
-----
-#define LOG_NVME 0x00100000 /* NVME general events. */
-#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
-#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
-#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
-----
-. 값을 설정한 후 를 실행합니다 `dracut-f` 명령을 실행하여 호스트를 재부팅합니다.
-. 설정을 확인합니다.
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_log_verbose=0xf00083
-
-# cat /sys/module/lpfc/parameters/lpfc_log_verbose
-15728771
-----
-
-
-
-
-=== qla2xxx 세부 정보 로깅
-
-의 경우 NVMe/FC에 대한 유사한 특정 qla2xxx 로깅이 없습니다 `lpfc` 드라이버. 따라서 다음 단계를 사용하여 일반 qla2xxx 로깅 수준을 설정할 수 있습니다.
-
-.단계
-. 해당 modprobe qla2xxx conf 파일에 "ql2xextended_error_logging=0x1e400000" 값을 추가합니다.
-. dracut -f 명령을 실행하여 initramfs를 재생성한 다음 호스트를 재부팅합니다.
-. 재부팅 후 상세 로깅이 다음과 같이 적용되었는지 확인합니다.
-+
-[listing]
-----
-# cat /etc/modprobe.d/qla2xxx.conf
-options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
-# cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
-507510784
-----
-
-
-
-
-=== 일반적인 NVMe-CLI 오류 및 해결 방법
-
-에 표시되는 오류입니다 `nvme-cli` 를 참조하십시오 `nvme discover`, `nvme connect`, 또는 `nvme connect-all` 작업 및 해결 방법은 다음 표에 나와 있습니다.
-
-[cols="20, 20, 50"]
-|===
-| NVMe-CLI에 표시되는 오류 | 가능한 원인 | 해결 방법 
-
-
-| '/dev/NVMe-fabric에 쓸 수 없음: 잘못된 인수. | 구문이 잘못되었습니다 | 에 대한 올바른 구문을 사용하고 있는지 확인합니다 `nvme discover`, `nvme connect`, 및 `nvme connect-all` 명령. 
-
-
-| '/dev/NVMe-fabric에 쓰지 못함: 해당 파일 또는 디렉토리가 없습니다. | 예를 들어, 여러 문제로 인해 이 문제가 발생할 수 있습니다. NVMe 명령에 잘못된 인수를 제공하는 것은 일반적인 원인 중 하나입니다.  a| 
-* 올바른 인수(예: WWNN 문자열, WWPN 문자열 등)를 명령에 전달했는지 확인합니다.
-* 인수가 올바르지만 여전히 이 오류가 나타나면 를 확인합니다 `/sys/class/scsi_host/host*/nvme_info` 명령 출력이 올바르고 NVMe 이니시에이터가 으로 표시됩니다 `Enabled`및 NVMe/FC 타겟 LIF가 원격 포트 섹션 아래에 올바르게 표시됩니다. 예:
-+
-[listing]
-----
-
-# cat /sys/class/scsi_host/host*/nvme_info
-NVME Initiator Enabled
-NVME LPORT lpfc0 WWPN x10000090fae0ec9d WWNN x20000090fae0ec9d DID x012000 ONLINE
-NVME RPORT WWPN x200b00a098c80f09 WWNN x200a00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE
-NVME Statistics
-LS: Xmt 0000000000000006 Cmpl 0000000000000006
-FCP: Rd 0000000000000071 Wr 0000000000000005 IO 0000000000000031
-Cmpl 00000000000000a6 Outstanding 0000000000000001
-NVME Initiator Enabled
-NVME LPORT lpfc1 WWPN x10000090fae0ec9e WWNN x20000090fae0ec9e DID x012400 ONLINE
-NVME RPORT WWPN x200900a098c80f09 WWNN x200800a098c80f09 DID x010301 TARGET DISCSRVC ONLINE
-NVME Statistics
-LS: Xmt 0000000000000006 Cmpl 0000000000000006
-FCP: Rd 0000000000000073 Wr 0000000000000005 IO 0000000000000031
-Cmpl 00000000000000a8 Outstanding 0000000000000001
-----
-* 타겟 LIF가 에 나와 있는 것처럼 표시되지 않는 경우 `nvme_info` 명령 출력에서 를 확인합니다 `/var/log/messages` 및 `dmesg` 의심되는 NVMe/FC 오류에 대한 명령을 출력하고 그에 따라 보고하거나 수정합니다.
-
-
-
-
-| 가져올 검색 로그 항목이 없습니다  a| 
-는 일반적으로 에 관찰됩니다 `/etc/nvme/hostnqn` NetApp 어레이의 해당 하위 시스템에 문자열이 추가되지 않았거나 올바르지 않습니다 `hostnqn` 해당 하위 시스템에 문자열이 추가되었습니다.
- a| 
-가 정확한지 확인합니다 `/etc/nvme/hostnqn` NetApp 어레이의 해당 하위 시스템에 문자열이 추가됩니다(을 사용하여 확인) `vserver nvme subsystem host show` 명령 참조).
-
-
-
-| '/dev/NVMe-fabric에 쓸 수 없습니다: 작업이 이미 진행 중입니다.  a| 
-컨트롤러 연결 또는 지정된 작업이 이미 생성되었거나 생성 중인 경우에 관찰됩니다. 이 문제는 위에 설치된 자동 연결 스크립트의 일부로 발생할 수 있습니다.
- a| 
-없음. 를 실행해 보십시오 `nvme discover` 잠시 후에 다시 명령을 내립니다. 용 `nvme connect` 및 `connect-all`를 실행합니다 `nvme list` 네임스페이스 디바이스가 이미 생성되어 호스트에 표시되는지 확인하는 명령입니다.
-
-|===
-
-
-=== 기술 지원 문의 시기
-
-여전히 문제가 발생하는 경우 다음 파일 및 명령 출력을 수집하고 기술 지원 부서에 문의하여 추가 분류를 요청하십시오.
-
-[listing]
-----
-cat /sys/class/scsi_host/host*/nvme_info
-/var/log/messages
-dmesg
-nvme discover output as in:
-nvme discover --transport=fc --traddr=nn-0x200a00a098c80f09:pn-0x200b00a098c80f09 --host-traddr=nn-0x20000090fae0ec9d:pn-0x10000090fae0ec9d
-nvme list
-nvme list-subsys /dev/nvmeXnY
-----

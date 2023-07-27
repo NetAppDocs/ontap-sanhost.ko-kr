@@ -18,9 +18,8 @@ summary: ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP1에 대해 NVM
 :toc-position: content
 
 
-
-
-== 지원 가능성
+[role="lead"]
+SUSE Linux Enterprise Server 15 SP1 및 ONTAP를 타겟으로 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 구성할 수 있습니다.
 
 NVMe/FC는 다음 SLES 버전에 대해 ONTAP 9.6 이상에서 지원됩니다.
 
@@ -31,16 +30,14 @@ SLES15 SP1 호스트는 동일한 파이버 채널 이니시에이터 어댑터 
 +
 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
 
+* 기본 NVMe/FC 자동 연결 스크립트가 NVMe-CLI 패키지에 포함되어 있습니다. SLES15 SP1에서 기본 받은 편지함 lpfc 드라이버를 사용할 수 있습니다.
 
-
-
-NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
 
 
 
 == 알려진 제한 사항
 
-없음. 기본 NVMe/FC 자동 연결 스크립트가 NVMe-CLI 패키지에 포함되어 있습니다. SLES15 SP1에서 기본 받은 편지함 lpfc 드라이버를 사용할 수 있습니다.
+알려진 제한은 없습니다.
 
 
 
@@ -216,7 +213,12 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
     }
 ]
 ----
++
+= 알려진 문제
 
+
+
+알려진 문제가 없습니다.
 
 
 
@@ -248,6 +250,8 @@ NOTE: Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
 
 
 == lpfc Verbose 로깅
+
+NVMe/FC용 lpfc 드라이버를 설정합니다.
 
 .단계
 . 를 설정합니다 `lpfc_log_verbose` 다음 값 중 하나에 대한 드라이버 설정을 사용하여 NVMe/FC 이벤트를 기록합니다.

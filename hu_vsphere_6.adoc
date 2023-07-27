@@ -18,11 +18,8 @@ summary: ONTAP에서 Linux용 Veritas Infoscale 6.5 및 6.7을 사용하는 방�
 :toc-position: content
 
 
-
-
-== 소개
-
-이 문서에서는 FC, FCoE 및 iSCSI 프로토콜을 사용하는 vSphere 6.5.x 및 6.7.x 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다.
+[role="lead"]
+FC, FCoE 및 iSCSI 프로토콜을 사용하는 vSphere 6.5.x 및 6.7.x 릴리스에 대한 ONTAP SAN 호스트 구성 설정을 사용할 수 있습니다.
 
 
 
@@ -320,10 +317,7 @@ naa.600a098038304731783f506670553355
 
 | ESXi 6.5.x 및 ESXi 6.7.x | 1256473 | Emulex 어댑터에서 테스트하는 동안 PLOGI 문제가 발생했습니다 |  
 |===
-
-
-== 관련 링크
-
+.관련 정보
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
 * link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^]
 * link:https://kb.vmware.com/s/article/83370["VMware vMSC(vSphere Metro Storage Cluster)를 지원하는 NetApp ONTAP with NetApp SnapMirror SM-BC(Business Continuity)"^]

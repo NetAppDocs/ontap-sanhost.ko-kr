@@ -275,6 +275,8 @@ tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.167:4420-uuid.f4f14337c3ad4a639edf0
 
 == 알려진 문제
 
+ESXi 8.x 및 ONTAP 릴리즈의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
+
 [cols="10,30,30"]
 |===
 | NetApp 버그 ID | 제목 | 설명 
@@ -287,7 +289,7 @@ tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.167:4420-uuid.f4f14337c3ad4a639edf0
 vSphere 8.x 이상을 실행하고 vNVMe(vNVME) 어댑터를 사용하는 Linux VM에서 기본적으로 vNVMe 재시도 작업이 비활성화되어 I/O 오류가 발생합니다. APD(All Path Down) 또는 입출력 로드가 많을 때 이전 커널을 실행하는 Linux VM의 중단을 방지하기 위해 VMware는 vNVMe 재시도 작업을 비활성화하기 위해 조정 가능한 "VSCSIDisableNvmeRetry"를 도입했습니다.
 
 |===
-.관련 링크
+.관련 정보
 link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
 link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^]
 link:https://kb.vmware.com/s/article/83370["NetApp ® SnapMirror ® 비즈니스 연속성(SM-BC)을 통해 VMware vSphere 6.x 및 7.x 지원"^]

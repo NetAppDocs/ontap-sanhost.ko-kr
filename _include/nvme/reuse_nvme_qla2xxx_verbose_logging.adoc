@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-의 경우 NVMe/FC에 대한 유사한 특정 qla2xxx 로깅이 없습니다 `lpfc` 드라이버. 따라서 다음 단계를 사용하여 일반 qla2xxx 로깅 수준을 설정할 수 있습니다.
+NVMe/FC에 대한 과 유사한 특정 qla2xxx 로깅이 없습니다 `lpfc` 드라이버. 대신 일반 qla2xxx 로깅 수준을 설정합니다.
 
 .단계
 . 해당 modprobe qla2xxx conf 파일에 "ql2xextended_error_logging=0x1e400000" 값을 추가합니다.

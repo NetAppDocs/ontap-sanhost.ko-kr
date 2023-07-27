@@ -18,9 +18,8 @@ summary: ONTAP가 있는 Windows Server 2012 R2에 대한 NVMe/FC 호스트 구�
 :toc-position: content
 
 
-
-
-== 지원 가능성
+[role="lead"]
+Windows Server 2012 R2 및 ONTAP를 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 타겟으로 구성할 수 있습니다.
 
 NVMe/FC는 Windows Server 2012용 ONTAP 9.7 이상에서 지원됩니다.
 

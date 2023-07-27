@@ -18,10 +18,7 @@ summary: Citrix XenServer 7.x를 ONTAP와 함께 사용하는 방법에 대해 �
 :toc-position: content
 
 
-
-
-== 소개
-
+[role="lead"]
 이 문서에서는 FC, FCoE 및 iSCSI 프로토콜을 지원하는 Citrix XenServer 7 시리즈 OS 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대해 설명합니다.
 
 
