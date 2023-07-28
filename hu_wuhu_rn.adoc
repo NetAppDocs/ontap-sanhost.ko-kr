@@ -19,7 +19,7 @@ summary: Windows Unified Host Utilities 릴리스 정보
 
 
 [role="lead"]
-이 릴리스 정보 문서에는 새로운 기능, 개선 사항 및 알려진 문제에 대한 업데이트를 비롯하여 Windows Unified Host Utilities 7.2 및 7.1 릴리스에 대한 최신 정보가 포함되어 있습니다. 이 문서는 Windows Host Utilities 사용에 대한 새로운 정보가 제공될 때 업데이트됩니다.
+릴리스 노트 문서에는 Windows Unified Host Utilities 7.2 및 7.1 릴리스에 대한 최신 정보(새로운 기능, 개선 사항 및 알려진 문제에 대한 업데이트 포함)가 포함되어 있습니다. 이 문서는 Windows Host Utilities 사용에 대한 새로운 정보가 제공될 때 업데이트됩니다.
 
 
 

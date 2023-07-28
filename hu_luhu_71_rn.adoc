@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu_luhu_71_rn.html 
-keywords: host utilities, linux, 7.1, netapp, ontap, release, notes 
+keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
 summary: Linux Unified Host Utilities 7.1 릴리스 정보 
 ---
 = Linux Unified Host Utilities 7.1 릴리스 정보
@@ -45,8 +45,8 @@ NOTE: 이 문서에서 Host Utilities 또는 Linux Host Utilities에 대한 언�
 ** Citrix XenServer를 참조하십시오
 
 
-* RHEL(Red Hat Enterprise Linux) 6 및 RHEL 7 호스트에서 이제 서버 프로필 설정을 위한 조정된 패키지가 지원됩니다. 를 사용할 수 있습니다 `tuned-adm` 환경에 따라 다른 프로파일을 설정하는 명령입니다.  예를 들어, 가상 게스트 프로파일을 게스트 가상 머신으로 사용할 수도 있고 엔터프라이즈 스토리지 어레이의 LUN이 사용되는 구성에 엔터프라이즈 스토리지 프로파일을 사용할 수도 있습니다.  조정된 패키지를 사용하면 ONTAP의 처리량과 지연 시간이 개선될 수 있습니다.
-* Broadcom Emulex 및 Marvell Qlogic의 32GB 파이버 채널 어댑터에 대한 지원을 추가합니다.
+* RHEL(Red Hat Enterprise Linux) 6 및 RHEL 7 호스트에서 이제 서버 프로필 설정을 위한 조정된 패키지가 지원됩니다. 를 사용할 수 있습니다 `tuned-adm` 환경에 따라 다른 프로파일을 설정하는 명령입니다. 예를 들어, 가상 게스트 프로파일을 게스트 가상 머신으로 사용할 수도 있고 엔터프라이즈 스토리지 어레이의 LUN이 사용되는 구성에 엔터프라이즈 스토리지 프로파일을 사용할 수도 있습니다. 조정된 패키지를 사용하면 ONTAP의 처리량과 지연 시간이 개선될 수 있습니다.
+* Broadcom Emulex 및 Marvell Qlogic의 32Gb FC 어댑터에 대한 지원을 추가합니다.
 
 
 

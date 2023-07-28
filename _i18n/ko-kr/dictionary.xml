@@ -2162,7 +2162,6 @@
   <block id="e8db03fc399918672bed8132e0d8ea35" category="list-text">를 클릭합니다 <block ref="0f33c30ae119203ebbfd38575ad3015e" category="inline-link-macro-rx"></block> ONTAP 버전용</block>
   <block id="230a02b4afeea5b0d97c6a68a6530da3" category="summary">HPUX Host Utilities 6.0 릴리스 정보</block>
   <block id="e16c4360565a75371ee1b578b4c1ecca" category="doc">HP-UX Host Utilities 6.0 릴리스 정보</block>
-  <block id="928dee6fba9a0c4ccb1b167e31071cc0" category="paragraph">이 릴리즈 노트 문서에는 알려진 문제, 제한 사항, ONTAP 스토리지 시스템 구성 및 관리에 대한 업데이트를 비롯하여 HP-UX Host Utilities 6.0 릴리스에 대한 최신 정보가 수록되어 있습니다. HP-UX Host Utilities 사용에 대한 새로운 정보가 제공되면 릴리즈 노트 문서가 업데이트됩니다.</block>
   <block id="02f8eb4aa3c5b1158e37fd1a9c849ca8" category="section-title">HP-UX Host Utilities 6.0 릴리스 정보</block>
   <block id="18691c1295f4b1c26d2e8a9a5b67cfb9" category="paragraph">HP-UX Host Utilities는 여러 HP-UX 환경과 여러 프로토콜을 지원합니다. HP-UX Host Utilities는 다음과 같은 환경을 지원합니다.</block>
   <block id="8017a7ef798d9749aaed2e77fcebed98" category="list-text">네이티브 MPIO</block>
@@ -2272,7 +2271,6 @@
   <block id="ab5c1cc33879491a00632f6478216936" category="paragraph">SAN 호스트 및 ONTAP 스토리지는 사내, 클라우드 또는 둘 모두에 있을 수 있습니다.</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="inline-link-macro">Cloud Volumes ONTAP</block>
   <block id="18cf072964a583150dd247485ba75b92" category="inline-link-macro">ONTAP용 Amazon FSx</block>
-  <block id="bd4300690dfdbe14b72c16ede45c8a40" category="paragraph">최상의 성능과 성공적인 페일오버를 위해서는 올바른 구성이 중요합니다.</block>
   <block id="5206f5e3d376aae380267b11c8d7e8a0" category="sidebar">이 내용은 ONTAP 스토리지에 연결된 SAN 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다. SAN 클라이언트와 ONTAP 스토리지는 사내 또는 클라우드에 상주할 수 있습니다.</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">시작하십시오</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">더 많은 리소스</block>
@@ -2316,7 +2314,6 @@
   <block id="7b4c9d36bd8121e0d136897711d66090" category="sidebar">Wuhu 7.1을 설치합니다</block>
   <block id="1f87ccc57172166c30629890b2884f0e" category="paragraph">를 사용할 수 있습니다<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 명령을 사용하여 ONTAP LUN의 설정을 확인합니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="1bad318175e7aa1eb67e6db2256bb9b1" category="paragraph">압축을 푼 소프트웨어가 서비스 센터 파일의 압축을 푼 디렉토리에 저장됩니다.</block>
-  <block id="5bd6f64a8cbf5643612affb8bd552a8d" category="paragraph">이 릴리스 노트 문서에는 알려진 문제, 제한 사항, ONTAP 스토리지 시스템 구성 및 관리에 대한 업데이트를 포함하여 AIX 호스트 유틸리티 6.1 릴리스에 대한 최신 정보가 포함되어 있습니다.</block>
   <block id="39b3dd6edf4819881415b4ccbfcf4d58" category="paragraph">Oracle Linux 7.1 UEK R4의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 7.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. 를 사용할 수 있습니다<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 명령을 사용하여 ONTAP LUN의 설정을 확인합니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="36889db7961eacd91f01477a29a2c5ea" category="list-text">의 출력을 확인합니다<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block> 명령을 사용하여 설정이 완료되었는지 확인합니다. 를 사용할 수 있습니다<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 명령을 사용하여 ONTAP LUN의 설정을 확인합니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="3ad269cd9c25c5c028bf155f768f0618" category="paragraph">기본적으로 AIX 운영 체제는 LUN에 대한 경로를 사용할 수 없는 경우 더 짧은 입출력 시간 초과를 적용합니다. 이러한 현상은 단일 스위치 SAN 패브릭과 MetroCluster 구성을 포함하여 예상치 못한 페일오버를 경험한 구성에서 발생할 수 있습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 을 참조하십시오 <block ref="682b92f396ad2229bd62e99c5a518610" category="inline-link-macro-rx"></block></block>
@@ -2327,7 +2324,6 @@
   <block id="488ee7d410bfc05042cf79417f62b731" category="paragraph">이 콘텐츠는 ONTAP 스토리지에 접속된 SAN 호스트를 빠르게 구성하기 위한 호스트 및 버전별 Best Practice를 제공합니다.</block>
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">클라우드 환경에서 호스트는 일반적으로 클라이언트라고 합니다. 이 콘텐츠의 모든 호스트별 정보는 클라우드 클라이언트에도 적용됩니다.</block>
   <block id="7dac0335f353ff4aea15e7349355818e" category="paragraph">예를 들어, 사내 ONTAP 스토리지를 구성하여 사내 SAN 호스트에 연결하거나 SAN 클라우드 클라이언트에 연결할 수 있습니다. 을(를) 구성할 수도 있습니다 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 또는 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block> 사내 SAN 호스트에 접속하거나 SAN 클라우드 클라이언트에 접속하려면</block>
-  <block id="6889073c7d1502d89a41a22f7b933a57" category="paragraph">이 릴리스 정보 문서에는 알려진 문제, 제한 사항, ONTAP 스토리지 시스템 구성 및 관리에 대한 업데이트를 비롯하여 Solaris 호스트 유틸리티 6.2에 대한 최신 정보가 포함되어 있습니다.</block>
   <block id="94ed2eb93c1ea841359ebf631638ec66" category="paragraph">우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">이 예에서는<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 동안 다시 시도하도록 합니다. 예를 들면, 다음과 같습니다.</block>
@@ -2603,7 +2599,6 @@
   <block id="6faca8b2572cd22ef1b619e4be0a8165" category="paragraph">NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 경로가 10분의 기본 시간 제한 내에 복원되지 않고 다운되면 NVMe/TCP가 자동으로 다시 연결되지 않습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다.</block>
   <block id="ffb6c4a21213679507c7941f550bd2c7" category="summary">Windows Unified Host Utilities 릴리스 정보</block>
   <block id="51372fd44786d9688cfe76623106730b" category="doc">Windows Unified Host Utilities 릴리스 정보</block>
-  <block id="8f7c8b6697ec49deeadb7167cc83ec7d" category="paragraph">이 릴리스 정보 문서에는 새로운 기능, 개선 사항 및 알려진 문제에 대한 업데이트를 비롯하여 Windows Unified Host Utilities 7.2 및 7.1 릴리스에 대한 최신 정보가 포함되어 있습니다. 이 문서는 Windows Host Utilities 사용에 대한 새로운 정보가 제공될 때 업데이트됩니다.</block>
   <block id="d203490d9623c1e2d75f42f5f678e00f" category="section-title">Windows Unified Host Utilities 정보</block>
   <block id="c58bbb489cf9a676efa84ccbf8f2d95f" category="paragraph">Windows Unified Host Utilities는 다음 버전의 Windows를 계속 지원합니다.</block>
   <block id="d01454be7f3c4cdc6a05c67e9f6dd9a9" category="list-text">Windows Unified Host Utilities 7.2에는 새 공급업체 카드에 대한 NVMe/FC 드라이버 매개 변수 설정 및 버그 수정 지원이 포함되어 있습니다.</block>
@@ -3301,13 +3296,10 @@
   <block id="51b13e2ba8873a4272d5a6e2a0ed4515" category="paragraph">ONTAP가 설치된 Oracle Linux 9.2에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="8d4478de8c42ac77a687fe1b9da495db" category="paragraph">ONTAP를 사용하는 ESXi 7.x의 NVMe-of 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="34eb69c2ca284db87777cb75cdcf0dd9" category="paragraph">ONTAP를 타겟으로 사용하여 Windows Server 2019를 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 구성할 수 있습니다.</block>
-  <block id="07e49dbbfe229f5428866384db02e329" category="paragraph">릴리즈 노트에서는 ONTAP 스토리지 시스템에서 특정 호스트를 구성 및 관리하기 위한 새로운 기능 및 향상된 기능, 알려진 문제 및 제한 사항, 중요한 주의 사항에 대해 설명합니다.</block>
   <block id="91770f038cd944a1d3b9b347edeb2b10" category="section-title">새로운 기능</block>
   <block id="47851fc857cb6267d67c526211828e1e" category="paragraph">Linux Host Utilities 7.1 릴리스에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.</block>
   <block id="92d4f2c8b053dc173575e4ac46223415" category="list-text">Linux 호스트 유틸리티는 SANtricity를 실행하는 NetApp E-Series 스토리지 시스템과 ONTAP을 실행하는 AFF, FAS 및 ASA 시스템을 지원하기 때문에 이제 _ Linux 통합 호스트 유틸리티라고 합니다.</block>
   <block id="640086d83a51b4fd5839f3bf24d824ea" category="list-text">이제 다음 운영 체제가 지원됩니다.</block>
-  <block id="c7756454768a1c1d608d1a4ac749006d" category="list-text">RHEL(Red Hat Enterprise Linux) 6 및 RHEL 7 호스트에서 이제 서버 프로필 설정을 위한 조정된 패키지가 지원됩니다. 를 사용할 수 있습니다<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> 환경에 따라 다른 프로파일을 설정하는 명령입니다.  예를 들어, 가상 게스트 프로파일을 게스트 가상 머신으로 사용할 수도 있고 엔터프라이즈 스토리지 어레이의 LUN이 사용되는 구성에 엔터프라이즈 스토리지 프로파일을 사용할 수도 있습니다.  조정된 패키지를 사용하면 ONTAP의 처리량과 지연 시간이 개선될 수 있습니다.</block>
-  <block id="d047bdc1dea99bd9c686408f783b1571" category="list-text">Broadcom Emulex 및 Marvell Qlogic의 32GB 파이버 채널 어댑터에 대한 지원을 추가합니다.</block>
   <block id="7636f503a3339c628c780594076ebb17" category="section-title">이 릴리스에서 수정되었습니다</block>
   <block id="977dc544e187df2c36b93ee4767972aa" category="paragraph">를 실행할 때 간헐적으로 발생하는 호스트 OS 오류 문제입니다<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> SLES12SP1, OL7.2, RHEL7.2 및 RHEL 6.8의 명령은 이 릴리즈에서 수정되었습니다.</block>
   <block id="d2eefe458609a5477d08446697ea1261" category="paragraph">Linux Host Utilities 7.1 릴리스에는 다음과 같은 알려진 문제와 제한 사항이 있습니다.</block>
@@ -3374,4 +3366,12 @@
   <block id="368bcd2118dd63e80fb399c6feb8f7ec" category="paragraph">ONTAP를 사용하는 AIX용 NVMe/FC 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="b666f8343a2e41c88c8766775c8dec12" category="paragraph">ONTAP를 사용하는 ESXi 8.x의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris 호스트 유틸리티</block>
+  <block id="1e1ac2f92ca06b1f068f6aa6c61883c0" category="paragraph">릴리즈 노트에서는 ONTAP 스토리지 시스템에서 특정 호스트를 구성 및 관리하기 위한 새로운 기능 및 향상된 기능, 알려진 문제 및 제한 사항, 중요한 주의 사항에 대해 설명합니다.</block>
+  <block id="2ad9563dae62baefb397a0b93e22f08a" category="list-text">RHEL(Red Hat Enterprise Linux) 6 및 RHEL 7 호스트에서 이제 서버 프로필 설정을 위한 조정된 패키지가 지원됩니다. 를 사용할 수 있습니다<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> 환경에 따라 다른 프로파일을 설정하는 명령입니다. 예를 들어, 가상 게스트 프로파일을 게스트 가상 머신으로 사용할 수도 있고 엔터프라이즈 스토리지 어레이의 LUN이 사용되는 구성에 엔터프라이즈 스토리지 프로파일을 사용할 수도 있습니다. 조정된 패키지를 사용하면 ONTAP의 처리량과 지연 시간이 개선될 수 있습니다.</block>
+  <block id="b91c8d257cb2ab1f821c4201c4d98d12" category="list-text">Broadcom Emulex 및 Marvell Qlogic의 32Gb FC 어댑터에 대한 지원을 추가합니다.</block>
+  <block id="f6a506796011f5db21cf0cc405fcd88e" category="paragraph">릴리즈 노트 문서에는 알려진 문제, 제한 사항, ONTAP 스토리지 시스템 구성 및 관리에 대한 업데이트를 비롯하여 HP-UX Host Utilities 6.0 릴리스에 대한 최신 정보가 포함되어 있습니다. HP-UX Host Utilities 사용에 대한 새로운 정보가 제공되면 릴리즈 노트 문서가 업데이트됩니다.</block>
+  <block id="a26aa7b42e8c5d7d2a6c295dc3421eb4" category="paragraph">최상의 성능과 성공적인 페일오버를 위해서는 올바른 구성이 중요합니다.</block>
+  <block id="03b35db54926510f82d04231162aa4bc" category="paragraph">릴리스 정보 문서에는 알려진 문제, 제한 사항, ONTAP 스토리지 시스템 구성 및 관리에 대한 업데이트를 비롯하여 Solaris 호스트 유틸리티 6.2에 대한 최신 정보가 포함되어 있습니다.</block>
+  <block id="8b98a90c0f8d947a6126ce4314f1d147" category="paragraph">릴리스 노트 문서에는 Windows Unified Host Utilities 7.2 및 7.1 릴리스에 대한 최신 정보(새로운 기능, 개선 사항 및 알려진 문제에 대한 업데이트 포함)가 포함되어 있습니다. 이 문서는 Windows Host Utilities 사용에 대한 새로운 정보가 제공될 때 업데이트됩니다.</block>
+  <block id="83c2a71fbf38a299fb12e6baeabd4505" category="paragraph">릴리스 노트 문서에는 알려진 문제, 제한 사항, ONTAP 스토리지 시스템 구성 및 관리에 대한 업데이트를 포함하여 AIX 호스트 유틸리티 6.1 릴리스에 대한 최신 정보가 포함되어 있습니다.</block>
 </blocks>

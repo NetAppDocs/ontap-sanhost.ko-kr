@@ -18,7 +18,7 @@ summary: HPUX Host Utilities 6.0 릴리스 정보
 :toc-position: content
 
 
-이 릴리즈 노트 문서에는 알려진 문제, 제한 사항, ONTAP 스토리지 시스템 구성 및 관리에 대한 업데이트를 비롯하여 HP-UX Host Utilities 6.0 릴리스에 대한 최신 정보가 수록되어 있습니다. HP-UX Host Utilities 사용에 대한 새로운 정보가 제공되면 릴리즈 노트 문서가 업데이트됩니다.
+릴리즈 노트 문서에는 알려진 문제, 제한 사항, ONTAP 스토리지 시스템 구성 및 관리에 대한 업데이트를 비롯하여 HP-UX Host Utilities 6.0 릴리스에 대한 최신 정보가 포함되어 있습니다. HP-UX Host Utilities 사용에 대한 새로운 정보가 제공되면 릴리즈 노트 문서가 업데이트됩니다.
 
 
 
