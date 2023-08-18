@@ -142,20 +142,23 @@ blacklist {
 +
 를 교체합니다 `<DevId>` 를 사용하여 `WWID` 제외할 장치의 문자열입니다.
 
-
-
++
 .예
-이 예에서는 `sda` 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.
+이 예에서는 디바이스의 WWID를 확인하고 에 추가합니다 `multipath.conf` 파일.
 
++
 .단계
-. 다음 명령을 실행하여 WWID를 확인하십시오.
+.. 다음 명령을 실행하여 WWID를 확인하십시오.
 +
 [listing]
 ----
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
 ----
-. 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
++
+`sda` 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.
+
+.. 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
 +
 [listing]
 ----
@@ -166,6 +169,8 @@ blacklist {
      devnode "^cciss.*"
 }
 ----
+
+
 
 
 을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일(특히 기본값 섹션에 있음)
