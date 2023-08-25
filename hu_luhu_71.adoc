@@ -31,7 +31,7 @@ Linux 통합 호스트 유틸리티를 사용하면 Linux 호스트에 연결된
 
 
 .필요한 것
-NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^] 32비트 또는 64비트 .rpm 파일
+NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 32비트 또는 64비트 .rpm 파일
 
 * 안정적인 운영을 위해서는 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인해야 합니다.
 +
@@ -63,7 +63,7 @@ rpm -e netapp_linux_unified_host_utilities-7-1
 +
 이전 버전의 Linux Host Utilities의 경우, 호스트 유틸리티 소프트웨어가 설치된 디렉토리로 이동한 다음 uninstall 명령을 입력하여 설치된 패키지를 제거합니다.
 
-. 에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^] 호스트에.
+. 에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에.
 . 소프트웨어 패키지를 다운로드한 디렉토리로 이동한 후 다음 명령을 사용하여 설치합니다.
 +
 [source, cli]
