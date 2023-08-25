@@ -286,15 +286,14 @@ NOTE: Oracle Linux 7.9 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사
 
 
 
-== 알려진 문제 및 제한 사항
+== 알려진 문제
+
+Oracle Linux 7.9 및 ONTAP 릴리스에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="4*"]
 |===
 | NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
-| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. | 해당 없음 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1328944["1328943"^] | Emulex LPe32002(32G) 호스트를 사용하여 스토리지 페일오버 중에 I/O 지연이 관찰되었습니다 | QLogic LPe32002 32G HBA를 사용하는 Oracle Linux 7.8 커널(5.4.17-2011.1.2.el8uek.x86_64)에서 스토리지 페일오버 작업 중에 기존 활성 경로를 통해 입출력 작업이 계속되지 않을 수 있습니다. 스토리지 페일오버 중 기존 활성 경로를 계속 진행할 때 장애로 인해 I/O 진행이 중지되면 I/O 작업이 재개되지 않아 I/O 지연이 발생할 수 있습니다. I/O 작업은 스토리지 페일오버 반환 작업이 완료된 후에만 재개됩니다. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=17319["17319"^] 
+| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트의 데이터가 손상될 수 있습니다 | 를 설정할 때 `disable_changed_wwids` Multipath configuration parameter to Yes, WWID(Worldwide Identifier)가 변경되면 경로 디바이스에 대한 액세스가 비활성화됩니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 를 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^] 를 참조하십시오. | 해당 없음 
 |===
