@@ -22,7 +22,7 @@ summary: ONTAP에서 Oracle Linux 8.6을 사용하는 방법에 대해 설명합
 
 == Linux Unified Host Utilities를 설치합니다
 
-NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 64비트 .rpm 파일
+NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 64비트 .rpm 파일
 
 NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 
@@ -30,7 +30,7 @@ NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장�
 현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 업그레이드 또는 제거한 다음 다음 다음 단계에 따라 최신 버전을 설치해야 합니다.
 
 .단계
-. 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 호스트에.
+. 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에.
 . 소프트웨어 패키지를 설치합니다.
 +
 "rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"

@@ -24,7 +24,7 @@ summary: ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는
 
 AIX MPIO를 NetApp ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.
 
-NetApp Support 사이트에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다. 파일이 있으면 호스트 유틸리티를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 가져오려면 파일의 압축을 풀어야 합니다.
+에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support 사이트"^]. 파일이 있으면 호스트 유틸리티를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 가져오려면 파일의 압축을 풀어야 합니다.
 
 NetApp AIX Host Utilities 6.1이 최신 릴리즈입니다. 이 릴리스는 이전 릴리즈에서 보고된 메모리 누수 문제를 해결합니다. 자세한 내용은 릴리즈 노트 섹션을 참조하십시오.
 

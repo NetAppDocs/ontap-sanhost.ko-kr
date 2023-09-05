@@ -22,10 +22,10 @@ summary: Solaris 호스트 유틸리티를 설치하는 방법에 대해 설명�
 
 == Solaris 호스트 유틸리티를 설치합니다
 
-에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^]. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.
+에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support 사이트"^]. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.
 
 .단계
-. 에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 호스트의 디렉토리로 이동합니다.
+. 에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support 사이트"^] 호스트의 디렉토리로 이동합니다.
 . 다운로드가 포함된 디렉터리로 이동합니다.
 . 파일의 압축을 풉니다.
 +

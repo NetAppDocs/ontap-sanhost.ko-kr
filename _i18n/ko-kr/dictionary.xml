@@ -3,9 +3,7 @@
   <block id="039c572446bfd0a2b1ec8e52fc45283c" category="summary">ONTAP에서 CentOS 6.9를 사용하는 방법에 대해 설명합니다</block>
   <block id="9d2169c1c2855b78a7aeaa4f42d27dc7" category="inline-link-macro">NetApp Support 사이트</block>
   <block id="9ed4a475dd3705157a9fed8811f63ce2" category="inline-link-macro">NetApp 상호 운용성 매트릭스 툴</block>
-  <block id="0fed9cf9730bf6732d4b5c033406917c" category="paragraph">NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="6669d666f8f453569510bbfca28c3a1e" category="inline-link-macro-rx"></block> 32비트 및 64비트 .rpm 파일 구성에 적합한 파일을 모르는 경우 를 사용합니다 <block ref="963ce614f4afebd07b4317928a39d286" category="inline-link-macro-rx"></block> 필요한 것을 확인합니다.</block>
   <block id="00fc1bf20dbc4f3e92a58dc60bc9ed11" category="paragraph">현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 또는 를 업그레이드해야 합니다. 이 유틸리티를 제거하고 다음 단계를 따라 최신 버전을 설치해야 합니다.</block>
-  <block id="53fb5541a1076b0275ddc8379f39602d" category="list-text">에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 <block ref="6669d666f8f453569510bbfca28c3a1e" category="inline-link-macro-rx"></block> 사이트를 호스트에 연결.</block>
   <block id="8c00d982a2880d4d1d69e922c0dcea7c" category="list-text">다음 명령을 사용하여 소프트웨어 패키지를 설치합니다.</block>
   <block id="04a6a4dcd6c76702d2da3ff70e4a7ec8" category="paragraph">"rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"</block>
   <block id="b80744314bf569766c44748e7c613ca7" category="section-title">SAN 툴킷을 참조하십시오</block>
@@ -197,11 +195,9 @@
   <block id="8d1d1e53a5b8a67ed06ee929fcb68093" category="summary">ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방법에 대해 설명합니다</block>
   <block id="ffdedbe1187a1ddb0d5c60a0ac382630" category="paragraph">Linux Unified Host Utilities는 Linux 호스트에 명령줄 도구 키트를 제공하는 NetApp 호스트 소프트웨어입니다.</block>
   <block id="7f239a97a66cea4e3bb767698099b430" category="admonition">SAN 툴킷은 Citrix XenServer, Oracle VM 및 Red Hat Enterprise Virtualization Hypervisor에서 지원되지 않습니다.</block>
-  <block id="afd7ebe87c934a3e70afff3d554de044" category="paragraph">NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="6669d666f8f453569510bbfca28c3a1e" category="inline-link-macro-rx"></block> 32비트 또는 64비트 .rpm 파일</block>
   <block id="c361420559f71f223ab1528978c7f7d3" category="list-text">현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 다음 명령을 사용하여 제거합니다.</block>
   <block id="e373b253d3dda0488582e96b90463674" category="paragraph">"rpm -e netapp_linux_unified_host_utilities-7-1"</block>
   <block id="8c0eeca7c70428976293084f983f0af1" category="paragraph">이전 버전의 Linux Host Utilities의 경우, 호스트 유틸리티 소프트웨어가 설치된 디렉토리로 이동하여 'uninstall' 명령을 입력하십시오.</block>
-  <block id="a8f1b63b218bea414f41305d19ffed0c" category="list-text">에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 <block ref="6669d666f8f453569510bbfca28c3a1e" category="inline-link-macro-rx"></block> 호스트에.</block>
   <block id="d01163b5f1a458851231ad2885e038b0" category="list-text">소프트웨어 패키지를 다운로드한 디렉토리로 이동한 후 다음 명령을 사용하여 설치합니다.</block>
   <block id="d47e6034707138c9dbef5d431a5e5151" category="paragraph">"rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_xx.rpm"</block>
   <block id="fac4447e0ea2e4cd1a2d9e2fefeab694" category="list-text">설치를 확인합니다.</block>
@@ -267,8 +263,6 @@
   <block id="482723983a4f2af954e36ff41e567451" category="section-title">알려진 제한 사항</block>
   <block id="e91fdc5014f1e70d6afdea6c60886518" category="paragraph">Windows Server 2019에는 알려진 문제가 없습니다.</block>
   <block id="1669e5f0b1148e1054b39b7a819b7fdb" category="summary">ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는 방법에 대해 설명합니다</block>
-  <block id="78dad9d652edc0f2255634fdd6120f93" category="paragraph">NetApp Support 사이트에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다. 파일을 가지고 나면 Host Utilities를 설치하는 데 필요한 소프트웨어 패키지를 가져오려면 파일의 압축을 해제해야 합니다.</block>
-  <block id="193e9a3a22ec18786f1a8e1dccfdc4ac" category="list-text">에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block> 호스트의 디렉토리로 이동합니다.</block>
   <block id="c454d997c91275b70f2f0433fad3fe36" category="list-text">다운로드가 포함된 디렉터리로 이동합니다.</block>
   <block id="f814c4c509cfee1aaec985d122ae9223" category="list-text">파일의 압축을 풉니다.</block>
   <block id="f6e9198a006ec354ae70027fd194c6a2" category="paragraph">'gunzip netapp_solaris_host_utilities_6_2N20170913_0304_sparc.tar.gz'</block>
@@ -547,8 +541,6 @@
   <block id="6348d7ef4eea2a689477f692799b8a5d" category="paragraph">RHEL 7.1 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일되었습니다.</block>
   <block id="decf77540b0827bf2f8607451a3743f3" category="cell">스토리지 페일오버 작업이 포함된 I/O에서 Emulex 10G FCoE 호스트(OCe10102-FX-D)의 호스트 중단 또는 경로 장애가 관찰될 수 있습니다. 이러한 경우 "드라이버 버퍼 풀이 비어 있음, IO 작동 중 및 SCSI 계층 I/O 중단 요청 상태" 메시지가 표시될 수 있습니다.</block>
   <block id="1007b7632045ad8e75cf3589b6d28f94" category="summary">ONTAP와 함께 Oracle Linux 8.1을 사용하는 방법에 대해 설명합니다</block>
-  <block id="f041d7aa93ccef62fcc7abea92526fc2" category="paragraph">NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block> 64비트 .rpm 파일</block>
-  <block id="722c71516edb740dbf949ee9187f7daa" category="list-text">에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다<block ref="5d5134ddaf42180d688670ce5e1f032a" category="inline-link-rx"></block> 호스트에.</block>
   <block id="9dbfd05f0dcf7ea7f5d678dc3ac216c7" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <block ref="e6f1d72f4eb45ad3af66c651a6a8a1b4" category="inline-link-macro-rx"></block> 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.</block>
   <block id="3adfaacb5236083e12561cfda09586f4" category="paragraph">Oracle Linux 8.1의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 8.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="2d42bb9d7307ce616ea0bcece7fd8556" category="cell">"2 pg_init_retries 50"</block>
@@ -1294,7 +1286,6 @@
   <block id="1288c56822a6bb56a7acdc5941948855" category="cell">1306354)를 참조하십시오</block>
   <block id="fc3dae564fdea298fb1911d12d99bb45" category="cell">SCSI 최대 전송 길이 1MB는 ONTAP All SAN 어레이에 적용됩니다. ONTAP All SAN 어레이에 연결할 때 HP-UX 호스트에서 최대 전송 길이를 제한하려면 HP-UX SCSI 서브시스템에서 허용하는 최대 I/O 크기를 1MB로 설정해야 합니다. 자세한 내용은 HP-UX 공급업체 문서를 참조하십시오.</block>
   <block id="0960de670071121018c377f3ca40c5e7" category="summary">ONTAP에서 IBM AIX 7.1을 사용하는 방법에 대해 설명합니다</block>
-  <block id="9fd30469c1e3a7c262c116e88d7e9274" category="paragraph">NetApp Support 사이트에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.</block>
   <block id="be3d2421a8f8e1a506cd8ec6140627fb" category="paragraph">'tar-xvf ntap_aix_host_utilities_6.1.tar.tgz'</block>
   <block id="bb592bc57b2d28b13d87379c7d6269df" category="paragraph">SAN 부팅은 AIX 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다. FC 또는 FCoE 프로토콜을 사용하여 AIX Host Utilities를 실행하는 AIX MPIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 생성하고 AIX MPIO 환경에 새 OS 이미지를 설치하는 데 사용하는 방법은 사용 중인 프로토콜에 따라 다를 수 있습니다.</block>
   <block id="3687a533941379b59a8738b1c2ed0311" category="paragraph">다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 네트워크 경로를 구성할 수 있습니다. 한 경로에 장애가 발생하면 트래픽이 나머지 경로에서 계속됩니다. Host Utilities의 AIX 환경에서는 AIX 기본 다중 경로 솔루션인 MPIO를 사용합니다.</block>
@@ -2273,7 +2264,6 @@
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">RHEL의 NVMeoF</block>
   <block id="47e2092f9d666fc24b67c7da02de84c7" category="paragraph">Windows 통합 호스트 유틸리티(Wuhu)는 NetApp SAN의 가상 디스크(LUN)에 호스트 컴퓨터를 연결할 수 있는 설명서와 함께 제공되는 소프트웨어 프로그램입니다. 최신 유틸리티 키트를 다운로드하여 설치하는 것이 좋습니다. Wuhu 구성 정보 및 지침은 을 참조하십시오 <block ref="f7fe1c204ed60a7e9dd594c09fd7b1a5" category="inline-link-macro-rx"></block>.</block>
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows 호스트 유틸리티 키트 7.1</block>
-  <block id="47806b50157f4c2450dab9085e65bf42" category="list-text">설치합니다 <block ref="3da09c0cdee3c0d99e3c71a79e706ce0" category="inline-link-macro-rx"></block> FC 및 NVMe 모두에 공통되는 드라이버 매개 변수를 설정합니다.</block>
   <block id="a94e97667092f5ff8b67813ccebdb0ca" category="paragraph">Host Utilities는 다양한 Windows 호스트 구성, 프로토콜 및 다중 경로 옵션을 지원합니다. 자세한 내용은 을 참조하십시오<block ref="b7322bec4509d45107de6de43ca1f517" category="inline-link-rx"></block>.</block>
   <block id="0165fb41a35ddb937948f77394256403" category="inline-link-macro">SAN 호스트 Windows 설명서</block>
   <block id="6edf97e112927c25a9a1571ba78c02f9" category="list-text">의 해당 호스트에 필요한 핫픽스를 확인합니다 <block ref="d639dff184f4bf79d87dbc978d26f542" category="inline-link-macro-rx"></block>.</block>
@@ -2397,7 +2387,6 @@
   <block id="3a34596144aee2d13108623781ca1789" category="list-text">7.0U3c부터 ESXi 하이퍼바이저에 대해 NVMe/TCP 기능이 지원됩니다.</block>
   <block id="98f0b197b8132a81e5d6da89bc6ded25" category="list-text">ONTAP 9.10.1부터 ONTAP에 대해 NVMe/TCP 기능이 지원됩니다.</block>
   <block id="98ffdd0945470204439692dc82dc8d98" category="paragraph">AIX MPIO를 NetApp ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.</block>
-  <block id="9aab5807a16ac54dff9ec8e124181169" category="paragraph">NetApp Support 사이트에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다. 파일이 있으면 호스트 유틸리티를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 가져오려면 파일의 압축을 풀어야 합니다.</block>
   <block id="191896e66abb860542afaf3bc97289fc" category="section-title">SAN 툴킷</block>
   <block id="01281e2990c631b64037834e8b22bd4c" category="cell">rw_timeout(디스크)</block>
   <block id="a97f41c78bd6ac237cc0a78dbc8e3557" category="section-title">MetroCluster에 대한 권장 설정입니다</block>
@@ -2740,13 +2729,11 @@
   <block id="b16d9e0da8fa9c56e92e63e0ef6c5e31" category="list-text">OL 9.0 호스트에서 다음 NVMe/FC 설정을 확인합니다.</block>
   <block id="d5946da4bef042fd1ecdafbb693027e4" category="paragraph">구성에 문제가 있는 경우 자세한 정보 로깅은 문제 해결에 필요한 필수 정보를 제공할 수 있습니다.</block>
   <block id="d6f0420e884ba06233920f24aeacd0b4" category="sidebar">Wuhu 7.2를 설치합니다</block>
-  <block id="c89f54db5376bd3f5d9ade2c6d3362fd" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.</block>
   <block id="acabba98705eb29393554dc66f1ee4e2" category="paragraph">다음 예에서는 SPARC 시스템에 대한 파일의 압축을 해제합니다. x86-64 플랫폼의 경우 x86/x64 패키지를 사용합니다.</block>
   <block id="c4cad7deef0c16d999553f9114b69a38" category="inline-link">Solaris 호스트 유틸리티를 설치합니다</block>
   <block id="f3fa3c55f6e1d616adca4cc7545092f0" category="paragraph">FC 프로토콜을 사용하고 Solaris 호스트 유틸리티를 실행하여 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 설정하는 방법은 볼륨 관리자 및 파일 시스템에 따라 다를 수 있습니다. 을 참조하십시오<block ref="b122ff225ade2e6fc15e0025cf78e2d2" category="inline-link-rx"></block> Solaris MPIO 환경에서 LUN을 부팅하는 SAN에 대한 자세한 내용은 를 참조하십시오.</block>
   <block id="daa135326b602a4d4c5bd7b55808870a" category="inline-link">MetroCluster 구성에서 Solaris 호스트 지원 고려 사항</block>
   <block id="8f4e34dd626d27db6da17b83e4d7f329" category="cell">Solaris 11.x 'cfgadm-c configure'로 인해 End-to-End Emulex 구성에서 I/O 오류가 발생합니다</block>
-  <block id="05a2e5d38b7302b051a92c093ea62da1" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>. 파일이 있는 경우 Host Utilities를 설치하는 데 필요한 소프트웨어 패키지를 가져오려면 파일의 압축을 풀어야 합니다.</block>
   <block id="a387e31363493fb3c0fbdcc0d7458c52" category="list-text">파일의 압축을 풉니다.</block>
   <block id="8fe0dc9943c3dbce8070a7613545cb91" category="paragraph">다음 예에서는 SPARC 시스템에 대한 파일의 압축을 해제합니다. x86-64 플랫폼의 경우 를 사용합니다<block ref="2dea9af09f7e80915b8298deb9ca9b8a" prefix=" " category="inline-code"></block> 패키지.</block>
   <block id="db3593f61ef4c56ea67fd06ebc7a6825" category="admonition">모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 지원됩니다.</block>
@@ -3399,7 +3386,6 @@
   <block id="71dc6cab38b813fe8170f94bad66e4ad" category="doc">ONTAP에서 Oracle Linux 8.8을 사용합니다</block>
   <block id="09f1d704d3c8696d3b1141a3aa4d5588" category="paragraph">Oracle Linux(OL) 8.8 의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. OL 8.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="b27760a2802c30e312a502124bce80eb" category="paragraph">OL 8.8 OS는 ONTAP LUN을 인식하도록 컴파일되고 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
-  <block id="fdfc689574cf5fb3fbd6c0bae92a98b2" category="admonition">Oracle Linux 8.8 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용하십시오 <block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block> RHEL(Red Hat Enterprise Linux) 8.8의 경우</block>
   <block id="04544654bde04401ad396d891040dc76" category="summary">ONTAP가 있는 Oracle Linux 8.8용 NVMe-oF 호스트 구성</block>
   <block id="8880cd0c09153e73135dbdcb92bb36e4" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 Oracle Linux(OL) 8.8에서 ANA(Asymmetric Namespace Access) 지원 NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
   <block id="0c552ba088ff7c5ec4a148f22c0280af" category="paragraph">ONTAP가 있는 OL 8.8에 대한 NVMe-oF 호스트 구성에 대해 다음과 같은 지원을 사용할 수 있습니다.</block>
@@ -3410,13 +3396,32 @@
   <block id="c408ea98ccca45811b56eb64f5019391" category="list-text">서버에 OL 8.8 GA를 설치합니다. 설치가 완료되면 지정된 OL 8.8 GA 커널을 실행하고 있는지 확인합니다.</block>
   <block id="fb0643787f6e7d41915f40cbd05f4efd" category="list-text">Oracle Linux 8.8 호스트에서 를 확인합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 에 문자열이 있습니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
   <block id="74081fa925de7d5872846d0fd3043b7c" category="paragraph">동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우, NetApp에서는 ONTAP 네임스페이스 및 에 커널 내 NVMe 다중 경로를 사용할 것을 권장합니다<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> ONTAP LUN의 경우 각각 즉, 에서 ONTAP 네임스페이스를 제외해야 합니다<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 방지하려는 경우<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 이러한 네임스페이스 장치를 주장하는 것을 말합니다. 를 추가할 수 있습니다<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
-  <block id="73979e21296f74435168d91cdb68bf33" category="paragraph">를 실행하여 multipathd 데몬을 다시 시작합니다<block ref="5a8f02947e83d77dcfc767816a70ab96" prefix=" " category="inline-code"></block> 명령을 사용하여 새 설정을 적용합니다.</block>
-  <block id="c638ad2f78eb5f9c5e23fc0607165a2a" category="list-text">OL 8.8 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필요한 최신 업스트림 픽스가 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
   <block id="e49a8f55b360ab37cfe1ebe68f1119d5" category="paragraph">ONTAP 릴리즈의 OL 8.8 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="856727a5f3e002ef1068c1b1229b19f6" category="cell">Oracle Linux 8.8 NVMe-oF 호스트가 중복 영구 검색 컨트롤러를 만듭니다</block>
   <block id="d345ceafdca15336eee317f7b245574f" category="cell">OL 8.8 NVMe-oF 호스트에서 영구 검색 컨트롤러(PDC)는 를 통과하여 생성됩니다<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 에 대한 옵션<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령. 특정 초기자-대상 조합의 경우 의 각 호출과 함께 PDC가 하나만 작성되어야 합니다<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령. 하지만 OL 8.x부터 NVMe-of-host가 종료되어 의 각 호출을 통해 중복 PDC가 생성됩니다<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령과 함께<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 옵션을 선택합니다. 이렇게 하면 호스트와 타겟 모두에서 리소스가 낭비됩니다.</block>
   <block id="2757a308d4d1083cccf0f8d499cc92dc" category="paragraph">Oracle Linux 7.9 및 ONTAP 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="eb1fc035eeba662cf025ce042074e2b4" category="cell">SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트의 데이터가 손상될 수 있습니다</block>
-  <block id="a270556d62ee2105297647391a10d53e" category="cell">를 설정할 때<block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block> Multipath configuration parameter to Yes, WWID(Worldwide Identifier)가 변경되면 경로 디바이스에 대한 액세스가 비활성화됩니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 를 참조하십시오 <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="e681a3b45989b468533c4b90ee960bf9" category="cell">해당 없음</block>
+  <block id="8c65801675c655e1c03ed38acabcf2bc" category="paragraph">NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 32비트 및 64비트 .rpm 파일 구성에 적합한 파일을 모르는 경우 를 사용합니다 <block ref="963ce614f4afebd07b4317928a39d286" category="inline-link-macro-rx"></block> 필요한 것을 확인합니다.</block>
+  <block id="1c7aecfb08a2b38315b8b5a00561dd76" category="list-text">에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 사이트를 호스트에 연결.</block>
+  <block id="eed09ea7076ec2e150d1995b3a1ac37f" category="paragraph">NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 64비트 .rpm 파일</block>
+  <block id="97c7cddc356e6c9a7edda318fd4e3a01" category="list-text">에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다<block ref="f3adb37009df4865b12833eb62333f96" category="inline-link-rx"></block> 호스트에.</block>
+  <block id="937cdc7611a7f50b97c9bc710ff4a761" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 <block ref="211aeebd084ff2a0f2d3a6667de35200" category="inline-link-macro-rx"></block>. 파일이 있으면 호스트 유틸리티를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 가져오려면 파일의 압축을 풀어야 합니다.</block>
+  <block id="0a0990c5ca1e9aa6bb4871721a00290c" category="list-text">설치합니다 <block ref="7e5271dd15da7840bc647fc6451145a6" category="inline-link-macro-rx"></block> FC 및 NVMe 모두에 공통되는 드라이버 매개 변수를 설정합니다.</block>
+  <block id="191d7bcb434f24066e6263286c506e07" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다<block ref="64a98ab9b930adade338f7896c6bf819" category="inline-link-rx"></block>. 파일이 있는 경우 Host Utilities를 설치하는 데 필요한 소프트웨어 패키지를 가져오려면 파일의 압축을 풀어야 합니다.</block>
+  <block id="bba935ec6b4a409a039f2c174658a92b" category="list-text">에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다<block ref="64a98ab9b930adade338f7896c6bf819" category="inline-link-rx"></block> 호스트의 디렉토리로 이동합니다.</block>
+  <block id="203f51559c2ba23f9c255fff4a3d1a69" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 <block ref="211aeebd084ff2a0f2d3a6667de35200" category="inline-link-macro-rx"></block>. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.</block>
+  <block id="d93f4eaa8e066c5ee8f2b24ebc969b6b" category="paragraph">다음 섹션에서는 ASA 및 비 ASA 구성에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.</block>
+  <block id="7acaa68e7aca1f42b54325f5c982b0ff" category="admonition">Oracle Linux 8.8 RedHat Enterprise Kernel을 구성하려면 를 사용하십시오 <block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block> RHEL(Red Hat Enterprise Linux) 8.8의 경우</block>
+  <block id="01b8600fd938010d5f121c919a853516" category="paragraph">권장 설정을 사용하여 KVM(커널 기반 가상 머신)을 구성할 수도 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.</block>
+  <block id="068e34bda638fda5123bf851072fe10d" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block>. 파일을 가지고 나면 Host Utilities를 설치하는 데 필요한 소프트웨어 패키지를 가져오려면 파일의 압축을 해제해야 합니다.</block>
+  <block id="aa22d4ac7993fa542c414f5e9723529f" category="list-text">에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block> 호스트의 디렉토리로 이동합니다.</block>
+  <block id="f300fa51589104aa4316232c27dac2e7" category="paragraph">NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다<block ref="f3adb37009df4865b12833eb62333f96" category="inline-link-rx"></block> 32비트 또는 64비트 .rpm 파일</block>
+  <block id="00e3d420b177fcc4637347e27f46043e" category="list-text">에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 호스트에.</block>
+  <block id="fd26db9aa6db828394d7228c8c9d0e50" category="list-text">NVMe와 SCSI 트래픽을 모두 동일한 동일한 호스트에서 실행할 수 있습니다. 따라서 SCSI LUN의 경우 SCSI mpath 장치에 대해 dm-multipath를 구성할 수 있지만 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
+  <block id="bb6b61821a0d91a27d4798cbc695ecc8" category="paragraph">를 실행하여 multipathd 데몬을 다시 시작합니다<block ref="5a8f02947e83d77dcfc767816a70ab96" prefix=" " category="inline-code"></block> 명령. 이렇게 하면 새 설정이 적용됩니다.</block>
+  <block id="4e26e8894256ba4335d8dfc15dde00f6" category="list-text">OL 8.8 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필요한 최신 수정 사항이 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
+  <block id="3aad3225f60de4118eb7263a1c0fbb28" category="list-text">커널 내 NVMe 다중 경로가 활성화되었는지 확인:</block>
+  <block id="0433af93410c428ea57c876adfd242d8" category="cell">Oracle Linux 8.8 NVMe-oF 호스트는 중복된 PDC를 생성합니다</block>
+  <block id="fd0f0a6b64ca823427a2d1d6062c2102" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다<block ref="64a98ab9b930adade338f7896c6bf819" category="inline-link-rx"></block>. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.</block>
+  <block id="e70f1869df403451e259e10988ea5f80" category="cell">를 설정할 때<block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block> Multipath configuration parameter to Yes, WWID(Worldwide Identifier)가 변경되면 경로 디바이스에 대한 액세스가 비활성화됩니다. MultiPath는 경로의 WWID가 다중 경로 디바이스의 WWID로 복구될 때까지 경로 디바이스에 대한 액세스를 비활성화합니다. 를 참조하십시오 <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
 </blocks>
