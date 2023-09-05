@@ -1310,7 +1310,6 @@
   <block id="de50d87828d6c062d5ee3ed42e95ae42" category="admonition">Oracle Linux 7.1 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용하십시오 <block ref="ac06888ec4e3e5a4526108ac1f8520b7" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 7.1의 경우</block>
   <block id="d92da7c3e5e1c0b3a496a0771d576f96" category="paragraph">Oracle Linux 7.1에는 알려진 문제가 없습니다.</block>
   <block id="af542c850dcba761107186a0c4f1cd8f" category="summary">ONTAP에서 Red Hat Enterprise Linux 8.2를 사용하는 방법에 대해 설명합니다</block>
-  <block id="4760c3b673835516c579d9024201af61" category="paragraph">RHEL(Red Hat Enterprise Linux) 8.2의 경우 /etc/multipath.conf 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.2는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="83aa98b0663a07abe5c12cd92f6e7e99" category="paragraph">RHEL 8.2 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일되었습니다.</block>
   <block id="5201f3364243bc1b14657349eb16cf69" category="paragraph">RHEL 8.2에는 알려진 문제가 없습니다.</block>
   <block id="894e4bdfe9d6da54721793a917a39e41" category="summary">ONTAP에서 Oracle Linux 6.4를 사용하는 방법에 대해 설명합니다</block>
@@ -1615,7 +1614,6 @@
   <block id="f5bd1c87a82329c908a6a69f3a08446a" category="paragraph">RHEL 7.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="77e11862f04c6ec12fa9eddd581dafa1" category="summary">ONTAP와 함께 Oracle Linux 7.9를 사용하는 방법에 대해 설명합니다</block>
   <block id="150ce233c309a7f628f109b1bf8bd7f6" category="paragraph">Oracle Linux(OL) 7.9의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. OL 7.9는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="e604f6870b50383d4e1d8ffa3a2b18bb" category="paragraph">'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 다음 섹션에서는 비 ASA 및 ASA 대상에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.</block>
   <block id="4872a64c8bfb39aee94e3643229c1575" category="admonition">Oracle Linux 7.9 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용하십시오 <block ref="44610b841747038fd655ebbf0a88f02e" category="inline-link-macro-rx"></block> RHEL(Red Hat Enterprise Linux) 7.9의 경우</block>
   <block id="f016701b52511d7388e9b01258eaff35" category="summary">ONTAP에서 SUSE Linux Enterprise Server 12 SP3을 사용하는 방법에 대해 설명합니다</block>
   <block id="7adcaa4e5a35b413a61f9652b9b8e6bd" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <block ref="2e3100a5f55723fd5f208c30b3d4a68b" category="inline-link-macro-rx"></block> 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.</block>
@@ -3424,4 +3422,6 @@
   <block id="0433af93410c428ea57c876adfd242d8" category="cell">Oracle Linux 8.8 NVMe-oF 호스트는 중복된 PDC를 생성합니다</block>
   <block id="fd0f0a6b64ca823427a2d1d6062c2102" category="paragraph">에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다<block ref="64a98ab9b930adade338f7896c6bf819" category="inline-link-rx"></block>. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.</block>
   <block id="e70f1869df403451e259e10988ea5f80" category="cell">를 설정할 때<block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block> Multipath configuration parameter to Yes, WWID(Worldwide Identifier)가 변경되면 경로 디바이스에 대한 액세스가 비활성화됩니다. MultiPath는 경로의 WWID가 다중 경로 디바이스의 WWID로 복구될 때까지 경로 디바이스에 대한 액세스를 비활성화합니다. 를 참조하십시오 <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="50f145df2b9dca1b51d6f136b1d6e045" category="section-title">비 ASA 구성</block>
+  <block id="bb515059c478efd249d74e65644dd114" category="paragraph">RHEL(Red Hat Enterprise Linux) 8.2의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.2는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
 </blocks>
