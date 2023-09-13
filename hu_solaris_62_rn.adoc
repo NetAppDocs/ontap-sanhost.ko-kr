@@ -19,63 +19,26 @@ summary: Solaris Host Utilities 6.2에 대한 릴리스 정보
 
 
 [role="lead"]
-릴리스 정보 문서에는 알려진 문제, 제한 사항, ONTAP 스토리지 시스템 구성 및 관리에 대한 업데이트를 비롯하여 Solaris 호스트 유틸리티 6.2에 대한 최신 정보가 포함되어 있습니다.
+릴리즈 노트에서는 새로운 기능 및 향상된 기능, 현재 릴리스에서 해결된 문제, 알려진 문제 및 제한 사항, ONTAP 스토리지 시스템에서 특정 Solaris 호스트를 구성 및 관리하는 것과 관련된 중요한 주의 사항에 대해 설명합니다.
 
-Solaris Host Utilities 사용에 대한 새로운 정보가 공개되면 릴리즈 노트 문서가 업데이트됩니다.
-
-
-
-== Solaris Host Utilities 6.2 릴리스에 대해 설명합니다
-
-Solaris Host Utilities 6.2는 여러 Solaris 환경 및 다중 프로토콜을 지원합니다.
-
-기본 호스트 유틸리티 환경은 다음과 같습니다.
-
-* SPARC 프로세서 또는 x86/64 프로세서를 사용하는 시스템에서 FC(Fibre Channel) 또는 iSCSI 프로토콜을 사용하는 MPxIO가 있는 네이티브 OS입니다.
-* SPARC 프로세서를 사용하는 시스템에서 FC 또는 iSCSI 프로토콜을 사용하는 DMP(Veritas Dynamic Multipathing)와 x86/64 프로세서를 사용하는 시스템의 iSCSI 프로토콜을 사용하는 DMP(Veritas Dynamic Multipathing)
-
-
-Host Utilities 소프트웨어는 압축된 단일 파일로 패키징됩니다. 에서 압축된 파일 및 문서를 다운로드할 수 있습니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^]. ONTAP SAN 호스트 구성은 호스트 유틸리티를 설치 및 설정하여 사용자 환경 및 프로토콜에서 작동하도록 하는 지침을 제공합니다.
-
-
-
-== Solaris Host Utilities 6.2 개선 사항
-
-새로운 정보가 공개되면 릴리즈 노트가 제품 릴리즈 간에 업데이트됩니다.
-
-Solaris Unified Host Utilities 6.2는 다음 버전의 Solaris를 계속 지원합니다.
-
-* Solaris 11.x 시리즈
-* Solaris 10.x 시리즈
-
+Host Utilities가 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/imt.jsp?components=85803;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
 
 
 
 == 알려진 문제 및 제한 사항
 
-Host Utilities를 효율적으로 사용하려면 네트워크 같은 특정 기능에 대한 알려진 문제 또는 Host Utilities가 지원하지 않는 기능(예: 특정 버전의 운영 체제)의 성능에 영향을 줄 수 있습니다.
+특정 호스트의 성능에 영향을 미칠 수 있는 다음과 같은 알려진 문제 및 제한 사항을 숙지해야 합니다.
 
 [cols="3"]
 |===
 | 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1385189["1385189"^] | HUK 6.2에서 Solaris 11.4 FC 드라이버 바인딩 변경이 필요합니다 | Solaris 11.4 및 HUK 권장 사항. FC 드라이버 바인딩이 'SD(4D)'에서 'd(4D)'로 변경됩니다. Oracle(Doc ID 2595926.1)에 언급된 대로 'ssd.conf'에 있는 구성을 's.conf'로 이동합니다. 이 동작은 새로 설치된 Solaris 11.4 시스템에 따라 다르며 11.3 이하 버전에서 업그레이드됩니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1385189["1385189"^] | HUK 6.2에서 Solaris 11.4 FC 드라이버 바인딩 변경이 필요합니다 | Solaris 11.4 및 HUK 권장 사항:
+FC 드라이버 바인딩이 에서 변경됩니다 `ssd(4D)` 를 선택합니다 `sd(4D)`. 에 있는 구성을 이동합니다 `ssd.conf` 를 선택합니다 `sd.conf` Oracle(문서 ID 2595926.1)에 설명된 대로, 이 동작은 새로 설치된 Solaris 11.4 시스템과 11.3 이하에서 업그레이드한 시스템에 따라 달라집니다. 
 |===
 link:https://mysupport.netapp.com/site/["NetApp 온라인 버그"^] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다. 사용할 수 있는 일부 키워드 조합과 버그 유형은 다음과 같습니다.
 
-* FCP 일반: 특정 호스트와 연결되지 않은 FC 및 HBA 버그를 표시합니다
-* FCP - Solaris
-
-
-.관련 정보
-* ONTAP 스토리지 시스템 구성 및 관리 *
-
-* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["ONTAP 소프트웨어 설치 안내서"^] ONTAP 버전용
-* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["ONTAP SAN 관리 가이드 를 참조하십시오"^] ONTAP 버전용
-* 를 클릭합니다 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["ONTAP 릴리즈 노트"^] ONTAP 버전용
-* link:https://imt.netapp.com/matrix/#welcome["NetApp 상호 운용성 매트릭스"^]
-* link:https://hwu.netapp.com/["Hardware Universe"^] (이전의 시스템 구성 가이드)
-* link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["지원되는 Fibre Channel SAN 토폴로지"^]
-* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343["Host Utilities 호스트 구성"^]
+* FCP 일반: 특정 호스트와 관련되지 않은 FC 및 호스트 버스 어댑터(HBA) 버그를 표시합니다.
+* FCP Solaris입니다
 

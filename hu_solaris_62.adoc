@@ -4,7 +4,7 @@ permalink: hu_solaris_62.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방법에 대해 설명합니다 
 ---
-= Solaris 호스트 유틸리티 6.2
+= Solaris Host Utilities 6.2를 설치합니다
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,49 +19,32 @@ summary: ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방
 
 
 [role="lead"]
-Solaris 통합 호스트 유틸리티를 사용하면 Solaris 호스트에 연결된 NetApp ONTAP 스토리지를 관리할 수 있습니다.
+Solaris 통합 호스트 유틸리티는 Solaris 호스트에 연결된 NetApp ONTAP 스토리지를 관리하는 데 도움을 줍니다.
 
-
-
-== SAN 툴킷을 참조하십시오
-
-Solaris Host Utilities는 Oracle Solaris 호스트에서 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
-
-.예
-다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
-
-[listing]
-----
-#sanlun lun show all
-controller(7mode)/ device host lun
-vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
------------------------------------------------------------------------------------------------------------------------------------
-data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
-
-
-----
-
-NOTE: 이 툴킷은 Host Utilities의 모든 구성 및 프로토콜에서 공통적으로 사용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.
-
-
-
-== Solaris 호스트 유틸리티를 설치합니다
-
-Solaris Host Utilities 6.2는 여러 Solaris 환경 및 다중 프로토콜을 지원합니다. 기본 호스트 유틸리티 환경은 다음과 같습니다.
+Solaris Host Utilities 6.2는 여러 Solaris 환경 및 다중 프로토콜을 지원합니다. 주요 호스트 유틸리티 환경은 다음과 같습니다.
 
 * SPARC 프로세서 또는 x86/64 프로세서를 사용하는 시스템에서 FC(Fibre Channel) 또는 iSCSI 프로토콜을 사용하는 MPxIO가 있는 네이티브 OS입니다.
-* SPARC 프로세서를 사용하는 시스템에서 FC 또는 iSCSI 프로토콜을 사용하는 DMP(Veritas Dynamic Multipathing)와 x86/64 프로세서를 사용하는 시스템의 iSCSI 프로토콜을 사용하는 DMP(Veritas Dynamic Multipathing)
+* SPARC 프로세서를 사용하는 시스템에서 FC 또는 iSCSI 프로토콜을 사용하는 Veritas DMP(Dynamic Multipathing) 또는 x86/64 프로세서를 사용하는 시스템의 iSCSI 프로토콜
 
 
+Solaris Unified Host Utilities 6.2는 다음 버전의 Solaris를 계속 지원합니다.
 
-NOTE: NetApp Solaris Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^] 프로세서를 위한 압축 파일 형식. 사용자 환경에 맞는 Host Utilities 소프트웨어 패키지를 Support 사이트에서 다운로드할 수 있습니다.
+* Solaris 11.x 시리즈
+* Solaris 10.x 시리즈
+
+
+.필요한 것
+* 안정적인 작동을 위해 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하십시오.
+
+
+를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 를 눌러 구성을 확인합니다.
+
+
+NOTE: NetApp Solaris Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support 사이트"^] 처리기에 대해 압축된 파일 형식. 사용자 환경에 맞는 Host Utilities 소프트웨어 패키지를 Support 사이트에서 다운로드할 수 있습니다.
 
 .단계
 . 호스트에 루트로 로그인합니다.
-. 에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^] 호스트의 디렉토리로 이동합니다.
+. 에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support 사이트"^] 호스트의 디렉토리로 이동합니다.
 +
 이 문서를 준비할 때 압축된 파일은 다음과 같이 불렸습니다.
 
@@ -71,7 +54,7 @@ NOTE: NetApp Solaris Host Utilities 소프트웨어 패키지는 에서 사용�
 
 
 . 다운로드가 포함된 디렉터리로 이동합니다.
-. gunzip 명령을 사용하여 파일의 압축을 풉니다
+. 를 사용하여 파일의 압축을 풉니다 `gunzip` 명령:
 +
 '#gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz'
 
@@ -111,7 +94,7 @@ drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
 -r-xr-xr-x   1 root     sys        12266 Sep 13  2017 host_config.1
 -r-xr-xr-x   1 root     sys         9044 Sep 13  2017 sanlun.1
 ----
-. 작업을 마친 후에는 '/opt/NTAP/sotoolkit/bin/host_config' 명령을 사용하여 환경에 대한 호스트 매개 변수를 구성해야 합니다.
+. 작업을 마치면 를 사용하여 환경에 대한 호스트 매개 변수를 구성합니다 `/opt/NTAP/SANToolkit/bin/host_config` 명령:
 +
 ** MPxIO
 ** Veritas DMP
@@ -122,3 +105,28 @@ drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
 안런 버전
 
 
+
+
+
+== SAN 툴킷을 참조하십시오
+
+Solaris Host Utilities는 Oracle Solaris 호스트에서 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 를 제공합니다 `sanlun` LUN 및 호스트 버스 어댑터(HBA)를 관리하는 데 유용한 유틸리티입니다. 를 클릭합니다 `sanlun` 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
+
+.예
+다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
+
+[listing]
+----
+#sanlun lun show all
+controller(7mode)/ device host lun
+vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
+-----------------------------------------------------------------------------------------------------------------------------------
+data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
+
+
+----
+
+NOTE: 이 툴킷은 모든 호스트 유틸리티 구성과 프로토콜에 공통적으로 적용됩니다. 따라서 일부 툴킷 콘텐츠는 한 구성에 적용되지만 다른 구성에 적용되지는 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.
