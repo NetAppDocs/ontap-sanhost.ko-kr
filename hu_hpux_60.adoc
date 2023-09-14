@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_hpux_60.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방법에 대해 설명합니다 
+summary: ONTAP와 함께 HP-UX 통합 호스트 유틸리티 6.0을 사용하는 방법을 설명합니다 
 ---
 = HP-UX Host Utilities 6.0
 :toc: macro
@@ -19,7 +19,51 @@ summary: ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방
 
 
 [role="lead"]
-HP-UX Unified Host Utilities를 사용하면 HP-UX 호스트에 연결된 NetApp ONTAP 스토리지를 관리할 수 있습니다.
+HP-UX Host Utilities를 사용하면 HP-UX 호스트를 NetApp 스토리지에 연결할 수 있습니다.
+
+HP-UX Host Utilities는 여러 HP-UX 환경과 여러 프로토콜을 지원합니다. 지원되는 환경은 다음과 같습니다.
+
+* 네이티브 MPIO
+* Veritas 동적 다중 경로(DMP)
+
+
+
+NOTE: 사용 중인 환경을 나타내기 위해 이 문서에서는 Veritas DMP 환경에 대해 "DMP"를 지정하고 HP-UX 네이티브 환경에 대해 "MPIO"를 지정하는 경우도 있습니다. 사용하는 드라이버에 따라 명령이 다를 수 있습니다. 이 경우 환경 및 드라이버 유형이 모두 지정됩니다.
+
+.필요한 것
+* 안정적인 작업을 위해 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하십시오.
+
+
+를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 를 눌러 구성을 확인합니다.
+
+.이 작업에 대해
+NetApp HP-UX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp Support 사이트"^] 압축 파일 파일을 다운로드한 후 설치 전에 압축을 해제해야 합니다.
+
+.단계
+. 호스트에 로그인합니다.
+. 에서 HP-UX Host Utilities 파일( netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` )을 다운로드합니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^] HP-UX 호스트에
+. 의 압축을 풉니다 `netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` 파일:
++
+(#gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`)
+
++
+압축을 푼 소프트웨어가 서비스 센터 파일의 압축을 푼 디렉토리에 저장됩니다.
+
+. 소프트웨어를 설치합니다.
++
+'#swinstall-s/depot_path'
+
++
+debot_path는 depot 파일의 경로와 이름을 제공합니다.
+
++
+'winstall' 명령어는 HP-UX 설정 상태를 확인하는 설치 스크립트를 실행합니다. 시스템이 요구 사항을 충족할 경우 이 스크립트는 '/opt/netapp/sandtools/bin' 디렉토리에 'sanlun' 유틸리티 및 진단 스크립트를 설치합니다.
+
+. 설치를 확인합니다.
++
+안런 버전
+
+
 
 
 
@@ -45,37 +89,3 @@ sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0 
 ----
 
 NOTE: 이 툴킷은 Host Utilities의 모든 구성 및 프로토콜에서 공통적으로 사용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.
-
-
-
-== HP-UX Host Utilities 설치
-
-NetApp HP-UX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^] 압축 파일
-
-에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^]. 파일을 다운로드한 후 설치 전에 압축을 해제해야 합니다.
-
-.단계
-. 호스트에 로그인합니다.
-. 에서 HP-UX Host Utilities 파일( netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` )을 다운로드합니다 link:https://mysupport.netapp.com/site/["NetApp Support 사이트"^] HP-UX 호스트에
-. 다음 명령어를 입력하여 netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` 파일의 압축을 해제한다.
-+
-(#gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`)
-
-+
-압축을 푼 소프트웨어가 서비스 센터 파일의 압축을 푼 디렉토리에 저장됩니다.
-
-. 다음 명령을 입력하여 소프트웨어를 설치합니다.
-+
-'#swinstall-s/depot_path'
-
-+
-debot_path는 depot 파일의 경로와 이름을 제공합니다.
-
-+
-'winstall' 명령어는 HP-UX 설정 상태를 확인하는 설치 스크립트를 실행합니다. 시스템이 요구 사항을 충족할 경우 이 스크립트는 '/opt/netapp/sandtools/bin' 디렉토리에 'sanlun' 유틸리티 및 진단 스크립트를 설치합니다.
-
-. 설치를 확인합니다.
-+
-안런 버전
-
-

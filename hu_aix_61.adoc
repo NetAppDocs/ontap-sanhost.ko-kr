@@ -21,14 +21,14 @@ summary: ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는
 [role="lead"]
 AIX 통합 호스트 유틸리티를 사용하면 AIX 호스트에 연결된 NetApp ONTAP 스토리지를 관리할 수 있습니다.
 
-지원되는 프로토콜은 다음과 같습니다.
+AIX Host Utilities는 다음 프로토콜을 지원합니다.
 
 * FC
 * FCoE 를 참조하십시오
 * iSCSI
 
 
-지원되는 환경은 다음과 같습니다.
+AIX Host Utilities는 다음 환경을 지원합니다.
 
 * AIX MPIO(기본 OS)
 * PowerVM
@@ -38,7 +38,7 @@ PowerVM에 대한 자세한 내용은 IBM PowerVM Live Partition Mobility Red Bo
 
 
 .필요한 것
-* 안정적인 운영을 위해서는 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인해야 합니다.
+* 안정적인 작업을 위해 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하십시오.
 +
 를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 를 눌러 구성을 확인합니다.
 
@@ -85,7 +85,7 @@ NOTE: NetApp AIX Host Utilities 소프트웨어 패키지는 에서 사용할 �
 
 == SAN 툴킷을 참조하십시오
 
-AIX 호스트 유틸리티는 IBM AIX 호스트에 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 를 제공합니다 `sanlun` 유틸리티를 사용하여 LUN 및 HBA를 관리할 수 있습니다. 를 클릭합니다 `sanlun` 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
+AIX 호스트 유틸리티는 IBM AIX 호스트에 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 를 제공합니다 `sanlun` 유틸리티를 사용하면 LUN 및 호스트 버스 어댑터(HBA)를 관리하는 데 도움이 됩니다. 를 클릭합니다 `sanlun` 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
 
 * 예 *
 
@@ -109,4 +109,4 @@ data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
 data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
 ----
 
-NOTE: 이 툴킷은 Host Utilities의 모든 구성 및 프로토콜에서 공통적으로 사용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다. SAN 툴킷은 AIX 및 PowerVM/VIOS OS OS 버전에서 지원됩니다.
+NOTE: 이 툴킷은 모든 호스트 유틸리티 구성과 프로토콜에 공통적으로 적용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다. SAN 툴킷은 AIX 및 PowerVM/VIOS OS OS 버전에서 지원됩니다.

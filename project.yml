@@ -33,7 +33,7 @@ sidebar:
         url: "/hu_hpux_60.html"
       - title: 명령 참조 예
         url: "/hu_hpux_60_cmd.html"
-    - title: Linux Unified Host Utilities를 참조하십시오
+    - title: Linux 통합 호스트 유틸리티
       entries:
       - title: 릴리스 정보
         url: "/hu_luhu_71_rn.html"
