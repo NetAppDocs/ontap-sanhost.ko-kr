@@ -19,10 +19,7 @@ summary: ONTAP에서 RHEL 8.4용 NVMe-oF 호스트를 구성하는 방법
 :toc-position: content
 
 
-
-
-== 지원 가능성
-
+[role="lead"]
 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(비대칭 네임스페이스 액세스)가 포함된 RHEL 8.4에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 ALUA로, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. RHEL 8.4에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 자세한 내용은 여기 에 설명되어 있습니다.
 
 
@@ -30,20 +27,11 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 
 
 
-== 피처
-
-* RHEL 8.2부터 기본 NVMe-CLI 패키지에 NVMe-FC 자동 연결 스크립트가 포함되어 있습니다. 외부 공급업체가 제공한 아웃박스 자동 연결 스크립트를 설치할 필요 없이 이러한 기본 자동 연결 스크립트를 사용할 수 있습니다.
-* RHEL 8.2부터 NVMe 다중 경로에 라운드 로빈 로드 밸런싱을 지원하는 NVMe-CLI 패키지의 일부로 기본 udev 규칙이 이미 제공됩니다. 이 규칙을 더 이상 수동으로 생성할 필요가 없습니다(RHEL 8.1에서 수행됨).
-* RHEL 8.2부터는 NVMe 및 SCSI 트래픽을 모두 동일한 기존 호스트에서 실행할 수 있습니다. 실제로 이는 일반적으로 고객에게 배포된 호스트 구성일 것으로 예상됩니다. 따라서 SCSI의 경우 SCSI LUN에 대해 평소처럼 dm-multipath를 구성하여 "mpath" 디바이스를 생성할 수 있지만, NVMe multipath를 사용하여 호스트에 있는 다중경로 장치의 NVMe-를 구성할 수 있습니다.
-* RHEL 8.2부터 네이티브 "NVMe-CLI" 패키지의 NetApp 플러그인은 ONTAP 네임스페이스에 대한 ONTAP 세부 정보도 표시할 수 있습니다.
-
-
-
-
 == 알려진 제한 사항
 
 * RHEL 8.4의 경우 커널 내 NVMe 다중 경로가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.
 * RHEL 8.4의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.4_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.4 릴리스 정보"^] 를 참조하십시오.
+* 현재 NVMe-oF 프로토콜을 사용한 SAN 부팅은 지원되지 않습니다.
 
 
 

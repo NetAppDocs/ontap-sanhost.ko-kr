@@ -21,7 +21,7 @@ summary: ONTAP와 함께 HP-UX 통합 호스트 유틸리티 6.0을 사용하는
 [role="lead"]
 HP-UX Host Utilities를 사용하면 HP-UX 호스트를 NetApp 스토리지에 연결할 수 있습니다.
 
-HP-UX Host Utilities는 여러 HP-UX 환경과 여러 프로토콜을 지원합니다. 지원되는 환경은 다음과 같습니다.
+HP-UX Host Utilities는 여러 프로토콜과 다음 환경을 지원합니다.
 
 * 네이티브 MPIO
 * Veritas 동적 다중 경로(DMP)
@@ -37,7 +37,7 @@ NOTE: 사용 중인 환경을 나타내기 위해 이 문서에서는 Veritas DM
 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 를 눌러 구성을 확인합니다.
 
 .이 작업에 대해
-NetApp HP-UX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp Support 사이트"^] 압축 파일 파일을 다운로드한 후 설치 전에 압축을 해제해야 합니다.
+NetApp HP-UX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp Support 사이트"^] 압축 파일 파일을 다운로드한 후 설치하기 전에 압축을 해제해야 합니다.
 
 .단계
 . 호스트에 로그인합니다.
@@ -69,7 +69,7 @@ debot_path는 depot 파일의 경로와 이름을 제공합니다.
 
 == SAN 툴킷을 참조하십시오
 
-HP-UX Host Utilities는 HP-UX 호스트에 명령줄 도구 키트를 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
+HP-UX Host Utilities는 HP-UX 호스트에 명령줄 도구 키트를 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 를 제공합니다 `sanlun` 유틸리티로, LUN 및 호스트 버스 어댑터를 관리할 수 있습니다. 있습니다. 를 클릭합니다 `sanlun` 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
 
 .예
 다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
@@ -88,4 +88,4 @@ sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0 
 
 ----
 
-NOTE: 이 툴킷은 Host Utilities의 모든 구성 및 프로토콜에서 공통적으로 사용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.
+NOTE: 이 툴킷은 모든 호스트 유틸리티 구성과 프로토콜에 공통적으로 적용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.

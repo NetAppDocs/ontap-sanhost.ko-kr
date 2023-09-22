@@ -34,7 +34,7 @@ NVMe/FC 및 기타 전송을 포함한 NVMe over Fabrics(NVMe-oF)는 ANA(비대�
 
 == 알려진 제한 사항
 
-알려진 제한은 없습니다.
+현재 NVMe-oF 프로토콜을 사용한 SAN 부팅은 지원되지 않습니다.
 
 
 

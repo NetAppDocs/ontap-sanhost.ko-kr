@@ -636,7 +636,6 @@
   <block id="5116d27ab3c67a2413a9afe024b82a38" category="summary">ONTAP를 사용하여 RHEL 8.3에 대한 NVMe/FC 호스트를 구성하는 방법</block>
   <block id="af59960049c1f2bff52a1746f8d7c912" category="doc">ONTAP 지원 RHEL 8.3에 대한 NVMe/FC 호스트 구성</block>
   <block id="dffe2b4e459efd8935c7c22b9718180f" category="paragraph">NVMe/FC는 RHEL 8.3에서 ONTAP 9.6 이상에서 지원됩니다. RHEL 8.3 호스트는 동일한 파이버 채널(FC) 이니시에이터 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행합니다. 를 참조하십시오 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>.</block>
-  <block id="c7bc96121734b19b104696509562ddf4" category="paragraph">RHEL 8.3의 경우, 기본적으로 in-kernel NVMe multipath가 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다. 그 단계는 다음 섹션, "RHEL 8.3에서 NVMe/FC 활성화" 에 나와 있습니다.</block>
   <block id="20ef4219f8282a156b90a588df2efcd7" category="section-title">RHEL 8.3에서 NVMe/FC를 사용하도록 설정하십시오</block>
   <block id="23cd3fb20334805933445d4e9e38f375" category="list-text">서버에 Red Hat Enterprise Linux 8.3 GA를 설치합니다.</block>
   <block id="a5846cf11c0c17a2d80c96a138e56624" category="paragraph">yum update/upgrade를 사용하여 RHEL 8.2에서 RHEL 8.3으로 업그레이드하는 경우, '/etc/NVMe/host * ' 파일이 손실될 수 있습니다. 파일 손실을 방지하려면 다음을 수행합니다.</block>
@@ -1036,7 +1035,6 @@
   <block id="911e585c5684ba9f5c2b87af879f4a13" category="summary">ONTAP를 사용하여 RHEL 8.2에 대해 NVMe/FC 호스트를 구성하는 방법</block>
   <block id="1e2ea077f54493b4670fb3cb63e05215" category="doc">ONTAP가 있는 RHEL 8.2에 대한 NVMe/FC 호스트 구성</block>
   <block id="63de1f29f867ea5090af94f0fe852e73" category="paragraph">NVMe/FC는 RHEL 8.2의 ONTAP 9.6 이상에서 지원됩니다. RHEL 8.2 호스트는 동일한 파이버 채널(FC) 이니시에이터 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행합니다. 를 참조하십시오 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>.</block>
-  <block id="c6669fd579995b65e30bee38f5da1a94" category="paragraph">RHEL 8.2의 경우, in-kernel NVMe multipath가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다. 그 단계는 다음 섹션, "RHEL 8.2에서 NVMe/FC 활성화" 에 나와 있습니다.</block>
   <block id="fa9e69db74b196178518c663016c3abe" category="section-title">RHEL 8.2에서 NVMe/FC를 사용하도록 설정하십시오</block>
   <block id="797aea72ebbc1431192817ec206cafb4" category="list-text">서버에 Red Hat Enterprise Linux 8.2 GA를 설치합니다.</block>
   <block id="219a0c52523adf3bd5e0b81ca98a88a1" category="paragraph">yum update/upgrade를 사용하여 RHEL 8.1에서 RHEL 8.2로 업그레이드하는 경우, '/etc/NVMe/host * ' 파일이 손실될 수 있습니다. 파일 손실을 방지하려면 다음을 수행합니다.</block>
@@ -1049,10 +1047,6 @@
   <block id="e23d1316b6f8fd9d76ebc1a761f0ffa9" category="summary">ONTAP에서 RHEL 8.4용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="1124bd13d48eff16726e09da76f5e2b3" category="doc">ONTAP를 사용하는 RHEL 8.4에 대한 NVMe-oF 호스트 구성</block>
   <block id="c86cc04a60faa82236164aaa2faeb7fd" category="paragraph">NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(비대칭 네임스페이스 액세스)가 포함된 RHEL 8.4에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 ALUA로, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. RHEL 8.4에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 자세한 내용은 여기 에 설명되어 있습니다.</block>
-  <block id="b7474f811791dcc10dc5c4c83cd68ff8" category="list-text">RHEL 8.2부터 기본 NVMe-CLI 패키지에 NVMe-FC 자동 연결 스크립트가 포함되어 있습니다. 외부 공급업체가 제공한 아웃박스 자동 연결 스크립트를 설치할 필요 없이 이러한 기본 자동 연결 스크립트를 사용할 수 있습니다.</block>
-  <block id="1edfd9e2cff717b737df6889a024b9e7" category="list-text">RHEL 8.2부터 NVMe 다중 경로에 라운드 로빈 로드 밸런싱을 지원하는 NVMe-CLI 패키지의 일부로 기본 udev 규칙이 이미 제공됩니다. 이 규칙을 더 이상 수동으로 생성할 필요가 없습니다(RHEL 8.1에서 수행됨).</block>
-  <block id="230e651755d5387d3a7fc2291f07bfec" category="list-text">RHEL 8.2부터는 NVMe 및 SCSI 트래픽을 모두 동일한 기존 호스트에서 실행할 수 있습니다. 실제로 이는 일반적으로 고객에게 배포된 호스트 구성일 것으로 예상됩니다. 따라서 SCSI의 경우 SCSI LUN에 대해 평소처럼 dm-multipath를 구성하여 "mpath" 디바이스를 생성할 수 있지만, NVMe multipath를 사용하여 호스트에 있는 다중경로 장치의 NVMe-를 구성할 수 있습니다.</block>
-  <block id="bd89f3a395591c17f8cb7f0aaea6cc0b" category="list-text">RHEL 8.2부터 네이티브 "NVMe-CLI" 패키지의 NetApp 플러그인은 ONTAP 네임스페이스에 대한 ONTAP 세부 정보도 표시할 수 있습니다.</block>
   <block id="509e52d19112a7c7188376d101160b4c" category="list-text">RHEL 8.4의 경우 커널 내 NVMe 다중 경로가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
   <block id="dec4201e999d968c719dedcc36a07302" category="inline-link">RHEL 8.4 릴리스 정보</block>
   <block id="260a3557d08efe46355d18910743ceaa" category="list-text">RHEL 8.4의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오<block ref="bb64a8145ae27872979820bfd89ab97b" category="inline-link-rx"></block> 를 참조하십시오.</block>
@@ -1645,7 +1639,6 @@
   <block id="3773c551729981917923f39164f9b765" category="paragraph">RHEL 8.1 호스트는 동일한 파이버 채널 이니시에이터 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행할 수 있습니다. 를 참조하십시오 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 지원되는 구성의 최신 목록은 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>.</block>
   <block id="23573be9c7dbe4494659f6a90bc05b8a" category="list-text">기본 NVMe/FC 자동 연결 스크립트는 NVMe-CLI 패키지에서 사용할 수 없습니다. HBA 공급업체가 제공한 외부 자동 연결 스크립트를 사용할 수 있습니다.</block>
   <block id="1293e1b1ae6bd1e6a01f05541df9ce9f" category="list-text">기본적으로 NVMe 다중 경로가 비활성화되어 있습니다. 수동으로 활성화해야 합니다. RHEL 8.1에서 NVMe/FC 활성화 섹션에 단계가 나와 있습니다.</block>
-  <block id="0d683aa46dbb260c50031bd00c3f5e6f" category="list-text">기본적으로 라운드 로빈 부하 분산은 사용되지 않습니다. 이 기능을 사용하려면 udev 규칙을 작성해야 합니다. RHEL 8.1에서 NVMe/FC 활성화 섹션에 단계가 나와 있습니다.</block>
   <block id="a0e093a126a5a6ecc36e81f130400025" category="section-title">RHEL 8.1에서 NVMe/FC를 사용하도록 설정합니다</block>
   <block id="1f66f3a5a69d2cce3c5a6e2c4cee2b1a" category="list-text">서버에 Red Hat Enterprise Linux 8.1을 설치합니다.</block>
   <block id="091178f03b60ed6adc2d05dbdc73a202" category="list-text">설치가 완료되면 지정된 Red Hat Enterprise Linux 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
@@ -1824,7 +1817,6 @@
   <block id="9ecac4a21a7fe6b2f71d8fdffa72bb05" category="list-text">SLES15 SP3은 NVMe/FC 및 기타 전송을 지원합니다.</block>
   <block id="79b488f9eaea99a6d3f6667b30d733e5" category="list-text">NVMe-oF에는 sandlun 지원이 없습니다. 따라서 SLES15 SP3의 NVMe-of에 대한 LUHU 지원은 없습니다. 대신 기본 NVMe-CLI에 포함된 NetApp 플러그인을 사용할 수 있습니다. 이 작업은 모든 NVMe-oF 전송에서 작동합니다.</block>
   <block id="fcfc5ba070a0675d68aab9fb9f245c43" category="list-text">NVMe와 SCSI 트래픽을 모두 동일한 동일한 호스트에서 실행할 수 있습니다. 실제로 이는 일반적으로 고객에게 배포된 호스트 구성일 것으로 예상됩니다. 따라서 SCSI의 경우 SCSI LUN에 대해 평소처럼 dm-multipath를 구성하여 mpath 디바이스를 생성할 수 있지만 NVMe multipath를 사용하여 호스트에 NVMe-of multipath 장치를 구성할 수 있습니다.</block>
-  <block id="1733de5a596dfd8c9179b7f061fe9051" category="paragraph">알려진 제한은 없습니다.</block>
   <block id="443e8164d670e55b2388725ef1a0bda5" category="paragraph">SLES15 SP3과 같은 SLES 호스트에서는 커널 내 NVMe 다중 경로가 기본적으로 이미 활성화되어 있습니다. 따라서 여기서는 추가 설정이 필요하지 않습니다. 을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 지원되는 구성에 대한 정확한 세부 정보</block>
   <block id="83314818bb7c47b391616d0ff767a7de" category="section-title">NVMe - 이니시에이터 패키지</block>
   <block id="abc4d57007eba9b1d8b3f88edac97e68" category="list-text">SLES15 SP3 MU 호스트에 필수 커널 및 NVMe-CLI MU 패키지가 설치되어 있는지 확인합니다.</block>
@@ -2075,7 +2067,6 @@
   <block id="e7e8e011c8e0651dc3a6d06305d8279e" category="paragraph">RHEL 8.3에는 알려진 문제가 없습니다.</block>
   <block id="ce420cebd9b134c2ee33ae6a490c31ba" category="paragraph">동일한 RHEL 8.2 공존 호스트에서 NVMe 및 SCSI 트래픽을 모두 실행하려는 경우 각각 ONTAP 네임스페이스에는 인커널 NVMe 다중 경로, ONTAP LUN에는 dm-multipath를 사용하는 것이 좋습니다. 또한 dm-multipath에서 ONTAP 네임스페이스를 블랙리스트에 포함시켜 dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하게 해야 합니다. 아래와 같이 /etc/multipath.conf에 'enable_Foreign' 설정을 추가하여 이 작업을 수행합니다.</block>
   <block id="6507882f376544268e31289f84d4ee08" category="doc">HP-UX Host Utilities 6.0</block>
-  <block id="0f03ad1ba726a38547e37a072e28a71f" category="paragraph">HP-UX Host Utilities는 HP-UX 호스트에 명령줄 도구 키트를 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.</block>
   <block id="c0a1ecccf7e7b3c14696d029be49ed25" category="paragraph">RHEL 8.6에는 알려진 문제가 없습니다.</block>
   <block id="dfd9db293eabf1724158b5cc08e4dd12" category="cell">HP-UX 11.31 호스트가 ASA 설정에서 간헐적으로 경로 상태를 잘못 보고합니다.</block>
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">HP-UX LVM 생성 시 블록 크기의 I/O가 1MB 이상으로 전송됩니다</block>
@@ -3387,16 +3378,13 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="f8d5aed6f51d94047f74a803aca5670b" category="list-text">파일의 압축을 풀고 SAN 툴킷 소프트웨어 패키지의 압축을 풉니다.</block>
   <block id="d7acb320d7561ff28aba5271a650f74e" category="list-text">SAN 툴킷을 설치합니다.</block>
   <block id="d371e5ff58b865f46aa4c65beb73405c" category="paragraph">릴리스 노트에는 새로운 기능 및 개선 사항, 현재 릴리스에서 해결된 문제, 알려진 문제 및 제한 사항, ONTAP 스토리지 시스템에서 특정 HP-UX 호스트를 구성 및 관리하는 것과 관련된 중요한 주의 사항이 설명되어 있습니다.</block>
-  <block id="3517bcea87b684bd347c95104562d327" category="paragraph">HP-UX Host Utilities 6.0은 다음 버전을 계속 지원합니다.</block>
   <block id="a869215e627d2812c817b80130aa7824" category="paragraph">HP-UX 호스트 유틸리티 6.0 릴리스에 대한 새로운 기능, 개선 사항, 알려진 제한 사항 또는 주의 사항은 없습니다.</block>
   <block id="f19106aa57c6316e97d751c16d547b41" category="list-text">FCP - Solaris</block>
   <block id="7c0e66bb6addd5d99fc9457c74d9f1e5" category="summary">ONTAP와 함께 HP-UX 통합 호스트 유틸리티 6.0을 사용하는 방법을 설명합니다</block>
   <block id="6dea40462e0a36a918cc6ee609a75f0c" category="paragraph">HP-UX Host Utilities를 사용하면 HP-UX 호스트를 NetApp 스토리지에 연결할 수 있습니다.</block>
-  <block id="0a6cda4b6b1ee30ff2b1c2e7b1452c79" category="paragraph">HP-UX Host Utilities는 여러 HP-UX 환경과 여러 프로토콜을 지원합니다. 지원되는 환경은 다음과 같습니다.</block>
   <block id="466488bfcdd5dd2620fa669f44a082d5" category="admonition">사용 중인 환경을 나타내기 위해 이 문서에서는 Veritas DMP 환경에 대해 "DMP"를 지정하고 HP-UX 네이티브 환경에 대해 "MPIO"를 지정하는 경우도 있습니다. 사용하는 드라이버에 따라 명령이 다를 수 있습니다. 이 경우 환경 및 드라이버 유형이 모두 지정됩니다.</block>
   <block id="db0942d60692ceb816c153d46b6755a4" category="list-text">안정적인 작업을 위해 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하십시오.</block>
   <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">이 작업에 대해</block>
-  <block id="4b9a66cc328c269b47204207ea997015" category="paragraph">NetApp HP-UX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block> 압축 파일 파일을 다운로드한 후 설치 전에 압축을 해제해야 합니다.</block>
   <block id="89b1d0829beb11befe8cef17a1a88149" category="list-text">호스트에 로그인합니다.</block>
   <block id="411f721c4d437c447636df81f300973a" category="list-text">의 압축을 풉니다<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> 파일:</block>
   <block id="685e21144e7e399ef67e8a809cd52a1e" category="list-text">소프트웨어를 설치합니다.</block>
@@ -3407,5 +3395,14 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="01cf7b9650b6a23329edafdd13452ac5" category="paragraph">AIX Host Utilities는 다음 환경을 지원합니다.</block>
   <block id="09c2778b4197dd6dcc821c85eaf45906" category="paragraph">AIX 호스트 유틸리티는 IBM AIX 호스트에 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 를 제공합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 유틸리티를 사용하면 LUN 및 호스트 버스 어댑터(HBA)를 관리하는 데 도움이 됩니다. 를 클릭합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.</block>
   <block id="bdaec84e97380168b375e0f6cc8968bc" category="admonition">이 툴킷은 모든 호스트 유틸리티 구성과 프로토콜에 공통적으로 적용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다. SAN 툴킷은 AIX 및 PowerVM/VIOS OS OS 버전에서 지원됩니다.</block>
-  <block id="237e46c87c95b6d72dceaf420c603d90" category="sidebar">Linux 통합 호스트 유틸리티</block>
+  <block id="19d92ebb7cd64db05a92ba4d1f8c169a" category="paragraph">HP-UX Host Utilities 6.0은 다음 버전을 계속 지원합니다.</block>
+  <block id="aa4b835c1f569c111bb0517546a161b9" category="list-text">RHEL 8.2의 경우, in-kernel NVMe multipath가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="86d2f7a04841036a331f83b9d4f4c8b5" category="list-text">RHEL 8.3의 경우, 기본적으로 in-kernel NVMe multipath가 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="6dc5c9d254e31b97a6a6ca189c137c1a" category="paragraph">HP-UX Host Utilities는 여러 프로토콜과 다음 환경을 지원합니다.</block>
+  <block id="1d150b0bd2398e740a0840f9f22c0926" category="paragraph">NetApp HP-UX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block> 압축 파일 파일을 다운로드한 후 설치하기 전에 압축을 해제해야 합니다.</block>
+  <block id="f6548a8dc796bca1238a2023b7facffa" category="paragraph">HP-UX Host Utilities는 HP-UX 호스트에 명령줄 도구 키트를 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 를 제공합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 유틸리티로, LUN 및 호스트 버스 어댑터를 관리할 수 있습니다. 있습니다. 를 클릭합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.</block>
+  <block id="a1b24514cc1570dc7f2dc2843ef4ced8" category="admonition">이 툴킷은 모든 호스트 유틸리티 구성과 프로토콜에 공통적으로 적용됩니다. 따라서 일부 내용은 한 설정에 적용되지만 다른 설정에는 적용되지 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.</block>
+  <block id="aa07c7ef7fefb6efdf9ed0ebebbac729" category="list-text">기본적으로 라운드 로빈 부하 분산은 사용되지 않습니다.
+이 기능을 사용하려면 udev 규칙을 작성해야 합니다.</block>
+  <block id="c8ef204b9a39e596096e42f5bdae91e9" category="sidebar">Linux 통합 호스트 유틸리티</block>
 </blocks>

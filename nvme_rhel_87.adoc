@@ -40,6 +40,7 @@ RHEL 8.7에는 NVMe/FC 외에 NVMe/TCP(기술 미리 보기 기능)에 대한 �
 
 * RHEL 8.7의 경우 커널 내 NVMe 다중 경로가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.
 * RHEL 8.7의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오 link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.7_release_notes/index["RHEL 8.7 릴리즈 노트"^] 를 참조하십시오.
+* 현재 NVMe-oF 프로토콜을 사용한 SAN 부팅은 지원되지 않습니다.
 
 
 
