@@ -4,7 +4,7 @@ permalink: nvme_rhel_82.html
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: ONTAP를 사용하여 RHEL 8.2에 대해 NVMe/FC 호스트를 구성하는 방법 
 ---
-= ONTAP가 있는 RHEL 8.2에 대한 NVMe/FC 호스트 구성
+= ONTAP 탑재 RHEL 8.2에 대한 NVMe/FC 호스트 구성
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,27 +19,37 @@ summary: ONTAP를 사용하여 RHEL 8.2에 대해 NVMe/FC 호스트를 구성하
 
 
 [role="lead"]
-NVMe/FC는 RHEL 8.2의 ONTAP 9.6 이상에서 지원됩니다. RHEL 8.2 호스트는 동일한 파이버 채널(FC) 이니시에이터 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행합니다. 를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+RHEL(Red Hat Enterprise Linux) 8.2의 경우 ONTAP 9.6 이상에서 NVMe/FC가 지원됩니다. RHEL 8.2 호스트는 동일한 파이버 채널(FC) 이니시에이터 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행합니다. 를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오.
+
+를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^] 지원되는 구성의 최신 목록
 
 
-NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+
+== 피처
+
+* RHEL 8.2부터 `nvme-fc auto-connect` 스크립트는 네이티브 에 포함되어 있습니다 `nvme-cli` 패키지. 외부 공급업체가 제공한 아웃박스 자동 연결 스크립트를 설치할 필요 없이 이러한 기본 자동 연결 스크립트를 사용할 수 있습니다.
+* RHEL 8.2부터 시작합니다 `udev` 규칙은 이미 의 일부로 제공됩니다 `nvme-cli` NVMe 다중 경로에 라운드 로빈 로드 밸런싱을 지원하는 패키지 이 규칙을 더 이상 수동으로 생성할 필요가 없습니다(RHEL 8.1에서 수행됨).
+* RHEL 8.2부터는 NVMe 트래픽과 SCSI 트래픽을 동일한 호스트에서 실행할 수 있습니다. 실제로 이는 예상되는 배포된 호스트 구성입니다. 따라서 SCSI의 경우 를 구성할 수 있습니다 `dm-multipath` SCSI LUN에 대해 평소와 같이 를 생성합니다 `mpath` 장치와 달리, NVMe 다중 경로를 사용하여 호스트에서 NVMe-oF 다중 경로 장치를 구성할 수 있습니다.
+* RHEL 8.2부터 NetApp 플러그인이 기본 제공됩니다 `nvme-cli` 패키지는 ONTAP 네임스페이스에 대한 ONTAP 세부 정보를 표시할 수 있습니다.
+
 
 
 
 == 알려진 제한 사항
 
-* RHEL 8.2의 경우, in-kernel NVMe multipath가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.
+* RHEL 8.2의 경우 커널 내 NVMe 다중 경로는 기본적으로 사용하지 않도록 설정됩니다. 따라서 수동으로 활성화해야 합니다.
 * 현재 NVMe-oF 프로토콜을 사용한 SAN 부팅은 지원되지 않습니다.
 
 
 
 
-== RHEL 8.2에서 NVMe/FC를 사용하도록 설정하십시오
+== NVMe/FC를 사용하도록 설정합니다
 
+다음 절차를 사용하여 NVMe/FC를 활성화할 수 있습니다.
+
+.단계
 . 서버에 Red Hat Enterprise Linux 8.2 GA를 설치합니다.
-+
-yum update/upgrade를 사용하여 RHEL 8.1에서 RHEL 8.2로 업그레이드하는 경우, '/etc/NVMe/host * ' 파일이 손실될 수 있습니다. 파일 손실을 방지하려면 다음을 수행합니다.
-
+. 를 사용하여 RHEL 8.1에서 RHEL 8.2로 업그레이드하는 경우 `yum update/upgrade`, 내 `/etc/nvme/host*` 파일이 손실될 수 있습니다. 파일 손실을 방지하려면 다음을 수행합니다.
 +
 .. '/etc/NVMe/host * ' 파일을 백업합니다.
 .. 수동으로 편집한 'udev' 규칙이 있는 경우 제거합니다.
@@ -72,7 +82,7 @@ yum install nvmecli
 4.18.0-193.el8.x86_64
 ----
 +
-를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 를 참조하십시오.
+를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^] 를 참조하십시오.
 
 . NVMe-CLI 패키지를 설치합니다.
 +
@@ -87,7 +97,7 @@ nvme-cli-1.9.5.el8.x86_64
 ----
 # grubby –args=nvme_core.multipath=Y –update-kernel /boot/vmlinuz-4.18.0-193.el8.x86_64
 ----
-. RHEL 8.2 호스트에서 /etc/NVMe/hostnqn에 있는 호스트 NQN 문자열을 확인하고 ONTAP 어레이에 있는 해당 하위 시스템의 호스트 NQN 문자열과 일치하는지 확인합니다.
+. RHEL 8.2 호스트에서 에서 호스트 NQN 문자열을 확인합니다 `/etc/nvme/hostnqn` 그리고 ONTAP 어레이의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다.
 +
 [listing]
 ----
@@ -103,12 +113,12 @@ Vserver      Subsystem        Host           NQN
         nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
 ----
 +
-호스트 NQN 문자열이 일치하지 않으면 "vserver modify" 명령을 사용하여 해당 ONTAP 어레이 하위 시스템의 호스트 NQN 문자열을 호스트의 /etc/NVMe/hostnqn에서 호스트 NQM 문자열과 일치하도록 업데이트합니다.
+호스트 NQN 문자열이 일치하지 않으면 를 사용합니다 `vserver modify` 에서 호스트 NQN 문자열과 일치하도록 해당 ONTAP 배열 하위 시스템의 호스트 NQN 문자열을 업데이트하는 명령입니다 `/etc/nvme/hostnqn` 호스트.
 
 . 호스트를 재부팅합니다.
 . Enable_Foreign 설정 _ (선택 사항) _ 을(를) 업데이트합니다.
 +
-동일한 RHEL 8.2 공존 호스트에서 NVMe 및 SCSI 트래픽을 모두 실행하려는 경우 각각 ONTAP 네임스페이스에는 인커널 NVMe 다중 경로, ONTAP LUN에는 dm-multipath를 사용하는 것이 좋습니다. 또한 dm-multipath에서 ONTAP 네임스페이스를 블랙리스트에 포함시켜 dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하게 해야 합니다. 아래와 같이 /etc/multipath.conf에 'enable_Foreign' 설정을 추가하여 이 작업을 수행합니다.
+동일한 RHEL 8.2 공존하는 호스트에서 NVMe 트래픽과 SCSI 트래픽을 모두 실행하려는 경우 NetApp에서는 ONTAP 네임스페이스에 커널 내 NVMe 다중 경로를, ONTAP LUN에 대해 dm-다중 경로를 각각 사용하는 것이 좋습니다. 또한 dm-multipath에서 ONTAP 네임스페이스를 블랙리스트에 포함시켜 dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하게 해야 합니다. 을 추가하여 이 작업을 수행할 수 있습니다 `enable_foreign` 를 로 설정합니다 `/etc/multipath.conf`를 참조하십시오.
 
 +
 [listing]
@@ -125,7 +135,9 @@ defaults {
 
 == NVMe/FC용 Broadcom FC 어댑터를 구성합니다
 
-지원되는 어댑터의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+다음 절차에 따라 Broadcom FC 어댑터를 구성할 수 있습니다.
+
+지원되는 어댑터의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
 
 .단계
 . 지원되는 어댑터를 사용하고 있는지 확인합니다.
@@ -297,6 +309,9 @@ options lpfc lpfc_sg_seg_cnt=256
 
 == NVMe/FC를 검증합니다
 
+다음 절차를 사용하여 NVMe/FC를 검증할 수 있습니다.
+
+.단계
 . 다음 NVMe/FC 설정을 확인하십시오.
 +
 [listing]
@@ -363,34 +378,5 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
          "Namespace_Size" : 13107200
     }
 ]
-----
-
-
-
-
-== lpfc Verbose 로깅
-
-NVMe/FC용 lpfc 드라이버를 설정합니다.
-
-.단계
-. 를 설정합니다 `lpfc_log_verbose` 다음 값 중 하나에 대한 드라이버 설정을 사용하여 NVMe/FC 이벤트를 기록합니다.
-+
-[listing]
-----
-#define LOG_NVME 0x00100000 /* NVME general events. */
-#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
-#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
-#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
-----
-. 값을 설정한 후 를 실행합니다 `dracut-f` 명령을 실행하여 호스트를 재부팅합니다.
-. 설정을 확인합니다.
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_log_verbose=0xf00083
-
-# cat /sys/module/lpfc/parameters/lpfc_log_verbose
-15728771
 ----
 

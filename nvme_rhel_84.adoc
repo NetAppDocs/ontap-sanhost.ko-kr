@@ -20,31 +20,31 @@ summary: ONTAP에서 RHEL 8.4용 NVMe-oF 호스트를 구성하는 방법
 
 
 [role="lead"]
-NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)는 ANA(비대칭 네임스페이스 액세스)가 포함된 RHEL 8.4에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 ALUA로, 현재 in-kernel NVMe Multipath로 구현되고 있습니다. RHEL 8.4에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 자세한 내용은 여기 에 설명되어 있습니다.
+ANA(Asymmetric Namespace Access)가 포함된 RHEL(Red Hat Enterprise Linux) 8.4에서 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)가 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 비대칭 논리 유닛 액세스(ALUA)이며, 현재 In-kernel NVMe Multipath를 통해 구현되고 있습니다. RHEL 8.4의 ANA 및 타겟으로 ONTAP를 사용하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화할 수 있습니다.
 
 
-NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+
+== 피처
+
+이 릴리즈에는 새로운 기능이 없습니다.
 
 
 
 == 알려진 제한 사항
 
-* RHEL 8.4의 경우 커널 내 NVMe 다중 경로가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.
+* RHEL 8.4의 경우 커널 내 NVMe 다중 경로는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.
 * RHEL 8.4의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.4_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.4 릴리스 정보"^] 를 참조하십시오.
 * 현재 NVMe-oF 프로토콜을 사용한 SAN 부팅은 지원되지 않습니다.
 
 
 
 
-== 구성 요구 사항
+== 인커널 NVMe 다중 경로 지원
 
-을 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 지원되는 구성에 대한 정확한 세부 정보
+다음 절차를 사용하여 커널 내 NVMe 다중 경로를 활성화할 수 있습니다.
 
-
-
-== In-kernel NVMe Multipath를 활성화합니다
-
-. RHEL 8.4 GA를 서버에 설치합니다. 설치가 완료되면 지정된 RHEL 8.4 GA 커널을 실행 중인지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 를 참조하십시오.
+.단계
+. RHEL 8.4 GA를 서버에 설치합니다.
 . 설치가 완료되면 지정된 RHEL 8.4 커널을 실행 중인지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 를 참조하십시오.
 +
 예:
@@ -101,19 +101,23 @@ defaults {
         enable_foreign     NONE
 }
 ----
+새 설정을 적용하려면 'stemctl restart multipathd' 명령을 실행하여 multipathd 데몬을 다시 시작합니다.
+
 ====
-. 새 설정을 적용하려면 'stemctl restart multipathd' 명령을 실행하여 multipathd 데몬을 다시 시작합니다.
 
 
 
 
 == NVMe/FC 구성
 
+Broadcom/Emulex 또는 Marvell/Qlogic 어댑터에 대해 NVMe/FC를 구성할 수 있습니다.
 
-
-=== Broadcom/Emulex
-
-. 지원되는 어댑터를 사용하고 있는지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 를 참조하십시오.
+[role="tabbed-block"]
+====
+.Broadcom/Emulex
+--
+.단계
+. 지원되는 어댑터를 사용하고 있는지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^] 를 참조하십시오.
 +
 [listing]
 ----
@@ -124,7 +128,7 @@ LPe32002-M2
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. 권장 Broadcom lpfc 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록을 확인하십시오.
+. 권장 Broadcom lpfc 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^] 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록을 확인하십시오.
 +
 [listing]
 ----
@@ -134,7 +138,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/module/lpfc/version
 0:12.8.0.5
 ----
-. lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인한다
+. 확인합니다 `lpfc_enable_fc4_type` 가 3으로 설정되어 있습니다.
 +
 [listing]
 ----
@@ -177,38 +181,12 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 
 
+--
+.NVMe/FC용 Marvell/QLogic FC 어댑터
+--
+기본 받은 편지함입니다 `qla2xxx` RHEL 8.4 GA 커널에 포함된 드라이버에는 ONTAP 지원에 필수적인 최신 수정 사항이 있습니다.
 
-
-==== 1MB I/O 크기 활성화(옵션)
-
-ONTAP는 컨트롤러 식별 데이터에 8의 MDTS(MAX Data 전송 크기)를 보고합니다. 즉, 최대 I/O 요청 크기는 최대 1MB여야 합니다. 그러나 Broadcom NVMe/FC 호스트에 대해 크기 1MB의 입출력 요청을 발급하려면 lpfc 매개 변수 "lpfc_sg_seg_cnt"를 기본값 64에서 최대 256까지 범프해야 합니다. 다음 지침에 따라 수행합니다.
-
-. 해당 'modprobe lpfc.conf' 파일에 값 256을 추가합니다.
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_sg_seg_cnt=256
-----
-. dracut -f 명령을 실행하고 호스트를 재부팅합니다.
-. 재부팅 후 해당 'ysfs' 값을 확인하여 위 설정이 적용되었는지 확인한다.
-+
-[listing]
-----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
-----
-+
-이제 Broadcom FC-NVMe 호스트는 ONTAP 네임스페이스 장치에서 최대 1MB I/O 요청을 보낼 수 있습니다.
-
-
-
-
-
-=== Marvell/QLogic
-
-RHEL 8.4 GA 커널에 포함된 기본 받은 편지함 "qla2xxx" 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다.
-
+.단계
 . 다음 명령을 사용하여 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행 중인지 확인합니다.
 +
 [listing]
@@ -226,17 +204,40 @@ QLE2742 FW:v9.06.02 DVR:v10.02.00.104-k
 ----
 
 
+--
+====
+
+
+=== 1MB I/O 활성화(옵션)
+
+ONTAP는 컨트롤러 식별 데이터에 8의 MDTS(MAX Data 전송 크기)를 보고합니다. 이는 최대 I/O 요청 크기가 1MB가 될 수 있음을 의미합니다. 그러나 Broadcom NVMe/FC 호스트에 대해 1MB의 입출력 요청을 발급하려면 을 늘려야 합니다 `lpfc` 의 값 `lpfc_sg_seg_cnt` 매개 변수를 기본값 64에서 256으로 설정합니다.
+
+.단계
+. lpfc_sg_seg_cnt 매개변수를 256으로 설정합니다.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. dracut -f 명령을 실행하고 호스트를 재부팅합니다.
+. lpfc_sg_seg_cnt가 256인지 확인합니다.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+NOTE: Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+
 
 
 == NVMe/TCP를 구성합니다
 
-NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. Linux NVMe/TCP 호스트에는 다음과 같은 두 가지 주요 제한 사항이 있습니다.
-
-* * 경로 복구 후 자동 재연결 불가 * NVMe/TCP는 경로 다운 후 10분 동안 기본 'Ctrl-Loss-TMO' 타이머 이후에 복구된 경로에 자동으로 다시 연결할 수 없습니다.
-* * 호스트 부팅 중 자동 연결 없음 * 호스트 부팅 중에 NVMe/TCP도 자동으로 연결할 수 없습니다.
-
-
-시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.
+NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 경로가 10분의 기본 시간 제한 내에 복원되지 않고 다운되면 NVMe/TCP가 자동으로 다시 연결되지 않습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다.
 
 .단계
 . 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
@@ -300,7 +301,10 @@ sectype: none
 
 == NVMe-oF를 검증합니다
 
-. 다음을 확인하여 In-kernel NVMe multipath가 실제로 활성화되어 있는지 확인합니다.
+다음 절차를 사용하여 NVMe-oF를 검증할 수 있습니다.
+
+.단계
+. 커널 내 NVMe 다중 경로가 활성화되었는지 확인:
 +
 [listing]
 ----
@@ -321,6 +325,9 @@ round-robin
 ----
 . ONTAP 네임스페이스가 호스트에 제대로 반영되는지 확인합니다. 예를 들면, 다음과 같습니다.
 +
+예 (A):
+
++
 [listing]
 ----
 # nvme list
@@ -333,7 +340,7 @@ Usage                Format         FW Rev
 85.90 GB / 85.90 GB  4 KiB + 0 B    FFFFFFFF
 ----
 +
-다른 예:
+예 (b):
 
 +
 [listing]
@@ -349,6 +356,9 @@ Usage                Format         FW Rev
 ----
 . 각 경로의 컨트롤러 상태가 라이브이고 적절한 ANA 상태인지 확인합니다. 예를 들면, 다음과 같습니다.
 +
+예 (A):
+
++
 [listing, subs="+quotes"]
 ----
 # nvme list-subsys /dev/nvme1n1
@@ -360,7 +370,7 @@ nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.04ba0732530911ea8e8300a098dfdd91:su
 +- nvme6 fc traddr=nn-0x208100a098dfdd91:pn-0x208300a098dfdd91 host_traddr=nn-0x200000109b579d5f:pn-0x100000109b579d5f live *optimized*
 ----
 +
-다른 예:
+예 (b):
 
 +
 [listing, subs="+quotes"]
@@ -379,6 +389,9 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.37ba7d9cbfba11eba35dd039ea165514:su
 ----
 . NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다. 예를 들면, 다음과 같습니다.
 +
+예 (A):
+
++
 [listing]
 ----
 # nvme netapp ontapdevices -o column
@@ -387,7 +400,7 @@ Device       Vserver          Namespace Path
 /dev/nvme1n1 vserver_fcnvme_145 /vol/fcnvme_145_vol_1_0_0/fcnvme_145_ns
 
 NSID  UUID                                   Size
-----  ------------------------------         ------
+-------  ------------------------------     --------------------
 1      23766b68-e261-444e-b378-2e84dbe0e5e1  85.90GB
 
 
@@ -408,7 +421,7 @@ NSID  UUID                                   Size
 }
 ----
 +
-다른 예:
+예 (b):
 
 +
 [listing]
@@ -419,7 +432,7 @@ Device       Vserver          Namespace Path
 /dev/nvme0n1 vs_tcp_114       /vol/tcpnvme_114_1_0_1/tcpnvme_114_ns
 
 NSID  UUID                                   Size
-----  ------------------------------         ------
+-------  ------------------------------         ---------------
 1      a6aee036-e12f-4b07-8e79-4d38a9165686  85.90GB
 
 
@@ -440,9 +453,10 @@ NSID  UUID                                   Size
 
 }
 ----
-+
-= 알려진 문제
 
 
+
+
+== 알려진 문제
 
 알려진 문제가 없습니다.
