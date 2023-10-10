@@ -2003,23 +2003,17 @@
   <block id="29cafbf989ec1577f968e04d52752f5e" category="paragraph">RHEL 9.0에는 알려진 문제가 없습니다.</block>
   <block id="587384a32d909bff27b8405e18d9d7cf" category="summary">ONTAP를 사용하여 RHEL 9.0용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="d5a9179e304fd13ff8268ac2240e3ef4" category="paragraph">NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상적인 스토리지 장애 조치(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 있는 RHEL 9.0에서 지원됩니다. ANA는 NVM-of 환경에서 ALUA와 동등한 제품이며 현재 In-kernel NVMe Multipath로 구현되고 있습니다. 이 문서에는 RHEL 9.0에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 세부 정보가 포함되어 있습니다.</block>
-  <block id="95369a4b9030e2f901d021df167f021b" category="list-text">RHEL 9.0부터 NVMe/TCP는 더 이상 기술 미리 보기 기능(RHEL 8과 다름)이 아니라 완전히 지원되는 엔터프라이즈 기능 자체입니다.</block>
-  <block id="c1e6aa7090af15f8d8efefa50c5ebbb9" category="list-text">RHEL 9.0부터는 명시적 설정 없이 커널 내 NVMe 다중 경로가 기본적으로 NVMe 네임스페이스에 대해 활성화됩니다(RHEL 8과 다름).</block>
   <block id="140268ba3849abd78f34f907f067407f" category="paragraph">을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 지원되는 구성에 대한 자세한 내용은 를 참조하십시오.</block>
   <block id="aa752093cf87ece20a99a98640048b70" category="list-text">설치가 완료되면 지정된 RHEL 9.0 커널을 실행 중인지 확인합니다. 을 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="d79792e27890df0330ac43850943e028" category="list-text">NVMe-CLI 패키지를 설치합니다.</block>
   <block id="f5b9e6db2b2e5a554b55fd280914f516" category="list-text">호스트에서 '/etc/NVMe/hostnqn'의 호스트 NQN 문자열을 확인하고 ONTAP 배열의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다. 예를 들면, 다음과 같습니다.</block>
   <block id="e842da2108d28a3593f8615a854fc699" category="admonition">호스트 NQN 문자열이 일치하지 않으면 "vserver modify" 명령을 사용하여 해당 ONTAP NVMe 하위 시스템의 호스트 NQN 문자열을 업데이트하여 호스트의 '/etc/NVMe/hostnqn'에서 호스트 NQN 문자열과 일치시켜야 합니다.</block>
-  <block id="bad5d213c95812779e8e7d73fa0f92a4" category="list-text">지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터의 최신 목록은 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>.</block>
   <block id="2a8380564c8c0b5cd202773abd4f94d3" category="list-text">권장 Broadcom lpfc 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지 확인합니다. 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>.</block>
   <block id="f3eaa9e3e89c370c17729852377aed2f" category="list-text">lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인한다.</block>
   <block id="055436915aa042f3fdf8045e013acbb5" category="list-text">이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.</block>
   <block id="351f4726c12d45250df101c8bd9578d6" category="list-text">마찬가지로, 다른 NVMe/TCP 이니시에이터 타겟 LIF 콤보에서 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인하십시오. 예를 들면, 다음과 같습니다.</block>
   <block id="dc53dad0b533fb8bfe7d6c60ef1fa91e" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMf 설정(예: 모델이 'NetApp ONTAP 컨트롤러'로 설정되고 로드 밸런싱이 '라운드 로빈'으로 설정된 모델)이 호스트에 올바로 반영되는지 확인합니다.</block>
-  <block id="85d648e4cde5d10dc52f7133eae3a296" category="list-text">ONTAP 네임스페이스가 호스트에 제대로 반영되는지 확인합니다. 예를 들어 (A),</block>
   <block id="cebb9dfdc378481f9e93e7b505fe4f1d" category="paragraph">예 (b):</block>
-  <block id="cdb0ca847e914e0c124768ae14142869" category="list-text">각 경로의 컨트롤러 상태가 라이브이고 적절한 ANA 상태인지 확인합니다. 예를 들어 (A),</block>
-  <block id="86a8f02d0c1226cbab77460737c32b26" category="list-text">NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다. 예를 들어 (A),</block>
   <block id="e3f05e6b08d377aca967243a953ecfb9" category="section-title">일반적인 NVMe-CLI 오류 및 해결 방법</block>
   <block id="e7e8e011c8e0651dc3a6d06305d8279e" category="paragraph">RHEL 8.3에는 알려진 문제가 없습니다.</block>
   <block id="6507882f376544268e31289f84d4ee08" category="doc">HP-UX Host Utilities 6.0</block>
@@ -2215,16 +2209,11 @@
   <block id="309cf24349edc5122d2f31c53280bf27" category="doc">Oracle Linux 8.5 및 ONTAP용 NVMe/FC 호스트 구성</block>
   <block id="50d880869dbad54df4986a506d8e811c" category="admonition">이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 및 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>.</block>
   <block id="6f8b8f782bb2e1f5374f4c0c6a78046a" category="paragraph">NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상 작동하는 스토리지 페일오버(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 포함된 RHEL 9.1에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 비대칭 논리 유닛 액세스(ALUA)이며, 현재 In-kernel NVMe Multipath를 통해 구현되고 있습니다. 이 문서에는 RHEL 9.1 및 ONTAP에서 ANA를 타겟으로 사용하여 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 세부 정보가 포함되어 있습니다.</block>
-  <block id="5b567ce58b5a293a4e497c0fd053d9d5" category="list-text">RHEL 9.1에는 NVMe/FC뿐만 아니라 NVMe/TCP도 지원됩니다. 네이티브 의 NetApp 플러그인<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지에는 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보가 표시될 수 있습니다.</block>
   <block id="362156721e24ceedbadf34c0abc7e007" category="list-text">RHEL 9.1에는 명시적 설정 없이 기본적으로 활성화된 NVMe 네임스페이스에 대한 인커널 NVMe 다중 경로 지원이 포함되어 있습니다.</block>
-  <block id="b08367cf0348d2ac07ce7d94bb17f61f" category="list-text">RHEL 9.1에서는 명시적 없이 특정 HBA 어댑터의 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용할 수 있습니다<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> NVMe 네임스페이스를 변경하지 못하도록 설정합니다.</block>
   <block id="79d6a4c19ab1815ebac474c0cb176558" category="section-title">인커널 NVMe 다중 경로 지원</block>
-  <block id="a2ed8d7465615184444b1bd0263933b1" category="list-text">서버에 RHEL 9.1을 설치합니다. 설치가 완료되면 지정된 RHEL 9.1 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
-  <block id="c165a8a0999d73184de84d184b3cfb60" category="list-text">설치가 완료되면 지정된 RHEL 9.1 커널을 실행 중인지 확인합니다. 를 참조하십시오 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="2d012da343e217426e95ab334286ee04" category="list-text">확인합니다<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 다음 명령을 사용하여 Marvell 어댑터가 NVMe/FC 이니시에이터로 작동할 수 있도록 설정됩니다.</block>
   <block id="4b74cb8caf9869d9c39202f5a7c8cd4d" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF combos가 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다. 예를 들면 다음과 같습니다.</block>
   <block id="7912d4b61044915bf839431d678f055d" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정해야 합니다<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>)를 실행하는 동안<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 경로 손실이 발생할 경우 더 긴 시간 동안 재시도하도록 명령을 내립니다. 예를 들면 다음과 같습니다.</block>
-  <block id="8820bbf46f22897008878290f6060725" category="paragraph">예 (b)</block>
   <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
   <block id="2f8adf6e51ddcf7b0618dad0e63a4144" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> 명령은 지정된 하위 시스템에 대해 반복되는 NVMe 컨트롤러 목록을 반환합니다</block>
   <block id="95a3009a54be763a347295539b3b924d" category="cell">를 클릭합니다<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템과 관련된 NVMe 컨트롤러의 고유 목록을 반환해야 합니다. RHEL 9.1에서<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템에 속한 모든 네임스페이스에 대한 각 ANA 상태가 있는 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 이름 공간 당 속성이므로 지정된 네임스페이스에 대한 하위 시스템 명령 구문을 나열하는 경우 경로 상태로 고유한 NVMe 컨트롤러 항목을 표시하는 것이 좋습니다.</block>
@@ -3409,4 +3398,15 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="7012889cc926d9aed72cc4dc0fd4e057" category="doc">ONTAP 포함 RHEL 8.6에 대한 NVMe-oF 호스트 구성</block>
   <block id="6a7cb6a9e050e971cb54222db7ae4540" category="paragraph">ANA(Asymmetric Namespace Access)가 포함된 RHEL(Red Hat Enterprise Linux) 8.6에서 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)가 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 비대칭 논리 유닛 액세스(ALUA)이며, 현재 In-kernel NVMe Multipath를 통해 구현되고 있습니다. 이 절차를 수행하는 동안 RHEL 8.6의 ANA 및 타겟으로 ONTAP를 사용하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화합니다</block>
   <block id="7d2f5cc21497b0cde87934fbd84c0694" category="paragraph">동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우 NetApp에서는 ONTAP 네임스페이스에 커널 내 NVMe 다중 경로를, ONTAP LUN에 대해 dm-multipath를 각각 사용하는 것이 좋습니다. 즉, dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하도록 ONTAP 네임스페이스를 dm-multipath에서 제외해야 합니다. 이 작업은 에 enable_Foreign 설정을 추가하여 수행할 수 있습니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
+  <block id="6a19313e8113ac2c1e15410e39bf21fb" category="paragraph">ONTAP를 사용하는 RHEL 9.1의 NVMe-oF 호스트 구성에 대해 다음 지원을 이용할 수 있습니다.</block>
+  <block id="584f126497a11dd74bf631779fe0f1dd" category="paragraph">을 참조하십시오 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block> 지원되는 구성에 대한 정확한 세부 정보</block>
+  <block id="05df89d060e2fb1042048336db58af01" category="list-text">서버에 RHEL 9.1을 설치합니다.</block>
+  <block id="318827c3fa6f890e8dcb7aef7e4f58c8" category="list-text">설치가 완료되면 지정된 RHEL 9.1 커널을 실행하고 있는지 확인합니다. 를 참조하십시오 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="6ba8f2fd9b26537c1f509d73b5b3c3e8" category="list-text">NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다.</block>
+  <block id="55475dcd5bcfa96d71d74b2d692fe800" category="list-text">RHEL 9.0부터 NVMe/TCP는 RHEL 8과 달리 더 이상 기술 미리 보기 기능이 아니라 완전히 지원되는 엔터프라이즈 기능 그 자체입니다.</block>
+  <block id="450353fa421bb4ae9174f35ab8787934" category="list-text">RHEL 9.0부터, RHEL 8과 달리 명시적인 설정 없이 기본적으로 NVMe 네임스페이스에 대해 커널 내 NVMe 다중 경로가 활성화됩니다.</block>
+  <block id="55b8ad94911cefce229b352b5dcdb193" category="list-text">지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터에 대한 자세한 내용은 를 참조하십시오 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block>.</block>
+  <block id="f881ebad820aa982c82a8b50a1b39070" category="list-text">ONTAP 네임스페이스가 호스트에 제대로 반영되는지 확인합니다.</block>
+  <block id="e35ada62930c3b590684fb1ae4386cac" category="list-text">각 경로의 컨트롤러 상태가 라이브이고 적절한 ANA 상태인지 확인합니다.</block>
+  <block id="051ff3071e673676a5e48635fa7f872b" category="list-text">NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다.</block>
 </blocks>
