@@ -282,4 +282,4 @@ Veritas Infoscale, Linux Native Device Mapper 및 LVM 볼륨 관리자를 비롯
 
 == 알려진 문제
 
-알려진 문제가 없습니다.
+ONTAP 릴리즈가 포함된 Linux용 Veritas Infoscale 7에는 알려진 문제가 없습니다.

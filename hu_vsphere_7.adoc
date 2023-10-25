@@ -329,7 +329,7 @@ naa.600a098038304731783f506670553355
 
 == 알려진 문제
 
-알려진 문제가 없습니다.
+VMware vSphere 7.x 및 ONTAP 릴리즈에는 알려진 문제가 없습니다.
 
 .관련 정보
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]

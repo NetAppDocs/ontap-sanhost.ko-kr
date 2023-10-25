@@ -267,6 +267,6 @@ Veritas Infoscale, Linux Native Device Mapper 및 LVM 볼륨 관리자를 비롯
 
 
 
-== 알려진 문제 및 제한 사항
+== 알려진 문제
 
-알려진 문제와 제한 사항은 없습니다.
+Linux용 Veritas Storage Foundation 6(ONTAP 릴리즈 포함)에는 알려진 문제가 없습니다.

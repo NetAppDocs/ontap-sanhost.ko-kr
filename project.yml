@@ -13,7 +13,7 @@ sidebar:
     url: "/index.html"
   - title: 개요
     url: "/overview.html"
-  - title: SAN Host Utilities를 설치합니다
+  - title: SAN 호스트 유틸리티를 설치합니다
     entries:
     - title: 개요
       url: "/hu_sanhost_index.html"
@@ -33,7 +33,7 @@ sidebar:
         url: "/hu_hpux_60.html"
       - title: 명령 참조 예
         url: "/hu_hpux_60_cmd.html"
-    - title: Linux 통합 호스트 유틸리티
+    - title: Linux Unified Host Utilities를 참조하십시오
       entries:
       - title: 릴리스 정보
         url: "/hu_luhu_71_rn.html"

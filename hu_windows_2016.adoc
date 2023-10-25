@@ -18,6 +18,9 @@ summary: ONTAP와 함께 Windows Server 2016 사용
 :toc-position: content
 
 
+[role="lead"]
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Windows Server 2016을 구성할 수 있습니다.
+
 
 
 == OS 부팅
@@ -145,6 +148,6 @@ NOTE: Windows Unified Host Utility에서 이러한 값을 설정합니다. 권�
 
 
 
-== 알려진 제한 사항
+== 알려진 문제
 
-Windows Server 2016에는 알려진 문제가 없습니다.
+Windows Server 2016 ONTAP 릴리스에 대해 알려진 문제가 없습니다.

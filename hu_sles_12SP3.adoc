@@ -18,6 +18,9 @@ summary: ONTAP에서 SUSE Linux Enterprise Server 12 SP3을 사용하는 방법�
 :toc-position: content
 
 
+[role="lead"]
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 SUSE Linux Enterprise Server 12 SP3을 대상으로 구성할 수 있습니다.
+
 
 
 == Linux Unified Host Utilities를 설치합니다
@@ -285,7 +288,9 @@ devices {
 ----
 
 
-== 알려진 문제 및 제한 사항
+== 알려진 문제
+
+SLES 15 SP3(ONTAP 포함) 릴리스에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="4*"]
 |===

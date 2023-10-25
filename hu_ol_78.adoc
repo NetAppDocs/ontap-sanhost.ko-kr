@@ -18,6 +18,9 @@ summary: Oracle Linux 7.8을 ONTAP와 함께 사용하는 방법에 대해 설�
 :toc-position: content
 
 
+[role="lead"]
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하여 Oracle Linux 7.8을 구성할 수 있습니다.
+
 
 
 == Linux Unified Host Utilities를 설치합니다
@@ -262,7 +265,9 @@ NOTE: Oracle Linux 7.8 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사
 
 
 
-== 알려진 문제 및 제한 사항
+== 알려진 문제
+
+Oracle Linux 7.8 및 ONTAP 릴리즈에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="4*"]
 |===

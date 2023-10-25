@@ -18,6 +18,9 @@ summary: ONTAP와 함께 Oracle Linux 9.0을 사용하는 방법에 대해 설�
 :toc-position: content
 
 
+[role="lead"]
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 9.0을 구성할 수 있습니다.
+
 
 
 == Linux Unified Host Utilities를 설치합니다

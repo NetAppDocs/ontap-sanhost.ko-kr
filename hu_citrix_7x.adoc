@@ -247,6 +247,6 @@ NOTE: Citrix XenServer에서는 지원되는 구성을 위해 모든 Linux 및 W
 
 
 
-== 알려진 문제 및 제한 사항
+== 알려진 문제
 
-알려진 문제와 제한 사항은 없습니다.
+ONTAP를 사용하는 Citrix XenServer 릴리즈에는 알려진 문제가 없습니다.

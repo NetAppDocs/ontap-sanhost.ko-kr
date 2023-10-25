@@ -235,7 +235,9 @@ NOTE: Citrix Hypervisor는 지원되는 구성을 위해 모든 Linux 및 Window
 
 
 
-== 알려진 문제 및 제한 사항
+== 알려진 문제
+
+ONTAP가 포함된 Citrix Hypervisor 릴리즈에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="4*"]
 |===

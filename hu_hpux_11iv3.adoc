@@ -18,6 +18,9 @@ summary: ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는
 :toc-position: content
 
 
+[role="lead"]
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 HP-UX 11i v3을 구성할 수 있습니다.
+
 
 
 == HP-UX Host Utilities를 설치합니다
@@ -168,7 +171,9 @@ up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
 |===
 
 
-== 알려진 문제 및 제한 사항
+== 알려진 문제
+
+HP-UX 11i v3(ONTAP 포함) 릴리즈에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="4*"]
 |===

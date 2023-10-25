@@ -18,6 +18,9 @@ summary: ONTAP에서 CentOS 8.4를 사용하는 방법에 대해 설명합니다
 :toc-position: content
 
 
+[role="lead"]
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하여 CentOS 8.4를 구성할 수 있습니다.
+
 
 
 == Linux Unified Host Utilities를 설치합니다
@@ -293,6 +296,6 @@ devices {
 
 
 
-== 알려진 문제 및 제한 사항
+== 알려진 문제
 
-CentOS 8.4에 대해 알려진 문제가 없습니다.
+ONTAP 릴리즈를 사용하는 CentOS 8.4에 대해 알려진 문제가 없습니다.

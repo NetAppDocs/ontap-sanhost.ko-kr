@@ -18,6 +18,9 @@ summary: ONTAP에서 SUSE Linux Enterprise Server 15 SP3을 사용하는 방법�
 :toc-position: content
 
 
+[role="lead"]
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 SUSE Linux Enterprise Server 15 SP4를 구성할 수 있습니다.
+
 
 
 == Linux Unified Host Utilities를 설치합니다
@@ -261,6 +264,6 @@ devices {
 ----
 
 
-== 알려진 문제 및 제한 사항
+== 알려진 문제
 
-SUSE Linux Enterprise Server 15 SP4에는 알려진 문제가 없습니다.
+SUSE Linux Enterprise Server 15 SP4(ONTAP 릴리스 포함)에는 알려진 문제가 없습니다.
