@@ -19,29 +19,13 @@ summary: Windows Unified Host Utilities 릴리스 정보
 
 
 [role="lead"]
-릴리스 노트 문서에는 Windows Unified Host Utilities 7.2 및 7.1 릴리스에 대한 최신 정보(새로운 기능, 개선 사항 및 알려진 문제에 대한 업데이트 포함)가 포함되어 있습니다. 이 문서는 Windows Host Utilities 사용에 대한 새로운 정보가 제공될 때 업데이트됩니다.
+릴리즈 노트에서는 새로운 기능 및 향상된 기능, 현재 릴리즈에서 해결된 문제, 알려진 문제 및 제한 사항, ONTAP 스토리지 시스템에서 특정 Windows 호스트를 구성 및 관리하는 것과 관련된 중요한 주의 사항에 대해 설명합니다.
+
+Host Utilities가 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
 
 
 
-== Windows Unified Host Utilities 정보
-
-Windows Unified Host Utilities를 사용하면 Windows 호스트 컴퓨터를 NetApp 스토리지 시스템에 연결할 수 있습니다. Windows Unified Host Utilities에는 필요한 Windows 레지스트리 및 HBA 값을 설정하는 설치 프로그램이 포함되어 있습니다.
-
-Windows Unified Host Utilities는 다음 버전의 Windows를 계속 지원합니다.
-
-* Windows 2012
-* Windows 2012R2
-* Windows 2016
-* 윈도우즈 2019
-* Windows 2022
-
-
-
-NOTE: NetApp 에는 Host Utilities 소프트웨어 릴리스 간의 추가 구성 요소가 적용됩니다. 시스템 요구 사항에 대한 최신 정보는 를 참조하십시오 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
-
-
-
-== 피처
+== 새로운 소식
 
 * Windows Unified Host Utilities 7.2에는 새 공급업체 카드에 대한 NVMe/FC 드라이버 매개 변수 설정 및 버그 수정 지원이 포함되어 있습니다.
 * Windows 유니파이드 호스트 유틸리티 7.1에는 E-Series 스토리지 시스템 지원, ONTAP 9 이상 버전 지원, 페일오버 단축을 위한 향상된 iSCSI 시간 제한이 포함됩니다.
@@ -49,68 +33,21 @@ NOTE: NetApp 에는 Host Utilities 소프트웨어 릴리스 간의 추가 구�
 
 
 
-== 중요 주의 사항
-
-최신 버전의 Windows Host Utilities를 배포하기 전에 사용 가능한 정보를 읽고 시스템 작동에 영향을 줄 수 있는 문제를 식별하고 해결해야 합니다.
-
-개별 버그에 대한 자세한 내용과 다른 버그 관련 도구에 대한 자세한 내용은 을 참조하십시오 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp 온라인 버그"^].
-
-
-
-=== 필요한 핫픽스 설치
-
-Windows Unified Host Utilities를 성공적으로 설치하거나 업그레이드하려면 특정 Windows 핫픽스를 설치해야 합니다. 일부 핫픽스는 Windows 업데이트의 구성 요소입니다.
-
-을 참조하십시오 link:hu_wuhu_72.html["Windows Host Utilities 설명서"] 특정 구성 핫픽스 요구 사항을 확인하십시오.
-
-
-
 == 알려진 문제 및 제한 사항
 
-일부 예기치 않은 동작 및 잠재적으로 원치 않는 동작이 7.1 릴리즈에서는 이러한 동작을 방지하기 위한 해결 방법이 확인되었습니다.
+특정 호스트의 성능에 영향을 미칠 수 있는 다음과 같은 알려진 문제 및 제한 사항을 숙지해야 합니다. Windows Unified Host Utilities 7.1 릴리스에서는 예기치 않거나 잠재적으로 원치 않는 몇 가지 동작과 이러한 동작을 방지하기 위한 해결 방법이 확인되었습니다.
 
 [cols="30, 30, 20"]
 |===
 | 제목 | 설명 | 해결 방법 
 
 
-| 를 실행합니다 `linux_gos_timeout-install.sh` Red Hat Enterprise Linux 또는 SUSE Linux Enterprise Server를 실행하는 Hyper-V 게스트에서는 스크립트가 더 이상 필요하지 않습니다 | 를 더 이상 실행할 필요가 없습니다 `linux_gos_timeout-install.sh` 기본 시간 초과 설정을 사용하고 있기 때문에 Red Hat Enterprise Linux 5, Red Hat Enterprise Linux 6 또는 SUSE Linux Enterprise Server 11 Hyper-V 게스트에서 디스크 시간 초과를 변경하는 스크립트입니다. 를 클릭합니다 `linux_gos_timeout-install.sh` 이전 버전의 Host Utilities에 포함된 스크립트는 더 이상 Windows Unified Host Utilities에 포함되지 않습니다. Windows Unified Host Utilities 7.1에서는 기본 디스크 시간 초과 설정을 사용합니다. | 해당 없음 
+| 를 실행합니다 `linux_gos_timeout-install.sh` Red Hat Enterprise Linux 또는 SUSE Linux Enterprise Server를 실행하는 Hyper-V 게스트에서는 스크립트가 더 이상 필요하지 않습니다 | 를 더 이상 실행할 필요가 없습니다 `linux_gos_timeout-install.sh` 기본 시간 초과 설정을 사용하고 있기 때문에 Red Hat Enterprise Linux 5, Red Hat Enterprise Linux 6 또는 SUSE Linux Enterprise Server 11 Hyper-V 게스트에서 디스크 시간 초과를 변경하는 스크립트입니다. 를 클릭합니다 `linux_gos_timeout-install.sh` 이전 버전의 Host Utilities에 포함되어 있던 스크립트는 Windows Unified Host Utilities 7.1 버전에 더 이상 포함되지 않습니다. Windows Unified Host Utilities 7.1에서는 기본 디스크 시간 초과 설정을 사용합니다. | 해당 없음 
 
 
-| iSCSI 세션은 IPv4 및 IPv6가 혼합된 재부팅 후 다시 연결되지 않습니다 | IPv4 및 IPv6 엔드포인트를 모두 포함하는 다중 경로 I/O(MPIO) 구성 또는 세션당 다중 연결(MCS) 구성에서 Windows 호스트를 재부팅한 후 일부 iSCSI 세션이 다시 연결되지 않을 수 있습니다. | 재부팅 후 모든 iSCSI 경로가 반환되는지 확인하려면 모든 IPv4 엔드포인트 또는 모든 IPv6를 사용합니다. IPv4와 IPv6를 함께 사용하지 마십시오. 
+| iSCSI 세션은 IPv4 및 IPv6가 혼합된 재부팅 후 다시 연결되지 않습니다 | IPv4 및 IPv6 엔드포인트를 모두 포함하는 다중 경로 I/O(MPIO) 구성 또는 세션당 다중 연결(MCS) 구성에서 Windows 호스트를 재부팅한 후 일부 iSCSI 세션이 다시 연결되지 않을 수 있습니다. | 모든 IPv4 엔드포인트 또는 IPv6 엔드포인트를 사용합니다. IPv4와 IPv6를 함께 사용하지 마십시오. 
 
 
-| MCS는 iSCSI 소프트웨어 부팅에서 지원되지 않습니다 | iSCSI MCS(Multiple Connecting per session)로 iSCSI 소프트웨어 부팅을 사용하는 경우 iSCSI 부트 선행 연결은 보호되지 않습니다. 이로 인해 부팅 LUN 연결이 끊겨 호스트 충돌이 발생할 수 있습니다. | Microsoft는 iSCSI 소프트웨어 부팅 호스트에 대한 MCS를 지원하지 않습니다. MPIO를 고가용성 솔루션으로 사용합니다. MPIO와 MCS의 혼합은 지원되지 않습니다. 
+| MCS는 iSCSI 소프트웨어 부팅에서 지원되지 않습니다 | iSCSI 소프트웨어 부팅을 iSCSI MCS(Multiple connections per session)와 함께 사용하는 경우 iSCSI 부트 선행 접속을 보호할 수 없습니다. 이 경우 부팅 LUN 연결이 끊겨 호스트 시스템이 중단될 수 있습니다. | Microsoft는 iSCSI 소프트웨어 부팅 호스트에 대한 MCS를 지원하지 않습니다. MPIO를 고가용성 솔루션으로 사용합니다. MPIO와 MCS의 혼합은 지원되지 않습니다. 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp 온라인 버그"^] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다.
-
-
-
-== SAN 호스트 구성 설명서 정보
-
-SAN 호스트 유틸리티에 대한 설명서는 에 포함되어 있습니다 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["ONTAP SAN 호스트 구성 설명서"]. ONTAP SAN 호스트 구성 문서는 최신 SAN 호스트 릴리즈를 모두 포함하는 누적 문서입니다. 릴리스 간 기능 차이는 상황에 따라 다르게 표시됩니다.
-
-
-
-== 제품 설명서 및 기타 정보를 찾을 수 있는 위치
-
-모든 NetApp 제품에 대한 문서에 액세스하고 NetApp 기업 사이트의 제품 설명서 페이지에서 기술 보고서, 백서 등의 기타 제품 정보 리소스를 찾을 수 있습니다.
-
-.관련 정보
-* ONTAP 스토리지 시스템 구성 및 관리 *
-
-* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["ONTAP 소프트웨어 설치 안내서"^] ONTAP 버전용
-* 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["ONTAP SAN 관리 가이드 를 참조하십시오"^] ONTAP 버전용
-* 를 클릭합니다 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["ONTAP 릴리즈 노트"^] ONTAP 버전용
-
-
-* E-Series 스토리지 시스템의 구성 및 관리 * 를 참조하십시오
-
-* 프로토콜에 적합한 SANtricity 스토리지 관리자 구성 및 Windows Express용 프로비저닝 가이드
-* 운영 체제, 프로토콜 및 SANtricity 버전에 대한 SANtricity 스토리지 관리자 구성 및 프로비저닝 익스프레스 가이드.
-* 사용 중인 SANtricity 버전에 맞는 SANtricity 스토리지 관리자 소프트웨어 설치 참조 안내서
-* 사용 중인 SANtricity 버전에 맞는 SANtricity 스토리지 관리자 다중 경로 드라이버 안내서.
-* 사용 중인 SANtricity 버전에 대한 SANtricity 저장소 관리자 릴리스 정보.
-
-
-를 참조하십시오 link:https://docs.netapp.com/us-en/e-series-family/["E-Series 설명서를 참조하십시오"^] SANtricity 관련 문서를 찾습니다.
