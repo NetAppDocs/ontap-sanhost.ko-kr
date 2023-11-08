@@ -53,11 +53,9 @@ NVMe/FC용 lpfc 드라이버를 설정합니다.
 +
 [listing]
 ----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_log_verbose=0xf00083
+# cat /etc/modprobe.d/lpfc.conf options lpfc lpfc_log_verbose=0xf00083
 
-# cat /sys/module/lpfc/parameters/lpfc_log_verbose
-15728771
+# cat /sys/module/lpfc/parameters/lpfc_log_verbose 15728771
 ----
 
 
@@ -68,12 +66,19 @@ NVMe/FC에 대한 과 유사한 특정 qla2xxx 로깅이 없습니다 `lpfc` 드
 
 .단계
 . 해당 modprobe qla2xxx conf 파일에 "ql2xextended_error_logging=0x1e400000" 값을 추가합니다.
-. dracut -f 명령을 실행하여 initramfs를 재생성한 다음 호스트를 재부팅합니다.
-. 재부팅 후 상세 로깅이 다음과 같이 적용되었는지 확인합니다.
+. 를 실행합니다 `dracut -f` 명령을 실행한 다음 호스트를 재부팅합니다.
+. 재부팅 후 상세 로깅이 설정되었는지 확인합니다.
 +
 [listing]
 ----
 # cat /etc/modprobe.d/qla2xxx.conf
+----
++
+예제 출력:
+
++
+[listing]
+----
 options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 # cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
 507510784
@@ -90,7 +95,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 
 [cols="20, 20, 50"]
 |===
-| NVMe-CLI에 표시되는 오류 | 가능한 원인 | 해결 방법 
+| 오류 메시지 | 가능한 원인 | 해결 방법 
 
 
 | '/dev/NVMe-fabric에 쓸 수 없음: 잘못된 인수. | 구문이 잘못되었습니다 | 에 대한 올바른 구문을 사용하고 있는지 확인합니다 `nvme discover`, `nvme connect`, 및 `nvme connect-all` 명령. 

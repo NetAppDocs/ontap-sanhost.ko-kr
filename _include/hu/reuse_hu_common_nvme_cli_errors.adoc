@@ -10,7 +10,7 @@
 
 [cols="20, 20, 50"]
 |===
-| NVMe-CLI에 표시되는 오류 | 가능한 원인 | 해결 방법 
+| 오류 메시지 | 가능한 원인 | 해결 방법 
 
 
 | '/dev/NVMe-fabric에 쓸 수 없음: 잘못된 인수. | 구문이 잘못되었습니다 | 에 대한 올바른 구문을 사용하고 있는지 확인합니다 `nvme discover`, `nvme connect`, 및 `nvme connect-all` 명령. 
