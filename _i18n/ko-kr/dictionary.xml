@@ -3578,8 +3578,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="84ea3979460de46128b29ddab7d89cd0" category="paragraph">* 양방향 구성의 출력 예: *</block>
   <block id="a6c9e3a7671c1fd9d7328c3be5d107b5" category="open-title">JSON 파일</block>
   <block id="e8bdd625277829c32849608bfaaf1041" category="paragraph">를 사용할 수 있습니다<block ref="2be2042afe5d55c4305aa3ff91b1ff5f" prefix=" " category="inline-code"></block> 파일이 있는 파일<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> ONTAP 컨트롤러 구성에서 여러 NVMe 서브시스템을 사용할 수 있는 경우에 명령을 사용합니다.</block>
-  <block id="be0bd4d71e13a5ad44e756862b63fb17" category="inline-link-macro">ONTAP man 페이지</block>
-  <block id="32c203213cf44e803bc3c227bd240164" category="paragraph">을 사용하여 JSON 파일을 생성할 수 있습니다<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> 옵션을 선택합니다. 을 참조하십시오 <block ref="4d8de0f1b018ca27a073061938808cb9" category="inline-link-macro-rx"></block> 자세한 구문 옵션</block>
   <block id="7be934ce8b58f4891a1f5bec99cfea5f" category="list-text">JSON 파일 구성:</block>
   <block id="76dfba31c261b7600a97b27a404095b4" category="list-text">config JSON 파일을 사용하여 ONTAP 컨트롤러에 연결합니다.</block>
   <block id="fbcde6a9a9bc69bb6785a0b0a3403428" category="list-text">각 하위 시스템에 대해 해당 컨트롤러에 대해 dhchap 암호가 활성화되어 있는지 확인합니다.</block>
@@ -3589,4 +3587,5 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="9688ec84efd5b1cb7c885e598b6ebf4a" category="list-text">재부팅 후 상세 로깅이 설정되었는지 확인합니다.</block>
   <block id="684c45496e08c180fd6b056747c6d7e6" category="cell">iSCSI 소프트웨어 부팅에서는 MCS(Multiple Connections per second)가 지원되지 않습니다</block>
   <block id="a22d253913fa8deba78982e6393df807" category="cell">iSCSI MCS를 사용하여 iSCSI 소프트웨어 부팅을 사용하는 경우 iSCSI 부트 선행 연결을 보호할 수 없습니다. 이로 인해 부팅 LUN 연결이 끊기고 호스트 시스템이 중단될 수 있습니다.</block>
+  <block id="86891fa05c8b78ad9621085c8abc1fb4" category="paragraph">을 사용하여 JSON 파일을 생성할 수 있습니다<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> 옵션을 선택합니다. 자세한 구문 옵션은 NVMe connect-all man 페이지를 참조하십시오.</block>
 </blocks>
