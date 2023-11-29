@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Windows 통합 호스트 유틸리티(Wuhu)는 NetApp SAN의 가상 디스크(LUN)에 호스트 컴퓨터를 연결할 수 있는 설명서와 함께 제공되는 소프트웨어 프로그램입니다. 최신 유틸리티 키트를 다운로드하여 설치하는 것이 좋습니다. Wuhu 구성 정보 및 지침은 을 참조하십시오 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71.html["Wuhu 7.1 문서"].
+Windows 통합 호스트 유틸리티(Wuhu)는 NetApp SAN의 가상 디스크(LUN)에 호스트 컴퓨터를 연결할 수 있는 설명서와 함께 제공되는 소프트웨어 프로그램입니다. NetApp는 최신 유틸리티 키트를 다운로드하여 설치할 것을 권장합니다. Wuhu 구성 정보 및 지침은 을 참조하십시오 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows Unified Host Utilities 설명서"] 를 입력하고 사용 중인 Windows Unified Host Utilities 버전에 대한 설치 절차를 선택합니다.

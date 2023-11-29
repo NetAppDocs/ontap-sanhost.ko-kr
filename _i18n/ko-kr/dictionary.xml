@@ -218,7 +218,6 @@
   <block id="7fbd0449d14b878cf9b9ba9434075a41" category="paragraph">SAN 부팅을 사용하려면 구성에서 지원되는 버전이어야 합니다. NetApp 상호 운용성 매트릭스 툴을 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인할 수 있습니다.</block>
   <block id="e6b99fad9f3e47e4b52f44d0b0dac069" category="list-text">여러 경로를 사용할 수 있는지 확인합니다. 여러 경로는 호스트 OS가 가동되어 경로에서 실행된 후에만 사용할 수 있습니다.</block>
   <block id="03ed98061513afaf0a716e8d7756931a" category="list-text">SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다. HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.</block>
-  <block id="34fbc6aa2d83f69c8f3d03faf01392c7" category="section-title">Windows 핫픽스 설치 중</block>
   <block id="c812232f894e468682a433753368a4f5" category="paragraph">서버에 설치할 * 최신 누적 업데이트 * 를 사용하는 것이 좋습니다.</block>
   <block id="51da3f0f90428027f2a496d366e696eb" category="inline-link-macro">Microsoft Update Catalog 2019</block>
   <block id="c1d8c8391831a9a897601503e32894d5" category="admonition">로 이동합니다 <block ref="145f31fd192f816eb74b3bac6d3cac60" category="inline-link-macro-rx"></block> 사용 중인 Windows 버전에 필요한 Windows 핫픽스를 구해서 설치하려면 웹 사이트를 방문하십시오.</block>
@@ -226,8 +225,6 @@
   <block id="623e88bd2085eeb3f49a2784ec97654e" category="admonition">일부 핫픽스는 직접 다운로드할 수 없습니다. 이러한 경우 Microsoft 지원 담당자에게 해당 핫픽스를 요청해야 합니다.</block>
   <block id="5a3b43f9090be87b411af7ac82adcb38" category="list-text">Microsoft에서 제공하는 지침에 따라 핫픽스를 설치합니다.</block>
   <block id="56dd1899b4280d897ff6670fb0968e02" category="admonition">많은 핫픽스는 Windows 호스트를 재부팅해야 하지만 호스트 유틸리티를 설치 또는 업그레이드할 때까지 _ after _ 까지 호스트를 재부팅하도록 선택할 수 있습니다.</block>
-  <block id="36b258cf83367d27741cf0be3d246eca" category="section-title">Windows Unified Host Utilities 설치</block>
-  <block id="ba490f365e20da97a23546cfe0da8569" category="inline-link-macro">Wuhu 7.1 문서</block>
   <block id="d25621141f24193488d8ea2276c47e01" category="paragraph">Windows 호스트에 스토리지 시스템에 대한 경로가 둘 이상 있는 경우 MPIO 소프트웨어를 설치하고 다중 경로를 설정해야 합니다. MPIO 소프트웨어가 없으면 운영 체제는 각 경로를 별도의 디스크로 볼 수 있으며, 이로 인해 데이터 손상이 발생할 수 있습니다. MPIO 소프트웨어는 모든 경로에 대해 운영 체제에 단일 디스크를 제공하고, 장치별 모듈(DSM)은 경로 페일오버를 관리합니다.</block>
   <block id="a0e497cbff11ff2d61625663418c3fc8" category="paragraph">Windows 시스템에서 모든 MPIO 솔루션의 두 가지 주요 구성 요소는 DSM 및 Windows MPIO입니다. MPIO는 Hyper-V 가상 시스템에서 실행되는 Windows XP 또는 Windows Vista에서는 지원되지 않습니다.</block>
   <block id="5b88fa50c8fa5adb567c3fdd8e0c00fc" category="admonition">MPIO 지원을 선택하면 Windows Unified Host Utilities가 Windows Server 2019의 포함된 MPIO 기능을 활성화합니다.</block>
@@ -255,8 +252,6 @@
   <block id="74802e20676d4776b1eea0dca80bcb9a" category="paragraph">QLogic Fibre Channel HBA의 경우:</block>
   <block id="08a7801aadb2d395506d0735d17dcf62" category="cell">LinkDownTimeOut 을 참조하십시오</block>
   <block id="f9c8e6ceed8ad8db75740e78e48a6236" category="cell">PortDownRetryCount</block>
-  <block id="881b9c4cb273bade29a78089e1cf6ee9" category="inline-link-macro">Windows 7.1 호스트 유틸리티 설치 안내서</block>
-  <block id="c5fac7adc428bbd803e2710cafe09003" category="admonition">Windows Unified Host Utility에서 이러한 값을 설정합니다. 권장 설정에 대한 자세한 내용은 을 참조하십시오 <block ref="53418a54750628f8c611b4cd8982473c" category="inline-link-macro-rx"></block>.</block>
   <block id="482723983a4f2af954e36ff41e567451" category="section-title">알려진 제한 사항</block>
   <block id="1669e5f0b1148e1054b39b7a819b7fdb" category="summary">ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는 방법에 대해 설명합니다</block>
   <block id="c454d997c91275b70f2f0433fad3fe36" category="list-text">다운로드가 포함된 디렉터리로 이동합니다.</block>
@@ -535,7 +530,6 @@
   <block id="a432483f271039135d89450152b7c2cd" category="paragraph">NetApp 커뮤니티에서 ONTAP PowerShell 툴킷을 다운로드할 수 있습니다. 환경 변수 "%PSModulePath%"에 지정된 위치에 DataONTAP.zip 파일의 압축을 풀어야 합니다(또는 Install.ps1" 스크립트를 사용하여 파일을 압축 해제해야 합니다). 설치가 완료되면 'How-NaHelp' cmdlet을 사용하여 cmdlet에 대한 도움말을 볼 수 있습니다.</block>
   <block id="1390f52cfb4ccd4f9cbdcd7bcdb075a9" category="paragraph">PowerShell Toolkit은 MBR형 파티션이 있는 고정 크기 VHD 파일만 지원합니다. Windows 동적 디스크 또는 GPT 파티션을 사용하는 VHD는 지원되지 않습니다. 또한 PowerShell Toolkit에는 최소 파티션 크기가 4GB가 필요합니다. 작은 파티션은 올바르게 정렬할 수 없습니다.</block>
   <block id="1104f990ade81e5b4d644288a54cf49a" category="admonition">VHD에서 GRUB 부팅 로더를 사용하는 Linux 가상 머신의 경우 PowerShell Toolkit을 실행한 후 부팅 구성을 업데이트해야 합니다.</block>
-  <block id="f4f9ad21012cf66e650af6b1058ce16b" category="section-title">PowerShell Toolkit을 사용하여 MBR 정렬을 수정한 후 Linux 게스트용 GRUB를 다시 설치합니다</block>
   <block id="b9ef2c298abb1a6d04513bf9fee94dda" category="paragraph">GRUB 부팅 로더를 사용하여 Linux 게스트 운영 체제에서 MBR을 PowerShell Toolkit과 일치시킬 수 있도록 디스크에 대한 'bralign'을 실행한 후 게스트 운영 체제가 올바르게 부팅되도록 GRUB를 다시 설치해야 합니다.</block>
   <block id="a6e4f0d5cc29281e962b33fc7c84286f" category="paragraph">가상 머신에 대한 VHD 파일에서 PowerShell Toolkit cmdlet을 완료했습니다. 이 항목은 GRUB 부트 로더 및 'styRescueCd'를 사용하는 Linux 게스트 운영 체제에만 적용됩니다.</block>
   <block id="972f2c4ba9001b48966c37ef2a152dc0" category="list-text">설치 CD의 디스크 1의 ISO 이미지를 마운트하여 가상 시스템에 맞는 Linux 버전을 만듭니다.</block>
@@ -2042,7 +2036,6 @@
   <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">SAN 호스트 및 클라우드 클라이언트를 구성합니다</block>
   <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">개요</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">RHEL의 NVMeoF</block>
-  <block id="47e2092f9d666fc24b67c7da02de84c7" category="paragraph">Windows 통합 호스트 유틸리티(Wuhu)는 NetApp SAN의 가상 디스크(LUN)에 호스트 컴퓨터를 연결할 수 있는 설명서와 함께 제공되는 소프트웨어 프로그램입니다. 최신 유틸리티 키트를 다운로드하여 설치하는 것이 좋습니다. Wuhu 구성 정보 및 지침은 을 참조하십시오 <block ref="f7fe1c204ed60a7e9dd594c09fd7b1a5" category="inline-link-macro-rx"></block>.</block>
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows 호스트 유틸리티 키트 7.1</block>
   <block id="a94e97667092f5ff8b67813ccebdb0ca" category="paragraph">Host Utilities는 다양한 Windows 호스트 구성, 프로토콜 및 다중 경로 옵션을 지원합니다. 자세한 내용은 을 참조하십시오<block ref="b7322bec4509d45107de6de43ca1f517" category="inline-link-rx"></block>.</block>
   <block id="0165fb41a35ddb937948f77394256403" category="inline-link-macro">SAN 호스트 Windows 설명서</block>
@@ -3488,8 +3481,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="0b3c2391c446a11bbd0c66a38ea6904b" category="paragraph">ONTAP 릴리즈가 포함된 CentOS 7.6에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="cdf4bf81cf3ee1a54f731160152019cf" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Oracle Linux 7.2를 대상으로 구성할 수 있습니다.</block>
   <block id="12816f6cc6e072d421258f60c7368dd0" category="paragraph">ONTAP 릴리즈의 Oracle Linux 7.2에는 알려진 문제가 없습니다.</block>
-  <block id="1fed0d1f2feda6954357b22995ac7bd0" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 있는 Windows 서버 2022를 대상으로 구성할 수 있습니다.
-== OS 부팅</block>
   <block id="7145b773c01d1ea2262969c3644747a0" category="paragraph">Windows Server 2022와 ONTAP 릴리즈에는 알려진 문제가 없습니다.</block>
   <block id="57175c72c9ec2223e90f7a6f933b0c1b" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 7.6을 구성할 수 있습니다.</block>
   <block id="a2ad6d83a8574c572c9a8b9c0652127e" category="paragraph">ONTAP 릴리즈가 포함된 Oracle Linux 7.6에는 다음과 같은 알려진 문제가 있습니다.</block>
@@ -3585,7 +3576,15 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="e20cbb947afcf84cf58de1358ee1068d" category="cell">오류 메시지</block>
   <block id="8cfe2b11255c36622bc84e4bd2dfb53c" category="list-text">를 실행합니다<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block> 명령을 실행한 다음 호스트를 재부팅합니다.</block>
   <block id="9688ec84efd5b1cb7c885e598b6ebf4a" category="list-text">재부팅 후 상세 로깅이 설정되었는지 확인합니다.</block>
-  <block id="684c45496e08c180fd6b056747c6d7e6" category="cell">iSCSI 소프트웨어 부팅에서는 MCS(Multiple Connections per second)가 지원되지 않습니다</block>
   <block id="a22d253913fa8deba78982e6393df807" category="cell">iSCSI MCS를 사용하여 iSCSI 소프트웨어 부팅을 사용하는 경우 iSCSI 부트 선행 연결을 보호할 수 없습니다. 이로 인해 부팅 LUN 연결이 끊기고 호스트 시스템이 중단될 수 있습니다.</block>
   <block id="86891fa05c8b78ad9621085c8abc1fb4" category="paragraph">을 사용하여 JSON 파일을 생성할 수 있습니다<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> 옵션을 선택합니다. 자세한 구문 옵션은 NVMe connect-all man 페이지를 참조하십시오.</block>
+  <block id="0ecfee1e5b63a34e0c870ad349ab2d79" category="section-title">Windows 핫픽스를 설치합니다</block>
+  <block id="fa5be5c2e2b86b59c46b48b7021f967f" category="section-title">Windows Unified Host Utilities를 설치합니다</block>
+  <block id="7f0107becb6328e412aa5e8712724378" category="inline-link-macro">Windows Unified Host Utilities 설명서</block>
+  <block id="b4c9abb2b32b490ded389f27627f9510" category="paragraph">Windows 통합 호스트 유틸리티(Wuhu)는 NetApp SAN의 가상 디스크(LUN)에 호스트 컴퓨터를 연결할 수 있는 설명서와 함께 제공되는 소프트웨어 프로그램입니다. NetApp는 최신 유틸리티 키트를 다운로드하여 설치할 것을 권장합니다. Wuhu 구성 정보 및 지침은 을 참조하십시오 <block ref="b25c56f0835abca42f2574922a5bff40" category="inline-link-macro-rx"></block> 를 입력하고 사용 중인 Windows Unified Host Utilities 버전에 대한 설치 절차를 선택합니다.</block>
+  <block id="f00aa3de5284bd6ffc1c6eb440a68428" category="inline-link-macro">Windows Host Utilities 설명서</block>
+  <block id="fc51d3fbe5dd41d133c1f25388a68493" category="admonition">Windows Unified Host Utility에서 이러한 값을 설정합니다. 권장 설정에 대한 자세한 내용은 을 참조하십시오 <block ref="1035103116c48a69520d80b6269bd2d8" category="inline-link-macro-rx"></block> 를 입력하고 사용 중인 Windows Unified Host Utilities 버전에 대한 설치 절차를 선택합니다.</block>
+  <block id="cffc00678708e63d08b03d05ada52624" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 있는 Windows 서버 2022를 대상으로 구성할 수 있습니다.</block>
+  <block id="6f49a4f8a77775eb655aad7d40795d50" category="section-title">PowerShell Toolkit으로 MBR 정렬을 수정한 후 Linux 게스트용 GRUB를 다시 설치합니다</block>
+  <block id="29bdde7506503e06e915420031c09cbf" category="cell">iSCSI 소프트웨어 부팅에서는 MCS(Multiple Connections per session)가 지원되지 않습니다</block>
 </blocks>
