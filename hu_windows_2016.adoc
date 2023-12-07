@@ -46,7 +46,7 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 
 == Windows 핫픽스를 설치합니다
 
-서버에 설치할 * 최신 누적 업데이트 * 를 사용하는 것이 좋습니다.
+NetApp은 서버에 * 최신 누적 업데이트 * 를 설치할 것을 권장합니다.
 
 
 NOTE: 로 이동합니다 link:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2016["Microsoft Update Catalog 2016"^] 사용 중인 Windows 버전에 필요한 Windows 핫픽스를 구해서 설치하려면 웹 사이트를 방문하십시오.

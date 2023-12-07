@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: nvme_rhel_91.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: ONTAP를 사용하여 RHEL 8.7용 NVMe-oF 호스트를 구성하는 방법 
+summary: ONTAP를 사용하여 RHEL 9.1용 NVMe-oF 호스트를 구성하는 방법 
 ---
 = ONTAP가 포함된 RHEL 9.1에 대한 NVMe-oF 호스트 구성
 :toc: macro

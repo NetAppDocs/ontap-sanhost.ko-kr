@@ -218,7 +218,6 @@
   <block id="7fbd0449d14b878cf9b9ba9434075a41" category="paragraph">SAN 부팅을 사용하려면 구성에서 지원되는 버전이어야 합니다. NetApp 상호 운용성 매트릭스 툴을 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인할 수 있습니다.</block>
   <block id="e6b99fad9f3e47e4b52f44d0b0dac069" category="list-text">여러 경로를 사용할 수 있는지 확인합니다. 여러 경로는 호스트 OS가 가동되어 경로에서 실행된 후에만 사용할 수 있습니다.</block>
   <block id="03ed98061513afaf0a716e8d7756931a" category="list-text">SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다. HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.</block>
-  <block id="c812232f894e468682a433753368a4f5" category="paragraph">서버에 설치할 * 최신 누적 업데이트 * 를 사용하는 것이 좋습니다.</block>
   <block id="51da3f0f90428027f2a496d366e696eb" category="inline-link-macro">Microsoft Update Catalog 2019</block>
   <block id="c1d8c8391831a9a897601503e32894d5" category="admonition">로 이동합니다 <block ref="145f31fd192f816eb74b3bac6d3cac60" category="inline-link-macro-rx"></block> 사용 중인 Windows 버전에 필요한 Windows 핫픽스를 구해서 설치하려면 웹 사이트를 방문하십시오.</block>
   <block id="b9ae3f85c9e860efac72637c24ed529b" category="list-text">Microsoft 지원 사이트에서 핫픽스를 다운로드합니다.</block>
@@ -2610,7 +2609,6 @@
   <block id="f2e04893e244d58e7312b018d7c330cd" category="admonition">호스트 OS가 가동되고 경로에서 실행되면 여러 경로를 사용할 수 있습니다.</block>
   <block id="159e1cf7b9f0c43c83e2d3d06cfe2786" category="list-text">호스트를 재부팅하여 부팅에 성공했는지 확인합니다.</block>
   <block id="ddd1090ee13f345d376753ed7188e15e" category="section-title">모든 SAN 어레이 구성</block>
-  <block id="a8b4b0587b094d82b6d3386124d9175b" category="paragraph">ASA 구성에서는 지정된 LUN에 대한 모든 경로가 활성화되어 최적화되어 있습니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.</block>
   <block id="e7110b576f4777e8b343b6406c8d4267" category="paragraph">비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="8f9d6e3424d24a4eceeb55656ad594c9" category="paragraph">ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대다수 ASM 구성은 외부 이중화를 사용하는데, 이는 외부 어레이를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않는다는 뜻입니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 을 참조하십시오 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="b8aace167dae62ec049916430a97c733" category="paragraph">NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.</block>
@@ -3581,10 +3579,36 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="0ecfee1e5b63a34e0c870ad349ab2d79" category="section-title">Windows 핫픽스를 설치합니다</block>
   <block id="fa5be5c2e2b86b59c46b48b7021f967f" category="section-title">Windows Unified Host Utilities를 설치합니다</block>
   <block id="7f0107becb6328e412aa5e8712724378" category="inline-link-macro">Windows Unified Host Utilities 설명서</block>
-  <block id="b4c9abb2b32b490ded389f27627f9510" category="paragraph">Windows 통합 호스트 유틸리티(Wuhu)는 NetApp SAN의 가상 디스크(LUN)에 호스트 컴퓨터를 연결할 수 있는 설명서와 함께 제공되는 소프트웨어 프로그램입니다. NetApp는 최신 유틸리티 키트를 다운로드하여 설치할 것을 권장합니다. Wuhu 구성 정보 및 지침은 을 참조하십시오 <block ref="b25c56f0835abca42f2574922a5bff40" category="inline-link-macro-rx"></block> 를 입력하고 사용 중인 Windows Unified Host Utilities 버전에 대한 설치 절차를 선택합니다.</block>
   <block id="f00aa3de5284bd6ffc1c6eb440a68428" category="inline-link-macro">Windows Host Utilities 설명서</block>
   <block id="fc51d3fbe5dd41d133c1f25388a68493" category="admonition">Windows Unified Host Utility에서 이러한 값을 설정합니다. 권장 설정에 대한 자세한 내용은 을 참조하십시오 <block ref="1035103116c48a69520d80b6269bd2d8" category="inline-link-macro-rx"></block> 를 입력하고 사용 중인 Windows Unified Host Utilities 버전에 대한 설치 절차를 선택합니다.</block>
   <block id="cffc00678708e63d08b03d05ada52624" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 있는 Windows 서버 2022를 대상으로 구성할 수 있습니다.</block>
   <block id="6f49a4f8a77775eb655aad7d40795d50" category="section-title">PowerShell Toolkit으로 MBR 정렬을 수정한 후 Linux 게스트용 GRUB를 다시 설치합니다</block>
   <block id="29bdde7506503e06e915420031c09cbf" category="cell">iSCSI 소프트웨어 부팅에서는 MCS(Multiple Connections per session)가 지원되지 않습니다</block>
+  <block id="54ad52b5df3732f47860c7a90de604ee" category="paragraph">모든 SAN 어레이(ASA) 구성에서 지정된 LUN에 대한 모든 경로가 활성 및 최적화됩니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.</block>
+  <block id="f27074de856fd7a4a667b8e75fcdfbec" category="paragraph">NetApp은 서버에 * 최신 누적 업데이트 * 를 설치할 것을 권장합니다.</block>
+  <block id="023ddc072704b8577d3a1995f95da01a" category="paragraph">Windows 통합 호스트 유틸리티(Wuhu)는 NetApp SAN의 가상 디스크(LUN)에 호스트 컴퓨터를 연결할 수 있는 설명서와 함께 제공되는 소프트웨어 프로그램입니다. NetApp는 최신 유틸리티 키트를 다운로드하여 설치할 것을 권장합니다. Wuhu 구성 정보 및 지침은 을 참조하십시오 <block ref="b25c56f0835abca42f2574922a5bff40" category="inline-link-macro-rx"></block> 를 입력하고 사용 중인 Windows Unified Host Utilities 버전에 대한 설치 절차를 선택합니다.</block>
+  <block id="3a891098b79eaa53ca214516fa78a5e6" category="summary">ONTAP를 사용하여 RHEL 9.1용 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="5464d39105cc61c77c01f61a6c049eae" category="summary">ONTAP를 사용하여 RHEL 9.2용 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="a5b8980d9b2b30a00ffe7dac19c43d5d" category="summary">ONTAP에서 Red Hat Enterprise Linux 9.3을 사용하는 방법을 설명합니다</block>
+  <block id="e220bc30f436cfd7ed1ad2fa29b77016" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 9.3을 사용하십시오</block>
+  <block id="55c6c04ab1e74d4f888bffdb9eadb982" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Red Hat Enterprise Linux 9.3을 대상으로 구성할 수 있습니다.</block>
+  <block id="54672e6edf11ac3f47cd65851485ed75" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <block ref="e902c52a637fd9b5e253806bf7aafa95" category="inline-link-macro-rx"></block> OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인합니다.</block>
+  <block id="76810b2b6b720475d6af795ed8a9ae08" category="paragraph">RHEL(Red Hat Enterprise Linux) 9.3의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 9.3은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="3168dc7483c9ec2f5a78cb4a5aa2d3b7" category="paragraph">RHEL 9.3 OS는 ONTAP LUN을 인식하도록 컴파일되며 자동으로 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
+  <block id="dd0349280970fded4c7b0c07431f162d" category="paragraph">RHEL 9.3과 ONTAP 릴리스의 알려진 문제는 다음과 같습니다.</block>
+  <block id="13aa98a5d20992675bbf7111d4bcf7cc" category="cell">NetApp Linux 호스트 유틸리티 CLI에서 Emulex HBA(호스트 버스 어댑터) 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다</block>
+  <block id="818bb7ee3fe4c47c57de7ff54cbec4b7" category="cell">RHEL 9.x에서 NetApp Linux SAN 호스트 유틸리티 CLI<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> Emulex HBA(호스트 버스 어댑터) 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
+  <block id="447d82560b23d134af7247622d397daf" category="summary">ONTAP를 사용하여 RHEL 9.3용 NVMe-OF 호스트를 구성하는 방법</block>
+  <block id="73e91cc996ce2d039530485f96ea07bb" category="doc">ONTAP 기반 RHEL 9.3에 대한 NVMe-oF 호스트 구성</block>
+  <block id="d825b944ff2e130a26d9c4f866191cb5" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 Red Hat Enterprise Linux(RHEL) 9.3에서 ANA(Asymmetric Namespace Access) 지원 NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
+  <block id="17e6fca095916e663e6874f461b7cd2b" category="paragraph">ONTAP를 사용하는 RHEL 9.3에 대한 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
+  <block id="42edbb6b2787a5246d32929c778d04e1" category="list-text">NVMe 네임스페이스를 요청하지 않도록 명시적인 dm-multipath 설정 없이 지정된 HBA(호스트 버스 어댑터)에서 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용합니다.</block>
+  <block id="53b33721fef6f8bedb109eed881ea6a5" category="paragraph">RHEL 9.3에는 기본적으로 NVMe 네임스페이스를 위해 커널 내 NVMe 다중 경로가 활성화되어 있으므로 명시적 설정이 필요하지 않습니다.</block>
+  <block id="23ef7f4e50c0c07c0f66e08c60163597" category="paragraph">다음 절차에 따라 지원되는 최소 RHEL 9.3 소프트웨어 버전을 검증할 수 있습니다.</block>
+  <block id="cd78954dacd072b75b2c79c3cecedcd3" category="list-text">서버에 RHEL 9.3을 설치합니다. 설치가 완료되면 지정된 RHEL 9.3 커널을 실행하고 있는지 확인합니다.</block>
+  <block id="f0df503d34398fb211cacbbacc8824b9" category="list-text">RHEL 9.3 호스트에서 에서 hostnqn 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
+  <block id="de959e2062252433b5a9534a6512b4e1" category="list-text">RHEL 9.3 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필요한 최신 수정 사항이 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
+  <block id="af1363e13388a6153d5ee5e31361b059" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.</block>
+  <block id="4d2ccda8ed0dd9cdf2d1d56f266ef18c" category="paragraph">ONTAP 릴리즈가 포함된 RHEL 9.3의 NVMe-oF 호스트 구성에는 알려진 문제가 없습니다.</block>
+  <block id="7391a7cd9aaad0e97cd0084d95a4c0fd" category="sidebar">9.3</block>
 </blocks>
