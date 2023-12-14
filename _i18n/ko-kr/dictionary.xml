@@ -3613,9 +3613,23 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="7391a7cd9aaad0e97cd0084d95a4c0fd" category="sidebar">9.3</block>
   <block id="9bc6d3e09829b4f5254ca05574123571" category="summary">ONTAP에서 Red Hat Enterprise Linux 8.9를 사용하는 방법을 설명합니다</block>
   <block id="07401b9dd6cd70fd46911f32946adf00" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 8.9 사용</block>
-  <block id="e501d2dbdb42de58f02c1f3abfe2b8a1" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 8.9를 구성할 수 있습니다.</block>
-  <block id="ae6778e372ba1bd8a8b15c0befa78706" category="paragraph">Red Hat Enterprise Linux(RHEL) 8.9의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.9는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="b0ba321d68fcbee6d08cb969c6dee835" category="paragraph">RHEL 8.9 OS는 ONTAP LUN을 인식하도록 컴파일되어 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
   <block id="51856bc21ee60e0edd3d375bda86c100" category="paragraph">RHEL 8.9에는 알려진 문제가 없습니다.</block>
   <block id="4407c95e5daa7102b34d0879e4eb12ed" category="sidebar">8.9</block>
+  <block id="e4cc2fc31e52d967b132cdb20604920c" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 RHEL(Red Hat Enterprise Linux) 8.9를 구성할 수 있습니다.</block>
+  <block id="58dd0e1ebbd63a74eeec446438f07176" category="paragraph">RHEL 8.9의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.9는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="f82568d65ed8e2b4327f5865560fd156" category="paragraph">RHEL 8.9 OS는 ONTAP LUN을 인식하며 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
+  <block id="b434464d1a1076f0912b586e6f0da437" category="summary">ONTAP를 사용하여 RHEL 8.9용 NVMe-OF 호스트를 구성하는 방법</block>
+  <block id="77cb6ce6b5771f472e998f91b24df1d8" category="doc">ONTAP를 사용하는 RHEL 8.9에 대한 NVMe-oF 호스트 구성</block>
+  <block id="34c678313217e1652ad03feef8847586" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 Red Hat Enterprise Linux(RHEL) 8.9와 ANA(Asymmetric Namespace Access)에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
+  <block id="da90c6502b166b990e4597540fab45f1" category="paragraph">ONTAP가 포함된 RHEL 8.9에 대한 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
+  <block id="9acbcdf236a131602c43133c826c1cf0" category="list-text">RHEL 8.9 NVMe-oF 호스트에서는 커널 내 NVMe 다중 경로가 기본적으로 비활성화됩니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="9cc30a8ae74eb53c08ef6662a46c13ff" category="list-text">RHEL 8.9 호스트에서 NVMe/TCP는 미해결 문제로 인한 기술 미리 보기 기능입니다.</block>
+  <block id="9122912f58fa882044fcab72507c8ee9" category="paragraph">다음 절차를 사용하여 커널 내 다중 경로를 활성화할 수 있습니다.</block>
+  <block id="581fd0f922f7530dd86eaa5a01ad9dff" category="list-text">호스트 서버에 RHEL 8.9를 설치합니다.</block>
+  <block id="8a1c0f590b55b233cc831d3edab5e663" category="list-text">설치가 완료되면 지정된 RHEL 8.9 커널을 실행하고 있는지 확인합니다.</block>
+  <block id="868c750d60086f65688792e47ff303d5" category="paragraph">동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우, NetApp는 ONTAP 네임스페이스에 대한 인커널 NVMe 다중 경로와 ONTAP LUN에 대한 dm-multipath를 각각 사용할 것을 권장합니다. 이렇게 하면 ONTAP 네임스페이스가 dm-multipath에서 제외되고 dm-multipath가 이러한 네임스페이스 디바이스를 소유하지 못하게 됩니다. 을 추가하여 이 작업을 수행할 수 있습니다<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
+  <block id="3f655d42055c3b04ef4e22af7af58b9a" category="list-text">RHEL 8.9 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필요한 최신 업스트림 픽스가 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
+  <block id="fb117390ac885fd422b6653159fac30e" category="paragraph">ONTAP 릴리즈가 포함된 RHEL 8.9에 대한 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="c6f6aa643de410a6ea50d0b32d115bbb" category="cell">RHEL 8.9 NVMe-oF 호스트는 중복 영구 검색 컨트롤러를 생성합니다</block>
+  <block id="e46afea398abac288711eb6774571ab9" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다.  그러나 NVMe-oF 호스트에서 RHEL(Red Hat Enterprise Linux) 8.9를 실행하는 경우 "NVMe discover-p"를 실행할 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
 </blocks>

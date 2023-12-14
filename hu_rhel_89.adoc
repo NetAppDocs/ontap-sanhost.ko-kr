@@ -19,7 +19,7 @@ summary: ONTAP에서 Red Hat Enterprise Linux 8.9를 사용하는 방법을 설�
 
 
 [role="lead"]
-ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 8.9를 구성할 수 있습니다.
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 RHEL(Red Hat Enterprise Linux) 8.9를 구성할 수 있습니다.
 
 
 
@@ -91,7 +91,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 == 다중 경로
 
-Red Hat Enterprise Linux(RHEL) 8.9의 경우 `/etc/multipath.conf` 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.9는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
+RHEL 8.9의 경우 `/etc/multipath.conf` 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.9는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
 
 'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.
 
@@ -146,7 +146,7 @@ NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가
 
 == 권장 설정
 
-RHEL 8.9 OS는 ONTAP LUN을 인식하도록 컴파일되어 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.
+RHEL 8.9 OS는 ONTAP LUN을 인식하며 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.
 
 를 클릭합니다 `multipath.conf` 다중 경로 데몬을 시작하려면 파일이 있어야 하지만 다음 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다.
 
