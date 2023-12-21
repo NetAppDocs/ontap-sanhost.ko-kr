@@ -5,17 +5,14 @@ keywords: nvme, windows, enterprise
 summary: ONTAP를 사용하여 Windows Server 2022용 NVMe/FC 호스트 구성 
 ---
 = ONTAP를 사용하여 Windows Server 2022용 NVMe/FC 호스트 구성
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

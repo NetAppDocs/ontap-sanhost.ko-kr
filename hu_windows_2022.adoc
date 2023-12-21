@@ -5,17 +5,14 @@ keywords: windows, enterprise
 summary: ONTAP와 함께 Windows Server 2022 사용 
 ---
 = ONTAP와 함께 Windows Server 2022 사용
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

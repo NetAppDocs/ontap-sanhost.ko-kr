@@ -5,17 +5,14 @@ keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap
 summary: ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방법에 대해 설명합니다 
 ---
 = Linux Unified Host Utilities 7.1 명령 참조
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

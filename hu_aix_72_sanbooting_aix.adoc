@@ -5,17 +5,14 @@ keywords: host utilities, aix, netapp, ontap, configure, discover, configuring, 
 summary: AIX에서 LUN을 검색 및 구성하는 방법에 대한 설명은 에 나와 있습니다 
 ---
 = (PowerVM이 없는 AIX MPIO) AIX에서 LUN 검색 및 구성
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

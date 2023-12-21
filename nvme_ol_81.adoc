@@ -5,17 +5,14 @@ keywords: nvme, linux, oracle, 8.1
 summary: 예를 들어 ONTAP가 포함된 Oracle Linux 8.1에 대한 VME/FC 호스트 구성 설정 
 ---
 = ONTAP 지원 Oracle Linux 8.1용 NVMe/FC 호스트 구성
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 

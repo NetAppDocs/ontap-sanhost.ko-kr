@@ -5,17 +5,14 @@ keywords: host utilities, solaris, 6.2 netapp, ontap
 summary: Solaris Host Utilities 6.2에 대한 릴리스 정보 
 ---
 = Solaris Host Utilities 6.2 릴리스 정보
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

@@ -5,17 +5,14 @@ keywords: host utilities, aix, 7.1 netapp, ontap
 summary: ONTAP에서 IBM AIX 7.1을 사용하는 방법에 대해 설명합니다 
 ---
 = ONTAP와 함께 IBM AIX 7.1을 사용하십시오
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

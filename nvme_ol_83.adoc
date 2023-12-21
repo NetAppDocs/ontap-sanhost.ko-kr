@@ -5,17 +5,14 @@ keywords: nvme, linux, oracle, 8.3
 summary: 예시와 함께 Oracle Linux 8.3 및 ONTAP용 VME/FC 호스트 구성 설정 
 ---
 = Oracle Linux 8.3 및 ONTAP용 NVMe/FC 호스트 구성
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 

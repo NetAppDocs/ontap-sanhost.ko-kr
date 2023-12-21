@@ -5,17 +5,14 @@ keywords: nvme, esxi, ontap, nvme/fc, hypervisor
 summary: 'ESXi 8.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe over Fabrics)를 타겟으로 구성할 수 있습니다.' 
 ---
 = ONTAP가 있는 ESXi 8.x용 NVMe-oF 호스트 구성
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

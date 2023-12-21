@@ -5,17 +5,14 @@ keywords: nvme, oracle linux, 9.2, host configuration
 summary: 'Oracle Linux 9.2용 NVMe-oF 호스트 구성(ONTAP 포함' 
 ---
 = Oracle Linux 9.2용 NVMe-oF 호스트 구성(ONTAP 포함
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

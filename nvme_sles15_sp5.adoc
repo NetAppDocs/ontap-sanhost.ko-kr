@@ -5,17 +5,14 @@ keywords: nvme, NVMe-oF, Host, SUSE Linux Enterprise Server 15 SP5, ONTAP
 summary: ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP5용 NVMe-oF 호스트 구성 
 ---
 = ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP5용 NVMe-oF 호스트 구성
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

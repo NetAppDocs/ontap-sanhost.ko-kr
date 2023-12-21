@@ -5,17 +5,14 @@ keywords: nvme, windows, enterprise
 summary: ONTAP가 있는 Windows Server 2012 R2에 대한 NVMe/FC 호스트 구성 
 ---
 = ONTAP가 있는 Windows Server 2012 R2에 대한 NVMe/FC 호스트 구성
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

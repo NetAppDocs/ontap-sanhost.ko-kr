@@ -5,17 +5,14 @@ keywords: nvme, linux, suse, sles, 15, sp2, server, enterprise
 summary: ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP2용 NVMe/FC를 구성하는 방법에 대해 설명합니다 
 ---
 = ONTAP가 포함된 SUSE Linux Enterprise Server 15 SP2용 NVMe/FC 호스트 구성
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

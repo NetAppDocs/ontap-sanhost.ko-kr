@@ -5,17 +5,14 @@ keywords: host utilities, red hat, rhel, linux, 8.0, netapp, ontap
 summary: ONTAP와 함께 Red Hat Enterprise Linux 8.0을 사용하는 방법을 설명합니다 
 ---
 = ONTAP와 함께 Red Hat Enterprise Linux 8.0을 사용하십시오
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

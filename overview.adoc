@@ -5,17 +5,14 @@ keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracl
 summary: 이 콘텐츠는 Cloud Volumes ONTAP에 연결된 클라우드 클라이언트 및 온-프레미스 ONTAP 스토리지에 연결된 ONTAP 및 SAN 호스트에 대한 Amazon FSx에 연결된 클라우드 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다. 
 ---
 = SAN 호스트 구성 개요
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 이 콘텐츠는 ONTAP 스토리지에 접속된 SAN 호스트를 빠르게 구성하기 위한 호스트 및 버전별 Best Practice를 제공합니다.
