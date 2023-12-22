@@ -57,6 +57,14 @@ sidebar:
         url: "/hu_wuhu_72.html"
       - title: Wuhu 7.1을 설치합니다
         url: "/hu_wuhu_71.html"
+      - title: Wuhu를 업그레이드하세요
+        url: "/hu_wuhu_upgrade.html"
+      - title: Wuhu 수리 및 제거
+        url: "/hu_wuhu_repair_remove.html"
+      - title: 레지스트리 설정을 구성합니다
+        url: "/hu_wuhu_hba_settings.html"
+      - title: 문제 해결
+        url: "/hu_wuhu_troubleshoot.html"
   - title: FCP 및 iSCSI로 호스트를 구성합니다
     entries:
     - title: 개요
