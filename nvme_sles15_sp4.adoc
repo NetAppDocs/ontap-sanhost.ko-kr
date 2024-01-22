@@ -249,8 +249,6 @@ NOTE: Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
 
 === NVMe 서비스 활성화
 
-다음 절차를 사용하여 NVMe 서비스를 활성화할 수 있습니다.
-
 에는 2가지 NVMe/FC 부팅 서비스가 포함되어 있습니다 `nvme-cli` 그러나 패키지는 _ 만 _ 입니다 `nvmefc-boot-connections.service` 시스템 부팅 중에 시작하도록 설정되어 있습니다.  `nvmf-autoconnect.service` 이(가) 활성화되지 않았습니다. 따라서 수동으로 을 사용하도록 설정해야 합니다 `nvmf-autoconnect.service` 를 눌러 시스템을 부팅합니다.
 
 .단계
@@ -568,7 +566,7 @@ Device           Vserver                   Namespace Path                       
 
 
 
-== 향상된 검색 기능
+== 영구 검색 컨트롤러를 만듭니다
 
 ONTAP 9.11.1부터 다음 절차를 사용하여 SLES 15 SP4 호스트에 대한 영구 검색 컨트롤러(PDC)를 만들 수 있습니다. PDC는 NVMe 하위 시스템의 추가 또는 제거 시나리오와 검색 로그 페이지 데이터의 변경 사항을 자동으로 감지하기 위해 필요합니다.
 
