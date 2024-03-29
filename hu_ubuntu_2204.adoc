@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_93.html 
-keywords: host utilities, red hat, rhel, linux, 9.3, netapp, ontap, rhel 
-summary: ONTAP에서 Red Hat Enterprise Linux 9.3을 사용하는 방법을 설명합니다 
+permalink: hu_ubuntu_2204.html 
+keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
+summary: ONTAP에서 Ubuntu 22.04를 사용하는 방법을 설명합니다 
 ---
-= ONTAP와 함께 Red Hat Enterprise Linux 9.3을 사용하십시오
+= ONTAP에서 Ubuntu 22.04를 사용합니다
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,57 +16,17 @@ summary: ONTAP에서 Red Hat Enterprise Linux 9.3을 사용하는 방법을 설�
 
 
 [role="lead"]
-ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Red Hat Enterprise Linux 9.3을 대상으로 구성할 수 있습니다.
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Ubuntu 22.04를 구성할 수 있습니다.
 
 
+NOTE: NetApp Linux 통합 호스트 유틸리티 소프트웨어 패키지는 Ubuntu 22.04 OS에서 사용할 수 없습니다.
 
-== Linux Unified Host Utilities를 설치합니다
-
-NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 64비트 .rpm 파일
-
-NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
-
-.필요한 것
-현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 업그레이드 또는 제거한 다음 다음 다음 단계에 따라 최신 버전을 설치해야 합니다.
-
-.단계
-. 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에.
-. 소프트웨어 패키지를 설치합니다.
-+
-"rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
-
-
-
-
-
-== SAN 툴 키트
-
-NetApp 호스트 유틸리티 패키지를 설치하면 도구 키트가 자동으로 설치됩니다. 이 키트는 를 제공합니다 `sanlun` 유틸리티를 사용하여 LUN 및 HBA를 관리할 수 있습니다. 를 클릭합니다 `sanlun` 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
-
-다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
-
-[source, cli]
-----
-# sanlun lun show all
-----
-* 출력 예: *
-
-[listing]
-----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
-------------------------------------------------------------------------------------
-vs_147_32glpe	         /vol/vol1/lun	 /dev/sdb	Host11  FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol1/lun	 /dev/sdx	Host11  FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol2/lun	 /dev/sdbt  host12 FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol2/lun	 /dev/sdax	host12  FCP        10g	cDOT
-----
 
 
 == SAN 부팅
 
 .필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인합니다.
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -86,7 +46,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 == 다중 경로
 
-RHEL(Red Hat Enterprise Linux) 9.3의 경우 `/etc/multipath.conf` 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 9.3은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
+Ubuntu 22.04의 경우 `/etc/multipath.conf` 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Ubuntu 22.04는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
 
 'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.
 
@@ -102,13 +62,14 @@ RHEL(Red Hat Enterprise Linux) 9.3의 경우 `/etc/multipath.conf` 파일이 있
 [listing]
 ----
 # multipath -ll
-3600a098038314359725d516c69733471 dm-22 NETAPP,LUN C-Mode
-size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a098038314559533f524d6c652f62 dm-24 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:3:0  sdau 66:224 active ready running
-  |- 12:0:4:0  sdco 69:192 active ready running
-  |- 12:0:0:0  sdav 66:240 active ready running
-  `- 11:0:2:0  sdat 66:208 active ready running
+  |- 11:0:1:13 sdm  8:192  active ready running
+  |- 11:0:3:13 sdah 66:16  active ready running
+  |- 12:0:1:13 sdbc 67:96  active ready running
+  `- 12:0:3:13 sdbx 68:176 active ready running
+
 ----
 
 NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.
@@ -125,14 +86,14 @@ NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가
 [listing]
 ----
 # multipath -ll
-3600a0980383149783224544d334a644d dm-10 NETAPP,LUN C-Mode
+3600a098038314c4c715d5732674e6141 dm-0 NETAPP,LUN C-Mode
 size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 12:0:0:18 sdbj 67:208 active ready running
-| `- 11:0:1:18 sdan 66:112 active ready running
+| |- 11:0:1:0 sda 8:0  active ready running
+| `- 12:0:2:0 sdd 8:48 active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:0:18 sdt  65:48  active ready running
-  `- 12:0:3:18 sdcf 69:48  active ready running
+  |- 11:0:2:0 sdb 8:16 active ready running
+  `- 12:0:1:0 sdc 8:32 active ready running
 
 ----
 
@@ -142,7 +103,7 @@ NOTE: 단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가
 
 == 권장 설정
 
-RHEL 9.3 OS는 ONTAP LUN을 인식하도록 컴파일되며 자동으로 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.
+Ubuntu 22.04 OS는 ONTAP LUN을 인식하도록 컴파일되고 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.
 
 를 클릭합니다 `multipath.conf` 다중 경로 데몬을 시작하려면 파일이 있어야 하지만 다음 명령을 사용하여 빈 0바이트 파일을 생성할 수 있습니다.
 
@@ -292,15 +253,4 @@ devices {
 
 == 알려진 문제
 
-RHEL 9.3과 ONTAP 릴리스의 알려진 문제는 다음과 같습니다.
-
-[cols="20, 20, 50,20"]
-|===
-| NetApp 버그 ID | 제목 | 설명 | Jira ID입니다 
-
-
-| 1508554 | NetApp Linux 호스트 유틸리티 CLI에서 Emulex HBA(호스트 버스 어댑터) 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다 | RHEL 9.x에서 NetApp Linux SAN 호스트 유틸리티 CLI `sanlun fcp show adapter -v` Emulex HBA(호스트 버스 어댑터) 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다. | 해당 없음 
-
-
-| 1593771 | Red Hat Enterprise Linux 9.3 QLogic SAN 호스트가 스토리지 이동성 작업 중에 부분 다중 경로 손실이 발생합니다 | ONTAP 스토리지 컨트롤러 테이크오버 작동 중에 다중 경로의 절반이 중단되거나 페일오버 모드로 전환된 다음 반환 워크플로우 중에 전체 경로 수로 복구해야 합니다. 하지만 RHEL(Red Hat Enterprise Linux) 9.3 QLogic 호스트를 사용하면 스토리지 페일오버 기브백 작업 후에 부분 다중 경로만 복구됩니다. | RHEL 17811을 참조하십시오 
-|===
+ONTAP 릴리스가 포함된 Ubuntu 22.04에는 알려진 문제가 없습니다.

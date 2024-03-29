@@ -3558,4 +3558,31 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="3d945423f8e9496c429a5d8c65b4604f" category="sidebar">우분투</block>
   <block id="4ecf3c9493d36f3a582a25b68e645741" category="sidebar">Ubuntu - FCP</block>
   <block id="7cd95c816f8a04ff858a857e3e5a484d" category="sidebar">20.04</block>
+  <block id="61b07fd83e5960959693b88b1afdfcbe" category="summary">ONTAP에서 Ubuntu 22.04를 사용하는 방법을 설명합니다</block>
+  <block id="d2142f1d82ab3f8920c5e47446631d4b" category="doc">ONTAP에서 Ubuntu 22.04를 사용합니다</block>
+  <block id="4fbbd56106aac3814f8ddd0f05db140b" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Ubuntu 22.04를 구성할 수 있습니다.</block>
+  <block id="7c1e8635bc3420ecd446913f429d9ea8" category="admonition">NetApp Linux 통합 호스트 유틸리티 소프트웨어 패키지는 Ubuntu 22.04 OS에서 사용할 수 없습니다.</block>
+  <block id="aa9b36be0bfd178660104314442edd58" category="paragraph">Ubuntu 22.04의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Ubuntu 22.04는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="918af3e81e1488cf1519a1f43482b774" category="paragraph">Ubuntu 22.04 OS는 ONTAP LUN을 인식하도록 컴파일되고 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
+  <block id="268d764f10521ffc4e0f9dfd03765bd6" category="paragraph">ONTAP 릴리스가 포함된 Ubuntu 22.04에는 알려진 문제가 없습니다.</block>
+  <block id="78550e91fbb2b5810210b43b287b7c4e" category="summary">ONTAP를 사용하여 Ubuntu 22.04용 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="be09412791a80b1e99189d1da97f513c" category="doc">ONTAP를 사용하는 Ubuntu 22.04에 대한 NVMe-oF 호스트 구성</block>
+  <block id="c6846e0213409c96ad77f710fa307642" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access)가 포함된 Ubuntu 22.04에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
+  <block id="71251761db71d74ce129581af51deea0" category="paragraph">ONTAP를 사용하는 Ubuntu 22.04의 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
+  <block id="c7b8b08d4869ac84fdd57c23e53885a4" category="list-text">네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 네임스페이스에 대한 ONTAP 세부 정보를 표시합니다.</block>
+  <block id="ee255f2b3c440f68a5bcc9252dfbbd03" category="paragraph">Ubuntu 22.04에는 기본적으로 NVMe 네임스페이스에 대해 커널 내 NVMe 다중 경로가 활성화되어 있습니다. 따라서 명시적인 설정이 필요하지 않습니다.</block>
+  <block id="3621191bce4af482b56d942fb4c692d3" category="paragraph">다음 절차를 사용하여 지원되는 최소 Ubuntu 22.04 소프트웨어 버전을 확인할 수 있습니다.</block>
+  <block id="daeaa7aff0b3adc4e01d754047800447" category="list-text">서버에 Ubuntu 22.04를 설치합니다. 설치가 완료되면 지정된 Ubuntu 22.04 커널을 실행하고 있는지 확인합니다.</block>
+  <block id="8f3ce7816b499a01a35c5c583a9b91a5" category="list-text">Ubuntu 22.04 호스트에서 에서 hostnqn 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
+  <block id="c720f9a8702e2d5947dcfd0b4d0f2744" category="list-text">Ubuntu 22.04 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필요한 최신 업스트림 수정 사항이 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
+  <block id="9b581488b49c5ac223f72f44dce46098" category="list-text">노드에서 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 NVMe connect-all 명령을 실행하고 컨트롤러 손실 시간 초과 기간을 최소 30분 또는 1800초 동안 설정합니다.</block>
+  <block id="2d737bddc26fec4760722ea17aae3833" category="open-title">NVMe/TCP</block>
+  <block id="b410fbf5a06284dbc3bed26b9ccd2094" category="paragraph">ONTAP 릴리스가 포함된 Ubuntu 22.04의 NVMe-oF 호스트 구성에 대해 알려진 문제는 없습니다.</block>
+  <block id="90fc24312f4ab09ff404f0abfb26b105" category="cell">Jira ID입니다</block>
+  <block id="fb99255f11e8a5c23d9e98c28ef9997d" category="cell">1593771</block>
+  <block id="970c941050f97a801dd7266734957b39" category="cell">Red Hat Enterprise Linux 9.3 QLogic SAN 호스트가 스토리지 이동성 작업 중에 부분 다중 경로 손실이 발생합니다</block>
+  <block id="a33a041bd9f15b20d1f9f0d86a594262" category="cell">ONTAP 스토리지 컨트롤러 테이크오버 작동 중에 다중 경로의 절반이 중단되거나 페일오버 모드로 전환된 다음 반환 워크플로우 중에 전체 경로 수로 복구해야 합니다. 하지만 RHEL(Red Hat Enterprise Linux) 9.3 QLogic 호스트를 사용하면 스토리지 페일오버 기브백 작업 후에 부분 다중 경로만 복구됩니다.</block>
+  <block id="a98f12afd377cfff4657909446bff74a" category="cell">RHEL 17811을 참조하십시오</block>
+  <block id="e764fe6b8f8825a307a87cedbef45678" category="sidebar">22.04</block>
+  <block id="829d28d8727a4d458f1c35bda30f5ad7" category="sidebar">NVMeoF Ubuntu</block>
 </blocks>
