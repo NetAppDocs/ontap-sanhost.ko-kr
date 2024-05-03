@@ -15,16 +15,21 @@ summary: 이 콘텐츠는 Cloud Volumes ONTAP에 연결된 클라우드 클라�
 :imagesdir: ./media/
 
 
-이 콘텐츠는 ONTAP 스토리지에 접속된 SAN 호스트를 빠르게 구성하기 위한 호스트 및 버전별 Best Practice를 제공합니다.
+[role="lead"]
+SAN 호스트는 다중 경로와 ONTAP LUN을 올바르게 작동하기 위해 중요한 특정 매개 변수 및 설정을 사용하여 구성해야 합니다.  호스트 구성은 호스트 운영 체제와 프로토콜에 따라 다릅니다.  최상의 성능과 성공적인 페일오버를 위해서는 올바른 구성이 중요합니다.
+
+NetApp SAN 호스트 유틸리티를 사용하도록 SAN 호스트를 구성해야 합니다. SAN 호스트 유틸리티를 사용하면 LUN 및 호스트 버스 어댑터(HBA)를 관리하고 모니터링할 수 있습니다. 예를 들어, SAN 호스트 유틸리티를 사용하여 호스트에 매핑된 모든 LUN의 목록을 검색하거나 호스트에 매핑된 특정 LUN의 모든 속성 목록을 볼 수 있습니다. NetApp 고객 지원 부서에서는 지원이 필요한 문제가 있을 경우 SAN 호스트 유틸리티를 사용하여 구성에 대한 정보를 수집할 수도 있습니다.
+
+NetApp는 SAN 호스트에 사용할 수 있는 경우 SAN 호스트 유틸리티 소프트웨어를 사용할 것을 권장합니다.
+
+SAN 구성에서 지원되는 경우 호스트를 SAN 부팅을 사용하여 구성하고 배포가 간소화되고 확장성이 향상됩니다. SAN 부트를 사용하여 SAN에 새 서버를 연결하고 적절한 부팅 설정을 구성하여 여러 개의 새 서버를 배포할 수 있습니다. 따라서 각 서버에 운영 체제를 개별적으로 설치할 필요가 없으므로 시간이 절약됩니다.
 
 SAN 호스트 및 ONTAP 스토리지는 사내, 클라우드 또는 둘 모두에 있을 수 있습니다.
 
 
 NOTE: 클라우드 환경에서 호스트는 일반적으로 클라이언트라고 합니다. 이 콘텐츠의 모든 호스트별 정보는 클라우드 클라이언트에도 적용됩니다.
 
-예를 들어, 사내 ONTAP 스토리지를 구성하여 사내 SAN 호스트에 연결하거나 SAN 클라우드 클라이언트에 연결할 수 있습니다. 을(를) 구성할 수도 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 또는 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^] 사내 SAN 호스트에 접속하거나 SAN 클라우드 클라이언트에 접속하려면
-
-최상의 성능과 성공적인 페일오버를 위해서는 올바른 구성이 중요합니다.
+예를 들어, 온프레미스 ONTAP 스토리지를 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결하도록 구성할 수 있습니다. 등의 클라우드 환경에서 실행 중인 스토리지 서비스를 구성할 수도 있습니다 link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 또는 link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/index.html["NetApp ONTAP용 Amazon FSx"^] 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결할 수 있습니다.
 
 .관련 정보
 * 를 클릭합니다 link:https://docs.netapp.com/us-en/ontap/san-config/index.html["ONTAP SAN 구성"^] ONTAP 버전용

@@ -1961,9 +1961,7 @@
   <block id="eae76491b6011f6e80494775aea500b6" category="paragraph">모든 SAN 어레이(ASA) 구성에는 우선 순위가 1인 경로 그룹이 하나 있어야 합니다. 모든 경로가 Active/Optimized입니다. 즉, 컨트롤러에서 서비스를 제공하고 모든 활성 경로에 I/O가 전송됩니다.</block>
   <block id="3012ce3908219f8e726469f86858ac26" category="paragraph">AIX의 경우 PCM(경로 컨트롤 모듈)은 여러 경로를 제어하는 역할을 합니다. PCM은 경로 관리를 처리하는 스토리지 공급업체에서 제공하는 코드입니다. Host Utilities 설치의 일부로 설치 및 활성화됩니다.</block>
   <block id="f5188f0db18a0455b279280c37baccd9" category="list-text">파일의 압축을 풉니다. 를 사용할 수 있습니다<block ref="310cb972d0a51b72a4a64dd98fcc2fb1" prefix=" " category="inline-code"></block> 명령을 사용하여 이 작업을 수행합니다.</block>
-  <block id="488ee7d410bfc05042cf79417f62b731" category="paragraph">이 콘텐츠는 ONTAP 스토리지에 접속된 SAN 호스트를 빠르게 구성하기 위한 호스트 및 버전별 Best Practice를 제공합니다.</block>
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">클라우드 환경에서 호스트는 일반적으로 클라이언트라고 합니다. 이 콘텐츠의 모든 호스트별 정보는 클라우드 클라이언트에도 적용됩니다.</block>
-  <block id="7dac0335f353ff4aea15e7349355818e" category="paragraph">예를 들어, 사내 ONTAP 스토리지를 구성하여 사내 SAN 호스트에 연결하거나 SAN 클라우드 클라이언트에 연결할 수 있습니다. 을(를) 구성할 수도 있습니다 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 또는 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block> 사내 SAN 호스트에 접속하거나 SAN 클라우드 클라이언트에 접속하려면</block>
   <block id="94ed2eb93c1ea841359ebf631638ec66" category="paragraph">우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선순위가 높은 경로는 Active/Optimized이며, 이는 애그리게이트는 컨트롤러가 서비스를 제공하는 것을 의미합니다. 우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">이 예에서는<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 동안 다시 시도하도록 합니다. 예를 들면, 다음과 같습니다.</block>
@@ -2799,12 +2797,9 @@
   <block id="1bbb67631847a06bbd9b2e9dafec2134" category="section-title">Solaris 호스트 유틸리티를 설치합니다</block>
   <block id="3f20da7f97c0948dba60855f74d8feb3" category="paragraph">SUSE Linux Enterprise Server 15 SP1 및 ONTAP를 타겟으로 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 구성할 수 있습니다.</block>
   <block id="c783ac9d690ea6f6744d8edf596a145a" category="list-text">기본 NVMe/FC 자동 연결 스크립트가 NVMe-CLI 패키지에 포함되어 있습니다. SLES15 SP1에서 기본 받은 편지함 lpfc 드라이버를 사용할 수 있습니다.</block>
-  <block id="c5572eca1bd94cf7d7a382167c292395" category="paragraph">= 알려진 문제</block>
   <block id="04e8d5a4c40a30787e3a35e62dfd0c1e" category="paragraph">NVMe/FC용 lpfc 드라이버를 설정합니다.</block>
   <block id="9f988f6d1200dcd570b84c8116f6eecd" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하여 Citrix 하이퍼바이저 8 시리즈 OS 릴리스에 대한 ONTAP SAN 호스트 구성 설정을 구성할 수 있습니다.</block>
   <block id="e62de6043f25aae2915aa8c10fbaec9d" category="cell"><block ref="e62de6043f25aae2915aa8c10fbaec9d" category="inline-link-macro-rx"></block></block>
-  <block id="fad1bada1216764738043e879ec198a9" category="paragraph">= 알려진 문제
-알려진 문제가 없습니다.</block>
   <block id="0ea1561176c96894fb977d38bd38f871" category="section-title">Broadcom NVMe/FC의 1MB I/O 크기 활성화</block>
   <block id="624e2520b17b79e6e7312aaab546e064" category="section-title">Broadcom NVMe/FC의 1MB I/O 크기를 활성화합니다</block>
   <block id="a597507af40f2b893bf64299ba506a89" category="doc">ONTAP와 함께 Linux용 Veritas Storage Foundation 6을 사용합니다</block>
@@ -2893,7 +2888,6 @@
   <block id="1e1ac2f92ca06b1f068f6aa6c61883c0" category="paragraph">릴리즈 노트에서는 ONTAP 스토리지 시스템에서 특정 호스트를 구성 및 관리하기 위한 새로운 기능 및 향상된 기능, 알려진 문제 및 제한 사항, 중요한 주의 사항에 대해 설명합니다.</block>
   <block id="2ad9563dae62baefb397a0b93e22f08a" category="list-text">RHEL(Red Hat Enterprise Linux) 6 및 RHEL 7 호스트에서 이제 서버 프로필 설정을 위한 조정된 패키지가 지원됩니다. 를 사용할 수 있습니다<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> 환경에 따라 다른 프로파일을 설정하는 명령입니다. 예를 들어, 가상 게스트 프로파일을 게스트 가상 머신으로 사용할 수도 있고 엔터프라이즈 스토리지 어레이의 LUN이 사용되는 구성에 엔터프라이즈 스토리지 프로파일을 사용할 수도 있습니다. 조정된 패키지를 사용하면 ONTAP의 처리량과 지연 시간이 개선될 수 있습니다.</block>
   <block id="b91c8d257cb2ab1f821c4201c4d98d12" category="list-text">Broadcom Emulex 및 Marvell Qlogic의 32Gb FC 어댑터에 대한 지원을 추가합니다.</block>
-  <block id="a26aa7b42e8c5d7d2a6c295dc3421eb4" category="paragraph">최상의 성능과 성공적인 페일오버를 위해서는 올바른 구성이 중요합니다.</block>
   <block id="d183f649aa9dd1befe9fbbbebb9ce6f3" category="paragraph">이 예에서는 디바이스의 WWID를 확인하고 에 추가합니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일.</block>
   <block id="9befbb0a2a211b5683af5265f22799fb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block> 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.</block>
   <block id="8f832cd06827c0d578f135a31564e7cf" category="summary">ONTAP에서 SUSE Linux Enterprise Server 15 SP5를 사용하는 방법을 설명합니다</block>
@@ -3585,4 +3579,10 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="a98f12afd377cfff4657909446bff74a" category="cell">RHEL 17811을 참조하십시오</block>
   <block id="e764fe6b8f8825a307a87cedbef45678" category="sidebar">22.04</block>
   <block id="829d28d8727a4d458f1c35bda30f5ad7" category="sidebar">NVMeoF Ubuntu</block>
+  <block id="d501883fc1a9d1cf58d8ed37251b1790" category="paragraph">SAN 호스트는 다중 경로와 ONTAP LUN을 올바르게 작동하기 위해 중요한 특정 매개 변수 및 설정을 사용하여 구성해야 합니다.  호스트 구성은 호스트 운영 체제와 프로토콜에 따라 다릅니다.  최상의 성능과 성공적인 페일오버를 위해서는 올바른 구성이 중요합니다.</block>
+  <block id="4bf5914eea4e83599fedc33e6b112c24" category="paragraph">NetApp SAN 호스트 유틸리티를 사용하도록 SAN 호스트를 구성해야 합니다. SAN 호스트 유틸리티를 사용하면 LUN 및 호스트 버스 어댑터(HBA)를 관리하고 모니터링할 수 있습니다. 예를 들어, SAN 호스트 유틸리티를 사용하여 호스트에 매핑된 모든 LUN의 목록을 검색하거나 호스트에 매핑된 특정 LUN의 모든 속성 목록을 볼 수 있습니다. NetApp 고객 지원 부서에서는 지원이 필요한 문제가 있을 경우 SAN 호스트 유틸리티를 사용하여 구성에 대한 정보를 수집할 수도 있습니다.</block>
+  <block id="4606950536e67c2685627ee972feac57" category="paragraph">NetApp는 SAN 호스트에 사용할 수 있는 경우 SAN 호스트 유틸리티 소프트웨어를 사용할 것을 권장합니다.</block>
+  <block id="f76b486098082341b739c343f962d5d9" category="paragraph">SAN 구성에서 지원되는 경우 호스트를 SAN 부팅을 사용하여 구성하고 배포가 간소화되고 확장성이 향상됩니다. SAN 부트를 사용하여 SAN에 새 서버를 연결하고 적절한 부팅 설정을 구성하여 여러 개의 새 서버를 배포할 수 있습니다. 따라서 각 서버에 운영 체제를 개별적으로 설치할 필요가 없으므로 시간이 절약됩니다.</block>
+  <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link-macro">NetApp ONTAP용 Amazon FSx</block>
+  <block id="cbd5bf3ac18c40540e157027878d3965" category="paragraph">예를 들어, 온프레미스 ONTAP 스토리지를 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결하도록 구성할 수 있습니다. 등의 클라우드 환경에서 실행 중인 스토리지 서비스를 구성할 수도 있습니다 <block ref="54a9edfbbcc641d603aea65a27251f05" category="inline-link-macro-rx"></block> 또는 <block ref="32496c00ec9be403fcfaf96fbaeed4b1" category="inline-link-macro-rx"></block> 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결할 수 있습니다.</block>
 </blocks>
