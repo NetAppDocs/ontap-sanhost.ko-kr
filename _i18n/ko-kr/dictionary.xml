@@ -3585,4 +3585,25 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="f76b486098082341b739c343f962d5d9" category="paragraph">SAN 구성에서 지원되는 경우 호스트를 SAN 부팅을 사용하여 구성하고 배포가 간소화되고 확장성이 향상됩니다. SAN 부트를 사용하여 SAN에 새 서버를 연결하고 적절한 부팅 설정을 구성하여 여러 개의 새 서버를 배포할 수 있습니다. 따라서 각 서버에 운영 체제를 개별적으로 설치할 필요가 없으므로 시간이 절약됩니다.</block>
   <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link-macro">NetApp ONTAP용 Amazon FSx</block>
   <block id="cbd5bf3ac18c40540e157027878d3965" category="paragraph">예를 들어, 온프레미스 ONTAP 스토리지를 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결하도록 구성할 수 있습니다. 등의 클라우드 환경에서 실행 중인 스토리지 서비스를 구성할 수도 있습니다 <block ref="54a9edfbbcc641d603aea65a27251f05" category="inline-link-macro-rx"></block> 또는 <block ref="32496c00ec9be403fcfaf96fbaeed4b1" category="inline-link-macro-rx"></block> 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결할 수 있습니다.</block>
+  <block id="99fc62da3c4063c517d61da1e5cb3ea3" category="summary">ONTAP가 포함된 RHEL 9.4용 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="0f57fe9eb655baeaa1793e610b42c2f4" category="doc">ONTAP 탑재 RHEL 9.4 에 대한 NVMe-oF 호스트 구성</block>
+  <block id="d6b5282a090c91c3f085ec6086ba3812" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 비롯한 NVMe-oF(NVMe over Fabrics)는 Red Hat Enterprise Linux(RHEL) 9.4 및 ANA(Asymmetric Namespace Access) 에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
+  <block id="90cb969c9c4cfedd40361241a5d9c71b" category="paragraph">ONTAP가 포함된 RHEL 9.4에 대한 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
+  <block id="7e625f4c4c9c1ccd710847cc4037c2c5" category="list-text">RHEL 9.4에는 기본적으로 NVMe 네임스페이스를 위해 커널 내 NVMe 다중 경로가 활성화되어 있으므로 명시적 설정이 필요하지 않습니다.</block>
+  <block id="f3dc69e0cba8d4237a37a786c899f4c3" category="list-text">NVMe/FC 프로토콜을 사용한 SAN 부팅이 지원됩니다.</block>
+  <block id="1733de5a596dfd8c9179b7f061fe9051" category="paragraph">알려진 제한은 없습니다.</block>
+  <block id="ad9672840bc0ef8e354ab95610d4aad0" category="paragraph">다음 절차에 따라 지원되는 최소 RHEL 9.4 소프트웨어 버전을 검증할 수 있습니다.</block>
+  <block id="1fc43ef5bbf00643a63f0cb17e89513c" category="list-text">서버에 RHEL 9.4를 설치합니다. 설치가 완료되면 지정된 RHEL 9.4 커널을 실행하고 있는지 확인합니다.</block>
+  <block id="a64e6eb6496dd553f89b6df74f0198bd" category="list-text">RHEL 9.4 호스트에서 에서 hostnqn 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
+  <block id="877a23b250be27d69c46a42ea66ce372" category="list-text">RHEL 9.4 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필요한 최신 수정 사항이 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
+  <block id="8f222056258c7ab02f5add2e3dcea705" category="paragraph">NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 NVMe/TCP 하위 시스템과 네임스페이스를 검색하려면 NVMe/TCP 연결 또는 connect-all 기능을 수동으로 수행해야 합니다.</block>
+  <block id="6cac16b75ec7c1c0cf3fdcb09bb8b510" category="admonition">RHEL 9.4부터 NVMe/TCP의 기본 설정입니다<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 시간 초과가 해제되어 다시 시도 횟수에 제한이 없습니다(무제한 재시도). 따라서 특정 을 수동으로 구성할 필요가 없습니다<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> NVMe connect 또는 NVMe connect-all 명령(option-l)을 사용할 때 시간이 초과되는 시간입니다. 이 기본 동작에서는 경로 장애 발생 시 NVMe/TCP 컨트롤러가 시간 초과를 경험하지 않고 무기한 연결된 상태를 유지합니다.</block>
+  <block id="93955aae7b33676909e1f1724f699b74" category="paragraph">ONTAP 릴리즈가 포함된 RHEL 9.4의 NVMe-oF 호스트 구성에는 알려진 문제가 없습니다.</block>
+  <block id="c78033326da0dc85293c84954e3b3012" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 9.4를 사용하는 방법을 설명합니다</block>
+  <block id="4b56958d28f3694a2adfefd32d8705e7" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 9.4 사용</block>
+  <block id="788e0ec94e64fbc7dd232fb1cecd4052" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Red Hat Enterprise Linux 9.4를 대상으로 구성할 수 있습니다.</block>
+  <block id="3ce1443ad7e3181c19eca5a21a312153" category="paragraph">RHEL(Red Hat Enterprise Linux) 9.4의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 9.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
+  <block id="aec8d85637dcc004808d5ebb83597d99" category="paragraph">RHEL 9.4 OS는 ONTAP LUN을 인식하도록 컴파일되어 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
+  <block id="d0416aff963666e337ccc38e2c8cf339" category="paragraph">ONTAP 릴리즈가 포함된 RHEL 9.4의 FC 호스트 구성에는 알려진 문제가 없습니다.</block>
+  <block id="b68de8f1f938e0330acdf64c63b08b9a" category="sidebar">9.4 를 참조하십시오</block>
 </blocks>
