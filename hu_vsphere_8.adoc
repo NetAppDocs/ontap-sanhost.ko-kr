@@ -355,12 +355,12 @@ ONTAP가 포함된 VMware vSphere 8.x 릴리즈에는 다음과 같은 알려진
 | NetApp 버그 ID | 제목 | 설명 
 
 
-| 1543660)을 참조하십시오 | vNVMe 어댑터를 사용하는 Linux VM에서 긴 모든 경로 중단(APD) 창이 발생할 때 I/O 오류가 발생합니다  a| 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1543660["1543660)을 참조하십시오"^] | vNVMe 어댑터를 사용하는 Linux VM에서 긴 모든 경로 중단(APD) 창이 발생할 때 I/O 오류가 발생합니다  a| 
 vSphere 8.x 이상을 실행하고 vNVMe(vNVME) 어댑터를 사용하는 Linux VM에서 기본적으로 vNVMe 재시도 작업이 비활성화되어 I/O 오류가 발생합니다. APD(All Path Down) 또는 입출력 로드가 많을 때 이전 커널을 실행하는 Linux VM의 중단을 방지하기 위해 VMware는 vNVMe 재시도 작업을 비활성화하기 위해 조정 가능한 "VSCSIDisableNvmeRetry"를 도입했습니다.
 
 |===
 .관련 정보
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
 * link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^]
-* link:https://kb.vmware.com/s/article/83370["VMware vMSC(vSphere Metro Storage Cluster)를 지원하는 NetApp ONTAP with NetApp SnapMirror SM-BC(Business Continuity)"^]
+* link:https://kb.vmware.com/s/article/83370["NetApp vMSC(VMware vSphere Metro Storage Cluster)와 SnapMirror Active Sync가 있는 NetApp ONTAP"^]
 

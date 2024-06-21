@@ -28,7 +28,7 @@ ONTAP가 있는 AIX 호스트의 NVMe/FC 호스트 구성에 대해 다음 지�
 
 .필요한 것
 * 어댑터 펌웨어 12.4.257.30 이상 버전이 있는 32Gb FC Emulex 어댑터(EN1A, EN1B, EN1L, EN1M) 또는 64GB FC 어댑터(EN1N, EN1P)가 있는지 확인합니다.
-* MetroCluster 구성이 있는 경우 AIX 운영 시스템에서 더 짧은 I/O 시간 초과를 강제로 적용하는 것을 피하기 위해 MetroCluster 계획되지 않은 전환 이벤트를 지원하기 위해 AIX NVMe/FC 기본 APD(모든 경로 중지) 시간을 변경하는 것이 좋습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 공용 보고서 1553249를 참조하십시오.
+* MetroCluster 구성을 사용하는 경우 NetApp는 AIX 운영 체제에서 짧은 I/O 시간 초과를 강제로 적용하는 것을 방지하기 위해 MetroCluster 계획되지 않은 전환 이벤트를 지원하기 위해 AIX NVMe/FC 기본 APD(All Path Down) 시간을 변경하는 것이 좋습니다. 추가 정보 및 기본 설정에 대한 권장 변경 사항은 NetApp 온라인 버그 - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1553249["1553249"^].
 * 기본적으로 AIX 호스트 OS의 ANATT(Asymmetric Namespace Access Transition Timeout) 값은 30초입니다. IBM은 ANATT 값을 60초로 제한 Interim Fix(ifix)를 제공합니다. IBM 웹 사이트에서 ifix를 설치하여 모든 ONTAP 워크플로를 중단 없이 수행할 수 있도록 해야 합니다.
 +
 
@@ -323,16 +323,16 @@ ONTAP를 사용하는 AIX용 NVMe/FC 호스트 구성에는 다음과 같은 알
 | Burt ID를 참조하십시오 | 제목 | 설명 
 
 
-| 1553249 | MCC 계획되지 않은 Switchover 이벤트를 지원하기 위해 AIX NVMe/FC 기본 APD 시간을 수정해야 합니다 | 기본적으로 AIX 운영 체제는 NVMe/FC에 대해 모든 경로 다운(APD) 시간 초과 값 20초를 사용합니다.  하지만 ONTAP MetroCluster 자동 비계획 전환(AUSO) 및 Tiebreaker가 시작한 스위치오버 워크플로우가 APD 시간 초과 기간보다 약간 오래 걸릴 수 있으며, 이로 인해 I/O 오류가 발생할 수 있습니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1553249["1553249"^] | MCC 계획되지 않은 Switchover 이벤트를 지원하기 위해 AIX NVMe/FC 기본 APD 시간을 수정해야 합니다 | 기본적으로 AIX 운영 체제는 NVMe/FC에 대해 모든 경로 다운(APD) 시간 초과 값 20초를 사용합니다.  하지만 ONTAP MetroCluster 자동 비계획 전환(AUSO) 및 Tiebreaker가 시작한 스위치오버 워크플로우가 APD 시간 초과 기간보다 약간 오래 걸릴 수 있으며, 이로 인해 I/O 오류가 발생할 수 있습니다. 
 
 
-| 1546017 | AIX NVMe/FC는 ONTAP에서 광고한 120초 대신 60초 이내에 ANATT를 CAP 합니다 | ONTAP는 컨트롤러 ID의 ANA(비대칭 네임스페이스 액세스) 전환 시간 초과를 120초로 알립니다. 현재 ifix를 사용하여 AIX는 컨트롤러에서 ANA 전환 시간 제한을 읽지만, 이 제한을 초과하면 60초로 효과적으로 클램핑합니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1546017["1546017"^] | AIX NVMe/FC는 ONTAP에서 광고한 120초 대신 60초 이내에 ANATT를 CAP 합니다 | ONTAP는 컨트롤러 ID의 ANA(비대칭 네임스페이스 액세스) 전환 시간 초과를 120초로 알립니다. 현재 ifix를 사용하여 AIX는 컨트롤러에서 ANA 전환 시간 제한을 읽지만, 이 제한을 초과하면 60초로 효과적으로 클램핑합니다. 
 
 
-| 1541386)을 참조하십시오 | AIX NVMe/FC는 ANATT 만료 후 EIO를 적중합니다 | 스토리지 페일오버(SFO) 이벤트의 경우 ANA(비대칭 네임스페이스 액세스) 전환이 지정된 경로에서 ANA 전환 시간 제한 한도를 초과할 경우, AIX NVMe/FC 호스트는 네임스페이스에 사용할 수 있는 대체 정상 경로가 있더라도 I/O 오류와 함께 실패합니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1541386["1541386)을 참조하십시오"^] | AIX NVMe/FC는 ANATT 만료 후 EIO를 적중합니다 | 스토리지 페일오버(SFO) 이벤트의 경우 ANA(비대칭 네임스페이스 액세스) 전환이 지정된 경로에서 ANA 전환 시간 제한 한도를 초과할 경우, AIX NVMe/FC 호스트는 네임스페이스에 사용할 수 있는 대체 정상 경로가 있더라도 I/O 오류와 함께 실패합니다. 
 
 
-| 1541380)을 참조하십시오 | AIX NVMe/FC는 ANA ANN 이후 I/O를 재개하기 전에 반/전체 ANATT가 만료될 때까지 대기합니다 | IBM AIX NVMe/FC는 ONTAP가 게시하는 일부 비동기 알림(AIN)을 지원하지 않습니다. 이와 같이 최적화되지 않은 ANA 처리는 SFO 작업 중 성능 저하를 초래합니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1541380["1541380)을 참조하십시오"^] | AIX NVMe/FC는 ANA ANN 이후 I/O를 재개하기 전에 반/전체 ANATT가 만료될 때까지 대기합니다 | IBM AIX NVMe/FC는 ONTAP가 게시하는 일부 비동기 알림(AIN)을 지원하지 않습니다. 이와 같이 최적화되지 않은 ANA 처리는 SFO 작업 중 성능 저하를 초래합니다. 
 |===
 
 

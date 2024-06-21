@@ -72,6 +72,6 @@ Linux Host Utilities 7.1 릴리스에는 다음과 같은 알려진 문제와 �
 [root@hostname~]#sanlun fcp show adapter-v
 /usr/lib64/libHBAAPI.so 라이브러리를 찾을 수 없습니다
 라이브러리를 설치하는 패키지가 설치 및 로드되었는지 확인합니다
-공개 보고서 1508554를 참조하십시오. 
+NetApp 온라인 버그 참조 - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^]. 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp 온라인 버그"^] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다.

@@ -299,8 +299,8 @@ RHEL 9.3과 ONTAP 릴리스의 알려진 문제는 다음과 같습니다.
 | NetApp 버그 ID | 제목 | 설명 | Jira ID입니다 
 
 
-| 1508554 | NetApp Linux 호스트 유틸리티 CLI에서 Emulex HBA(호스트 버스 어댑터) 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다 | RHEL 9.x에서 NetApp Linux SAN 호스트 유틸리티 CLI `sanlun fcp show adapter -v` Emulex HBA(호스트 버스 어댑터) 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다. | 해당 없음 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux 호스트 유틸리티 CLI에서 Emulex HBA(호스트 버스 어댑터) 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다 | RHEL 9.x에서 NetApp Linux SAN 호스트 유틸리티 CLI `sanlun fcp show adapter -v` Emulex HBA(호스트 버스 어댑터) 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다. | 해당 없음 
 
 
-| 1593771 | Red Hat Enterprise Linux 9.3 QLogic SAN 호스트가 스토리지 이동성 작업 중에 부분 다중 경로 손실이 발생합니다 | ONTAP 스토리지 컨트롤러 테이크오버 작동 중에 다중 경로의 절반이 중단되거나 페일오버 모드로 전환된 다음 반환 워크플로우 중에 전체 경로 수로 복구해야 합니다. 하지만 RHEL(Red Hat Enterprise Linux) 9.3 QLogic 호스트를 사용하면 스토리지 페일오버 기브백 작업 후에 부분 다중 경로만 복구됩니다. | RHEL 17811을 참조하십시오 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1593771["1593771"^] | Red Hat Enterprise Linux 9.3 QLogic SAN 호스트가 스토리지 이동성 작업 중에 부분 다중 경로 손실이 발생합니다 | ONTAP 스토리지 컨트롤러 테이크오버 작동 중에 다중 경로의 절반이 중단되거나 페일오버 모드로 전환된 다음 반환 워크플로우 중에 전체 경로 수로 복구해야 합니다. 하지만 RHEL(Red Hat Enterprise Linux) 9.3 QLogic 호스트를 사용하면 스토리지 페일오버 기브백 작업 후에 부분 다중 경로만 복구됩니다. | RHEL 17811을 참조하십시오 
 |===

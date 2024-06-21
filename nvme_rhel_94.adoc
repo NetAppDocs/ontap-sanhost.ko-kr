@@ -21,7 +21,7 @@ NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 비롯한 NVMe-oF(NVMe ove
 
 ONTAP가 포함된 RHEL 9.4에 대한 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.
 
-* NVMe/FC 외에 NVMe over TCP(NVMe/TCP) 지원 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시합니다.
+* NVMe/FC 외에 NVMe over TCP(NVMe/TCP) 지원 NetApp 플러그인은 기본 제공됩니다 `nvme-cli` 패키지에는 NVMe/FC 및 NVMe/TCP 네임스페이스에 대한 ONTAP 세부 정보가 표시됩니다.
 * NVMe 네임스페이스를 요청하지 않도록 명시적인 dm-multipath 설정 없이 지정된 HBA(호스트 버스 어댑터)에서 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용합니다.
 
 
@@ -446,7 +446,7 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 
 
 
-NOTE: RHEL 9.4부터 NVMe/TCP의 기본 설정입니다 `ctrl_loss_tmo` 시간 초과가 해제되어 다시 시도 횟수에 제한이 없습니다(무제한 재시도). 따라서 특정 을 수동으로 구성할 필요가 없습니다 `ctrl_loss_tmo` NVMe connect 또는 NVMe connect-all 명령(option-l)을 사용할 때 시간이 초과되는 시간입니다. 이 기본 동작에서는 경로 장애 발생 시 NVMe/TCP 컨트롤러가 시간 초과를 경험하지 않고 무기한 연결된 상태를 유지합니다.
+NOTE: RHEL 9.4부터 NVMe/TCP의 기본 설정입니다 `ctrl_loss_tmo` 시간 초과가 해제되어 다시 시도 횟수에 제한이 없습니다(무제한 재시도). 따라서 특정 을 수동으로 구성할 필요가 없습니다 `ctrl_loss_tmo` 를 사용하는 경우 시간 초과 지속 시간 `nvme connect` 또는 `nvme connect-all` 명령(option-l). 이 기본 동작에서는 경로 장애 발생 시 NVMe/TCP 컨트롤러가 시간 초과를 경험하지 않고 무기한 연결된 상태를 유지합니다.
 
 
 

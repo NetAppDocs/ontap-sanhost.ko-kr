@@ -280,4 +280,4 @@ ONTAP를 사용하는 ESXi 7.x의 NVMe-of 호스트 구성에는 다음과 같�
 .관련 정보
 link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
 link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^]
-link:https://kb.vmware.com/s/article/83370["NetApp ® SnapMirror ® 비즈니스 연속성(SM-BC)을 통해 VMware vSphere 6.x 및 7.x 지원"^]
+link:https://kb.vmware.com/s/article/83370["NetApp ® SnapMirror 액티브 동기화에서 VMware vSphere 6.x 및 7.x를 지원합니다"^]

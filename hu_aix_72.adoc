@@ -216,13 +216,13 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 
 
-== AIX 지원(SM-BC 포함
+== SnapMirror 액티브 동기화에 대해 AIX 지원
 
-ONTAP 9.11.1부터 AIX는 SM-BC에서 지원됩니다. AIX 구성에서 운영 클러스터는 "활성" 클러스터입니다.
+ONTAP 9.11.1부터 AIX는 SnapMirror 액티브 동기화에서 지원됩니다. AIX 구성에서 운영 클러스터는 "활성" 클러스터입니다.
 
 AIX 구성에서 페일오버는 중단을 야기합니다. 각 페일오버 시 호스트에서 재검색을 수행하여 I/O 작업을 재개해야 합니다.
 
-SM-BC용 AIX를 구성하려면 기술 자료 문서를 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["SnapMirror 비즈니스 연속성(SM-BC)에 대한 AIX 호스트를 구성하는 방법"^].
+AIX for SnapMirror 활성 동기화를 구성하려면 기술 자료 문서 를 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["SnapMirror 액티브 동기화에 대해 AIX 호스트를 구성하는 방법"^].
 
 
 
@@ -235,11 +235,11 @@ ONTAP 릴리스가 포함된 IBM AIX 7.2 및/또는 PowerVM(VIOS 3.1)에는 다�
 | NetApp 버그 ID | 제목 | 설명 | 파트너 ID입니다 
 
 
-| 1416221)을 참조하십시오 | 스토리지 페일오버 중 AIX 7200-05-01 가상 iSCSI 디스크(VIOS 3.1.1.x)에서 I/O 중단이 발생했습니다 | VIOS 3.1.1.x를 통해 매핑된 가상 iSCSI 디스크의 AIX 7.2 TL5 호스트에서 스토리지 페일오버 작업 중에 I/O 중단이 발생할 수 있습니다 기본적으로 VIOC에서 가상 iSCSI 디스크(hdisk)의 rw_timeout 값은 45초입니다. 스토리지 페일오버 중에 I/O 지연이 45초 이상 발생하면 I/O 장애가 발생할 수 있습니다. 이 상황을 방지하려면 Burt에 설명된 해결 방법을 참조하십시오. IBM에 따르면 APAR-IJ34739(출시 예정)를 적용한 후 "chdev" 명령을 사용하여 rw_timeout 값을 동적으로 변경할 수 있습니다. | 해당 없음 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1416221["1416221)을 참조하십시오"^] | 스토리지 페일오버 중 AIX 7200-05-01 가상 iSCSI 디스크(VIOS 3.1.1.x)에서 I/O 중단이 발생했습니다 | VIOS 3.1.1.x를 통해 매핑된 가상 iSCSI 디스크의 AIX 7.2 TL5 호스트에서 스토리지 페일오버 작업 중에 I/O 중단이 발생할 수 있습니다 기본적으로 VIOC에서 가상 iSCSI 디스크(hdisk)의 rw_timeout 값은 45초입니다. 스토리지 페일오버 중에 I/O 지연이 45초 이상 발생하면 I/O 장애가 발생할 수 있습니다. 이 상황을 방지하려면 Burt에 설명된 해결 방법을 참조하십시오. IBM에 따르면 APAR-IJ34739(출시 예정)를 적용한 후 "chdev" 명령을 사용하여 rw_timeout 값을 동적으로 변경할 수 있습니다. | 해당 없음 
 
 
-| 1414700 | AIX 7.2 TL04에서 스토리지 페일오버 중 가상 iSCSI 디스크(VIOS 3.1.1.x)에서 I/O 중단이 발생했습니다 | VIOS 3.1.1.x를 통해 매핑된 가상 iSCSI 디스크의 AIX 7.2 TL4 호스트에서 스토리지 페일오버 작업 중에 I/O 중단이 발생할 수 있습니다 기본적으로 VIOC에서 vSCSI 어댑터의 RW_TIMEOUT 값은 45초입니다. 스토리지 페일오버 중에 I/O 지연이 45초 이상 발생하면 I/O 장애가 발생할 수 있습니다. 이 상황을 방지하려면 Burt에 설명된 해결 방법을 참조하십시오. | 해당 없음 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1414700["1414700"^] | AIX 7.2 TL04에서 스토리지 페일오버 중 가상 iSCSI 디스크(VIOS 3.1.1.x)에서 I/O 중단이 발생했습니다 | VIOS 3.1.1.x를 통해 매핑된 가상 iSCSI 디스크의 AIX 7.2 TL4 호스트에서 스토리지 페일오버 작업 중에 I/O 중단이 발생할 수 있습니다 기본적으로 VIOC에서 vSCSI 어댑터의 RW_TIMEOUT 값은 45초입니다. 스토리지 페일오버 중에 I/O 지연이 45초 이상 발생하면 I/O 장애가 발생할 수 있습니다. 이 상황을 방지하려면 Burt에 설명된 해결 방법을 참조하십시오. | 해당 없음 
 
 
-| 1307653 | SFO 장애 및 직선 I/O 중에 VIOS 3.1.1.10에서 I/O 문제 보기 | VIOS 3.1.1 IO 오류는 16/32GB FC 어댑터가 지원하는 NPIV 클라이언트 디스크에서 발생할 수 있습니다. 또한 "vfchost" 드라이버는 클라이언트의 I/O 요청 처리를 중지하는 상태로 전환될 수 있습니다. IBM APAR IJ22290 IBM APAR IJ23222를 적용하면 문제가 해결됩니다. | 해당 없음 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653"^] | SFO 장애 및 직선 I/O 중에 VIOS 3.1.1.10에서 I/O 문제 보기 | VIOS 3.1.1 IO 오류는 16/32GB FC 어댑터가 지원하는 NPIV 클라이언트 디스크에서 발생할 수 있습니다. 또한 "vfchost" 드라이버는 클라이언트의 I/O 요청 처리를 중지하는 상태로 전환될 수 있습니다. IBM APAR IJ22290 IBM APAR IJ23222를 적용하면 문제가 해결됩니다. | 해당 없음 
 |===

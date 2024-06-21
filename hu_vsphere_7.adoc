@@ -331,5 +331,5 @@ VMware vSphere 7.x 및 ONTAP 릴리즈에는 알려진 문제가 없습니다.
 .관련 정보
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
 * link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^]
-* link:https://kb.vmware.com/s/article/83370["VMware vMSC(vSphere Metro Storage Cluster)를 지원하는 NetApp ONTAP with NetApp SnapMirror SM-BC(Business Continuity)"^]
+* link:https://kb.vmware.com/s/article/83370["NetApp vMSC(VMware vSphere Metro Storage Cluster)와 SnapMirror Active Sync가 있는 NetApp ONTAP"^]
 
