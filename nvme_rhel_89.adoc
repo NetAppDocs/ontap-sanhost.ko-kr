@@ -13,7 +13,6 @@ summary: ONTAP를 사용하여 RHEL 8.9용 NVMe-OF 호스트를 구성하는 방
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 
 
 [role="lead"]

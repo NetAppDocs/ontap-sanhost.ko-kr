@@ -15,7 +15,6 @@ summary: ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP5용 NVMe/FC를
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 :toc-position: content
 
 

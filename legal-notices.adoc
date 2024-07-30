@@ -1,5 +1,5 @@
 ---
-permalink: legal_notice.html 
+permalink: legal-notices.html 
 sidebar: sidebar 
 keywords: legal, notices, copyright, trademarks, patents 
 summary: 법적 고지 사항은 저작권 선언, 상표, 특허 등에 대한 액세스를 제공합니다. 
@@ -8,6 +8,7 @@ summary: 법적 고지 사항은 저작권 선언, 상표, 특허 등에 대한 
 :allow-uri-read: 
 
 
+[role="lead"]
 법적 고지 사항은 저작권 선언, 상표, 특허 등에 대한 액세스를 제공합니다.
 
 

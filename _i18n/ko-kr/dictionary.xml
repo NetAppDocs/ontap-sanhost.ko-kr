@@ -234,10 +234,7 @@
   <block id="502fbd3ccf57633c65ae1692b6d1a9e4" category="paragraph">우선 순위가 낮은 경로는 활성 경로이지만 다른 컨트롤러에서 서비스되기 때문에 최적화되지 않습니다.</block>
   <block id="9a5314b1a306337a06216b7efd89d414" category="admonition">최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="098ea71f2042c61bc1f4527ee7d06503" category="paragraph">다음 예는 2개의 액티브/최적화 경로와 2개의 액티브/비최적화 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
-  <block id="8f2eee8da6df59eb11ac9371e3b986f6" category="image-alt">비샤사</block>
   <block id="7a0a3a29c4e371b5125adb49cae3a738" category="section-title">모든 SAN 어레이 구성</block>
-  <block id="e1c9ad969fa62c5a5a7b128c39c401d9" category="paragraph">모든 SAN 어레이(ASA) 구성의 경우 우선 순위가 하나인 경로 그룹이 하나 있어야 합니다. 모든 경로는 액티브/최적화되어 있습니다. 즉, 컨트롤러에서 서비스를 제공하고 I/O는 모든 활성 경로에서 전송됩니다.</block>
-  <block id="457391c9c82bfdcbb4947278c0401e41" category="image-alt">ASA</block>
   <block id="6aa0ace12fc074a16fce7ea7a0a32c67" category="admonition">단일 LUN에 너무 많은 경로를 사용하지 마십시오. 경로가 4개 이상 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.</block>
   <block id="2e8526cbe762cb1b8393d935a3b0bf16" category="section-title">권장 설정</block>
   <block id="1801611ab26d1810208b951594169cfe" category="paragraph">FC를 사용하는 시스템에서는 MPIO를 선택할 때 Emulex 및 QLogic FC HBA에 대해 다음 시간 초과 값이 필요합니다.</block>
@@ -1434,7 +1431,6 @@
   <block id="7adcaa4e5a35b413a61f9652b9b8e6bd" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <block ref="2e3100a5f55723fd5f208c30b3d4a68b" category="inline-link-macro-rx"></block> 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.</block>
   <block id="72f35134635c6ac882f97d9681c93120" category="paragraph">SUSE Linux Enterprise Server 12 SP3의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. SUSE Linux Enterprise Server 12 SP3은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="faa333743d9719ffabaef492f9d3addf" category="inline-link-macro">1089555</block>
-  <block id="6d83a402d5f48246e4a8aa47a51d84af" category="cell"><block ref="09d0a792ca32715872125a5125deab57" category="inline-link-macro-rx"></block></block>
   <block id="0474958a1d6d3dac5a2d4f89aa906f00" category="cell">스토리지 페일오버 작업 중 Emulex LPe16002 16GB FC를 사용하는 커널 버전 SLES12 SP3에서 커널 중단이 관찰되었습니다</block>
   <block id="e473d01bdff0fd380180c07445efe5f1" category="cell">Emulex LPe16002 HBA를 사용하는 커널 버전 SLES12 SP3에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 커널 중단은 운영 체제를 재부팅하라는 메시지를 표시합니다. 그러면 응용 프로그램이 중단됩니다. kdump가 구성된 경우 커널 중단은 /var/crash/ 디렉토리 아래에 vmcore 파일을 생성합니다. vmcore 파일에서 실패의 원인을 조사할 수 있습니다. 예: 관찰된 경우 "lpfc_sli_ringtxcmpl_put+51" 모듈에서 커널 중단이 관찰되었으며 vmcore 파일에 기록됩니다(예외 RIP: lpfc_sli_ringtxcmpl_put+51). 커널 중단 후 호스트 운영 체제를 재부팅하고 애플리케이션을 다시 시작하여 운영 체제를 복구합니다.</block>
   <block id="2355ee326a65b78534c760ffc28282b3" category="inline-link-macro">1042847</block>
@@ -2692,7 +2688,6 @@
   <block id="2018120e064c044d2251a465311b51c2" category="doc">ONTAP와 함께 SUSE Linux Enterprise Server 15 SP4를 사용합니다</block>
   <block id="4acb27c024b3567bf9590979213b7333" category="doc">ONTAP 기반의 Red Hat Enterprise Linux 8.6을 사용하십시오</block>
   <block id="3efbcda09300e864ffdf03f9735d8517" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 8.7을 사용하십시오</block>
-  <block id="1a9652dbabd1fe583283db59098e884a" category="paragraph">ONTAP를 대상으로 사용하여 FCP 또는 iSCSI에 대한 특정 SAN 호스트를 구성할 수 있습니다. 먼저 SAN 툴 키트가 포함된 관련 운영 체제 호스트 유틸리티 패키지를 설치한 다음 NetApp ONTAP LUN의 다중 경로 설정을 확인합니다.</block>
   <block id="b70f79f7541968cba061dec5df01b8ba" category="doc">ONTAP에서 CentOS 8.4를 사용합니다</block>
   <block id="1f7d8244b764d5a7c149c4cbfad4c873" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 NVMe over TCP(NVMe/TCP)를 포함한 NVMe over Fabrics(NVMe-oF) 프로토콜을 위해 ONTAP를 타겟으로 사용하여 특정 SAN 호스트를 구성할 수 있습니다. 호스트 운영 체제와 ONTAP 버전에 따라 호스트에서 NVMe/FC 또는 NVMe/TCP 프로토콜을 구성하거나 유효성을 검사합니다.</block>
   <block id="2b6cce58629e8dff15245e88ef1d8db6" category="doc">ONTAP와 함께 SUSE Linux Enterprise Server 12 SP4를 사용합니다</block>
@@ -2791,7 +2786,6 @@
   <block id="0659d428df833a806e29e65e632d380a" category="inline-link-macro">NetApp 지원</block>
   <block id="b3303f1e3e1d5672f6b839c968637989" category="paragraph">여전히 문제가 발생하는 경우 다음 파일 및 명령 출력을 수집하고 에 문의하십시오 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 추가 분류:</block>
   <block id="8e2fe53ccb05734b777fbcc2363d25ab" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하는 vSphere 7.x 릴리스에 대해 ONTAP SAN 호스트 구성 설정을 사용할 수 있습니다.</block>
-  <block id="d9a42f0deac96b98dbebf2e560cd7f5c" category="paragraph">NVMe/FC 장애를 해결하기 전에 상호 운용성 매트릭스 툴(IMT) 사양을 준수하는 구성을 실행 중인지 확인하십시오. 여전히 문제가 발생하는 경우 에 문의하십시오 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 추가 분류를 위해</block>
   <block id="3a4b11723a00030809010d89daf7ebe2" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하는 Red Hat Enterprise Linux 및 Oracle Linux(RHCK 기반) 플랫폼용 Veritas Infoscale 스토리지 기반 8 시리즈 릴리스에 대해 ONTAP SAN 호스트 구성 설정을 사용할 수 있습니다.</block>
   <block id="4a09c73fa303eedb14779e29343fb862" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하는 Citrix XenServer 7 시리즈 OS 릴리스에 대한 ONTAP SAN 호스트 구성 설정을 구성할 수 있습니다.</block>
   <block id="0dfb15ad6e48119187bdf68b2798b551" category="paragraph">Solaris Host Utilities 6.2 샘플 명령 참조를 사용하여 호스트 유틸리티 도구를 사용하여 NetApp 스토리지 구성의 종단 간 유효성 검사를 수행할 수 있습니다.</block>
@@ -3648,4 +3642,20 @@ NetApp 온라인 버그 참조 - <block ref="af3b3cf0d6ceafbe31919aa407157743" c
   <block id="0705687e23a55c98a49a67821189d6b8" category="admonition">이후<block ref="ce0493257bc72d9f3741350d87a14b7d" prefix=" " category="inline-code"></block> 이(가) 적용되었습니다.<block ref="3a8e4c06e471595f6eb262bb9b5582d9" prefix=" " category="inline-code"></block> 이(가) 에 추가됩니다<block ref="552db9f221945d76c9e04206b850f3bc" prefix=" " category="inline-code"></block>.
 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오<block ref="38eefb55aea51664f737ddbdc6c85594" category="inline-link-rx"></block>.</block>
   <block id="24ae7542f38ef52be0ec1f780221fd23" category="sidebar">8.10</block>
+  <block id="116d55b793d97066c1d9e8d10b5f4cf9" category="paragraph">모든 SAN 어레이(ASA) 구성의 경우 우선 순위가 하나인 경로 그룹이 하나 있어야 합니다. 모든 경로는 액티브/최적화되어 있습니다. 즉, 컨트롤러에서 서비스를 제공하고 I/O는 모든 활성 경로에서 전송됩니다.</block>
+  <block id="e0838e6ee58912186f2b21f886daa80d" category="image-alt">액티브/최적화 경로가 있는 ONTAP LUN의 스크린샷</block>
+  <block id="d485a78eda6522675d5ac87291b0f93b" category="image-alt">활성/최적화 경로 2개와 액티브/비최적화 경로 2개가 있는 ONTAP LUN 스크린샷</block>
+  <block id="c562be7af2a3a19ec7e17ebb8a3eeb49" category="paragraph">ONTAP를 대상으로 사용하여 FCP 또는 iSCSI에 대한 특정 SAN 호스트를 구성할 수 있습니다. 먼저 SAN 도구 키트를 포함하는 관련 운영 체제 호스트 유틸리티 패키지를 설치합니다. 그런 다음 NetApp ONTAP LUN에 대한 다중 경로 설정을 확인합니다.</block>
+  <block id="2c88ec62d1d721428e4602e651219de8" category="cell"><block ref="70d91751d74c1680862a2be7b819ad17" category="inline-link-macro-rx"></block></block>
+  <block id="064b7e55844a47b2141de66819277d1d" category="paragraph">NVMe/FC 장애를 해결하기 전에 상호 운용성 매트릭스 툴(IMT) 사양을 준수하는 구성을 실행 중인지 확인하십시오. 문제가 해결되지 않으면 <block ref="ea2f4052f3eaf8e0d09bdf7668185025" category="inline-link-macro-rx"></block> 추가 선별을 위해 에 문의하십시오.</block>
+  <block id="efc0d0203167a4accd82de64fa1b2a96" category="paragraph">ESXi 7.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe over Fabrics)를 타겟으로 구성할 수 있습니다.</block>
+  <block id="c4da6ff30732307baf77258e8de32da5" category="paragraph">Oracle Linux 7.7 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에서 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.</block>
+  <block id="9de6120ac9f396086f7930cb4e65e361" category="paragraph">Oracle Linux 7.8 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에서 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.</block>
+  <block id="2141c16de580bae376b1049a6457379b" category="paragraph">Oracle Linux 7.9 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에서 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.</block>
+  <block id="9533c57da615314e9588d7a35f505896" category="paragraph">Oracle Linux 8.1 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.</block>
+  <block id="0a5ca905765e1a02ca40ef37c84a9154" category="paragraph">Oracle Linux 8.2 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에서 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.</block>
+  <block id="07e593b59695dd79c5c59a654408d2b1" category="paragraph">Oracle Linux 8.3 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에서 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.</block>
+  <block id="3524a0cbde7d5a506bfeb1822866a92b" category="paragraph">Oracle Linux 8.4 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.</block>
+  <block id="a8927346ef72516041053a51c124299c" category="paragraph">Oracle Linux 8.5 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.</block>
+  <block id="02c6431ec6bbc359f494834894f54864" category="paragraph">Oracle Linux 8.6 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.</block>
 </blocks>

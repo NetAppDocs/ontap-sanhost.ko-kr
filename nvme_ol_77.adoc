@@ -15,6 +15,9 @@ summary: ONTAP를 사용하여 Oracle Linux 7.7용 NVMe/FC를 구성하는 방�
 :imagesdir: ./media/
 
 
+[role="lead"]
+Oracle Linux 7.7 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에서 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.
+
 
 
 == 지원 가능성

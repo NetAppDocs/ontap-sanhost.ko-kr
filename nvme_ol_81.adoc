@@ -15,6 +15,9 @@ summary: 예를 들어 ONTAP가 포함된 Oracle Linux 8.1에 대한 VME/FC 호�
 :imagesdir: ./media/
 
 
+[role="lead"]
+Oracle Linux 8.1 및 ONTAP를 타겟으로 실행하는 이니시에이터 호스트에 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.
+
 
 
 == 지원 가능성

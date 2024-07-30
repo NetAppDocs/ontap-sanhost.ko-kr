@@ -15,4 +15,5 @@ summary: 'NVMe-oF(NVMe over Fabrics) 프로토콜용 특정 SAN 호스트를 구
 :imagesdir: ./media/
 
 
+[role="lead"]
 NVMe/FC(NVMe over Fibre Channel) 및 NVMe over TCP(NVMe/TCP)를 포함한 NVMe over Fabrics(NVMe-oF) 프로토콜을 위해 ONTAP를 타겟으로 사용하여 특정 SAN 호스트를 구성할 수 있습니다. 호스트 운영 체제와 ONTAP 버전에 따라 호스트에서 NVMe/FC 또는 NVMe/TCP 프로토콜을 구성하거나 유효성을 검사합니다.
