@@ -283,7 +283,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 9.2 RHCK(Red Hat Enterprise Kernel)을 구성하려면 link:hu_rhel_91.html#recommended-settings["권장 설정"]RHEL(Red Hat Enterprise Linux) 9.2용 을 사용하십시오.
+NOTE: Oracle Linux 9.2 RHCK(Red Hat Enterprise Kernel)을 구성하려면 link:hu_rhel_92.html#recommended-settings["권장 설정"]RHEL(Red Hat Enterprise Linux) 9.2용 을 사용하십시오.
 
 
 
