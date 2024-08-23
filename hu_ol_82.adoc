@@ -285,7 +285,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 8.2 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용하십시오 link:hu_rhel_82.html#recommended-settings["권장 설정"] Red Hat Enterprise Linux(RHEL) 8.2의 경우
+NOTE: Oracle Linux 8.2 RHCK(link:hu_rhel_82.html#recommended-settings["권장 설정"]Red Hat Enterprise Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 8.2용 을 사용하십시오.
 
 
 

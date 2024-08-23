@@ -283,7 +283,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 8.8 RedHat Enterprise Kernel을 구성하려면 를 사용하십시오 link:hu_rhel_88.html#recommended-settings["권장 설정"] RHEL(Red Hat Enterprise Linux) 8.8의 경우
+NOTE: Oracle Linux 8.8 Red Hat Enterprise Kernel을 구성하려면 link:hu_rhel_88.html#recommended-settings["권장 설정"]RHEL(Red Hat Enterprise Linux) 8.8용 을 사용하십시오.
 
 
 

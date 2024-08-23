@@ -261,7 +261,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 6.7 RedHat Enterprise Kernel(RHCK)을 구성하려면 를 사용합니다 link:hu_rhel_67.html#recommended-settings["권장 설정"] Red Hat Enterprise Linux(RHEL) 6.7의 경우
+NOTE: Oracle Linux 6.7 RHCK(Red Hat Enterprise Kernel)을 구성하려면 link:hu_rhel_67.html#recommended-settings["권장 설정"]RHEL(Red Hat Enterprise Linux) 6.7용 을 사용하십시오.
 
 
 
