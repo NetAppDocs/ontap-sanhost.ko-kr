@@ -274,7 +274,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 8.9 RedHat Enterprise Kernel을 구성하려면 link:hu_rhel_88.html#recommended-settings["권장 설정"]RHEL(Red Hat Enterprise Linux) 8.9용 을 사용하십시오.
+NOTE: Oracle Linux 8.9 RedHat Enterprise Kernel을 구성하려면 link:hu_rhel_89.html#recommended-settings["권장 설정"]RHEL(Red Hat Enterprise Linux) 8.9용 을 사용하십시오.
 
 
 
