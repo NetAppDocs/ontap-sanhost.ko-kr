@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_ol_91.html 
-keywords:  
-summary:  
+permalink: nvme_ol_89.html 
+keywords: nvme, oracle linux, 8.9, host configuration 
+summary: Oracle Linux 8.9 with ONTAP용 NVMe-oF 호스트 구성 
 ---
-= ONTAP를 사용하는 Oracle Linux 9.1용 NVMe-oF 호스트 구성
+= Oracle Linux 8.9 with ONTAP용 NVMe-oF 호스트 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,12 +16,13 @@ summary:
 
 
 [role="lead"]
-NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access)가 포함된 Oracle Linux(OL) 9.1에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.
+NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access)가 포함된 Oracle Linux 8.9에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.
 
-OL 9.1 with ONTAP의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공됩니다.
+ONTAP를 사용하는 Oracle Linux 8.9의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공됩니다.
 
-* NVMe/FC 외에 NVMe over TCP(NVMe/TCP) 지원 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시합니다.
-* 명시적 dm-multipath 설정 없이 특정 호스트 버스 어댑터(HBA)의 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용하여 NVMe 네임스페이스를 주장하지 못하게 합니다.
+* NVMe/FC 외에 NVMe over TCP(NVMe/TCP) 지원 네이티브 `nvme-cli` 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시합니다.
+* NVMe와 SCSI 트래픽을 모두 동일한 동일한 호스트에서 실행할 수 있습니다. 따라서 SCSI LUN에 대해 SCSI mpath 장치에 대해 dm-multipath를 구성할 수 있지만 NVMe 다중 경로를 사용하여 호스트에 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.
+* NVMe-oF에는 sandlun 지원이 없습니다. 따라서 Oracle Linux 8.9 호스트에서는 NVMe-oF에 대한 호스트 유틸리티가 지원되지 않습니다.  `nvme-cli`모든 NVMe-oF 전송에 대해 기본 패키지에 포함된 NetApp 플러그인을 사용할 수 있습니다.
 
 
 지원되는 구성에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
@@ -30,8 +31,7 @@ OL 9.1 with ONTAP의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공�
 
 == 피처
 
-* Oracle Linux 9.1에는 기본적으로 NVMe 네임스페이스를 위해 커널 내 NVMe 다중 경로 기능이 활성화되어 있으므로 명시적 설정이 필요하지 않습니다.
-
+Oracle Linux 8.9에는 기본적으로 NVMe 네임스페이스에 대해 커널 내 NVMe 다중 경로가 활성화되어 있으므로 명시적인 설정이 필요하지 않습니다.
 
 
 
@@ -43,10 +43,10 @@ OL 9.1 with ONTAP의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공�
 
 == 소프트웨어 버전을 확인합니다
 
-다음 절차를 사용하여 지원되는 최소 OL 9.1 소프트웨어 버전을 확인할 수 있습니다.
+지원되는 최소 Oracle Linux 8.9 소프트웨어 버전을 확인합니다.
 
 .단계
-. 서버에 OL 9.1 GA를 설치합니다. 설치가 완료되면 지정된 OL 9.1 GA 커널을 실행하고 있는지 확인합니다.
+. 서버에 Oracle Linux 8.9 GA를 설치합니다. 설치가 완료되면 지정된 Oracle Linux 8.9 GA 커널을 실행하고 있는지 확인합니다.
 +
 [listing]
 ----
@@ -58,7 +58,7 @@ OL 9.1 with ONTAP의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공�
 +
 [listing]
 ----
-5.15.0-3.60.5.1.el9uek.x86_64
+5.15.0-200.131.27.el8uek.x86_64
 ----
 . "NVMe-CLI" 패키지를 설치합니다.
 +
@@ -72,23 +72,9 @@ OL 9.1 with ONTAP의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공�
 +
 [listing]
 ----
-nvme-cli-2.0-4.el9.x86_64
+nvme-cli-1.16-9.el8.x86_64
 ----
-. 를 설치합니다 `libnvme` 패키지:
-+
-[listing]
-----
-#rpm -qa|grep libnvme
-----
-+
-* 예제 출력 *
-
-+
-[listing]
-----
-libnvme-1.0-5.el9.x86_64.rpm
-----
-. Oracle Linux 9.1 호스트에서 을 확인합니다 `hostnqn` 에 문자열이 있습니다 `/etc/nvme/hostnqn`:
+. Oracle Linux 8.9 호스트에서 `hostnqn` `/etc/nvme/hostnqn` 다음 위치에서 문자열을 확인합니다.
 +
 [listing]
 ----
@@ -100,13 +86,13 @@ libnvme-1.0-5.el9.x86_64.rpm
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:bc59d14c-47f3-11eb-b93c-3a68dd48673f
+nqn.2014-08.org.nvmexpress:uuid:edd38060-00f7-47aa-a9dc-4d8ae0cd969a
 ----
 . 를 확인합니다 `hostnqn` 문자열이 과 일치합니다 `hostnqn` ONTAP 배열의 해당 하위 시스템에 대한 문자열:
 +
 [listing]
 ----
-::> vserver nvme subsystem host show -vserver vs_ol_nvme
+::> vserver nvme subsystem host show -vserver vs_nvme177
 ----
 +
 * 출력 예: *
@@ -116,19 +102,36 @@ nqn.2014-08.org.nvmexpress:uuid:bc59d14c-47f3-11eb-b93c-3a68dd48673f
 ----
 Vserver     Subsystem          Host NQN
 ----------- --------------- ----------------------------------------------------------
-vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:bc59d14c-47f3-11eb-b93c-3a68dd48673f
+vs_nvme177  nvme_ss_ol_1       nqn.2014-08.org.nvmexpress:uuid:edd38060-00f7-47aa-a9dc-4d8ae0cd969a
 ----
 +
 
 NOTE: 를 누릅니다 `hostnqn` 문자열이 일치하지 않습니다. 을 사용할 수 있습니다 `vserver modify` 명령을 사용하여 를 업데이트합니다 `hostnqn` 와 일치하는 해당 ONTAP 배열 하위 시스템의 문자열입니다 `hostnqn` 문자열 시작 `/etc/nvme/hostnqn` 호스트.
 
+. 호스트를 재부팅합니다.
++
+[NOTE]
+====
+동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우, NetApp에서는 ONTAP 네임스페이스 및 에 커널 내 NVMe 다중 경로를 사용할 것을 권장합니다 `dm-multipath` ONTAP LUN의 경우 각각 즉, 에서 ONTAP 네임스페이스를 제외해야 합니다 `dm-multipath` 방지하려는 경우 `dm-multipath` 이러한 네임스페이스 장치를 주장하는 것을 말합니다. 를 추가할 수 있습니다 `enable_foreign` 를 로 설정합니다 `/etc/multipath.conf` 파일:
+
+[listing]
+----
+# cat /etc/multipath.conf
+
+defaults {
+  enable_foreign     NONE
+}
+----
+를 실행하여 multipathd 데몬을 다시 시작합니다 `systemctl restart multipathd` 명령. 이렇게 하면 새 설정이 적용됩니다.
+
+====
 
 
 
 
 == NVMe/FC 구성
 
-Broadcom/Emulex 어댑터 또는 Marvell/Qlogic 어댑터용 NVMe/FC를 구성할 수 있습니다.
+Broadcom/Emulex 어댑터 또는 Marvell/Qlogic 어댑터용 NVMe/FC를 구성합니다.
 
 [role="tabbed-block"]
 ====
@@ -169,12 +172,14 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 [listing]
 ----
 # cat /sys/class/scsi_host/host*/fwrev
-12.8.614.23, sli-4:2:c
-12.8.614.23, sli-4:2:c
-
-
+14.2.539.16, sli-4:2:c
+14.2.539.16, sli-4:2:c
+----
++
+[listing]
+----
 # cat /sys/module/lpfc/version
-0:14.0.0.1
+0:14.2.0.5
 ----
 +
 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
@@ -193,11 +198,21 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/class/fc_host/host*/port_name
 0x100000109b3c081f
 0x100000109b3c0820
+----
++
+[listing]
+----
 
 # cat /sys/class/fc_host/host*/port_state
 Online
 Online
-# cat /sys/class/scsi_host/host*/nvme_info
+----
++
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
 # cat /sys/class/scsi_host/host*/nvme_info
 NVME Initiator Enabled
 XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
@@ -221,21 +236,21 @@ LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
 Total FCP Cmpl 000000002e14f170 Issue 000000002e14f17a OutIO 000000000000000a
 abort 000016bb noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
 FCP CMPL: xb 00001f50 Err 0000d9f8
-
 ----
+=====
 
 
 --
 .NVMe/FC용 Marvell/QLogic FC 어댑터
 --
 .단계
-. OL 9.1 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
+. Oracle Linux 8.9 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필요한 최신 수정 사항이 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
 +
 [listing]
 ----
 # cat /sys/class/fc_host/host*/symbolic_name
-QLE2742 FW:v9.18.02 DVR:v10.02.00.106-k
-QLE2742 FW:v9.18.02 DVR:v10.02.00.106-k
+QLE2742 FW:v9.12.00 DVR:v10.02.08.100-k
+QLE2742 FW:v9.12.00 DVR:v10.02.08.100-k
 ----
 . 확인합니다 `ql2xnvmeenable` 가 설정됩니다. 그러면 Marvell 어댑터가 NVMe/FC Initiator로 작동할 수 있습니다.
 +
@@ -279,7 +294,7 @@ NOTE: Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
 
 == NVMe/TCP를 구성합니다
 
-NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 경로가 10분의 기본 시간 제한 내에 복원되지 않고 다운되면 NVMe/TCP가 자동으로 다시 연결되지 않습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다.
+NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 경로가 10분의 기본 시간 제한 내에 복원되지 않고 다운되면 NVMe/TCP가 자동으로 다시 연결되지 않습니다. 이 시나리오를 방지하려면 다음 절차를 사용하여 스토리지 페일오버 이벤트에 대한 재시도 기간을 설정해야 합니다.
 
 .단계
 . 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
@@ -289,9 +304,9 @@ NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 경로가 10분�
 nvme discover -t tcp -w host-traddr -a traddr
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력을 표시합니다
+[%collapsible]
+====
 [listing]
 ----
 #  nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.15
@@ -337,8 +352,8 @@ subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:subsystem.hos
 traddr: 192.168.6.17
 sectype: none
 ..........
-
 ----
+====
 . 다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.
 +
 [listing]
@@ -351,16 +366,16 @@ nvme discover -t tcp -w host-traddr -a traddr
 +
 [listing]
 ----
-# nvme discover -t tcp -w 192.168.5.13 -a 192.168.5.15
-# nvme discover -t tcp -w 192.168.5.13 -a 192.168.5.17
-# nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.15
-# nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.17
+# nvme discover -t tcp -w 192.168.6.1 -a 192.168.6.10
+# nvme discover -t tcp -w 192.168.6.1 -a 192.168.6.11
+# nvme discover -t tcp -w 192.168.5.1 -a 192.168.5.10
+# nvme discover -t tcp -w 192.168.5.1 -a 192.168.5.11
 ----
-. 를 실행합니다 `nvme connect-all` 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 수행하고 최소 30분 또는 1800초 동안 컨트롤러 손실 시간 초과 기간을 설정합니다.
+. 를 실행합니다 `nvme connect-all` 노드에 걸쳐 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대한 명령:
 +
 [listing]
 ----
-nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
+nvme connect-all -t tcp -w host-traddr -a traddr -l <ctrl_loss_timeout_in_seconds>
 ----
 +
 * 출력 예: *
@@ -368,11 +383,15 @@ nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
 +
 [listing]
 ----
-# nvme connect-all -t tcp -w 192.168.5.13 -a 192.168.5.15 -l 1800
-# nvme connect-all -t tcp -w 192.168.5.13 -a 192.168.5.17 -l 1800
-# nvme connect-all -t tcp -w 192.168.6.13 -a 192.168.6.15 -l 1800
-# nvme connect-all -t tcp -w 192.168.6.13 -a 192.168.6.17 -l 1800
+#	nvme	connect-all	-t	tcp	-w	192.168.5.1	-a	192.168.5.10	-l -1
+#	nvme	connect-all	-t	tcp	-w	192.168.5.1	-a	192.168.5.11 	-l -1
+#	nvme	connect-all	-t	tcp	-w	192.168.6.1	-a	192.168.6.10	-l -1
+#	nvme	connect-all	-t	tcp	-w	192.168.6.1	-a	192.168.6.11	-l -1
 ----
++
+
+NOTE: NetApp은 를 설정할 것을 권장합니다 `ctrl-loss-tmo` 옵션을 로 설정합니다 `-1` 따라서 경로 손실이 발생하면 NVMe/TCP 이니시에이터가 무한정 다시 연결을 시도합니다.
+
 
 
 
@@ -382,13 +401,14 @@ nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
 다음 절차를 사용하여 NVMe-oF를 검증할 수 있습니다.
 
 .단계
-. OL 9.1 호스트에서 다음 NVMe/FC 설정을 확인합니다.
+. 커널 내 NVMe 다중 경로가 활성화되었는지 확인:
 +
 [listing]
 ----
 # cat /sys/module/nvme_core/parameters/multipath
 Y
 ----
+. 적절한 NVMe-oF 설정(예 `model` 를 로 설정합니다 `NetApp ONTAP Controller` 부하 분산 `iopolicy` 를 로 설정합니다 `round-robin`) 각 ONTAP 네임스페이스는 호스트에 올바르게 반영됩니다.
 +
 [listing]
 ----
@@ -422,11 +442,13 @@ Node         SN                   Model
 /dev/nvme0n3 814vWBNRwf9HAAAAAAAB NetApp ONTAP Controller
 
 
+
 Namespace Usage    Format             FW             Rev
 -----------------------------------------------------------
 1                 85.90 GB / 85.90 GB  4 KiB + 0 B   FFFFFFFF
 2                 85.90 GB / 85.90 GB  24 KiB + 0 B  FFFFFFFF
-3                 85.90 GB / 85.90 GB  4 KiB + 0 B   FFFFFFFF
+3	                85.90 GB / 85.90 GB  4 KiB + 0 B   FFFFFFFF
+
 ----
 . 각 경로의 컨트롤러 상태가 라이브이고 올바른 ANA 상태인지 확인합니다.
 +
@@ -444,10 +466,13 @@ Namespace Usage    Format             FW             Rev
 ----
 nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:subsystem.nvme_ss_ol_1
 \
-+- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
-+- nvme1 fc traddr=nn-0x203700a098dfdd91:pn-0x203900a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
++- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live non-optimized
++- nvme1 fc traddr=nn-0x203700a098dfdd91:pn-0x203900a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live non-optimized
 +- nvme2 fc traddr=nn-0x203700a098dfdd91:pn-0x203a00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
 +- nvme3 fc traddr=nn-0x203700a098dfdd91:pn-0x203d00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
+
+
+
 ----
 --
 .NVMe/TCP
@@ -460,12 +485,14 @@ nvme list-subsys /dev/nvme1n22
 
 [listing]
 ----
-nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.68c036aaa3cf11edbb95d039ea243511:subsystem.tcp
+nvme-subsys0 - NQN=nqn.1992- 08.com.netapp: sn.44986b09cadc11eeb309d039eab31e9d:subsystem.ol_nvme
 \
-+- nvme2 tcp traddr=192.168.8.49,trsvcid=4420,host_traddr=192.168.8.1 live optimized
-+- nvme3 tcp traddr=192.168.8.48,trsvcid=4420,host_traddr=192.168.8.1 live optimized
-+- nvme6 tcp traddr=192.168.9.49,trsvcid=4420,host_traddr=192.168.9.1 live non-optimized
-+- nvme7 tcp traddr=192.168.9.48,trsvcid=4420,host_traddr=192.168.9.1 live non-optimized
++- nvme1 tcp traddr=192.168.5.11 trsvcid=4420 host_traddr=192.168.5.1 src_addr=192.168.5.1 live non-optimized
++- nvme2 tcp traddr=192.168.5.10 trsvcid=4420 host_traddr=192.168.5.1 src_addr=192.168.5.1 live optimized
++- nvme3 tcp traddr=192.168.6.11 trsvcid=4420 host_traddr=192.168.6.1 src_addr=192.168.6.1 live non-optimized
++- nvme4 tcp traddr=192.168.6.10 trsvcid=4420 host_traddr=192.168.6.1 src_addr=192.168.6.1 live  optimized
+
+
 ----
 --
 ====
@@ -483,18 +510,22 @@ nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.68c036aaa3cf11edbb95d039ea243511:su
 
 [listing]
 ----
-Device        Vserver   Namespace Path
------------------------ ------------------------------
-/dev/nvme0n1   vs_ol_nvme  /vol/ol_nvme_vol_1_1_0/ol_nvme_ns
-/dev/nvme0n2   vs_ol_nvme  /vol/ol_nvme_vol_1_0_0/ol_nvme_ns
-/dev/nvme0n3   vs_ol_nvme  /vol/ol_nvme_vol_1_1_1/ol_nvme_ns
+Device        Vserver     Namespace Path
+------------  ----------  -----------------
+/dev/nvme0n1	vs_nvme177	/vol/vol1/ns1
+/dev/nvme0n2	vs_nvme177	/vol/vol2/ns2
+/dev/nvme0n3	vs_nvme177	/vol/vol3/ns3
 
 
-NSID       UUID                                   Size
-------------------------------------------------------------
-1          72b887b1-5fb6-47b8-be0b-33326e2542e2   85.90GB
-2          04bf9f6e-9031-40ea-99c7-a1a61b2d7d08   85.90GB
-3          264823b1-8e03-4155-80dd-e904237014a4   85.90GB
+
+NSID     UUID                                   Size
+-------- -------------------------------------- -----------
+1	       72b887b1-5fb6-47b8-be0b-33326e2542e2	  85.90GB
+2	       04bf9f6e-9031-40ea-99c7-a1a61b2d7d08	  85.90GB
+3	       264823b1-8e03-4155-80dd-e904237014a4	  85.90GB
+
+
+
 ----
 --
 .JSON을 참조하십시오
@@ -509,38 +540,34 @@ NSID       UUID                                   Size
 ----
 {
 "ONTAPdevices" : [
-    {
-        "Device" : "/dev/nvme0n1",
-        "Vserver" : "vs_ol_nvme",
-        "Namespace_Path" : "/vol/ol_nvme_vol_1_1_0/ol_nvme_ns",
-        "NSID" : 1,
-        "UUID" : "72b887b1-5fb6-47b8-be0b-33326e2542e2",
-        "Size" : "85.90GB",
-        "LBA_Data_Size" : 4096,
-        "Namespace_Size" : 20971520
-    },
-    {
-        "Device" : "/dev/nvme0n2",
-        "Vserver" : "vs_ol_nvme",
-        "Namespace_Path" : "/vol/ol_nvme_vol_1_0_0/ol_nvme_ns",
-        "NSID" : 2,
-        "UUID" : "04bf9f6e-9031-40ea-99c7-a1a61b2d7d08",
-        "Size" : "85.90GB",
-        "LBA_Data_Size" : 4096,
-        "Namespace_Size" : 20971520
-      },
-      {
-         "Device" : "/dev/nvme0n3",
-         "Vserver" : "vs_ol_nvme",
-         "Namespace_Path" : "/vol/ol_nvme_vol_1_1_1/ol_nvme_ns",
-         "NSID" : 3,
-         "UUID" : "264823b1-8e03-4155-80dd-e904237014a4",
-         "Size" : "85.90GB",
-         "LBA_Data_Size" : 4096,
-         "Namespace_Size" : 20971520
-       },
-  ]
+{
+"Device" : "/dev/nvme0n1", "Vserver" : "vs_nvme177",
+"Namespace_Path" : "/vol/vol1/ns1",
+"NSID" : 1,
+"UUID" : "72b887b1-5fb6-47b8-be0b-33326e2542e2", "Size" : "85.90GB",
+"LBA_Data_Size" : 4096,
+"Namespace_Size" : 5242880
+},
+{
+"Device" : "/dev/nvme0n2", "Vserver" : "vs_nvme177",
+"Namespace_Path" : "/vol/vol2/ns2",
+ "NSID" : 2,
+"UUID" : "04bf9f6e-9031-40ea-99c7-a1a61b2d7d08", "Size" : "85.90GB",
+"LBA_Data_Size" : 4096,
+"Namespace_Size" : 20971520
+},
+{
+"Device" : "/dev/nvme0n3", "Vserver" : "vs_nvme177",
+"Namespace_Path" : "/vol/vol3/ns3",
+ "NSID" : 3,
+"UUID" : "264823b1-8e03-4155-80dd-e904237014a4", "Size" : "85.90GB",
+"LBA_Data_Size" : 4096,
+"Namespace_Size" : 20971520
+},
+]
 }
+
+
 ----
 --
 ====
@@ -550,15 +577,30 @@ NSID       UUID                                   Size
 
 == 알려진 문제
 
-OL 9.1 및 ONTAP 릴리즈의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
+ONTAP 릴리즈가 포함된 Oracle Linux 8.9의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols=""20"]
+[cols="1a, 2a, 6a, 1a, options="]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
 
 
-| 1536937)을 참조하십시오 | `nvme list-subsys` 명령은 하위 시스템에 대해 반복되는 NVMe 컨트롤러를 인쇄합니다 | 를 클릭합니다 `nvme list-subsys` 명령은 지정된 하위 시스템과 관련된 NVMe 컨트롤러의 고유 목록을 반환해야 합니다. Oracle Linux 9.1에서 `nvme list-subsys` 명령은 지정된 하위 시스템에 속하는 모든 네임스페이스에 대한 ANA(비대칭 네임스페이스 액세스) 상태를 갖는 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 이름 공간 당 특성이므로 지정된 네임스페이스에 대한 하위 시스템 명령 구문을 나열하는 경우 경로 상태로 고유한 NVMe 컨트롤러 항목을 표시하는 것이 유용합니다. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=17998["17998)을 참조하십시오"^] 
+ a| 
+NetApp 버그 ID
+ a| 
+제목
+ a| 
+설명
+ a| 
+Bugzilla ID입니다
 
 
-| 1539101)을 참조하십시오 | Oracle Linux 9.1 NVMe-of-호스트에서 영구 검색 컨트롤러를 생성하지 못합니다 | Oracle Linux 9.1 NVMe-of 호스트에서는 을 사용할 수 있습니다 `nvme discover -p` PDC(영구적 검색 컨트롤러)를 생성하는 명령입니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 PDC 하나를 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Oracle Linux 9.1을 실행 중인 경우, 가 실행될 때 PDC 생성이 실패합니다 `nvme discover -p` 명령어가 수행된다. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18196["18196"^] 
+
+ a| 
+link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1517321["1517321"^]
+ a| 
+Oracle Linux 8.9 NVMe-oF 호스트는 중복된 PDC를 생성합니다
+ a| 
+Oracle Linux 8.9 NVMe-oF 호스트에서는 `-p` `nvme discover` 명령에 옵션을 전달하여 PDC(Persistent Discovery Controllers)가 생성됩니다. 특정 이니시에이터-타겟 조합에 대해 `nvme discover` 명령을 실행할 때마다 PDC가 하나씩 생성됩니다. 하지만 Oracle Linux 8.x부터 NVMe-oF 호스트가 중복성을 생성합니다. 이렇게 하면 호스트와 타겟 모두에서 리소스가 낭비됩니다.
+ a| 
+https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^]
+
 |===
