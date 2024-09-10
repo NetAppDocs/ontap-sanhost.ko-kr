@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_aix_61.html 
-keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
-summary: ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는 방법에 대해 설명합니다 
+permalink: hu-aix-70.html 
+keywords: host utilities, aix, powervm, vios, 3.1, 7.0, netapp, ontap 
+summary: AIX 통합 호스트 유틸리티를 사용하면 AIX 호스트에 연결된 NetApp ONTAP 스토리지를 관리할 수 있습니다. 
 ---
-= AIX Host Utilities 6.1을 설치합니다
+= AIX Host Utilities 7.0을 설치합니다
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -34,7 +34,7 @@ PowerVM에 대한 자세한 내용은 IBM PowerVM Live Partition Mobility Red Bo
 
 
 
-.필요한 것
+.시작하기 전에
 * 안정적인 작업을 위해 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하십시오.
 +
 를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 를 눌러 구성을 확인합니다.
@@ -43,7 +43,7 @@ PowerVM에 대한 자세한 내용은 IBM PowerVM Live Partition Mobility Red Bo
 
 
 
-NOTE: NetApp AIX Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support 사이트"^] 압축된 tar.gz 파일 AIX MPIO를 NetApp ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.
+NOTE: NetApp AIX 호스트 유틸리티 소프트웨어 패키지는 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^]압축된 tar.gz 파일의 에서 사용할 수 있습니다. AIX MPIO를 NetApp ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.
 
 .단계
 . 호스트에 로그인합니다.
@@ -52,29 +52,75 @@ NOTE: NetApp AIX Host Utilities 소프트웨어 패키지는 에서 사용할 �
 ** PowerVM 호스트에서 * padmin * 으로 로그인한 다음 `oem_setup_env` 명령을 입력하여 루트 사용자가 됩니다.
 
 
-. 로 이동합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support 사이트"^] Host Utilities가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.
+. 로 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support 사이트"^] 이동하여 Host Utilities가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.
 . 다운로드가 포함된 디렉터리로 이동합니다.
-. 파일의 압축을 풀고 SAN 툴킷 소프트웨어 패키지의 압축을 풉니다.
+. 파일의 압축을 풀고 SAN 툴킷 소프트웨어 패키지를 추출합니다.
 +
-`# tar -xvf ntap_aix_host_utilities_6.1.tar.gz`
+`# tar -xvf ntap_aix_host_utilities_7.0.tar.gz`
 
 +
-파일 압축을 풀 때 'tap_aix_host_utilities_6.1' 디렉토리가 생성됩니다. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 있습니다.
+파일의 압축을 풀 때 다음 디렉토리가 생성됩니다 `ntap_aix_host_utilities_7.0`. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 포함되어 있습니다.
 
 . AIX MPIO를 설치합니다.
 +
-`# installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/MPIO NetApp.MPIO_Host_Utilities_Kit`
+`# installp -aXYd /var/tmp/ntap_aix_host_utilities_7.0/MPIO NetApp.MPIO_Host_Utilities_Kit`
 
 . SAN 툴킷을 설치합니다.
 +
-`# installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/SAN_Tool_Kit NetApp.SAN_toolkit`
+`# installp -aXYd /var/tmp/ntap_aix_host_utilities_7.0/SAN_Tool_Kit/NetApp.SAN_toolkit`
 
 . 호스트를 재부팅합니다.
 . 설치를 확인합니다.
 +
+`# lslpp -l |grep -i netapp`
+
++
 [listing]
 ----
-# sanlun version
+NetApp.MPIO_Host_Utilities_Kit.config
+                             7.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.fcp
+                             7.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.iscsi
+                             7.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.pcmodm
+                             7.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+NetApp.SAN_toolkit.sanlun  7.0.0.0  COMMITTED  NetApp SAN Toolkit sanlun
+----
+. 소프트웨어 버전을 확인합니다.
++
+`# sanlun version`
+
++
+[listing]
+----
+7.0.725.3521
+----
+.  `lbp_enabled`다음 명령을 실행하여 SCSI UNMAP 매개 변수가 ODM에 추가되었는지 확인합니다.
++
+`# odmget -q "uniquetype=disk/fcp/NetAppMPIO" PdAt |grep  "lbp_enabled"`
+
++
+[listing]
+----
+attribute = "lbp_enabled"
+----
++
+`# odmget -q "uniquetype=disk/fcp/NetAppMPIO and attribute=lbp_enabled" PdAt`
+
++
+[listing]
+----
+PdAt:
+        uniquetype = "disk/fcp/NetAppMPIO"
+        attribute = "lbp_enabled"
+        deflt = "true"
+        values = "true,false"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 18
 ----
 
 

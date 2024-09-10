@@ -14,7 +14,7 @@ indexpage:
     - title: 제품 개요
       url: "/overview.html"
     - title: AIX 호스트 유틸리티 릴리스 노트
-      url: "/hu_aix_61_rn.html"
+      url: "/hu_aix_rn.html"
     - title: HP-UX Host Utilities 릴리스 정보
       url: "/hu_hpux_60_rn.html"
     - title: Linux Host Utilities 릴리스 정보

@@ -487,7 +487,6 @@
   <block id="ee3c9604966f68c69c5d81299e5c5913" category="paragraph">파일 압축을 풀 때 'tap_aix_host_utilities_6.1' 디렉토리가 생성됩니다. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 있습니다.</block>
   <block id="7479ee4eaf5b0a177d10a5a42ff8dc26" category="list-text">AIX MPIO를 설치합니다.</block>
   <block id="4a74fae0987c7a6283e4b1f5c07e2bf2" category="paragraph">'installp-aXYd/var/tmp/NTAP_aix_host_utilities_6.1/mpio NetApp.mpio_Host_Utilities_Kit'</block>
-  <block id="8eeb8a6e3eaad8d96cb67c508c74079e" category="paragraph">'installp-aXYd/var/tmp/NTAP_aix_host_utilities_6.1/san_Tool_Kit NetApp.san_toolkit'</block>
   <block id="3bb3263aa16bbeb228b8ecd7584a8064" category="summary">ONTAP에서 CentOS 7.3을 사용하는 방법에 대해 설명합니다</block>
   <block id="3b8e165405f5e10d3920f8e146dde743" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 <block ref="f8a436a3c9bbe06e4f88036e4f03a4f5" category="inline-link-macro-rx"></block> 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.</block>
   <block id="ef96b3a7a075d8418a575b9d3ec01e49" category="paragraph">CentOS 7.3의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.3은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
@@ -1755,12 +1754,7 @@
   <block id="432a6b98702aceeda0bf1a325e31bcf4" category="inline-link-macro">NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다</block>
   <block id="0317854ad5c788fd489e5dfe652c06cd" category="cell">'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>.</block>
   <block id="382b0f5185773fa0f67a8ed8056c7759" category="cell">해당 없음</block>
-  <block id="4391e4a69364ebb845d6562846716af4" category="doc">AIX Host Utilities 6.1 릴리스 정보</block>
   <block id="66c2d1ced882bffc99d6170e17a232ef" category="paragraph">Host Utilities가 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오 <block ref="7ce73c7ae176dd6b577d1c14b445f0cd" category="inline-link-macro-rx"></block>.</block>
-  <block id="31e6a451d2627922bc41740af153d931" category="cell">BugID</block>
-  <block id="ce88cf74aded8b7f41efd83d007f21f2" category="inline-link-macro">872113)을 참조하십시오</block>
-  <block id="3a2f9996a60f471edd9edae7099e1d69" category="cell">'sanlun lun show –p' 명령을 실행하면 일부 버전의 AIX 호스트 OS에서 메모리 오류가 발생할 수 있습니다</block>
-  <block id="74aed4fe3d0a3c89158ce037c3d1305f" category="cell">'show -p' 명령을 실행하는 동안 AIX 코어 덤프의 간헐적 인스턴스가 보고됩니다. Sanlun의 "lun show -p" 옵션은 호스트에서 검색된 모든 LUN에 대한 경로 다중화 정보를 제공합니다. 이 정보는 LUN에서 가져온 SCSI 디바이스, 경로 상태(운영 또는 보조) 및 기타 세부 정보를 제공하는 데 사용됩니다. 그러나 일부 AIX 호스트에서 'sanlun lun show -p' 명령을 실행하면 메모리 오류가 발생할 수 있습니다. 이 문제는 '-p' 옵션으로 sanlun 명령을 실행할 때만 발생합니다.</block>
   <block id="b066ca6122c9857ad1ee3a44f18cc5e7" category="cell">버그 ID</block>
   <block id="31a061fd71807c34f31d154d95c10691" category="inline-link-macro">1069147</block>
   <block id="cad62af5cd7e448be659302e1eba73b4" category="cell">AIX HU Sanlun가 잘못된 HBA 속도를 보고합니다</block>
@@ -1806,7 +1800,6 @@
   <block id="61699638eccafbea1975db4ccc09e234" category="cell"><block ref="61699638eccafbea1975db4ccc09e234" category="inline-link-macro-rx"></block></block>
   <block id="a86ba0de523aff5743fd70c108891432" category="cell">HUK 6.2에서 Solaris 11.4 FC 드라이버 바인딩 변경이 필요합니다</block>
   <block id="00dc1b7be02ff53d2291441f5821cfa6" category="paragraph"><block ref="355b22d66d025f6de0a19431aae0f536" category="inline-link-macro-rx"></block> 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다. 사용할 수 있는 일부 키워드 조합과 버그 유형은 다음과 같습니다.</block>
-  <block id="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="cell"><block ref="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="inline-link-macro-rx"></block></block>
   <block id="ba57f19b6b69755c2919b58188582a77" category="cell"><block ref="ba57f19b6b69755c2919b58188582a77" category="inline-link-macro-rx"></block></block>
   <block id="230a02b4afeea5b0d97c6a68a6530da3" category="summary">HPUX Host Utilities 6.0 릴리스 정보</block>
   <block id="e16c4360565a75371ee1b578b4c1ecca" category="doc">HP-UX Host Utilities 6.0 릴리스 정보</block>
@@ -2811,8 +2804,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="07e168dcc54f84ac7caf50498cebc4e7" category="list-text">작업을 마치면 를 사용하여 환경에 대한 호스트 매개 변수를 구성합니다<block ref="ed10a966011bfd951bc8388936b92fcc" prefix=" " category="inline-code"></block> 명령:</block>
   <block id="16337c2b0ad3e64aaeb3714d78256deb" category="paragraph">Solaris Host Utilities는 Oracle Solaris 호스트에서 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 를 제공합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> LUN 및 호스트 버스 어댑터(HBA)를 관리하는 데 유용한 유틸리티입니다. 를 클릭합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.</block>
   <block id="faf8b03496c6795f0d8ad52fa186087e" category="admonition">이 툴킷은 모든 호스트 유틸리티 구성과 프로토콜에 공통적으로 적용됩니다. 따라서 일부 툴킷 콘텐츠는 한 구성에 적용되지만 다른 구성에 적용되지는 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.</block>
-  <block id="96dedac61a50b89c04ee6770a7a5300b" category="doc">AIX Host Utilities 6.1 샘플 명령 참조</block>
-  <block id="92636cb01d99cfde50d65355f5255bf8" category="paragraph">호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성의 엔드 투 엔드 검증을 위해 AIX 호스트 유틸리티 6.1 샘플 명령 참조를 사용할 수 있습니다.</block>
   <block id="5cbce7f0ea158500dcff175373e3cbcf" category="paragraph">릴리즈 노트에서는 새로운 기능 및 향상된 기능, 현재 릴리스에서 해결된 문제, 알려진 문제 및 제한 사항, ONTAP 스토리지 시스템을 사용하여 특정 AIX 호스트를 구성 및 관리하는 것과 관련된 중요한 주의 사항에 대해 설명합니다.</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="section-title">새로운 소식</block>
   <block id="dc5f647593f94c8f6abf309012633912" category="doc">AIX Host Utilities 6.1을 설치합니다</block>
@@ -2839,7 +2830,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="89b1d0829beb11befe8cef17a1a88149" category="list-text">호스트에 로그인합니다.</block>
   <block id="411f721c4d437c447636df81f300973a" category="list-text">의 압축을 풉니다<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> 파일:</block>
   <block id="685e21144e7e399ef67e8a809cd52a1e" category="list-text">소프트웨어를 설치합니다.</block>
-  <block id="9b9e3c5faedc6bf7e489b0030b0ecd14" category="paragraph">AIX Host Utilities 6.1 릴리스에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.</block>
   <block id="9ce16fbccdcb870f5e9db74a7bb90874" category="list-text">AIX Host Utilities 6.1은 이전 버전의 AIX 호스트 OS에서 발생한 메모리 오류 문제에 대한 지원을 추가했습니다. AIX Host Utilities 6.1에서는 sanlun 바이너리만 변경되었습니다. MPIO 및 관련 ODM은 변경되지 않습니다.</block>
   <block id="09244b95824d6e702b6eaab2034bdeec" category="list-text">FCP - AIX</block>
   <block id="dd7ff764bddd19a335d884f8e17ede8d" category="paragraph">AIX Host Utilities는 다음 프로토콜을 지원합니다.</block>
@@ -3673,4 +3663,31 @@ NetApp 온라인 버그 참조 - <block ref="af3b3cf0d6ceafbe31919aa407157743" c
   <block id="7eb74ae68650bec7b2e7e925779ef3f0" category="paragraph">Oracle Linux 8.9 NVMe-oF 호스트에서는<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block><block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령에 옵션을 전달하여 PDC(Persistent Discovery Controllers)가 생성됩니다. 특정 이니시에이터-타겟 조합에 대해<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 명령을 실행할 때마다 PDC가 하나씩 생성됩니다. 하지만 Oracle Linux 8.x부터 NVMe-oF 호스트가 중복성을 생성합니다. 이렇게 하면 호스트와 타겟 모두에서 리소스가 낭비됩니다.</block>
   <block id="dd18a4327ac3c05d3a1b1b1a4512a436" category="example-title">출력 예 표시:</block>
   <block id="8ea7d65541343d381b99affa2d1c6996" category="admonition">Oracle Linux 8.9 RedHat Enterprise Kernel을 구성하려면 <block ref="ce7483c182b39cf5b993c406b0ed7268" category="inline-link-macro-rx"></block>RHEL(Red Hat Enterprise Linux) 8.9용 을 사용하십시오.</block>
+  <block id="1f74246c73996c337fbedc14cd7d21b9" category="doc">AIX Host Utilities 7.0을 설치합니다</block>
+  <block id="135b308ed83c53f1516b7c754566d1c4" category="list-title">시작하기 전에</block>
+  <block id="46a8afec081a24bad40f6f988c628fb2" category="admonition">NetApp AIX 호스트 유틸리티 소프트웨어 패키지는 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>압축된 tar.gz 파일의 에서 사용할 수 있습니다. AIX MPIO를 NetApp ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.</block>
+  <block id="bf901697b7694abb028baf6a3b45caa8" category="list-text">PowerVM 호스트에서 * padmin * 으로 로그인한 다음<block ref="cf9ef914abc1d1025acbd5649d68a228" prefix=" " category="inline-code"></block> 명령을 입력하여 루트 사용자가 됩니다.</block>
+  <block id="30c4a481d5eebab4d7ecb692852fdad1" category="list-text">로<block ref="5d5134ddaf42180d688670ce5e1f032a" category="inline-link-rx"></block> 이동하여 Host Utilities가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.</block>
+  <block id="7515d24f2cf1755d908ccd75d4806228" category="list-text">파일의 압축을 풀고 SAN 툴킷 소프트웨어 패키지를 추출합니다.</block>
+  <block id="a4a53a1d716fd706dc0d6653df07cd18" category="paragraph"><block ref="02ae515861e4e233362298f11cb9eef3" prefix="" category="inline-code"></block></block>
+  <block id="dfeb26940493cf0ca07dfbf198c98918" category="paragraph">파일의 압축을 풀 때 다음 디렉토리가 생성됩니다<block ref="666ee7336e2d1a70fa06a334c624dce0" prefix=" " category="inline-code"></block>. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 포함되어 있습니다.</block>
+  <block id="08170d10720c0fb899ec695d4fd53f4a" category="paragraph"><block ref="7e3b57f2b8eff456c048316a5f27fc1d" prefix="" category="inline-code"></block></block>
+  <block id="22a14cf4ef45ee9f25f03a618ea09c46" category="paragraph"><block ref="14f22fae2f403239ed46b211fb187db3" prefix="" category="inline-code"></block></block>
+  <block id="37d2266123768f5396b4ff9de84d7309" category="paragraph"><block ref="7c440fefdeae703ef22d0311a240c394" prefix="" category="inline-code"></block></block>
+  <block id="71083863a948571a8f27335105fd6269" category="list-text">소프트웨어 버전을 확인합니다.</block>
+  <block id="ee5391998decf3a96f0ec776cd7144f8" category="paragraph"><block ref="cb12b459974e296c2b38e4550b0070ec" prefix="" category="inline-code"></block></block>
+  <block id="d2f9b679b0ea3abf86a0ab4680ede362" category="list-text"><block ref="ce7e54a230e7d7f6125c862b6201f954" prefix=" " category="inline-code"></block>다음 명령을 실행하여 SCSI UNMAP 매개 변수가 ODM에 추가되었는지 확인합니다.</block>
+  <block id="fc1dfe9e042d640c93dd3ca2a623b1e0" category="paragraph"><block ref="e7e95bf0f273e8940acbc8851eb5f38c" prefix="" category="inline-code"></block></block>
+  <block id="fd97cc14c798a5c29ed1aaf2730bbfe8" category="paragraph"><block ref="185d689a67393760fd6cc0f2c7d17397" prefix="" category="inline-code"></block></block>
+  <block id="4adfcf90c09aefd4b667d59ecc9550b8" category="paragraph"><block ref="674742143cb6833db13557df8b74e907" prefix="" category="inline-code"></block></block>
+  <block id="2504b7fd70ceee9322fd9fd5d4125de3" category="paragraph"><block ref="d95cdff732bcf199b913111f1b5e8c83" prefix="" category="inline-code"></block></block>
+  <block id="73869e9dce2321ce472003939ab8f2f4" category="paragraph"><block ref="c12f7b93eb294749d1961ad2bc96c48f" prefix="" category="inline-code"></block></block>
+  <block id="c840ca4bf83155ee16a93c9782fc3726" category="summary">호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성의 엔드 투 엔드 검증을 위해 AIX 호스트 유틸리티 샘플 명령 참조를 사용할 수 있습니다.</block>
+  <block id="3611c3cc68b4ecac8bc30e2c032ad3dc" category="doc">AIX 호스트 유틸리티 샘플 명령 참조</block>
+  <block id="8bcfee74cc2c8be35dd3adbc80bfb29a" category="doc">AIX Host Utilities 릴리스 정보</block>
+  <block id="b30c926bc7c2c631e70c112178610786" category="paragraph">AIX Host Utilities의 최신 릴리즈에는 다음과 같은 새로운 기능과 개선 사항이 포함되어 있습니다.</block>
+  <block id="6919ca52878e24946a6a73aa37f083ee" category="list-text">AIX Host Utilities 7.0은 AIX 호스트 OS에서 SCSI UNMAP을 지원합니다. AIX Host Utilities 7.0에서는 SCSI 씬 프로비저닝이 FC 디바이스용 AIX 및 NetApp LUN과 원활하게 작동합니다.</block>
+  <block id="cf66257c19e5d30697f97afd2fd4245c" category="cell">NetApp ONTAP iSCSI LUN에 대한 SCSI UNMAP 지원</block>
+  <block id="6f60d2b701807f15296111f9ab2ce1c3" category="cell">AIX Host Utilities 7.0은 FC 디바이스에 대해 SCSI UNMAP 기능만 지원합니다. iSCSI 장치에 대한 SCSI UNMAP 지원은 이 릴리스에 포함되지 않습니다.</block>
+  <block id="c10866775dae5d5cea46cbcd3d083ef2" category="sidebar">AIX HU 7.0을 설치합니다</block>
 </blocks>
