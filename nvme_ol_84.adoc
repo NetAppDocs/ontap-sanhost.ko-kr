@@ -420,10 +420,10 @@ NSID        UUID                                  Size
 
 OL 8.4의 ONTAP용 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols="10,30,30,10"]
+[cols="20,40,40"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| 1517321 | Oracle Linux 8.4 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다 | Oracle Linux 8.4 NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트를 포함하여 ONTAP 9.10.1 및 Oracle Linux 8.4를 실행 중인 경우, "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Oracle Linux 8.4 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다 | Oracle Linux 8.4 NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트를 포함하여 ONTAP 9.10.1 및 Oracle Linux 8.4를 실행 중인 경우, "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다. 
 |===

@@ -170,7 +170,7 @@ blacklist {
 }
 ----
 .예
-이 예에서는 디바이스의 WWID를 확인하고 에 추가합니다 `multipath.conf` 파일.
+다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
 
 .단계
 . 다음 명령을 실행하여 WWID를 확인하십시오.
@@ -198,7 +198,7 @@ blacklist {
 
 을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일(특히 기본값 섹션에 있음)
 
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
 
 [cols="2*"]
 |===
@@ -289,16 +289,16 @@ devices {
 
 ONTAP가 포함된 RHEL 8.1 릴리스에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275843["1275843)을 참조하십시오"^] | 스토리지 페일오버 작업 중 QLogic QLE2672 16GB FC HBA를 사용하는 Red Hat Enterprise Linux 8.1에서 커널 중단이 발생할 수 있습니다 | QLogic QLE2672 FC(Fibre Channel) HBA(호스트 버스 어댑터)가 있는 Red Hat Enterprise Linux 8.1 커널에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 커널이 중단되면 Red Hat Enterprise Linux 8.1이 재부팅되어 애플리케이션이 중단됩니다. kdump 메커니즘이 활성화된 경우 커널 중단은 /var/crash/ 디렉토리에 있는 vmcore 파일을 생성합니다. vmcore 파일을 검사하여 중단 원인을 확인할 수 있습니다. QLogic QLE2672 HBA 이벤트를 사용한 스토리지 페일오버는 "kmem_cache_alloc+131" 모듈에 영향을 줍니다. 커널 중단 후 "[exception RIP:kmem_cache_alloc+131]" 문자열을 찾아 vmcore 파일에서 이벤트를 찾을 수 있습니다. 호스트 OS를 재부팅하고 운영 체제를 복구합니다. 그런 다음 응용 프로그램을 다시 시작합니다 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1760819["1760819)를 참조하십시오"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275843["1275843)을 참조하십시오"^] | 스토리지 페일오버 작업 중 QLogic QLE2672 16GB FC HBA를 사용하는 Red Hat Enterprise Linux 8.1에서 커널 중단이 발생할 수 있습니다 | QLogic QLE2672 FC(Fibre Channel) HBA(호스트 버스 어댑터)가 있는 Red Hat Enterprise Linux 8.1 커널에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 커널이 중단되면 Red Hat Enterprise Linux 8.1이 재부팅되어 애플리케이션이 중단됩니다. kdump 메커니즘이 활성화된 경우 커널 중단은 /var/crash/ 디렉토리에 있는 vmcore 파일을 생성합니다. vmcore 파일을 검사하여 중단 원인을 확인할 수 있습니다. QLogic QLE2672 HBA 이벤트를 사용한 스토리지 페일오버는 "kmem_cache_alloc+131" 모듈에 영향을 줍니다. 커널 중단 후 "[exception RIP:kmem_cache_alloc+131]" 문자열을 찾아 vmcore 파일에서 이벤트를 찾을 수 있습니다. 호스트 OS를 재부팅하고 운영 체제를 복구합니다. 그런 다음 응용 프로그램을 다시 시작합니다 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275838["1275838)을 참조하십시오"^] | 스토리지 페일오버 작업 중 QLogic QLE2742 32Gb FC HBA가 장착된 Red Hat Enterprise Linux 8.1에서 커널 중단이 발생합니다 | 커널 중단은 QLogic QLE2742 FC(Fibre Channel) HBA(호스트 버스 어댑터)가 있는 Red Hat Enterprise Linux 8.1 커널에서 스토리지 페일오버 작업 중에 발생합니다. 커널이 중단되면 Red Hat Enterprise Linux 8.1이 재부팅되어 애플리케이션이 중단됩니다. kdump 메커니즘이 활성화된 경우 커널 중단은 /var/crash/ 디렉토리에 있는 vmcore 파일을 생성합니다. vmcore 파일을 확인하여 운영 중단의 원인을 파악할 수 있습니다. QLogic QLE2742 HBA 이벤트를 사용한 스토리지 페일오버는 "kmem_cache_alloc+131" 모듈에 영향을 줍니다. 커널 중단 후 "[exception RIP:kmem_cache_alloc+131]" 문자열을 찾아 vmcore 파일에서 이벤트를 찾을 수 있습니다. 호스트 OS를 재부팅하고 운영 체제를 복구합니다. 그런 다음 응용 프로그램을 다시 시작합니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1744082["1744082"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275838["1275838)을 참조하십시오"^] | 스토리지 페일오버 작업 중 QLogic QLE2742 32Gb FC HBA가 장착된 Red Hat Enterprise Linux 8.1에서 커널 중단이 발생합니다 | 커널 중단은 QLogic QLE2742 FC(Fibre Channel) HBA(호스트 버스 어댑터)가 있는 Red Hat Enterprise Linux 8.1 커널에서 스토리지 페일오버 작업 중에 발생합니다. 커널이 중단되면 Red Hat Enterprise Linux 8.1이 재부팅되어 애플리케이션이 중단됩니다. kdump 메커니즘이 활성화된 경우 커널 중단은 /var/crash/ 디렉토리에 있는 vmcore 파일을 생성합니다. vmcore 파일을 확인하여 운영 중단의 원인을 파악할 수 있습니다. QLogic QLE2742 HBA 이벤트를 사용한 스토리지 페일오버는 "kmem_cache_alloc+131" 모듈에 영향을 줍니다. 커널 중단 후 "[exception RIP:kmem_cache_alloc+131]" 문자열을 찾아 vmcore 파일에서 이벤트를 찾을 수 있습니다. 호스트 OS를 재부팅하고 운영 체제를 복구합니다. 그런 다음 응용 프로그램을 다시 시작합니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1266250["1266250"^] | iSCSI SAN LUN에 Red Hat Enterprise Linux 8.1을 설치하는 동안 여러 경로에 로그인할 수 없습니다 | iSCSI SAN LUN 다중 경로 장치에 Red Hat Enterprise Linux 8.1을 설치하는 동안에는 여러 경로에 로그인할 수 없습니다. 다중 경로 iSCSI 장치에 설치할 수 없으며 다중 경로 서비스가 SAN 부팅 장치에서 활성화되지 않습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1758504["1758504"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1266250["1266250"^] | iSCSI SAN LUN에 Red Hat Enterprise Linux 8.1을 설치하는 동안 여러 경로에 로그인할 수 없습니다 | iSCSI SAN LUN 다중 경로 장치에 Red Hat Enterprise Linux 8.1을 설치하는 동안에는 여러 경로에 로그인할 수 없습니다. 다중 경로 iSCSI 장치에 설치할 수 없으며 다중 경로 서비스가 SAN 부팅 장치에서 활성화되지 않습니다. 
 |===

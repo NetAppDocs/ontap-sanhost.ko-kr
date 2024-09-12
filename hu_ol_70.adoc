@@ -151,7 +151,7 @@ blacklist {
 }
 ----
 .예
-이 예에서는 디바이스의 WWID를 확인하고 에 추가합니다 `multipath.conf` 파일.
+다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
 
 .단계
 . 다음 명령을 실행하여 WWID를 확인하십시오.
@@ -179,7 +179,7 @@ blacklist {
 
 을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일(특히 기본값 섹션에 있음)
 
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
 
 [cols="2*"]
 |===
@@ -263,25 +263,25 @@ NOTE: Oracle Linux 7.0 RHCK(Red Hat Enterprise Kernel)을 구성하려면 link:h
 
 Oracle Linux 7.0 및 ONTAP 릴리즈에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901558["901558"^] | OL7.0: Emulex 8G(LPe12002) 호스트에서 OL 7.0 UEK r3U5 베타의 "RSCN timeout" 오류로 인해 호스트가 LUN에 대한 모든 경로를 손실하고 중단됩니다 | Emulex 8G(LPe12002) 호스트가 중단되고 I/O를 통한 스토리지 페일오버 작업 중에 I/O 중단이 높은 것을 볼 수 있습니다 호스트가 모든 경로를 손실하고 중단되기 때문에 RSCN 시간 초과로 인해 복구되지 않는 경로를 관찰할 수 있습니다. 이 문제를 해결할 가능성이 높습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=14898["14898"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901558["901558"^] | OL7.0: Emulex 8G(LPe12002) 호스트에서 OL 7.0 UEK r3U5 베타의 "RSCN timeout" 오류로 인해 호스트가 LUN에 대한 모든 경로를 손실하고 중단됩니다 | Emulex 8G(LPe12002) 호스트가 중단되고 I/O를 통한 스토리지 페일오버 작업 중에 I/O 중단이 높은 것을 볼 수 있습니다 호스트가 모든 경로를 손실하고 중단되기 때문에 RSCN 시간 초과로 인해 복구되지 않는 경로를 관찰할 수 있습니다. 이 문제를 해결할 가능성이 높습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901557["901557"^] | OL 7.0: IO를 사용한 스토리지 페일오버 작업 중에 QLogic 8G FC(QLE2562) SAN 호스트에서 높은 IO 중단이 관찰되었습니다 | IO를 사용한 스토리지 페일오버 작업 중에 QLogic 8G FC(QLE2562) 호스트에서 높은 IO 중단이 발생할 수 있습니다. 호스트에서 IO 중단이 발생하면 중지 및 장치 재설정이 나타납니다. 이 IO 운영 중단이 발생할 가능성이 높습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=14894["14894)를 참조하십시오"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901557["901557"^] | OL 7.0: IO를 사용한 스토리지 페일오버 작업 중에 QLogic 8G FC(QLE2562) SAN 호스트에서 높은 IO 중단이 관찰되었습니다 | IO를 사용한 스토리지 페일오버 작업 중에 QLogic 8G FC(QLE2562) 호스트에서 높은 IO 중단이 발생할 수 있습니다. 호스트에서 IO 중단이 발생하면 중지 및 장치 재설정이 나타납니다. 이 IO 운영 중단이 발생할 가능성이 높습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894766["894766"^] | OL7.0: Dracut가 UEKR3U5 알파의 initramfs에 scsi_dH_ALUA.ko 모듈을 포함하지 못했습니다 | 커널 명령줄에 매개 변수 "rdloaddriver=scsi_dh_ALUA"를 추가하고 Dracut를 생성한 후에도 SCSI_DH_ALUA 모듈이 로드되지 않을 수 있습니다. 따라서 NetApp LUN에 대해 권장된 대로 ALUA가 사용되지 않습니다. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14860["14860"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894766["894766"^] | OL7.0: Dracut가 UEKR3U5 알파의 initramfs에 scsi_dH_ALUA.ko 모듈을 포함하지 못했습니다 | 커널 명령줄에 매개 변수 "rdloaddriver=scsi_dh_ALUA"를 추가하고 Dracut를 생성한 후에도 SCSI_DH_ALUA 모듈이 로드되지 않을 수 있습니다. 따라서 NetApp LUN에 대해 권장된 대로 ALUA가 사용되지 않습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894796["894796)을 참조하십시오"^] | OL 7.0 OS 설치 중에 로그인이 성공하더라도 Anaconda는 iSCSI 로그인 실패 메시지를 표시합니다 | OL 7.0을 설치할 때 anaconda 설치 화면에 iSCSI 로그인이 성공적임에도 여러 대상 IP에 대한 iSCSI 로그인이 실패했음을 표시합니다. Anaconda는 "노드 로그인 실패" 오류 메시지를 표시합니다. iSCSI 로그인에 대해 여러 대상 IP를 선택할 경우에만 이 오류가 표시됩니다. "확인" 버튼을 클릭하여 OS 설치를 계속할 수 있습니다. 이 버그는 iSCSI 또는 OL 7.0 OS 설치를 방해하지 않습니다. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14870["14870"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894796["894796)을 참조하십시오"^] | OL 7.0 OS 설치 중에 로그인이 성공하더라도 Anaconda는 iSCSI 로그인 실패 메시지를 표시합니다 | OL 7.0을 설치할 때 anaconda 설치 화면에 iSCSI 로그인이 성공적임에도 여러 대상 IP에 대한 iSCSI 로그인이 실패했음을 표시합니다. Anaconda는 "노드 로그인 실패" 오류 메시지를 표시합니다. iSCSI 로그인에 대해 여러 대상 IP를 선택할 경우에만 이 오류가 표시됩니다. "확인" 버튼을 클릭하여 OS 설치를 계속할 수 있습니다. 이 버그는 iSCSI 또는 OL 7.0 OS 설치를 방해하지 않습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894771["894771"^] | OL7.0: Anaconda는 커널 cmd 행에 bootdev 인수를 추가하지 않고 iSCSI SANboot OS 설치의 IP 주소를 설정합니다 | Anaconda는 커널 명령줄에 bootdev 인수를 추가하지 않습니다. 여기서 iSCSI multipath'd LUN에 OL 7.0 OS 설치 중에 IPv4 주소를 설정합니다. 따라서 OL 7.0 부팅 중에 스토리지 서브시스템과 iSCSI 세션을 설정하도록 구성된 이더넷 인터페이스에 IP 주소를 할당할 수 없습니다. iSCSI 세션이 설정되지 않았으므로 OS 부팅 시 루트 LUN이 검색되지 않아 OS 부팅이 실패합니다. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14871["14871)을 참조하십시오"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894771["894771"^] | OL7.0: Anaconda는 커널 cmd 행에 bootdev 인수를 추가하지 않고 iSCSI SANboot OS 설치의 IP 주소를 설정합니다 | Anaconda는 커널 명령줄에 bootdev 인수를 추가하지 않습니다. 여기서 iSCSI multipath'd LUN에 OL 7.0 OS 설치 중에 IPv4 주소를 설정합니다. 따라서 OL 7.0 부팅 중에 스토리지 서브시스템과 iSCSI 세션을 설정하도록 구성된 이더넷 인터페이스에 IP 주소를 할당할 수 없습니다. iSCSI 세션이 설정되지 않았으므로 OS 부팅 시 루트 LUN이 검색되지 않아 OS 부팅이 실패합니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=916501["916501)을 참조하십시오"^] | IO를 통한 스토리지 페일오버 작업 중에 QLogic 10G FCoE(QLE8152) 호스트 커널 충돌이 관찰되었습니다 | 10G FCoE Qlogic(QLE8152) 호스트의 Qlogic 드라이버 모듈에서 커널 충돌이 관찰될 수 있습니다. 입출력의 스토리지 페일오버 작업 중에 충돌이 발생합니다. 이 충돌의 발생 가능성은 높아 호스트의 IO 중단 시간이 길어집니다. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=15019["15019"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=916501["916501)을 참조하십시오"^] | IO를 통한 스토리지 페일오버 작업 중에 QLogic 10G FCoE(QLE8152) 호스트 커널 충돌이 관찰되었습니다 | 10G FCoE Qlogic(QLE8152) 호스트의 Qlogic 드라이버 모듈에서 커널 충돌이 관찰될 수 있습니다. 입출력의 스토리지 페일오버 작업 중에 충돌이 발생합니다. 이 충돌의 발생 가능성은 높아 호스트의 IO 중단 시간이 길어집니다. 
 |===

@@ -579,7 +579,7 @@ NSID     UUID                                   Size
 
 ONTAP 릴리즈가 포함된 Oracle Linux 8.9의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols="1a, 2a, 6a, 1a, options="]
+[cols="1a,4a,4a, options="]
 |===
 
 
@@ -589,8 +589,6 @@ NetApp 버그 ID
 제목
  a| 
 설명
- a| 
-Bugzilla ID입니다
 
 
 
@@ -600,7 +598,5 @@ link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1517321["1
 Oracle Linux 8.9 NVMe-oF 호스트는 중복된 PDC를 생성합니다
  a| 
 Oracle Linux 8.9 NVMe-oF 호스트에서는 `-p` `nvme discover` 명령에 옵션을 전달하여 PDC(Persistent Discovery Controllers)가 생성됩니다. 특정 이니시에이터-타겟 조합에 대해 `nvme discover` 명령을 실행할 때마다 PDC가 하나씩 생성됩니다. 하지만 Oracle Linux 8.x부터 NVMe-oF 호스트가 중복성을 생성합니다. 이렇게 하면 호스트와 타겟 모두에서 리소스가 낭비됩니다.
- a| 
-https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^]
 
 |===

@@ -169,7 +169,7 @@ blacklist {
 }
 ----
 .예
-이 예에서는 디바이스의 WWID를 확인하고 에 추가합니다 `multipath.conf` 파일.
+다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
 
 .단계
 . 다음 명령을 실행하여 WWID를 확인하십시오.
@@ -197,7 +197,7 @@ blacklist {
 
 을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일(특히 기본값 섹션에 있음)
 
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
 
 [cols="2*"]
 |===
@@ -288,10 +288,10 @@ devices {
 
 RHEL 7.9 및 ONTAP 릴리스에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. | 해당 없음 
+| 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. 
 |===

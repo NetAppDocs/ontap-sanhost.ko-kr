@@ -169,7 +169,7 @@ blacklist {
 }
 ----
 .예
-이 예에서는 디바이스의 WWID를 확인하고 에 추가합니다 `multipath.conf` 파일.
+다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
 
 .단계
 . 다음 명령을 실행하여 WWID를 확인하십시오.
@@ -197,7 +197,7 @@ blacklist {
 
 을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일(특히 기본값 섹션에 있음)
 
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
 
 [cols="2*"]
 |===
@@ -288,25 +288,25 @@ devices {
 
 ONTAP가 포함된 RHEL 8.0에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1238719["1238719)를 참조하십시오"^] | 스토리지 페일오버 작업 중 RHEL8에서 QLogic QLE2672 16GB FC의 커널 중단 | 커널 중단은 QLogic QLE2672 HBA(호스트 버스 어댑터)가 있는 RHEL(Red Hat Enterprise Linux) 8 커널에서 스토리지 페일오버 작업 중에 발생할 수 있습니다. 커널이 중단되면 운영 체제가 재부팅됩니다. kdump가 구성된 경우 재부팅으로 인해 애플리케이션이 중단되고 /var/crash/ 디렉토리 아래에 vmcore 파일이 생성됩니다. vmcore 파일을 사용하여 장애의 원인을 식별합니다. 이 경우 "kmem_cache_alloc+160" 모듈에서 중단이 발생한 것입니다. vmcore 파일에 "[exception RIP: kmem_cache_alloc+160]" 문자열을 사용하여 기록됩니다. 호스트 OS를 재부팅하여 운영 체제를 복구한 다음 애플리케이션을 재시작합니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1710009["1710009"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1238719["1238719)를 참조하십시오"^] | 스토리지 페일오버 작업 중 RHEL8에서 QLogic QLE2672 16GB FC의 커널 중단 | 커널 중단은 QLogic QLE2672 HBA(호스트 버스 어댑터)가 있는 RHEL(Red Hat Enterprise Linux) 8 커널에서 스토리지 페일오버 작업 중에 발생할 수 있습니다. 커널이 중단되면 운영 체제가 재부팅됩니다. kdump가 구성된 경우 재부팅으로 인해 애플리케이션이 중단되고 /var/crash/ 디렉토리 아래에 vmcore 파일이 생성됩니다. vmcore 파일을 사용하여 장애의 원인을 식별합니다. 이 경우 "kmem_cache_alloc+160" 모듈에서 중단이 발생한 것입니다. vmcore 파일에 "[exception RIP: kmem_cache_alloc+160]" 문자열을 사용하여 기록됩니다. 호스트 OS를 재부팅하여 운영 체제를 복구한 다음 애플리케이션을 재시작합니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1226783["1226783을 참조하십시오"^] | RHEL8 OS는 204개 이상의 SCSI 장치가 모든 FC(Fibre Channel) HBA(호스트 버스 어댑터)에 매핑될 때 "비상 모드"로 부팅됩니다. | 운영 체제 재부팅 프로세스 중에 호스트가 204개 이상의 SCSI 장치와 매핑된 경우 RHEL8 OS가 "정상 모드"로 부팅되지 않고 "긴급 모드"로 전환됩니다. 이로 인해 대부분의 호스트 서비스를 사용할 수 없게 됩니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1690356["1690356)을 참조하십시오"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1226783["1226783을 참조하십시오"^] | RHEL8 OS는 204개 이상의 SCSI 장치가 모든 FC(Fibre Channel) HBA(호스트 버스 어댑터)에 매핑될 때 "비상 모드"로 부팅됩니다. | 운영 체제 재부팅 프로세스 중에 호스트가 204개 이상의 SCSI 장치와 매핑된 경우 RHEL8 OS가 "정상 모드"로 부팅되지 않고 "긴급 모드"로 전환됩니다. 이로 인해 대부분의 호스트 서비스를 사용할 수 없게 됩니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1230882["1230882"^] | RHEL8 설치 중에 iSCSI 다중 경로 장치에 파티션을 생성할 수 없습니다. | iSCSI SAN LUN 다중 경로 장치는 RHEL 8 설치 중에 디스크 선택에 표시되지 않습니다. 따라서 SAN 부팅 장치에서 다중 경로 서비스가 활성화되지 않습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1709995["1709995"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1230882["1230882"^] | RHEL8 설치 중에 iSCSI 다중 경로 장치에 파티션을 생성할 수 없습니다. | iSCSI SAN LUN 다중 경로 장치는 RHEL 8 설치 중에 디스크 선택에 표시되지 않습니다. 따라서 SAN 부팅 장치에서 다중 경로 서비스가 활성화되지 않습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1235998["1235998)을 참조하십시오"^] | "rescan-scsi-bus.sh -a" 명령은 328개 이상의 장치를 검색하지 않습니다 | 328개 이상의 SCSI 장치가 있는 Red Hat Enterprise Linux 8 호스트가 매핑되는 경우 호스트 OS 명령 "rescan-scsi-bus.sh -A"는 328개의 장치만 검색합니다. 호스트가 나머지 매핑된 디바이스를 검색하지 않습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1709995["1709995"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1235998["1235998)을 참조하십시오"^] | "rescan-scsi-bus.sh -a" 명령은 328개 이상의 장치를 검색하지 않습니다 | 328개 이상의 SCSI 장치가 있는 Red Hat Enterprise Linux 8 호스트가 매핑되는 경우 호스트 OS 명령 "rescan-scsi-bus.sh -A"는 328개의 장치만 검색합니다. 호스트가 나머지 매핑된 디바이스를 검색하지 않습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231087["1231087"^] | 스토리지 페일오버 작업 중 RHEL8에서 Emulex LPe16002 16GB FC를 사용하여 원격 포트를 차단 상태로 전환합니다 | 스토리지 페일오버 작업 중 RHEL8에서 Emulex LPe16002 16GB 파이버 채널(FC)을 사용하여 원격 포트를 차단 상태로 전환합니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로가 발생할 수 있습니다 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1702005["1702005"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231087["1231087"^] | 스토리지 페일오버 작업 중 RHEL8에서 Emulex LPe16002 16GB FC를 사용하여 원격 포트를 차단 상태로 전환합니다 | 스토리지 페일오버 작업 중 RHEL8에서 Emulex LPe16002 16GB 파이버 채널(FC)을 사용하여 원격 포트를 차단 상태로 전환합니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로가 발생할 수 있습니다 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231098["1231098"^] | 스토리지 페일오버 작업 중 Emulex LPe32002 32Gb FC를 사용하여 RHEL8에서 원격 포트를 차단 상태로 전환합니다 | 스토리지 페일오버 작업 중 Emulex LPe32002 32GB파이버 채널(FC)을 사용하여 RHEL8에서 원격 포트를 차단 상태로 전환합니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로가 발생할 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1705573["1705573"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231098["1231098"^] | 스토리지 페일오버 작업 중 Emulex LPe32002 32Gb FC를 사용하여 RHEL8에서 원격 포트를 차단 상태로 전환합니다 | 스토리지 페일오버 작업 중 Emulex LPe32002 32GB파이버 채널(FC)을 사용하여 RHEL8에서 원격 포트를 차단 상태로 전환합니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로가 발생할 수 있습니다. 
 |===

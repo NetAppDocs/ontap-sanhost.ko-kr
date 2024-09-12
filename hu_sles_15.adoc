@@ -168,7 +168,7 @@ blacklist {
 }
 ----
 .예
-이 예에서는 디바이스의 WWID를 확인하고 에 추가합니다 `multipath.conf` 파일.
+다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
 
 .단계
 . 다음 명령을 실행하여 WWID를 확인하십시오.
@@ -196,7 +196,7 @@ blacklist {
 
 을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일(특히 기본값 섹션에 있음)
 
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
 
 [cols="2*"]
 |===
@@ -281,10 +281,10 @@ devices {
 
 SLES 15 ONTAP 릴리스에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1154309["1154309"^] | 매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다 | 매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다. 유지보수 모드는 '유지 관리를 위해 루트 암호를 제공(또는 계속하려면 Control-D를 누름)' 메시지에 따라 단일 사용자 모드가 됩니다 | link:https://bugzilla.suse.com/show_bug.cgi?id=1104173["1104173"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1154309["1154309"^] | 매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다 | 매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다. 유지보수 모드는 '유지 관리를 위해 루트 암호를 제공(또는 계속하려면 Control-D를 누름)' 메시지에 따라 단일 사용자 모드가 됩니다 
 |===

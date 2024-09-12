@@ -572,8 +572,8 @@ OL 8.7 with ONTAP 릴리즈의 NVMe-oF 호스트 구성에는 다음과 같은 �
 
 [cols=""20"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| 1517321 | Oracle Linux 8.7 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 생성합니다 | OL 8.7 NVMe-oF 호스트에서 `-p` `nvme discover` 명령에 옵션을 전달하여 PDC(Persistent Discovery Controllers)가 생성됩니다. 특정 이니시에이터-타겟 조합에 대해 `nvme discover` 명령을 실행할 때마다 PDC가 하나씩 생성됩니다. 그러나 OL 8.x부터 NVMe-oF 호스트가 중복 PDC를 생성합니다. 이렇게 하면 호스트와 타겟 모두에서 리소스가 낭비됩니다. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Oracle Linux 8.7 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 생성합니다 | OL 8.7 NVMe-oF 호스트에서 `-p` `nvme discover` 명령에 옵션을 전달하여 PDC(Persistent Discovery Controllers)가 생성됩니다. 특정 이니시에이터-타겟 조합에 대해 `nvme discover` 명령을 실행할 때마다 PDC가 하나씩 생성됩니다. 그러나 OL 8.x부터 NVMe-oF 호스트가 중복 PDC를 생성합니다. 이렇게 하면 호스트와 타겟 모두에서 리소스가 낭비됩니다. 
 |===

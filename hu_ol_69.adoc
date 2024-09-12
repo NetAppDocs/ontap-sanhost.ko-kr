@@ -182,7 +182,7 @@ blacklist {
 
 을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일, 특히 기본값 섹션에 있는 파일입니다.
 
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
 
 [cols="2*"]
 |===
@@ -269,12 +269,12 @@ NOTE: Oracle Linux 6.9 RHCK(Red Hat Enterprise Kernel)을 구성하려면 link:h
 
 ONTAP가 설치된 Oracle Linux 6.9 릴리스에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1082780["1082780"^] | 펌웨어 덤프는 QLE8362 카드가 장착된 OL6.9 하이퍼바이저에서 가끔 관찰됩니다 | QLE8362 카드가 있는 OL6.9 하이퍼바이저에서 스토리지 페일오버 작업 중에 펌웨어 덤프가 가끔 관찰됩니다. 펌웨어 덤프를 수행하면 호스트에서 I/O 중단이 발생할 수 있으며 이 경우 최대 1,000초가 될 수 있습니다. 어댑터가 펌웨어 덤프를 완료하면 I/O 작업이 정상적으로 재개됩니다. 호스트에 추가 복구 절차가 필요하지 않습니다. 펌웨어 덤프를 표시하기 위해 /var/log/message 파일에 다음 메시지가 표시됩니다. ql2xxx[0000:0c:00.3]-d001:3: 임시 버퍼(3/ffc90008901000)에 저장된 펌웨어 덤프, 덤프 상태 플래그(0x3f). | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=16039["16039"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1082780["1082780"^] | 펌웨어 덤프는 QLE8362 카드가 장착된 OL6.9 하이퍼바이저에서 가끔 관찰됩니다 | QLE8362 카드가 있는 OL6.9 하이퍼바이저에서 스토리지 페일오버 작업 중에 펌웨어 덤프가 가끔 관찰됩니다. 펌웨어 덤프를 수행하면 호스트에서 I/O 중단이 발생할 수 있으며 이 경우 최대 1,000초가 될 수 있습니다. 어댑터가 펌웨어 덤프를 완료하면 I/O 작업이 정상적으로 재개됩니다. 호스트에 추가 복구 절차가 필요하지 않습니다. 펌웨어 덤프를 표시하기 위해 /var/log/message 파일에 다음 메시지가 표시됩니다. ql2xxx[0000:0c:00.3]-d001:3: 임시 버퍼(3/ffc90008901000)에 저장된 펌웨어 덤프, 덤프 상태 플래그(0x3f). 
 |===
 
 NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_69.html#known-problems-and-limitations["알려진 문제"] RHEL(Red Hat Enterprise Linux) 6.9의 경우

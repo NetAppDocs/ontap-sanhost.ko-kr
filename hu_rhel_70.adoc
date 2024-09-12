@@ -169,7 +169,7 @@ blacklist {
 }
 ----
 .예
-이 예에서는 디바이스의 WWID를 확인하고 에 추가합니다 `multipath.conf` 파일.
+다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
 
 .단계
 . 다음 명령을 실행하여 WWID를 확인하십시오.
@@ -197,7 +197,7 @@ blacklist {
 
 을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일(특히 기본값 섹션에 있음)
 
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
 
 [cols="2*"]
 |===
@@ -288,34 +288,34 @@ devices {
 
 ONTAP가 포함된 RHEL 7.0 릴리스에는 다음과 같은 알려진 문제가 있습니다.
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | Bugzilla ID입니다 
+| NetApp 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=844417["844417"^] | 스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트가 충돌합니다 | 스토리지 페일오버 작업 중 I/O에서 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 관찰될 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1131393["11393)을 참조하십시오"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=844417["844417"^] | 스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트가 충돌합니다 | 스토리지 페일오버 작업 중 I/O에서 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 관찰될 수 있습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=811587["811587)을 참조하십시오"^] | 스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트가 충돌합니다 | 스토리지 페일오버 작업 중 I/O에서 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 관찰될 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1079735["1079735"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=811587["811587)을 참조하십시오"^] | 스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트가 충돌합니다 | 스토리지 페일오버 작업 중 I/O에서 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 관찰될 수 있습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=803071["803071"^] | 스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트가 충돌합니다 | 스토리지 페일오버 작업 중 I/O에서 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 관찰될 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1067895["1067895)를 참조하십시오"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=803071["803071"^] | 스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트가 충돌합니다 | 스토리지 페일오버 작업 중 I/O에서 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 관찰될 수 있습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=820163["820163"^] | 스토리지 페일오버 작업이 있는 I/O에서 QLogic 호스트 중단 또는 경로 장애가 관찰되었습니다 | 스토리지 페일오버 작업 중 입출력 중에 QLogic 호스트에서 호스트 중단 또는 경로 장애가 발생할 수 있습니다. 이러한 경우 "Mailbox cmd timeout occurred, cmd=0x54, MB[0]=0x54 and Firmware dump saved to temp buffer"(사서함 cmd 시간 초과 발생, cmd=0x54, MB[0]=0x54 및 펌웨어 덤프가 임시 버퍼에 저장됨)" 메시지가 나타나고 호스트 멈춤/경로 오류가 발생할 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1090378["1090378)을 참조하십시오"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=820163["820163"^] | 스토리지 페일오버 작업이 있는 I/O에서 QLogic 호스트 중단 또는 경로 장애가 관찰되었습니다 | 스토리지 페일오버 작업 중 입출력 중에 QLogic 호스트에서 호스트 중단 또는 경로 장애가 발생할 수 있습니다. 이러한 경우 "Mailbox cmd timeout occurred, cmd=0x54, MB[0]=0x54 and Firmware dump saved to temp buffer"(사서함 cmd 시간 초과 발생, cmd=0x54, MB[0]=0x54 및 펌웨어 덤프가 임시 버퍼에 저장됨)" 메시지가 나타나고 호스트 멈춤/경로 오류가 발생할 수 있습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799323["799323"^] | Emulex FCoE(OCe10102-FX-D) 호스트 중단 또는 경로 장애가 스토리지 페일오버 작업 중 I/O에서 관찰되었습니다 | 스토리지 페일오버 작업이 포함된 I/O에서 Emulex 10G FCoE 호스트(OCe10102-FX-D)의 호스트 중단 또는 경로 장애가 관찰될 수 있습니다. 이러한 경우 "드라이버 버퍼 풀이 비어 있음, IO 버스 작동 및 SCSI 계층 I/O 중단 요청 상태" 메시지가 나타나면서 호스트 중단/경로 오류가 발생할 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1061755["1061755"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799323["799323"^] | Emulex FCoE(OCe10102-FX-D) 호스트 중단 또는 경로 장애가 스토리지 페일오버 작업 중 I/O에서 관찰되었습니다 | 스토리지 페일오버 작업이 포함된 I/O에서 Emulex 10G FCoE 호스트(OCe10102-FX-D)의 호스트 중단 또는 경로 장애가 관찰될 수 있습니다. 이러한 경우 "드라이버 버퍼 풀이 비어 있음, IO 버스 작동 및 SCSI 계층 I/O 중단 요청 상태" 메시지가 나타나면서 호스트 중단/경로 오류가 발생할 수 있습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=849212["849212)를 참조하십시오"^] | Emulex 16G FC(LPe16002B-M6) 호스트 중단 또는 경로 장애가 스토리지 페일오버 작업 중 I/O에서 관찰되었습니다 | 스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트에서 호스트 중단 또는 경로 장애가 관찰될 수 있습니다. 이러한 경우 "RSCN timeout Data and iotag x1301 is out of range: max iotag" 메시지가 나타나면서 호스트 중단/경로 오류가 발생할 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1109274["1109274"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=849212["849212)를 참조하십시오"^] | Emulex 16G FC(LPe16002B-M6) 호스트 중단 또는 경로 장애가 스토리지 페일오버 작업 중 I/O에서 관찰되었습니다 | 스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트에서 호스트 중단 또는 경로 장애가 관찰될 수 있습니다. 이러한 경우 "RSCN timeout Data and iotag x1301 is out of range: max iotag" 메시지가 나타나면서 호스트 중단/경로 오류가 발생할 수 있습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836800["836800"^] | RHEL 7.0 OS 설치 중에 로그인이 성공하더라도 Anaconda는 iSCSI 로그인 실패 메시지를 표시합니다 | iSCSI 다중 경로(iSCI) LUN에 루트(/)를 설치할 때 이더넷 인터페이스의 IP 주소가 커널 명령줄에 지정되어 iSCSI 서비스가 시작되기 전에 IP 주소가 할당됩니다. 그러나 iSCSI 서비스가 시작되기 전에 dracut은 부팅 중에 모든 이더넷 포트에 IP 주소를 할당할 수 없습니다. 이로 인해 IP 주소가 없는 인터페이스에서 iSCSI 로그인이 실패합니다. iSCSI 서비스가 로그인을 여러 번 시도하여 OS 부팅 시간이 지연되는 것을 볼 수 있습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1114966["1114966"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836800["836800"^] | RHEL 7.0 OS 설치 중에 로그인이 성공하더라도 Anaconda는 iSCSI 로그인 실패 메시지를 표시합니다 | iSCSI 다중 경로(iSCI) LUN에 루트(/)를 설치할 때 이더넷 인터페이스의 IP 주소가 커널 명령줄에 지정되어 iSCSI 서비스가 시작되기 전에 IP 주소가 할당됩니다. 그러나 iSCSI 서비스가 시작되기 전에 dracut은 부팅 중에 모든 이더넷 포트에 IP 주소를 할당할 수 없습니다. 이로 인해 IP 주소가 없는 인터페이스에서 iSCSI 로그인이 실패합니다. iSCSI 서비스가 로그인을 여러 번 시도하여 OS 부팅 시간이 지연되는 것을 볼 수 있습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836875["836875"^] | iSCSI 다중 경로 LUN에 설치된 RHEL 7.0 OS를 부팅하는 동안 IP 주소가 항상 할당되는 것은 아닙니다 | RHEL 7.0을 설치할 때 anaconda 설치 화면에 iSCSI 로그인이 성공적임에도 여러 대상 IP에 대한 iSCSI 로그인이 실패했음을 표시합니다. Anaconda는 다음과 같은 오류 메시지를 표시합니다. "노드 로그인 실패" iSCSI 로그인에 대해 여러 대상 IP를 선택한 경우에만 이 오류가 발생합니다. "확인" 버튼을 클릭하여 OS 설치를 계속할 수 있습니다. 이 버그는 iSCSI 또는 RHEL 7.0 OS 설치를 방해하지 않습니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1114820["1114820"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836875["836875"^] | iSCSI 다중 경로 LUN에 설치된 RHEL 7.0 OS를 부팅하는 동안 IP 주소가 항상 할당되는 것은 아닙니다 | RHEL 7.0을 설치할 때 anaconda 설치 화면에 iSCSI 로그인이 성공적임에도 여러 대상 IP에 대한 iSCSI 로그인이 실패했음을 표시합니다. Anaconda는 다음과 같은 오류 메시지를 표시합니다. "노드 로그인 실패" iSCSI 로그인에 대해 여러 대상 IP를 선택한 경우에만 이 오류가 발생합니다. "확인" 버튼을 클릭하여 OS 설치를 계속할 수 있습니다. 이 버그는 iSCSI 또는 RHEL 7.0 OS 설치를 방해하지 않습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836657["836657"^] | Anaconda는 커널 cmd 행에 bootdev 인수를 추가하지 않고 iSCSI 다중 경로 dun LUN에 설치된 RHEL 7.0 OS의 IP 주소를 설정합니다 | Anaconda는 커널 명령줄에 bootdev 인수를 추가하지 않습니다. 여기서 iSCSI 다중 경로 dl에 RHEL 7.0 OS를 설치하는 동안 IPv4 주소를 설정합니다. 따라서 RHEL 7.0 부팅 중에 스토리지 서브시스템과 iSCSI 세션을 설정하도록 구성된 이더넷 인터페이스에 IP 주소를 할당하지 못합니다. iSCSI 세션이 설정되지 않았으므로 OS 부팅 시 루트 LUN이 검색되지 않아 OS 부팅이 실패합니다. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1114464["1114464"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836657["836657"^] | Anaconda는 커널 cmd 행에 bootdev 인수를 추가하지 않고 iSCSI 다중 경로 dun LUN에 설치된 RHEL 7.0 OS의 IP 주소를 설정합니다 | Anaconda는 커널 명령줄에 bootdev 인수를 추가하지 않습니다. 여기서 iSCSI 다중 경로 dl에 RHEL 7.0 OS를 설치하는 동안 IPv4 주소를 설정합니다. 따라서 RHEL 7.0 부팅 중에 스토리지 서브시스템과 iSCSI 세션을 설정하도록 구성된 이더넷 인터페이스에 IP 주소를 할당하지 못합니다. iSCSI 세션이 설정되지 않았으므로 OS 부팅 시 루트 LUN이 검색되지 않아 OS 부팅이 실패합니다. 
 |===
