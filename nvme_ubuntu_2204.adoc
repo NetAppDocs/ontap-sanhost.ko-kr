@@ -507,4 +507,9 @@ NSID       UUID                                   Size
 
 == 알려진 문제
 
-ONTAP 릴리스가 포함된 Ubuntu 22.04의 NVMe-oF 호스트 구성에 대해 알려진 문제는 없습니다.
+ONTAP 릴리스가 있는 Ubuntu 22.04의 NVMe-oF 호스트 구성에 다음과 같은 알려진 문제가 있습니다.
+
+[cols="15,20,50,15"]
+|===
+| NetApp 버그 ID | 제목 | 설명 | CONTAPEXT-2037를 참조하십시오 
+|===

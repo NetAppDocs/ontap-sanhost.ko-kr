@@ -228,8 +228,8 @@ defaults {
 
 devices {
    device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
+      vendor         "NETAPP"
+      product         "LUN"
       no_path_retry    queue
       path_checker     tur
    }

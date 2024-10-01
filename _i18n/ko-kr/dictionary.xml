@@ -3262,7 +3262,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="c720f9a8702e2d5947dcfd0b4d0f2744" category="list-text">Ubuntu 22.04 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필요한 최신 업스트림 수정 사항이 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
   <block id="9b581488b49c5ac223f72f44dce46098" category="list-text">노드에서 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 NVMe connect-all 명령을 실행하고 컨트롤러 손실 시간 초과 기간을 최소 30분 또는 1800초 동안 설정합니다.</block>
   <block id="2d737bddc26fec4760722ea17aae3833" category="open-title">NVMe/TCP</block>
-  <block id="b410fbf5a06284dbc3bed26b9ccd2094" category="paragraph">ONTAP 릴리스가 포함된 Ubuntu 22.04의 NVMe-oF 호스트 구성에 대해 알려진 문제는 없습니다.</block>
   <block id="90fc24312f4ab09ff404f0abfb26b105" category="cell">Jira ID입니다</block>
   <block id="fb99255f11e8a5c23d9e98c28ef9997d" category="cell">1593771</block>
   <block id="970c941050f97a801dd7266734957b39" category="cell">Red Hat Enterprise Linux 9.3 QLogic SAN 호스트가 스토리지 이동성 작업 중에 부분 다중 경로 손실이 발생합니다</block>
@@ -3543,4 +3542,6 @@ NetApp 온라인 버그 참조 - <block ref="af3b3cf0d6ceafbe31919aa407157743" c
   <block id="3ae05a17cacf5437dfbe2dbdf1e4e12c" category="paragraph">다음 표에서는<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.</block>
   <block id="6674d265c9797b8b9966b427e0b2c1a0" category="admonition">NetApp AIX 호스트 유틸리티 소프트웨어 패키지는 <block ref="015937b9b2ae1569ddb5b3136103b5c7" category="inline-link-macro-rx"></block>압축된 tar.gz 파일의 에서 사용할 수 있습니다. AIX MPIO를 NetApp ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.</block>
   <block id="95fdb97b04811943bd6001978d618d31" category="list-text">로<block ref="97bc3f4ff245555de180ca8882444906" category="inline-link-rx"></block> 이동하여 Host Utilities가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.</block>
+  <block id="0142c1c78731d2b44a6976490ee04599" category="paragraph">ONTAP 릴리스가 있는 Ubuntu 22.04의 NVMe-oF 호스트 구성에 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="364053ddb08791e86bba8694da89f153" category="cell">CONTAPEXT-2037를 참조하십시오</block>
 </blocks>
