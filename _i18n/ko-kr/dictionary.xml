@@ -3544,4 +3544,6 @@ NetApp 온라인 버그 참조 - <block ref="af3b3cf0d6ceafbe31919aa407157743" c
   <block id="95fdb97b04811943bd6001978d618d31" category="list-text">로<block ref="97bc3f4ff245555de180ca8882444906" category="inline-link-rx"></block> 이동하여 Host Utilities가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.</block>
   <block id="0142c1c78731d2b44a6976490ee04599" category="paragraph">ONTAP 릴리스가 있는 Ubuntu 22.04의 NVMe-oF 호스트 구성에 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="364053ddb08791e86bba8694da89f153" category="cell">CONTAPEXT-2037를 참조하십시오</block>
+  <block id="e53d231580138a5c74d1783c30057235" category="cell">Ubuntu 22.04 NVMe-oF 호스트가 중복 영구 검색 컨트롤러를 만듭니다</block>
+  <block id="f7529407d6b5167c4740699e83603d32" category="cell">NVMe-oF 호스트에서 "NVMe discover-p" 명령을 사용하여 영구적 검색 컨트롤러(PDC)를 생성할 수 있습니다. 이 명령은 각 이니시에이터-타겟 조합에 대해 하나의 PDC만 생성해야 합니다. 그러나 NVMe-oF 호스트에서 Ubuntu 22.04를 실행하는 경우 "NVMe discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
 </blocks>

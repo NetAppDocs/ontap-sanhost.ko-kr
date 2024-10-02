@@ -509,7 +509,10 @@ NSID       UUID                                   Size
 
 ONTAP 릴리스가 있는 Ubuntu 22.04의 NVMe-oF 호스트 구성에 다음과 같은 알려진 문제가 있습니다.
 
-[cols="15,20,50,15"]
+[cols="20,20,60"]
 |===
-| NetApp 버그 ID | 제목 | 설명 | CONTAPEXT-2037를 참조하십시오 
+| NetApp 버그 ID | 제목 | 설명 
+
+
+| CONTAPEXT-2037를 참조하십시오 | Ubuntu 22.04 NVMe-oF 호스트가 중복 영구 검색 컨트롤러를 만듭니다 | NVMe-oF 호스트에서 "NVMe discover-p" 명령을 사용하여 영구적 검색 컨트롤러(PDC)를 생성할 수 있습니다. 이 명령은 각 이니시에이터-타겟 조합에 대해 하나의 PDC만 생성해야 합니다. 그러나 NVMe-oF 호스트에서 Ubuntu 22.04를 실행하는 경우 "NVMe discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다. 
 |===
