@@ -237,17 +237,21 @@ FCP CMPL: xb 00000821 Err 00012fcd
 --
 .NVMe/FC용 Marvell/QLogic FC 어댑터
 --
+RHEL 8.8 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.
+
 .단계
-. RHEL 8.8 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 업스트림 픽스가 포함되어 있습니다. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
-+
+지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
+
+를 누릅니다
+
 [listing]
 ----
 # cat /sys/class/fc_host/host*/symbolic_name
 ----
-+
-* 예제 출력 *
++ * 예제 출력 *
 
-+
+를 누릅니다
+
 [listing]
 ----
 QLE2772 FW:v9.10.11 DVR:v10.02.07.900-k-debug

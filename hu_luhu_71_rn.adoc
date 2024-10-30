@@ -53,7 +53,7 @@ NOTE: NetApp은 최초 릴리즈 이후에도 Host Utilities와 계속 협력하
 
 == 이 릴리스에서 수정되었습니다
 
-를 실행할 때 간헐적으로 발생하는 호스트 OS 오류 문제입니다 `sanlun lun show -p` SLES12SP1, OL7.2, RHEL7.2 및 RHEL 6.8의 명령은 이 릴리즈에서 수정되었습니다.
+SUSE Linux Enterprise Server 12 SP1, OL 7.2, RHEL 7.2 및 RHEL 6.8에서 명령을 실행할 때 발생하는 간헐적인 호스트 OS 장애 문제는 `sanlun lun show -p` 이 릴리스에서 해결되었습니다.
 
 
 

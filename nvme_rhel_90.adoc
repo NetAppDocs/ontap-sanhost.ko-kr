@@ -16,7 +16,7 @@ summary: ONTAP를 사용하여 RHEL 9.0용 NVMe-oF 호스트를 구성하는 방
 
 
 [role="lead"]
-NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상적인 스토리지 장애 조치(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 있는 RHEL 9.0에서 지원됩니다. ANA는 NVM-of 환경에서 ALUA와 동등한 제품이며 현재 In-kernel NVMe Multipath로 구현되고 있습니다. 이 문서에는 RHEL 9.0에서 ANA를 사용하고 ONTAP를 대상으로 커널 내 NVMe 다중 경로를 사용하여 NVMe-oF를 활성화하는 방법에 대한 세부 정보가 포함되어 있습니다.
+NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상적인 스토리지 장애 조치(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 있는 RHEL 9.0에서 지원됩니다. ANA는 NVM-of 환경에서 ALUA와 동등한 제품이며 현재 In-kernel NVMe Multipath로 구현되고 있습니다. 이 절차를 사용하면 RHEL 9.0에서 ANA를 사용하고 ONTAP를 타겟으로 하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화할 수 있습니다.
 
 지원되는 구성에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
 
@@ -176,7 +176,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 --
 .Marvell/QLogic
 --
-RHEL 9.0 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 ONTAP 지원에 필수적인 최신 수정 사항이 포함되어 있습니다.
+RHEL 9.0 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 포함되어 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.
 
 .단계
 . 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.

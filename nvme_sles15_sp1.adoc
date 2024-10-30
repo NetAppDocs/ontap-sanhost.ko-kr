@@ -18,16 +18,16 @@ summary: ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP1에 대해 NVM
 [role="lead"]
 SUSE Linux Enterprise Server 15 SP1 및 ONTAP를 타겟으로 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 구성할 수 있습니다.
 
-NVMe/FC는 다음 SLES 버전에 대해 ONTAP 9.6 이상에서 지원됩니다.
+NVMe/FC는 다음 SUSE Linux Enterprise Server 버전에 대해 ONTAP 9 .6 이상에서 지원됩니다.
 
-* SLES15 SP1
+* SUSE Linux Enterprise Server 15 SP1
 +
-SLES15 SP1 호스트는 동일한 파이버 채널 이니시에이터 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 실행할 수 있습니다. 를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오.
+SUSE Linux Enterprise Server 15 SP1 호스트는 동일한 파이버 채널 이니시에이터 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 실행할 수 있습니다. 지원되는 FC 어댑터 및 컨트롤러 목록은 를 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 참조하십시오.
 
 +
 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
 
-* 기본 NVMe/FC 자동 연결 스크립트가 NVMe-CLI 패키지에 포함되어 있습니다. SLES15 SP1에서 기본 받은 편지함 lpfc 드라이버를 사용할 수 있습니다.
+* 기본 NVMe/FC 자동 연결 스크립트가 NVMe-CLI 패키지에 포함되어 있습니다. SUSE Linux Enterprise Server 15 SP1에서 기본 받은 편지함 lpfc 드라이버를 사용할 수 있습니다.
 
 
 
@@ -38,12 +38,12 @@ SLES15 SP1 호스트는 동일한 파이버 채널 이니시에이터 어댑터 
 
 
 
-== SLES15 SP1에서 NVMe/FC를 사용하도록 설정합니다
+== SUSE Linux Enterprise Server 15 SP1에서 NVMe/FC를 활성화합니다
 
-. 권장되는 SLES15 SP2 MU 커널로 업그레이드하십시오
+. 권장 SUSE Linux Enterprise Server 15 SP2 MU 커널로 업그레이드하십시오
 . 권장되는 NVMe-CLI MU 버전으로 업그레이드하십시오.
 +
-이 NVMe-CLI 패키지에는 기본 NVMe/FC 자동 연결 스크립트가 포함되어 있으므로 SLES15 SP1 호스트에 Broadcom에서 제공하는 외부 NVMe/FC 자동 연결 스크립트를 설치할 필요가 없습니다. 또한 이 패키지에는 NVMe 다중 경로에 라운드 로빈 로드 밸런싱을 지원하는 ONTAP udev 규칙 및 ONTAP 장치용 NetApp 플러그인이 포함되어 있습니다.
+이 NVMe-CLI 패키지에는 기본 NVMe/FC 자동 연결 스크립트가 포함되어 있으므로 SUSE Linux Enterprise Server 15 SP1 호스트에 Broadcom에서 제공하는 외부 NVMe/FC 자동 연결 스크립트를 설치할 필요가 없습니다. 또한 이 패키지에는 NVMe 다중 경로에 라운드 로빈 로드 밸런싱을 지원하는 ONTAP udev 규칙 및 ONTAP 장치용 NetApp 플러그인이 포함되어 있습니다.
 
 +
 [listing]
@@ -51,7 +51,7 @@ SLES15 SP1 호스트는 동일한 파이버 채널 이니시에이터 어댑터 
 # rpm -qa | grep nvme-cli
 nvme-cli-1.8.1-6.9.1.x86_64
 ----
-. SLES15 SP1 호스트에서 '/etc/NVMe/hostnqn' 호스트의 NQN 문자열을 확인하여 ONTAP 배열의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다. 예를 들면 다음과 같습니다.
+. SUSE Linux Enterprise Server 15 SP1 호스트에서 에서 호스트 NQN 문자열을 확인하고 ONTAP 스토리지의 해당 하위 시스템에 대한 호스트 NQN `/etc/nvme/hostnqn` 문자열과 일치하는지 확인합니다. 예를 들면 다음과 같습니다.
 +
 [listing]
 ----

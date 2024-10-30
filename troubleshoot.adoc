@@ -16,7 +16,7 @@ summary: FC, FCoE 및 iSCSI 프로토콜을 사용하는 VMware vSphere 8.x 릴�
 
 
 [role="lead"]
-RHEL, OL 및 SLES 호스트에 대한 NVMe-oF 장애를 해결하기 전에 상호 운용성 매트릭스 툴(IMT) 사양을 준수하는 구성을 실행 중인지 확인하고 다음 단계를 진행하여 호스트측 문제를 디버깅하십시오.
+RHEL, OL 및 SUSE Linux Enterprise Server 호스트에 대한 NVMe-oF 장애를 해결하기 전에 IMT(Interoperability Matrix Tool) 사양을 준수하는 구성을 실행하고 있는지 확인한 후 호스트 측 문제를 디버깅하기 위해 다음 단계를 진행합니다.
 
 
 NOTE: 문제 해결 지침은 AIX, Windows 및 ESXi 호스트에는 적용되지 않습니다.

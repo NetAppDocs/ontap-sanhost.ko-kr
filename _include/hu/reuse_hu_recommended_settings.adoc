@@ -13,7 +13,7 @@
 # chkconfig multipathd on
 # /etc/init.d/multipathd start
 ----
- `multipath.conf`다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가 없습니다. 원치 않는 디바이스를 제외하려면 `multipath.conf` 파일에 다음 구문을 추가하여 <DevId>를 제외할 디바이스의 WWID 문자열로 대체합니다.
+다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가 `multipath.conf` 없습니다. 원치 않는 디바이스를 제외하려면 `multipath.conf` 파일에 다음 구문을 추가하여 <DevId>를 제외할 디바이스의 WWID 문자열로 대체합니다.
 
 [listing]
 ----
@@ -28,7 +28,7 @@ blacklist {
 다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
 
 .단계
-. 다음 명령을 실행하여 WWID를 확인하십시오.
+. WWID 확인:
 +
 [listing]
 ----
@@ -36,7 +36,7 @@ blacklist {
 360030057024d0730239134810c0cb833
 ----
 +
-`sda` 블랙리스트에 추가해야 하는 로컬 SCSI 디스크입니다.
+`sda` 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
 
 . 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
 +

@@ -6,7 +6,7 @@ settings:
   prod:
     pdf_enabled: true
     harmony_enabled: false
-  langs: ko-kr,us-en,de-de,es-es,fr-fr,it-it,pt-br,ja-jp,zh-cn,zh-tw
+  langs: ko-kr,us-en,ja-jp,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
 sidebar:
   entries:
   - title: SAN 호스트 및 클라우드 클라이언트를 구성합니다
@@ -317,11 +317,11 @@ sidebar:
         url: "/hu_solaris_114.html"
       - title: '11.3'
         url: "/hu_solaris_113.html"
-    - title: SLES
+    - title: SUSE Linux Enterprise Server
       entries:
       - title: 릴리스 정보
         url: "/hu_sles_asm_release_notes.html"
-      - title: SLES 15
+      - title: SUSE Linux Enterprise Server 15
         pdf-filename: SLES-15 - FCP
         entries:
         - title: 15 SP5
@@ -336,7 +336,7 @@ sidebar:
           url: "/hu_sles_15SP1.html"
         - title: '15'
           url: "/hu_sles_15.html"
-      - title: SLES 12
+      - title: SUSE Linux Enterprise Server 12
         entries:
         - title: SP 5 12개
           url: "/hu_sles_12SP5.html"
@@ -468,10 +468,10 @@ sidebar:
           url: "/nvme_rhel_82.html"
         - title: '8.1'
           url: "/nvme_rhel_81.html"
-    - title: SLES
+    - title: SUSE Linux Enterprise Server
       pdf-filename: NVMeSLES
       entries:
-      - title: SLES 15
+      - title: SUSE Linux Enterprise Server 15
         entries:
         - title: 15 SP5
           url: "/nvme_sles15_sp5.html"
@@ -501,7 +501,7 @@ sidebar:
     - title: 문제 해결
       url: "/troubleshoot.html"
   - title: 법적 고지
-    url: "/legal_notices.html"
+    url: "/legal-notices.html"
 product-family:
   name: ONTAP
   repo: ontap-family
