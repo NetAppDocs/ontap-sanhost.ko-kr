@@ -272,12 +272,20 @@ QLE2872 FW:v9.12.01 DVR:v10.02.09.100-k
 
 ONTAP는 컨트롤러 식별 데이터에서 MDTS(MAX Data 전송 크기)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 `lpfc` `lpfc_sg_seg_cnt` 매개 변수 값을 기본값인 64에서 256으로 늘려야 합니다.
 
+
+NOTE: 다음 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+
 .단계
 .  `lpfc_sg_seg_cnt`매개변수를 256으로 설정합니다.
 +
 [listing]
 ----
-# cat /etc/modprobe.d/lpfc.conf
+cat /etc/modprobe.d/lpfc.conf
+----
++
+.예제 출력
+[listing]
+----
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
@@ -285,19 +293,18 @@ options lpfc lpfc_sg_seg_cnt=256
 +
 [listing]
 ----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
++
+예상 값은 256입니다.
 
 
-
-NOTE: Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
 
 
 
 == NVMe/TCP를 구성합니다
 
-NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 다음 절차에 따라 NVMe/TCP 연결 또는 connect-all 기능을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색해야 합니다.
+NVMe/TCP에는 자동 연결 기능이 없습니다. 대신 NVMe/TCP 또는 `connect-all` 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 `connect` 있습니다.
 
 .단계
 . 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.

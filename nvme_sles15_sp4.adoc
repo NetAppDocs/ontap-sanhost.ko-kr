@@ -225,12 +225,20 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 ONTAP는 컨트롤러 식별 데이터에서 MDTS(MAX Data 전송 크기)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 `lpfc` `lpfc_sg_seg_cnt` 매개 변수 값을 기본값인 64에서 256으로 늘려야 합니다.
 
+
+NOTE: 다음 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+
 .단계
 .  `lpfc_sg_seg_cnt`매개변수를 256으로 설정합니다.
 +
 [listing]
 ----
-# cat /etc/modprobe.d/lpfc.conf
+cat /etc/modprobe.d/lpfc.conf
+----
++
+.예제 출력
+[listing]
+----
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
@@ -238,13 +246,12 @@ options lpfc lpfc_sg_seg_cnt=256
 +
 [listing]
 ----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
++
+예상 값은 256입니다.
 
 
-
-NOTE: Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
 
 
 
@@ -261,7 +268,7 @@ NOTE: Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
 Created symlink /etc/systemd/system/default.target.wants/nvmf-autoconnect.service → /usr/lib/systemd/system/nvmf-autoconnect.service.
 ----
 . 호스트를 재부팅합니다.
-. 확인합니다 `nvmf-autoconnect.service` 및 `nvmefc-boot-connections.service` 시스템이 부팅된 후 실행 중인 경우:
+.  `nvmf-autoconnect.service`시스템 부팅 후 및 `nvmefc-boot-connections.service` 가 실행 중인지 확인합니다.
 +
 * 출력 예: *
 

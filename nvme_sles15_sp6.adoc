@@ -15,17 +15,16 @@ summary: ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP6용 NVMe/FC를
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 :toc-position: content
 
 
 [role="lead"]
-NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 SUSE Linux Enterprise Server 15 SP6와 ANA(Asymmetric Namespace Access)에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FCP 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.
+NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access)가 있는 SUSE Linux Enterprise Server 15 SP6에 대해 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FCP 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.
 
 ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP6의 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.
 
-* NVMe와 SCSI 트래픽을 모두 동일한 동일한 호스트에서 실행할 수 있습니다. 따라서 SCSI LUN의 경우 SCSI mpath 장치에 대해 dm-multipath를 구성할 수 있지만 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.
-* NVMe/FC 외에 NVMe over TCP(NVMe/TCP) 지원 NetApp 플러그인은 기본 제공됩니다 `nvme-cli` 패키지에는 NVMe/FC 및 NVMe/TCP 네임스페이스에 대한 ONTAP 세부 정보가 표시됩니다.
+* 동일한 기존 호스트에서 NVMe 및 SCSI 트래픽 실행 예를 들어, SCSI LUN에 대해 SCSI 장치에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 장치를 구성할 수 `mpath` 있습니다.
+* NVMe over TCP(NVMe/TCP) 및 NVMe/FC 지원 이 경우 네이티브 패키지의 NetApp 플러그인에 `nvme-cli` NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시할 수 있습니다.
 
 
 지원되는 구성에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
@@ -36,6 +35,7 @@ ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP6의 NVMe-oF 호스트 �
 
 * NVMe 보안 대역 내 인증 지원
 * 고유한 검색 NQN을 사용하여 영구 검색 컨트롤러(PDC)를 지원합니다
+* NVMe/TCP에 대한 TLS 1.3 암호화 지원
 
 
 
@@ -43,19 +43,21 @@ ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP6의 NVMe-oF 호스트 �
 == 알려진 제한 사항
 
 * 현재 NVMe-oF 프로토콜을 사용한 SAN 부팅은 지원되지 않습니다.
-*  `sanlun`NVMe-oF를 지원하지 않습니다. 따라서 SUSE Linux Enterprise Server 15 SP6 호스트에서 NVMe-oF에 대한 호스트 유틸리티 지원을 사용할 수 없습니다. 모든 NVMe-oF 전송에 대해 기본 패키지에 포함된 NetApp 플러그인을 사용할 수 `nvme-cli` 있습니다.
+* SUSE Linux Enterprise Server 15 SP6 호스트에서는 NetApp `sanlun` 호스트 유틸리티를 NVMe-oF에 사용할 수 없습니다. 대신 모든 NVMe-oF 전송에 대해 기본 패키지에 포함된 NetApp 플러그인을 사용할 수 `nvme-cli` 있습니다.
 
 
 
 
 == NVMe/FC 구성
 
-Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터에 대해 NVMe/FC를 구성할 수 있습니다.
+ONTAP 구성을 사용하는 SUSE Linux Enterprise Server 15 SP6의 경우 Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를 구성할 수 있습니다.
 
 [role="tabbed-block"]
 ====
 .Broadcom/Emulex
 --
+Broadcom/Emulex FC 어댑터용 NVMe/FC를 구성합니다.
+
 .단계
 . 권장 어댑터 모델을 사용하고 있는지 확인합니다.
 +
@@ -64,9 +66,7 @@ Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터에 대해 NVMe/FC를 구�
 cat /sys/class/scsi_host/host*/modelname
 ----
 +
-* 출력 예 *:
-
-+
+.예제 출력
 [listing]
 ----
 LPe32002 M2
@@ -79,9 +79,7 @@ LPe32002-M2
 cat /sys/class/scsi_host/host*/modeldesc
 ----
 +
-* 출력 예 *:
-
-+
+.예제 출력
 [listing]
 ----
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
@@ -94,9 +92,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 cat /sys/class/scsi_host/host*/fwrev
 ----
 +
-* 출력 예 *:
-
-+
+.예제 출력
 [listing]
 ----
 14.2.673.40, sli-4:2:c
@@ -109,9 +105,7 @@ cat /sys/class/scsi_host/host*/fwrev
 cat /sys/module/lpfc/version
 ----
 +
-* 출력 예 *:
-
-+
+.예제 출력
 [listing]
 ----
 0:14.4.0.1
@@ -123,9 +117,7 @@ cat /sys/module/lpfc/version
 cat /sys/class/fc_host/host*/port_name
 ----
 +
-* 출력 예 *:
-
-+
+.예제 출력
 [listing]
 ----
 0x10000090fae0ec88
@@ -138,9 +130,7 @@ cat /sys/class/fc_host/host*/port_name
 cat /sys/class/fc_host/host*/port_state
 ----
 +
-* 출력 예 *:
-
-+
+.예제 출력
 [listing]
 ----
 Online
@@ -163,9 +153,9 @@ cat /sys/class/scsi_host/host*/nvme_info
 ----
 NVME Initiator Enabled
 XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc0 WWPN x10000090fae0ec88 WWNN x20000090fae0ec88 DID x0a1300 ONLINE
-NVME RPORT WWPN x2070d039ea359e4a WWNN x206bd039ea359e4a DID x0a0a05 TARGET DISCSRVC
-ONLINE
+NVME LPORT lpfc0 WWPN x10000090fae0ec88 WWNN x20000090fae0ec88 DID x0a1300 *ONLINE*
+NVME RPORT WWPN x2070d039ea359e4a WWNN x206bd039ea359e4a DID x0a0a05 *TARGET DISCSRVC
+ONLINE*
 NVME Statistics
 LS: Xmt 00000003ba Cmpl 00000003ba Abort 00000000
 LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
@@ -174,9 +164,9 @@ Total FCP Cmpl 0000000014e3dfb8 Issue 0000000014e308db OutIO ffffffffffff2923
 FCP CMPL: xb 00000847 Err 00027f33
 NVME Initiator Enabled
 XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc1 WWPN x10000090fae0ec89 WWNN x20000090fae0ec89 DID x0a1200 ONLINE
-NVME RPORT WWPN x2071d039ea359e4a WWNN x206bd039ea359e4a DID x0a0305 TARGET DISCSRVC
-ONLINE
+NVME LPORT lpfc1 WWPN x10000090fae0ec89 WWNN x20000090fae0ec89 DID x0a1200 *ONLINE*
+NVME RPORT WWPN x2071d039ea359e4a WWNN x206bd039ea359e4a DID x0a0305 *TARGET DISCSRVC
+ONLINE*
 NVME Statistics
 LS: Xmt 00000003ba Cmpl 00000003ba Abort 00000000
 LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
@@ -192,6 +182,8 @@ FCP CMPL: xb 0000082d Err 000283bb
 --
 SUSE Linux Enterprise Server 15 SP6 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 포함되어 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.
 
+Marvell/QLogic 어댑터용 NVMe/FC를 구성합니다.
+
 .단계
 . 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
 +
@@ -200,9 +192,7 @@ SUSE Linux Enterprise Server 15 SP6 커널에 포함된 기본 받은 편지함 
 cat /sys/class/fc_host/host*/symbolic_name
 ----
 +
-* 출력 예 *:
-
-+
+.예제 출력
 [listing]
 ----
 QLE2742 FW:v9.14.01 DVR: v10.02.09.200-k
@@ -213,8 +203,10 @@ QLE2742 FW:v9.14.01 DVR: v10.02.09.200-k
 [listing]
 ----
 cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
-1
 ----
++
+예상 값은 1입니다.
+
 
 
 --
@@ -225,12 +217,20 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 ONTAP는 컨트롤러 식별 데이터에서 MDTS(MAX Data 전송 크기)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 `lpfc` `lpfc_sg_seg_cnt` 매개 변수 값을 기본값인 64에서 256으로 늘려야 합니다.
 
+
+NOTE: 다음 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+
 .단계
 .  `lpfc_sg_seg_cnt`매개변수를 256으로 설정합니다.
 +
 [listing]
 ----
-# cat /etc/modprobe.d/lpfc.conf
+cat /etc/modprobe.d/lpfc.conf
+----
++
+.예제 출력
+[listing]
+----
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
@@ -238,19 +238,70 @@ options lpfc lpfc_sg_seg_cnt=256
 +
 [listing]
 ----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
++
+예상 값은 256입니다.
 
 
 
-NOTE: Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+
+
+=== NVMe 서비스 확인
+
+SUSE Linux Enterprise Server 15 SP6부터 `nvmefc-boot-connections.service` NVMe/FC 패키지에 포함된 및 `nvmf-autoconnect.service` 부팅 서비스가 `nvme-cli` 시스템 부팅 중에 자동으로 시작됩니다. 시스템 부팅이 완료되면 부팅 서비스가 활성화되었는지 확인해야 합니다.
+
+.단계
+. 가 활성화되어 있는지 `nvmf-autoconnect.service` 확인합니다.
++
+`# systemctl status nvmf-autoconnect.service`
+
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing]
+----
+nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
+  Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; vendor preset: disabled)
+  Active: inactive (dead) since Thu 2024-05-25 14:55:00 IST; 11min ago
+Process: 2108 ExecStartPre=/sbin/modprobe nvme-fabrics (code=exited, status=0/SUCCESS)
+Process: 2114 ExecStart=/usr/sbin/nvme connect-all (code=exited, status=0/SUCCESS)
+Main PID: 2114 (code=exited, status=0/SUCCESS)
+
+systemd[1]: Starting Connect NVMe-oF subsystems automatically during boot...
+nvme[2114]: traddr=nn-0x201700a098fd4ca6:pn-0x201800a098fd4ca6 is already connected
+systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
+systemd[1]: Finished Connect NVMe-oF subsystems automatically during boot.
+----
+====
+. 가 활성화되어 있는지 `nvmefc-boot-connections.service` 확인합니다.
++
+`# systemctl status nvmefc-boot-connections.service`
+
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing]
+----
+nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
+   Loaded: loaded (/usr/lib/systemd/system/nvmefc-boot-connections.service; enabled; vendor preset: enabled)
+   Active: inactive (dead) since Thu 2024-05-25 14:55:00 IST; 11min ago
+ Main PID: 1647 (code=exited, status=0/SUCCESS)
+
+systemd[1]: Starting Auto-connect to subsystems on FC-NVME devices found during boot...
+systemd[1]: nvmefc-boot-connections.service: Succeeded.
+systemd[1]: Finished Auto-connect to subsystems on FC-NVME devices found during boot.
+----
+====
+
 
 
 
 == NVMe/TCP를 구성합니다
 
-NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 다음 절차에 따라 NVMe/TCP 연결 또는 connect-all 기능을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색해야 합니다.
+NVMe/TCP에는 자동 연결 기능이 없습니다. 대신 NVMe/TCP 또는 `connect-all` 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 `connect` 있습니다.
 
 .단계
 . 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
@@ -260,57 +311,56 @@ NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 다음 절차에 
 nvme discover -t tcp -w <host-traddr> -a <traddr>
 ----
 +
-.출력 예 표시:
+.예제 출력을 표시합니다
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-# nvme discover -t tcp -w 192.168.211.79 -a 192.168.211.66
 Discovery Log Number of Records 8, Generation counter 18
 =====Discovery Log Entry 0======
 trtype: tcp
 adrfam: ipv4
-subtype: current discovery subsystem
+subtype: *current discovery subsystem*
 treq: not specified
 portid: 4
 trsvcid: 8009
 subnqn: nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:discovery
 traddr: 192.168.211.67
-eflags: explicit discovery connections, duplicate discovery information
-sectype: none
+eflags: *explicit discovery connections, duplicate discovery information*
+sectype: *none*
 =====Discovery Log Entry 1======
 trtype: tcp
 adrfam: ipv4
-subtype: current discovery subsystem
+subtype: *current discovery subsystem*
 treq: not specified
 portid: 2
 trsvcid: 8009
 subnqn: nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:discovery
 traddr: 192.168.111.67
-eflags: explicit discovery connections, duplicate discovery information
-sectype: none
+eflags: *explicit discovery connections, duplicate discovery information*
+sectype: *none*
 =====Discovery Log Entry 2======
 trtype: tcp
 adrfam: ipv4
-subtype: current discovery subsystem
+subtype: *current discovery subsystem*
 treq: not specified
 portid: 3
 trsvcid: 8009
 subnqn: nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:discovery
 traddr: 192.168.211.66
-eflags: explicit discovery connections, duplicate discovery information
-sectype: none
+eflags: *explicit discovery connections, duplicate discovery information*
+sectype: *none*
 =====Discovery Log Entry 3======
 trtype: tcp
 adrfam: ipv4
-subtype: current discovery subsystem
+subtype: *current discovery subsystem*
 treq: not specified
 portid: 1
 trsvcid: 8009
 subnqn: nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:discovery
 traddr: 192.168.111.66
-eflags: explicit discovery connections, duplicate discovery information
-sectype: none
+eflags: *explicit discovery connections, duplicate discovery information*
+sectype: *none*
 =====Discovery Log Entry 4======
 trtype: tcp
 adrfam: ipv4
@@ -364,9 +414,7 @@ sectype: none
 nvme discover -t tcp -w <host-traddr> -a <traddr>
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력
 [listing]
 ----
 #nvme discover -t tcp -w 192.168.111.79 -a 192.168.111.66
@@ -378,12 +426,10 @@ nvme discover -t tcp -w <host-traddr> -a <traddr>
 +
 [listing]
 ----
-nvme connect-all -t tcp -w host-traddr -a traddr
+nvme connect-all -t tcp -w <host-traddr> -a <traddr>
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력
 [listing]
 ----
 # nvme connect-all -t tcp -w 192.168.111.79 -a 192.168.111.66
@@ -393,7 +439,7 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 ----
 +
 
-NOTE: SUSE Linux Enterprise Server 15 SP6부터 NVMe/TCP 시간 제한에 대한 기본 설정이 `ctrl-loss-tmo` 꺼집니다. 다시 시도 횟수에 제한이 없음을 의미합니다(무제한 재시도). 따라서 또는 `nvme connect-all` 명령(옵션 `-l`)을 사용할 때 특정 시간 초과 기간을 `nvme connect` 수동으로 구성할 필요가 `ctrl-loss-tmo` 없습니다. 또한 NVMe/TCP 컨트롤러는 경로 장애 발생 시 시간 초과가 발생하지 않으며 무기한 연결된 상태를 유지합니다.
+NOTE: SUSE Linux Enterprise Server 15 SP6부터 NVMe/TCP 시간 제한에 대한 기본 설정이 `ctrl-loss-tmo` 꺼집니다. 다시 시도 횟수에 제한이 없으며(무제한 다시 시도) 또는 `nvme connect-all` 명령(옵션 `-l`)을 사용할 때 특정 시간 초과 기간을 `nvme connect` 수동으로 구성할 필요가 `ctrl-loss-tmo` 없습니다. 또한 NVMe/TCP 컨트롤러는 경로 장애 발생 시 시간 초과가 발생하지 않으며 무기한 연결된 상태를 유지합니다.
 
 
 
@@ -401,7 +447,7 @@ NOTE: SUSE Linux Enterprise Server 15 SP6부터 NVMe/TCP 시간 제한에 대한
 
 == NVMe-oF를 검증합니다
 
-다음 절차를 사용하여 NVMe-oF를 검증합니다.
+다음 절차에 따라 ONTAP 구성이 포함된 SUSE Linux Enterprise Server 15 SP6의 NVMe-oF를 검증합니다.
 
 .단계
 . 커널 내 NVMe 다중 경로가 활성화되었는지 확인:
@@ -409,8 +455,10 @@ NOTE: SUSE Linux Enterprise Server 15 SP6부터 NVMe/TCP 시간 제한에 대한
 [listing]
 ----
 cat /sys/module/nvme_core/parameters/multipath
-Y
 ----
++
+예상 값은 "Y"입니다.
+
 . 호스트에 ONTAP NVMe 네임스페이스에 대한 올바른 컨트롤러 모델이 있는지 확인합니다.
 +
 [listing]
@@ -418,9 +466,7 @@ Y
 cat /sys/class/nvme-subsystem/nvme-subsys*/model
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력
 [listing]
 ----
 NetApp ONTAP Controller
@@ -433,9 +479,7 @@ NetApp ONTAP Controller
 cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력
 [listing]
 ----
 round-robin
@@ -448,9 +492,9 @@ round-robin
 nvme list -v
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력을 표시합니다
+[%collapsible]
+====
 [listing]
 ----
 Subsystem        Subsystem-NQN                                                                         Controllers
@@ -467,6 +511,7 @@ Device        Generic     NSID       Usage                 Format         Contro
 ------------ ------------ ---------- -------------------------------------------------------------
 /dev/nvme0n1 /dev/ng0n1   0x1     1.07  GB /   1.07  GB    4 KiB +  0 B   nvme0, nvme1, nvme2, nvme3
 ----
+====
 . 각 경로의 컨트롤러 상태가 라이브이고 올바른 ANA 상태인지 확인합니다.
 +
 [listing]
@@ -478,11 +523,15 @@ nvme list-subsys /dev/<subsystem_name>
 ====
 .NVMe/FC
 --
-* 예제 출력 *
-
+[listing]
+----
+nvme list-subsys /dev/nvme2n1
+----
+.예제 출력을 표시합니다
+[%collapsible]
+=====
 [listing, subs="+quotes"]
 ----
-# nvme list-subsys /dev/nvme2n1
 nvme-subsys2 - NQN=nqn.1992-
 08.com.netapp:sn.06303c519d8411eea468d039ea36a106:subs
 ystem.nvme
@@ -490,27 +539,33 @@ ystem.nvme
 0056-5410-8048-c6c04f425633
  iopolicy=round-robin
 \
-+- nvme4 fc traddr=nn-0x208fd039ea359e4a:pn-0x210dd039ea359e4a,host_traddr=nn-0x2000f4c7aa0cd7ab:pn-0x2100f4c7aa0cd7ab live optimized
-+- nvme6 fc traddr=nn-0x208fd039ea359e4a:pn-0x210ad039ea359e4a,host_traddr=nn-0x2000f4c7aa0cd7aa:pn-0x2100f4c7aa0cd7aa live optimized
++- nvme4 *fc* traddr=nn-0x208fd039ea359e4a:pn-0x210dd039ea359e4a,host_traddr=nn-0x2000f4c7aa0cd7ab:pn-0x2100f4c7aa0cd7ab *live optimized*
++- nvme6 *fc* traddr=nn-0x208fd039ea359e4a:pn-0x210ad039ea359e4a,host_traddr=nn-0x2000f4c7aa0cd7aa:pn-0x2100f4c7aa0cd7aa *live optimized*
 
 ----
+=====
 --
 .NVMe/TCP
 --
-* 예제 출력 *
-
+[listing]
+----
+nvme list-subsys
+----
+.예제 출력을 표시합니다
+[%collapsible]
+=====
 [listing, subs="+quotes"]
 ----
-# nvme list-subsys
 nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:subsystem.nvme_tcp_1
  hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b2c04f444d33
  iopolicy=round-robin
 \
-+- nvme4 tcp traddr=192.168.111.66,trsvcid=4420,host_traddr=192.168.111.79,src_addr=192.168.111.79 live
-+- nvme3 tcp traddr=192.168.211.66,trsvcid=4420,host_traddr=192.168.211.79,src_addr=192.168.111.79 live
-+- nvme2 tcp traddr=192.168.111.67,trsvcid=4420,host_traddr=192.168.111.79,src_addr=192.168.111.79 live
-+- nvme1 tcp traddr=192.168.211.67,trsvcid=4420,host_traddr=192.168.211.79,src_addr=192.168.111.79 live
++- nvme4 *tcp* traddr=192.168.111.66,trsvcid=4420,host_traddr=192.168.111.79,src_addr=192.168.111.79 *live*
++- nvme3 *tcp* traddr=192.168.211.66,trsvcid=4420,host_traddr=192.168.211.79,src_addr=192.168.111.79 *live*
++- nvme2 *tcp* traddr=192.168.111.67,trsvcid=4420,host_traddr=192.168.111.79,src_addr=192.168.111.79 *live*
++- nvme1 *tcp* traddr=192.168.211.67,trsvcid=4420,host_traddr=192.168.211.79,src_addr=192.168.111.79 *live*
 ----
+=====
 --
 ====
 . NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다.
@@ -519,8 +574,11 @@ nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:su
 ====
 .열
 --
-`nvme netapp ontapdevices -o column` * 출력 예 *:
-
+[listing]
+----
+nvme netapp ontapdevices -o column
+----
+.예제 출력
 [listing]
 ----
 Device           Vserver    Namespace Path                       NSID UUID                                   Size
@@ -531,8 +589,13 @@ Device           Vserver    Namespace Path                       NSID UUID      
 --
 .JSON을 참조하십시오
 --
-`nvme netapp ontapdevices -o json` * 출력 예 *:
-
+[listing]
+----
+nvme netapp ontapdevices -o json
+----
+.예제 출력을 표시합니다
+[%collapsible]
+=====
 [listing]
 ----
 {
@@ -550,6 +613,7 @@ Device           Vserver    Namespace Path                       NSID UUID      
 ]
 }
 ----
+=====
 --
 ====
 
@@ -558,7 +622,7 @@ Device           Vserver    Namespace Path                       NSID UUID      
 
 == 영구 검색 컨트롤러를 만듭니다
 
-ONTAP 9.11.1부터 SUSE Linux Enterprise Server 15 SP6 호스트에 대한 영구 검색 컨트롤러(PDC)를 만들 수 있습니다. PDC는 NVMe 하위 시스템의 추가 또는 제거 시나리오와 검색 로그 페이지 데이터의 변경 사항을 자동으로 감지하기 위해 필요합니다.
+ONTAP 9.11.1부터 SUSE Linux Enterprise Server 15 SP6 호스트에 대한 영구 검색 컨트롤러(PDC)를 생성할 수 있습니다. PDC는 NVMe 하위 시스템의 추가 또는 제거 작업과 검색 로그 페이지 데이터의 변경 사항을 자동으로 감지하기 위해 필요합니다.
 
 .단계
 . 검색 로그 페이지 데이터를 사용할 수 있고 이니시에이터 포트와 타겟 LIF 조합을 통해 검색할 수 있는지 확인합니다.
@@ -568,7 +632,7 @@ ONTAP 9.11.1부터 SUSE Linux Enterprise Server 15 SP6 호스트에 대한 영�
 nvme discover -t <trtype> -w <host-traddr> -a <traddr>
 ----
 +
-.출력 예 표시:
+.예제 출력을 표시합니다
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -577,47 +641,47 @@ Discovery Log Number of Records 8, Generation counter 18
 =====Discovery Log Entry 0======
 trtype: tcp
 adrfam: ipv4
-subtype: current discovery subsystem
+subtype: *current discovery subsystem*
 treq: not specified
 portid: 4
 trsvcid: 8009
 subnqn: nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:discovery
 traddr: 192.168.211.67
-eflags: explicit discovery connections, duplicate discovery information
-sectype: none
+eflags: *explicit discovery connections, duplicate discovery information*
+sectype: *none*
 =====Discovery Log Entry 1======
 trtype: tcp
 adrfam: ipv4
-subtype: current discovery subsystem
+subtype: *current discovery subsystem*
 treq: not specified
 portid: 2
 trsvcid: 8009
 subnqn: nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:discovery
 traddr: 192.168.111.67
-eflags: explicit discovery connections, duplicate discovery information
-sectype: none
+eflags: *explicit discovery connections, duplicate discovery information*
+sectype: *none*
 =====Discovery Log Entry 2======
 trtype: tcp
 adrfam: ipv4
-subtype: current discovery subsystem
+subtype: *current discovery subsystem*
 treq: not specified
 portid: 3
 trsvcid: 8009
 subnqn: nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:discovery
 traddr: 192.168.211.66
-eflags: explicit discovery connections, duplicate discovery information
-sectype: none
+eflags: *explicit discovery connections, duplicate discovery information*
+sectype: *none*
 =====Discovery Log Entry 3======
 trtype: tcp
 adrfam: ipv4
-subtype: current discovery subsystem
-treq: not specified
+subtype: *current discovery subsystem*
+treq: *not specified*
 portid: 1
 trsvcid: 8009
 subnqn: nqn.1992-08.com.netapp:sn.8b5ee9199ff411eea468d039ea36a106:discovery
 traddr: 192.168.111.66
-eflags: explicit discovery connections, duplicate discovery information
-sectype: none
+eflags: *explicit discovery connections, duplicate discovery information*
+sectype: *none*
 =====Discovery Log Entry 4======
 trtype: tcp
 adrfam: ipv4
@@ -672,9 +736,7 @@ sectype: none
 nvme discover -t <trtype> -w <host-traddr> -a <traddr> -p
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력
 [listing]
 ----
 nvme discover -t tcp -w 192.168.111.79 -a 192.168.111.666 -p
@@ -686,15 +748,15 @@ nvme discover -t tcp -w 192.168.111.79 -a 192.168.111.666 -p
 vserver nvme show-discovery-controller -instance -vserver <vserver_name>
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력을 표시합니다
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 vserver nvme show-discovery-controller -instance -vserver vs_nvme79
 Vserver Name: vs_CLIENT116 Controller ID: 00C0h
-Discovery Subsystem NQN: nqn.1992-
-08.com.netapp:sn.48391d66c0a611ecaaa5d039ea165514:discovery Logical Interface UUID: d23cbb0a-c0a6-11ec-9731-d039ea165abc Logical Interface:
+Discovery Subsystem NQN: *nqn.1992-*
+*08.com.netapp:sn.48391d66c0a611ecaaa5d039ea165514:discovery* Logical Interface UUID: d23cbb0a-c0a6-11ec-9731-d039ea165abc Logical Interface:
 CLIENT116_lif_4a_1
 Node: A400-14-124
 Host NQN: nqn.2014-08.org.nvmexpress:uuid:12372496-59c4-4d1b-be09-74362c0c1afc
@@ -704,6 +766,7 @@ Host Identifier: 59de25be738348f08a79df4bce9573f3 Admin Queue Depth: 32
 Header Digest Enabled: false Data Digest Enabled: false
 Vserver UUID: 48391d66-c0a6-11ec-aaa5-d039ea165514
 ----
+====
 
 
 
@@ -720,6 +783,8 @@ CLI 또는 구성 JSON 파일을 사용하여 보안 대역 내 인증을 설정
 ====
 .CLI를 참조하십시오
 --
+CLI를 사용하여 보안 인밴드 인증을 설정합니다.
+
 .단계
 . 호스트 NQN 가져오기:
 +
@@ -728,6 +793,9 @@ CLI 또는 구성 JSON 파일을 사용하여 보안 대역 내 인증을 설정
 cat /etc/nvme/hostnqn
 ----
 . SUSE Linux Enterprise Server 15 SP6 호스트에 대한 dhchap 키를 생성합니다.
++
+다음 출력에서는 명령 매개 변수에 대해 `gen-dhchap-key` 설명합니다.
+
 +
 [listing]
 ----
@@ -765,12 +833,12 @@ nvme connect -t tcp -w <host-traddr> -a <tr-addr> -n <host_nqn> -S <authenticati
 +
 [listing]
 ----
-$cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
+cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
 ----
 +
-* 단방향 설정의 예제 출력: *
-
-+
+.단방향 설정에 대한 출력 예제를 표시합니다
+[%collapsible]
+=====
 [listing]
 ----
 # cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
@@ -779,16 +847,17 @@ DHHC-1:03:je1nQCmjJLUKD62mpYbzlpuw0OIws86NB96uNO/t3jbvhp7fjyR9bIRjOHg8wQtye1JCFS
 DHHC-1:03:je1nQCmjJLUKD62mpYbzlpuw0OIws86NB96uNO/t3jbvhp7fjyR9bIRjOHg8wQtye1JCFSMkBQH3pTKGdYR1OV9gx00=:
 DHHC-1:03:je1nQCmjJLUKD62mpYbzlpuw0OIws86NB96uNO/t3jbvhp7fjyR9bIRjOHg8wQtye1JCFSMkBQH3pTKGdYR1OV9gx00=:
 ----
+=====
 .. 컨트롤러 dhchap 키를 확인합니다.
 +
 [listing]
 ----
-$cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_ctrl_secret
+cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_ctrl_secret
 ----
 +
-* 양방향 구성의 출력 예: *
-
-+
+.에는 양방향 구성의 출력 예가 나와 있습니다
+[%collapsible]
+=====
 [listing]
 ----
 # cat /sys/class/nvme-subsystem/nvme-subsys6/nvme*/dhchap_ctrl_secret
@@ -797,6 +866,7 @@ DHHC-1:03:WorVEV83eYO53kV4Iel5OpphbX5LAphO3F8fgH3913tlrkSGDBJTt3crXeTUB8fCwGbPsE
 DHHC-1:03:WorVEV83eYO53kV4Iel5OpphbX5LAphO3F8fgH3913tlrkSGDBJTt3crXeTUB8fCwGbPsEyz6CXxdQJi6kbn4IzmkFU=:
 DHHC-1:03:WorVEV83eYO53kV4Iel5OpphbX5LAphO3F8fgH3913tlrkSGDBJTt3crXeTUB8fCwGbPsEyz6CXxdQJi6kbn4IzmkFU=:
 ----
+=====
 
 
 
@@ -804,10 +874,14 @@ DHHC-1:03:WorVEV83eYO53kV4Iel5OpphbX5LAphO3F8fgH3913tlrkSGDBJTt3crXeTUB8fCwGbPsE
 --
 .JSON 파일
 --
-ONTAP 컨트롤러 구성에서 여러 NVMe 서브시스템을 사용할 수 있는 경우 파일을 명령과 함께 `nvme connect-all` 사용할 수 `/etc/nvme/config.json` 있습니다. 옵션을 사용하여 JSON 파일을 생성할 수 `-o` 있습니다. 자세한 구문 옵션은 NVMe connect - all manual 페이지를 참조하십시오. 단계. JSON 파일 구성:
+ONTAP 컨트롤러 구성에서 여러 NVMe 서브시스템을 사용할 수 있는 경우 파일을 명령과 함께 `nvme connect-all` 사용할 수 `/etc/nvme/config.json` 있습니다.
 
-+. 예제 출력을 표시합니다
+JSON 파일을 생성하려면 `-o` 옵션을 사용합니다. 자세한 구문 옵션은 NVMe Connect - 모든 설명서 페이지를 참조하십시오.
 
+.단계
+. JSON 파일 구성:
++
+.예제 출력을 표시합니다
 [%collapsible]
 =====
 [listing]
@@ -863,20 +937,23 @@ ONTAP 컨트롤러 구성에서 여러 NVMe 서브시스템을 사용할 수 있
  }
 ]
 ----
+를 누릅니다
+
 =====
++
 
-NOTE: 위의 예제에서 는 `dhchap_key` 에 해당하고 에 `dhchap_secret` `dhchap_ctrl_key` `dhchap_ctrl_secret` 해당합니다. . config JSON 파일을 사용하여 ONTAP 컨트롤러에 연결합니다.
+NOTE: 위의 예제에서 는 `dhchap_key` 에 해당하고 에 `dhchap_secret` `dhchap_ctrl_key` `dhchap_ctrl_secret` 해당합니다.
 
-를 누릅니다
-
+. config JSON 파일을 사용하여 ONTAP 컨트롤러에 연결합니다.
++
 [listing]
 ----
-nvme connect-all -J /etc/nvme/config.json
+# nvme connect-all -J /etc/nvme/config.json
 ----
-+ * 예제 출력 *:
-
-를 누릅니다
-
++
+.예제 출력을 표시합니다
+[%collapsible]
+=====
 [listing]
 ----
 traddr=192.168.111.66 is already connected
@@ -892,6 +969,7 @@ traddr=192.168.211.67 is already connected
 traddr=192.168.111.67 is already connected
 traddr=192.168.111.67 is already connected
 ----
+=====
 . 각 하위 시스템에 대해 해당 컨트롤러에 대해 dhchap 암호가 활성화되어 있는지 확인합니다.
 +
 .. 호스트 dhchap 키를 확인합니다.
@@ -901,9 +979,7 @@ traddr=192.168.111.67 is already connected
 # cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력
 [listing]
 ----
 DHHC-1:01:NunEWY7AZlXqxITGheByarwZdQvU4ebZg9HOjIr6nOHEkxJg:
@@ -915,9 +991,7 @@ DHHC-1:01:NunEWY7AZlXqxITGheByarwZdQvU4ebZg9HOjIr6nOHEkxJg:
 # cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
 ----
 +
-* 출력 예: *
-
-+
+.예제 출력
 [listing]
 ----
 DHHC-
@@ -929,6 +1003,209 @@ DHHC-
 
 --
 ====
+
+
+== 전송 계층 보안을 구성합니다
+
+TLS(전송 계층 보안)는 NVMe-oF 호스트와 ONTAP 어레이 간 NVMe 연결을 위한 안전한 엔드 투 엔드 암호화를 제공합니다. ONTAP 9.16.1부터 CLI 및 구성된 사전 공유 키(PSK)를 사용하여 TLS 1.3을 구성할 수 있습니다.
+
+.이 작업에 대해
+SUSE Linux Enterprise Server 15 SP6 호스트에서 이 절차의 단계를 수행합니다. 단, ONTAP 컨트롤러에서 단계를 수행하도록 지정된 경우는 예외입니다.
+
+.단계
+. 호스트에 다음 ktls-utils, openssl 및 libopenssl 패키지가 설치되어 있는지 확인합니다.
++
+.. `rpm -qa | grep ktls`
++
+.예제 출력
+[listing]
+----
+ktls-utils-0.10+12.gc3923f7-150600.1.2.x86_64
+----
+.. `rpm -qa | grep ssl`
++
+.예제 출력
+[listing]
+----
+openssl-3-3.1.4-150600.5.7.1.x86_64
+libopenssl1_1-1.1.1w-150600.5.3.1.x86_64
+libopenssl3-3.1.4-150600.5.7.1.x86_64
+----
+
+
+. 다음에 대해 올바르게 설정되어 있는지 확인합니다 `/etc/tlshd.conf`.
++
+[listing]
+----
+# cat /etc/tlshd.conf
+----
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+[debug]
+loglevel=0
+tls=0
+nl=0
+[authenticate]
+*keyrings=.nvme*
+[authenticate.client]
+#x509.truststore= <pathname>
+#x509.certificate= <pathname>
+#x509.private_key= <pathname>
+[authenticate.server]
+#x509.truststore= <pathname>
+#x509.certificate= <pathname>
+#x509.private_key= <pathname>
+----
+====
+. 시스템 부팅 시 시작 활성화 `tlshd`:
++
+[listing]
+----
+# systemctl enable tlshd
+----
+. 데몬이 실행 중인지 `tlshd` 확인합니다.
++
+[listing]
+----
+# systemctl status tlshd
+----
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing]
+----
+tlshd.service - Handshake service for kernel TLS consumers
+   Loaded: loaded (/usr/lib/systemd/system/tlshd.service; enabled; preset: disabled)
+   Active: active (running) since Wed 2024-08-21 15:46:53 IST; 4h 57min ago
+     Docs: man:tlshd(8)
+Main PID: 961 (tlshd)
+   Tasks: 1
+     CPU: 46ms
+   CGroup: /system.slice/tlshd.service
+       └─961 /usr/sbin/tlshd
+Aug 21 15:46:54 RX2530-M4-17-153 tlshd[961]: Built from ktls-utils 0.11-dev on Mar 21 2024 12:00:00
+----
+====
+. 다음을 사용하여 TLS PSK를 `nvme gen-tls-key` 생성합니다.
++
+.. `# cat /etc/nvme/hostnqn`
++
+.예제 출력
+[listing]
+----
+nqn.2014-08.org.nvmexpress:uuid:e58eca24-faff-11ea-8fee-3a68dd3b5c5f
+----
+.. `# nvme gen-tls-key --hmac=1 --identity=1 --subsysnqn=nqn.1992-08.com.netapp:sn.1d59a6b2416b11ef9ed5d039ea50acb3:subsystem.sles15`
++
+.예제 출력
+[listing]
+----
+NVMeTLSkey-1:01:dNcby017axByCko8GivzOO9zGlgHDXJCN6KLzvYoA+NpT1uD:
+----
+
+
+. ONTAP 컨트롤러에서 TLS PSK를 ONTAP 하위 시스템에 추가합니다.
++
+[listing]
+----
+# nvme subsystem host add -vserver sles15_tls -subsystem sles15 -host-nqn nqn.2014-08.org.nvmexpress:uuid:ffa0c815-e28b-4bb1-8d4c-7c6d5e610bfc -tls-configured-psk NVMeTLSkey-1:01:dNcby017axByCko8GivzOO9zGlgHDXJCN6KLzvYoA+NpT1uD:
+----
+. TLS PSK를 호스트 커널 키링에 삽입합니다.
++
+[listing]
+----
+# nvme check-tls-key --identity=1 --subsysnqn=nqn.2014-08.org.nvmexpress:uuid:ffa0c815-e28b-4bb1-8d4c-7c6d5e610bf --keydata=NVMeTLSkey-1:01:dNcby017axByCko8GivzOO9zGlgHDXJCN6KLzvYoA+NpT1uD: --insert
+----
++
+.예제 출력
+[listing]
+----
+Inserted TLS key 22152a7e
+----
++
+
+NOTE: PSK는 TLS 핸드셰이크 알고리즘의 "identity v1"을 사용하기 때문에 "NVMe1R01"으로 표시됩니다. Identity v1은 ONTAP에서 지원하는 유일한 버전입니다.
+
+. TLS PSK가 올바르게 삽입되었는지 확인합니다.
++
+[listing]
+----
+# cat /proc/keys | grep NVMe
+----
++
+.예제 출력
+[listing]
+----
+22152a7e I--Q---     1 perm 3b010000     0     0 psk       NVMe1R01 nqn.2014-08.org.nvmexpress:uuid:ffa0c815-e28b-4bb1-8d4c-7c6d5e610bfc nqn.1992-08.com.netapp:sn.1d59a6b2416b11ef9ed5d039ea50acb3:subsystem.sles15 UoP9dEfvuCUzzpS0DYxnshKDapZYmvA0/RJJ8JAqmAo=: 32
+----
+. 삽입된 TLS PSK를 사용하여 ONTAP 하위 시스템에 연결합니다.
++
+.. `# nvme connect -t tcp -w 20.20.10.80 -a 20.20.10.14 -n nqn.1992-08.com.netapp:sn.1d59a6b2416b11ef9ed5d039ea50acb3:subsystem.sles15 --tls_key=0x22152a7e --tls`
++
+.예제 출력
+[listing]
+----
+connecting to device: nvme0
+----
+.. `# nvme list-subsys`
++
+.예제 출력
+[listing]
+----
+nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.1d59a6b2416b11ef9ed5d039ea50acb3:subsystem.sles15
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:ffa0c815-e28b-4bb1-8d4c-7c6d5e610bfc
+               iopolicy=round-robin
+\
+ +- nvme0 tcp traddr=20.20.10.14,trsvcid=4420,host_traddr=20.20.10.80,src_addr=20.20.10.80 live
+----
+
+
+. 대상을 추가하고 지정된 ONTAP 하위 시스템에 대한 TLS 연결을 확인합니다.
++
+`# nvme subsystem controller show -vserver sles15_tls -subsystem sles15 -instance`
+
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing]
+----
+  (vserver nvme subsystem controller show)
+                       Vserver Name: sles15_tls
+                          Subsystem: sles15
+                      Controller ID: 0040h
+                  Logical Interface: sles15t_e1a_1
+                               Node: A900-17-174
+                           Host NQN: nqn.2014-08.org.nvmexpress:uuid:ffa0c815-e28b-4bb1-8d4c-7c6d5e610bfc
+                 Transport Protocol: nvme-tcp
+        Initiator Transport Address: 20.20.10.80
+                    Host Identifier: ffa0c815e28b4bb18d4c7c6d5e610bfc
+               Number of I/O Queues: 4
+                   I/O Queue Depths: 128, 128, 128, 128
+                  Admin Queue Depth: 32
+              Max I/O Size in Bytes: 1048576
+          Keep-Alive Timeout (msec): 5000
+                       Vserver UUID: 1d59a6b2-416b-11ef-9ed5-d039ea50acb3
+                     Subsystem UUID: 9b81e3c5-5037-11ef-8a90-d039ea50ac83
+             Logical Interface UUID: 8185dcac-5035-11ef-8abb-d039ea50acb3
+              Header Digest Enabled: false
+                Data Digest Enabled: false
+       Authentication Hash Function: -
+Authentication Diffie-Hellman Group: -
+                Authentication Mode: none
+       Transport Service Identifier: 4420
+                       TLS Key Type: configured
+                   TLS PSK Identity: NVMe1R01 nqn.2014-08.org.nvmexpress:uuid:ffa0c815-e28b-4bb1-8d4c-7c6d5e610bfc nqn.1992-08.com.netapp:sn.1d59a6b2416b11ef9ed5d039ea50acb3:subsystem.sles15 UoP9dEfvuCUzzpS0DYxnshKDapZYmvA0/RJJ8JAqmAo=
+                         TLS Cipher: TLS-AES-128-GCM-SHA256
+----
+====
+
+
 
 
 == 알려진 문제

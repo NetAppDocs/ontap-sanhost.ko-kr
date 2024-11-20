@@ -22,8 +22,9 @@ ESXi 8.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe
 
 == 지원 가능성
 
-* ONTAP 9.10.1부터 ONTAP에 대해 NVMe/TCP 프로토콜이 지원됩니다.
+* ONTAP 9.16.1부터 새로 생성된 모든 NVMe 네임스페이스에 대해 기본적으로 공간 할당이 활성화됩니다.
 * ONTAP 9.9.1 P3부터 ESXi 8 이상에서 NVMe/FC 프로토콜이 지원됩니다.
+* ONTAP 9.10.1부터 ONTAP에 대해 NVMe/TCP 프로토콜이 지원됩니다.
 
 
 
@@ -266,6 +267,38 @@ tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.167:4420-uuid.f4f14337c3ad4a639edf0
    Path State: active
    Path Config: {ANA_GRP_id=6,*ANA_GRP_state=AO*,health=UP}
 ----
+
+
+
+
+== 공간 할당을 활성화합니다
+
+ESXi 8.x 이상에서는 공간 할당이 지원됩니다.
+
+공간 할당이 사용하도록 설정된 경우 네임스페이스에 공간이 부족할 경우 ONTAP는 쓰기 작업에 사용할 수 있는 여유 공간이 없음을 호스트와 통신합니다. 네임스페이스는 온라인 상태로 유지되고 읽기 작업은 계속 서비스됩니다. 사용 가능한 추가 공간이 생기면 쓰기 작업이 재개됩니다. 또한 공간 할당을 통해 호스트에서 작업을 수행할 수 `UNMAP` 있습니다(일명 `TRIM`). 매핑 해제 작업을 사용하면 호스트에서 더 이상 유효한 데이터를 포함하지 않으므로 더 이상 필요하지 않은 데이터 블록을 식별할 수 있습니다. 그런 다음 스토리지 시스템에서 해당 데이터 블록을 할당 해제하여 다른 곳에서 공간을 사용할 수 있도록 합니다.
+
+.시작하기 전에
+link:https://docs.netapp.com/us-en/ontap/san-admin/enable-space-allocation.html["ONTAP 스토리지 시스템에서 공간을 할당할 수 있습니다"^].. 그런 다음 ESXi 호스트에서 다음 단계를 수행해야 합니다.
+
+.단계
+. ESXi 호스트에서 DSM이 비활성화되었는지 확인합니다.
++
+`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+
++
+예상 값은 0입니다.
+
+. NVMe DSM 활성화:
++
+`esxcfg-advcfg -s 1 /Scsi/NvmeUseDsmTp4040`
+
+. DSM이 활성화되어 있는지 확인합니다.
++
+`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+
++
+예상 값은 1입니다.
+
 
 
 
