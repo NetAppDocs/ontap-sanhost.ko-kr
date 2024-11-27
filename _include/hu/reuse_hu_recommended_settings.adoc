@@ -2,17 +2,13 @@
 :allow-uri-read: 
 
 
- `multipath.conf`다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없으면 다음 명령을 사용하여 빈 0바이트 파일을 만들 수 있습니다.
-
-`touch /etc/multipath.conf`
+ `multipath.conf`다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 빈 0바이트 파일을 만들 수 있습니다 `touch /etc/multipath.conf`
 
  `multipath.conf`파일을 처음 만들 때 다음 명령을 사용하여 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
 
-[listing]
-----
-# chkconfig multipathd on
-# /etc/init.d/multipathd start
-----
+`# chkconfig multipathd on`
+`# /etc/init.d/multipathd start`
+
 다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가 `multipath.conf` 없습니다. 원치 않는 디바이스를 제외하려면 `multipath.conf` 파일에 다음 구문을 추가하여 <DevId>를 제외할 디바이스의 WWID 문자열로 대체합니다.
 
 [listing]
@@ -24,7 +20,6 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-.예
 다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
 
 .단계
@@ -51,6 +46,6 @@ blacklist {
 ----
 
 
-을 항상 확인해야 합니다 `/etc/multipath.conf` 기본 설정을 재정의할 수 있는 레거시 설정 파일(특히 기본값 섹션에 있음)
+기본 설정을 무시할 수 있는 레거시 설정은 항상 파일, 특히 기본값 섹션에서 확인해야 `/etc/multipath.conf` 합니다.
 
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 ONTAP LUN에 대한 중요 매개 변수와 필요한 설정을 보여 `multipathd` 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.

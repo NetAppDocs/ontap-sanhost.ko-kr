@@ -211,7 +211,7 @@ lpfc 드라이버가 최대 1MB의 입출력 요청을 발급하려면 "lpfc_sg_
 # cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. dracut -f 명령을 실행한 다음 호스트를 재부팅합니다.
+. 명령을 실행한 `dracut -f` 다음 호스트를 재부팅합니다.
 . 호스트를 부팅한 후 lpfc_sg_seg_cnt가 256으로 설정되어 있는지 확인합니다.
 +
 [listing]
@@ -292,7 +292,7 @@ lpfc 드라이버가 최대 1MB의 입출력 요청을 발급하려면 "lpfc_sg_
 # cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. dracut -f 명령을 실행한 다음 호스트를 재부팅합니다.
+. 명령을 실행한 `dracut -f` 다음 호스트를 재부팅합니다.
 . 호스트를 부팅한 후 lpfc_sg_seg_cnt가 256으로 설정되어 있는지 확인합니다.
 +
 [listing]
