@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+ONTAP LUN에 대한 올바른 작업을 지원하려면 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인하십시오.

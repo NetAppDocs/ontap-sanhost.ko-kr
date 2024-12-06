@@ -22,15 +22,15 @@ ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 7
 
 == Linux Unified Host Utilities를 설치합니다
 
-NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 32비트 및 64비트 .rpm 파일 구성에 적합한 파일을 모르는 경우 를 사용합니다 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 상호 운용성 매트릭스 툴"^] 필요한 것을 확인합니다.
+NetApp Linux 통합 호스트 유틸리티 소프트웨어 패키지는 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^]32비트 및 64비트 .rpm 파일에서 제공됩니다. 구성에 적합한 파일을 모르는 경우 를 사용하여 필요한 파일을 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 상호 운용성 매트릭스 툴"^]확인합니다.
 
-NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
+NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 이 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 
-현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 이를 업그레이드하거나 제거한 후 다음 단계에 따라 최신 버전을 설치해야 합니다.
+현재 Linux Unified Host Utilities가 설치되어 있는 경우 최신 버전으로 업그레이드하거나 제거한 후 다음 단계에 따라 최신 버전을 설치해야 합니다.
 
 .단계
-. 에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 사이트를 호스트에 연결.
-. 다음 명령을 사용하여 소프트웨어 패키지를 설치합니다.
+. 에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에.
+. 소프트웨어 패키지를 설치합니다.
 +
 "rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
 
@@ -76,7 +76,7 @@ SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다.
 . 여러 경로를 사용할 수 있는지 확인합니다.
 +
 
-NOTE: 호스트 OS가 가동되고 경로에서 실행되면 여러 경로를 사용할 수 있습니다.
+NOTE: 호스트 운영 체제가 실행된 후 경로에서 여러 경로를 사용할 수 있습니다.
 
 . SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
 +
@@ -146,7 +146,7 @@ NOTE: 단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 경�
 
 == 권장 설정
 
-CentOS 7.2 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.  `multipath.conf`다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 빈 0바이트 파일을 만들 수 있습니다 `touch /etc/multipath.conf`
+CentOS 7.2 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.  `multipath.conf`다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수 `touch /etc/multipath.conf` 있습니다.
 
  `multipath.conf`파일을 처음 만들 때 다음 명령을 사용하여 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
 
@@ -192,7 +192,7 @@ blacklist {
 
  항상기본 설정을 무시할 수 있는 레거시 설정은 확인해야 `/etc/multipath.conf` 파일, 특히 기본값 섹션에서 합니다.
 
-다음 표에서는 ONTAP LUN에 대한 중요 매개 변수와 필요한 설정을 보여 `multipathd` 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
 
 [cols="2*"]
 |===
