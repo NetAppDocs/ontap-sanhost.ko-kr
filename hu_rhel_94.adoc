@@ -22,11 +22,9 @@ ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Red Hat Ent
 
 == Linux Unified Host Utilities를 설치합니다
 
-NetApp Linux Unified Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 64비트 .rpm 파일
+에서 NetApp Linux 통합 호스트 유틸리티 소프트웨어 패키지를 64-bit.rpm 파일로 다운로드할 수 있습니다link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^].
 
 NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
-
-현재 Linux Unified Host Utilities 버전이 설치되어 있는 경우 이를 업그레이드하거나 제거한 후 다음 단계에 따라 최신 버전을 설치해야 합니다.
 
 .단계
 . 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에.
@@ -40,7 +38,7 @@ NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장�
 
 == SAN 툴 키트
 
-NetApp 호스트 유틸리티 패키지를 설치하면 도구 키트가 자동으로 설치됩니다. 이 키트는 를 제공합니다 `sanlun` 유틸리티를 사용하여 LUN 및 HBA를 관리할 수 있습니다. 를 클릭합니다 `sanlun` 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
+NetApp 호스트 유틸리티 패키지를 설치하면 툴킷이 자동으로 설치됩니다. 이 키트에서 제공하는 `sanlun` 유틸리티를 사용하면 LUN과 호스트 버스 어댑터(HBA)를 관리할 수 있습니다.  `sanlun`이 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
 
 다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
 
@@ -95,10 +93,10 @@ RHEL(Red Hat Enterprise Linux) 9.4의 경우 `/etc/multipath.conf` 파일이 있
 
 === 모든 SAN 어레이 구성
 
-모든 SAN 어레이(ASA) 구성에서 지정된 LUN에 대한 모든 경로가 활성 및 최적화됩니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
+ASA(All SAN Array) 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
 
 .예
-다음 예는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+다음 예제는 ONTAP LUN에 대한 올바른 출력을 보여줍니다.
 
 [listing]
 ----
@@ -149,10 +147,12 @@ RHEL 9.4 OS는 ONTAP LUN을 인식하도록 컴파일되어 ASA 및 비 ASA 구�
 
  `multipath.conf`파일을 처음 만들 때 다음 명령을 사용하여 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가 `multipath.conf` 없습니다. 원치 않는 디바이스를 제외하려면 `multipath.conf` 파일에 다음 구문을 추가하여 <DevId>를 제외할 디바이스의 WWID 문자열로 대체합니다.
+[listing]
+----
+# systemctl enable multipathd
+# systemctl start multipathd
+----
+다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우, 파일에 장치를 직접 추가할 필요가 `multipath.conf` 없습니다. 파일에 다음 구문을 추가하여 원치 않는 디바이스를 제외할 수 있습니다 `multipath.conf`. <DevId>를 제외할 디바이스의 WWID 문자열로 대체합니다.
 
 [listing]
 ----
@@ -163,14 +163,18 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
+다음 예에서는 디바이스의 WWID를 확인하고 해당 디바이스를 파일에 추가합니다 `multipath.conf`.
 
 .단계
 . WWID 확인:
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+[listing]
+----
 360030057024d0730239134810c0cb833
 ----
 +
@@ -189,9 +193,9 @@ blacklist {
 ----
 
 
- 항상기본 설정을 무시할 수 있는 레거시 설정은 확인해야 `/etc/multipath.conf` 파일, 특히 기본값 섹션에서 합니다.
+기본 설정을 무시할 수 있는 레거시 설정은 항상 파일, 특히 기본값 섹션에서 확인해야 `/etc/multipath.conf` 합니다.
 
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체와 상담하여 영향을 완전히 이해할 때만 재정의할 수 있습니다.
 
 [cols="2*"]
 |===
@@ -272,9 +276,9 @@ devices {
 ----
 
 
-=== KVM 설정
+=== KVM 설정을 구성합니다
 
-권장 설정을 사용하여 KVM(커널 기반 가상 시스템)도 구성할 수 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.
+권장 설정을 사용하여 KVM(커널 기반 가상 시스템)도 구성할 수 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항이 없습니다.
 
 
 

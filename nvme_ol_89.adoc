@@ -272,7 +272,7 @@ QLE2742 FW:v9.12.00 DVR:v10.02.08.100-k
 ONTAP는 컨트롤러 식별 데이터에서 MDTS(MAX Data 전송 크기)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 매개 변수 값을 `lpfc_sg_seg_cnt` 기본값인 64에서 256으로 늘려야 `lpfc` 합니다.
 
 
-NOTE: 다음 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+NOTE: 이 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
 
 .단계
 .  `lpfc_sg_seg_cnt`매개변수를 256으로 설정합니다.
@@ -287,15 +287,12 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
-. 가 `lpfc_sg_seg_cnt` 256인지 확인합니다.
+. 의 예상 값이 256인지 확인합니다 `lpfc_sg_seg_cnt`.
 +
 [listing]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
-+
-예상 값은 256입니다.
-
 
 
 

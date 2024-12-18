@@ -16,9 +16,7 @@ summary: Oracle Linux 8.10 with ONTAP용 NVMe-oF 호스트 구성
 
 
 [role="lead"]
-NetApp SAN 호스트 구성은 ANA(Asymmetric Namespace Access)를 통해 Oracle Linux 8.10에서 NVMe-oF(NVMe over Fabrics) 프로토콜을 지원합니다.
-
-ONTAP LUN에 NVMe-oF를 사용할 수 있습니다. NVMe-oF 환경에서 ANA는 iSCSI 및 FCP 환경의 ALUA 다중 경로와 비슷하며 커널 내 NVMe 다중 경로 기능을 통해 구현됩니다.
+NetApp SAN 호스트 구성은 ANA(Asymmetric Namespace Access)를 통해 NVMe-oF(NVMe over Fabrics) 프로토콜을 지원합니다. NVMe-oF 환경에서 ANA는 iSCSI 및 FCP 환경에서 ALUA(Asymmetric Logical Unit Access) 다중 경로와 같습니다. ANA는 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.
 
 .이 작업에 대해
 Oracle Linux 8.10용 NVMe-oF 호스트 구성에 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.
@@ -257,7 +255,6 @@ NOTE: Oracle Linux 10 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드
 `cat /sys/class/fc_host/host*/symbolic_name`
 
 +
-.출력 예제
 [listing]
 ----
 QLE2772 FW:v9.15.00 DVR:v10.02.09.100-k
@@ -278,7 +275,7 @@ QLE2772 FW:v9.15.00 DVR:v10.02.09.100-k
 ONTAP는 컨트롤러 식별 데이터에서 MDTS(MAX Data 전송 크기)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 매개 변수 값을 `lpfc_sg_seg_cnt` 기본값인 64에서 256으로 늘려야 `lpfc` 합니다.
 
 
-NOTE: 다음 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+NOTE: 이 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
 
 .단계
 .  `lpfc_sg_seg_cnt`매개변수를 256으로 설정합니다.
@@ -293,15 +290,12 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
-. 가 `lpfc_sg_seg_cnt` 256인지 확인합니다.
+. 의 예상 값이 256인지 확인합니다 `lpfc_sg_seg_cnt`.
 +
 [listing]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
-+
-예상 값은 256입니다.
-
 
 
 
@@ -445,7 +439,6 @@ ONTAP LUN에 대한 올바른 작업을 지원하려면 커널 내 NVMe 다중 �
 +
 .. `cat /sys/class/nvme-subsystem/nvme-subsys*/model`
 +
-.출력 예제
 [listing]
 ----
 NetApp ONTAP Controller

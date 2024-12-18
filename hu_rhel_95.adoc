@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_85.html 
-keywords: host utilities, red hat, rhel, linux, 8.5, netapp, ontap 
-summary: Red Hat Enterprise Linux 8.5 및 ONTAP 사용 방법에 대해 설명합니다 
+permalink: hu_rhel_95.html 
+keywords: host utilities, red hat, rhel, linux, 9.5, netapp, ontap, rhel 
+summary: Red Hat Enterprise Linux 9.5 및 ONTAP 사용 방법에 대해 설명합니다 
 ---
-= ONTAP와 함께 Red Hat Enterprise Linux 8.5를 사용하십시오
+= ONTAP에 Red Hat Enterprise Linux 9.5 사용
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Red Hat Enterprise Linux 8.5 및 ONTAP 사용 방법에 대해 설명�
 
 
 [role="lead"]
-ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 있는 Red Hat Enterprise Linux 8.5를 대상으로 구성할 수 있습니다.
+ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 RHEL(Red Hat Enterprise Linux) 9.5을 구성할 수 있습니다.
 
 
 
@@ -35,39 +35,40 @@ NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장�
 
 
 
-NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
 
+== SAN 툴킷을 사용합니다
 
+NetApp 호스트 유틸리티 패키지를 설치하면 툴킷이 자동으로 설치됩니다. 이 키트에서 제공하는 `sanlun` 유틸리티를 사용하면 LUN과 호스트 버스 어댑터(HBA)를 관리할 수 있습니다.  `sanlun`이 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
 
-== SAN 툴킷을 참조하십시오
-
-이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
-
-.예
 다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
 
 [source, cli]
 ----
-# sanlun lun show all
+sanlun lun show all
 ----
-예제 출력:
-
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
-------------------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
+controller(7mode/E-Series)/                                  device          host                  lun
+vserver(cDOT/FlashRay)        lun-pathname                   filename        adapter    protocol   size    product
+---------------------------------------------------------------------------------------------------------------
+vs_sanboot                    /vol/vol_2742/lun              /dev/sdch       host17     FCP        180g    cDOT
+vs_coexistence_QLE2742        /vol/fc_vol_2_9/dynamic_lun    /dev/sdcg       host17     FCP        10g     cDOT
+vs_coexistence_QLE2742        /vol/fc_vol_2_8/dynamic_lun    /dev/sdcf       host17     FCP        10g     cDOT
+vs_coexistence_QLE2742        /vol/fc_vol_2_7/dynamic_lun    /dev/sdce       host17     FCP        10g     cDOT
+vs_coexistence_QLE2742        /vol/fc_vol_2_6/dynamic_lun    /dev/sdcd       host17     FCP        10g     cDOT
 ----
+====
 
 
-== SAN 부팅
+== SAN 부팅을 활성화합니다
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다.
+
+.시작하기 전에
+를 사용하여 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^]OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인합니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -85,13 +86,12 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 
 
-== 다중 경로
+== 경로 다중화 활성화
 
-RHEL(Red Hat Enterprise Linux) 8.5의 경우 '/etc/multipath.conf' 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
+RHEL 9.5에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다. 경로 다중화를 `/etc/multipath.conf` 사용하려면 파일이 있어야 합니다. 파일이 없는 경우 `/etc/multipath.conf` 터치 명령을 사용하여 빈 0바이트 파일을 만들 수 `/etc/multipath.conf` 있습니다. ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 RHEL 9.5가 컴파일되므로 파일을 변경할 필요가 `/etc/multipath.conf` 없습니다.
 
-'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다.
 
-다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 다중 경로 출력 예를 제공합니다.
+NOTE: 단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 4개 이상의 경로로 인해 스토리지 장애 시 경로 문제가 발생할 수 있습니다.
 
 
 
@@ -102,20 +102,21 @@ ASA(All SAN Array) 구성은 지정된 LUN에 대한 모든 경로를 최적화�
 .예
 다음 예제는 ONTAP LUN에 대한 올바른 출력을 보여줍니다.
 
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
-# multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+multipath -ll
+3600a098038314c4a433f577471797958 dm-2 NETAPP,LUN C-Mode
+size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running
+  |- 14:0:0:0  sdc  8:32   active ready running
+  |- 17:0:0:0  sdas 66:192 active ready running
+  |- 14:0:3:0  sdar 66:176 active ready running
+  `- 17:0:3:0  sdch 69:80  active ready running
 ----
-
-NOTE: 단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로 문제가 발생할 수 있습니다.
-
+====
 
 
 === 비 ASA 구성
@@ -125,26 +126,27 @@ NOTE: 단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 경�
 .예
 다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
 
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
-# multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+multipath -ll
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
+size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 16:0:6:35 sdwb  69:624  active ready running
-| |- 16:0:5:35 sdun  66:752  active ready running
+| |- 16:0:3:0  sdcg 69:64  active ready running
+| `- 10:0:0:0  sdb  8:16   active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 15:0:0:35 sdaj  66:48   active ready running
-  |- 15:0:1:35 sdbx  68:176  active ready running
+  |- 10:0:1:0  sdc  8:32   active ready running
+  `- 16:0:2:0  sdcf 69:48  active ready running
 ----
-
-NOTE: 단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로 문제가 발생할 수 있습니다.
-
+====
 
 
 == 권장 설정
 
-RHEL 8.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.
+RHEL 9.5 OS는 ONTAP LUN을 인식하도록 컴파일되어 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.
 
  `multipath.conf`다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수 `touch /etc/multipath.conf` 있습니다.
 
@@ -244,7 +246,7 @@ blacklist {
 | 프리오 | "ONTAP" 
 
 
-| 제품 | LUN. * 
+| 제품 | LUN입니다 
 
 
 | Retain_attached_hw_handler 를 참조하십시오 | 예 
@@ -259,24 +261,28 @@ blacklist {
 | 공급업체 | 넷엡 
 |===
 .예
-다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 no_path_retry의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.
+다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 `multipath.conf` 파일에서 및 `no_path_retry` ONTAP LUN과 호환되지 않는 값을 `path_checker` 정의합니다. 다른 SAN 스토리지가 여전히 호스트에 연결되어 있는 경우 디바이스 스탠자를 사용하여 ONTAP LUN에 대해 이러한 매개 변수를 수정합니다.
 
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
 defaults {
    path_checker      readsector0
-   no_path_retry      fail
+   no_path_retry     fail
 }
 
 devices {
    device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
+      vendor         "NETAPP"
+      product         "LUN"
+      no_path_retry    queue
+      path_checker     tur
    }
 }
 ----
+====
 
 
 === KVM 설정을 구성합니다
@@ -287,4 +293,4 @@ devices {
 
 == 알려진 문제
 
-ONTAP 릴리스가 포함된 RHEL 8.5에는 알려진 문제가 없습니다.
+ONTAP 릴리즈가 포함된 RHEL 9.5의 FC 호스트 구성에는 알려진 문제가 없습니다.

@@ -99,10 +99,10 @@ SUSE Linux Enterprise Server 12의 경우 /etc/multipath.conf 파일이 존재�
 
 === 모든 SAN 어레이 구성
 
-모든 SAN 어레이(ASA) 구성에서 지정된 LUN에 대한 모든 경로가 활성 및 최적화됩니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
+ASA(All SAN Array) 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
 
 .예
-다음 예는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+다음 예제는 ONTAP LUN에 대한 올바른 출력을 보여줍니다.
 
 [listing]
 ----
@@ -151,10 +151,12 @@ SUSE Linux Enterprise Server 12 OS는 컴파일되어 ONTAP LUN을 인식하여 
 
  `multipath.conf`파일을 처음 만들 때 다음 명령을 사용하여 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가 `multipath.conf` 없습니다. 원치 않는 디바이스를 제외하려면 `multipath.conf` 파일에 다음 구문을 추가하여 <DevId>를 제외할 디바이스의 WWID 문자열로 대체합니다.
+[listing]
+----
+chkconfig multipathd on
+/etc/init.d/multipathd start
+----
+다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가 `multipath.conf` 없습니다. 원치 않는 디바이스를 제외하려면 파일에 다음 구문을 `multipath.conf` 추가하여 <DevId>를 제외할 디바이스의 WWID(Worldwide Identifier) 문자열로 대체합니다.
 
 [listing]
 ----
@@ -172,118 +174,88 @@ blacklist {
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
-360030057024d0730239134810c0cb833
+/lib/udev/scsi_id -gud /dev/sda
 ----
-+
-`sda` 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
-
-. 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
 +
 [listing]
 ----
-blacklist {
-     wwid   360030057024d0730239134810c0cb833
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
+3600a098038314c4a433f5774717a3046
+/lib/udev/scsi_id -gud /dev/sda
 ----
++
+360030057024d0730239134810c0cb833를 참조하십시오
 
 
- 항상기본 설정을 무시할 수 있는 레거시 설정은 확인해야 `/etc/multipath.conf` 파일, 특히 기본값 섹션에서 합니다.
-
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
-
-[cols="2*"]
-|===
-| 매개 변수 | 설정 
-
-
-| detect_prio(사전 감지) | 예 
-
-
-| DEV_Loss_TMO | "무한대" 
-
-
-| 장애 복구 | 즉시 
-
-
-| Fast_IO_FAIL_TMO | 5 
-
-
-| 피처 | "3 queue_if_no_path pg_init_retries 50" 
-
-
-| Flush_on_last_del.(마지막 삭제 시 플러시 | "예" 
-
-
-| hardware_handler를 선택합니다 | "0" 
-
-
-| path_checker를 선택합니다 | "tur" 
-
-
-| path_grouping_policy | "group_by_prio(그룹 기준/원시)" 
-
-
-| 경로 선택 | "서비스 시간 0" 
-
-
-| polling_interval입니다 | 5 
-
-
-| 프리오 | "ONTAP" 
-
-
-| 제품 | LUN. * 
-
-
-| Retain_attached_hw_handler 를 참조하십시오 | 예 
-
-
-| RR_WEIGHT | "균일" 
-
-
-| 사용자_친화적_이름 | 아니요 
-
-
-| 공급업체 | 넷엡 
-|===
-.예
-다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 detect_prio의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.
 
 [listing]
 ----
-defaults {
- path_checker readsector0
- detect_prio no
- }
-devices {
- device {
- vendor "NETAPP "
- product "LUN.*"
- path_checker tur
- detect_prio yes
- }
-}
++
+`sda` is the local SCSI disk that you want to add to the blacklist.
+
+. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
+[source,cli]
++
+----
+블랙리스트 {WWID 3600a098038314c4a433f5774717a3046 devnode"(RAM | RAW | 루프 | FD | MD | dm - | SR | SCD | st) [0-9] * "devnode"(a-z] "devnode"(devnode) }
+
+[listing]
 ----
 
+Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
 
-== 알려진 문제
+The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
 
-ONTAP가 포함된 SUSE Linux Enterprise Server 12 릴리즈에는 다음과 같은 알려진 문제가 있습니다.
+//ONTAPDOC-2578 9-Dec-2024
+//ONTAPDOC-2561 25-Nov-202
 
-[cols="3*"]
+
+[cols=2*,options="header"]
 |===
-| NetApp 버그 ID | 제목 | 설명 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=873555["873555)를 참조하십시오"^] | SCSI_DH_ALUA 모듈이 로컬 부팅에서 다중 경로 시작 중에 로드되지 않았습니다 | SCSI_DH_ALUA는 Linux ALUA 장치 핸들러 모듈입니다. 로컬 부팅 시 multipathd를 시작하는 동안에는 로드되지 않습니다. 대상 측에서 ALUA를 사용하도록 설정해도 이 장치 핸들러는 로드되지 않습니다. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=863584["863584)를 참조하십시오"^] | SLES12에서 DM 디바이스를 생성할 때 화면에 "충돌하는 장치 노드'/dev/mapper/360xx '발견" 메시지가 나타납니다 | SLES 12의 /dev/mapper dir 아래에서 DM 장치에 대한 링크를 생성하는 중에 오류가 발생하여 "충돌하는 장치 노드'/dev/mapper/360xx'found" 메시지가 표시될 수 있습니다. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=847490["847490"^] | 다중 경로 데몬은 SLES 12의 경로 오류를 표시합니다 | 스토리지 또는 패브릭 장애가 있는 I/O 중에 SLES12 다중 경로 데몬에서 경로 장애를 관찰할 수 있습니다. 
+| Parameter
+| Setting
+| detect_prio | yes
+| dev_loss_tmo | "infinity"
+| failback | immediate
+| fast_io_fail_tmo | 5
+| features | "3 queue_if_no_path pg_init_retries 50"
+| flush_on_last_del | "yes"
+| hardware_handler | "0"
+| path_checker | "tur"
+| path_grouping_policy | "group_by_prio"
+| path_selector | "service-time 0"
+| polling_interval | 5
+| prio | "ontap"
+| product | LUN.*
+| retain_attached_hw_handler | yes
+| rr_weight | "uniform"
+| user_friendly_names | no
+| vendor | NETAPP
 |===
+
+.Example
+
+The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `detect_prio` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
+
+----
+기본값 {path_checker readsector0 detect_prio no} 장치 {device{vendor "NetApp" 제품 "lun. * "path_checker tur detect_prio yes}
+
+[listing]
+----
+
+== Known issues
+
+The SUSE Linux Enterprise Server 12 with ONTAP release has the following known issues:
+
+[cols=3*,options="header"]
+|===
+| NetApp Bug ID
+| Title
+| Description
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=873555[873555^] | scsi_dh_alua module is not loaded during multipathd startup on local boot | scsi_dh_alua is a Linux ALUA device handler module. This is is not loaded during multipathd startup on local boot. Due to this device handler will not be loaded though ALUA is enabled on target side.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=863584[863584^] | The message "conflicting device node '/dev/mapper/360xx' found" appears on the screen when you create a DM device on SLES12 | You might observe a failure in creating a link to DM devices under /dev/mapper dir in SLES 12 and see the messages
+"conflicting device node '/dev/mapper/360xx' found".
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=847490[847490^] | Multipath daemon shows path failures on SLES 12 | You might observe path failures on the SLES12 multipath daemon during I/O with storage or fabric faults.
+|===
+
+// 2024 SEP 2, ONTAPDOC-2345
+----

@@ -111,10 +111,10 @@ kernel /vmlinuz-2.6.32-358.6.1.el6.x86_64 ro root=/dev/mapper/ vg_ibmx355021082-
 
 === 모든 SAN 어레이 구성
 
-모든 SAN 어레이(ASA) 구성에서 지정된 LUN에 대한 모든 경로가 활성 및 최적화됩니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
+ASA(All SAN Array) 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
 
 .예
-다음 예는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+다음 예제는 ONTAP LUN에 대한 올바른 출력을 보여줍니다.
 
 [listing]
 ----
@@ -164,10 +164,12 @@ RHEL 6.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해
 
  `multipath.conf`파일을 처음 만들 때 다음 명령을 사용하여 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가 `multipath.conf` 없습니다. 원치 않는 디바이스를 제외하려면 `multipath.conf` 파일에 다음 구문을 추가하여 <DevId>를 제외할 디바이스의 WWID 문자열로 대체합니다.
+[listing]
+----
+chkconfig multipathd on
+/etc/init.d/multipathd start
+----
+다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가 `multipath.conf` 없습니다. 원치 않는 디바이스를 제외하려면 파일에 다음 구문을 `multipath.conf` 추가하여 <DevId>를 제외할 디바이스의 WWID(Worldwide Identifier) 문자열로 대체합니다.
 
 [listing]
 ----
@@ -185,134 +187,99 @@ blacklist {
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
-360030057024d0730239134810c0cb833
+/lib/udev/scsi_id -gud /dev/sda
 ----
-+
-`sda` 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
-
-. 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
 +
 [listing]
 ----
-blacklist {
-     wwid   360030057024d0730239134810c0cb833
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
+3600a098038314c4a433f5774717a3046
+/lib/udev/scsi_id -gud /dev/sda
 ----
++
+360030057024d0730239134810c0cb833를 참조하십시오
 
 
- 항상기본 설정을 무시할 수 있는 레거시 설정은 확인해야 `/etc/multipath.conf` 파일, 특히 기본값 섹션에서 합니다.
-
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
-
-[cols="2*"]
-|===
-| 매개 변수 | 설정 
-
-
-| detect_prio(사전 감지) | 예 
-
-
-| DEV_Loss_TMO | "무한대" 
-
-
-| 장애 복구 | 즉시 
-
-
-| Fast_IO_FAIL_TMO | 5 
-
-
-| 피처 | "3 queue_if_no_path pg_init_retries 50" 
-
-
-| Flush_on_last_del.(마지막 삭제 시 플러시 | "예" 
-
-
-| hardware_handler를 선택합니다 | "0" 
-
-
-| no_path_retry 를 선택합니다 | 대기열 
-
-
-| path_checker를 선택합니다 | "tur" 
-
-
-| path_grouping_policy | "group_by_prio(그룹 기준/원시)" 
-
-
-| 경로 선택 | "라운드 로빈 0" 
-
-
-| polling_interval입니다 | 5 
-
-
-| 프리오 | "ONTAP" 
-
-
-| 제품 | LUN. * 
-
-
-| Retain_attached_hw_handler 를 참조하십시오 | 예 
-
-
-| RR_WEIGHT | "균일" 
-
-
-| 사용자_친화적_이름 | 아니요 
-
-
-| 공급업체 | 넷엡 
-|===
-.예
-다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 no_path_retry의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.
 
 [listing]
 ----
-defaults {
-   path_checker      readsector0
-   no_path_retry      fail
-}
++
+`sda` is the local SCSI disk that you want to add to the blacklist.
 
-devices {
-   device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
-   }
-}
+. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
+[source,cli]
++
+----
+블랙리스트 {WWID 3600a098038314c4a433f5774717a3046 devnode"(RAM | RAW | 루프 | FD | MD | dm - | SR | SCD | st) [0-9] * "devnode"(a-z] "devnode"(devnode) }
+
+[listing]
 ----
 
+Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
 
-=== KVM 설정
+The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
 
-권장 설정을 사용하여 KVM(커널 기반 가상 시스템)도 구성할 수 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.
+//ONTAPDOC-2578 9-Dec-2024
+//ONTAPDOC-2561 25-Nov-202
 
-
-
-== 알려진 문제
-
-RHEL 6.5 및 ONTAP 릴리스에는 다음과 같은 알려진 문제가 있습니다.
-
-[cols="3*"]
+[cols=2*,options="header"]
 |===
-| NetApp 버그 ID | 제목 | 설명 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=760515["760515를 참조하십시오"^] | 스토리지 페일오버 작업 중에 RHEL 6.5 8G Qlogic FC SAN 호스트에서 경로 장애 또는 호스트 작동이 멈춤을 관찰했습니다 | 스토리지 페일오버 작업 중에 RHEL 6.5 8G Qlogic FC SAN 호스트에서 경로 장애 또는 호스트 작동이 멈춤을 관찰했습니다. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=758271["758271"^] | 사용자 지정 initrd(dracut -f)로 부팅할 때 bnx2 펌웨어가 로드되지 않음 | 사용자 지정 initrd로 부팅하는 동안 bnx2 펌웨어가 로드되지 않아 Broadcom NetXtreme II 기가비트 컨트롤러 포트가 ping을 하지 않습니다. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799394["799394)를 참조하십시오"^] | RHEL 6U5: Emulex 16G FC(LPe16002B-M6) 호스트 충돌은 스토리지 페일오버 작업이 있는 I/O에서 관찰됩니다 | 스토리지 페일오버 작업이 수행되는 I/O 중에는 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 표시됩니다. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=786571["786571"^] | 스토리지 페일오버 작업 시 I/O 도중 RHEL 6.5에서 QLogic FCoE 호스트 중단/경로 장애가 관찰되었습니다 | 스토리지 페일오버 작업이 있는 I/O 동안 RHEL 6.5에서 QLogic FCoE(QLE8242) 호스트 중단/경로 오류가 관찰되었습니다. 이러한 경우 "Mailbox cmd timeout occurred, cmd=0x54, MB[0]=0x54"라는 메시지가 표시될 수 있습니다. ISP 중단 예약" 메시지가 호스트 중단/경로 오류로 이어집니다. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=801580["801580"^] | 스토리지 페일오버 작업 중 I/O 중에 QLogic 16G FC 호스트가 중단되거나 RHEL 6.5에서 경로 장애가 관찰되었습니다 | 스토리지 페일오버 작업 중에 QLogic 16G FC 호스트(QLE2672)에서 600초 이상의 I/O 지연이 관찰됩니다. 이러한 경우 "Failed mbx[0] = 54, MB[1] = 0, MB[2] = 76b9, MB[3] = 5200, cmd = 54" 메시지가 표시됩니다. 
+| Parameter
+| Setting
+| detect_prio | yes
+| dev_loss_tmo | "infinity"
+| failback | immediate
+| fast_io_fail_tmo | 5
+| features | "3 queue_if_no_path pg_init_retries 50"
+| flush_on_last_del | "yes"
+| hardware_handler | "0"
+| no_path_retry | queue
+| path_checker | "tur"
+| path_grouping_policy | "group_by_prio"
+| path_selector | "round-robin 0"
+| polling_interval | 5
+| prio | "ontap"
+| product | LUN.*
+| retain_attached_hw_handler | yes
+| rr_weight | "uniform"
+| user_friendly_names | no
+| vendor | NETAPP
 |===
+
+.Example
+
+The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `no_path_retry` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
+
+----
+기본값 {PATH_CHECKER readsector0 no_path_retry fail}
+
+장치 {device{vendor "NetApp" 제품 "lun. * "no_path_retry queue path_checker tur}}
+
+[listing]
+----
+
+=== Configure KVM settings
+
+You can use the recommended settings to configure Kernel-based Virtual Machine (KVM) as well. There are no changes required to configure KVM because the LUN is mapped to the hypervisor.
+
+//ONTAPDOC-2561 5-Dec-2024
+
+[[known-problems-and-limitations]]
+== Known issues
+
+The RHEL 6.5 with ONTAP release has the following known issues:
+
+[cols=3*,options="header"]
+|===
+| NetApp Bug ID
+| Title
+| Description
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=760515[760515^] | Path failures or host hangs were observed in RHEL 6.5 8G Qlogic FC SAN host during storage failover operations | Path failures or host hangs were observed in RHEL 6.5 8G Qlogic FC SAN host during storage failover operations.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=758271[758271^] | bnx2 firmware fails to load when booting with custom initrd (dracut -f) | Broadcom NetXtreme II Gigabit controller ports will not ping due to bnx2 firmware fails to load during boot with custom initrd.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799394[799394^] | RHEL 6U5: Emulex 16G FC (LPe16002B-M6) host crash is seen during I/O with storage failover operations | 16G FC Emulex (LPe16002B-M6) host crash is seen during I/O with storage failover operations.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=786571[786571^] | QLogic FCoE host hangs/path failures observed in RHEL 6.5 during I/O with storage failover operations | QLogic FCoE (QLE8242) host hangs/path failures are observed in RHEL 6.5 during I/O with storage failover operations. In such scenarios, you might see the following message: "Mailbox cmd timeout occurred, cmd=0x54, mb[0]=0x54. Scheduling ISP abort" messages which leads to host hung/path failures.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=801580[801580^] | QLogic 16G FC host hangs or path failures observed in RHEL 6.5 during I/O with storage failover operations | The I/O delays of more than 600 seconds are observed with QLogic 16G FC host (QLE2672) during storage failover operations. In such scenarios, the following message is displayed: "Failed mbx[0]=54, mb[1]=0, mb[2]=76b9, mb[3]=5200, cmd=54"
+|===
+
+// 2024 SEP 2, ONTAPDOC-2345
+----
