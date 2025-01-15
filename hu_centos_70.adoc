@@ -179,78 +179,112 @@ blacklist {
 [listing]
 ----
 3600a098038314c4a433f5774717a3046
-/lib/udev/scsi_id -gud /dev/sda
 ----
 +
-360030057024d0730239134810c0cb833를 참조하십시오
+`sda` 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
 
-
-
-[listing]
-----
+. 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
 +
-`sda` is the local SCSI disk that you want to add to the blacklist.
-
-. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
-[source,cli]
-+
+[source, cli]
 ----
-블랙리스트 {WWID 3600a098038314c4a433f5774717a3046 devnode"(RAM | RAW | 루프 | FD | MD | dm - | SR | SCD | st) [0-9] * "devnode"(a-z] "devnode"(devnode) }
-
-[listing]
+blacklist {
+     wwid   3600a098038314c4a433f5774717a3046
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
 ----
 
-Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
 
-The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
+항상 `/etc/multipath.conf` 파일, 특히 기본값 섹션에서 기본 설정을 무시할 수 있는 레거시 설정을 확인하십시오.
 
-//ONTAPDOC-2578 9-Dec-2024
-//ONTAPDOC-2561 25-Nov-202
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
 
-
-[cols=2*,options="header"]
+[cols="2*"]
 |===
-| Parameter
-| Setting
-| detect_prio | yes
-| dev_loss_tmo | "infinity"
-| failback | immediate
-| fast_io_fail_tmo | 5
-| features | "3 queue_if_no_path pg_init_retries 50"
-| flush_on_last_del | "yes"
-| hardware_handler | "0"
-| no_path_retry | queue
-| path_checker | "tur"
-| path_grouping_policy | "group_by_prio"
-| path_selector | "service-time 0"
-| polling_interval | 5
-| prio | "ontap"
-| product | LUN.*
-| retain_attached_hw_handler | yes
-| rr_weight | "uniform"
-| user_friendly_names | no
-| vendor | NETAPP
+| 매개 변수 | 설정 
+
+
+| detect_prio(사전 감지) | 예 
+
+
+| DEV_Loss_TMO | "무한대" 
+
+
+| 장애 복구 | 즉시 
+
+
+| Fast_IO_FAIL_TMO | 5 
+
+
+| 피처 | "3 queue_if_no_path pg_init_retries 50" 
+
+
+| Flush_on_last_del.(마지막 삭제 시 플러시 | "예" 
+
+
+| hardware_handler를 선택합니다 | "0" 
+
+
+| no_path_retry 를 선택합니다 | 대기열 
+
+
+| path_checker를 선택합니다 | "tur" 
+
+
+| path_grouping_policy | "group_by_prio(그룹 기준/원시)" 
+
+
+| 경로 선택 | "서비스 시간 0" 
+
+
+| polling_interval입니다 | 5 
+
+
+| 프리오 | "ONTAP" 
+
+
+| 제품 | LUN. * 
+
+
+| Retain_attached_hw_handler 를 참조하십시오 | 예 
+
+
+| RR_WEIGHT | "균일" 
+
+
+| 사용자_친화적_이름 | 아니요 
+
+
+| 공급업체 | 넷엡 
 |===
-
-.Example
-
-The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `no_path_retry` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
-
-----
-기본값 {PATH_CHECKER readsector0 no_path_retry fail}
-
-장치 {device{vendor "NetApp" 제품 "lun. * "no_path_retry queue path_checker tur}}
+.예
+다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 no_path_retry의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.
 
 [listing]
 ----
+defaults {
+   path_checker      readsector0
+   no_path_retry      fail
+}
 
-=== Configure KVM settings
-
-You can use the recommended settings to configure Kernel-based Virtual Machine (KVM) as well. There are no changes required to configure KVM because the LUN is mapped to the hypervisor.
-
-//ONTAPDOC-2561 5-Dec-2024
-
-== Known issues
-
-There are no known issues for the CentOS 7.0 with ONTAP release.
+devices {
+   device {
+      vendor         "NETAPP  "
+      product         "LUN.*"
+      no_path_retry     queue
+      path_checker      tur
+   }
+}
 ----
+
+
+=== KVM 설정을 구성합니다
+
+권장 설정을 사용하여 KVM(커널 기반 가상 시스템)도 구성할 수 있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항이 없습니다.
+
+
+
+== 알려진 문제
+
+ONTAP 릴리즈의 CentOS 7.0에는 알려진 문제가 없습니다.

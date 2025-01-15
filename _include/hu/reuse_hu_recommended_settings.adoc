@@ -35,31 +35,23 @@ blacklist {
 [listing]
 ----
 3600a098038314c4a433f5774717a3046
-/lib/udev/scsi_id -gud /dev/sda
 ----
 +
-360030057024d0730239134810c0cb833를 참조하십시오
+`sda` 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
 
-
-
-[listing]
-----
+. 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
 +
-`sda` is the local SCSI disk that you want to add to the blacklist.
-
-. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
-[source,cli]
-+
+[source, cli]
 ----
-블랙리스트 {WWID 3600a098038314c4a433f5774717a3046 devnode"(RAM | RAW | 루프 | FD | MD | dm - | SR | SCD | st) [0-9] * "devnode"(a-z] "devnode"(devnode) }
-
-[listing]
+blacklist {
+     wwid   3600a098038314c4a433f5774717a3046
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
 ----
 
-Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
 
-The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
+항상 `/etc/multipath.conf` 파일, 특히 기본값 섹션에서 기본 설정을 무시할 수 있는 레거시 설정을 확인하십시오.
 
-//ONTAPDOC-2578 9-Dec-2024
-//ONTAPDOC-2561 25-Nov-202
-----
+다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
