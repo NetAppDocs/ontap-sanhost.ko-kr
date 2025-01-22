@@ -3440,7 +3440,6 @@ NetApp 온라인 버그 참조 - <block ref="af3b3cf0d6ceafbe31919aa407157743" c
   <block id="e78866ae0ff845eed770c2b938efee3b" category="paragraph">항상<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일, 특히 기본값 섹션에서 기본 설정을 무시할 수 있는 레거시 설정을 확인하십시오.</block>
   <block id="0addb4faeee17f16535b967fa12087f4" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일에서 및<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN과 호환되지 않는 값을<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 정의합니다. 다른 SAN 스토리지가 아직 호스트에 연결되어 있으므로 제거할 수 없는 경우 이러한 매개 변수를 특히 디바이스 스탠자가 있는 ONTAP LUN에 대해 수정할 수 있습니다.</block>
   <block id="1cf74d5a15225e81daff79d7ccb11382" category="admonition">Oracle Linux 8.10 RedHat Enterprise Kernel을 구성하려면 <block ref="8fd6ca76e28de543c48473a969597840" category="inline-link-macro-rx"></block>RHEL(Red Hat Enterprise Linux) 8.10용 을 사용하십시오.</block>
-  <block id="6bb89cc49fca8628d227dd847602703b" category="paragraph">를 사용하여 KVM(커널 기반 가상 머신)을 구성할 수도 <block ref="4bba837a8ebd28cc5db475b23d73ca01" category="inline-xref-macro-rx"></block>있습니다. LUN이 하이퍼바이저에 매핑되므로 KVM을 구성하는 데 필요한 변경 사항은 없습니다.</block>
   <block id="3e1ec4fdd93153b353d57238402daa53" category="paragraph">Oracle Linux 8.10과 ONTAP 릴리스의 경우 알려진 문제가 없습니다.</block>
   <block id="fa82877b3beb26d7d7bc882389d60aca" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.10용 을 참조하십시오<block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block>.</block>
   <block id="38e584f52f25fb096dead8f8866657b0" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.4용 을 참조하십시오<block ref="f736929b1834226891236b2c0b0b218e" category="inline-link-macro-rx"></block>.</block>
@@ -3764,4 +3763,5 @@ NetApp 온라인 버그 참조 - <block ref="af3b3cf0d6ceafbe31919aa407157743" c
   <block id="1e45eb414e878e896ff6c8568d44aaed" category="cell"><block ref="409bdf20edf896ce4497acd46087929e" category="inline-link-macro-rx"></block></block>
   <block id="4ccdcef8fc98cb6452f9ba7aa1df1c0c" category="cell">매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다</block>
   <block id="c6bc802c921069bf472f1e8359672c59" category="cell">매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다. 유지보수 모드는 다음 메시지 이후에 단일 사용자 모드가 됩니다.<block ref="3e4fc983295eaca22de2d8651a4d47f0" prefix=" " category="inline-code"></block></block>
+  <block id="a563fbe9dc21252c94fb2aac9ee8aceb" category="paragraph">LUN이 하이퍼바이저에 매핑되므로 Oracle Linux 8.10에서 커널 기반 가상 머신에 대한 설정을 구성할 필요가 없습니다.</block>
 </blocks>
