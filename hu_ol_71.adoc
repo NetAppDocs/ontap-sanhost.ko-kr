@@ -260,7 +260,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 7.1 RHCK(Red Hat Enterprise Kernel)를 구성하려면 RHEL(Red Hat Enterprise Linux) 7.1용 을 link:hu_rhel_71.html#recommended-settings["권장 설정"]사용하십시오.
+NOTE: Oracle Linux 7.1 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 7.1용 을 link:hu_rhel_71.html#recommended-settings["권장 설정"]사용하십시오.
 
 
 

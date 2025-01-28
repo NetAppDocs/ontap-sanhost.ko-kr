@@ -277,7 +277,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 8.3 RHCK(Red Hat Enterprise Kernel)를 구성하려면 RHEL(Red Hat Enterprise Linux) 8.3용 을 link:hu_rhel_83.html#recommended-settings["권장 설정"]사용하십시오.
+NOTE: Oracle Linux 8.3 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 8.3용 을 link:hu_rhel_83.html#recommended-settings["권장 설정"]사용하십시오.
 
 
 
@@ -286,4 +286,4 @@ NOTE: Oracle Linux 8.3 RHCK(Red Hat Enterprise Kernel)를 구성하려면 RHEL(R
 Oracle Linux 8.3과 ONTAP 릴리스의 경우 알려진 문제가 없습니다.
 
 
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제는 해당 Red Hat Enterprise Linux 릴리스 설명서의 섹션을 참조하십시오link:hu_rhel_83.html#known-problems-and-limitations["알려진 문제"].
+NOTE: Oracle Linux RHCK의 알려진 문제는 해당 RHEL 릴리스 설명서의 섹션을 참조하십시오link:hu_rhel_83.html#known-problems-and-limitations["알려진 문제"].

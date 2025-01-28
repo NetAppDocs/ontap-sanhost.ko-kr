@@ -252,7 +252,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 6.4 RHCK(Red Hat Enterprise Kernel)을 구성하려면 link:hu_rhel_64.html#recommended-settings["권장 설정"]RHEL(Red Hat Enterprise Linux) 6.4용 을 사용하십시오.
+NOTE: Oracle Linux 6.4 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.4용 을 link:hu_rhel_64.html#recommended-settings["권장 설정"]사용하십시오.
 
 
 
@@ -277,4 +277,4 @@ ONTAP 릴리즈가 포함된 Oracle Linux 6.4 릴리스에는 다음과 같은 �
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=739909["739909"^] | OL6.x 및 OL5.x 호스트에서 UEK2를 사용하는 FC 장애가 발생한 후 dm-multipath 장치에서 SG_IO ioctl 시스템 호출이 실패합니다 | UEK2 커널이 있는 Oracle Linux 6.x 호스트와 UEK2 커널이 있는 Oracle Linux 5.x 호스트에서 문제가 발생합니다. 활성 경로 그룹의 모든 경로가 다운되는 패브릭 오류 후 다중 경로 장치의 sg_ * 명령이 EAGAIN 오류 코드(errno)로 실패합니다. 이 문제는 다중 경로 장치에 I/O가 발생하지 않는 경우에만 나타납니다. 다음은 예제입니다. # sg_inq -v /dev/mapper/3600a098041764937303f436c75324370 조회: 12 00 00 00 24 00 ioctl (SG_IO v3)이 OS_err(errno) = 11 조회: OS 오류 통과: 리소스를 일시적으로 사용할 수 없음 HDIO_get_identity octl 실패: 리소스를 일시적으로 사용할 수 없음 [11] /dev/mapper/3600a098041764937303f436c75324370# 이 문제는 DM 다중 경로 장치에서 I/O가 발생하지 않을 때 다른 활성 그룹으로 경로 그룹 전환이 활성화되지 않기 때문에 발생합니다. 이 문제는 다음 버전의 kernel-UEK 및 device-mapper-multipath 패키지에서 발견되었습니다. OL6.4 버전: kernel-UEK-2.6.39-400.17.1.el6uek device-mapper-0.4.9-64.0.1.el6 OL5.9 버전: kernel-UEK-2.6.39-400.1.17.1.el5uek 장치.60.4.multipath-4 
 |===
 
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_64.html#known-problems-and-limitations["알려진 문제"] RHEL(Red Hat Enterprise Linux) 6.4의 경우
+NOTE: Oracle Linux RHCK의 알려진 문제는 RHEL 6.4용 을 참조하십시오link:hu_rhel_64.html#known-problems-and-limitations["알려진 문제"].

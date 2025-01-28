@@ -252,7 +252,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 6.10 RHCK(Red Hat Enterprise Kernel)을 구성하려면 link:hu_rhel_610.html#recommended-settings["권장 설정"]RHEL(Red Hat Enterprise Linux) 6.10용 을 사용하십시오.
+NOTE: Oracle Linux 6.10 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.10용 을 link:hu_rhel_610.html#recommended-settings["권장 설정"]사용하십시오.
 
 
 
@@ -261,4 +261,4 @@ NOTE: Oracle Linux 6.10 RHCK(Red Hat Enterprise Kernel)을 구성하려면 link:
 Oracle Linux 6.10과 ONTAP 릴리스의 경우 알려진 문제가 없습니다.
 
 
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_610.html#known-problems-and-limitations["알려진 문제"] Red Hat Enterprise Linux(RHEL) 6.10의 경우
+NOTE: Oracle Linux RHCK의 알려진 문제는 RHEL 6.10용 을 참조하십시오link:hu_rhel_610.html#known-problems-and-limitations["알려진 문제"].

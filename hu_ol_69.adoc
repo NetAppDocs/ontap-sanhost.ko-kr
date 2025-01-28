@@ -252,7 +252,7 @@ devices {
 }
 ----
 
-NOTE: Oracle Linux 6.9 RHCK(Red Hat Enterprise Kernel)을 구성하려면 link:hu_rhel_69.html#recommended-settings["권장 설정"]RHEL(Red Hat Enterprise Linux) 6.9용 을 사용하십시오.
+NOTE: Oracle Linux 6.9 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.9용 을 link:hu_rhel_69.html#recommended-settings["권장 설정"]사용하십시오.
 
 
 
@@ -268,4 +268,4 @@ ONTAP가 설치된 Oracle Linux 6.9 릴리스에는 다음과 같은 알려진 �
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1082780["1082780"^] | 펌웨어 덤프는 QLE8362 카드가 장착된 OL6.9 하이퍼바이저에서 가끔 관찰됩니다 | QLE8362 카드가 있는 OL6.9 하이퍼바이저에서 스토리지 페일오버 작업 중에 펌웨어 덤프가 가끔 관찰됩니다. 펌웨어 덤프를 수행하면 호스트에서 I/O 중단이 발생할 수 있으며 이 경우 최대 1,000초가 될 수 있습니다. 어댑터가 펌웨어 덤프를 완료하면 I/O 작업이 정상적으로 재개됩니다. 호스트에 추가 복구 절차가 필요하지 않습니다. 펌웨어 덤프를 표시하기 위해 /var/log/message 파일에 다음 메시지가 표시됩니다. ql2xxx[0000:0c:00.3]-d001:3: 임시 버퍼(3/ffc90008901000)에 저장된 펌웨어 덤프, 덤프 상태 플래그(0x3f). 
 |===
 
-NOTE: Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 을 참조하십시오 link:hu_rhel_69.html#known-problems-and-limitations["알려진 문제"] RHEL(Red Hat Enterprise Linux) 6.9의 경우
+NOTE: Oracle Linux RHCK의 알려진 문제는 RHEL 6.9용 을 참조하십시오link:hu_rhel_69.html#known-problems-and-limitations["알려진 문제"].
