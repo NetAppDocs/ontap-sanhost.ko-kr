@@ -20,14 +20,14 @@ ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Red Hat Ent
 
 
 
-== Linux Unified Host Utilities를 설치합니다
+== Linux Host Utilities를 설치합니다
 
-에서 NetApp Linux 통합 호스트 유틸리티 소프트웨어 패키지를 64-bit.rpm 파일로 다운로드할 수 있습니다link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^].
+NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 에서 64-bit.rpm 파일로 다운로드할 수 있습니다link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^].
 
-NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
+NetApp은 Linux 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 
 .단계
-. 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에.
+. 에서 호스트에 64비트 Linux Host Utilities 소프트웨어 패키지를 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 다운로드합니다.
 . 소프트웨어 패키지를 설치합니다.
 +
 "rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
@@ -36,7 +36,7 @@ NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장�
 
 
 
-== SAN 툴 키트
+== SAN 툴킷을 참조하십시오
 
 NetApp 호스트 유틸리티 패키지를 설치하면 툴킷이 자동으로 설치됩니다. 이 키트에서 제공하는 `sanlun` 유틸리티를 사용하면 LUN과 호스트 버스 어댑터(HBA)를 관리할 수 있습니다.  `sanlun`이 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
 
@@ -62,8 +62,8 @@ vs_147_32glpe	         /vol/vol2/lun	 /dev/sdax	host12  FCP        10g	cDOT
 
 == SAN 부팅
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인합니다.
+.시작하기 전에
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -291,7 +291,7 @@ RHEL 9.3과 ONTAP 릴리스의 알려진 문제는 다음과 같습니다.
 | NetApp 버그 ID | 제목 | 설명 | Jira ID입니다 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux 호스트 유틸리티 CLI에서 Emulex HBA(호스트 버스 어댑터) 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다 | RHEL 9.x에서 NetApp Linux SAN 호스트 유틸리티 CLI `sanlun fcp show adapter -v` Emulex HBA(호스트 버스 어댑터) 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다. | 해당 없음 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux 호스트 유틸리티 CLI에서 Emulex HBA(호스트 버스 어댑터) 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다 | RHEL 9.x에서 NetApp Linux SAN Host Utilities CLI `sanlun fcp show adapter -v`는 Emulex HBA(호스트 버스 어댑터) 검색을 지원하는 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다. | 해당 없음 
 
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1593771["1593771"^] | Red Hat Enterprise Linux 9.3 QLogic SAN 호스트가 스토리지 이동성 작업 중에 부분 다중 경로 손실이 발생합니다 | ONTAP 스토리지 컨트롤러 테이크오버 작동 중에 다중 경로의 절반이 중단되거나 페일오버 모드로 전환된 다음 반환 워크플로우 중에 전체 경로 수로 복구해야 합니다. 하지만 RHEL(Red Hat Enterprise Linux) 9.3 QLogic 호스트를 사용하면 스토리지 페일오버 기브백 작업 후에 부분 다중 경로만 복구됩니다. | RHEL 17811을 참조하십시오 

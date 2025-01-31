@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_solaris_62.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방법에 대해 설명합니다 
+summary: ONTAP에서 Solaris 호스트 유틸리티 6.2를 사용하는 방법을 설명합니다 
 ---
-= Solaris Host Utilities 6.2를 설치합니다
+= ONTAP 스토리지용 Solaris Host Utilities 6.2를 설치합니다
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,25 +16,25 @@ summary: ONTAP에서 Linux 통합 호스트 유틸리티 7.1을 사용하는 방
 
 
 [role="lead"]
-Solaris 통합 호스트 유틸리티는 Solaris 호스트에 연결된 NetApp ONTAP 스토리지를 관리하는 데 도움을 줍니다.
+Solaris 호스트 유틸리티는 Solaris 호스트에 연결된 ONTAP 스토리지를 관리하는 데 도움을 줍니다.
 
-Solaris Host Utilities 6.2는 여러 Solaris 환경 및 다중 프로토콜을 지원합니다. 주요 호스트 유틸리티 환경은 다음과 같습니다.
+Solaris Host Utilities 6.2는 여러 Solaris 환경 및 다중 프로토콜을 지원합니다. 기본 호스트 유틸리티 환경은 다음과 같습니다.
 
 * SPARC 프로세서 또는 x86/64 프로세서를 사용하는 시스템에서 FC(Fibre Channel) 또는 iSCSI 프로토콜을 사용하는 MPxIO가 있는 네이티브 OS입니다.
 * SPARC 프로세서를 사용하는 시스템에서 FC 또는 iSCSI 프로토콜을 사용하는 Veritas DMP(Dynamic Multipathing) 또는 x86/64 프로세서를 사용하는 시스템의 iSCSI 프로토콜
 
 
-Solaris Unified Host Utilities 6.2는 다음 버전의 Solaris를 계속 지원합니다.
+Solaris Host Utilities 6.2는 다음 버전의 Solaris를 계속 지원합니다.
 
 * Solaris 11.x 시리즈
 * Solaris 10.x 시리즈
 
 
-.필요한 것
+.시작하기 전에
 * 안정적인 작동을 위해 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하십시오.
 
 
-를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 를 눌러 구성을 확인합니다.
+를 사용하여 구성을 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 
 NOTE: NetApp Solaris Host Utilities 소프트웨어 패키지는 에서 사용할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support 사이트"^] 처리기에 대해 압축된 파일 형식. 사용자 환경에 맞는 Host Utilities 소프트웨어 패키지를 Support 사이트에서 다운로드할 수 있습니다.
@@ -55,13 +55,16 @@ NOTE: NetApp Solaris Host Utilities 소프트웨어 패키지는 에서 사용�
 +
 '#gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz'
 
-. 파일의 압축을 풉니다. 를 사용할 수 있습니다 `tar xvf` 명령을 사용하여 이 작업을 수행합니다.
+. 다음 명령을 사용하여 파일의 압축을 `tar xvf` 풉니다.
 +
 "#tar xvf NetApp_Solaris_host_utilities_6_2_SPARC.tar"
 
-. tar 파일에서 추출한 패키지를 호스트에 추가합니다. pkgadd 명령을 사용하여 이 작업을 수행할 수 있습니다.
+. 명령을 사용하여 tar 파일에서 추출한 패키지를 호스트에 추가합니다 `pkgadd`.
 +
-패키지는 '/opt/ntap/soolkit/bin' 디렉토리에 추가됩니다. 다음 예에서는 "pkgadd" 명령을 사용하여 Solaris 설치 패키지를 설치합니다.
+패키지는 '/opt/ntap/soolkit/bin' 디렉토리에 추가됩니다.
+
++
+다음 예에서는 명령을 사용하여 `pkgadd` Solaris 설치 패키지를 설치합니다.
 
 +
 pkgadd -d./NTAPsagtagool.pkg
@@ -126,4 +129,4 @@ data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A09803830443
 
 ----
 
-NOTE: 이 툴킷은 모든 호스트 유틸리티 구성과 프로토콜에 공통적으로 적용됩니다. 따라서 일부 툴킷 콘텐츠는 한 구성에 적용되지만 다른 구성에 적용되지는 않습니다. 사용하지 않는 구성 요소가 있으면 시스템 성능에 영향을 주지 않습니다.
+NOTE: 이 툴킷은 모든 호스트 유틸리티 구성과 프로토콜에 공통적으로 적용됩니다. 따라서 모든 부품이 모든 설정에 적용되지 않습니다. 사용하지 않는 구성 요소는 시스템 성능에 영향을 주지 않습니다. SAN 툴킷은 AIX 및 PowerVM/VIOS OS 버전에서 지원됩니다.

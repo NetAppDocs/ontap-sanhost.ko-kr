@@ -18,10 +18,7 @@ summary: ONTAP가 포함된 RHEL 9.5용 NVMe-oF 호스트를 구성하는 방법
 [role="lead"]
 NetApp SAN 호스트 구성은 ANA(Asymmetric Namespace Access)를 통해 NVMe-oF(NVMe over Fabrics) 프로토콜을 지원합니다. NVMe-oF 환경에서 ANA는 iSCSI 및 FCP 환경에서 ALUA(Asymmetric Logical Unit Access) 다중 경로와 같습니다. ANA는 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.
 
-
-
-== 이 작업에 대해
-
+.이 작업에 대해
 RHEL(Red Hat Enterprise Linux) 9.5용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.
 
 * 사용 가능한 지원:
@@ -29,7 +26,7 @@ RHEL(Red Hat Enterprise Linux) 9.5용 NVMe-oF 호스트 구성에서 다음과 �
 ** NVMe/FC(NVMe over Fibre Channel) 외에도 NVMe over TCP(NVMe/TCP) 지원 네이티브 패키지의 NetApp 플러그인은 `nvme-cli` NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시합니다.
 ** 동일한 호스트에서 NVMe 및 SCSI 트래픽 모두 실행 예를 들어, SCSI LUN에 대해 SCSI mpath 디바이스에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 디바이스를 구성할 수 있습니다.
 +
-지원되는 구성에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+지원되는 구성에 대한 자세한 내용은 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 
 
@@ -177,7 +174,7 @@ Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 
 
 +
-지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+지원되는 어댑터 드라이버 및 펌웨어 버전의 현재 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
 
 . 의 예상 출력이 `3` 다음과 같이 설정되었는지 확인합니다 `lpfc_enable_fc4_type`.
 +
@@ -303,7 +300,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
-. 의 예상 값이 256인지 확인합니다 `lpfc_sg_seg_cnt`.
+. 의 값이 256인지 `lpfc_sg_seg_cnt` 확인합니다.
 +
 [listing]
 ----

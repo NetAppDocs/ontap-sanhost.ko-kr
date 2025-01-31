@@ -20,16 +20,16 @@ ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용�
 
 
 
-== Linux Unified Host Utilities를 설치합니다
+== Linux Host Utilities를 설치합니다
 
-NetApp Linux 통합 호스트 유틸리티 소프트웨어 패키지는 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^]32비트 및 64비트 .rpm 파일에서 제공됩니다. 구성에 적합한 파일을 모르는 경우 를 사용하여 필요한 파일을 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 상호 운용성 매트릭스 툴"^]확인합니다.
+NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 32비트 및 64비트 .rpm 파일로 에서 사용할 수 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^]있습니다. 구성에 적합한 파일을 모르는 경우 를 사용하여 필요한 파일을 link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]확인합니다.
 
-NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 이 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
+NetApp은 Linux 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 이 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 
-현재 Linux Unified Host Utilities가 설치되어 있는 경우 최신 버전으로 업그레이드하거나 제거한 후 다음 단계에 따라 최신 버전을 설치해야 합니다.
+현재 Linux Host Utilities가 설치되어 있는 경우 최신 버전으로 업그레이드하거나 제거한 후 다음 단계에 따라 최신 버전을 설치해야 합니다.
 
 .단계
-. 에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에.
+. 에서 호스트로 32비트 또는 64비트 Linux Host Utilities 소프트웨어 패키지를 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^]다운로드합니다.
 . 소프트웨어 패키지를 설치합니다.
 +
 "rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
@@ -68,8 +68,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN 부팅
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=90144;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+.시작하기 전에
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -268,14 +268,14 @@ ONTAP 릴리즈가 포함된 Oracle Linux 7.8에는 다음과 같은 알려진 �
 | 1440718 | SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다. | 'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다"^]. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311575["1311575"^] | Qlogic QLE2672(16G)로 스토리지 페일오버 중 읽기/쓰기 작업이 보조 경로를 통해 전환되지 않아 IO 지연 발생 | QLogic QLE2672 16G HBA를 사용하는 Oracle Linux 7.7 커널(5.4.17-2011.0.7.el7uek.x86_6)에서 스토리지 페일오버 작업 중에 보조 경로를 통해 I/O 작업을 재개하지 못할 수 있습니다. 스토리지 페일오버 중 운영 경로가 차단되어 입출력 진행이 중지되는 경우 보조 경로를 통해 입출력 작업이 재개되지 않아 입출력 지연이 발생할 수 있습니다. I/O 작업은 스토리지 페일오버 반환 작업이 완료된 후 기본 경로가 온라인 상태가 된 후에만 다시 시작됩니다. 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311575["1311575"^] | Qlogic QLE2672(16G)를 사용하여 스토리지 페일오버 중에 보조 경로를 통해 전환하지 못해 읽기/쓰기 작업으로 인해 관찰된 I/O 지연 | QLogic QLE2672 16G HBA를 사용하는 Oracle Linux 7.7 커널(5.4.17-2011.0.7.el7uek.x86_6)에서 스토리지 페일오버 작업 중에 보조 경로를 통해 I/O 작업을 재개하지 못할 수 있습니다. 스토리지 페일오버 중 운영 경로가 차단되어 입출력 진행이 중지되는 경우 보조 경로를 통해 입출력 작업이 재개되지 않아 입출력 지연이 발생할 수 있습니다. I/O 작업은 스토리지 페일오버 반환 작업이 완료된 후 기본 경로가 온라인 상태가 된 후에만 다시 시작됩니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311576["1311576"^] | Emulex LPe16002(16G)를 사용한 스토리지 페일오버 중 읽기/쓰기 작업이 2차 경로를 통해 전환되지 않아 발생하는 IO 지연 | Emulex LPe16002 16G HBA를 사용하는 Oracle Linux 7.7 커널(5.4.17-2011.0.7.el7uek.x86_6)에서 스토리지 페일오버 작업 중에 보조 경로를 통해 I/O 작업을 재개하지 못할 수 있습니다. 스토리지 페일오버 중 운영 경로가 차단되어 입출력 진행이 중지되는 경우 보조 경로를 통해 입출력 작업이 재개되지 않아 입출력 지연이 발생할 수 있습니다. I/O 작업은 스토리지 페일오버 반환 작업이 완료된 후 기본 경로가 온라인 상태가 된 후에만 다시 시작됩니다. 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311576["1311576"^] | Emulex LPe16002(16G)를 사용한 스토리지 페일오버 중에 보조 경로를 통한 전환이 실패하여 읽기/쓰기 작업이 관찰되는 입출력 지연 | Emulex LPe16002 16G HBA를 사용하는 Oracle Linux 7.7 커널(5.4.17-2011.0.7.el7uek.x86_6)에서 스토리지 페일오버 작업 중에 보조 경로를 통해 I/O 작업을 재개하지 못할 수 있습니다. 스토리지 페일오버 중 운영 경로가 차단되어 입출력 진행이 중지되는 경우 보조 경로를 통해 입출력 작업이 재개되지 않아 입출력 지연이 발생할 수 있습니다. I/O 작업은 스토리지 페일오버 반환 작업이 완료된 후 기본 경로가 온라인 상태가 된 후에만 다시 시작됩니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246134["1246134"^] | 관측된 IO 지연 및 보고서가 차단됨, 스토리지 페일오버 중에 Emulex LPe16002(16G)로 표시되지 않음 상태로 이동 | Emulex LPe16002B-M6 16G FC(Fibre Channel) HBA(호스트 버스 어댑터)를 사용하여 실행되는 UEK5U2 커널이 있는 Oracle Linux 7.6에서 스토리지 페일오버 작업 중에 보고서가 차단되어 I/O 진행이 중지될 수 있습니다. 스토리지 페일오버 작업에서 변경된 상태가 "온라인" 상태에서 "차단됨" 상태로 보고되어 읽기 및 쓰기 작업이 지연됩니다. 작업이 성공적으로 완료된 후 보고서가 "온라인" 상태로 다시 이동하지 못하고 "차단됨" 상태로 유지됩니다. 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246134["1246134"^] | Emulex LPe16002(16G)를 사용하여 스토리지 페일오버 중에 I/O 지연이 관찰되고 보고가 차단됨, 존재하지 않음 상태로 전환됨 | Emulex LPe16002B-M6 16G FC(Fibre Channel) HBA(호스트 버스 어댑터)를 사용하여 실행되는 UEK5U2 커널이 있는 Oracle Linux 7.6에서 스토리지 페일오버 작업 중에 보고서가 차단되어 I/O 진행이 중지될 수 있습니다. 스토리지 페일오버 작업에서 변경된 상태가 "온라인" 상태에서 "차단됨" 상태로 보고되어 읽기 및 쓰기 작업이 지연됩니다. 작업이 성공적으로 완료된 후 보고서가 "온라인" 상태로 다시 이동하지 못하고 "차단됨" 상태로 유지됩니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327"^] | Qlogic QLE2672(16G) 및 QLE2742(32G)를 사용한 스토리지 페일오버 중에 IO 지연이 관찰되고 Rports가 차단됨 상태로 전환되고 있음 | 스토리지 페일오버 작업 중에 RHEL(Red Hat Enterprise Linux) 7.6에서 QLogic QLE2672 16G 호스트를 사용하는 FC(Fibre Channel) 원격 포트가 차단될 수 있습니다. 스토리지 노드가 다운될 때 논리 인터페이스가 다운되기 때문에 원격 포트는 스토리지 노드 상태를 차단됨 으로 설정합니다. QLogic QLE2672 16G 호스트와 QLE2742 32Gb 파이버 채널(FC) 호스트 버스 어댑터(HBA)를 모두 실행하는 경우 차단된 포트로 인해 IO 진행이 중지될 수 있습니다. 스토리지 노드가 최적 상태로 돌아오면 논리 인터페이스도 함께 가동되고 원격 포트는 온라인 상태가 됩니다. 그러나 원격 포트는 여전히 차단되어 있을 수 있습니다. 이 차단된 상태는 다중 경로 계층의 LUN에 장애가 발생한 것으로 등록됩니다. 다음 명령을 사용하여 원격 포트의 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_stat 차단된 온라인 온라인 온라인 온라인 온라인 온라인 상태의 출력은 다음과 같습니다 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327"^] | Qlogic QLE2672(16G) 및 QLE2742(32G)를 사용하여 스토리지 페일오버 중에 I/O 지연이 관찰되고 Rports가 Blocked, Not Present 상태로 전환됨 | 스토리지 페일오버 작업 중에 RHEL(Red Hat Enterprise Linux) 7.6에서 QLogic QLE2672 16G 호스트를 사용하는 FC(Fibre Channel) 원격 포트가 차단될 수 있습니다. 스토리지 노드가 다운될 때 논리 인터페이스가 다운되기 때문에 원격 포트는 스토리지 노드 상태를 차단됨 으로 설정합니다. QLogic QLE2672 16G 호스트와 QLE2742 32Gb FC(Fibre Channel) HBA(호스트 버스 어댑터)를 모두 실행하는 경우 차단된 포트로 인해 I/O 진행률이 중지될 수 있습니다. 스토리지 노드가 최적 상태로 돌아오면 논리 인터페이스도 함께 가동되고 원격 포트는 온라인 상태가 됩니다. 그러나 원격 포트는 여전히 차단되어 있을 수 있습니다. 이 차단된 상태는 다중 경로 계층의 LUN에 장애가 발생한 것으로 등록됩니다. 다음 명령을 사용하여 원격 포트의 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_stat 차단된 온라인 온라인 온라인 온라인 온라인 온라인 상태의 출력은 다음과 같습니다 
 |===

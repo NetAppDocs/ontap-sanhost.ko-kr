@@ -22,7 +22,7 @@ Oracle Linux 8.2 및 ONTAP를 타겟으로 실행하는 이니시에이터 호�
 
 == 지원 가능성
 
-NVMe/FC는 Oracle Linux 8.2의 ONTAP 9.6 이상에서 지원됩니다. Oracle Linux 8.2 호스트는 동일한 파이버 채널(FC) 이니시에이터 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 실행할 수 있습니다. 지원되는 FC 어댑터 및 컨트롤러 목록은 를 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 참조하십시오. 지원되는 구성의 최신 목록은 을 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+ONTAP 9.6부터 Oracle Linux 8.2에서 NVMe/FC가 지원됩니다. Oracle Linux 8.2 호스트는 동일한 파이버 채널(FC) 이니시에이터 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 실행할 수 있습니다. 지원되는 FC 어댑터 및 컨트롤러 목록은 를 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 참조하십시오. 지원되는 구성의 현재 목록은 을 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 
 NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
@@ -38,7 +38,7 @@ NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라
 == NVMe/FC를 사용하도록 설정합니다
 
 . 서버에 Oracle Linux 8.2를 설치합니다.
-. 설치가 완료되면 지원되는 Unbreakable Enterprise 커널을 실행 중인지 확인합니다. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+. 설치가 완료되면 지원되는 Unbreakable Enterprise 커널을 실행 중인지 확인합니다. 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 +
 [listing]
 ----
@@ -78,7 +78,7 @@ hostnqn+ 문자열이 일치하지 않으면 vserver modify 명령을 사용하�
 
 == NVMe/FC용 Broadcom FC 어댑터를 구성합니다
 
-. 지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+. 지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터의 현재 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
 +
 [listing]
 ----
@@ -262,7 +262,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
-. 의 예상 값이 256인지 확인합니다 `lpfc_sg_seg_cnt`.
+. 의 값이 256인지 `lpfc_sg_seg_cnt` 확인합니다.
 +
 [listing]
 ----

@@ -70,7 +70,7 @@ pkgadd-d NTAPtaggool.pkg
 
 
 
-== SAN 툴킷
+== SAN 툴킷을 참조하십시오
 
 NetApp 호스트 유틸리티 패키지를 설치하면 툴킷이 자동으로 설치됩니다. 이 키트에서 제공하는 `sanlun` 유틸리티를 사용하면 LUN과 호스트 버스 어댑터(HBA)를 관리할 수 있습니다.  `sanlun`이 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
 
@@ -91,12 +91,12 @@ data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475
 
 == SAN 부팅
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+.시작하기 전에
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 SAN 부팅은 Solaris 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다.
 
-FC 프로토콜을 사용하고 Solaris Host Utilities를 실행하여 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 설정하는 방법은 볼륨 관리자 및 파일 시스템에 따라 다를 수 있습니다. 을 참조하십시오 link:hu_solaris_62.html["Solaris 호스트 유틸리티를 설치합니다"] Solaris MPIO(다중 경로 I/O) 환경의 SAN 부팅 LUN에 대한 자세한 내용은 을 참조하십시오.
+FC 프로토콜을 사용하고 Solaris Host Utilities를 실행하여 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 설정하는 방법은 볼륨 관리자 및 파일 시스템에 따라 다를 수 있습니다. Solaris MPIO(Microsoft Multipath I/O) 환경의 SAN 부팅 LUN에 대한 자세한 내용은 을 link:hu_solaris_62.html["Solaris 호스트 유틸리티를 설치합니다"]참조하십시오.
 
 
 
@@ -147,7 +147,7 @@ NOTE: Solaris 호스트에 대한 ONTAP 9.8부터 모든 SAN 어레이(ASA) 구�
 
 == 권장 설정
 
-NetApp은 NetApp ONTAP LUN에 Solaris 11.4 SPARC 및 x86_64에 대해 다음 매개 변수 설정을 사용할 것을 권장합니다. 이러한 매개 변수 값은 Host Utilities에서 설정합니다. Solaris 11.4 시스템 설정에 대한 자세한 내용은 Oracle DOC ID: 2595926.1을 참조하십시오.
+NetApp은 ONTAP LUN에 Solaris 11.4 SPARC 및 x86_64에 대해 다음 매개 변수 설정을 사용할 것을 권장합니다. 이러한 매개 변수 값은 Host Utilities에서 설정합니다. Solaris 11.4 시스템 설정에 대한 자세한 내용은 Oracle DOC ID: 2595926.1을 참조하십시오.
 
 [cols="2*"]
 |===
@@ -218,8 +218,8 @@ NetApp은 NetApp LUN을 사용하는 zpool에서 4KB 정렬 I/O를 성공적으�
 
 * Solaris 가상화 옵션에는 Solaris Logical Domains(LDOM 또는 SPARC용 Oracle VM Server), Solaris Dynamic Domains, Solaris Zones 및 Solaris Containers가 있습니다. 이러한 기술은 다른 아키텍처를 기반으로 한다는 사실에도 불구하고 일반적으로 "Oracle Virtual Machines"로 브랜드가 변경되었습니다.
 * 경우에 따라 특정 Solaris 논리적 도메인 내의 Solaris 컨테이너와 같은 여러 옵션을 함께 사용할 수 있습니다.
-* NetApp은 일반적으로 전체 구성이 Oracle에서 지원되며 LUN에 직접 액세스할 수 있는 파티션이 에 나와 있는 가상화 기술의 사용을 지원합니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스"^] 를 클릭합니다. 여기에는 루트 컨테이너, LDOM I/O 도메인 및 NPIV를 사용한 LDOM이 포함됩니다.
-* 와 같은 가상화된 스토리지 리소스만 사용하는 파티션 또는 가상 머신 `vdsk`NetApp LUN에 직접 액세스할 수 없으므로 특정 조건이 필요하지 않습니다. LDOM I/O 도메인과 같이 기본 LUN에 직접 액세스할 수 있는 파티션 또는 가상 머신만 에서 찾아야 합니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
+* NetApp는 일반적으로 Oracle에서 전체 구성을 지원하고 LUN에 직접 액세스할 수 있는 파티션이 지원되는 구성의 에 나열된 이러한 가상화 기술의 사용을 지원합니다.link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] 여기에는 루트 컨테이너, LDOM I/O 도메인 및 NPIV를 사용한 LDOM이 포함됩니다.
+* 와 같은 가상화된 스토리지 리소스만 사용하는 파티션이나 가상 머신은 `vdsk` NetApp LUN에 직접 액세스할 수 없으므로 특정 조건이 필요하지 않습니다. LDOM I/O 도메인과 같이 기본 LUN에 직접 액세스할 수 있는 파티션 또는 가상 머신만 에서 찾아야 합니다link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^].
 
 
 

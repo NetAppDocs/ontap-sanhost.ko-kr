@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_aix_61_cmd.html 
 keywords: host utilities, aix, powervm, vios, 3.1, 7.2, 7.0, netapp, ontap 
-summary: 호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성의 엔드 투 엔드 검증을 위해 AIX 호스트 유틸리티 샘플 명령 참조를 사용할 수 있습니다. 
+summary: 호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성의 엔드 투 엔드 검증에 AIX 호스트 유틸리티 샘플 명령 참조를 사용할 수 있습니다. 
 ---
 = AIX 호스트 유틸리티 샘플 명령 참조
 :hardbreaks:
@@ -16,7 +16,7 @@ summary: 호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성�
 
 
 [role="lead"]
-호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성의 엔드 투 엔드 검증을 위해 AIX 호스트 유틸리티 샘플 명령 참조를 사용할 수 있습니다.
+호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성의 엔드 투 엔드 검증에 AIX 호스트 유틸리티 샘플 명령 참조를 사용할 수 있습니다.
 
 
 

@@ -30,7 +30,7 @@ cfgdev 명령을 실행하면 다음이 발생합니다.
 +
 ** Fabric에 로그인하는 이니시에이터
 ** 시스템에서 새 장치를 확인합니다.
-** 새 LUN이 기본 PCM을 사용하여 MPIO 디바이스로 매핑되는 새 디바이스 항목을 생성하는 시스템입니다.
+** 새 LUN이 기본 PCM을 사용하여 Microsoft MPIO(다중 경로 I/O) 디바이스로 매핑되는 새 디바이스 항목을 생성하는 시스템입니다.
 
 
 . hdisk MPIO 디바이스가 생성되었는지 확인하려면 다음 명령을 입력합니다.
@@ -59,7 +59,7 @@ hdisk4   Available   MPIO NetApp FCP Default PCM Disk
 hdisk5   Available   MPIO NetApp FCP Default PCM Disk
 hdisk6   Available   MPIO NetApp FCP Default PCM Disk
 ----
-. 설정에 대한 정보를 보려면 다음 명령을 입력합니다.
+. 설정에 대한 정보를 검색합니다.
 +
 'lsdev-dev hdisk_name-attr'
 
@@ -97,7 +97,7 @@ scsi_id         0xd10001                         SCSI ID                        
 start_timeout   60                               START unit time out value               True
 ww_name         0x500a0984994ae0e0               FC World Wide Name                      False
 ----
-. 구성에서 ALUA를 지원하지 않는 경우 경로 우선 순위를 설정하려면 dotpath 유틸리티를 실행해야 합니다. dotpath 유틸리티는 Host Utilities를 설치할 때 설치됩니다. ALUA가 활성화된 경우 dotpath 유틸리티를 사용하지 마십시오. 다음 명령을 입력하여 dotpath를 실행하려면 "oem_setup_env" 모드로 전환합니다.
+. 구성에서 ALUA를 지원하지 않는 경우 dotpath 유틸리티를 사용하여 경로 우선 순위를 설정해야 합니다. dotpath 유틸리티는 Host Utilities를 설치할 때 설치됩니다. ALUA가 활성화된 경우 dotpath 유틸리티를 사용하지 마십시오. 다음 명령을 입력하여 dotpath를 실행할 모드로 전환합니다 `oem_setup_env`.
 +
 'OEM_setup_env'입니다
 
@@ -119,9 +119,9 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 
 
 
-. 구성에서 ALUA를 지원하지 않는 경우 경로 우선 순위를 설정하려면 dotpath 유틸리티를 실행해야 합니다. dotpath 유틸리티는 Host Utilities를 설치할 때 설치됩니다. ALUA가 활성화된 경우 dotpath 유틸리티를 사용하지 마십시오.
+. 구성에서 ALUA를 지원하지 않는 경우 dotpath 유틸리티를 사용하여 경로 우선 순위를 설정해야 합니다. dotpath 유틸리티는 Host Utilities를 설치할 때 설치됩니다. ALUA가 활성화된 경우 dotpath 유틸리티를 사용하지 마십시오.
 +
-.. 모든 Data ONTAP LUN의 우선 순위를 설정하려면 다음을 입력합니다.
+.. 모든 ONTAP LUN의 우선 순위를 설정하려면 다음을 입력합니다.
 +
 "도트경로"를 선택합니다
 

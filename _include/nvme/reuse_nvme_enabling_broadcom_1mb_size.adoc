@@ -20,7 +20,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
-. 의 예상 값이 256인지 확인합니다 `lpfc_sg_seg_cnt`.
+. 의 값이 256인지 `lpfc_sg_seg_cnt` 확인합니다.
 +
 [listing]
 ----

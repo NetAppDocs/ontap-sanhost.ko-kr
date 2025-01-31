@@ -24,7 +24,7 @@ ONTAP를 사용하는 Ubuntu 22.04의 NVMe-oF 호스트 구성에 대해 다음 
 * 명시적 dm-multipath 설정 없이 특정 호스트 버스 어댑터(HBA)의 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용하여 NVMe 네임스페이스를 주장하지 못하게 합니다.
 
 
-지원되는 구성에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+지원되는 구성에 대한 자세한 내용은 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 
 
@@ -166,7 +166,7 @@ Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 
 ----
 +
-지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+지원되는 어댑터 드라이버 및 펌웨어 버전의 현재 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
 
 . 확인합니다 `lpfc_enable_fc4_type` 가 로 설정되어 있습니다 `3`:
 +
@@ -270,7 +270,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
-. 의 예상 값이 256인지 확인합니다 `lpfc_sg_seg_cnt`.
+. 의 값이 256인지 `lpfc_sg_seg_cnt` 확인합니다.
 +
 [listing]
 ----

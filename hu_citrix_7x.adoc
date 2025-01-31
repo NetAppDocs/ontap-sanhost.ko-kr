@@ -22,8 +22,8 @@ FC, FCoE 및 iSCSI 프로토콜을 사용하는 Citrix XenServer 7 시리즈 OS 
 
 == SAN 부팅
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+.시작하기 전에
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -45,7 +45,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 Citrix XenServer의 다중 경로 지원은 Device Mapper multipathd 구성 요소를 기반으로 합니다. 디바이스 매퍼 노드는 XenServer에 제공된 모든 LUN에 대해 자동으로 생성되지 않으며 API(Storage Management Layer)에서 LUN을 적극적으로 사용하는 경우에만 프로비저닝됩니다. Citrix XenServer Storage Manager API 플러그인은 다중 경로 노드의 활성화 및 비활성화를 자동으로 처리합니다.
 
-통합 다중 경로 관리 아키텍처와의 비호환성 때문에 Citrix XenCenter 애플리케이션을 사용하여 스토리지 구성을 관리하는 것이 좋습니다. 장치 매퍼 테이블의 상태를 수동으로 쿼리하거나 시스템의 활성 장치 매퍼 다중 경로 노드를 나열해야 하는 경우 "/sbin/mpathutil status" 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 자세한 내용은 Citrix XenServer의 표준 공급업체 설명서를 참조하십시오.
+통합 다중 경로 관리 아키텍처와의 비호환성 때문에 Citrix XenCenter 애플리케이션을 사용하여 스토리지 구성을 관리하는 것이 좋습니다. 장치 매퍼 테이블의 상태를 수동으로 쿼리하거나 시스템의 활성 장치 매퍼 다중 경로 노드를 나열해야 하는 경우 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다 `/sbin/mpathutil status`. 자세한 내용은 Citrix XenServer의 표준 공급업체 설명서를 참조하십시오.
 
 
 

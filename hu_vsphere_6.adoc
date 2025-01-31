@@ -22,8 +22,8 @@ FC, FCoE 및 iSCSI 프로토콜을 사용하는 vSphere 6.5.x 및 6.7.x 릴리�
 
 == 하이퍼바이저 SAN 부팅
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+.시작하기 전에
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -43,9 +43,9 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 == 다중 경로
 
-ESXi는 하위 플러그인 SATP(Storage Array Type Plugins) 및 PSP(Path Selection Plugins)를 관리하는 NMP(Native Multipathing Plug-in)라는 확장 가능한 다중 경로 모듈을 제공합니다. 이러한 SATP 규칙은 ESXi에서 기본적으로 사용할 수 있습니다.
+ESXi는 NMP(Native Multipathing Plug-in)라는 확장 가능한 경로 다중화 모듈을 제공하여 하위 플러그인, SATP(Storage Array Type Plugins) 및 PSP(Path Selection Plugins)를 관리합니다. 이러한 SATP 규칙은 ESXi에서 기본적으로 사용할 수 있습니다.
 
-NetApp ONTAP 스토리지의 경우 VMW_SATP_ALUA 플러그인은 기본적으로 경로 선택 정책(PSP)으로 "VMW_PSP_RR"과 함께 사용됩니다. 이 문제는 아래 명령을 사용하여 확인할 수 있습니다.
+ONTAP 스토리지의 경우 "VMW_SATP_ALUA" 플러그인이 기본적으로 PSP(경로 선택 정책)로 "VMW_PSP_RR"과 함께 사용됩니다. 다음 명령을 실행하여 PSP를 확인할 수 있습니다.
 
 * ``esxcli storage nmp SATP rule list -s VMW_SATP_ALUA' *
 
@@ -172,7 +172,7 @@ VVOL(가상 볼륨)은 가상 머신(VM) 디스크와 해당 스냅샷 및 고�
 
 VMware vSphere용 ONTAP 툴에는 VMware vCenter가 VVOL 기반 스토리지를 활용할 수 있도록 통합 지점을 제공하는 ONTAP용 VASA Provider가 포함되어 있습니다. ONTAP 툴 OVA를 구축하면 vCenter Server에 자동으로 등록되고 VASA Provider가 설정됩니다.
 
-vCenter 사용자 인터페이스를 사용하여 VVol 데이터 저장소를 생성하는 경우 Vols를 데이터 저장소의 백업 저장소로 생성하는 방법을 안내합니다. VVOL 데이터 저장소 내의 VVol은 PE(프로토콜 엔드포인트)를 사용하여 ESXi 호스트에서 액세스합니다. SAN 환경에서는 PE로 사용하기 위해 데이터 저장소의 각 FlexVol에 4MB LUN이 하나씩 생성됩니다. SAN PE는 ALU(Administrative Logical Unit)이며, VVol은 SLU(include Logical Unit)입니다.
+vCenter UI를 사용하여 VVols 데이터 저장소를 만들 때 데이터 저장소의 백업 스토리지로 FlexVols를 생성하는 방법을 안내합니다. VVol 데이터 저장소 내의 VVol은 PE(프로토콜 엔드포인트)를 사용하여 ESXi 호스트에서 액세스합니다. SAN 환경에서는 PE로 사용할 수 있도록 데이터 저장소의 각 FlexVol volume 볼륨 볼륨에 4MB LUN 하나가 생성됩니다. SAN PE는 ALU(Administrative Logical Unit)이며, VVol은 SLU(include Logical Unit)입니다.
 
 VVOL을 사용할 때는 다음을 비롯한 SAN 환경에 대한 표준 요구사항 및 모범 사례가 적용됩니다(이에 국한되지 않음).
 
@@ -185,11 +185,11 @@ VVOL을 사용할 때는 다음을 비롯한 SAN 환경에 대한 표준 요구�
 
 NOTE: VASA Provider를 설정하려면 VMware vSphere용 ONTAP 툴을 구축해야 합니다. VASA Provider는 모든 igroup 설정을 관리하므로 VVOL 환경에서 iGroup을 생성하거나 관리할 필요가 없습니다.
 
-현재 NetApp은 VVOL 설정을 기본값에서 변경하지 않는 것을 권장합니다.
+현재 NetApp은 VVol 설정을 기본값에서 변경하지 않는 것이 좋습니다.
 
-을 참조하십시오 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 특정 버전의 ONTAP 툴 또는 특정 버전의 vSphere 및 ONTAP를 위한 기존 VASA Provider에 대한 자세한 지원
+특정 버전의 ONTAP 툴은 을 참조하고 https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^], 특정 버전의 vSphere 및 ONTAP는 기존 VASA Provider를 참조하십시오.
 
-VVOL 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서도 참조하십시오 https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] 및 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^]
+VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서 및 https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] 및 를 참조하십시오 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^]
 
 
 
@@ -240,7 +240,7 @@ NOTE: UNMAP을 작동하기 위해 VMware vSphere에 매핑된 모든 LUN에 대
 |===
 
 
-=== 튜닝 가능한 vSphere 검증
+=== 조정 가능한 vSphere를 확인합니다
 
 다음 명령을 사용하여 'HardwareAcceleratedLocking' 설정을 확인합니다.
 
@@ -261,7 +261,7 @@ NOTE: UNMAP을 작동하기 위해 VMware vSphere에 매핑된 모든 LUN에 대
 ----
 
 
-=== 디스크 IOP 설정을 확인하는 중입니다
+=== 디스크 IOPS 설정을 확인합니다
 
 다음 명령을 사용하여 IOP 설정을 확인합니다.
 
@@ -281,7 +281,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
-=== QFullSampleSize 유효성 검사
+=== QFullSampleSize의 유효성을 검사합니다
 
 다음 명령을 사용하여 QFullSampleSize를 확인합니다.
 

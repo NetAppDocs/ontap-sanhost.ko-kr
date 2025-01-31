@@ -22,9 +22,9 @@ ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 IBM AIX 
 
 == AIX Host Utilities를 설치합니다
 
-AIX MPIO를 NetApp ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.
+AIX Microsoft MPIO(다중 경로 I/O)를 ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.
 
-에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support 사이트"^]. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.
+Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 에서 다운로드할 수 있습니다link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support 사이트"^]. 파일을 다운로드한 후 Host Utilities를 설치하는 데 필요한 두 가지 소프트웨어 패키지를 가져오기 위해 압축을 풀어야 합니다.
 
 .단계
 . 호스트에 로그인합니다.
@@ -75,8 +75,8 @@ data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
 
 == SAN 부팅
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+.시작하기 전에
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 SAN 부팅은 AIX 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다. FC 또는 FCoE 프로토콜을 사용하여 AIX Host Utilities를 실행하는 AIX MPIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 생성하고 AIX MPIO 환경에 새 OS 이미지를 설치하는 데 사용하는 방법은 사용 중인 프로토콜에 따라 다를 수 있습니다.
 
@@ -154,7 +154,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == 권장 설정
 
-다음은 ONTAP LUN에 권장되는 매개 변수 설정입니다.  ONTAP 호스트 유틸리티 키트를 설치하면 LUN에 대한 중요 매개 변수가 자동으로 설정됩니다.
+NetApp은 ONTAP LUN에 대해 다음과 같은 매개 변수 설정을 권장합니다. ONTAP 호스트 유틸리티 키트를 설치하면 LUN에 대한 중요 매개 변수가 자동으로 설정됩니다.
 
 [cols="4*"]
 |===

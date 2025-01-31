@@ -81,7 +81,7 @@ nvme_fc nvme_ss  nqn.2014-08.org.nvmexpress:uuid:62a19711-ba8c-475d-c954-0000c9f
 
 를 클릭합니다 `lpfc` 드라이버 및 `qlnativefc` vSphere 8.x의 드라이버에는 기본적으로 NVMe/FC 기능이 활성화되어 있습니다.
 
-을 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^] 드라이버 또는 펌웨어에서 구성이 지원되는지 확인합니다.
+드라이버 또는 펌웨어에서 구성이 지원되는지 확인하려면 을 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 
 

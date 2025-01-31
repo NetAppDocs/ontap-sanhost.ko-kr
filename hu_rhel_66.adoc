@@ -20,16 +20,16 @@ ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat 
 
 
 
-== Linux Unified Host Utilities를 설치합니다
+== Linux Host Utilities를 설치합니다
 
-NetApp Linux 통합 호스트 유틸리티 소프트웨어 패키지는 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^]32비트 및 64비트 .rpm 파일에서 제공됩니다. 구성에 적합한 파일을 모르는 경우 를 사용하여 필요한 파일을 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 상호 운용성 매트릭스 툴"^]확인합니다.
+NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 32비트 및 64비트 .rpm 파일로 에서 사용할 수 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^]있습니다. 구성에 적합한 파일을 모르는 경우 를 사용하여 필요한 파일을 link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]확인합니다.
 
-NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 이 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
+NetApp은 Linux 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 이 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 
-현재 Linux Unified Host Utilities가 설치되어 있는 경우 최신 버전으로 업그레이드하거나 제거한 후 다음 단계에 따라 최신 버전을 설치해야 합니다.
+현재 Linux Host Utilities가 설치되어 있는 경우 최신 버전으로 업그레이드하거나 제거한 후 다음 단계에 따라 최신 버전을 설치해야 합니다.
 
 .단계
-. 에서 32비트 또는 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에.
+. 에서 호스트로 32비트 또는 64비트 Linux Host Utilities 소프트웨어 패키지를 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^]다운로드합니다.
 . 소프트웨어 패키지를 설치합니다.
 +
 "rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
@@ -68,8 +68,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN 부팅
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=68653;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+.시작하기 전에
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.
@@ -311,7 +311,7 @@ RHEL 6.6과 ONTAP 릴리스의 알려진 문제는 다음과 같습니다.
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=863878["863878"^] | 스토리지 장애 시 RHEL 6U6 호스트에서 커널 충돌이 발생합니다 | 스토리지/Fabric 중에 RHEL 6U6 호스트에서 커널 충돌이 발생할 수 있습니다. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=852674["1076584"^] | RHEL 6U4에서 스토리지 장애가 발생한 경우 QLogic 16G FC(QLE2672) 호스트에서 최대 300초의 IO 중지 | 스토리지/패브릭 장애 시 QLogic 16G FC(QLE2672) 호스트에서 최대 300초의 IO 중지가 관찰될 수 있습니다. 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=852674["1076584"^] | RHEL 6U4에서 저장소 장애 시 QLogic 16G FC(QLE2672) 호스트에서 최대 300초의 I/O 중지 | 스토리지/Fabric 장애 시 QLogic 16G FC(QLE2672) 호스트에서 최대 300초의 I/O 스톨이 관찰될 수 있습니다. 
 
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=795684["795684"^] | RHEL6 U5 multipathd가 MOD 및 스토리지 장애 조치 작업 중에 다중 경로 맵을 잘못 그룹화합니다 | LUN 필요 시 이동 작업 중에 스토리지 오류와 함께 LUN에 대한 경로 그룹화가 잘못되는 것을 관찰할 수 있습니다. LUN 이동 작업 중에 다중 경로 경로 우선 순위가 변경되며 스토리지 장애로 인한 장치 오류로 인해 다중 경로가 장치 테이블을 다시 로드할 수 없습니다. 이로 인해 경로 그룹화가 잘못될 수 있습니다. 

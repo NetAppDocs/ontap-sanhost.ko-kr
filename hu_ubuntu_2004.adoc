@@ -22,14 +22,14 @@ summary: ONTAP에서 Ubuntu 20.04를 사용하는 방법을 설명합니다
 ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Ubuntu 20.04를 구성할 수 있습니다.
 
 
-NOTE: NetApp Linux 통합 호스트 유틸리티 소프트웨어 패키지는 Ubuntu 20.04 OS에서 사용할 수 없습니다.
+NOTE: NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 Ubuntu 20.04 OS에서 사용할 수 없습니다.
 
 
 
 == SAN 부팅
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+.시작하기 전에
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.

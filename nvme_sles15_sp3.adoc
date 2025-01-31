@@ -18,15 +18,15 @@ summary: ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP3용 NVMe/FC를
 [role="lead"]
 ANA(비대칭 네임스페이스 액세스)가 있는 SUSE Linux Enterprise Server 15 SP3에 대해 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)가 지원됩니다. ANA는 NVMe-oF 환경에서 ALUA에 상응하는 제품으로 현재 커널 내 NVMe 다중 경로를 통해 구현됩니다. 이 절차를 사용하면 SUSE Linux Enterprise Server 15 SP3의 ANA 및 ONTAP를 대상으로 사용하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화할 수 있습니다.
 
-을 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 지원되는 구성에 대한 정확한 세부 정보
+지원되는 구성에 대한 정확한 세부 정보는 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 
 
 == 피처
 
 * SUSE Linux Enterprise Server 15 SP3은 NVMe/FC 및 기타 전송을 지원합니다.
-* NVMe-oF에는 sandlun 지원이 없습니다. 따라서 SUSE Linux Enterprise Server 15 SP3의 NVMe-OF에 대한 LUHU 지원은 없습니다. NVMe-oF용 기본 NVMe-CLI 패키지에 포함된 NetApp 플러그인을 사용할 수 있습니다. 모든 NVMe-oF 전송을 지원해야 합니다.
-* NVMe와 SCSI 트래픽을 모두 동일한 동일한 호스트에서 실행할 수 있습니다. 실제로 이는 일반적으로 고객에게 배포된 호스트 구성일 것으로 예상됩니다. 따라서 SCSI의 경우 SCSI LUN에 대해 평소처럼 dm-multipath를 구성하여 mpath 디바이스를 생성할 수 있지만 NVMe multipath를 사용하여 호스트에 NVMe-of multipath 장치를 구성할 수 있습니다.
+* NVMe-oF에는 sandlun 지원이 없습니다. 따라서 SUSE Linux Enterprise Server 15 SP3에서 NVMe-OF에 대한 Linux Host Utilities는 지원되지 않습니다. NVMe-oF용 기본 NVMe-CLI 패키지에 포함된 NetApp 플러그인을 사용할 수 있습니다. 모든 NVMe-oF 전송을 지원해야 합니다.
+* NVMe 및 SCSI 트래픽을 모두 동일한 호스트에서 실행할 수 있습니다. 실제로 이는 일반적으로 고객에게 배포된 호스트 구성일 것으로 예상됩니다. 따라서 SCSI의 경우 SCSI LUN에 대해 평소와 같이 구성하여 `dm-multipath` mpath 장치를 초래할 수 있는 반면, NVMe 다중 경로를 사용하여 호스트에서 NVMe-oF 다중 경로 장치를 구성할 수 있습니다.
 
 
 
@@ -39,13 +39,13 @@ ANA(비대칭 네임스페이스 액세스)가 있는 SUSE Linux Enterprise Serv
 
 == In-kernel NVMe Multipath를 활성화합니다
 
-커널 내 NVMe 다중 경로는 SUSE Linux Enterprise Server 15 SP3과 같은 SUSE Linux Enterprise Server 호스트에서 이미 기본적으로 활성화되어 있습니다. 따라서 여기서는 추가 설정이 필요하지 않습니다. 지원되는 구성에 대한 정확한 세부 정보는 를 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^]참조하십시오.
+커널 내 NVMe 다중 경로는 SUSE Linux Enterprise Server 15 SP3과 같은 SUSE Linux Enterprise Server 호스트에서 이미 기본적으로 활성화되어 있습니다. 따라서 여기서는 추가 설정이 필요하지 않습니다. 지원되는 구성에 대한 정확한 세부 정보는 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 
 
 == NVMe - 이니시에이터 패키지
 
-을 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^] 지원되는 구성에 대한 정확한 세부 정보
+지원되는 구성에 대한 정확한 세부 정보는 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 . SUSE Linux Enterprise Server 15 SP3 MU 호스트에 필수 커널 및 NVMe-CLI MU 패키지가 설치되어 있는지 확인합니다.
 +
@@ -208,7 +208,7 @@ FCP CMPL: xb 0000159d Err 000135c3
 
 ==== 1MB I/O 크기 활성화(옵션)
 
-ONTAP는 컨트롤러 식별 데이터에 8의 MDTS(MAX Data 전송 크기)를 보고합니다. 즉, 최대 I/O 요청 크기는 최대 1MB여야 합니다. 그러나 Broadcom NVMe/FC 호스트에 대해 크기 1MB의 입출력 요청을 발급하려면 lpfc 매개 변수 "lpfc_sg_seg_cnt"를 기본값 64에서 최대 256까지 범프해야 합니다. 다음 지침에 따라 수행합니다.
+ONTAP는 컨트롤러 식별 데이터에 8의 MDTS(MAX Data 전송 크기)를 보고합니다. 즉, 최대 I/O 요청 크기는 최대 1MB여야 합니다. 그러나 Broadcom NVMe/FC 호스트에 1MB 크기의 I/O 요청을 발행하려면 lpfc 매개 변수도 `lpfc_sg_seg_cnt` 기본값인 64에서 256까지 증가시켜야 합니다. 다음 지침에 따라 수행합니다.
 
 . 해당 'modprobe lpfc.conf' 파일에 256을 추가합니다.
 +

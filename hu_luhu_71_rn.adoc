@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_luhu_71_rn.html 
 keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
-summary: Linux Unified Host Utilities 7.1 릴리스 정보 
+summary: Linux Host Utilities 7.1 릴리즈 노트 
 ---
-= Linux Unified Host Utilities 7.1 릴리스 정보
+= Linux Host Utilities 7.1 릴리스 정보
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,7 +18,7 @@ summary: Linux Unified Host Utilities 7.1 릴리스 정보
 [role="lead"]
 릴리즈 노트에서는 ONTAP 스토리지 시스템에서 특정 호스트를 구성 및 관리하기 위한 새로운 기능 및 향상된 기능, 알려진 문제 및 제한 사항, 중요한 주의 사항에 대해 설명합니다.
 
-Host Utilities가 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
+Host Utilities에서 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오.link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]
 
 
 
@@ -47,7 +47,7 @@ NOTE: 이 문서에서 Host Utilities 또는 Linux Host Utilities에 대한 언�
 
 
 
-NOTE: NetApp은 최초 릴리즈 이후에도 Host Utilities와 계속 협력하여 기능에 대한 지원을 추가합니다. 지원되는 기능 및 추가된 새 기능에 대한 최신 정보는 를 참조하십시오 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^].
+NOTE: NetApp은 최초 릴리즈 이후에도 Host Utilities와 계속 협력하여 기능에 대한 지원을 추가합니다. 지원되는 기능 및 추가된 새 기능에 대한 최신 정보는 를 참조하십시오link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^].
 
 
 
@@ -66,12 +66,9 @@ Linux Host Utilities 7.1 릴리스에는 다음과 같은 알려진 문제와 �
 | NetApp 버그 ID | 제목 | 설명 
 
 
-| 1457017 | Sanlun 설치는 libdevmapper.so와 libnl.so 라이브러리와 관련된 경고 메시지를 발행한다. 이러한 경고는 '선' 키트의 기능에 영향을 주지 않습니다. | SAN 호스트에서 Linux Unified Host Utilities CLI 명령 " sanlun fcp show adapter -v "를 실행할 때 명령이 실패하고 HBA(호스트 버스 어댑터) 검색에 필요한 라이브러리 종속성이 로 표시되지 않는다는 오류 메시지가 표시됩니다
-위치:
-
-[root@hostname~]#sanlun fcp show adapter-v
-/usr/lib64/libHBAAPI.so 라이브러리를 찾을 수 없습니다
-라이브러리를 설치하는 패키지가 설치 및 로드되었는지 확인합니다
-NetApp 온라인 버그 참조 - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^]. 
+| 1457017 | Sanlun 설치는 libdevmapper.so와 libnl.so 라이브러리와 관련된 경고 메시지를 발행한다. 이러한 경고는 '선' 키트의 기능에 영향을 주지 않습니다. | SAN 호스트에서 Linux Host Utilities CLI 명령 " sanlun fcp show adapter -v "를 실행하면 HBA(호스트 버스 어댑터) 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시되며 명령이 실패합니다. NetApp 버그 온라인 참조 - 를 참조하십시오.
+`[root@hostname ~]# sanlun fcp show adapter -v
+Unable to locate /usr/lib64/libHBAAPI.so library
+Make sure the package installing the library is installed & loaded`link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp 온라인 버그"^] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다.

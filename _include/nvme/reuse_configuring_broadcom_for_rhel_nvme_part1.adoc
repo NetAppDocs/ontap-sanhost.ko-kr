@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-지원되는 어댑터의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+지원되는 어댑터의 현재 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
 
 .단계
 . 지원되는 어댑터를 사용하고 있는지 확인합니다.
@@ -71,7 +71,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 . 1MB 입출력 크기 설정 _ (선택 사항) _.
 +
-lpfc 드라이버가 최대 1MB의 입출력 요청을 발급하려면 "lpfc_sg_seg_cnt" 매개변수를 256으로 설정해야 합니다.
+ `lpfc_sg_seg_cnt`lpfc 드라이버에서 최대 1MB의 I/O 요청을 실행하려면 매개변수를 256으로 설정해야 합니다.
 
 +
 [listing]

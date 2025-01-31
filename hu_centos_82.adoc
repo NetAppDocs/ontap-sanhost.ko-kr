@@ -20,14 +20,14 @@ ONTAP SAN 호스트 구성 설정을 사용하여 CentOS 8.2를 ONTAP가 타겟�
 
 
 
-== Linux Unified Host Utilities를 설치합니다
+== Linux Host Utilities를 설치합니다
 
-에서 NetApp Linux 통합 호스트 유틸리티 소프트웨어 패키지를 64-bit.rpm 파일로 다운로드할 수 있습니다link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^].
+NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 에서 64-bit.rpm 파일로 다운로드할 수 있습니다link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^].
 
-NetApp은 Linux 통합 호스트 유틸리티를 설치할 것을 적극 권장하지만 반드시 설치할 필요는 없습니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
+NetApp은 Linux 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
 
 .단계
-. 에서 64비트 Linux Unified Host Utilities 소프트웨어 패키지를 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에.
+. 에서 호스트에 64비트 Linux Host Utilities 소프트웨어 패키지를 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 다운로드합니다.
 . 소프트웨어 패키지를 설치합니다.
 +
 "rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
@@ -66,8 +66,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN 부팅
 
-.필요한 것
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용할 수 있습니다 link:https://mysupport.netapp.com/matrix/imt.jsp?components=96167;&solution=236&isHWU&src=IMT["NetApp 상호 운용성 매트릭스 툴"^] 사용 중인 OS, HBA, HBA 펌웨어 및 HBA 부팅 BIOS, ONTAP 버전이 지원되는지 확인합니다.
+.시작하기 전에
+SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
 
 .단계
 . SAN 부팅 LUN을 호스트에 매핑합니다.

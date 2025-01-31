@@ -8,10 +8,7 @@ summary: 법적 고지 사항은 저작권 선언, 상표, 특허 등에 대한 
 :allow-uri-read: 
 
 
-[role="lead"]
-법적 고지 사항은 저작권 선언, 상표, 특허 등에 대한 액세스를 제공합니다.
-
-[role="lead"]
+[role="lead lead"]
 법적 고지 사항은 저작권 선언, 상표, 특허 등에 대한 액세스를 제공합니다.
 
 
@@ -41,14 +38,6 @@ link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://
 == 개인 정보 보호 정책
 
 link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
-
-
-
-== 오픈 소스
-
-통지 파일은 NetApp 소프트웨어에 사용된 타사의 저작권 및 라이센스에 대한 정보를 제공합니다.
-
-이 제품에 사용된 타사 저작권 및 라이센스에 대한 정보를 제공합니다.
 
 * link:./media/Notices-AIX61-2023.pdf["AIX에 대한 고지 사항"^]
 * link:./media/Linux_Unified_Host_Utilities.pdf["Linux에 대한 고지 사항"^]

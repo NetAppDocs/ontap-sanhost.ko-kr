@@ -22,7 +22,7 @@ NVMe/FC는 Windows Server 2022용 ONTAP 9.7 이상에서 지원됩니다.
 
 Broadcom 이니시에이터는 동일한 32G FC 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 처리할 수 있습니다. FCP 및 FC/NVMe의 경우 Microsoft MPIO(다중 경로 I/O) 옵션으로 MSDSM을 사용합니다.
 
-를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스"^].
+지원되는 FC 어댑터 및 컨트롤러 목록은 를 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 참조하십시오. 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
 
 
 

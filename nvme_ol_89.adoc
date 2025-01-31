@@ -21,11 +21,11 @@ NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe ove
 ONTAP를 사용하는 Oracle Linux 8.9의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공됩니다.
 
 * NVMe/FC 외에 NVMe over TCP(NVMe/TCP) 지원 네이티브 `nvme-cli` 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시합니다.
-* NVMe와 SCSI 트래픽을 모두 동일한 동일한 호스트에서 실행할 수 있습니다. 따라서 SCSI LUN에 대해 SCSI mpath 장치에 대해 dm-multipath를 구성할 수 있지만 NVMe 다중 경로를 사용하여 호스트에 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.
+* NVMe 및 SCSI 트래픽을 모두 동일한 호스트에서 실행할 수 있습니다. 따라서 SCSI LUN에 대해 SCSI mpath 장치에 대해 dm-multipath를 구성할 수 있지만 NVMe 다중 경로를 사용하여 호스트에 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.
 * NVMe-oF에는 sandlun 지원이 없습니다. 따라서 Oracle Linux 8.9 호스트에서는 NVMe-oF에 대한 호스트 유틸리티가 지원되지 않습니다.  `nvme-cli`모든 NVMe-oF 전송에 대해 기본 패키지에 포함된 NetApp 플러그인을 사용할 수 있습니다.
 
 
-지원되는 구성에 대한 자세한 내용은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+지원되는 구성에 대한 자세한 내용은 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 
 
@@ -182,7 +182,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 0:14.2.0.5
 ----
 +
-지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^].
+지원되는 어댑터 드라이버 및 펌웨어 버전의 현재 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
 
 . 확인합니다 `lpfc_enable_fc4_type` 가 로 설정되어 있습니다 `3`:
 +
@@ -287,7 +287,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
-. 의 예상 값이 256인지 확인합니다 `lpfc_sg_seg_cnt`.
+. 의 값이 256인지 `lpfc_sg_seg_cnt` 확인합니다.
 +
 [listing]
 ----
