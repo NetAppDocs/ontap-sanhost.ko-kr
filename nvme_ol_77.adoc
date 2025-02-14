@@ -25,7 +25,7 @@ Oracle Linux 7.7 및 ONTAP를 타겟으로 실행하는 이니시에이터 호�
 ONTAP 9.6부터 Oracle Linux 7.7에서 NVMe/FC가 지원됩니다. Oracle Linux 7.7 호스트는 동일한 파이버 채널 이니시에이터 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행할 수 있습니다. 지원되는 FC 어댑터 및 컨트롤러 목록은 를 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 참조하십시오. 지원되는 구성의 현재 목록은 을 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 
-NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+NOTE: 이 절차에 제공된 구성 설정을 사용하여 및 에 연결된 클라우드 클라이언트를 구성할 수 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^]있습니다.
 
 
 

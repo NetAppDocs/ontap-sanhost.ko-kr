@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Windows 이니시에이터 호스트에서 FC/NVMe를 활성화하려면 다음 단계를 수행하십시오.
+Windows 이니시에이터 호스트에서 FC/NVMe를 사용하도록 설정합니다.
 
 .단계
 . Windows 호스트에 OneCommand Manager 유틸리티를 설치합니다.
@@ -10,7 +10,6 @@ Windows 이니시에이터 호스트에서 FC/NVMe를 활성화하려면 다음 
 +
 ** EnableNVMe=1
 ** NVMeMode = 0
-** 림트랜스퍼크기 = 1
 
 
 . 호스트를 재부팅합니다.

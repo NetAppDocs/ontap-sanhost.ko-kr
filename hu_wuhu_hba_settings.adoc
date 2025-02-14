@@ -4,7 +4,7 @@ permalink: hu_wuhu_hba_settings.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Windows Host Utilities에는 Windows 호스트가 ONTAP 및 E-Series 플랫폼에 대한 스토리지 시스템 동작을 올바르게 처리하도록 필요한 Windows 레지스트리 및 HBA 매개 변수를 설정하는 설치 프로그램이 포함되어 있습니다. 
 ---
-= 레지스트리 설정을 구성합니다
+= Windows Host Utilities에 대한 레지스트리 설정을 구성합니다
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -33,9 +33,13 @@ iSCSI HBA 매개 변수를 수동으로 설정해야 합니다.
 
 설치 프로그램은 설치 프로그램을 실행할 때 Microsoft MPIO(다중 경로 I/O) 지원을 지정하는지 여부에 따라 다른 값을 설정합니다.
 
+[NOTE]
+====
+Windows Host Utilities 7.2를 설치한 후 LimTransferSize 매개 변수 값을 변경해야 합니다. 를 참조하십시오.<<nvme_parameters,NVMe 매개 변수>>
 
-NOTE: NetApp 기술 지원 부서의 지시가 없는 한 이러한 값을 변경하지 마십시오.
+Windows Host Utilities 7.2 및 7.1의 다른 모든 매개 변수와 레지스트리 키의 경우, 기술 지원 부서에서 지시하지 않는 한 값을 변경하지 마십시오.
 
+====
 
 
 == Windows Host Utilities 7.2에서 설정한 레지스트리 값입니다
@@ -52,10 +56,10 @@ NOTE: HKLM은 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | 레지스트리 키 | 값 | 설정합니다 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumRetryTimeDuringStateTransition | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2012 R2, Windows Server 2016 및 Windows 2019 또는 Windows Server 2022인 경우 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumRetryTimeDuringStateTransition | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019, 2016 또는 2012 R2인 경우 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumStateTransitionTime | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2012 R2 또는 Windows Server 2016, Windows 2019 또는 Windows Server 2022인 경우 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumStateTransitionTime | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019, 2016 또는 2012 R2인 경우 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmlSupportedDeviceList | "NetApp LUN", "NetApp LUN C-Mode", NVMe NetApp ONTAO Con" | MPIO 지원이 지정된 경우 
@@ -79,13 +83,13 @@ NOTE: HKLM은 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Control\MPDEV\MPIOSupportedDeviceList | "NetApp LUN", "NetApp LUN C-Mode", "NVMe NetApp ONTAO Con" | MPIO 지원이 지정된 경우 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PathRecoveryInterval | 30 | 서버가 Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 또는 Windows Server 2022인 경우 
+| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PathRecoveryInterval | 30 | 서버가 Windows Server 2025, 2022, 2019, 2016 또는 2012 R2이면 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PathVerifyEnabled | 1 | MPIO 지원이 지정된 경우 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PathVerifyEnabled | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 또는 Windows Server 2022인 경우 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PathVerifyEnabled | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019, 2016 또는 2012 R2인 경우 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\PathVerifyEnabled | 0 | MPIO 지원이 지정된 경우 
@@ -94,22 +98,22 @@ NOTE: HKLM은 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PDORemovePeriodd | 130 | MPIO 지원이 지정된 경우 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PDORemovePeriodd | 130 | MPIO 지원이 지정되고 서버가 Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 또는 Windows Server 2022인 경우 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PDORemovePeriodd | 130 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019, 2016 또는 2012 R2인 경우 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\PDORemovePeriod입니다 | 130 | MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외) 
+| HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\PDORemovePeriod입니다 | 130 | MPIO 지원이 지정된 경우 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\RetryCount | 6 | MPIO 지원이 지정된 경우 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryCount | 6 | MPIO 지원이 지정되고 서버가 Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 또는 Windows Server 2022인 경우 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryCount | 6 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019, 2016 또는 2012 R2인 경우 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\RetryInterval | 1 | MPIO 지원이 지정된 경우 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryInterval | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 또는 Windows Server 2022인 경우 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryInterval | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019, 2016 또는 2012 R2인 경우 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\RetryInterval | 1 | MPIO 지원이 지정된 경우 
@@ -118,7 +122,7 @@ NOTE: HKLM은 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\disk\TimeOutValue | 120 | MPIO 지원을 선택하지 않은 경우 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\UseCustomPathRecoveryInterval | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 또는 Windows Server 2022인 경우 
+| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\UseCustomPathRecoveryInterval | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019, 2016 또는 2012 R2인 경우 
 |===
 
 
@@ -129,6 +133,9 @@ Windows Host Utilities 7.2를 설치할 때 다음 NVMe Emulex 드라이버 매�
 * EnableNVMe=1
 * NVMeMode = 0
 * 림트랜스퍼크기 = 1
++
+Windows Host Utilities 7.2를 설치할 때 LimTransferSize 매개 변수는 자동으로 "1"로 설정됩니다. 설치 후 LimTransferSize 값을 수동으로 "0"으로 변경하고 서버를 재부팅해야 합니다.
+
 
 
 
@@ -147,10 +154,10 @@ NOTE: `HKLM` 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | 레지스트리 키 | 값 | 설정합니다 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumRetryTimeDuringStateTransition | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외) 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumRetryTimeDuringStateTransition | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우(Data ONTAP DSM이 감지된 경우를 제외) 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumStateTransitionTime | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외) 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumStateTransitionTime | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우(Data ONTAP DSM이 감지된 경우를 제외) 
 
 
 .2+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmlSupportedDeviceList | "NETAPPLUN" | MPIO 지원이 지정된 경우 
@@ -189,7 +196,7 @@ NOTE: `HKLM` 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PathVerifyEnabled | 0 | MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외) 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PathVerifyEnabled | 0 | MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외) 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PathVerifyEnabled | 0 | MPIO 지원이 지정되고 서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우(Data ONTAP DSM이 감지된 경우를 제외) 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\msiscdsm\Parameters\PathVerifyEnabled | 0 | MPIO 지원이 지정되고 서버가 Windows Server 2003인 경우(Data ONTAP DSM이 감지된 경우는 제외) 
@@ -201,7 +208,7 @@ NOTE: `HKLM` 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PDORemovePeriodd | 130 | MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외) 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PDORemovePeriodd | 130 | MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외) 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PDORemovePeriodd | 130 | MPIO 지원이 지정되고 서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우(Data ONTAP DSM이 감지된 경우를 제외) 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\msiscdsm\Parameters\PDORemovePeriodd | 130 | MPIO 지원이 지정되고 서버가 Windows Server 2003인 경우(Data ONTAP DSM이 감지된 경우는 제외) 
@@ -213,7 +220,7 @@ NOTE: `HKLM` 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\RetryCount | 6 | MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외) 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryCount | 6 | MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외) 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryCount | 6 | MPIO 지원이 지정되고 서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우(Data ONTAP DSM이 감지된 경우를 제외) 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\msiscdsm\Parameters\RetryCount | 6 | MPIO 지원이 지정되고 서버가 Windows Server 2003인 경우(Data ONTAP DSM이 감지된 경우는 제외) 
@@ -225,7 +232,7 @@ NOTE: `HKLM` 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\RetryInterval | 1 | MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외) 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryInterval | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016인 경우(Data ONTAP DSM이 검색되는 경우는 제외) 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryInterval | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우(Data ONTAP DSM이 감지된 경우를 제외) 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\RetryInterval | 1 | MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외) 
@@ -237,7 +244,7 @@ NOTE: `HKLM` 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | 60 | MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외) 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\UseCustomPathRecoveryInterval | 1 | 서버가 Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 또는 Windows Server 2016만 해당됩니다 
+| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\UseCustomPathRecoveryInterval | 1 | 서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우 
 |===
 를 참조하십시오 https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users["Microsoft 문서"^] 레지스트리 매개 변수에 대한 자세한 내용은 를 참조하십시오.
 
@@ -276,7 +283,7 @@ Emulex FC HBA의 경우 설치 프로그램에서 다음 매개 변수를 설정
 |===
 --
 ====
-QLogic Fibre Channel HBA의 경우 설치 프로그램에서 다음 매개 변수를 설정합니다.
+QLogic FC HBA의 경우 설치 프로그램에서 다음 매개 변수를 설정합니다.
 
 [role="tabbed-block"]
 ====

@@ -597,7 +597,7 @@ NOTE: RHEL 9.5부터는 NVMe/TCP 시간 제한에 대한 기본 설정이 `ctrl_
 
 == NVMe-oF를 검증합니다
 
-ONTAP LUN에 대한 올바른 작업을 지원하려면 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인하십시오.
+커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
 
 .단계
 . in-kernel NVMe multipath가 활성화되어 있는지 확인합니다.

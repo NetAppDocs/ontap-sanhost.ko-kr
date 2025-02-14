@@ -35,7 +35,7 @@ NetApp은 Linux 호스트 유틸리티를 설치할 것을 적극 권장하지�
 
 
 
-NOTE: 이 문서에 제공된 구성 설정을 사용하여 에 연결된 클라우드 클라이언트를 구성할 수 있습니다 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 및 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^].
+NOTE: 이 절차에 제공된 구성 설정을 사용하여 및 에 연결된 클라우드 클라이언트를 구성할 수 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^]있습니다.
 
 
 
@@ -74,7 +74,7 @@ SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다.
 . 여러 경로를 사용할 수 있는지 확인합니다.
 +
 
-NOTE: 호스트 운영 체제가 실행된 후 경로에서 여러 경로를 사용할 수 있습니다.
+NOTE: 호스트 OS가 가동되고 경로에서 실행되면 여러 경로를 사용할 수 있습니다.
 
 . SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
 +
@@ -97,7 +97,7 @@ Oracle Linux(OL) 8.4의 경우 /etc/multipath.conf 파일이 있어야 하지만
 
 === 비 ASA 구성
 
-비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 더 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에 의해 처리됩니다. 우선 순위가 낮은 경로는 활성 상태이지만 다른 컨트롤러에서 제공되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
+비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
 
 .예
 다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.

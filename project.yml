@@ -11,11 +11,11 @@ sidebar:
   entries:
   - title: SAN 호스트 및 클라우드 클라이언트를 구성합니다
     url: "/index.html"
-  - title: 개요
+  - title: SAN 호스트 구성에 대해 자세히 알아보십시오
     url: "/overview.html"
   - title: SAN Host Utilities를 설치합니다
     entries:
-    - title: 개요
+    - title: SAN Host Utilities에 대해 알아보십시오
       url: "/hu_sanhost_index.html"
     - title: AIX 호스트 유틸리티
       entries:
@@ -378,6 +378,8 @@ sidebar:
     - title: Windows
       pdf-filename: Windows - FCP
       entries:
+      - title: '2025'
+        url: "/hu-windows-2025.html"
       - title: '2022'
         url: "/hu_windows_2022.html"
       - title: 2019년
@@ -510,6 +512,8 @@ sidebar:
         url: "/nvme_ubuntu_2204.html"
     - title: Windows
       entries:
+      - title: '2025'
+        url: "/nvme-windows-2025.html"
       - title: '2022'
         url: "/nvme_windows_2022.html"
       - title: 2019년

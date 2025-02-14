@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+ONTAP은 현재 NVMe/FC를 통한 영구 예약을 지원하지 않으므로 Windows 페일오버 클러스터가 NVMe/FC에서 지원되지 않습니다.
+
++ 참고: Broadcom은 진정한 NVMe/FC 드라이버가 아닌 변환 SCSI ⇄ NVMe 드라이버인 Windows NVMe/FC용 외부 드라이버를 제공합니다. 전환 오버헤드가 성능에 영향을 미칠 필요는 없지만 NVMe/FC의 성능 이점을 부정합니다. 그 결과, NVMe/FC 및 FCP 성능은 Linux 등의 다른 운영 체제와 동일하게 NVME/FC 성능이 FCP보다 훨씬 더 뛰어납니다.

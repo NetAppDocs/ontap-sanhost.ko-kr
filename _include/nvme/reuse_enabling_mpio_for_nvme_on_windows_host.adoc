@@ -2,6 +2,9 @@
 :allow-uri-read: 
 
 
+Windows 호스트에서 NVMe 구성을 완료하려면 NVMe 장치에 대해 MPIO를 활성화해야 합니다.
+
+.단계
 . 설치합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Windows 호스트 유틸리티 키트 7.1"] FC 및 NVMe 모두에 공통되는 드라이버 매개 변수를 설정합니다.
 . MPIO 속성을 엽니다.
 . Discover Multi-Paths * 탭에서 NVMe에 나열된 장치 ID를 추가합니다.
@@ -9,8 +12,8 @@
 MPIO는 디스크 관리 아래에 표시되는 NVMe 장치를 인식합니다.
 
 . 디스크 관리 * 를 열고 * 디스크 속성 * 으로 이동합니다.
-. MPIO * 탭에서 * Details * 를 클릭합니다.
-. 다음 MSDSM 설정을 설정합니다.
+. MPIO * 탭에서 * Details * 를 선택합니다.
+. 다음 Microsoft DSM 설정을 설정합니다.
 +
 ** PathVerifiedPeriod: * 10 *
 ** PathVerifyEnabled: * 활성화 *
@@ -29,7 +32,4 @@ HKLM\SYSTEM\CurrentControlSet\Services\mpio\Parameters\PathRecoveryInterval DWOR
 HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\ UseCustomPathRecoveryInterval  DWORD-> 1
 ----
 . 호스트를 재부팅합니다.
-+
-이제 Windows 호스트에서 NVMe 구성이 완료되었습니다.
-
 
