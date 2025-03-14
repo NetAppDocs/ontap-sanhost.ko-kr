@@ -231,7 +231,6 @@
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="inline-link"></block>
   <block id="c2e11c6f1a87d8cf2bf465e9c2562bdb" category="inline-link-macro">TR-4597 - ONTAP가 설치된 VMware vSphere</block>
   <block id="471e82326ed5017bfdb518b5d33377cc" category="inline-link-macro">NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원</block>
-  <block id="410517e1f795e6fa809a7ff5630e2bdd" category="list-text">Windows 호스트에 OneCommand Manager 유틸리티를 설치합니다.</block>
   <block id="7d182740e5fe1d15ec7f97f69178b4a8" category="list-text">각 HBA 이니시에이터 포트에서 다음 HBA 드라이버 매개 변수를 설정합니다.</block>
   <block id="1d71ea83cceb2b7470e1c54838adb506" category="list-text">EnableNVMe=1</block>
   <block id="814e9f528f5fa391cd6774e57a5c651c" category="list-text">NVMeMode = 0</block>
@@ -3728,4 +3727,5 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="446a12d919c8ace091d69571c8964509" category="paragraph">ONTAP 9.7부터 Windows Server 2022에서 NVMe/FC가 지원됩니다.</block>
   <block id="d26e08171a5072e33fe155b7ad5a5659" category="doc">SAN 호스트 구성에 대해 자세히 알아보십시오</block>
   <block id="312351bff07989769097660a56395065" category="sidebar">2025</block>
+  <block id="439a17362d8592514caf19c7e8ec2147" category="list-text">Windows 호스트에 Emulex HBA Manager 유틸리티를 설치합니다.</block>
 </blocks>
