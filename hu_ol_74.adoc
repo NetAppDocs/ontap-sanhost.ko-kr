@@ -247,6 +247,12 @@ NOTE: Oracle Linux 7.4 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(R
 
 
 
+== ASM 미러링
+
+ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대부분의 ASM 구성은 외부 이중화를 사용합니다. 즉, 외부 스토리지를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않습니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 자세한 내용은 을 link:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["ONTAP 기반의 Oracle 데이터베이스"^]참조하십시오.
+
+
+
 == 알려진 문제
 
 ONTAP 릴리즈가 포함된 Oracle Linux 7.4에는 다음과 같은 알려진 문제가 있습니다.

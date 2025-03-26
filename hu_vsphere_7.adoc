@@ -211,7 +211,7 @@ NOTE: VASA Provider를 사용하려면 VMware vSphere용 ONTAP 툴을 구축해�
 
 특정 버전의 ONTAP 툴은 을 참조하고 https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^], 특정 버전의 vSphere 및 ONTAP는 기존 VASA Provider를 참조하십시오.
 
-VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서 및 link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]및 를 참조하십시오link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^].
+VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서 및 link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["ONTAP 기반의 VMware vSphere"^]및 를 참조하십시오link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vvols-overview.html["ONTAP 툴을 이용한 VVOL(가상 볼륨) 10"^].
 
 
 
@@ -329,7 +329,7 @@ naa.600a098038304731783f506670553355
 VMware vSphere 7.x 및 ONTAP 릴리즈에는 알려진 문제가 없습니다.
 
 .관련 정보
-* link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597 - ONTAP가 설치된 VMware vSphere"^]
+* link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["ONTAP 기반의 VMware vSphere"^]
 * link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^]
 * link:https://kb.vmware.com/s/article/83370["NetApp vMSC(VMware vSphere Metro Storage Cluster)와 SnapMirror Active Sync가 있는 NetApp ONTAP"^]
 
