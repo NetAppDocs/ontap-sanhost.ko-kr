@@ -1,0 +1,14 @@
+= 2단계: Linux Host Utilities를 설치합니다
+:allow-uri-read: 
+
+
+
+
+== 2단계: Linux Host Utilities를 설치합니다
+
+NetApp은 ONTAP LUN 관리를 지원하고 기술 지원이 구성 데이터 수집을 돕기 위해 Linux 호스트 유틸리티를 설치할 것을 적극 권장합니다.
+
+link:hu_luhu_71.html["Linux Host Utilities 7.1을 설치합니다"]..
+
+
+NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 초과 설정은 변경되지 않습니다.

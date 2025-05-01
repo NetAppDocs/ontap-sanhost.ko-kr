@@ -1,0 +1,35 @@
+= 4단계: 필요에 따라 경로 다중화에서 디바이스를 제외합니다
+:allow-uri-read: 
+
+
+
+
+== 4단계: 필요에 따라 경로 다중화에서 디바이스를 제외합니다
+
+필요한 경우 원치 않는 디바이스의 WWID를 파일의 "블랙리스트" 스탠자에 추가하여 디바이스를 경로 다중화에서 제외할 수 `multipath.conf` 있습니다.
+
+.단계
+. WWID 확인:
++
+[source, cli]
+----
+# /lib/udev/scsi_id -gud /dev/sda
+----
++
+"sda"는 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
+
++
+WWID의 예는 `360030057024d0730239134810c0cb833`입니다.
+
+. WWID를 "블랙리스트" 스탠자에 추가합니다.
++
+[listing]
+----
+blacklist {
+	     wwid   360030057024d0730239134810c0cb833
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+----
+

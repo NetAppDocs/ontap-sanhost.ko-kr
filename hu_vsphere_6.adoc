@@ -189,7 +189,7 @@ NOTE: VASA Provider를 설정하려면 VMware vSphere용 ONTAP 툴을 구축해�
 
 특정 버전의 ONTAP 툴은 을 참조하고 https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^], 특정 버전의 vSphere 및 ONTAP는 기존 VASA Provider를 참조하십시오.
 
-VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서 및 https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["ONTAP 기반의 VMware vSphere"^] 및 를 참조하십시오link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vvols-overview.html["ONTAP 툴을 이용한 VVOL(가상 볼륨) 10"^].
+VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서 및 및 를 https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["ONTAP 기반의 VMware vSphere"^] 참조하십시오.link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vvols-overview.html["ONTAP 툴을 이용한 VVOL(가상 볼륨) 10"^]
 
 
 

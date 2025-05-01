@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_rhel_810.html 
 keywords: host utilities, red hat, rhel, linux, 8.10, netapp, ontap, rhel 
-summary: ONTAP에서 Red Hat Enterprise Linux 8.10을 사용하는 방법을 설명합니다 
+summary: RHEL 8.10 호스트에 Linux Host Utilities를 설치하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리합니다. 
 ---
-= ONTAP에 Red Hat Enterprise Linux 8.10 사용
+= FCP에 대해 RHEL 8.10을 구성하고 ONTAP 스토리지를 사용하여 iSCSI를 구성합니다
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,187 +16,78 @@ summary: ONTAP에서 Red Hat Enterprise Linux 8.10을 사용하는 방법을 설
 
 
 [role="lead"]
-ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 RHEL(Red Hat Enterprise Linux) 8.10을 구성할 수 있습니다.
+Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.10 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
+
+
+NOTE: ONTAP LUN이 KVM 하이퍼바이저에 자동으로 매핑되므로 KVM(커널 기반 가상 머신) 설정을 구성할 필요가 없습니다.
 
 
 
-== Linux Host Utilities를 설치합니다
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
-NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 에서 64-bit.rpm 파일로 다운로드할 수 있습니다link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^].
-
-NetApp은 Linux 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
-
-.단계
-. 에서 호스트에 64비트 Linux Host Utilities 소프트웨어 패키지를 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 다운로드합니다.
-. 소프트웨어 패키지를 설치합니다.
-+
-"rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
-
-
-
-
-
-== SAN 툴킷을 참조하십시오
-
-이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 를 제공합니다 `sanlun` 유틸리티를 사용하면 LUN 및 호스트 버스 어댑터(HBA)를 관리하는 데 도움이 됩니다. 를 클릭합니다 `sanlun` 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
-
-다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
-
-[listing]
-----
-# sanlun lun show all
-----
-.예제 출력:
-[listing]
-----
-controller(7mode/E-Series)/                               device       host                  lun
-vserver(cDOT/FlashRay)     lun-pathname                   filename     adapter    protocol   size    product
----------------------------------------------------------------------------------------------------------------
-vs_25_2742                 /vol/fc_vol_1_0/dynamic_lun   /dev/sdh      host9      FCP        10g     cDOT
-vs_25_2742                 /vol/fc_vol_1_1/dynamic_lun   /dev/sdb      host9      FCP        10g     cDOT
-vs_25_2742                 /vol/fc_vol_1_3/dynamic_lun   /dev/sdg      host9      FCP        10g     cDOT
-vs_25_2742                 /vol/fc_vol_1_4/dynamic_lun   /dev/sdt      host9      FCP        10g     cDOT
-
-----
-
-
-== SAN 부팅
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 단순화하고 확장성을 개선할 수 있습니다.
 
 .시작하기 전에
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://mysupport.netapp.com/matrix/imt["상호 운용성 매트릭스 툴"^]있습니다.
+를 사용하여 link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인합니다.
 
 .단계
-. SAN 부팅 LUN을 호스트에 매핑합니다.
-. 여러 경로를 사용할 수 있는지 확인합니다.
+. SAN 부팅 LUN을 생성하여 호스트에 매핑합니다.
 +
-
-NOTE: 호스트 OS가 가동되고 경로에서 실행되면 여러 경로를 사용할 수 있습니다.
+을 https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["SAN 스토리지 용량 할당"^]참조하십시오.
 
 . SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
 +
 HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
 
-. 호스트를 재부팅하여 부팅이 성공했는지 확인합니다.
+. 호스트를 재부팅하고 OS가 실행 중인지 확인하여 구성이 성공했는지 확인합니다.
 
 
 
 
-== 다중 경로
+== 2단계: Linux Host Utilities를 설치합니다
 
-RHEL 8.10의 경우 `/etc/multipath.conf` 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 8.10은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
+NetApp은 ONTAP LUN 관리를 지원하고 기술 지원이 구성 데이터 수집을 돕기 위해 Linux 호스트 유틸리티를 설치할 것을 적극 권장합니다.
 
-'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다.
-
-다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 다중 경로 출력 예를 제공합니다.
+link:hu_luhu_71.html["Linux Host Utilities 7.1을 설치합니다"]..
 
 
-
-=== 모든 SAN 어레이 구성
-
-ASA(All SAN Array) 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
-
-.예
-다음 예제는 ONTAP LUN에 대한 올바른 출력을 보여줍니다.
-
-[listing]
-----
-# multipath -ll
-3600a098038314778375d53694b536e53 dm-16 NETAPP, LUN C-Mode
-size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-`-+- policy='service-time 0' prio=50 status=active
-  |- 14:0:0:0   sda  8:0    active ready running
-  |- 15:0:8:0   sdcf 69:48  active ready running
-  |- 15:0:0:0   sdaq 66:160 active ready running
-  `- 14:0:9:0   sdv  65:80  active ready running
-----
-
-NOTE: 단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로 문제가 발생할 수 있습니다.
+NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 초과 설정은 변경되지 않습니다.
 
 
 
-=== 비 ASA 구성
+== 3단계: 호스트의 다중 경로 구성을 확인합니다
 
-비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
+RHEL 8.10에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.
 
-.예
-다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
-
-[listing]
-----
-# multipath -ll
-3600a098038314837352453694b542f4a dm-0 NETAPP,LUN C-Mode
-size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-| |- 14:0:3:0 sdbk 67:224 active ready running
-| `- 15:0:2:0 sdbl 67:240 active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
-  |- 14:0:0:0 sda  8:0    active ready running
-  `- 15:0:1:0 sdv  65:80  active ready running
-----
-
-NOTE: 단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로 문제가 발생할 수 있습니다.
-
-
-
-== 권장 설정
-
-RHEL 8.10 OS는 ONTAP LUN을 인식하며 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.
-
- `multipath.conf`다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수 `touch /etc/multipath.conf` 있습니다.
-
- `multipath.conf`파일을 처음 만들 때 다음 명령을 사용하여 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
-
-[listing]
-----
-# systemctl enable multipathd
-# systemctl start multipathd
-----
-다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우, 파일에 장치를 직접 추가할 필요가 `multipath.conf` 없습니다. 파일에 다음 구문을 추가하여 원치 않는 디바이스를 제외할 수 있습니다 `multipath.conf`. <DevId>를 제외할 디바이스의 WWID 문자열로 대체합니다.
-
-[listing]
-----
-blacklist {
-        wwid <DevId>
-        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-        devnode "^hd[a-z]"
-        devnode "^cciss.*"
-}
-----
-다음 예에서는 디바이스의 WWID를 확인하고 해당 디바이스를 파일에 추가합니다 `multipath.conf`.
+호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
 
 .단계
-. WWID 확인:
+.  `/etc/multipath.conf`파일이 종료되는지 확인합니다. 파일이 없으면 0바이트 빈 파일을 만듭니다.
 +
-[listing]
+[source, cli]
 ----
-/lib/udev/scsi_id -gud /dev/sda
+touch /etc/multipath.conf
+----
+. 파일을 처음 생성할 때 `multipath.conf` 권장 설정을 로드하려면 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
++
+[source, cli]
+----
+systemctl enable multipathd
 ----
 +
-[listing]
+[source, cli]
 ----
-360030057024d0730239134810c0cb833
+systemctl start multipathd
 ----
+. 호스트를 부팅할 때마다 빈 0바이트 파일이 `/etc/multipath.conf` NetApp 권장 호스트 다중 경로 매개 변수를 기본 설정으로 자동으로 로드합니다. 운영 체제는 ONTAP LUN을 올바르게 인식하고 관리하는 다중 경로 매개 변수를 사용하여 컴파일되므로 호스트의 파일을 변경할 필요가 없습니다 `/etc/multipath.conf`.
 +
-`sda` 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
+다음 표는 ONTAP LUN에 대한 Linux 운영 체제 네이티브 컴파일 다중 경로 매개 변수 설정을 보여줍니다.
 
-. 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
 +
-[listing]
-----
-blacklist {
-     wwid   360030057024d0730239134810c0cb833
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
-----
-
-
-기본 설정을 무시할 수 있는 레거시 설정은 항상 파일, 특히 기본값 섹션에서 확인해야 `/etc/multipath.conf` 합니다.
-
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체와 상담하여 영향을 완전히 이해할 때만 재정의할 수 있습니다.
-
-[cols="2*"]
+.매개 변수 설정을 표시합니다
+[%collapsible]
+====
+[cols="2"]
 |===
 | 매개 변수 | 설정 
 
@@ -240,7 +131,7 @@ blacklist {
 | 프리오 | "ONTAP" 
 
 
-| 제품 | LUN. * 
+| 제품 | LUN입니다 
 
 
 | Retain_attached_hw_handler 를 참조하십시오 | 예 
@@ -254,39 +145,134 @@ blacklist {
 
 | 공급업체 | 넷엡 
 |===
-.예
-다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우, 입니다 `multipath.conf` 파일은 에 대한 값을 정의합니다 `path_checker` 및 `no_path_retry` ONTAP LUN과 호환되지 않습니다. 다른 SAN 스토리지가 아직 호스트에 연결되어 있으므로 제거할 수 없는 경우 이러한 매개 변수를 특히 디바이스 스탠자가 있는 ONTAP LUN에 대해 수정할 수 있습니다.
+====
+. ONTAP LUN의 매개 변수 설정 및 경로 상태를 확인합니다.
++
+[source, cli]
+----
+multipath -ll
+----
++
+기본 다중 경로 매개 변수는 ASA, AFF 및 FAS 구성을 지원합니다. 이러한 구성에서는 단일 ONTAP LUN에 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로에 문제가 발생할 수 있습니다.
+
++
+다음 출력 예는 ASA, AFF 또는 FAS 구성에 있는 ONTAP LUN에 대한 올바른 매개 변수 설정 및 경로 상태를 보여줍니다.
+
++
+[role="tabbed-block"]
+====
+.ASA 구성
+--
+ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
 
 [listing]
 ----
+# multipath -ll
+3600a098038314c4a433f577471797958 dm-2 NETAPP,LUN C-Mode
+size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 14:0:0:0  sdc  8:32   active ready running
+  |- 17:0:0:0  sdas 66:192 active ready running
+  |- 14:0:3:0  sdar 66:176 active ready running
+  `- 17:0:3:0  sdch 69:80  active ready running
+----
+--
+.AFF 또는 FAS 구성
+--
+AFF 또는 FAS 구성에는 우선 순위가 높거나 낮은 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 더 높은 활성/최적화 경로는 애그리게이트가 위치한 컨트롤러에서 제공합니다. 낮은 우선 순위 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예에서는 활성/최적화 경로 2개와 활성/최적화되지 않은 경로 2개가 있는 ONTAP LUN에 대한 출력을 표시합니다.
+
+[listing]
+----
+# multipath -ll
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
+size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:3:0  sdcg 69:64  active ready running
+| `- 10:0:0:0  sdb  8:16   active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 10:0:1:0  sdc  8:32   active ready running
+  `- 16:0:2:0  sdcf 69:48  active ready running
+----
+--
+====
+
+
+
+
+== 4단계: 필요에 따라 경로 다중화에서 디바이스를 제외합니다
+
+필요한 경우 원치 않는 디바이스의 WWID를 파일의 "블랙리스트" 스탠자에 추가하여 디바이스를 경로 다중화에서 제외할 수 `multipath.conf` 있습니다.
+
+.단계
+. WWID 확인:
++
+[source, cli]
+----
+# /lib/udev/scsi_id -gud /dev/sda
+----
++
+"sda"는 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
+
++
+WWID의 예는 `360030057024d0730239134810c0cb833`입니다.
+
+. WWID를 "블랙리스트" 스탠자에 추가합니다.
++
+[listing]
+----
+blacklist {
+	     wwid   360030057024d0730239134810c0cb833
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+----
+
+
+
+
+== 5단계: ONTAP LUN에 대한 다중 경로 매개 변수를 사용자 지정합니다
+
+호스트가 다른 공급업체의 LUN에 접속되어 있고 다중 경로 매개 변수 설정이 무시되는 경우 나중에 ONTAP LUN에 특별히 적용되는 파일에서 stanzas를 추가하여 수정해야 `multipath.conf` 합니다. 이렇게 하지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다.
+
+ `/etc/multipath.conf`파일, 특히 기본값 섹션에서 을<<multipath-parameter-settings,다중 경로 매개 변수에 대한 기본 설정입니다>>(를) 무시할 수 있는 설정을 확인하십시오.
+
+
+CAUTION: ONTAP LUN에 대해 권장되는 매개 변수 설정을 재정의해서는 안 됩니다. 이러한 설정은 호스트 구성의 성능을 최적화하는 데 필요합니다. 자세한 내용은 NetApp 지원, OS 공급업체 또는 둘 다에 문의하십시오.
+
+다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 예제에서는 `multipath.conf` ONTAP LUN과 호환되지 않는 및 `no_path_retry` 의 값을 정의하고 `path_checker` ONTAP 스토리지 배열이 호스트에 계속 연결되어 있으므로 이러한 매개 변수를 제거할 수 없습니다. 대신 ONTAP LUN에 특별히 적용되는 파일에 디바이스 스탠자를 추가하여 `multipath.conf` 및 `no_path_retry` 의 값을 `path_checker` 수정합니다.
+
+[listing, subs="+quotes"]
+----
 defaults {
-   path_checker      readsector0
-   no_path_retry     fail
+   path_checker      *readsector0*
+   no_path_retry     *fail*
 }
 
 devices {
    device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry    queue
-      path_checker     tur
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
    }
 }
 ----
 
 
-== KVM 설정을 구성합니다
+== 6단계: 알려진 문제를 검토합니다
 
-LUN이 하이퍼바이저에 매핑되므로 커널 기반 가상 머신에 대한 설정을 구성할 필요가 없습니다.
+알려진 문제가 없습니다.
 
 
 
-== ASM 미러링
+== 다음 단계
 
+* link:hu_luhu_71_cmd.html["Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오"]..
+* ASM 미러링에 대해 알아보십시오.
++
 ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대부분의 ASM 구성은 외부 이중화를 사용합니다. 즉, 외부 스토리지를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않습니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 자세한 내용은 을 link:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["ONTAP 기반의 Oracle 데이터베이스"^]참조하십시오.
 
 
-
-== 알려진 문제
-
-RHEL 8.10에는 알려진 문제가 없습니다.

@@ -1,0 +1,11 @@
+= 1단계: HP-UX Host Utilities를 설치합니다
+:allow-uri-read: 
+
+
+
+
+== 1단계: HP-UX Host Utilities를 설치합니다
+
+NetApp은 ONTAP LUN 관리를 지원하고 기술 지원이 구성 데이터 수집을 돕기 위해 Linux 호스트 유틸리티를 설치할 것을 적극 권장합니다.
+
+link:hu_hpux_60.html["HP-UX Host Utilities 6.0을 설치합니다"]..
