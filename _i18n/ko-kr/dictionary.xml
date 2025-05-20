@@ -3707,8 +3707,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="6338107550646e4da84ebb66cf1e3b7e" category="inline-xref">지원되는 Windows 버전</block>
   <block id="14aa8f54a503ff6089f17bed95d65cb6" category="paragraph">용 Windows Host Utilities를 설치하기 전에 호스트 및 스토리지 시스템 구성이 지원되는지 <block ref="e07b0c094759647153725a704df4b0de" category="inline-xref-macro-rx"></block>확인하십시오.</block>
   <block id="74464dd5db6f61c62453cee626aca30f" category="paragraph">용 Windows Host Utilities를 설치하기 전에 호스트 및 스토리지 시스템 구성이 지원되는지 <block ref="fa2ff82d2dc57012eed1f266cf01842e" category="inline-xref-macro-rx"></block>확인하십시오.</block>
-  <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">ONTAP SAN 호스트 및 클라우드 클라이언트</block>
-  <block id="6fbaf2334ca5f8d82bd9bd67bc534670" category="sidebar">ONTAP SAN 호스트 및 클라우드 클라이언트를 구성합니다</block>
   <block id="c6c1a6259bdf26d263bd4a9472d66719" category="section-title">NVMe 할당 해제</block>
   <block id="f384bde747b94f669a3fa94059005a05" category="paragraph">ONTAP 9.16.1 이상에서 ESXi 8.0u2 이상에 대해 NVMe 할당 해제 명령이 지원됩니다.</block>
   <block id="098d6b2a9e23cc2be9c1426e0cde97a4" category="paragraph">할당 해제 지원은 항상 NVMe 네임스페이스에 대해 활성화됩니다. 할당 해제를 통해 게스트 OS가 VMFS 데이터 저장소에서 'UNMAP'('TRIM'이라고도 함) 작업을 수행할 수도 있습니다. 할당 해제 작업을 통해 호스트는 더 이상 유효한 데이터를 포함하지 않으므로 더 이상 필요하지 않은 데이터 블록을 식별할 수 있습니다. 그런 다음 스토리지 시스템에서 이러한 데이터 블록을 제거하여 다른 곳에서 공간을 사용할 수 있습니다.</block>
@@ -3717,4 +3715,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="6026c444a91983a6b5a6dcb031503f89" category="list-text">TP4040 지원과 함께 DSM 할당 해제 설정이 활성화되어 있는지 확인합니다.</block>
   <block id="b666f1fcf3d24bdf8d1596c592783e04" category="inline-link">vSphere에서 스토리지 공간 재확보</block>
   <block id="e2b29f49797a2325ae454b80e6aecf4a" category="paragraph">VMware vSphere의 NVMe 할당 해제에 대한 자세한 내용은 을 참조하십시오<block ref="c446d1e3b484512e9ba1bbe8eab259bf" category="inline-link-rx"></block></block>
+  <block id="e99f28bee3ac5bad6e5414411cd5ffa0" category="sidebar">ONTAP SAN 호스트 유틸리티</block>
+  <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">SAN 호스트 및 클라우드 클라이언트를 구성합니다</block>
 </blocks>

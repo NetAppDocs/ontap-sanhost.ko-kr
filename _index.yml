@@ -1,6 +1,6 @@
 ---
 indexpage:
-  title: ONTAP SAN 호스트 및 클라우드 클라이언트
+  title: ONTAP SAN 호스트 유틸리티
   summary: 이 내용은 ONTAP 스토리지에 연결된 SAN 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다.
   keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle,
     linux, windows, enterprise, fc, fcp, isci, aix, powervm, vios, centos, citrix,
