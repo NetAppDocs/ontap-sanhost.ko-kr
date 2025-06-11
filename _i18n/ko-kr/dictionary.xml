@@ -2498,7 +2498,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="fc471da28a10b288c7becc2d14173bdb" category="paragraph">다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우, 파일에 장치를 직접 추가할 필요가<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 없습니다. 파일에 다음 구문을 추가하여 원치 않는 디바이스를 제외할 수 있습니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>. &lt;DevId&gt;를 제외할 디바이스의 WWID 문자열로 대체합니다.</block>
   <block id="eaa95f8be0a818bc84d23c1b3fef5725" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block> 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
   <block id="26bbc264025eb640d0a21b5280ca517a" category="paragraph">다음 표에서는<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체와 상담하여 영향을 완전히 이해할 때만 재정의할 수 있습니다.</block>
-  <block id="7d3d6c9fc8d341eaa26d83545052db7b" category="paragraph">SUSE Linux Enterprise Server 15 SP6와 ONTAP 릴리스에 대해 알려진 문제는 없습니다.</block>
   <block id="ddd05bd427ff935c5fc7e7ee226415f1" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP6용 NVMe/FC를 구성하는 방법을 설명합니다.</block>
   <block id="d147fb9f4a20a8d22dfe8c5247b12c27" category="doc">ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP6용 NVMe-oF 호스트 구성</block>
   <block id="dbb7e5b9df8e9f022cb88ee582377faf" category="paragraph">ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP6의 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
@@ -2527,9 +2526,7 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="604dbd1b7d87647f33f14a4f924b3c93" category="section-title">NVMe 서비스 확인</block>
   <block id="82df088f6ba140ed873ee24f8ff5c346" category="paragraph">SUSE Linux Enterprise Server 15 SP6부터<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> NVMe/FC 패키지에 포함된 및<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 부팅 서비스가<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 시스템 부팅 중에 자동으로 시작됩니다. 시스템 부팅이 완료되면 부팅 서비스가 활성화되었는지 확인해야 합니다.</block>
   <block id="5dc1adc63079845f3cac2caf1db0fa6a" category="list-text">가 활성화되어 있는지<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 확인합니다.</block>
-  <block id="f17577127ab2e84c20f714db959353d3" category="paragraph"><block ref="cee298feeb3e213ee36300180a00bd01" prefix="" category="inline-code"></block></block>
   <block id="a5203704145a9efb5be031a61c0e47e6" category="list-text">가 활성화되어 있는지<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 확인합니다.</block>
-  <block id="3c853373f44c095457102f92b570173c" category="paragraph"><block ref="69c22354a230572f55564f96ca4f0aeb" prefix="" category="inline-code"></block></block>
   <block id="73adc7de0b8ec5250832fc10c3810522" category="paragraph">NVMe/TCP에는 자동 연결 기능이 없습니다. 대신 NVMe/TCP 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="6f6e90e999896f87c906fd2a45c1270c" category="admonition">SUSE Linux Enterprise Server 15 SP6부터 NVMe/TCP 시간 제한에 대한 기본 설정이<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 꺼집니다. 다시 시도 횟수에 제한이 없으며(무제한 다시 시도) 또는<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령(옵션<block ref="269889131ee4793a82191b78a2eb60e3" prefix=" " category="inline-code"></block>)을 사용할 때 특정 시간 초과 기간을<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 수동으로 구성할 필요가<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 없습니다. 또한 NVMe/TCP 컨트롤러는 경로 장애 발생 시 시간 초과가 발생하지 않으며 무기한 연결된 상태를 유지합니다.</block>
   <block id="54fa1b935227c60b90bdcd38d49344ef" category="paragraph">다음 절차에 따라 ONTAP 구성이 포함된 SUSE Linux Enterprise Server 15 SP6의 NVMe-oF를 검증합니다.</block>
@@ -2546,7 +2543,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="0cc817fdf178d998506590bcd7f4435a" category="admonition">위의 예제에서 는<block ref="b4ccff4fcae86dd694df37690970d401" prefix=" " category="inline-code"></block> 에 해당하고 에<block ref="b564e1f3e83c3835c800589da9434401" prefix=" " category="inline-code"></block><block ref="7c5692629f37b2fc3b73d10ecb68180e" prefix=" " category="inline-code"></block><block ref="c74aa421e1eeec8a71897cfdbf55b4c4" prefix=" " category="inline-code"></block> 해당합니다.</block>
   <block id="cca9751debdb563a025b1255c382b607" category="section-title">전송 계층 보안을 구성합니다</block>
   <block id="6ab36115f46bb64da1b6626f47c3d1a8" category="paragraph">TLS(전송 계층 보안)는 NVMe-oF 호스트와 ONTAP 어레이 간 NVMe 연결을 위한 안전한 엔드 투 엔드 암호화를 제공합니다. ONTAP 9.16.1부터 CLI 및 구성된 사전 공유 키(PSK)를 사용하여 TLS 1.3을 구성할 수 있습니다.</block>
-  <block id="9a8cd16b2c754986b4de5b4a07f17fd0" category="paragraph">SUSE Linux Enterprise Server 15 SP6 호스트에서 이 절차의 단계를 수행합니다. 단, ONTAP 컨트롤러에서 단계를 수행하도록 지정된 경우는 예외입니다.</block>
   <block id="3b86ef6861ab37460f14c7cca5f2ecf9" category="list-text">호스트에 다음 ktls-utils, openssl 및 libopenssl 패키지가 설치되어 있는지 확인합니다.</block>
   <block id="94af47577475b9842466b2cda14bffae" category="list-text"><block ref="eba606d0a45a6acc38e99cfc11f79ff4" prefix="" category="inline-code"></block></block>
   <block id="fa09d1fd67990fa52b192b453ee3f411" category="list-text"><block ref="0349a9de91d8d2777180988686f8a790" prefix="" category="inline-code"></block></block>
@@ -2554,17 +2550,9 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="bb29fc4790c7eaf5ae7a9445a08776bf" category="list-text">시스템 부팅 시 시작 활성화<block ref="67de54fa2975e1afbfa0e5b44910694e" prefix=" " category="inline-code"></block>:</block>
   <block id="edf98b56eb368003a84c3f6e6325bc24" category="list-text">데몬이 실행 중인지<block ref="67de54fa2975e1afbfa0e5b44910694e" prefix=" " category="inline-code"></block> 확인합니다.</block>
   <block id="cc03b98609648131cf98c136c9325ae6" category="list-text">다음을 사용하여 TLS PSK를<block ref="75260898c7ef0a545e10c9413524db08" prefix=" " category="inline-code"></block> 생성합니다.</block>
-  <block id="b595664b17c23b9c65800f5f2ee6bd60" category="list-text"><block ref="ff083824b5947cb311fd6336234d2f08" prefix="" category="inline-code"></block></block>
-  <block id="329041f78f097df81a7f8ae854150413" category="list-text"><block ref="f31123afb140e56354d20f4296a62a1a" prefix="" category="inline-code"></block></block>
-  <block id="9a188a453d6f7a4139c805197ffad6d7" category="list-text">ONTAP 컨트롤러에서 TLS PSK를 ONTAP 하위 시스템에 추가합니다.</block>
-  <block id="3a6a93137906aeb888c944ff8cd57c5a" category="list-text">TLS PSK를 호스트 커널 키링에 삽입합니다.</block>
   <block id="456655754b0c48b034d1fdf59967c5fb" category="admonition">PSK는 TLS 핸드셰이크 알고리즘의 "identity v1"을 사용하기 때문에 "NVMe1R01"으로 표시됩니다. Identity v1은 ONTAP에서 지원하는 유일한 버전입니다.</block>
   <block id="ca320bf6c4ad8f767e85d406ee4fde14" category="list-text">TLS PSK가 올바르게 삽입되었는지 확인합니다.</block>
-  <block id="17a9f150c8c2ab60092808d0908e820b" category="list-text">삽입된 TLS PSK를 사용하여 ONTAP 하위 시스템에 연결합니다.</block>
-  <block id="532c0a0166f57d64080032345311e992" category="list-text"><block ref="352b5cd6e4380372116548b2c6dab1a5" prefix="" category="inline-code"></block></block>
-  <block id="798926c594ff5920496900e82fc4f8ee" category="list-text"><block ref="b77dfffb05a37f29ed729db166995be8" prefix="" category="inline-code"></block></block>
   <block id="8424d580c7f527bd670292899f979c75" category="list-text">대상을 추가하고 지정된 ONTAP 하위 시스템에 대한 TLS 연결을 확인합니다.</block>
-  <block id="750e58d680481d7813150837191657cf" category="paragraph"><block ref="f3772228bbdd61b9e99ef34e7e8724df" prefix="" category="inline-code"></block></block>
   <block id="2ec9c91229d2e2f17a8f17a73a54304b" category="admonition">단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로 문제가 발생할 수 있습니다.</block>
   <block id="5825e25cd2548b8d4af651b91652e28d" category="paragraph"><block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="d2151dcee8f5a191a60c2d0cb4823f78" category="list-text">명령을 실행한<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block> 다음 호스트를 재부팅합니다.</block>
@@ -3522,7 +3510,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="de7c28ff0eb95c7790427d99e464cd7d" category="list-text"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>파일이 종료되는지 확인합니다. 파일이 없으면 0바이트 빈 파일을 만듭니다.</block>
   <block id="4154b2933e2df9573e5568e1cb8b0708" category="list-text">호스트를 부팅할 때마다 빈 0바이트 파일이<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> NetApp 권장 호스트 다중 경로 매개 변수를 기본 설정으로 자동으로 로드합니다. 운영 체제는 ONTAP LUN을 올바르게 인식하고 관리하는 다중 경로 매개 변수를 사용하여 컴파일되므로 호스트의 파일을 변경할 필요가 없습니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>.</block>
   <block id="2dc85993483fece6ce86d25200665755" category="paragraph">다음 표는 ONTAP LUN에 대한 Linux 운영 체제 네이티브 컴파일 다중 경로 매개 변수 설정을 보여줍니다.</block>
-  <block id="55e68527d8c164dc338b18da64611305" category="admonition">ONTAP LUN이 KVM 하이퍼바이저에 자동으로 매핑되므로 KVM(커널 기반 가상 머신) 설정을 구성할 필요가 없습니다.</block>
   <block id="3e69d2b38cbdad51b5f0a5227c5c242e" category="paragraph">파일을 확인해야<block ref="3e47c09a7bdcd0377df056ba2567e852" category="inline-xref-macro-rx"></block> 합니다. 특히 기본값 섹션에서 을(를) 무시할 수 있는 설정을 확인해야<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 합니다.</block>
   <block id="d0cd85ffaeb74cce57bdd7f018a8056d" category="paragraph">예를 들어, 호스트가 다른 공급업체의 LUN에 접속되어 있고 다중 경로 매개 변수 설정이 재정의되면 나중에 ONTAP LUN에 특별히 적용되는 파일에서 stanzas를 추가하여 수정해야<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 합니다. 이렇게 하지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다.</block>
   <block id="7d6ed8198fddc97f7e4e07dc8cb965c1" category="inline-link-macro">Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오</block>
@@ -3717,4 +3704,16 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="e2b29f49797a2325ae454b80e6aecf4a" category="paragraph">VMware vSphere의 NVMe 할당 해제에 대한 자세한 내용은 을 참조하십시오<block ref="c446d1e3b484512e9ba1bbe8eab259bf" category="inline-link-rx"></block></block>
   <block id="e99f28bee3ac5bad6e5414411cd5ffa0" category="sidebar">ONTAP SAN 호스트 유틸리티</block>
   <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">SAN 호스트 및 클라우드 클라이언트를 구성합니다</block>
+  <block id="d42d49b663d32823894e50123ab762aa" category="admonition">ONTAP LUN이 하이퍼바이저에 자동으로 매핑되므로 커널 기반 가상 머신(KVM) 설정을 수동으로 구성할 필요가 없습니다.</block>
+  <block id="6c1237c8a63c9432743995a73de4f2ea" category="paragraph">ONTAP 컨트롤러에서 단계를 수행하도록 지정한 경우를 제외하고, 이 절차의 모든 단계는 SUSE Linux Enterprise Server 호스트에서 수행합니다.</block>
+  <block id="a06bd7b24c1effd63b064b3a8b11fac4" category="paragraph"><block ref="43e4de7615f2615407bf61dc8bab917d" prefix="" category="inline-code"></block></block>
+  <block id="9717b15229fcf955162bc44c0245c940" category="paragraph"><block ref="e5fc4f0ee1a350182939ab0bca460c98" prefix="" category="inline-code"></block></block>
+  <block id="762c5561f01f01d3a3d6677f3972abe5" category="list-text"><block ref="1c78bed9e35b03f05a58a1b43589b4b2" prefix="" category="inline-code"></block></block>
+  <block id="3b8094306cbf785ab92adf321ddbe00b" category="list-text"><block ref="e428c84f18e3d18bdc6f7a6ad7049ad8" prefix="" category="inline-code"></block></block>
+  <block id="3fe78ae2313cd2a031d60fd3b1908014" category="list-text">ONTAP 어레이에서 ONTAP 하위 시스템에 TLS PSK를 추가합니다.</block>
+  <block id="82230a22c6ecae257dedcf3b1a20f740" category="list-text">SUSE Linux Enterprise Server 호스트에서 TLS PSK를 호스트 커널 키링에 삽입합니다.</block>
+  <block id="3bd434fbafe93a5c609f93354e39f38c" category="list-text">SUSE Linux Enterprise Server 호스트에서 삽입된 TLS PSK를 사용하여 ONTAP 하위 시스템에 연결합니다.</block>
+  <block id="6f0abeb231f9492f647495d82e71a409" category="list-text"><block ref="784df77e179355f677ae4620639e145e" prefix="" category="inline-code"></block></block>
+  <block id="cd3cfdbbdf68695695503ec99f60b54f" category="list-text"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block></block>
+  <block id="c8ba574e6385bfff25580806e2cfd27d" category="paragraph"><block ref="2c3856aef23f7e774c0fec3948e0a8b5" prefix="" category="inline-code"></block></block>
 </blocks>

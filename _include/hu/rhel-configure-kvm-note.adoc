@@ -1,6 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-
-NOTE: ONTAP LUN이 KVM 하이퍼바이저에 자동으로 매핑되므로 KVM(커널 기반 가상 머신) 설정을 구성할 필요가 없습니다.
