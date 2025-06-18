@@ -3716,4 +3716,59 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="6f0abeb231f9492f647495d82e71a409" category="list-text"><block ref="784df77e179355f677ae4620639e145e" prefix="" category="inline-code"></block></block>
   <block id="cd3cfdbbdf68695695503ec99f60b54f" category="list-text"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block></block>
   <block id="c8ba574e6385bfff25580806e2cfd27d" category="paragraph"><block ref="2c3856aef23f7e774c0fec3948e0a8b5" prefix="" category="inline-code"></block></block>
+  <block id="44e9f27b29f987774dffc9a83910b3f1" category="paragraph">다음 예와 비슷한 출력이 표시되어야 합니다.</block>
+  <block id="104e6af592420ff3d441fd7ec7435c39" category="summary">RHEL 10 호스트에 Linux Host Utilities를 설치하여 ONTAP LUN으로 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
+  <block id="d7c1825e0f2407a4d10d399ac78c1f95" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 10를 구성하고 iSCSI에 대해 RHEL 9.5를 구성합니다</block>
+  <block id="d7b201e34bf72ed2024522784d92bd59" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 10 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="0171e05f7a58a96089d554991286cd67" category="paragraph">RHEL 10에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="236e1a6c16fc596f7520a28ad7a1db03" category="section-title">SAN 툴킷 활성화</block>
+  <block id="429ffdde936d5759e07807c3b66f38d2" category="summary">ONTAP가 포함된 RHEL 10용 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="cd64186b2c2cedea7d5dfd05d86304c6" category="doc">ONTAP 탑재 RHEL 10에 대한 NVMe-oF 호스트 구성</block>
+  <block id="c0cd0678856b67d02b2dfc3c9646fac2" category="paragraph">RHEL(Red Hat Enterprise Linux) 10용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="bf21bd2f7b624998085c3d69986dbe53" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. RHEL 10에서는 NVMe/TCP에 대한 보안 인밴드 인증을 사용할 수 있습니다.</block>
+  <block id="4baea929c29e972312029711f923ecc9" category="list-text">RHEL 10부터 기본 NVMe 다중 경로가 항상 활성화되어 있으며 NVMe-oF에 대한 DM 다중 경로 지원은 지원되지 않습니다.</block>
+  <block id="705049d3ff516ba95d2f556556788c5a" category="list-text">발행을 피하십시오 <block ref="de5ac85ea45047f4dbeea79d7b729b7d" prefix=" " category="inline-code"></block> NVMe-TCP 또는 NVMe-FC 네임스페이스를 통해 SAN에서 부팅하는 시스템에서 이 명령을 사용하면 루트 및 데이터 파일 시스템의 연결이 끊어지고 시스템이 불안정해질 수 있습니다.</block>
+  <block id="9ce1ac3eb326fa20a6e4cc846d38ef38" category="list-text">SAN 부팅 네임스페이스를 생성하여 호스트에 매핑합니다.</block>
+  <block id="20cd59705d89627333024680d966bb16" category="inline-link">NVMe 스토리지 프로비저닝</block>
+  <block id="2ae5f54ecc4375d7e4bc5d4417d72e85" category="paragraph">을<block ref="0cb485556fb9e40c82f55474b807ef26" category="inline-link-rx"></block>참조하십시오.</block>
+  <block id="80eb2a3788bc043e0e117027749a3b7a" category="list-text">SAN 부팅 네임스페이스가 매핑된 포트에 대해 서버 BIOS에서 SAN 부팅을 활성화합니다.</block>
+  <block id="8796e28d4a4ab01704a45b84e10299f3" category="section-title">2단계: 소프트웨어 버전 검증</block>
+  <block id="bfa758a2fd039564c81329a71d8a55b8" category="paragraph">다음 절차에 따라 지원되는 최소 RHEL 10 소프트웨어 버전을 확인하세요.</block>
+  <block id="8686219d94060c8bb51e3307818e48c4" category="list-text">서버에 RHEL 10를 설치합니다. 설치가 완료되면 지정된 RHEL 10 커널을 실행하고 있는지 확인합니다.</block>
+  <block id="207b3f28e8aa21d614e81b31699e50bf" category="paragraph">다음 예는 RHEL 커널 버전을 보여줍니다.</block>
+  <block id="fb47e45e6131ce8573db817dc34e3ba6" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지 버전:</block>
+  <block id="d14319cd9fe8bb3c15b66611ee50ab63" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> 패키지 버전:</block>
+  <block id="353615218a31d80048bde6c36a52f6d6" category="list-text">호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="49254d029fbf5a05d560c49c65e3682d" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 버전:</block>
+  <block id="b52c5d0392407a559b20b04250a22a2b" category="section-title">3단계: NVMe/FC 구성</block>
+  <block id="3c4d68a984cfab18b058f7614517f26b" category="list-text">모델 이름을 표시합니다:</block>
+  <block id="61e9eafd114033b79115785b3c135abb" category="paragraph">다음과 같은 출력이 표시됩니다.</block>
+  <block id="d474b8d44546ee3743d50d33e3e43016" category="list-text">모델 설명을 표시합니다.</block>
+  <block id="f5380639862d7f30daa3a708e324d0b8" category="list-text">펌웨어 버전을 표시합니다.</block>
+  <block id="6d7cdce7ef63034f99b2d7060ae672bc" category="paragraph">다음 예에서는 펌웨어 버전을 보여줍니다.</block>
+  <block id="2e7877df9f97bc43731073c516c35196" category="list-text">받은 편지함 드라이버 버전을 표시합니다.</block>
+  <block id="5960cabb9dbe62e8e98f3d79f0a1c9e0" category="paragraph">다음 예에서는 드라이버 버전을 보여줍니다.</block>
+  <block id="6b3d7041f640e56620316768e2c2bea9" category="paragraph">다음 예에서는 포트 ID를 보여줍니다.</block>
+  <block id="dfeb27de594c744f1f1bc3f70af7fe62" category="paragraph">다음 예에서는 드라이버 및 펌웨어 버전을 보여줍니다.</block>
+  <block id="c0dfb3da16b4c34ba6641ab9c5ced78a" category="section-title">4단계: 선택적으로 1MB I/O 활성화</block>
+  <block id="bb209e859372a1cf79b17e0f3ce4b72d" category="section-title">5단계: NVMe 부팅 서비스 확인</block>
+  <block id="1e39429c019f1be4225017909bd3e504" category="paragraph">RHEL 10을 사용하면 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템 부팅 시 자동으로 활성화됩니다. 부팅이 완료되면 서비스가 활성화되었는지 확인하세요.</block>
+  <block id="3f6eafce29d3de48f970b9d611381841" category="section-title">6단계: NVMe/TCP 구성</block>
+  <block id="dda9e001bef1d21ede41e855ce95f071" category="section-title">7단계: NVMe-oF 검증</block>
+  <block id="7ebd106b9b1cfecd3d6fb0451340153e" category="list-text">하위 시스템을 표시합니다.</block>
+  <block id="924a2d9478a76ff931a7b33da760a8aa" category="list-text">정책을 표시합니다.</block>
+  <block id="33f7abd10cff2281a91b19ee32201623" category="section-title">8단계: 안전한 인밴드 인증 설정</block>
+  <block id="3f2aed41975c4d98d941e8a7b03bf8e5" category="paragraph">ONTAP 9.12.1부터 RHEL 10 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
+  <block id="ffc19e5b6958faf88524a792e1c1635d" category="paragraph">각 호스트 또는 컨트롤러는 다음과 연결되어야 합니다. <block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block> 보안 인증을 설정하는 키입니다 . <block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block> 키는 NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀번호의 조합입니다. 피어를 인증하려면 NVMe 호스트 또는 컨트롤러가 피어와 연결된 키를 인식해야 합니다.</block>
+  <block id="e50800c92fe482bd476da8e2b8778963" category="paragraph">CLI나 구성 JSON 파일을 사용하여 안전한 인밴드 인증을 설정합니다. 서로 다른 하위 시스템에 대해 다른 dhchap 키를 지정해야 하는 경우 구성 JSON 파일을 사용해야 합니다.</block>
+  <block id="d1864d59ca252f6be1b9b7a1114e5ec4" category="list-text">RHEL 10 호스트에 대한 dhchap 키를 생성합니다.</block>
+  <block id="0d99f1978c6ac8e224f5b9429539befa" category="paragraph">사용하세요 <block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> JSON 파일을 생성하는 옵션입니다. 자세한 구문 옵션은 NVMe Connect - 모든 설명서 페이지를 참조하십시오.</block>
+  <block id="aeafecb6e5d6ff8d736488ca4255a495" category="list-text">JSON 파일을 구성합니다.</block>
+  <block id="abf3e38be1e135b4689023b375f16aed" category="admonition">다음 예에서, <block ref="b4ccff4fcae86dd694df37690970d401" prefix=" " category="inline-code"></block> 에 대응하다 <block ref="b564e1f3e83c3835c800589da9434401" prefix=" " category="inline-code"></block> 그리고 <block ref="7c5692629f37b2fc3b73d10ecb68180e" prefix=" " category="inline-code"></block> 에 대응하다 <block ref="c74aa421e1eeec8a71897cfdbf55b4c4" prefix=" " category="inline-code"></block> .</block>
+  <block id="52fa57cb89715461d2004558d3bd3b78" category="list-text">각 하위 시스템의 해당 컨트롤러에 대해 dhchap 비밀번호가 활성화되었는지 확인하세요.</block>
+  <block id="9b5f1d99b3cc83e8839e8c1c7044f62f" category="paragraph">다음 예에서는 dhchap 키를 보여줍니다.</block>
+  <block id="a8037bee31f3b32217fc0d5b84621e5e" category="section-title">9단계: 알려진 문제를 검토합니다</block>
+  <block id="b4da3417a3bbac7760c5f326458d9927" category="sidebar">RHEL 10 를 참조하십시오</block>
+  <block id="63da114c28add40c319de84e3a92a8ed" category="sidebar">RHEL-10-FCP를 참조하십시오</block>
+  <block id="43a1437f7f656cd8be7c996c58719e0a" category="sidebar">10.0</block>
 </blocks>
