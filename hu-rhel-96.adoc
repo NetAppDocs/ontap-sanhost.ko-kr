@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_87.html 
-keywords: host utilities, red hat, rhel, linux, 8.7, netapp, ontap, rhel 
-summary: RHEL 8.7 호스트에 Linux Host Utilities를 설치하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리합니다. 
+permalink: hu-rhel-96.html 
+keywords: host utilities, red hat, rhel, linux, 9.6, netapp, ontap, rhel 
+summary: RHEL 9.6 호스트에 Linux Host Utilities를 설치하여 ONTAP LUN으로 FCP 및 iSCSI 프로토콜 작업을 관리합니다. 
 ---
-= ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 8.7을 구성하고 iSCSI를 구성합니다
+= ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 9.6를 구성하고 iSCSI에 대해 RHEL 9.5를 구성합니다
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: RHEL 8.7 호스트에 Linux Host Utilities를 설치하여 ONTAP LUN에
 
 
 [role="lead"]
-Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.7 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
+Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.6 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
 
 
 NOTE: ONTAP LUN이 하이퍼바이저에 자동으로 매핑되므로 커널 기반 가상 머신(KVM) 설정을 수동으로 구성할 필요가 없습니다.
@@ -57,7 +57,7 @@ NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 �
 
 == 3단계: 호스트의 다중 경로 구성을 확인합니다
 
-RHEL 8.7에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.
+RHEL 9.6에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.
 
 호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
 

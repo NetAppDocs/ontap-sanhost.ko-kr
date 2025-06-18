@@ -13,7 +13,7 @@
 +
 [source, cli]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
 ----
 +
 "sda"는 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
