@@ -133,8 +133,10 @@ sidebar:
           url: "/hu_centos_64.html"
     - title: Citrix를 참조하십시오
       entries:
-      - title: 하이퍼바이저 8
-        url: "/hu_citrix_8x.html"
+      - title: XenServer 8.4을 참조하십시오
+        url: "/hu_citrix_84.html"
+      - title: 하이퍼바이저 8.2
+        url: "/hu_citrix_82.html"
       - title: XenServer 7을 참조하십시오
         url: "/hu_citrix_7x.html"
     - title: ESXi

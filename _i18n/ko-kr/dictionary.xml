@@ -875,10 +875,6 @@
   <block id="de4b2454229cdcf5a156dbdf82d30b67" category="list-text">Oracle Linux L 7.8 호스트에서 /etc/NVMe/hostnqn의 호스트 NQN 문자열을 확인하고 ONTAP 스토리지에 있는 해당 하위 시스템의 호스트 NQN 문자열과 일치하는지 확인합니다.</block>
   <block id="aec81109cc90f6dcce296e00814fd999" category="paragraph">위 예에서는 두 개의 네임스페이스가 Oracle Linux 7.8 ANA 호스트에 매핑됩니다. 이러한 LIF는 4개의 타겟 LIF: 2개의 로컬 노드 LIF와 2개의 다른 파트너/원격 노드 LIF를 통해 확인할 수 있습니다. 이 설정은 호스트의 각 네임스페이스에 대해 ANA 최적화 경로 2개와 ANA 접근 불가 경로 2개로 표시됩니다.</block>
   <block id="0fd599859ca499a908d11962595ba872" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 7.9를 사용하는 방법을 설명합니다</block>
-  <block id="a51f869a9a131effa58d99e63266e02d" category="summary">ONTAP에서 Citrix Hypervisor 8.x를 사용하는 방법에 대해 설명합니다</block>
-  <block id="d6001c34c29bb04684b5c07f3b8c9209" category="section-title">ASA(All SAN 어레이) 구성</block>
-  <block id="15e8bfaa3c1b932b597dedce3820fa11" category="paragraph">다음 예는 4개의 Active/Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
-  <block id="dfdecabe17f4f61a0c5b353fdc3dfeef" category="paragraph">Citrix Hypervisor 8.x OS는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. Citrix Hypervisor 8.x의 경우 빈 zerobyte '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다.</block>
   <block id="410267f88a5f79f5d40838a8e7a35e62" category="paragraph">XenCenter Management Portal*에서 호스트 다중 경로 서비스를 활성화하고 다중 경로 서비스가 활성화되어 실행 중인지 확인합니다.</block>
   <block id="b00ab7c17a141468a5921157cdf11ec3" category="admonition">DevID&gt; * 를 제외할 장치의 WWID 문자열로 바꿉니다.</block>
   <block id="aea5fd959632948a3225c2ddd5323d43" category="paragraph">다음 표에는 ONTAP LUN에 대한 중요 * multipathd * 매개 변수와 필요한 값이 나와 있습니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 덮어쓴 경우 ONTAP LUN에 특별히 적용되는 * multipath.conf * 에서 나중에 Stanzas를 통해 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 다음 기본값은 NetApp 및/또는 OS 공급업체에 문의하여 영향을 완전히 이해해야 합니다.</block>
@@ -900,14 +896,6 @@
   <block id="677641ebec419b9c5915ed13974b0c07" category="cell">'user_friendly_names'입니다</block>
   <block id="34fed3385bd742bd2b178de283f371b7" category="cell">'더 너더'</block>
   <block id="9d5bc46c4aa8d12cf17b1243dea3cdb8" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 * multipath.conf * 파일은 ONTAP LUN과 호환되지 않는 * path_checker * 및 * detect_prio * 에 대한 값을 정의합니다. 호스트에 연결된 다른 SAN 스토리지 때문에 이러한 매개 변수를 제거할 수 없는 경우 디바이스 스탠자가 있는 ONTAP LUN에 대해 이러한 매개 변수를 특별히 수정할 수 있습니다.</block>
-  <block id="891983ab249dd51fa02a51e1da92fd57" category="admonition">Citrix Hypervisor는 지원되는 구성을 위해 모든 Linux 및 Windows 기반 게스트 VM에 Citrix VM 도구를 사용할 것을 권장합니다.</block>
-  <block id="39f11cb747dafe51ae2cd54386744d96" category="cell">Citrix Tracker ID입니다</block>
-  <block id="37a4830e2093543aff3053de0d030043" category="inline-link-macro">1242343</block>
-  <block id="a7a47de2f0347b1becc88121e58feb77" category="cell"><block ref="b4c7cfb9859e61034527798a6a63bef9" category="inline-link-macro-rx"></block></block>
-  <block id="f55b5d03a0416a1f3b022e8726d40ab4" category="cell">스토리지 페일오버 작업 중 QLogic QLE2742 32Gb FC를 사용하는 Citrix Hypervisor 8.0에서 커널 중단</block>
-  <block id="4a51081f62917f0c91cd1e1d09bd2d71" category="cell">QLogic QLE2742 32GB HBA를 사용하는 Citrix Hypervisor 8.0 커널(4.19.0+1)에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 이 문제는 운영 체제를 재부팅하라는 메시지를 표시하고 응용 프로그램을 중단시킵니다. kdump가 구성된 경우 커널 중단은 /var/crash/ 디렉토리 아래에 vmcore 파일을 생성합니다. vmcore 파일을 사용하여 장애의 원인을 파악할 수 있습니다. 커널이 중단된 후에는 호스트 운영 체제를 재부팅하고 애플리케이션을 다시 시작하여 운영 체제를 복구할 수 있습니다.</block>
-  <block id="b008e43caaecb8f7dd34101d0643e3bf" category="inline-link-macro">넷엡 - 98</block>
-  <block id="f74952756a69cdbe7cccca5faf46e6cc" category="cell"><block ref="f74952756a69cdbe7cccca5faf46e6cc" category="inline-link-macro-rx"></block></block>
   <block id="c11d050c295bbaf2511d25fa05b61010" category="summary">ONTAP에서 CentOS 6.5를 사용하는 방법에 대해 설명합니다</block>
   <block id="13d3312f60a1a5da3e4a008267f577b7" category="paragraph">CentOS 6.5의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="81f9e960f5644067d610e1042c8ad0af" category="paragraph">CentOS 6.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
@@ -1011,7 +999,6 @@
   <block id="f884cc5c56f9c9a8d4d61568ff64db9c" category="sidebar">6.5</block>
   <block id="ded681fc154529ebbc7562fb0c73ba47" category="sidebar">6.4</block>
   <block id="44259680bd01002134994d85d023710c" category="sidebar">Citrix를 참조하십시오</block>
-  <block id="99a5228874b5bc9d6b24fbf9b23fe772" category="sidebar">하이퍼바이저 8</block>
   <block id="095f17ad6c7f706c5fa881fa28d2b0e2" category="sidebar">XenServer 7을 참조하십시오</block>
   <block id="b0781c18fd091c4f9e79ff11eb4b9fc5" category="sidebar">VMware vSphere 7</block>
   <block id="11b4279628bd5bd99185024194584bba" category="sidebar">VMware vSphere 6.5 및 6.7</block>
@@ -1693,7 +1680,6 @@
   <block id="92434d9005fca09d1be87854a8eba962" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.4를 사용하십시오</block>
   <block id="fa3e4c48ee82eee0fd39bec2969d50e3" category="doc">ONTAP에서 CentOS 7.2를 사용합니다</block>
   <block id="5b1dc80fba1c5b1c02a46a705987abf2" category="doc">ONTAP와 함께 Oracle Linux 9.1을 사용합니다</block>
-  <block id="b594df416eb09c0260d9d96034d385bd" category="doc">ONTAP에서 Citrix Hypervisor 사용</block>
   <block id="a7c0c5734c50dba03d00cc462a49e909" category="doc">IBM AIX 7.2 및/또는 PowerVM(VIOS 3.1)을 ONTAP와 함께 사용하십시오</block>
   <block id="7e0b815f73afb730e7ee19f798970799" category="doc">ONTAP와 함께 Oracle Linux 6.10을 사용합니다</block>
   <block id="3944147aca4bcb3598602ba7abb8ecb6" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.9를 사용하십시오</block>
@@ -1771,7 +1757,6 @@
   <block id="1bbb67631847a06bbd9b2e9dafec2134" category="section-title">Solaris 호스트 유틸리티를 설치합니다</block>
   <block id="3f20da7f97c0948dba60855f74d8feb3" category="paragraph">SUSE Linux Enterprise Server 15 SP1 및 ONTAP를 타겟으로 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 구성할 수 있습니다.</block>
   <block id="04e8d5a4c40a30787e3a35e62dfd0c1e" category="paragraph">NVMe/FC용 lpfc 드라이버를 설정합니다.</block>
-  <block id="9f988f6d1200dcd570b84c8116f6eecd" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하여 Citrix 하이퍼바이저 8 시리즈 OS 릴리스에 대한 ONTAP SAN 호스트 구성 설정을 구성할 수 있습니다.</block>
   <block id="e62de6043f25aae2915aa8c10fbaec9d" category="cell"><block ref="e62de6043f25aae2915aa8c10fbaec9d" category="inline-link-macro-rx"></block></block>
   <block id="0ea1561176c96894fb977d38bd38f871" category="section-title">Broadcom NVMe/FC의 1MB I/O 크기 활성화</block>
   <block id="624e2520b17b79e6e7312aaab546e064" category="section-title">Broadcom NVMe/FC의 1MB I/O 크기를 활성화합니다</block>
@@ -2034,7 +2019,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="9accabc78cb81d6e8bcf1d9967acacbf" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 7.5를 구성할 수 있습니다.</block>
   <block id="b3ee07d53ba0c1669d4fce99f84b1058" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하여 CentOS 8.4를 구성할 수 있습니다.</block>
   <block id="c145abd6fbb348ce5e5f456ac88aabe3" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.1을 구성할 수 있습니다.</block>
-  <block id="4d55e8f83a49b7ce8dd509bc82409f4e" category="paragraph">ONTAP가 포함된 Citrix Hypervisor 릴리즈에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="9ce087c89f930ecdafc9ed9c4ed0e415" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.5를 구성할 수 있습니다.</block>
   <block id="89803e3bc17feeb475170d3dcd320e4e" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하여 CentOS 6.10을 구성할 수 있습니다.</block>
   <block id="9181955b285c10325d97f8ef33d5784c" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 IBM AIX 7.1을 구성할 수 있습니다.</block>
@@ -2362,7 +2346,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="26adbe58d014b17e22edee324b7c14d8" category="paragraph"><block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>파일을 처음 만들 때 다음 명령을 사용하여 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.</block>
   <block id="524b08ad750352e65f141bb6a45404ad" category="list-text"><block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>매개변수를 256으로 설정합니다.</block>
   <block id="4e6815a5eaf606ab0b37b61763f811c3" category="paragraph"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 콘텐츠를 추가할 필요가 없습니다. 다음 구문을<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일에 추가하여 원치 않는 장치를 제외할 수 있습니다.</block>
-  <block id="f2d86a1e1d50cd6070c7ed2e2ac2a324" category="paragraph"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 콘텐츠를 추가할 필요가 없습니다. 다음 구문을 multipath.conf 파일에 추가하여 원치 않는 디바이스를 제외할 수 있습니다.</block>
   <block id="8d3d223fd7a6303b1d21d5a6d2ff42cf" category="summary">ONTAP에서 Oracle Linux 8.9을 사용하는 방법에 대해 설명합니다</block>
   <block id="82ccd7f4292a5fcdb3c91b2dac42a0ee" category="doc">ONTAP에서 Oracle Linux 8.9을 사용합니다</block>
   <block id="18b1f91c51b933e6287d49ea6806740e" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.9을 구성할 수 있습니다.</block>
@@ -2421,8 +2404,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="f7de5451f0d12f9de62cf0d59c9695f2" category="admonition">다중 경로는 호스트 OS가 가동되어 경로에서 실행 중인 후에만 사용할 수 있습니다.</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>명령을 실행하면 다음과 같은 유형의 출력이 생성됩니다. 다음 예제의 출력은 잘립니다.</block>
   <block id="2f4a9005041851e9a64a6509d048aa33" category="paragraph">다음 Citrix XenServer 7.x 예에서 는<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
-  <block id="a43126cc8c2ddd919f3ae99c4cf4c423" category="paragraph">Citrix Hypervisor(CH) 8.x의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 존재해야 하지만 파일을 특별히 변경할 필요는 없습니다. CH 8.x는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. status 명령을 사용하여 ONTAP LUN에 대한 설정을 확인할 수<block ref="e5268735d39d64bce63bec4d1a023fa2" prefix=" " category="inline-code"></block> 있습니다. 다음 섹션에서는 ASA 대상에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.</block>
-  <block id="8f1e95bbd539f4c76614944f8cf01b52" category="paragraph">다음 Citrix Hypervisor 8.x 예에서 는<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
   <block id="fb403c5f670d67ab47637709eb33917d" category="paragraph">SUSE Linux Enterprise Server 12 SP1, OL 7.2, RHEL 7.2 및 RHEL 6.8에서 명령을 실행할 때 발생하는 간헐적인 호스트 OS 장애 문제는<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> 이 릴리스에서 해결되었습니다.</block>
   <block id="e660061f6ca1690f631875aa9b659f5c" category="paragraph">다음 섹션에서는 ASA 이외의 사용자에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.</block>
   <block id="f2694c4b7724c227a6fd0a9ab3d8a8f9" category="paragraph">다음 섹션에서는 모든 ASA(SAN Array) 및 비 ASA 구성에 매핑된 LUN에 대한 다중 경로 출력 샘플을 제공합니다.</block>
@@ -3397,7 +3378,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="bcf622355381554644b7b19355170fb1" category="paragraph">Windows 호스트에 스토리지 시스템에 대한 경로가 둘 이상인 경우 Microsoft MPIO(다중 경로 I/O) 소프트웨어를 설치하고 다중 경로를 활성화해야 합니다.</block>
   <block id="4be31bb14f28cd1a1a92b994b241b6e3" category="paragraph">Windows Server 2025와 ONTAP 릴리즈에는 알려진 문제가 없습니다.</block>
   <block id="564407f81c68d8b8dba176bafd8d2c07" category="paragraph"><block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
-  <block id="4fbe6cc46c4e7732ef1cd6a8c08ee6a9" category="paragraph">모든 SAN 어레이(ASA) 구성에는 우선 순위가 1인 경로 그룹이 하나 있어야 합니다. 모든 경로가 Active/Optimized입니다. 이는 컨트롤러에서 서비스를 제공하고 모든 액티브 경로에서 I/O를 전송한다는 것을 의미합니다.</block>
   <block id="769a40f63534a31b2b123052ac1da6ad" category="list-text"><block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>명령의 출력을 확인하여 설정이 완료되었는지 확인합니다. <block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="39d53198af3fc38b686628c26e87a4f8" category="paragraph">Oracle Linux 7.1 UEK R4의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 7.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. <block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="47e930d345db593756a39027df077a51" category="paragraph">비 ASA 구성의 경우 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
@@ -3789,4 +3769,15 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="103bbc9741f09ef806d7d9f1ff8e4957" category="paragraph">ONTAP 9.12.1부터 RHEL 9.6 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
   <block id="c76dae5432bc09fa983706505086692e" category="list-text">RHEL 9.6 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9.6</block>
+  <block id="c90e2c8eff8de67c2e01d748085394db" category="list-text">다음을 확인하십시오. <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 존재합니다. 파일이 없으면 0바이트 빈 파일을 만듭니다.</block>
+  <block id="9143f7bbdb93a1e9aa2dc28f3c922fcc" category="summary">ONTAP과 함께 Citrix Hypervisor 8.2를 사용하는 방법을 설명합니다.</block>
+  <block id="0825e58b251b6f1e1956c9f982c69b3d" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Citrix Hypervisor 8.2 구성</block>
+  <block id="efb6a029c96ca3e81423fa8765c5e1f2" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Citrix Hypervisor 8.2 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="3e2e1ae5727d07e3ee9163e73df8e73f" category="paragraph">Citrix Hypervisor 8.2에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="b335d4f62ea30021bc1fd547fa7ca552" category="summary">ONTAP과 함께 Citrix XenServer 8.4를 사용하는 방법을 설명합니다.</block>
+  <block id="6d9eef6a4c2617ee0a8dfdc9ae7a468a" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Citrix Xenserver 8.4 구성</block>
+  <block id="a2e2d0fcc9350f73f4294c53a7b2fa53" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Citrix Xenserver 8.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">Citrix Xenserver 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4을 참조하십시오</block>
+  <block id="df472899f555ad076c9b90f4bd508f91" category="sidebar">하이퍼바이저 8.2</block>
 </blocks>
