@@ -27,7 +27,6 @@
   <block id="21a58bdeaf70327c6f6f5fd597b24fa3" category="section-title">권장 설정</block>
   <block id="4c8b41567795f35c88d1ebcfb4c0daec" category="paragraph">CentOS 6.9 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="4d70a817ac85626aff88bbc73d0a2deb" category="list-text">다음 명령을 실행하여 WWID를 확인하십시오.</block>
-  <block id="ff73d7e0f0c6051bbd80575105bb1cb1" category="list-text">이 WWID를 '/etc/multipath.conf'의 블랙리스트 스탠자에 추가합니다.</block>
   <block id="83f499a540b1323009c200d6f8cc9396" category="cell">매개 변수</block>
   <block id="51ac4bf63a0c6a9cefa7ba69b4154ef1" category="cell">설정</block>
   <block id="dbffbd283cd0d9c7937014167893297e" category="cell">detect_prio(사전 감지)</block>
@@ -875,27 +874,6 @@
   <block id="de4b2454229cdcf5a156dbdf82d30b67" category="list-text">Oracle Linux L 7.8 호스트에서 /etc/NVMe/hostnqn의 호스트 NQN 문자열을 확인하고 ONTAP 스토리지에 있는 해당 하위 시스템의 호스트 NQN 문자열과 일치하는지 확인합니다.</block>
   <block id="aec81109cc90f6dcce296e00814fd999" category="paragraph">위 예에서는 두 개의 네임스페이스가 Oracle Linux 7.8 ANA 호스트에 매핑됩니다. 이러한 LIF는 4개의 타겟 LIF: 2개의 로컬 노드 LIF와 2개의 다른 파트너/원격 노드 LIF를 통해 확인할 수 있습니다. 이 설정은 호스트의 각 네임스페이스에 대해 ANA 최적화 경로 2개와 ANA 접근 불가 경로 2개로 표시됩니다.</block>
   <block id="0fd599859ca499a908d11962595ba872" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 7.9를 사용하는 방법을 설명합니다</block>
-  <block id="410267f88a5f79f5d40838a8e7a35e62" category="paragraph">XenCenter Management Portal*에서 호스트 다중 경로 서비스를 활성화하고 다중 경로 서비스가 활성화되어 실행 중인지 확인합니다.</block>
-  <block id="b00ab7c17a141468a5921157cdf11ec3" category="admonition">DevID&gt; * 를 제외할 장치의 WWID 문자열로 바꿉니다.</block>
-  <block id="aea5fd959632948a3225c2ddd5323d43" category="paragraph">다음 표에는 ONTAP LUN에 대한 중요 * multipathd * 매개 변수와 필요한 값이 나와 있습니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 덮어쓴 경우 ONTAP LUN에 특별히 적용되는 * multipath.conf * 에서 나중에 Stanzas를 통해 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 다음 기본값은 NetApp 및/또는 OS 공급업체에 문의하여 영향을 완전히 이해해야 합니다.</block>
-  <block id="093280d0b1b888a2d2861cdc763f5f54" category="cell">"제_영주"를 선택합니다</block>
-  <block id="d4f9e6cd04344d6033229cebcf82d8e6" category="cell">DEV_Loss_TMO</block>
-  <block id="0b45dcda8325354552a9f3f77a81fb12" category="cell">페일백</block>
-  <block id="f723063a7c67a9c4d6dc09fcc9258bc0" category="cell">빠른 IO_FAIL_TMO</block>
-  <block id="9b1acf92108be93042969ae0cd15c662" category="cell">기능</block>
-  <block id="51639d9d920527eeeeb339933ef1d388" category="cell">"flush_on_last_del"</block>
-  <block id="dd3d09a74b9822f94f3022c45d6d89eb" category="cell">hardware_handler를 선택합니다</block>
-  <block id="7793f55f663016533cfccea244686d20" category="cell">'path_checker</block>
-  <block id="0229f06974ddf0fbb6c8163410252381" category="cell">path_grouping_policy입니다</block>
-  <block id="100ea8f1ede2192d241e4386cfe3c479" category="cell">'경로 선택기'</block>
-  <block id="06d7756e9ce36c56b9cea270ed31aa7d" category="cell">polling_interval입니다</block>
-  <block id="5b64d224179378eb0872e824614167de" category="cell">프리오</block>
-  <block id="dc2ba82454a2923edf99404df680c7ee" category="cell">'제품'</block>
-  <block id="aaa74fa881bc5ea07b9b9aef23bb28ab" category="cell">"Stain_attached_hw_handler"를 선택합니다</block>
-  <block id="1b1f4bb4b35ee6994917bd6527d2e343" category="cell">'RR_WEIGHT</block>
-  <block id="677641ebec419b9c5915ed13974b0c07" category="cell">'user_friendly_names'입니다</block>
-  <block id="34fed3385bd742bd2b178de283f371b7" category="cell">'더 너더'</block>
-  <block id="9d5bc46c4aa8d12cf17b1243dea3cdb8" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 * multipath.conf * 파일은 ONTAP LUN과 호환되지 않는 * path_checker * 및 * detect_prio * 에 대한 값을 정의합니다. 호스트에 연결된 다른 SAN 스토리지 때문에 이러한 매개 변수를 제거할 수 없는 경우 디바이스 스탠자가 있는 ONTAP LUN에 대해 이러한 매개 변수를 특별히 수정할 수 있습니다.</block>
   <block id="c11d050c295bbaf2511d25fa05b61010" category="summary">ONTAP에서 CentOS 6.5를 사용하는 방법에 대해 설명합니다</block>
   <block id="13d3312f60a1a5da3e4a008267f577b7" category="paragraph">CentOS 6.5의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="81f9e960f5644067d610e1042c8ad0af" category="paragraph">CentOS 6.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
@@ -915,11 +893,6 @@
   <block id="b7c74c258f112727be39c4b747d743ec" category="paragraph">다음 명령을 사용하여 IOP 설정을 확인합니다.</block>
   <block id="32014634f5e91fea92881a76289729e4" category="paragraph">다음 명령을 사용하여 QFullSampleSize를 확인합니다</block>
   <block id="784c795c066fdf3c4713aae58af639ff" category="paragraph">알려진 문제가 없습니다.</block>
-  <block id="33fb3916b5bbccadc7502b97d2b47e0a" category="summary">Citrix XenServer 7.x를 ONTAP와 함께 사용하는 방법에 대해 설명합니다</block>
-  <block id="a51e3210f96458fa393e6f4bf88caabc" category="paragraph">Citrix XenServer의 다중 경로 지원은 Device Mapper multipathd 구성 요소를 기반으로 합니다. 디바이스 매퍼 노드는 XenServer에 제공된 모든 LUN에 대해 자동으로 생성되지 않으며 API(Storage Management Layer)에서 LUN을 적극적으로 사용하는 경우에만 프로비저닝됩니다. Citrix XenServer Storage Manager API 플러그인은 다중 경로 노드의 활성화 및 비활성화를 자동으로 처리합니다.</block>
-  <block id="9fc86c956b59ea355d470ac30580447a" category="paragraph">Citrix XenServer 7.x OS는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. Citrix XenServer 7.x의 경우 빈 zerobyte '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다.</block>
-  <block id="ec8b35f300ba884a5dff762db20c0a35" category="paragraph">'$multipathd show config' 명령을 사용하여 multipath 매개 변수 런타임 구성을 참조하십시오. 기본 설정을 재정의할 수 있는 레거시 설정, 특히 기본 섹션에서 실행 중인 구성을 항상 확인해야 합니다.</block>
-  <block id="73087707ff2bdcd46af8a5eca4a750f8" category="admonition">Citrix XenServer에서는 지원되는 구성을 위해 모든 Linux 및 Windows 기반 게스트 VM에 Citrix VM 도구를 사용할 것을 권장합니다.</block>
   <block id="a6dc6c62ee31196ca4228a01ceaf054f" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 7.6을 사용하는 방법을 설명합니다</block>
   <block id="9f48bd68eb80a61379f6dd65620bec8c" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP2용 NVMe/FC를 구성하는 방법에 대해 설명합니다</block>
   <block id="b7c80370e68c20a6d2b05ca2d022abbe" category="doc">ONTAP가 포함된 SUSE Linux Enterprise Server 15 SP2용 NVMe/FC 호스트 구성</block>
@@ -999,7 +972,6 @@
   <block id="f884cc5c56f9c9a8d4d61568ff64db9c" category="sidebar">6.5</block>
   <block id="ded681fc154529ebbc7562fb0c73ba47" category="sidebar">6.4</block>
   <block id="44259680bd01002134994d85d023710c" category="sidebar">Citrix를 참조하십시오</block>
-  <block id="095f17ad6c7f706c5fa881fa28d2b0e2" category="sidebar">XenServer 7을 참조하십시오</block>
   <block id="b0781c18fd091c4f9e79ff11eb4b9fc5" category="sidebar">VMware vSphere 7</block>
   <block id="11b4279628bd5bd99185024194584bba" category="sidebar">VMware vSphere 6.5 및 6.7</block>
   <block id="b1fd823d262032e04291313f72be9452" category="sidebar">HP-UX를 참조하십시오</block>
@@ -1082,7 +1054,6 @@
   <block id="2ee1fba4400a50245e66ef649b54d588" category="sidebar">AIX HU 6.1을 설치합니다</block>
   <block id="9b402891c0d38b9c654dcfa36df9d722" category="sidebar">8.6</block>
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX Host Utilities 6.1의 릴리스 정보</block>
-  <block id="c03432d938277a67cb7c8ce5d783b2ca" category="paragraph">다음 예는 4개의 Active/Optimized 경로가 모두 포함된 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
   <block id="c1326fec4f12ec093296d507d6b6e33a" category="summary">ONTAP에서 Oracle Linux 8.6을 사용하는 방법에 대해 설명합니다</block>
   <block id="fa491ee178ddf6e96992dad027671112" category="paragraph">Oracle Linux(OL) 8.6의 경우 '/etc/multipath.conf' 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. OL 8.6은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="ea11e68a3ea4e3736ee4012985057991" category="paragraph">Oracle Linux 8.6 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일되었습니다.</block>
@@ -1670,7 +1641,6 @@
   <block id="beb55dba3ba1d2be4056c146cb0bf458" category="paragraph">Oracle Linux 9.2 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
   <block id="02b2bcdfe73b2cce057d7b84806fa6ed" category="paragraph">Oracle Linux 9.1 및 NetApp ONTAP 릴리즈에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="cc40ed991073c638cc114ee18ad15d8c" category="paragraph">Oracle Linux 9.0 및 NetApp ONTAP 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="9f0988d93d2475f41e07c537ac5637e6" category="doc">ONTAP에서 Citrix XenServer를 사용합니다</block>
   <block id="f419fe819afeb109ae85608ed6bd0ca7" category="doc">ONTAP와 함께 Linux용 Veritas Infoscale 7을 사용합니다</block>
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">ONTAP와 함께 VMware vSphere 8.x를 사용합니다</block>
   <block id="7dfa70c3f5b28c905e177a472ecf20d7" category="doc">ONTAP와 함께 Oracle Linux 9.2를 사용하십시오</block>
@@ -1767,7 +1737,6 @@
   <block id="0659d428df833a806e29e65e632d380a" category="inline-link-macro">NetApp 지원</block>
   <block id="b3303f1e3e1d5672f6b839c968637989" category="paragraph">여전히 문제가 발생하는 경우 다음 파일 및 명령 출력을 수집하고 에 문의하십시오 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 추가 분류:</block>
   <block id="8e2fe53ccb05734b777fbcc2363d25ab" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하는 vSphere 7.x 릴리스에 대해 ONTAP SAN 호스트 구성 설정을 사용할 수 있습니다.</block>
-  <block id="4a09c73fa303eedb14779e29343fb862" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하는 Citrix XenServer 7 시리즈 OS 릴리스에 대한 ONTAP SAN 호스트 구성 설정을 구성할 수 있습니다.</block>
   <block id="16739062558f135a2a67b7745e31e80d" category="paragraph">호스트에 매핑된 모든 호스트 이니시에이터 목록을 검색할 수 있습니다.</block>
   <block id="416012ceac18a0ac6c16db45563c9298" category="paragraph">호스트에 매핑된 모든 LUN 목록을 검색할 수 있습니다.</block>
   <block id="34f24f66e929234e4a25705afbec0a62" category="paragraph">특정 SVM에서 호스트에 매핑된 모든 LUN 목록을 검색할 수 있습니다.</block>
@@ -2063,7 +2032,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="57175c72c9ec2223e90f7a6f933b0c1b" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 7.6을 구성할 수 있습니다.</block>
   <block id="23e8ad4d32c5f707280dc61ecce90740" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 8.1을 구성할 수 있습니다.</block>
   <block id="3d8d5b2f05311b66754ca058971f7e2e" category="paragraph">SUSE Linux Enterprise Server 15 SP5와 ONTAP 릴리스에 대해 알려진 문제는 없습니다.</block>
-  <block id="d68505b811ecc342e2c201e1fcd2942d" category="paragraph">ONTAP를 사용하는 Citrix XenServer 릴리즈에는 알려진 문제가 없습니다.</block>
   <block id="30b87f3af4543974205ca57666930631" category="paragraph">Linux용 Veritas Storage Foundation 6(ONTAP 릴리즈 포함)에는 알려진 문제가 없습니다.</block>
   <block id="ee0e00ac8a597d343ecf7da72dd6effd" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.10을 구성할 수 있습니다.</block>
   <block id="c7512b0badc93efcac520b6d3264ca72" category="paragraph">Oracle Linux 6.10과 ONTAP 릴리스의 경우 알려진 문제가 없습니다.</block>
@@ -2345,7 +2313,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="0f184640fa014a23c70b94529da4bca4" category="paragraph">Oracle Linux 9.3과 ONTAP 릴리스의 경우 알려진 문제가 없습니다.</block>
   <block id="26adbe58d014b17e22edee324b7c14d8" category="paragraph"><block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>파일을 처음 만들 때 다음 명령을 사용하여 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.</block>
   <block id="524b08ad750352e65f141bb6a45404ad" category="list-text"><block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>매개변수를 256으로 설정합니다.</block>
-  <block id="4e6815a5eaf606ab0b37b61763f811c3" category="paragraph"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 콘텐츠를 추가할 필요가 없습니다. 다음 구문을<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일에 추가하여 원치 않는 장치를 제외할 수 있습니다.</block>
   <block id="8d3d223fd7a6303b1d21d5a6d2ff42cf" category="summary">ONTAP에서 Oracle Linux 8.9을 사용하는 방법에 대해 설명합니다</block>
   <block id="82ccd7f4292a5fcdb3c91b2dac42a0ee" category="doc">ONTAP에서 Oracle Linux 8.9을 사용합니다</block>
   <block id="18b1f91c51b933e6287d49ea6806740e" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.9을 구성할 수 있습니다.</block>
@@ -2403,7 +2370,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="48a57465c9050da3e456de11a1bce0f0" category="list-text">호스트를 재부팅하여 부팅이 성공했는지 확인합니다.</block>
   <block id="f7de5451f0d12f9de62cf0d59c9695f2" category="admonition">다중 경로는 호스트 OS가 가동되어 경로에서 실행 중인 후에만 사용할 수 있습니다.</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>명령을 실행하면 다음과 같은 유형의 출력이 생성됩니다. 다음 예제의 출력은 잘립니다.</block>
-  <block id="2f4a9005041851e9a64a6509d048aa33" category="paragraph">다음 Citrix XenServer 7.x 예에서 는<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
   <block id="fb403c5f670d67ab47637709eb33917d" category="paragraph">SUSE Linux Enterprise Server 12 SP1, OL 7.2, RHEL 7.2 및 RHEL 6.8에서 명령을 실행할 때 발생하는 간헐적인 호스트 OS 장애 문제는<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> 이 릴리스에서 해결되었습니다.</block>
   <block id="e660061f6ca1690f631875aa9b659f5c" category="paragraph">다음 섹션에서는 ASA 이외의 사용자에 매핑된 LUN에 대한 샘플 다중 경로 출력을 제공합니다.</block>
   <block id="f2694c4b7724c227a6fd0a9ab3d8a8f9" category="paragraph">다음 섹션에서는 모든 ASA(SAN Array) 및 비 ASA 구성에 매핑된 LUN에 대한 다중 경로 출력 샘플을 제공합니다.</block>
@@ -3090,7 +3056,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="65e17e3635aff4a06545ebdec876d723" category="paragraph">AIX Host Utilities 릴리스에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.</block>
   <block id="3a7c6e3d017877edeea93359d3fe1527" category="list-text">AIX Host Utilities 6.1에는 이전 버전의 AIX 호스트 OS에서 발생한 메모리 오류 문제에 대한 지원이 포함되어 있습니다. AIX Host Utilities 6.1에서는 sanlun 바이너리만 변경되었습니다. Microsoft MPIO(다중 경로 I/O) 및 관련 ODM은 변경되지 않습니다.</block>
   <block id="2a372b892113e198dff50fad53f7c8cf" category="cell">ONTAP iSCSI LUN에 대한 SCSI UNMAP 지원</block>
-  <block id="0593445145635811aefe17e2c2c0cee9" category="paragraph">통합 다중 경로 관리 아키텍처와의 비호환성 때문에 Citrix XenCenter 애플리케이션을 사용하여 스토리지 구성을 관리하는 것이 좋습니다. 장치 매퍼 테이블의 상태를 수동으로 쿼리하거나 시스템의 활성 장치 매퍼 다중 경로 노드를 나열해야 하는 경우 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다<block ref="933a1510d6585bc60786b9db6910db56" prefix=" " category="inline-code"></block>. 자세한 내용은 Citrix XenServer의 표준 공급업체 설명서를 참조하십시오.</block>
   <block id="ad8a44c5166ba0f4232aef9400e09e61" category="cell">SCSI 최대 전송 길이 1MB는 ONTAP All SAN 어레이에 적용됩니다. ONTAP All SAN 어레이에 연결할 때 HP-UX 호스트에서 최대 전송 길이를 제한하려면 HP-UX SCSI 서브시스템에서 허용하는 최대 I/O 크기를 1MB로 설정해야 합니다. 자세한 내용은 HP-UX 공급업체 문서를 참조하십시오.</block>
   <block id="09cab502d540fb90ba458ff77a1bf626" category="summary">ONTAP 스토리지와 함께 HP-UX Host Utilities 6.0을 사용하는 방법을 설명합니다</block>
   <block id="0fc97dd29480cf6d4f2229a9139b99f6" category="paragraph">NetApp HP-UX 호스트 유틸리티를 사용하면 HP-UX 호스트를 ONTAP 스토리지에 연결할 수 있습니다.</block>
@@ -3779,5 +3744,5 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="a2e2d0fcc9350f73f4294c53a7b2fa53" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Citrix Xenserver 8.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">Citrix Xenserver 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4을 참조하십시오</block>
-  <block id="df472899f555ad076c9b90f4bd508f91" category="sidebar">하이퍼바이저 8.2</block>
+  <block id="c4bb680e83ce918749e1d4853b0073d1" category="sidebar">하이퍼바이저 8.2(LTSR)</block>
 </blocks>
