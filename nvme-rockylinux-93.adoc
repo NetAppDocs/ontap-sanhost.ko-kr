@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_rhel_95.html 
-keywords: nvme, linux, rhel, red hat, enterprise 
-summary: ONTAP가 포함된 RHEL 9.5용 NVMe-oF 호스트를 구성하는 방법 
+permalink: nvme-rockylinux-93.html 
+keywords: nvme, linux, rocky linux, enterprise 
+summary: ONTAP을 사용하여 Rocky Linux 9.3에 NVMe-oF 호스트를 구성하는 방법 
 ---
-= ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.5 구성
+= ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.3 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,36 +16,34 @@ summary: ONTAP가 포함된 RHEL 9.5용 NVMe-oF 호스트를 구성하는 방법
 
 
 [role="lead"]
-NetApp SAN 호스트 구성은 ANA(Asymmetric Namespace Access)를 통해 NVMe-oF(NVMe over Fabrics) 프로토콜을 지원합니다. NVMe-oF 환경에서 ANA는 iSCSI 및 FCP 환경에서 ALUA(Asymmetric Logical Unit Access) 다중 경로와 같습니다. ANA는 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.
+Rocky Linux 9.3 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 비대칭 논리 장치 액세스(ALUA) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.
+
+지원되는 구성에 대한 자세한 내용은 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
 
 .이 작업에 대해
-RHEL(Red Hat Enterprise Linux) 9.5용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.
+Rocky Linux 9.3의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.
 
 * 사용 가능한 지원:
 +
 ** NVMe/FC(NVMe over Fibre Channel) 외에도 NVMe over TCP(NVMe/TCP) 지원 네이티브 패키지의 NetApp 플러그인은 `nvme-cli` NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시합니다.
-** 동일한 호스트에서 NVMe 및 SCSI 트래픽 모두 실행 예를 들어, SCSI LUN에 대해 SCSI mpath 디바이스에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 디바이스를 구성할 수 있습니다.
-+
-지원되는 구성에 대한 자세한 내용은 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
-
+** 동일한 호스트에서 NVMe 및 SCSI 트래픽 실행 예를 들어, SCSI LUN에 대해 SCSI mpath 디바이스에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 디바이스를 구성할 수 있습니다.
 
 
 * 사용 가능한 기능:
 +
-** ONTAP 9.12.1부터 NVMe-oF에 대한 안전한 대역 내 인증 지원이 도입되었습니다. RHEL 9.5와 함께 NVMe-oF에 대해 보안 인밴드 인증을 사용할 수 있습니다.
-** RHEL 9.5는 기본적으로 NVMe 네임스페이스를 위한 커널 내 NVMe 다중 경로를 지원하므로 명시적인 설정이 필요하지 않습니다.
+** Rocky Linux 9.3은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 되었습니다.
 
 
 * 알려진 제한 사항:
 +
-** 알려진 제한은 없습니다.
+** 현재 NVMe-oF 프로토콜을 사용한 SAN 부팅은 지원되지 않습니다.
 
 
 
 
 
 
-== SAN 부팅을 활성화합니다
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
 SAN 부팅을 사용하도록 호스트를 구성하여 배포를 단순화하고 확장성을 개선할 수 있습니다.
 
@@ -54,7 +52,7 @@ SAN 부팅을 사용하도록 호스트를 구성하여 배포를 단순화하�
 
 .단계
 . https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["SAN 부팅 네임스페이스를 생성하고 호스트에 매핑합니다."^]..
-. SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
+. SAN 부팅 네임스페이스가 매핑된 포트에 대해 서버 BIOS에서 SAN 부팅을 활성화합니다.
 +
 HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
 
@@ -63,50 +61,62 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 
 
-== 소프트웨어 버전을 확인합니다
+== 2단계: 소프트웨어 버전 검증
 
-다음 절차에 따라 지원되는 최소 RHEL 9.5 소프트웨어 버전을 검증할 수 있습니다.
+다음 절차에 따라 지원되는 최소 Rocky Linux 9.3 소프트웨어 버전을 확인하세요.
 
 .단계
-. 서버에 RHEL 9.5를 설치합니다. 설치가 완료되면 지정된 RHEL 9.5 커널을 실행하고 있는지 확인합니다.
+. 서버에 Rocky Linux 9.3을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.3 커널이 실행 중인지 확인하세요.
 +
-[listing]
+[source, cli]
 ----
 uname -r
 ----
 +
+다음 예는 Rocky Linux 커널 버전을 보여줍니다.
+
++
 [listing]
 ----
-5.14.0-503.11.1.el9_5.x86_64
+5.14.0-570.12.1.el9_6.x86_64
 ----
 . "NVMe-CLI" 패키지를 설치합니다.
 +
-[listing]
+[source, cli]
 ----
 rpm -qa|grep nvme-cli
 ----
 +
+다음 예에서는 nvme-cli 패키지 버전을 보여줍니다.
+
++
 [listing]
 ----
-nvme-cli-2.9.1-6.el9.x86_64
+nvme-cli-2.11-5.el9.x86_64
 ----
 . 를 설치합니다 `libnvme` 패키지:
 +
-[listing]
+[source, cli]
 ----
 rpm -qa|grep libnvme
 ----
 +
-[listing]
-----
-libnvme-1.9-3.el9.x86_64
-----
-. RHEL 9.5 호스트에서 다음 위치에서 hostnqn 문자열을 `/etc/nvme/hostnqn` 확인합니다.
+다음 예에서는 다음을 보여줍니다.  `libnvme` 패키지 버전:
+
 +
 [listing]
 ----
+libnvme-1.11.1-1.el9.x86_64
+----
+. Rocky Linux 호스트에서 hostnqn 문자열을 확인하세요.  `/etc/nvme/hostnqn` :
++
+[source, cli]
+----
 cat /etc/nvme/hostnqn
 ----
++
+다음 예에서는 다음을 보여줍니다.  `hostnqn` 버전:
+
 +
 [listing]
 ----
@@ -114,7 +124,7 @@ nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 ----
 . 를 확인합니다 `hostnqn` 문자열이 과 일치합니다 `hostnqn` ONTAP 배열의 해당 하위 시스템에 대한 문자열:
 +
-[listing]
+[source, cli]
 ----
 ::> vserver nvme subsystem host show -vserver vs_coexistence_LPE36002
 ----
@@ -146,9 +156,9 @@ NOTE: 를 누릅니다 `hostnqn` 문자열이 일치하지 않습니다. 를 사
 
 
 
-== NVMe/FC 구성
+== 3단계: NVMe/FC 구성
 
-Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를 구성할 수 있습니다. Broadcom 어댑터로 구성된 NVMe/FC의 경우 1MB 크기의 I/O 요청을 활성화할 수 있습니다.
+Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를 구성할 수 있습니다. 또한 NVMe/TCP 하위 시스템과 네임스페이스를 수동으로 검색해야 합니다.
 
 [role="tabbed-block"]
 ====
@@ -157,14 +167,30 @@ Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를
 .단계
 . 지원되는 어댑터 모델을 사용하고 있는지 확인합니다.
 +
-.. `cat /sys/class/scsi_host/host*/modelname`
+.. 모델 이름을 표시합니다:
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modelname
+----
++
+다음과 같은 출력이 표시됩니다.
+
 +
 [listing]
 ----
 LPe36002-M64
 LPe36002-M64
 ----
-.. `cat /sys/class/scsi_host/host*/modeldesc`
+.. 모델 설명을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modeldesc
+----
++
+다음 예와 비슷한 출력이 표시되어야 합니다.
+
 +
 [listing]
 ----
@@ -175,14 +201,30 @@ Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 
 . 권장 Broadcom을 사용하고 있는지 확인합니다 `lpfc` 펌웨어 및 받은 편지함 드라이버:
 +
-.. `cat /sys/class/scsi_host/host*/fwrev`
+.. 펌웨어 버전을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/fwrev
+----
++
+다음 예에서는 펌웨어 버전을 보여줍니다.
+
 +
 [listing]
 ----
 14.4.317.10, sli-4:6:d
 14.4.317.10, sli-4:6:d
 ----
-.. `cat /sys/module/lpfc/version`
+.. 받은 편지함 드라이버 버전을 표시합니다.
++
+[source, cli]
+----
+cat /sys/module/lpfc/version`
+----
++
+다음 예에서는 드라이버 버전을 보여줍니다.
+
 +
 [listing]
 ----
@@ -195,16 +237,18 @@ Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 
 . 의 예상 출력이 `3` 다음과 같이 설정되었는지 확인합니다 `lpfc_enable_fc4_type`.
 +
-`cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type`
-
-+
-[listing]
+[source, cli]
 ----
-3
+cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
 ----
 . 이니시에이터 포트를 볼 수 있는지 확인합니다.
 +
-`cat /sys/class/fc_host/host*/port_name`
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_name
+----
++
+다음 예에서는 포트 ID를 보여줍니다.
 
 +
 [listing]
@@ -214,7 +258,12 @@ Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 ----
 . 이니시에이터 포트가 온라인 상태인지 확인합니다.
 +
-`cat /sys/class/fc_host/host*/port_state`
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_state
+----
++
+다음과 같은 출력이 표시됩니다.
 
 +
 [listing]
@@ -224,8 +273,10 @@ Online
 ----
 . NVMe/FC 이니시에이터 포트가 활성화되었고 타겟 포트가 표시되는지 확인합니다.
 +
-`cat /sys/class/scsi_host/host*/nvme_info`
-
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+----
 +
 .예제 보기
 [%collapsible]
@@ -267,15 +318,18 @@ FCP CMPL: xb 000014a5 Err 0002149a
 Marvell/QLogic 어댑터용 NVMe/FC를 구성합니다.
 
 
-NOTE: RHEL 9.5 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 포함되어 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.
+NOTE: Rocky Linux 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 적용되었습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.
 
 .단계
 . 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
 +
-[listing]
+[source, cli]
 ----
 cat /sys/class/fc_host/host*/symbolic_name
 ----
++
+다음 예에서는 드라이버 및 펌웨어 버전을 보여줍니다.
+
 +
 [listing]
 ----
@@ -284,12 +338,12 @@ QLE2742 FW:v9.14.00 DVR:v10.02.09.200-k
 ----
 . 확인합니다 `ql2xnvmeenable` 가 설정됩니다. 그러면 Marvell 어댑터가 NVMe/FC Initiator로 작동할 수 있습니다.
 +
-[listing]
+[source, cli]
 ----
 cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 ----
 +
-예상 아웃투트는 1입니다.
+예상 출력은 1입니다.
 
 
 
@@ -297,9 +351,9 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 ====
 
 
-=== 1MB I/O 활성화(옵션)
+== 4단계: 선택적으로 1MB I/O 활성화
 
-ONTAP는 컨트롤러 식별 데이터에서 MDTS(MAX Data 전송 크기)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 매개 변수 값을 `lpfc_sg_seg_cnt` 기본값인 64에서 256으로 늘려야 `lpfc` 합니다.
+Broadcom 어댑터로 구성된 NVMe/FC에 대해 1MB 크기의 I/O 요청을 활성화할 수 있습니다. ONTAP은 컨트롤러 식별 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. 1MB 크기의 I/O 요청을 실행하려면 lpfc 값을 늘려야 합니다.  `lpfc_sg_seg_cnt` 매개변수를 기본값 64에서 256으로 늘립니다.
 
 
 NOTE: 이 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
@@ -307,13 +361,10 @@ NOTE: 이 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
 .단계
 .  `lpfc_sg_seg_cnt`매개변수를 256으로 설정합니다.
 +
-[source, cli]
+[listing]
 ----
 cat /etc/modprobe.d/lpfc.conf
 ----
-+
-다음 예와 비슷한 출력이 표시되어야 합니다.
-
 +
 [listing]
 ----
@@ -322,7 +373,7 @@ options lpfc lpfc_sg_seg_cnt=256
 .  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
 . 의 값이 256인지 `lpfc_sg_seg_cnt` 확인합니다.
 +
-[source, cli]
+[listing]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
@@ -330,9 +381,9 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
-== NVMe/TCP를 구성합니다
+== 5단계: NVMe/TCP 구성
 
-NVMe/TCP 프로토콜이 작업을 지원하지 `auto-connect` 않습니다. 대신 NVMe/TCP 또는 `connect-all` 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 `connect` 있습니다.
+NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다. 대신, NVMe/TCP 연결 또는 전체 연결 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 있습니다.
 
 .단계
 . 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
@@ -611,21 +662,21 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 
 
 
-NOTE: RHEL 9.5부터는 NVMe/TCP 시간 제한에 대한 기본 설정이 `ctrl_loss_tmo` 꺼집니다. 다시 시도 횟수에 제한이 없음을 의미합니다(무제한 재시도). 따라서 또는 `nvme connect-all` 명령(option-l)을 사용할 때 특정 시간 초과 기간을 `nvme connect` 수동으로 구성할 필요가 `ctrl_loss_tmo` 없습니다. 이 기본 동작에서는 경로 장애 발생 시 NVMe/TCP 컨트롤러가 시간 초과를 경험하지 않고 무기한 연결된 상태를 유지합니다.
 
-
-
-== NVMe-oF를 검증합니다
+== 6단계: NVMe-oF 검증
 
 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
 
 .단계
 . in-kernel NVMe multipath가 활성화되어 있는지 확인합니다.
 +
-[listing]
+[source, cli]
 ----
 cat /sys/module/nvme_core/parameters/multipath
 ----
++
+다음과 같은 출력이 표시됩니다.
+
 +
 [listing]
 ----
@@ -633,14 +684,30 @@ Y
 ----
 . 각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: NetApp ONTAP 컨트롤러로 설정된 모델 및 라운드 로빈으로 설정된 로드 밸런싱 IPolicy가 호스트에 올바르게 반영되는지 확인합니다.
 +
-.. `cat /sys/class/nvme-subsystem/nvme-subsys*/model`
+.. 하위 시스템을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/model
+----
++
+다음과 같은 출력이 표시됩니다.
+
 +
 [listing]
 ----
 NetApp ONTAP Controller
 NetApp ONTAP Controller
 ----
-.. `cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy`
+.. 정책을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+----
++
+다음과 같은 출력이 표시됩니다.
+
 +
 [listing]
 ----
@@ -651,7 +718,7 @@ round-robin
 
 . 호스트에서 네임스페이스가 생성되고 올바르게 검색되는지 확인합니다.
 +
-[listing]
+[source, cli]
 ----
 nvme list
 ----
@@ -677,7 +744,7 @@ Namespace Usage    Format             FW             Rev
 ====
 .NVMe/FC
 --
-[listing]
+[source, cli]
 ----
 nvme list-subsys /dev/nvme4n5
 ----
@@ -699,7 +766,7 @@ iopolicy=round-robin\
 --
 .NVMe/TCP
 --
-[listing]
+[source, cli]
 ----
 nvme list-subsys /dev/nvme1n1
 ----
@@ -725,12 +792,13 @@ src_addr=192.168.1.31 *live non-optimized*
 --
 ====
 . NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다.
-+
+
+
 [role="tabbed-block"]
 ====
 .열
 --
-[listing]
+[source, cli]
 ----
 nvme netapp ontapdevices -o column
 ----
@@ -752,7 +820,7 @@ NSID       UUID                                   Size
 --
 .JSON을 참조하십시오
 --
-[listing]
+[source, cli]
 ----
 nvme netapp ontapdevices -o json
 ----
@@ -781,233 +849,6 @@ nvme netapp ontapdevices -o json
 ====
 
 
+== 7단계: 알려진 문제를 검토합니다
 
-
-== 보안 대역내 인증을 설정합니다
-
-ONTAP 9.12.1부터 RHEL 9.5 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP 및 NVMe/FC를 통해 보안 인밴드 인증이 지원됩니다.
-
-보안 인증을 설정하려면 각 호스트 또는 컨트롤러가 에 연결되어 있어야 합니다 `DH-HMAC-CHAP` 키 - NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀의 조합입니다. 피어를 인증하려면 NVMe 호스트 또는 컨트롤러가 피어와 연결된 키를 인식해야 합니다.
-
-CLI 또는 구성 JSON 파일을 사용하여 보안 대역 내 인증을 설정할 수 있습니다. 서로 다른 하위 시스템에 대해 다른 dhchap 키를 지정해야 하는 경우 구성 JSON 파일을 사용해야 합니다.
-
-[role="tabbed-block"]
-====
-.CLI를 참조하십시오
---
-CLI를 사용하여 보안 인밴드 인증을 설정합니다.
-
-.단계
-. 호스트 NQN 가져오기:
-+
-[listing]
-----
-cat /etc/nvme/hostnqn
-----
-. RHEL 9.5 호스트에 대한 dhchap 키를 생성합니다.
-+
-다음 출력에서는 명령 매개 변수에 대해 `gen-dhchap-key` 설명합니다.
-
-+
-[listing]
-----
-nvme gen-dhchap-key -s optional_secret -l key_length {32|48|64} -m HMAC_function {0|1|2|3} -n host_nqn
-•	-s secret key in hexadecimal characters to be used to initialize the host key
-•	-l length of the resulting key in bytes
-•	-m HMAC function to use for key transformation
-0 = none, 1- SHA-256, 2 = SHA-384, 3=SHA-512
-•	-n host NQN to use for key transformation
-----
-+
-다음 예에서는 HMAC이 3(SHA-512)으로 설정된 임의의 dhchap 키가 생성됩니다.
-
-+
-[listing]
-----
-# nvme gen-dhchap-key -m 3 -n nqn.2014-08.org.nvmexpress:uuid:e6dade64-216d-11ec-b7bb-7ed30a5482c3
-DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
-----
-. ONTAP 컨트롤러에서 호스트를 추가하고 두 dhchap 키를 모두 지정합니다.
-+
-[listing]
-----
-vserver nvme subsystem host add -vserver <svm_name> -subsystem <subsystem> -host-nqn <host_nqn> -dhchap-host-secret <authentication_host_secret> -dhchap-controller-secret <authentication_controller_secret> -dhchap-hash-function {sha-256|sha-512} -dhchap-group {none|2048-bit|3072-bit|4096-bit|6144-bit|8192-bit}
-----
-. 호스트는 단방향 및 양방향이라는 두 가지 유형의 인증 방법을 지원합니다. 호스트에서 ONTAP 컨트롤러에 연결하고 선택한 인증 방법에 따라 dhchap 키를 지정합니다.
-+
-[listing]
-----
-nvme connect -t tcp -w <host-traddr> -a <tr-addr> -n <host_nqn> -S <authentication_host_secret> -C <authentication_controller_secret>
-----
-. 의 유효성을 검사합니다 `nvme connect authentication` 호스트 및 컨트롤러 dhchap 키를 확인하여 명령:
-+
-.. 호스트 dhchap 키를 확인합니다.
-+
-[listing]
-----
-cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
-----
-+
-.단방향 설정에 대한 출력 예제를 표시합니다
-[%collapsible]
-=====
-[listing]
-----
-# cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
-DHHC-1:01:iM63E6cX7G5SOKKOju8gmzM53qywsy+C/YwtzxhIt9ZRz+ky:
-DHHC-1:01:iM63E6cX7G5SOKKOju8gmzM53qywsy+C/YwtzxhIt9ZRz+ky:
-DHHC-1:01:iM63E6cX7G5SOKKOju8gmzM53qywsy+C/YwtzxhIt9ZRz+ky:
-DHHC-1:01:iM63E6cX7G5SOKKOju8gmzM53qywsy+C/YwtzxhIt9ZRz+ky:
-----
-=====
-.. 컨트롤러 dhchap 키를 확인합니다.
-+
-[listing]
-----
-cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_ctrl_secret
-----
-+
-.에는 양방향 구성의 출력 예가 나와 있습니다
-[%collapsible]
-=====
-[listing]
-----
-# cat /sys/class/nvme-subsystem/nvme-subsys6/nvme*/dhchap_ctrl_secret
-DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
-DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
-DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
-DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
-----
-=====
-
-
-
-
---
-.JSON 파일
---
-ONTAP 컨트롤러 구성에서 여러 NVMe 서브시스템을 사용할 수 있는 경우 파일을 명령과 함께 `nvme connect-all` 사용할 수 `/etc/nvme/config.json` 있습니다.
-
-JSON 파일을 생성하려면 `-o` 옵션을 사용합니다. 자세한 구문 옵션은 NVMe Connect - 모든 설명서 페이지를 참조하십시오.
-
-.단계
-. JSON 파일 구성:
-+
-.예제 보기
-[%collapsible]
-=====
-[listing]
-----
-# cat /etc/nvme/config.json
-[
-{
-  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:9796c1ec-0d34-11eb-b6b2-3a68dd3bab57",
-  "hostid":"b033cd4fd6db4724adb48655bfb55448",
-  "dhchap_key":"DHHC-1:01:zGlgmRyWbplWfUCPMuaP3mAypX0+GHuSczx5vX4Yod9lMPim:"
-},
-{
-  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33",
-  "subsystems":[
-       {
-          "nqn":"nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.bidir_DHCP",
-          "ports":[
-              {
-                  "transport":"tcp",
-                   "traddr":" 192.168.1.24 ",
-                  "host_traddr":" 192.168.1.31 ",
-                  "trsvcid":"4420",
-                  "dhchap_ctrl_key":"DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:"
-              },
-              {
-                  "transport":"tcp",
-                  "traddr":" 192.168.1.24 ",
-                  "host_traddr":" 192.168.1.31",
-                  "trsvcid":"4420",
-                  "dhchap_ctrl_key":"DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:"
-              },
-              {
-                  "transport":"tcp",
-                 "traddr":" 192.168.1.24 ",
-                  "host_traddr":" 192.168.1.31",
-                  "trsvcid":"4420",
-                  "dhchap_ctrl_key":"DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:"
-              },
-              {
-                  "transport":"tcp",
-                  "traddr":" 192.168.1.24 ",
-                   "host_traddr":" 192.168.1.31",
-                  "trsvcid":"4420",
-                  "dhchap_ctrl_key":"DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:"
-              }
-          ]
-      }
-  ]
-}
-]
-----
-=====
-+
-
-NOTE: 위의 예제에서 는 `dhchap_key` 에 해당하고 에 `dhchap_secret` `dhchap_ctrl_key` `dhchap_ctrl_secret` 해당합니다.
-
-. config JSON 파일을 사용하여 ONTAP 컨트롤러에 연결합니다.
-+
-[listing]
-----
-# nvme connect-all -J /etc/nvme/config.json
-----
-+
-.예제 보기
-[%collapsible]
-=====
-[listing]
-----
-traddr=192.168.1.24 is already connected
-traddr=192.168.1.24 is already connected
-traddr=192.168.1.24 is already connected
-traddr=192.168.1.24 is already connected
-traddr=192.168.1.24 is already connected
-traddr=192.168.1.24 is already connected
-traddr=192.168.1.25 is already connected
-traddr=192.168.1.25 is already connected
-traddr=192.168.1.25 is already connected
-traddr=192.168.1.25 is already connected
-traddr=192.168.1.25 is already connected
-traddr=192.168.1.25 is already connected
-----
-=====
-. 각 하위 시스템에 대해 해당 컨트롤러에 대해 dhchap 암호가 활성화되어 있는지 확인합니다.
-+
-.. 호스트 dhchap 키를 확인합니다.
-+
-[listing]
-----
-# cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
-----
-+
-[listing]
-----
-DHHC-1:01:zGlgmRyWbplWfUCPMuaP3mAypX0+GHuSczx5vX4Yod9lMPim:
-----
-.. 컨트롤러 dhchap 키를 확인합니다.
-+
-[listing]
-----
-# cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
-----
-+
-[listing]
-----
-DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:
-----
-
-
-
-
---
-====
-
-
-== 알려진 문제
-
-ONTAP 릴리즈가 포함된 RHEL 9.5의 NVMe-oF 호스트 구성에 대해 알려진 문제는 없습니다.
+알려진 문제가 없습니다.

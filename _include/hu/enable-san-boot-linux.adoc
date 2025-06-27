@@ -1,0 +1,21 @@
+= 1단계: 필요에 따라 SAN 부팅을 활성화합니다
+:allow-uri-read: 
+
+
+
+
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
+
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 단순화하고 확장성을 개선할 수 있습니다.
+
+.시작하기 전에
+를 사용하여 link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인합니다.
+
+.단계
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["SAN 부팅 LUN을 생성하고 호스트에 매핑합니다."^]..
+. SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
++
+HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
+
+. 호스트를 재부팅하고 OS가 실행 중인지 확인하여 구성이 성공했는지 확인합니다.
+

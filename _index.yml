@@ -11,7 +11,7 @@ indexpage:
   tiles:
   - title: 시작하십시오
     links:
-    - title: 제품 개요
+    - title: SAN 호스트 구성에 대해 자세히 알아보십시오
       url: "/overview.html"
     - title: AIX 호스트 유틸리티 릴리스 노트
       url: "/hu_aix_rn.html"

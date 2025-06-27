@@ -1712,7 +1712,6 @@
   <block id="bb6a1ceb13d5a6a98f1fab62ea2d512f" category="doc">ONTAP와 함께 Oracle Linux 6.6을 사용합니다</block>
   <block id="e880125f3679cf40fd24e55f28d63538" category="doc">ONTAP와 함께 HP-UX 11i v3을 사용하십시오</block>
   <block id="cf5d40dc8478138e0c0d29b28520ae39" category="section-title">HP-UX Host Utilities를 설치합니다</block>
-  <block id="4b983fff716674f120176e09551dd445" category="sidebar">제품 개요</block>
   <block id="8a4e695bd23e65bc1993b3356eeb2277" category="sidebar">AIX 호스트 유틸리티 릴리스 노트</block>
   <block id="360baa7584a9f61d637775beeeeab041" category="sidebar">HP-UX Host Utilities 릴리스 정보</block>
   <block id="e8496e75812b6bc1fac8161323e4bf5f" category="sidebar">Linux Host Utilities 릴리스 정보</block>
@@ -2653,7 +2652,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="9a8c8fd6ced80cbe4db0d4c4fef7bf6e" category="list-text">OL 9.4 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="d481825a9f6d37ba25450de94597b251" category="paragraph">Oracle Linux 9.4과 ONTAP 릴리스의 경우 알려진 문제가 없습니다.</block>
   <block id="5dca4677c0eb60175de3486097fb7e31" category="summary">ONTAP가 포함된 RHEL 9.5용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="205c395027a9d9fe19678e0cebbf1855" category="doc">ONTAP 탑재 RHEL 9.5에 대한 NVMe-oF 호스트 구성</block>
   <block id="a84296aedc6011b8c397f3233477b461" category="paragraph">RHEL(Red Hat Enterprise Linux) 9.5용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
   <block id="c396639e860651e2d3cd53ecae736ced" category="list-text">NVMe/FC(NVMe over Fibre Channel) 외에도 NVMe over TCP(NVMe/TCP) 지원 네이티브 패키지의 NetApp 플러그인은<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시합니다.</block>
   <block id="b1f115278eb622d0e0153250bf01cf4c" category="list-text">ONTAP 9.12.1부터 NVMe-oF에 대한 안전한 대역 내 인증 지원이 도입되었습니다. RHEL 9.5와 함께 NVMe-oF에 대해 보안 인밴드 인증을 사용할 수 있습니다.</block>
@@ -3455,8 +3453,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="de7c28ff0eb95c7790427d99e464cd7d" category="list-text"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>파일이 종료되는지 확인합니다. 파일이 없으면 0바이트 빈 파일을 만듭니다.</block>
   <block id="4154b2933e2df9573e5568e1cb8b0708" category="list-text">호스트를 부팅할 때마다 빈 0바이트 파일이<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> NetApp 권장 호스트 다중 경로 매개 변수를 기본 설정으로 자동으로 로드합니다. 운영 체제는 ONTAP LUN을 올바르게 인식하고 관리하는 다중 경로 매개 변수를 사용하여 컴파일되므로 호스트의 파일을 변경할 필요가 없습니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>.</block>
   <block id="2dc85993483fece6ce86d25200665755" category="paragraph">다음 표는 ONTAP LUN에 대한 Linux 운영 체제 네이티브 컴파일 다중 경로 매개 변수 설정을 보여줍니다.</block>
-  <block id="3e69d2b38cbdad51b5f0a5227c5c242e" category="paragraph">파일을 확인해야<block ref="3e47c09a7bdcd0377df056ba2567e852" category="inline-xref-macro-rx"></block> 합니다. 특히 기본값 섹션에서 을(를) 무시할 수 있는 설정을 확인해야<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 합니다.</block>
-  <block id="d0cd85ffaeb74cce57bdd7f018a8056d" category="paragraph">예를 들어, 호스트가 다른 공급업체의 LUN에 접속되어 있고 다중 경로 매개 변수 설정이 재정의되면 나중에 ONTAP LUN에 특별히 적용되는 파일에서 stanzas를 추가하여 수정해야<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 합니다. 이렇게 하지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다.</block>
   <block id="7d6ed8198fddc97f7e4e07dc8cb965c1" category="inline-link-macro">Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오</block>
   <block id="50fccb7a08e328dd304687eaac55846c" category="list-text"><block ref="786b704a3e80d9336e72d473c71f71a5" category="inline-link-macro-rx"></block>..</block>
   <block id="5c74c157af6548045320136db7e14e99" category="doc">ONTAP 스토리지용 HP-UX Host Utilities 6.0을 설치합니다</block>
@@ -3648,7 +3644,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="b666f1fcf3d24bdf8d1596c592783e04" category="inline-link">vSphere에서 스토리지 공간 재확보</block>
   <block id="e2b29f49797a2325ae454b80e6aecf4a" category="paragraph">VMware vSphere의 NVMe 할당 해제에 대한 자세한 내용은 을 참조하십시오<block ref="c446d1e3b484512e9ba1bbe8eab259bf" category="inline-link-rx"></block></block>
   <block id="e99f28bee3ac5bad6e5414411cd5ffa0" category="sidebar">ONTAP SAN 호스트 유틸리티</block>
-  <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">SAN 호스트 및 클라우드 클라이언트를 구성합니다</block>
   <block id="d42d49b663d32823894e50123ab762aa" category="admonition">ONTAP LUN이 하이퍼바이저에 자동으로 매핑되므로 커널 기반 가상 머신(KVM) 설정을 수동으로 구성할 필요가 없습니다.</block>
   <block id="6c1237c8a63c9432743995a73de4f2ea" category="paragraph">ONTAP 컨트롤러에서 단계를 수행하도록 지정한 경우를 제외하고, 이 절차의 모든 단계는 SUSE Linux Enterprise Server 호스트에서 수행합니다.</block>
   <block id="a06bd7b24c1effd63b064b3a8b11fac4" category="paragraph"><block ref="43e4de7615f2615407bf61dc8bab917d" prefix="" category="inline-code"></block></block>
@@ -3721,7 +3716,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="5cecbf0e006813819e7ea0d92ccca8df" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.6 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="c655b9821bde0a911428a133bb7ef67f" category="paragraph">RHEL 9.6에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="6cbcd68038ece1dbafa173add2c90697" category="summary">ONTAP가 포함된 RHEL 9.6용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="3dff0e4b77025c9e0739e3b02b3ff268" category="doc">ONTAP 탑재 RHEL 9.6에 대한 NVMe-oF 호스트 구성</block>
   <block id="fdee72360607bede29fc52844f306e62" category="paragraph">RHEL(Red Hat Enterprise Linux) 9.6용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
   <block id="770bddea589c1a8e5b2541551754b4e4" category="list-text">RHEL 9.6는 기본적으로 NVMe 네임스페이스를 위한 커널 내 NVMe 다중 경로를 지원하므로 명시적인 설정이 필요하지 않습니다.</block>
   <block id="e118d7e4742cf0454d407a22991c4f23" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. RHEL 9.6에서는 NVMe/TCP에 대한 보안 인밴드 인증을 사용할 수 있습니다.</block>
@@ -3729,8 +3723,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="3b6f23fb41215bfbde13af4b92268902" category="paragraph">다음 절차에 따라 지원되는 최소 RHEL 9.6 소프트웨어 버전을 확인하세요.</block>
   <block id="61e91ca529ce5516397f8af4ff223ab0" category="list-text">서버에 RHEL 9.6를 설치합니다. 설치가 완료되면 지정된 RHEL 9.6 커널을 실행하고 있는지 확인합니다.</block>
   <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">다음 예에서는 nvme-cli 패키지 버전을 보여줍니다.</block>
-  <block id="a33245ebb2f380b62ab218a312110f3a" category="list-text">RHEL 9.6 호스트에서 다음 위치에서 hostnqn 문자열을<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 확인합니다.</block>
-  <block id="844df812cde8ebcaf9f2cc35022248c6" category="paragraph">RHEL 9.6에서는 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템 부팅 시 자동으로 시작되도록 설정됩니다. 시스템 부팅이 완료되면 부팅 서비스가 활성화되었는지 확인하세요.</block>
   <block id="103bbc9741f09ef806d7d9f1ff8e4957" category="paragraph">ONTAP 9.12.1부터 RHEL 9.6 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
   <block id="c76dae5432bc09fa983706505086692e" category="list-text">RHEL 9.6 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9.6</block>
@@ -3745,4 +3737,251 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">Citrix Xenserver 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4을 참조하십시오</block>
   <block id="c4bb680e83ce918749e1d4853b0073d1" category="sidebar">하이퍼바이저 8.2(LTSR)</block>
+  <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">SAN 부팅 LUN을 생성하고 호스트에 매핑합니다.</block>
+  <block id="23f9932633d90fac9929676a3d96b73c" category="list-text"><block ref="d3b050efbc8875625662ab7a3bc1d82e" category="inline-link-macro-rx"></block>..</block>
+  <block id="55e68527d8c164dc338b18da64611305" category="admonition">ONTAP LUN이 KVM 하이퍼바이저에 자동으로 매핑되므로 KVM(커널 기반 가상 머신) 설정을 구성할 필요가 없습니다.</block>
+  <block id="ca1309f891bafcb692fbf3149982c0e9" category="inline-link">SAN 부팅 네임스페이스를 생성하고 호스트에 매핑합니다.</block>
+  <block id="e97e46892f962abb9d135b9f4260bb28" category="list-text"><block ref="5fb7de3d2a2b97d13727ed55244c1d34" category="inline-link-rx"></block>..</block>
+  <block id="83946a5f9a0c9e6468d1616ca938bdd0" category="list-text">RHEL 호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="43075b4ae15209d42a33c26736b1a616" category="list-text">Rocky Linux 호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="3207068e1112e1d7bf44793a16243167" category="paragraph">NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다. 대신, NVMe/TCP 연결 또는 전체 연결 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 있습니다.</block>
+  <block id="5b65dc582fc3a54b76dad70a8f267f3f" category="paragraph">Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를 구성할 수 있습니다. 또한 NVMe/TCP 하위 시스템과 네임스페이스를 수동으로 검색해야 합니다.</block>
+  <block id="61b5a98a9fc13d3a4a8112007aef142d" category="admonition">Rocky Linux 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 적용되었습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
+  <block id="59469b69c75b40a15b84cc48d2d1a5d4" category="paragraph">예상 출력은 1입니다.</block>
+  <block id="255f7dd737c93c62e180bd5b0eb68abb" category="paragraph">Broadcom 어댑터로 구성된 NVMe/FC에 대해 1MB 크기의 I/O 요청을 활성화할 수 있습니다. ONTAP은 컨트롤러 식별 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. 1MB 크기의 I/O 요청을 실행하려면 lpfc 값을 늘려야 합니다. <block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 매개변수를 기본값 64에서 256으로 늘립니다.</block>
+  <block id="769454dbe77ed2cae45ab11f15c3cdfe" category="paragraph">ONTAP 9.12.1부터 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP 및 NVMe/FC를 통한 안전한 인밴드 인증이 지원됩니다.</block>
+  <block id="23634d6048eb22a5ca8d8ab3d1e781a7" category="list-text">호스트에 대한 dhchap 키를 생성합니다.</block>
+  <block id="c92a52992f13806a7d9c0f313df649d6" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 10 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="4d8e0dfcc8e342905265f68006cfcd68" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대해 Rocky Linux 10 구성</block>
+  <block id="26522b37063e21b1731a31a2bfd1a0ed" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 10 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="c81edf36dc000954d363cf834dc3e1c0" category="paragraph">Rocky Linux 10에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="10c6ce445b6fd8fcc35776c073408bd2" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 8.10 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="cba38e964105989c754ebf56baca9af3" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.10 구성</block>
+  <block id="7ff9eff62aade53ae2eb348ebae3cf47" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.10 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="5d989adb4f7d32eee4124400262bf918" category="paragraph">Rocky Linux 8.10에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="d98d14968fd86eba6c5ebc7d87fdd83b" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 8.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="ba416f8aef0f245b847812984b757ce4" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.4 구성</block>
+  <block id="174543e34b7d13429219a325a6fcbe93" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="171627c824ed442ad84a4d90a3c97952" category="paragraph">Rocky Linux 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="98dce0d2258c58c69460b0a488eb49c9" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 8.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="410c38d7b5e3599337485ae6ef459a7e" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.5 구성</block>
+  <block id="0acbbf852408838333f8d310f05ec475" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.5 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="5e88c1ca753afc9d771cd2019db114b3" category="paragraph">Rocky Linux 8.5에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="c45149732f3f935765d797769c9fd69a" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 8.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="04ece8dfbc674327a705caceeb81d62b" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.6 구성</block>
+  <block id="fa29a393a584868de2f8639785c016a2" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.6 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="9ae000a5d4fd91006240cf7e33d05c05" category="paragraph">Rocky Linux 8.6에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="8b4dafa474c7a4355a39383af8d1c7cc" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 8.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="ce9599e816b36cb18a7a8cfb3f45fe7d" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.7 구성</block>
+  <block id="cfb5d3fa62e6dc1366ef21d25eb6d8a9" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.7 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="bc0c16ca58e238a03817bc8d978d189a" category="paragraph">Rocky Linux 8.7에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="b20d601aeb70037eff844bb0df11d40d" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 8.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="6217618a3143d0b9754e92036e9305e4" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.8 구성</block>
+  <block id="31664cf89a6f7fcb891937e8c5dea7f3" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.8 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="202c52d6d4b643e7c3eac015375fbfd5" category="paragraph">Rocky Linux 8.8에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="3dcc0b1e5c77103db7b777fd05ec019e" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 8.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="b16b1826e8443110e92767189b4a8551" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.9 구성</block>
+  <block id="cffc2bf34b5020f3bc45474f09d6167a" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.9 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="e50750a077fa75109a2de3f93bb42adf" category="paragraph">Rocky Linux 8.9에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="b8f2b28d51f5ad1ed6ef3657cb80081d" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 9.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="d7425bae8e902a7d5ec33ee8629b1dc5" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.0 구성</block>
+  <block id="26c0be952da97210ffccf7832a50a648" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="07e4b32f34b896d73ffb495a88037151" category="paragraph">Rocky Linux 9.0에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="06f025c312a90965fc0bc646683a1a5e" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 9.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="88f18a7ceb1d58730bbfabf1519c5648" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.1 구성</block>
+  <block id="cd73b7440b86e7342c647768b8ee8758" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.1 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="e548f8628d947c00bc3b480707821d79" category="paragraph">Rocky Linux 9.1에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="64c13bc414e8523921f8ccfce8736da0" category="paragraph">ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Rocky Linux 9.1 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="83d23b030ca5295c7d8736002bf1f7d2" category="cell">Rocky Linux 9.1에서는 NetApp Linux SAN 호스트 유틸리티 CLI가 있습니다. <block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> HBA 검색을 지원하는 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
+  <block id="0500cd1e151f6d1672a674d85a0631b1" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 9.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="c300ebce91df3cb39e5e31308b78de62" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.2 구성</block>
+  <block id="c2e307d87a03e5b748c1ced02a2edf6c" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.2 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="ebf412f3fd0e93aa81a3155388db822e" category="paragraph">Rocky Linux 9.2에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="0407ec3e3bff4e8012825fa1d5226f7b" category="paragraph">ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Rocky Linux 9.2 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="3aa5c1fb6e11d4a3345025b6ab329582" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 9.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="3ebca8bd785348ea265e78526a21a8cf" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.3 구성</block>
+  <block id="74a65f1f314f1477d77a061875f8e976" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.3 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="505f24ab9736799ecc985bb9732c1386" category="paragraph">Rocky Linux 9.3에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="f1c5e93b02cb69209200bb18dd6c3fce" category="paragraph">ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Rocky Linux 9.3 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="a69da5ead0dfdf6b2f7d873000f30065" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 9.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="867a3c3b3a78822b79f9e274bd05645b" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.4 구성</block>
+  <block id="4903eef42b7e47b3e075d363a1c038ca" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="da56ef3d8d73918e1ec023d3cccd7660" category="paragraph">Rocky Linux 9.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="0283c230872ee0538d0b3c23d992b395" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 9.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="b28624e5c1d5f27d9bb572967555b42b" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.5 구성</block>
+  <block id="9c295b02084a33345278a5faf4e5c992" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.5 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="60d78a670282f7a61eae67f19d440c37" category="paragraph">Rocky Linux 9.5에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="59ad3bdbbd45712662a5fecfe7774929" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Rocky Linux 9.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="b4d05655be91566f9bc3cf128c212819" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.6 구성</block>
+  <block id="a2b75a7ad4a5886f1d32d9dccadcf773" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.6 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="ecb4bd3c426003f3430e774eac3ce2f6" category="paragraph">Rocky Linux 9.6에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="73f17c790fb6e615fc4015f793dd7853" category="summary">ONTAP 스토리지를 사용하여 Rocky Linux 10에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="95d56a95c4a46cb4d634d496d6e9b039" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 맞게 Rocky Linux 10 구성</block>
+  <block id="0adc460f96fe4e3f2127561051d8615e" category="paragraph">Rocky Linux 10의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="6611e2d11dfe627f04440281f705b6e8" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. Rocky Linux 10에서는 NVMe/TCP에 대한 안전한 인밴드 인증을 사용할 수 있습니다.</block>
+  <block id="1b17124b24dbc39a0d7becfce134f36c" category="list-text">Rocky Linux 10부터 기본 NVMe 멀티패스가 항상 활성화되어 있으며, NVMe-oF에 대한 DM 멀티패스 지원은 지원되지 않습니다.</block>
+  <block id="6ea036c9f961aeb2208dfa3070bd3a2c" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 10 소프트웨어 버전을 확인하세요.</block>
+  <block id="d82ff982ee38964fef1789b7031e01e7" category="list-text">서버에 Rocky Linux 10을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 10 커널이 실행 중인지 확인하세요.</block>
+  <block id="e3fbd13dfb8ea61b75afa9bbdecb654e" category="paragraph">다음 예는 Rocky Linux 커널 버전을 보여줍니다.</block>
+  <block id="6dfe623f7c51a70cb79b53affc5b832a" category="paragraph">Rocky Linux 10을 사용하면 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다. 부팅이 완료되면 서비스가 활성화되었는지 확인하세요.</block>
+  <block id="db8bb9a360dc769d2ef0b970c683b33a" category="admonition">Rocky Linux 9.5부터 NVMe/TCP의 기본 설정은 <block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 시간 초과가 해제되어 있습니다. 다시 시도 횟수에 제한이 없음을 의미합니다(무제한 재시도). 따라서 또는<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령(option-l)을 사용할 때 특정 시간 초과 기간을<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 수동으로 구성할 필요가<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 없습니다. 이 기본 동작에서는 경로 장애 발생 시 NVMe/TCP 컨트롤러가 시간 초과를 경험하지 않고 무기한 연결된 상태를 유지합니다.</block>
+  <block id="594486d9bd4257ab1e26ff0ae5a35fed" category="paragraph">ONTAP 9.12.1부터 Rocky Linux 10 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
+  <block id="a9c8004e9d1e07204938f2e404aa5aed" category="list-text">Rocky Linux 10 호스트에 대한 dhchap 키를 생성합니다.</block>
+  <block id="222d00f6dedce44fb4277bf5767839a3" category="summary">ONTAP을 사용하여 Rocky Linux 8.10에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="8e628a7900ccbcbe897613470b379397" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.10 구성</block>
+  <block id="85c8cdeb7264230e3576dcdedf0caad5" category="paragraph">Rocky Linux 8.10 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 비대칭 논리 장치 액세스(ALUA) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="c264db98e31638c1a8a87666a604a58e" category="paragraph">Rocky Linux 8.10의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="c9e63917edd2644c65c4c83c5f513014" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 실행 예를 들어, SCSI LUN에 대해 SCSI mpath 디바이스에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 디바이스를 구성할 수 있습니다.</block>
+  <block id="dcccf8a1b4217ccff67e37945ae5e664" category="list-text">Rocky Linux 8.10 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="46fede53b7d1ee83fe8a87bd6ecb6b28" category="inline-link">Rocky Linux 8.10 릴리스 노트</block>
+  <block id="9ddcffe2b5bcdcca37f41378bd6c4381" category="list-text">Rocky Linux 8.10 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="47fab428b8102b062e87d7a496d804cc" category="inline-link-rx"></block> 참조하십시오.</block>
+  <block id="d46cc0e0ee3c68f52f6d36c351129d8a" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.10 소프트웨어 버전을 확인하세요.</block>
+  <block id="7510807cecede571c43031ae720a798c" category="list-text">서버에 Rocky Linux 8.10을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.6 커널을 실행 중인지 확인하세요.</block>
+  <block id="0819fa6cde25c22d102ee0a7adf88eec" category="section-title">5단계: NVMe/TCP 구성</block>
+  <block id="c9fd308128312c542567755665c5daf4" category="section-title">6단계: NVMe-oF 검증</block>
+  <block id="7aa8a009723869e0077d1b9c7c2f290b" category="section-title">7단계: 알려진 문제를 검토합니다</block>
+  <block id="5315051bad3c79e778c3721bb1d84a2c" category="paragraph">ONTAP을 사용하는 Rocky Linux 8.10의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="a11f845df28a0287efbe676d4569a11b" category="cell">Rocky Linux 8.10 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 생성합니다.</block>
+  <block id="79342b66ce0b3b109cfdb66b5a341d0f" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Rocky Linux 8.10을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="200f9314bb04c0424d3c67a467844971" category="summary">ONTAP을 사용하여 Rocky Linux 8.4에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="b98c3ab1117113f8763443775e07dead" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.4 구성</block>
+  <block id="4f12792386d05508f13ace15f7e59b85" category="paragraph">Rocky Linux 8.4 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="2c89af6ab4363b71fc42e24987b4973d" category="paragraph">Rocky Linux 8.4의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="fd8c87b26ab96a99f138d63b24cba7c1" category="list-text">Rocky Linux 8.4 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="57435656bb50b9c00a00430b972d3fdf" category="inline-link">Rocky Linux 8.4 릴리스 노트</block>
+  <block id="4ffa3ebd23b62aecb45b930ba9555c65" category="list-text">Rocky Linux 8.4 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="2a17fbed2340943dd5ec68e4ca7512c3" category="inline-link-rx"></block> 참조하십시오.</block>
+  <block id="ea55a5cb337f262d1971ff2eef04508d" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.4 소프트웨어 버전을 확인하세요.</block>
+  <block id="ec2181acb237ce00035e0613f097d0ca" category="list-text">서버에 Rocky Linux 8.4를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.4 커널이 실행 중인지 확인하세요.</block>
+  <block id="8339e0de02e908b9d22d68001692825d" category="paragraph">ONTAP 릴리스가 적용된 Rocky Linux 8.4의 NVMe-oF 호스트 구성에는 알려진 문제가 없습니다.</block>
+  <block id="23a1570197793cedbad374c67a7107c0" category="summary">ONTAP을 사용하여 Rocky Linux 8.5에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="fe62864e17ae35435cb1bd029a48b198" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.5 구성</block>
+  <block id="cab6b10f41d1fcbd48aee28f43ba11e8" category="paragraph">Rocky Linux 8.5 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="c0d7d1447e97ceac0585e2b01811be28" category="paragraph">Rocky Linux 8.5의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="54f4647cbb6172c0ad1ab3cf12b032cf" category="list-text">Rocky Linux 8.5 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="054e513aa4940f2bd0268fdfceca2842" category="inline-link">Rocky Linux 8.5 릴리스 노트</block>
+  <block id="b7d1751b18b73c8e88858d5d4775f559" category="list-text">Rocky Linux 8.5 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="6334192d64a3a2e96b74c4d9684a48e9" category="inline-link-rx"></block> 참조하십시오.</block>
+  <block id="df96769874d4c9dbda21427b70785532" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.5 소프트웨어 버전을 확인하세요.</block>
+  <block id="83423a9254d95179df87f66a8c191a7b" category="list-text">서버에 Rocky Linux 8.5를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.5 커널이 실행 중인지 확인하세요.</block>
+  <block id="fc14ce7599aa7cd808d8b453fe4576ac" category="paragraph">ONTAP 릴리스가 적용된 Rocky Linux 8.5의 NVMe-oF 호스트 구성에는 알려진 문제가 없습니다.</block>
+  <block id="28fa950d7bb5ed27988b7b903d6758bb" category="summary">ONTAP을 사용하여 Rocky Linux 8.6에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="731e49e4b7f038e10007118817aa3208" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.6 구성</block>
+  <block id="99386c68c131c2c0226f1d0fbfea8fbd" category="paragraph">Rocky Linux 8.6 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="180356a6fba90baca127157cd761f3fb" category="paragraph">Rocky Linux 8.6의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="09ab4917eb1810647094e83ab60779ca" category="list-text">Rocky Linux 8.6 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="e7e49cf8fccf3c12dc036caaaaf0dada" category="inline-link">Rocky Linux 8.6 릴리스 노트</block>
+  <block id="90faee298dba82f1ebd942e4153d68b7" category="list-text">Rocky Linux 8.6 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="5a58ce93441eb12ea0edf37566d2c8be" category="inline-link-rx"></block> 참조하십시오.</block>
+  <block id="d3080448660c547e2fe83a242512ae71" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.6 소프트웨어 버전을 확인하세요.</block>
+  <block id="18e838a3626451c6faff91c27f20d56b" category="list-text">서버에 Rocky Linux 8.6을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.6 커널이 실행 중인지 확인하세요.</block>
+  <block id="69b0be8d747936b2b5465fe4b57ddfdf" category="paragraph">ONTAP을 사용하는 Rocky Linux 8.6의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="10941bbc35cc1d748498953a221e9b38" category="cell">Rocky Linux 8.6 NVMe-oF 호스트가 중복된 영구 검색 컨트롤러를 생성합니다.</block>
+  <block id="a883fd44cbff0b861d15b8136a3952f4" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 ONTAP 9.10.1과 Rocky Linux 8.6을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="7b5fa3004cbc3003a3262683ec6c65cc" category="summary">ONTAP을 사용하여 Rocky Linux 8.7에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="ed03e9560c294d3ddc83cba29fba4b05" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.7 구성</block>
+  <block id="969737c5049b17a5654a19dd3a43afbc" category="paragraph">Rocky Linux 8.7 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="53d262d878919873c5cb3f4e6985d831" category="paragraph">Rocky Linux 8.7의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="45db8b6cf55c39bce94424f2ddb798e3" category="list-text">Rocky Linux 8.7 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="e5d41b287558420b1da193ecbe60cc50" category="inline-link-macro">Rocky Linux 8.7 릴리스 노트</block>
+  <block id="3bc1130ce3e680520898e40ac7959fa2" category="list-text">Rocky Linux 8.7 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리보기 기능입니다 . <block ref="d32810211fa0fabac0569c4390e790dc" category="inline-link-macro-rx"></block> 자세한 내용은.</block>
+  <block id="7e4a70bbcd93eaa6141e87546c6f1f21" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.7 소프트웨어 버전을 확인하세요.</block>
+  <block id="f5ee36bf3ec3b3e921b0b7e9d925b748" category="list-text">서버에 Rocky Linux 8.7을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.7 커널이 실행 중인지 확인하세요.</block>
+  <block id="78e181f317983c9fedb366c4a37a16cd" category="paragraph">ONTAP을 사용하는 Rocky Linux 8.7의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="7a6a40bc5a4685658e1d343ed9b9dd39" category="cell">Rocky Linux 8.7 NVMe-oF 호스트가 중복된 영구 검색 컨트롤러를 생성합니다.</block>
+  <block id="6d6607f7b41bf491341b99d0537f3629" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 ONTAP 9.10.1과 Rocky Linux 8.7을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="47ec11f02f0c8839abe0813debc4f014" category="summary">ONTAP을 사용하여 Rocky Linux 8.8에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="c4b8d1690b30d457411a155632154e0f" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.8 구성</block>
+  <block id="6f343957984f9d2eb78e0f01ea024112" category="paragraph">Rocky Linux 8.8 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="256f058874befacad0f6f9566228e7d6" category="paragraph">Rocky Linux 8.8의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="8a14068da00827a35251d7ba986f9103" category="list-text">Rocky Linux 8.8 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="159be813da4c10f2d5745d1aad3f34dc" category="inline-link">Rocky Linux 8.8 릴리스 노트</block>
+  <block id="d48c8e0613a3d2462bab37e061f9c99a" category="list-text">Rocky Linux 8.8 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="c94cc770975ea6cce699ff8f723c184b" category="inline-link-rx"></block> 참조하십시오.</block>
+  <block id="e52751aedc7ac7fdc35e859dec9d1a84" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.8 소프트웨어 버전을 확인하세요.</block>
+  <block id="dd66f0672670077d5170dcb95b0cace0" category="list-text">서버에 Rocky Linux 8.8을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.8 커널이 실행 중인지 확인하세요.</block>
+  <block id="b8c3c07079892e4901770e27f4802ec1" category="paragraph">ONTAP 릴리스가 포함된 Rocky Linux 8.8의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="9d0224a2f615424bba089d74a7227ebe" category="cell">Rocky Linux 8.8 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 생성합니다.</block>
+  <block id="4e8203cb1c6fbcc8f8c247946196d38e" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Rocky Linux 8.8을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="918e5346ad0239cf9b9c61db20bf484c" category="summary">ONTAP을 사용하여 Rocky Linux 8.9에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="c4cb2a6f173b95d0c4f67c8f96f7534b" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.9 구성</block>
+  <block id="8e81ec9f25b772637f16944133db022c" category="paragraph">Rocky Linux 8.9 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="6e06dba9b7fe75fff25b335a9ecd497e" category="paragraph">Rocky Linux 8.9에 대한 NVMe-oF 호스트 구성을 사용하면 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="f23ce81eebb3426d889da5f6ca6f568b" category="list-text">Rocky Linux 8.9 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
+  <block id="decc234e2e25bcd439c62a6924b45e43" category="inline-link">Rocky Linux 8.9 릴리스 노트</block>
+  <block id="e035f49458f62168d6a4c971dfb2508d" category="list-text">Rocky Linux 8.9 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="940755a456f09b2cfde71703a8e286af" category="inline-link-rx"></block> 참조하십시오.</block>
+  <block id="74ba8ad92ae4c2a3b720f451f30601ab" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.9 소프트웨어 버전을 확인하세요.</block>
+  <block id="94bace38b58b938918367d0c3cc6eaa5" category="list-text">서버에 Rocky Linux 8.9를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.9 커널이 실행 중인지 확인하세요.</block>
+  <block id="9f3a4c0a6d61ae1944d857976073d3fc" category="paragraph">ONTAP 릴리스가 포함된 Rocky Linux 8.9의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="4c6f9e46e9e7dc5d30fea3fe515730e0" category="cell">Rocky Linux 8.9 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 생성합니다.</block>
+  <block id="0dbf100b5d804fe4caf4da2b664b2afa" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Rocky Linux 8.9를 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="f69e78a8431382f8f2ff25b30ad11ba3" category="summary">ONTAP을 사용하여 Rocky Linux 9.0에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="3031a6683c69d81249fa58f63e1d9e07" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.0 구성</block>
+  <block id="e31a3bbcdce6caad6e848512cf31530f" category="paragraph">Rocky Linux 9.0 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="b81970d4f1aac579c43532a6541b65f8" category="paragraph">Rocky Linux 9.0의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="607045456dfb12bc04d3522b1f874865" category="list-text">Rocky Linux 9.0은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
+  <block id="6cb5085ae04cfea89d334f12d091d300" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.0 소프트웨어 버전을 확인하세요.</block>
+  <block id="57bec5364d8813b80d9ba8cbbe9cb4ed" category="list-text">서버에 Rocky Linux 9.0을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.0 커널이 실행 중인지 확인하세요.</block>
+  <block id="29a60b312aa9fdd9b477d6b295e0e45c" category="paragraph">ONTAP을 사용하는 Rocky Linux 9.0의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="d89f68cec4fde8cdd4a14a4ef45a06f6" category="cell">Rocky Linux 9.0 NVMe-oF 호스트가 중복된 영구 검색 컨트롤러를 생성합니다.</block>
+  <block id="ff01f1039161c2b6b5ea51efcfc04188" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 ONTAP 9.10.1과 Rocky Linux 9.0을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
+  <block id="29af8d1042b30a5ba249a12d6db4fc61" category="summary">ONTAP을 사용하여 Rocky Linux 9.1에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="459e7abdd281255af78f1e72bc455c23" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.1 구성</block>
+  <block id="0dfa9a7d24501e1c4aafaba720bcdd20" category="paragraph">Rocky Linux 9.1 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="71bceb39747a320dfdde9ed4ba485664" category="paragraph">Rocky Linux 9.1의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="23dd49f82b27ef244f37aee158baf33e" category="list-text">Rocky Linux 9.1은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
+  <block id="adfdcaae3a69aa1a3f89a3a550b3e16b" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.1 소프트웨어 버전을 확인하세요.</block>
+  <block id="ae7b811595439cd8cfc0f414a032e104" category="list-text">서버에 Rocky Linux 9.1을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.1 커널이 실행 중인지 확인하세요.</block>
+  <block id="0c36435076f0978fbc5c56aadf37500b" category="paragraph">ONTAP 스토리지를 사용하는 Rocky Linux 9.1의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="97d2b9aba8be20cadd2e121636e33e94" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> 명령은 주어진 하위 시스템에 대해 나열된 반복되는 NVMe 컨트롤러를 반환합니다.</block>
+  <block id="b68755a212f05b7fd208d599e6c87bde" category="cell">그만큼 <block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 주어진 하위 시스템과 연결된 NVMe 컨트롤러의 고유한 목록을 반환해야 합니다. Rocky Linux 9.1에서는 <block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 이 명령은 지정된 서브시스템에 속하는 모든 네임스페이스에 대해 해당 ANA 상태와 함께 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 네임스페이스별 속성이므로, 지정된 네임스페이스에 대한 서브시스템 명령 구문을 나열하는 경우 경로 상태를 포함하는 고유한 NVMe 컨트롤러 항목이 표시되어야 합니다.</block>
+  <block id="88b5ad79d4202975070e7a14f54943ed" category="summary">ONTAP을 사용하여 Rocky Linux 9.2에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="85c64415b5d598f73c6e847a0d77410b" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.2 구성</block>
+  <block id="e3692d133b287428ed899012d278dcda" category="paragraph">Rocky Linux 9.2 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="0709e6e65dd199a6186a638123174eb6" category="paragraph">Rocky Linux 9.2의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="9fe2171ff825eeae99977b246486ab45" category="list-text">Rocky Linux 9.2는 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
+  <block id="67d55e75a94efcc45736cc2f3005df0a" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.2 소프트웨어 버전을 확인하세요.</block>
+  <block id="aafcc0ab42ecf88d7324e3d1846a32f6" category="list-text">서버에 Rocky Linux 9.2를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.2 커널이 실행 중인지 확인하세요.</block>
+  <block id="83fa364538f4cac4c88dd64c121c63f0" category="summary">ONTAP을 사용하여 Rocky Linux 9.3에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="5d2b9a878794488507acc5f9357b82a0" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.3 구성</block>
+  <block id="ceea4faa2a523b50b23f09456e8f2b21" category="paragraph">Rocky Linux 9.3 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 비대칭 논리 장치 액세스(ALUA) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="11c1761f4dde8eab6ffa9e7154617c1a" category="paragraph">Rocky Linux 9.3의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="010c3b777e508a607c8f39ab91ec1128" category="list-text">Rocky Linux 9.3은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 되었습니다.</block>
+  <block id="c46e4a14e05a675d4ae1d9f257e2ba34" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.3 소프트웨어 버전을 확인하세요.</block>
+  <block id="d5bbf51ec330863d1ccc5503b65c3524" category="list-text">서버에 Rocky Linux 9.3을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.3 커널이 실행 중인지 확인하세요.</block>
+  <block id="2441617d277c4f79e18a934101ee4495" category="summary">ONTAP을 사용하여 Rocky Linux 9.4에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="80da56795c34c574eef35bf2da92aadc" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.4 구성</block>
+  <block id="54a0478f5c2c3d3d1764051d125e32d5" category="paragraph">Rocky Linux 9.4 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="93662bdab777129c11baf70f652cdfd2" category="paragraph">Rocky Linux 9.4의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="de4920db6ed57af93eae69e1fbc5ea8e" category="list-text">Rocky Linux 9.4에서는 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 되었습니다.</block>
+  <block id="53046fddde2a2d460ce72f8252c37d97" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.4 소프트웨어 버전을 확인하세요.</block>
+  <block id="a0d9f55046993dfcf93d5c6ff3dfb996" category="list-text">서버에 Rocky Linux 9.4를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.4 커널이 실행 중인지 확인하세요.</block>
+  <block id="3e6b663dba2b6902083525e800d7dd95" category="summary">ONTAP을 사용하여 Rocky Linux 9.5에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="67ece1bbad231b0b59e17bc01e23f7e0" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.5 구성</block>
+  <block id="ec299f59585f77b9058a264fa7db5713" category="paragraph">Rocky Linux 9.5 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 비대칭 논리 장치 액세스(ALUA) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
+  <block id="49a87e259c17e1ec85b982e20d8ee89f" category="paragraph">Rocky Linux 9.5의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="e895eafc85f1ab6f7089bac854ff13ef" category="list-text">ONTAP 9.12.1부터 Rocky Linux 9.5에서 NVMe-oF에 대한 안전한 인밴드 인증을 사용할 수 있습니다.</block>
+  <block id="88009a7e4f8c0e41f21ef4110cfa1d17" category="list-text">Rocky Linux 9.5는 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
+  <block id="42f338e7a67b898d8724af87a7eafa47" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.5 소프트웨어 버전을 확인하세요.</block>
+  <block id="e0099a38b3f447f8615155f10805bd03" category="list-text">서버에 Rocky Linux 9.5를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.5 커널이 실행 중인지 확인하세요.</block>
+  <block id="0148f17cc04647b8533a3c01ec3b7393" category="section-title">7단계: 안전한 인밴드 인증 설정</block>
+  <block id="dd181852761e35c13f645a9f053c77c7" category="section-title">8단계: 알려진 문제를 검토합니다</block>
+  <block id="cf2e09333e9b9de1b169b6c32eeff962" category="summary">ONTAP을 사용하여 Rocky Linux 9.6에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="331d7a0b82cb882efa5b3b430281a9d8" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 9.6 구성</block>
+  <block id="470d036f1186ddd5fa5cd71478e6f05c" category="paragraph">Rocky Linux 9.6의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="59188a56ae080a58348d66924900e8da" category="list-text">Rocky Linux 9.6은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
+  <block id="4ddb6dd0b1c0f78cd4fe39e69f93616c" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. Rocky Linux 9.6에서는 NVMe/TCP에 대한 안전한 인밴드 인증을 사용할 수 있습니다.</block>
+  <block id="2f7acc3e67a351a5288af0031f2b39b0" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.6 소프트웨어 버전을 확인하세요.</block>
+  <block id="befda5dfe1dca92c182f569e3a267615" category="list-text">서버에 Rocky Linux 9.6을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.6 커널이 실행 중인지 확인하세요.</block>
+  <block id="ae084e30a9a39299099ffeeeeb21278e" category="paragraph">Rocky Linux 9.6에서는 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다. 부팅이 완료되면 서비스가 활성화되었는지 확인하세요.</block>
+  <block id="d4454d1f91fdbee65b5b084bbf2c935c" category="paragraph">ONTAP 9.12.1부터 Rocky Linux 9.6 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
+  <block id="e5f095ea13bd0114b461048aa3c82608" category="list-text">Rocky Linux 9.6 호스트에 대한 dhchap 키를 생성합니다.</block>
+  <block id="9b26e38834ec2f2df9641c2b954ff579" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.5 구성</block>
+  <block id="dc5d05edf7eac3cf1cb6e7a130e6f430" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.6 구성</block>
+  <block id="e405d2e36dcf9476a789fd5b1938b283" category="paragraph">RHEL 9.6을 사용하면 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템 부팅 시 자동으로 활성화됩니다. 부팅이 완료되면 서비스가 활성화되었는지 확인하세요.</block>
+  <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">ONTAP SAN 호스트 및 클라우드 클라이언트</block>
+  <block id="fb09e86e3230567e42bbd530bcb5a946" category="sidebar">로키 리눅스</block>
+  <block id="1f27018b2bb672b8cdc3ade88964fcd2" category="sidebar">록키 리눅스 10</block>
+  <block id="9c5a13309f2776c548f1cdaad8fc39ea" category="sidebar">RL-10-FCP를 참조하십시오</block>
+  <block id="cf76271f717860ca93c6825568b0690d" category="sidebar">록키 리눅스 9</block>
+  <block id="e17ceddf1264512daf0c5ceaca0a2a0d" category="sidebar">RL-9-FCP를 참조하십시오</block>
+  <block id="074720cb7866529cf5ec3aad61198ac4" category="sidebar">록키 리눅스 8</block>
+  <block id="32abbb92208e586e49dce3e4e69b53e5" category="sidebar">RL-8-FCP를 참조하십시오</block>
+  <block id="004d94776b28ba1f02680460dac43cc0" category="sidebar">NVMeoF Rocky Linux</block>
 </blocks>
