@@ -251,7 +251,6 @@
   <block id="7479ee4eaf5b0a177d10a5a42ff8dc26" category="list-text">AIX MPIO를 설치합니다.</block>
   <block id="4a74fae0987c7a6283e4b1f5c07e2bf2" category="paragraph">'installp-aXYd/var/tmp/NTAP_aix_host_utilities_6.1/mpio NetApp.mpio_Host_Utilities_Kit'</block>
   <block id="3bb3263aa16bbeb228b8ecd7584a8064" category="summary">ONTAP에서 CentOS 7.3을 사용하는 방법에 대해 설명합니다</block>
-  <block id="ef96b3a7a075d8418a575b9d3ec01e49" category="paragraph">CentOS 7.3의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.3은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="c973ee9c17b37717f62a4aff80aecfb5" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 7.1을 사용하는 방법을 설명합니다</block>
   <block id="1007b7632045ad8e75cf3589b6d28f94" category="summary">ONTAP와 함께 Oracle Linux 8.1을 사용하는 방법에 대해 설명합니다</block>
   <block id="3adfaacb5236083e12561cfda09586f4" category="paragraph">Oracle Linux 8.1의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 8.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
@@ -277,7 +276,6 @@
   <block id="2844e304c2e162332243113572206ac6" category="inline-link-macro">1308744)를 참조하십시오</block>
   <block id="939827454c3bb8453033ba1bd60c555e" category="cell"><block ref="c8bdc7961e7fb79cc7e51cf734b247fb" category="inline-link-macro-rx"></block></block>
   <block id="f4bba4cff96aef30f859bc5d933b86d1" category="summary">ONTAP에서 CentOS 7.7을 사용하는 방법에 대해 설명합니다</block>
-  <block id="85c1cd097e2b89074f8df27d3f429558" category="paragraph">CentOS 7.7의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.7은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="e16f67a9f3c6e6f9fd2a71ca2c71b042" category="summary">ONTAP와 함께 Oracle Linux 7.0을 사용하는 방법에 대해 설명합니다</block>
   <block id="31db1dbc8875fe1d1fb0c598273975d6" category="paragraph">Oracle Linux 7.0의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 7.0은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
   <block id="40c5d9e1e896025a107a6c97b22c1167" category="list-text">dracut -f 명령을 사용하여 initrd-image를 다시 생성합니다.</block>
@@ -520,7 +518,6 @@
   <block id="797aea72ebbc1431192817ec206cafb4" category="list-text">서버에 Red Hat Enterprise Linux 8.2 GA를 설치합니다.</block>
   <block id="360ef025710e08a61d1403840b1b7d2f" category="list-text">설치가 완료되면 지정된 Red Hat Enterprise Linux 커널을 실행 중인지 확인합니다.</block>
   <block id="b0825624074d948cc02dab7178882abe" category="summary">ONTAP에서 CentOS 8.1을 사용하는 방법에 대해 설명합니다</block>
-  <block id="2cc89810a4025d52a6eccc82f2fdfc91" category="paragraph">CentOS 8.1의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 8.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="e23d1316b6f8fd9d76ebc1a761f0ffa9" category="summary">ONTAP에서 RHEL 8.4용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="1124bd13d48eff16726e09da76f5e2b3" category="doc">ONTAP를 사용하는 RHEL 8.4에 대한 NVMe-oF 호스트 구성</block>
   <block id="dec4201e999d968c719dedcc36a07302" category="inline-link">RHEL 8.4 릴리스 정보</block>
@@ -563,7 +560,6 @@
   <block id="abbdb018748bb6cd12284ad6c1685b67" category="cell">'/dev/NVMe-fabric에 쓸 수 없습니다: 작업이 이미 진행 중입니다.</block>
   <block id="5d58354522165b88ab742ec42aac9161" category="section-title">기술 지원 문의 시기</block>
   <block id="fbd83cf0e839e6dec73fa3ff243bb8c5" category="summary">ONTAP에서 CentOS 7.8을 사용하는 방법에 대해 설명합니다</block>
-  <block id="76174ed9b35d8ad81e135443f4af3887" category="paragraph">CentOS 7.8의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="3a1eadc8d9bb3cf94717f7abc94eae77" category="inline-link">Red Hat Enterprise Linux 릴리스</block>
   <block id="ecd07dd2a42b46fb7e8f73e1e5544962" category="admonition">Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 해당 섹션의 알려진 문제점 섹션을 참조하십시오<block ref="939c54c506d35e0d0c1ee5e3c74f33dd" category="inline-link-rx"></block> 문서화:</block>
   <block id="81a952f0a3b26ee44dabb3aa10180e75" category="summary">ONTAP에서 CentOS 6.8을 사용하는 방법에 대해 설명합니다</block>
@@ -587,7 +583,6 @@
   <block id="36ee6988f1a73952a5c1d70203b97852" category="list-text">NVMe/FC 이니시에이터 포트가 활성화되어 실행 중이며 타겟 LIF를 볼 수 있는지 확인하십시오.</block>
   <block id="864d504d782b9fe5527151b8a795cdae" category="section-title">NVMe/FC 확인 중</block>
   <block id="480c1af29fcb3cc17dbe8a841a6a3c06" category="summary">ONTAP에서 CentOS 8.2를 사용하는 방법에 대해 설명합니다</block>
-  <block id="6d0ef457a6d83b808baa2444f1d454db" category="paragraph">CentOS 8.2의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 8.2는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="c517a5fb26b575817c996f5b44f027c8" category="inline-link-macro">1238719)를 참조하십시오</block>
   <block id="228d243156f27b227dbffd03f56f02b7" category="cell"><block ref="cf56f7936c19e5af5e4aa99ffc3fc54e" category="inline-link-macro-rx"></block></block>
   <block id="cb5cb6cd9eae3b558f871729ba82fea1" category="cell">스토리지 페일오버 작업 중 RHEL8에서 QLogic QLE2672 16GB FC의 커널 중단</block>
@@ -703,7 +698,6 @@
   <block id="f554c70908c90cf2ddb8539029693dc9" category="paragraph">Oracle Linux 6.8의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
   <block id="6485c78f22d3f3aa24bf7cbcea864cb3" category="paragraph">Oracle Linux 6.8 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일됩니다.</block>
   <block id="b277f2029ada9ac25bce475d62557cb4" category="summary">ONTAP에서 CentOS 7.9를 사용하는 방법에 대해 설명합니다</block>
-  <block id="266073eadfa1373804ed4272aa64c5e3" category="paragraph">CentOS 7.9의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.9는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="d6a549e2961efba4f33c4deb10965085" category="summary">ONTAP와 함께 Oracle Linux 6.6을 사용하는 방법을 설명합니다</block>
   <block id="b17be161e93154b1a8e4c9e17fc3b190" category="paragraph">Oracle Linux 6.6의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.6은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
   <block id="3c92bea3eb2289a6ec3282c1090533ba" category="paragraph">Oracle Linux 6.6 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일되었습니다.</block>
@@ -711,7 +705,6 @@
   <block id="ed81d40ee1a062d4852e88bbb707608d" category="paragraph">CentOS 6.4의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="c5b0e8703af1ccb56a53d3ccc87f83ac" category="paragraph">CentOS 6.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="9128494ba0ee37c628f015b5af093f58" category="summary">ONTAP에서 CentOS 7.0을 사용하는 방법에 대해 설명합니다</block>
-  <block id="5bd816c2094b5347fe9888b31305809d" category="paragraph">CentOS 7.0의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.0은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="f2ec2908e789bd4d085520a7536b0d19" category="summary">ONTAP에서 CentOS 6.10을 사용하는 방법에 대해 설명합니다</block>
   <block id="4b3e0af5715dc402a6648fb7a4556734" category="paragraph">CentOS 6.10의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.10은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="78bd859689f18ba7562b89cdcdf70e0d" category="paragraph">CentOS 6.10은 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
@@ -756,7 +749,6 @@
   <block id="9ba6b55ceee2f1425bbe62109b05bbf8" category="paragraph">sandlun lun show -p</block>
   <block id="08bca029e13ca38021fc7509f607c4d1" category="paragraph">이 예에서는 직접 연결 구성에 대한 'lun lun show -p' 명령의 일반적인 출력을 보여 줍니다. 또한 hdisk9에 대한 정보를 표시하는 'show -d hdisk9 -v' 명령을 포함합니다. 이 명령의 출력이 잘렸습니다.</block>
   <block id="ba9c5cfb8923c683e175b0343242d5b2" category="summary">ONTAP에서 CentOS 8.0을 사용하는 방법에 대해 설명합니다</block>
-  <block id="2abffb2205f281bc82ee25fbb0545967" category="paragraph">CentOS 8.0의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 8.0은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="8eee884db44f521f0d19cac36bf258cc" category="summary">ONTAP와 함께 Windows Server 2016 사용</block>
   <block id="f5cba97c30a47867e3649fd136cca68c" category="inline-link-macro">Microsoft Update Catalog 2016</block>
   <block id="eea65c7c864efb688d55381c5b21a910" category="summary">ONTAP에서 Linux용 Veritas Infoscale 6.5 및 6.7을 사용하는 방법에 대해 설명합니다</block>
@@ -841,7 +833,6 @@
   <block id="9a8a0895e5f69c5c06d82e847ceb32e9" category="summary">ONTAP에서 Red Hat Enterprise Linux 7.5를 사용하는 방법을 설명합니다</block>
   <block id="bea05db7b205cebd49d85c581b86c97e" category="summary">Veritas Infoscale 6 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다</block>
   <block id="62d54f77039c15fe0a65691e9ff3f4c2" category="summary">ONTAP에서 CentOS 7.5를 사용하는 방법에 대해 설명합니다</block>
-  <block id="6a2c85eca0b58ae9120cd4aa738a6949" category="paragraph">CentOS 7.5의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="157584ac811d45f102c8c688e0c7c7a4" category="summary">ONTAP에서 Oracle Linux 8.0을 사용하는 방법에 대해 설명합니다</block>
   <block id="05b3b7ebfe3f9b8f7b7fa7d073f86fcd" category="paragraph">Oracle Linux 8.0의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 8.0은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="d469d8f0f0ea6195efacf51226ff8db4" category="summary">ONTAP와 함께 Oracle Linux 7.7을 사용하는 방법에 대해 설명합니다</block>
@@ -905,13 +896,9 @@
   <block id="880612d7054085e9af1cd3802ce4127d" category="summary">ONTAP에서 Oracle Linux 7.4를 사용하는 방법에 대해 설명합니다</block>
   <block id="491bbe882aaf63711fd558642fdb4958" category="paragraph">Oracle Linux 7.4의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 7.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="0a4a555ba90159c1b3608a4b2e3295e1" category="summary">ONTAP에서 CentOS 7.4를 사용하는 방법에 대해 설명합니다</block>
-  <block id="74b9535debb295fda5221dbd495584f5" category="paragraph">CentOS 7.4의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="39e2f887814ee9598f2240638f02ad73" category="summary">ONTAP에서 CentOS 8.3을 사용하는 방법에 대해 설명합니다</block>
-  <block id="ef00ac506f369c446209297666bbc1c1" category="paragraph">CentOS 8.3의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 8.3은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="35a2873560c7df91eb3565c5ce683568" category="summary">ONTAP에서 CentOS 7.2를 사용하는 방법에 대해 설명합니다</block>
-  <block id="5e264cc9d3c17161fd51d23fc1227896" category="paragraph">CentOS 7.2의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.2는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="0b9f55b9dffba7eae6a1222b3c2e4753" category="summary">ONTAP에서 CentOS 7.1을 사용하는 방법에 대해 설명합니다</block>
-  <block id="95f05a2f59b08c6cdec0baaa96182662" category="paragraph">CentOS 7.1의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 7.1은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="b5532e466b7ace9d1d9ddb98b57ec0d7" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP3용 NVMe/FC를 구성하는 방법에 대해 설명합니다</block>
   <block id="59788ae5607a12c1afe34deb1ad155a2" category="doc">ONTAP가 포함된 SUSE Linux Enterprise Server 15 SP3의 NVMe-oF 호스트 구성</block>
   <block id="83314818bb7c47b391616d0ff767a7de" category="section-title">NVMe - 이니시에이터 패키지</block>
@@ -1037,11 +1024,7 @@
   <block id="cb209f9eec3baeb4065409d39ca1f4d5" category="paragraph">Oracle Linux 8.3 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일되었습니다.</block>
   <block id="ce431e2558ea7b456c531991fb4a7e92" category="paragraph">Oracle Linux 8.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="3eeb371f92f74d2b6501646282092ca7" category="summary">ONTAP에서 CentOS 8.4를 사용하는 방법에 대해 설명합니다</block>
-  <block id="e5a962185d7bd63be4f29de827478b1c" category="paragraph">CentOS 8.4의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 8.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="ea4f6ca54725c6a00ccdbd33cafe2aa2" category="paragraph">CentOS 8.4는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="c33b879e8a189cf4ded38992165273b7" category="summary">ONTAP에서 CentOS 8.5를 사용하는 방법에 대해 설명합니다</block>
-  <block id="60d0d78dbe9bb18e16690c35ce6867e1" category="paragraph">CentOS 8.5의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 8.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="fd586a803662833af2a4932bc04d30c2" category="paragraph">CentOS 8.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="ce081634ead33780d73e0e1f6b9ea0ca" category="paragraph">VxDMP(Veritas Dynamic Multipathing)를 사용하면 NetApp LUN을 Veritas Multipath Devices로 주장하는 구성 작업을 수행해야 합니다. Veritas가 NetApp 스토리지 시스템에 제공하는 ASL(Array Support Library) 및 APM(Array Policy Module) 패키지가 설치되어 있어야 합니다. Veritas Software Installation은 제품과 함께 기본 ASL APM 패키지를 로드하는 동안 Veritas 지원 포털에 나열된 최신 지원 패키지를 사용하는 것이 좋습니다.</block>
   <block id="697675a4c21edc6fc07599249d9fe748" category="paragraph">모든 SAN 어레이(ASA) 구성에서 지정된 LUN(논리 유닛)에 대한 모든 경로가 활성 및 최적화됩니다. 즉, 모든 경로를 통해 동시에 I/O를 처리할 수 있으므로 성능이 향상됩니다.</block>
   <block id="4e0b2b4c829cef3166a5190a135bb26f" category="sidebar">Infoscale 8</block>
@@ -1645,29 +1628,19 @@
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">ONTAP와 함께 VMware vSphere 8.x를 사용합니다</block>
   <block id="7dfa70c3f5b28c905e177a472ecf20d7" category="doc">ONTAP와 함께 Oracle Linux 9.2를 사용하십시오</block>
   <block id="6f304d3d0e5b539f0dcbc07ccaadfd0d" category="doc">ONTAP와 함께 Solaris 11.4를 사용합니다</block>
-  <block id="e3e7a0e78514daf4c04889e37e715428" category="doc">CentOS 8.1과 ONTAP를 함께 사용합니다</block>
-  <block id="3f1fd9dbf7a4bd66d068caecb08183c0" category="doc">ONTAP에서 CentOS 7.1을 사용합니다</block>
   <block id="92434d9005fca09d1be87854a8eba962" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.4를 사용하십시오</block>
-  <block id="fa3e4c48ee82eee0fd39bec2969d50e3" category="doc">ONTAP에서 CentOS 7.2를 사용합니다</block>
   <block id="5b1dc80fba1c5b1c02a46a705987abf2" category="doc">ONTAP와 함께 Oracle Linux 9.1을 사용합니다</block>
   <block id="a7c0c5734c50dba03d00cc462a49e909" category="doc">IBM AIX 7.2 및/또는 PowerVM(VIOS 3.1)을 ONTAP와 함께 사용하십시오</block>
   <block id="7e0b815f73afb730e7ee19f798970799" category="doc">ONTAP와 함께 Oracle Linux 6.10을 사용합니다</block>
   <block id="3944147aca4bcb3598602ba7abb8ecb6" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.9를 사용하십시오</block>
   <block id="1a397af520340e4380a5c55e26c5d54d" category="doc">ONTAP와 함께 CentOS 6.7을 사용합니다</block>
   <block id="cc4117db48a5e96b1494712383b1b668" category="doc">ONTAP와 함께 Oracle Linux 6.4를 사용합니다</block>
-  <block id="9aa797d15feccd1c092cc2d63807ff3b" category="doc">CentOS 7.0 및 ONTAP를 사용합니다</block>
-  <block id="0d32b2e93ea5b1b8a7aea87d09fdfddc" category="doc">ONTAP에서 CentOS 8.3을 사용합니다</block>
   <block id="6088639a5afca847eaa9177590532eea" category="doc">ONTAP와 함께 Oracle Linux 6.9를 사용합니다</block>
   <block id="9c45b061a4c38d17e217a2ae139d53e6" category="doc">ONTAP와 함께 Oracle Linux 7.1을 사용하십시오</block>
-  <block id="1b10688ed96bd781bf6b13a4a6ad9df4" category="doc">ONTAP에서 CentOS 8.2를 사용합니다</block>
   <block id="f9674046dcea42f7f1b76662f92c73a5" category="doc">ONTAP와 함께 Oracle Linux 7.3을 사용합니다</block>
   <block id="9d82b77b5ad44e26cf2dd2b29f643724" category="doc">ONTAP와 함께 Oracle Linux 8.2를 사용하십시오</block>
-  <block id="d434272cc7e38b31b984d576320118d8" category="doc">ONTAP에서 CentOS 7.5를 사용합니다</block>
   <block id="3f2293670d4541aec2b54ea60492a51f" category="doc">ONTAP와 함께 Oracle Linux 8.4를 사용합니다</block>
-  <block id="8d160e1e856e62e2daf74128e1ed2215" category="doc">ONTAP와 함께 CentOS 7.9를 사용합니다</block>
   <block id="d8fbd5ac0666d17248d83c1cba75a567" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.7을 사용하십시오</block>
-  <block id="be7f27b620fb8819aad9996ccaf4b9ce" category="doc">CentOS 7.8과 ONTAP를 함께 사용합니다</block>
-  <block id="b70f79f7541968cba061dec5df01b8ba" category="doc">ONTAP에서 CentOS 8.4를 사용합니다</block>
   <block id="1f7d8244b764d5a7c149c4cbfad4c873" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 NVMe over TCP(NVMe/TCP)를 포함한 NVMe over Fabrics(NVMe-oF) 프로토콜을 위해 ONTAP를 타겟으로 사용하여 특정 SAN 호스트를 구성할 수 있습니다. 호스트 운영 체제와 ONTAP 버전에 따라 호스트에서 NVMe/FC 또는 NVMe/TCP 프로토콜을 구성하거나 유효성을 검사합니다.</block>
   <block id="9ad0749524277f1a9205afc7dc2e9660" category="doc">ONTAP와 함께 Oracle Linux 9.0을 사용하십시오</block>
   <block id="8835b0ba3ac161aabc3cdea1abe9d36e" category="doc">ONTAP와 함께 Oracle Linux 7.9를 사용하십시오</block>
@@ -1676,11 +1649,9 @@
   <block id="1298fa83c27263623f4780e10072ad20" category="doc">ONTAP에서 CentOS 6.9를 사용합니다</block>
   <block id="379f97722abe4a13e4bed62c347317a6" category="doc">ONTAP와 함께 CentOS 6.8을 사용합니다</block>
   <block id="91cbf6680aa73c0fd3805226334a31ec" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.5를 사용하십시오</block>
-  <block id="c35af07c43ab1d8770afcb3564b17436" category="doc">ONTAP에서 CentOS 7.3을 사용합니다</block>
   <block id="94b44acd6321eb98d389648c6d23e87f" category="doc">ONTAP와 함께 CentOS 6.6을 사용합니다</block>
   <block id="76a10186c32ada74e81aa00b639433fa" category="doc">ONTAP와 함께 Oracle Linux 7.5를 사용하십시오</block>
   <block id="8081080397baec608d84fd3afffdb29d" category="doc">CentOS 6.5와 ONTAP를 사용합니다</block>
-  <block id="5fef9070d7cec9b1052ec5f805c82203" category="doc">ONTAP에서 CentOS 8.0을 사용합니다</block>
   <block id="fcd5a26f819291c5057cf1bf9ba4b0e3" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.10을 사용하십시오</block>
   <block id="3e537edf35b6854e2685914d33b9835d" category="doc">ONTAP와 함께 Solaris 11.3을 사용하십시오</block>
   <block id="136a479cd65c7a7cb09b6cb800da37d1" category="doc">ONTAP에서 CentOS 6.10을 사용합니다</block>
@@ -1692,9 +1663,7 @@
   <block id="c2364621e801637244e2e7cbae8837cb" category="doc">ONTAP와 함께 Oracle Linux 8.3을 사용하십시오</block>
   <block id="da75d1c0a883e5675fe41c864ecff154" category="doc">ONTAP와 함께 Oracle Linux 8.7을 사용합니다</block>
   <block id="d5c69ee7983a74c7b20cb2b125456c2f" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.6을 사용하십시오</block>
-  <block id="eaa72704517d543af59911bc5e029612" category="doc">ONTAP와 함께 CentOS 7.6을 사용합니다</block>
   <block id="d55410086bf109e244412e2249b9502d" category="doc">ONTAP와 함께 Oracle Linux 8.1을 사용하십시오</block>
-  <block id="06de367c45268820a34c0126836e8b3c" category="doc">CentOS 8.5 및 ONTAP를 사용합니다</block>
   <block id="d9cce7ecf669e2c8bb05f82a666a162d" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.8을 사용하십시오</block>
   <block id="016d8c2c520396c76232c5f9e6b5d55e" category="doc">Oracle Linux 8.5 및 ONTAP를 사용합니다</block>
   <block id="f40ff3f9f8b490795a2c37b0ef868d7f" category="doc">ONTAP와 함께 Oracle Linux 7.0을 사용하십시오</block>
@@ -1703,11 +1672,9 @@
   <block id="8eac186652ad7bb00e2e352205afba06" category="doc">ONTAP와 함께 Oracle Linux 7.2를 사용합니다</block>
   <block id="3f774282fcdfb6c27b50967041caabfe" category="doc">ONTAP와 함께 CentOS 6.4를 사용합니다</block>
   <block id="4101603df72240eb3cf7ba1a3021306f" category="doc">ONTAP와 함께 Oracle Linux 8.6을 사용하십시오</block>
-  <block id="6682bbba7d1d665f82a03aa16687a123" category="doc">CentOS 7.4와 ONTAP를 사용합니다</block>
   <block id="d6f50b679febabd5a029294f3687131d" category="doc">ONTAP와 함께 Oracle Linux 7.4를 사용합니다</block>
   <block id="40db5019ed68654f4eb2cf21ec5021db" category="doc">ONTAP와 함께 VMware vSphere 7.x를 사용합니다</block>
   <block id="96c79d6b70b9da95c3236e3cf0b071a3" category="doc">ONTAP와 함께 Oracle Linux 6.7을 사용합니다</block>
-  <block id="d8df57404793785937e9dea6422f0397" category="doc">CentOS 7.7과 ONTAP를 함께 사용합니다</block>
   <block id="47d63174f5a8747823754dbe907413b8" category="doc">ONTAP와 함께 Linux용 Veritas Infoscale 8을 사용합니다</block>
   <block id="bb6a1ceb13d5a6a98f1fab62ea2d512f" category="doc">ONTAP와 함께 Oracle Linux 6.6을 사용합니다</block>
   <block id="e880125f3679cf40fd24e55f28d63538" category="doc">ONTAP와 함께 HP-UX 11i v3을 사용하십시오</block>
@@ -1967,7 +1934,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="504e0c30fb2645a6baa2039125e4db84" category="paragraph">ONTAP 릴리즈를 사용하는 Oracle Linux 6.5에는 알려진 문제가 없습니다.</block>
   <block id="955a8ba1531bb4020623ab18e6949cfc" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 6.5를 구성할 수 있습니다.</block>
   <block id="bfb861b4de60d3c31c0349baa46c51b3" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 6.9를 구성할 수 있습니다.</block>
-  <block id="3ded60698f2d19fe69e05fe2661a5944" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 7.2를 구성할 수 있습니다.</block>
   <block id="7f3cd8ca9b188ba04b39e8260b58d5c0" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.7을 구성할 수 있습니다.</block>
   <block id="f6b1759ad7072aeed9f9cf3348794762" category="paragraph">Oracle Linux 6.7 및 ONTAP 릴리즈에는 알려진 문제가 없습니다.</block>
   <block id="bb567628e15358e56e9d494de915bd76" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 7.7을 구성할 수 있습니다.</block>
@@ -1976,23 +1942,17 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="12ad5d1ab65dc516a74a9b12db0d378f" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 6.10을 구성할 수 있습니다.</block>
   <block id="7e4c0abc516ebedb9b9f87be4f90f942" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.0을 구성할 수 있습니다.</block>
   <block id="a18067179cc6f4b287b23e7ffc267699" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 Oracle Linux 8.2를 ONTAP가 타겟으로 구성할 수 있습니다.</block>
-  <block id="dc7453510a20a3aba420e5bb6f2f2431" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 7.0을 구성할 수 있습니다.</block>
-  <block id="5da66eda92e4d71f2505e5b7fa30a462" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 8.3을 구성할 수 있습니다.</block>
   <block id="8b6f606a4a301b4a1363fb06464ce09b" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Oracle Linux 9.1을 대상으로 구성할 수 있습니다.</block>
   <block id="5c8d07800729066248b4d2f58721995e" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하는 Solaris 11.3을 구성할 수 있습니다.</block>
   <block id="ee6bccd9d4e5eb1093b1f5f3b0d86e7c" category="paragraph">ONTAP 릴리즈가 포함된 Solaris 11.3에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="63c403d14d322331797607900fd879e1" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 8.0을 구성할 수 있습니다.</block>
   <block id="cbda152ea4d3b0dbc23c508508e1de79" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 6.6을 구성할 수 있습니다.</block>
   <block id="5b88a090e813de0c838f7197c24a3c75" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 6.9를 구성할 수 있습니다.</block>
-  <block id="9accabc78cb81d6e8bcf1d9967acacbf" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 7.5를 구성할 수 있습니다.</block>
-  <block id="b3ee07d53ba0c1669d4fce99f84b1058" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하여 CentOS 8.4를 구성할 수 있습니다.</block>
   <block id="c145abd6fbb348ce5e5f456ac88aabe3" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.1을 구성할 수 있습니다.</block>
   <block id="9ce087c89f930ecdafc9ed9c4ed0e415" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.5를 구성할 수 있습니다.</block>
   <block id="89803e3bc17feeb475170d3dcd320e4e" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하여 CentOS 6.10을 구성할 수 있습니다.</block>
   <block id="9181955b285c10325d97f8ef33d5784c" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 IBM AIX 7.1을 구성할 수 있습니다.</block>
   <block id="92ecdf60dd5c6225e905e0a3eea885da" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.4를 구성할 수 있습니다.</block>
   <block id="0938dfec19dd45c8a6f64aa8b0b1eda4" category="paragraph">ONTAP 릴리즈가 포함된 Oracle Linux 6.4 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="242a33ec67b3633a46ebb3d495719e0e" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 7.1을 구성할 수 있습니다.</block>
   <block id="3998e195af175a67287a554b2d04b426" category="paragraph">ONTAP 릴리즈가 포함된 Linux용 Veritas Infoscale 7에는 알려진 문제가 없습니다.</block>
   <block id="9a54de79abf75dfa58e891711132c192" category="paragraph">ONTAP가 설치된 Windows Server 2019에는 알려진 문제가 없습니다.</block>
   <block id="2c28f13d66417467433a2437f55ea117" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 7.0을 구성할 수 있습니다.</block>
@@ -2003,33 +1963,24 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="6963533acedb1b8942f9674f67500cd3" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.8을 구성할 수 있습니다.</block>
   <block id="4af84170930f2b57214e727fee146131" category="paragraph">Oracle Linux 6.8과 ONTAP 릴리스에 대해서는 알려진 문제가 없습니다.</block>
   <block id="81d8fbe509061464d769a1e77f746158" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 7.5를 구성할 수 있습니다.</block>
-  <block id="bfe142f7b4caf4627f38b989434ef047" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 CentOS 7.4와 ONTAP를 타겟으로 구성할 수 있습니다.</block>
-  <block id="3269c3a8d5595f9f8362bc075d20beb5" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 CentOS 8.2를 ONTAP가 타겟으로 구성할 수 있습니다.</block>
   <block id="bd845f14007e127fad3aff7bfc9999ca" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Oracle Linux 8.3을 대상으로 구성할 수 있습니다.</block>
-  <block id="3816c212b0eb5454dfe79acdd4bc2097" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 있는 CentOS 7.3을 타겟으로 구성할 수 있습니다.</block>
   <block id="0eb65f1785cb89eb886adbf9059ea5f7" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 6.7을 구성할 수 있습니다.</block>
-  <block id="7aee7eabeab0c390aa3cf824293b0484" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하여 CentOS 7.8을 구성할 수 있습니다.</block>
-  <block id="fb1a4209dda3b7b98180fd7748a768e1" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 7.9를 구성할 수 있습니다.</block>
   <block id="a13006b9ebf1ba115456ee81fff754af" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Red Hat Enterprise Linux 6.7을 대상으로 구성할 수 있습니다.</block>
   <block id="f55878d5db78235140cd87e36b5e1afc" category="paragraph">ONTAP가 포함된 VMware vSphere 8.x 릴리즈에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="ce3a5b68105f43a3d184859ea230ccb6" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 8.5를 구성할 수 있습니다.</block>
   <block id="7d19e2b29f5e9464257914203cd8e401" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.6을 구성할 수 있습니다.</block>
   <block id="e03ce41b558f38979d0e0d140a375ebd" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 6.4를 구성할 수 있습니다.</block>
   <block id="367978ec29f45d00d1f34cb9df274d1f" category="paragraph">ONTAP 릴리즈가 설치된 VMware vSphere 6.5 및 6.7 버전에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="b16452e3905ac336b68babc6fa562702" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.9를 구성할 수 있습니다.</block>
   <block id="a69f90991b7861bf298029c85947f926" category="paragraph">ONTAP가 설치된 Oracle Linux 6.9 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="32f983e932979a82cacf8c693f94492b" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 CentOS 7.7을 대상으로 ONTAP를 구성할 수 있습니다.</block>
   <block id="95ee459b709d0e4cae7ea12ed33763f9" category="paragraph">SUSE Linux Enterprise Server 15 SP4(ONTAP 릴리스 포함)에는 알려진 문제가 없습니다.</block>
   <block id="0d3d494fc08d768af320e003868e2ebc" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 HP-UX 11i v3을 구성할 수 있습니다.</block>
   <block id="e044107e01e9d98146984293fe495b49" category="paragraph">HP-UX 11i v3(ONTAP 포함) 릴리즈에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="1bc24cef68b137efe0e69c2b269dd7da" category="paragraph">ONTAP 릴리즈가 포함된 Linux용 Veritas Infoscale 8에는 알려진 문제가 없습니다.</block>
   <block id="b6fc8a1131387d49545ad25502f3755d" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 7.4를 구성할 수 있습니다.</block>
   <block id="b0bf50be291cb2b8862c1b77bb1e9964" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.8을 구성할 수 있습니다.</block>
-  <block id="6415eba99ca625a70b9bced0f8464f58" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 CentOS 7.6과 ONTAP를 타겟으로 구성할 수 있습니다.</block>
   <block id="cdf4bf81cf3ee1a54f731160152019cf" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Oracle Linux 7.2를 대상으로 구성할 수 있습니다.</block>
   <block id="7145b773c01d1ea2262969c3644747a0" category="paragraph">Windows Server 2022와 ONTAP 릴리즈에는 알려진 문제가 없습니다.</block>
   <block id="57175c72c9ec2223e90f7a6f933b0c1b" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 7.6을 구성할 수 있습니다.</block>
-  <block id="23e8ad4d32c5f707280dc61ecce90740" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 8.1을 구성할 수 있습니다.</block>
   <block id="3d8d5b2f05311b66754ca058971f7e2e" category="paragraph">SUSE Linux Enterprise Server 15 SP5와 ONTAP 릴리스에 대해 알려진 문제는 없습니다.</block>
   <block id="30b87f3af4543974205ca57666930631" category="paragraph">Linux용 Veritas Storage Foundation 6(ONTAP 릴리즈 포함)에는 알려진 문제가 없습니다.</block>
   <block id="ee0e00ac8a597d343ecf7da72dd6effd" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.10을 구성할 수 있습니다.</block>
@@ -2561,20 +2512,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="2405d152712524b9eb2f91ba3cd97f49" category="section-title">SAN 부팅을 활성화합니다</block>
   <block id="2a634c51087efc0e309e1895650a5114" category="paragraph">Oracle Linux 8.10의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 존재해야 합니다. Oracle Linux 8.10이 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 설정으로 컴파일되었으므로 이 파일을 변경할 필요가 없습니다.</block>
   <block id="450fcbe6c767b89b676ae3dec1072a60" category="paragraph">Oracle Linux 8.10 운영 체제는 ONTAP LUN을 인식하고 ASA 및 비 ASA 구성 모두에 대해 올바른 구성 매개 변수를 자동으로 설정하기 위해 컴파일되었습니다. 또한 다음 권장 사항을 사용하여 호스트 구성의 성능을 보다 최적화할 수 있습니다.</block>
-  <block id="1db009b08f23bec4e810fc14d2f20bca" category="paragraph">CentOS 7.0 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="aca52a82faf017f6d70577c936319709" category="paragraph">CentOS 7.1 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="b98e351a0278e9569a03513cb6e6f6ec" category="paragraph">CentOS 7.2 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="47f4d38fb8224c7e02d93d52af3194b3" category="paragraph">CentOS 7.3 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="38ada56b388b649318ff10c81857eadf" category="paragraph">CentOS 7.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="d68b905f63c4626266558b66abf8c378" category="paragraph">CentOS 7.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="44c7ecde1a9cf0f344f47e1fa40d5cd7" category="paragraph">CentOS 7.6 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="71f4d77a1d17eb72114dca53b1802580" category="paragraph">CentOS 7.7 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="2309b585e56dad44f3e82c55610a3bfc" category="paragraph">CentOS 7.8 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="e470be7ba8749f50daf08d539424f343" category="paragraph">CentOS 7.9 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="9c3a0d48eca76abf8282b4db4c654316" category="paragraph">CentOS 8.0 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="b2fc039cebee1d0ae7654ef76d80ac20" category="paragraph">CentOS 8.1 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="7ec0f488c07d7a642e2940476ee4ce94" category="paragraph">CentOS 8.2 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일되었습니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="5752a4de533f23b8df7e923cec0672b9" category="paragraph">CentOS 8.3 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="69ba8a9dba275c5475a9649a889e095c" category="paragraph">Oracle Linux 7.2 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정합니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="bba209ce867661e3a4b098c50c4ae891" category="paragraph">Oracle Linux 7.3 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정합니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="c28f46756cfeb28aa3236603ffeabd59" category="paragraph">Oracle Linux 7.4 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정합니다. <block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
@@ -2678,26 +2615,10 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="9d2a87ba78cec8237c139f77ffb44261" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.7용 을 참조하십시오<block ref="fd679b4991af24edfd6d66f5cbc5db76" category="inline-link-macro-rx"></block>.</block>
   <block id="1d153902c02cd7301318e3e1be83184a" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.8용 을 참조하십시오<block ref="7703b3b38de881e061b6dbcbbcaf9f81" category="inline-link-macro-rx"></block>.</block>
   <block id="9c5b436e1bb8a6899180fe9890e5395b" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.9용 을 참조하십시오<block ref="6381fe6a72f9bd9f067a0ec390d2a8fb" category="inline-link-macro-rx"></block>.</block>
-  <block id="70d8388968a3a11604bb39f33f659b12" category="paragraph">ONTAP 릴리즈의 CentOS 7.0에는 알려진 문제가 없습니다.</block>
-  <block id="851e86338d86c905fc29f8ecedbd0b2f" category="paragraph">ONTAP 릴리즈의 CentOS 7.1에는 알려진 문제가 없습니다.</block>
-  <block id="def5d7178ce6eb1ac3496c404892e8dc" category="paragraph">ONTAP 릴리즈의 CentOS 7.2에는 알려진 문제가 없습니다.</block>
-  <block id="7feb2b1450534db8c446c0f70860b69a" category="paragraph">ONTAP 릴리즈의 CentOS 7.3에는 알려진 문제가 없습니다.</block>
-  <block id="082ff273f4446479932be5f51cf8433b" category="paragraph">ONTAP 릴리즈가 포함된 CentOS 7.4에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="0d22c29a0eb01e70e085a44916b321b4" category="cell">1440718</block>
   <block id="2a80f8446aa4a429e9f97920b1e74d2c" category="cell">SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다.</block>
   <block id="432a6b98702aceeda0bf1a325e31bcf4" category="inline-link-macro">NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다</block>
   <block id="0317854ad5c788fd489e5dfe652c06cd" category="cell">'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오<block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>.</block>
-  <block id="315cfe7e8975ed230363b922955d221b" category="paragraph">ONTAP 릴리즈가 포함된 CentOS 7.5에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="0b3c2391c446a11bbd0c66a38ea6904b" category="paragraph">ONTAP 릴리즈가 포함된 CentOS 7.6에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="80a7e1a7a3dc1fb6bca0ae027c3516e0" category="paragraph">ONTAP 릴리즈가 포함된 CentOS 7.7에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="e5531573dc40c61302ff8ed6b99bde7d" category="paragraph">ONTAP 릴리즈가 포함된 CentOS 7.8에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="68259199df7fde5545f7ab7628a2628b" category="paragraph">ONTAP 릴리즈가 포함된 CentOS 7.9에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="16c8f9caff89a168a424e7f5ade0f822" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 8.0용 을 참조하십시오<block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block>.</block>
-  <block id="4ed487db5845a58ae6349ab5f8fcc335" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 8.1용 을 참조하십시오<block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block>.</block>
-  <block id="f1beda93cf92219b8b55ae973eac7daa" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 8.2용 을 참조하십시오<block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block>.</block>
-  <block id="cdaab392c5ef9c222bc95dc907be230b" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 8.3용 을 참조하십시오<block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block>.</block>
-  <block id="294f49673136bab1fa20a2da73fdee21" category="paragraph">ONTAP 릴리즈의 CentOS 8.4에는 알려진 문제가 없습니다.</block>
-  <block id="4ecf9d7a3a8c52cfa00d399121a8eda8" category="paragraph">ONTAP 릴리즈가 설치된 CentOS 8.5에 대해서는 알려진 문제가 없습니다.</block>
   <block id="b85d15d2a4c68e31e07d28311d3bc5de" category="paragraph">ONTAP 릴리즈가 포함된 Oracle Linux 7.0에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="141ad1ff5cf1058b78e7b327d5363940" category="inline-link-macro">901558</block>
   <block id="36449de1465a8388d5bd6898a3ae93a1" category="cell"><block ref="7ace244e7f60745da9174ac22c242ea9" category="inline-link-macro-rx"></block></block>
@@ -3431,9 +3352,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="80b9911e09d9f3eb39dbe09b75455ac6" category="doc">1단계: 필요에 따라 SAN 부팅을 활성화합니다</block>
   <block id="b5001831a2a08c443a8119b646510728" category="paragraph">SAN 부팅을 사용하도록 호스트를 구성하여 배포를 단순화하고 확장성을 개선할 수 있습니다.</block>
   <block id="dce866209e2bc36ca1c5f888ee01dfed" category="paragraph">를 사용하여 <block ref="1ed2ba1980a264d01ab3597cde177180" category="inline-link-macro-rx"></block>Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인합니다.</block>
-  <block id="312edc66ed28db260a115f02ffbc96c6" category="list-text">SAN 부팅 LUN을 생성하여 호스트에 매핑합니다.</block>
-  <block id="4906f544b7a764889e992fe4877ad659" category="inline-link">SAN 스토리지 용량 할당</block>
-  <block id="06e593258c5ef7163e03bae381c155bf" category="paragraph">을<block ref="b3a16b4be4ceee44fbb57b07c0ed925f" category="inline-link-rx"></block>참조하십시오.</block>
   <block id="29040b31622814fd9a85249553b75039" category="list-text">호스트를 재부팅하고 OS가 실행 중인지 확인하여 구성이 성공했는지 확인합니다.</block>
   <block id="c5bf0e4109271560189b47082ba7e28e" category="paragraph">호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.</block>
   <block id="c201654eb19fc1c9aff1f621692fcdea" category="list-text">파일이 있는지<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 확인합니다.</block>
@@ -3984,4 +3902,66 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="074720cb7866529cf5ec3aad61198ac4" category="sidebar">록키 리눅스 8</block>
   <block id="32abbb92208e586e49dce3e4e69b53e5" category="sidebar">RL-8-FCP를 참조하십시오</block>
   <block id="004d94776b28ba1f02680460dac43cc0" category="sidebar">NVMeoF Rocky Linux</block>
+  <block id="d2e384028f122a3391609393d4a2635e" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.0 구성</block>
+  <block id="b7f92a2c197778c06a0c90dd30058b43" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="cf6c05052f2b786c1482bf0ffeb8248b" category="paragraph">CentOS 7.0에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="fc6c6adaa6932ae9bb4f8523a5b96422" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.1 구성</block>
+  <block id="ea41040fff9210213568690e103c3c6e" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.1 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="a9bfc717cd75f388ea17d7c53039b003" category="paragraph">CentOS 7.1에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="68376c8c22b8540972d010862788d0de" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.2 구성</block>
+  <block id="ebd6c56e2fb22c7365a110a4400b3e3f" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.2 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="4191601859d7a234ecfdd809ef7254bb" category="paragraph">CentOS 7.2에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="05358af870772ebc5bef63e897bf4728" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.3 구성</block>
+  <block id="d6e10fed24d6d29ec85417923159b76c" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.3 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="bf681187bcb154b7112f409c33a82e6b" category="paragraph">CentOS 7.3에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="148f54232f880f3d83186a7514ed656f" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.4 구성</block>
+  <block id="f50c262e25e0e28408113badfd06b284" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="d09d2873256392ae23e2087af611ab7a" category="paragraph">CentOS 7.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="045d005cf748f8868a4f799190dfe35c" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.4 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="da0f0cee5b5902b87e8d61311b7de818" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.5 구성</block>
+  <block id="e365476a27f4c1bc73f093801313c93d" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.5 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="4cabc1b52c28cb613dc6d5c3aad5095c" category="paragraph">CentOS 7.5에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="41c7f526069561bd962e7e0a3c3b5e09" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.5 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="6b9edcecd50c44b4970d4b47ebf5c742" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.6 구성</block>
+  <block id="8939d632c326d668740c43e490bd0c9a" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.6 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="e7d64eb1a737f3e4da5c41c38bf8989e" category="paragraph">CentOS 7.6에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="30a13201fd2baa06af07321cd1ab5581" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.6 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="67964124758fa8a3c37a596b2384f957" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.7 구성</block>
+  <block id="d6079b971eb4ab429e173a6d260758d3" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.7 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="a2d4e9d1c3726a1ed3c8c8deca6e9739" category="paragraph">CentOS 7.7에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="8fa46090515c1e239e7e30c63a10fd69" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.7 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="9ea80965b906e6221845b8f95917ee00" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.8 구성</block>
+  <block id="0f85f6e230aeea13b9179c9e79ef143b" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.8 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="181b93d51397aeac0aa45c182b1538f6" category="paragraph">CentOS 7.8에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="d08ccdb6faf142d94c2ef003531659ad" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.8 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="4984519991a90ef8109bebcddb1ef4a1" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.9 구성</block>
+  <block id="424fbbe58d081fac8928ddb2baa0049a" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.9 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="4884d9c0ac331c0961ce8e16922aa141" category="paragraph">CentOS 7.9에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="e85e8ae42253cb29511a2226b89895d8" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.9 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="67fe770b4e5ec363d5b444f0a42400c2" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.0 구성</block>
+  <block id="593e47ca359b07667f8c8082996de465" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="f38c7afa5f1fae5f3c81c03486c5c344" category="paragraph">CentOS 8.0에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="59ea615947a2020a6db99a2d73a8168d" category="paragraph">ONTAP 스토리지를 사용하는 FCP 및 iSCSI의 CentOS 8.0에는 알려진 문제가 없습니다.</block>
+  <block id="992b0745667f7e03e6212332aaa1a053" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.0용입니다.</block>
+  <block id="9cfa8186483ff450023200a05da37267" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.1 구성</block>
+  <block id="cdacdfbbaee0210b6811d1ebe4dfa607" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.1 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="b4426f8f1f811f0295e0ea075a55bdfc" category="paragraph">CentOS 8.1에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="a92e4863e842960763753ee0623a3ec7" category="paragraph">ONTAP 스토리지를 사용하는 FCP 및 iSCSI의 경우 CentOS 8.1에 알려진 문제는 없습니다.</block>
+  <block id="5fba6fb979e49186d9e32d97656b6f30" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.1용입니다.</block>
+  <block id="b172ee9e291293e67be5403167362055" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.2 구성</block>
+  <block id="ca4cc088e6a5ddd41a0523eb74c25c28" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.2 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="c89ef9efe1f9164958e5c1e01640f08e" category="paragraph">CentOS 8.2에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="b238747cf8ec0ee5148c9cc373085bd4" category="paragraph">ONTAP 스토리지를 사용하는 FCP 및 iSCSI의 경우 CentOS 8.2에 알려진 문제는 없습니다.</block>
+  <block id="6a30496b8d4d20c682c6bae2fa331205" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.2용입니다.</block>
+  <block id="46eac72545de48bc29ab8e760d07d946" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.3 구성</block>
+  <block id="ff6dc31606f5c670f3fc3f4d9664e2b3" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.3 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="d541665cad3a72efaff542f26600afbe" category="paragraph">CentOS 8.3에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="4f32092493e839d18510a94dbab55c30" category="paragraph">ONTAP 스토리지를 사용하는 FCP 및 iSCSI의 경우 CentOS 8.3에 알려진 문제는 없습니다.</block>
+  <block id="6e6e182611ac0bf525073fea056f339e" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.3용입니다.</block>
+  <block id="bb3e38cea1c1be488bdf74187ab980f9" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.4 구성</block>
+  <block id="b9312ab92841fb9e83f2ac8bae8aa0c5" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="62fb36c811aaf23e2eba1001dffff7d1" category="paragraph">CentOS 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="e02248ab51c300e9606fb5813ed1ca78" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.5 구성</block>
+  <block id="9a9d47d430bc0ccaf329d88297d4948c" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.5 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="67280eacf99cd3591c58a61aba24967f" category="paragraph">CentOS 8.5에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
 </blocks>
