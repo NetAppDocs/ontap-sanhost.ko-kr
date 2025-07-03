@@ -163,6 +163,8 @@ Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를
 [role="tabbed-block"]
 ====
 .Broadcom/Emulex
+Broadcom/Emulex 어댑터용 NVMe/FC를 구성합니다.
+
 --
 .단계
 . 지원되는 어댑터 모델을 사용하고 있는지 확인합니다.
@@ -792,8 +794,7 @@ src_addr=192.168.1.31 *live non-optimized*
 --
 ====
 . NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다.
-
-
++
 [role="tabbed-block"]
 ====
 .열
@@ -847,6 +848,8 @@ nvme netapp ontapdevices -o json
 =====
 --
 ====
+
+
 
 
 == 7단계: 알려진 문제를 검토합니다
