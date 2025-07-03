@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_rhel_84.html 
 keywords: host utilities, red hat, rhel, linux, 8.4, netapp, ontap 
-summary: RHEL 8.4 호스트에 Linux Host Utilities를 설치하여 ONTAP LUN으로 FCP 및 iSCSI 프로토콜 작업을 관리합니다. 
+summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.4 호스트에 Linux 호스트 유틸리티를 설치합니다. 
 ---
 = ONTAP 스토리지를 사용하여 FCP용 RHEL 8.4와 iSCSI를 구성합니다
 :hardbreaks:
@@ -162,6 +162,9 @@ multipath -ll
 --
 ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
 
+.예제 보기
+[%collapsible]
+=====
 [listing]
 ----
 multipath -ll
@@ -173,6 +176,7 @@ size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
   |- 14:0:3:0  sdar 66:176 active ready running
   `- 17:0:3:0  sdch 69:80  active ready running
 ----
+=====
 --
 .AFF 또는 FAS 구성
 --
@@ -180,6 +184,9 @@ AFF 또는 FAS 구성에는 우선 순위가 높거나 낮은 두 개의 경로 
 
 다음 예에서는 활성/최적화 경로 2개와 활성/최적화되지 않은 경로 2개가 있는 ONTAP LUN에 대한 출력을 표시합니다.
 
+.예제 보기
+[%collapsible]
+=====
 [listing]
 ----
 multipath -ll
@@ -192,6 +199,7 @@ size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
   |- 10:0:1:0  sdc  8:32   active ready running
   `- 16:0:2:0  sdcf 69:48  active ready running
 ----
+=====
 --
 ====
 

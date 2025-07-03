@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_ol_80.html 
 keywords: host utilities, oracle, linux, 8.0, netapp, ontap 
-summary: ONTAP에서 Oracle Linux 8.0을 사용하는 방법에 대해 설명합니다 
+summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.0 호스트에 Linux 호스트 유틸리티를 설치합니다. 
 ---
-= ONTAP와 함께 Oracle Linux 8.0을 사용하십시오
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.0 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,160 +16,78 @@ summary: ONTAP에서 Oracle Linux 8.0을 사용하는 방법에 대해 설명합
 
 
 [role="lead"]
-ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 8.0을 구성할 수 있습니다.
+Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
+
+
+NOTE: ONTAP LUN이 하이퍼바이저에 자동으로 매핑되므로 커널 기반 가상 머신(KVM) 설정을 수동으로 구성할 필요가 없습니다.
 
 
 
-== Linux Host Utilities를 설치합니다
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
-NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 에서 64-bit.rpm 파일로 다운로드할 수 있습니다link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^].
-
-NetApp은 Linux 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.
-
-.단계
-. 에서 호스트에 64비트 Linux Host Utilities 소프트웨어 패키지를 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 다운로드합니다.
-. 소프트웨어 패키지를 설치합니다.
-+
-"rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"
-
-
-
-
-NOTE: 이 절차에 제공된 구성 설정을 사용하여 및 에 연결된 클라우드 클라이언트를 구성할 수 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^]있습니다.
-
-
-
-== SAN 툴킷을 참조하십시오
-
-이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.
-
-.예
-다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
-
-[source, cli]
-----
-# sanlun lun show all
-----
-예제 출력:
-
-[listing]
-----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
-------------------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
-----
-
-
-== SAN 부팅
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 단순화하고 확장성을 개선할 수 있습니다.
 
 .시작하기 전에
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
+를 사용하여 link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인합니다.
 
 .단계
-. SAN 부팅 LUN을 호스트에 매핑합니다.
-. 여러 경로를 사용할 수 있는지 확인합니다.
-+
-
-NOTE: 호스트 OS가 가동되고 경로에서 실행되면 여러 경로를 사용할 수 있습니다.
-
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["SAN 부팅 LUN을 생성하고 호스트에 매핑합니다."^]..
 . SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
 +
 HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
 
-. 호스트를 재부팅하여 부팅이 성공했는지 확인합니다.
+. 호스트를 재부팅하고 OS가 실행 중인지 확인하여 구성이 성공했는지 확인합니다.
 
 
 
 
-== 다중 경로
+== 2단계: Linux Host Utilities를 설치합니다
 
-Oracle Linux 8.0의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 8.0은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.
+NetApp은 ONTAP LUN 관리를 지원하고 기술 지원이 구성 데이터 수집을 돕기 위해 Linux 호스트 유틸리티를 설치할 것을 적극 권장합니다.
 
- `multipath -ll`명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
+link:hu_luhu_71.html["Linux Host Utilities 7.1을 설치합니다"]..
 
-.예
-다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
 
-[listing]
-----
-# multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-| |- 16:0:6:35 sdwb 69:624 active ready running
-| |- 16:0:5:35 sdun 66:752 active ready running
-|-+- policy='service-time 0' prio=10 status=enabled
-|- 15:0:0:35 sdaj 66:48 active ready running
-|- 15:0:1:35 sdbx 68:176 active ready running
-----
-
-NOTE: 단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로 문제가 발생할 수 있습니다.
+NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 초과 설정은 변경되지 않습니다.
 
 
 
-== 권장 설정
+== 3단계: 호스트의 다중 경로 구성을 확인합니다
 
-Oracle Linux 8.0 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일됩니다.
+Oracle Linux 8.0에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.
 
- `multipath.conf`다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수 `touch /etc/multipath.conf` 있습니다.
 
- `multipath.conf`파일을 처음 만들 때 다음 명령을 사용하여 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
+NOTE: 당신은 사용할 수 있습니다 link:hu_rhel_80.html#rhel-rhck["Red Hat Enterprise Linux(RHEL) 8.0에 권장되는 설정"] Oracle Linux 8.0에 대한 Red Hat 호환 커널을 구성하는 방법.
 
-[listing]
-----
-chkconfig multipathd on
-/etc/init.d/multipathd start
-----
-다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가 `multipath.conf` 없습니다. 원치 않는 디바이스를 제외하려면 파일에 다음 구문을 `multipath.conf` 추가하여 <DevId>를 제외할 디바이스의 WWID(Worldwide Identifier) 문자열로 대체합니다.
-
-[listing]
-----
-blacklist {
-        wwid <DevId>
-        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-        devnode "^hd[a-z]"
-        devnode "^cciss.*"
-}
-----
-다음 예에서는 디바이스의 WWID를 확인하여 `multipath.conf` 파일에 추가합니다.
+호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
 
 .단계
-. WWID 확인:
-+
-[listing]
-----
-/lib/udev/scsi_id -gud /dev/sda
-----
-+
-[listing]
-----
-3600a098038314c4a433f5774717a3046
-----
-+
-`sda` 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
-
-. 를 추가합니다 `WWID` 에서 블랙리스트로 `/etc/multipath.conf`:
+.  `/etc/multipath.conf`파일이 종료되는지 확인합니다. 파일이 없으면 0바이트 빈 파일을 만듭니다.
 +
 [source, cli]
 ----
-blacklist {
-     wwid   3600a098038314c4a433f5774717a3046
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
+touch /etc/multipath.conf
 ----
+. 파일을 처음 생성할 때 `multipath.conf` 권장 설정을 로드하려면 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
++
+[source, cli]
+----
+chkconfig multipathd on
+----
++
+[source, cli]
+----
+/etc/init.d/multipathd start
+----
+. 호스트를 부팅할 때마다 빈 0바이트 파일이 `/etc/multipath.conf` NetApp 권장 호스트 다중 경로 매개 변수를 기본 설정으로 자동으로 로드합니다. 운영 체제는 ONTAP LUN을 올바르게 인식하고 관리하는 다중 경로 매개 변수를 사용하여 컴파일되므로 호스트의 파일을 변경할 필요가 없습니다 `/etc/multipath.conf`.
++
+다음 표는 ONTAP LUN에 대한 Linux 운영 체제 네이티브 컴파일 다중 경로 매개 변수 설정을 보여줍니다.
 
-
-항상 `/etc/multipath.conf` 파일, 특히 기본값 섹션에서 기본 설정을 무시할 수 있는 레거시 설정을 확인하십시오.
-
-다음 표에서는 `multipathd` ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면 `multipath.conf` ONTAP LUN에 특별히 적용되는 파일에서 이후의 stanzas로 수정되어야 합니다. 이 수정 사항이 없으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp, OS 공급업체 또는 둘 다와 상의하고 영향을 완전히 이해할 때만 재정의해야 합니다.
-
-[cols="2*"]
++
+.매개 변수 설정을 표시합니다
+[%collapsible]
+====
+[cols="2"]
 |===
 | 매개 변수 | 설정 
 
@@ -213,7 +131,7 @@ blacklist {
 | 프리오 | "ONTAP" 
 
 
-| 제품 | LUN. * 
+| 제품 | LUN입니다 
 
 
 | Retain_attached_hw_handler 를 참조하십시오 | 예 
@@ -227,38 +145,146 @@ blacklist {
 
 | 공급업체 | 넷엡 
 |===
-.예
-다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 no_path_retry의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.
+====
+. ONTAP LUN의 매개 변수 설정 및 경로 상태를 확인합니다.
++
+[source, cli]
+----
+multipath -ll
+----
++
+기본 다중 경로 매개 변수는 ASA, AFF 및 FAS 구성을 지원합니다. 이러한 구성에서는 단일 ONTAP LUN에 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로에 문제가 발생할 수 있습니다.
 
++
+다음 출력 예는 ASA, AFF 또는 FAS 구성에 있는 ONTAP LUN에 대한 올바른 매개 변수 설정 및 경로 상태를 보여줍니다.
+
++
+[role="tabbed-block"]
+====
+.ASA 구성
+--
+ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
+
+.예제 보기
+[%collapsible]
+=====
 [listing]
 ----
-defaults {
- path_checker readsector0
- no_path_retry fail
- }
-devices {
- device {
- vendor "NETAPP "
- product "LUN.*"
- no_path_retry queue
- path_checker tur
- }
+multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
+----
+=====
+--
+.AFF 또는 FAS 구성
+--
+AFF 또는 FAS 구성에는 우선 순위가 높거나 낮은 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 더 높은 활성/최적화 경로는 애그리게이트가 위치한 컨트롤러에서 제공합니다. 낮은 우선 순위 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예에서는 활성/최적화 경로 2개와 활성/최적화되지 않은 경로 2개가 있는 ONTAP LUN에 대한 출력을 표시합니다.
+
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
+----
+=====
+--
+====
+
+
+
+
+== 4단계: 필요에 따라 경로 다중화에서 디바이스를 제외합니다
+
+필요한 경우 원치 않는 디바이스의 WWID를 파일의 "블랙리스트" 스탠자에 추가하여 디바이스를 경로 다중화에서 제외할 수 `multipath.conf` 있습니다.
+
+.단계
+. WWID 확인:
++
+[source, cli]
+----
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+"sda"는 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
+
++
+WWID의 예는 `360030057024d0730239134810c0cb833`입니다.
+
+. WWID를 "블랙리스트" 스탠자에 추가합니다.
++
+[source, cli]
+----
+blacklist {
+	     wwid   360030057024d0730239134810c0cb833
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
 }
 ----
 
-NOTE: Oracle Linux 8.0 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 8.0용 을 link:hu_rhel_80.html#recommended-settings["권장 설정"]사용하십시오.
 
 
 
-== ASM 미러링
+== 5단계: ONTAP LUN에 대한 다중 경로 매개 변수를 사용자 지정합니다
 
+호스트가 다른 공급업체의 LUN에 접속되어 있고 다중 경로 매개 변수 설정이 무시되는 경우 나중에 ONTAP LUN에 특별히 적용되는 파일에서 stanzas를 추가하여 수정해야 `multipath.conf` 합니다. 이렇게 하지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다.
+
+ `/etc/multipath.conf`파일, 특히 기본값 섹션에서 을<<multipath-parameter-settings,다중 경로 매개 변수에 대한 기본 설정입니다>>(를) 무시할 수 있는 설정을 확인하십시오.
+
+
+CAUTION: ONTAP LUN에 대해 권장되는 매개 변수 설정을 재정의해서는 안 됩니다. 이러한 설정은 호스트 구성의 성능을 최적화하는 데 필요합니다. 자세한 내용은 NetApp 지원, OS 공급업체 또는 둘 다에 문의하십시오.
+
+다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 예제에서는 `multipath.conf` ONTAP LUN과 호환되지 않는 및 `no_path_retry` 의 값을 정의하고 `path_checker` ONTAP 스토리지 배열이 호스트에 계속 연결되어 있으므로 이러한 매개 변수를 제거할 수 없습니다. 대신 ONTAP LUN에 특별히 적용되는 파일에 디바이스 스탠자를 추가하여 `multipath.conf` 및 `no_path_retry` 의 값을 `path_checker` 수정합니다.
+
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+defaults {
+   path_checker      *readsector0*
+   no_path_retry     *fail*
+}
+
+devices {
+   device {
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
+   }
+}
+----
+====
+
+
+== 6단계: 알려진 문제를 검토합니다
+
+알려진 문제가 없습니다.
+
+
+
+== 다음 단계
+
+* link:hu_luhu_71_cmd.html["Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오"]..
+* ASM 미러링에 대해 알아보십시오.
++
 ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대부분의 ASM 구성은 외부 이중화를 사용합니다. 즉, 외부 스토리지를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않습니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 자세한 내용은 을 link:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["ONTAP 기반의 Oracle 데이터베이스"^]참조하십시오.
 
 
-
-== 알려진 문제
-
-Oracle Linux 8.0과 ONTAP 릴리스의 경우 알려진 문제가 없습니다.
-
-
-NOTE: Oracle Linux RHCK의 알려진 문제는 RHEL 8.0용 을 link:hu_rhel_80.html#known-problems-and-limitations["알려진 문제"]참조하십시오.

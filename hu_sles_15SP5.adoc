@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_sles_15SP5.html 
 keywords: host utilities, suse linux enterprise server 15 sp5, suse, linux, 15 sp5, netapp, ontap 
-summary: SUSE Linux Enterprise Server 15 SP5에 Linux Host Utilities를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리합니다. 
+summary: SUSE Linux Enterprise Server 15 SP5에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다. 
 ---
 = ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP5를 구성합니다
 :hardbreaks:
@@ -249,6 +249,9 @@ CAUTION: ONTAP LUN에 대해 권장되는 매개 변수 설정을 재정의해�
 
 다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 예제에서는 `multipath.conf` ONTAP LUN과 호환되지 않는 및 `no_path_retry` 의 값을 정의하고 `path_checker` ONTAP 스토리지 배열이 호스트에 계속 연결되어 있으므로 이러한 매개 변수를 제거할 수 없습니다. 대신 ONTAP LUN에 특별히 적용되는 파일에 디바이스 스탠자를 추가하여 `multipath.conf` 및 `no_path_retry` 의 값을 `path_checker` 수정합니다.
 
+.예제 보기
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 defaults {
@@ -265,6 +268,7 @@ devices {
    }
 }
 ----
+====
 
 
 == 6단계: 알려진 문제를 검토합니다
