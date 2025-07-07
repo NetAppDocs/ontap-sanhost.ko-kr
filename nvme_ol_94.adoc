@@ -32,7 +32,7 @@ ONTAP 스토리지가 포함된 Oracle Linux 9.4 용 NVMe-oF 호스트 구성에
 
 * 사용 가능한 기능:
 +
-** ONTAP 9.12.1부터 NVMe-oF에 대한 안전한 대역 내 인증 지원이 도입되었습니다. Oracle Linux 9.4와 함께 NVMe-oF에 대한 보안 인밴드 인증을 사용할 수 있습니다
+** ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. Oracle Linux 9.4에서는 NVMe/TCP에 대해 안전한 인밴드 인증을 사용할 수 있습니다.
 ** 기본적으로 NVMe 네임스페이스를 위해 커널 내 NVMe 다중 경로를 지원하므로 명시적 설정이 필요하지 않습니다.
 
 
@@ -397,9 +397,16 @@ nvme connect-all -t tcp -w 192.168.166.4 -a 192.168.166.56
 nvme connect-all -t tcp -w 192.168.165.3 -a 192.168.165.56
 ----
 +
+[NOTE]
+====
+Oracle Linux 9.4부터 NVMe/TCP 설정  `ctrl_loss_tmo timeout` 자동으로 "꺼짐"으로 설정됩니다. 그 결과,
 
-NOTE: Oracle Linux 9.4부터는 NVMe/TCP에 대한 기본 설정이 `ctrl_loss_tmo timeout` 꺼지고 재시도 횟수에 제한이 없습니다(무제한 재시도). 또는 `nvme connect-all` 명령(option-l)을 사용할 때는 특정 기간을 `nvme connect` 수동으로 구성할 필요가 `ctrl_loss_tmo timeout` 없습니다. 이 기본 동작에서는 경로 장애 발생 시 NVMe/TCP 컨트롤러가 시간 초과를 경험하지 않고 무기한 연결된 상태를 유지합니다.
+** 재시도 횟수에 제한이 없습니다(무기한 재시도).
+** 특정 항목을 수동으로 구성할 필요가 없습니다.  `ctrl_loss_tmo timeout` 사용 시 지속 시간  `nvme connect` 또는  `nvme connect-all` 명령어(옵션 -l).
+** NVMe/TCP 컨트롤러는 경로 장애가 발생해도 시간 초과가 발생하지 않으며 무기한 연결 상태를 유지합니다.
 
+
+====
 
 
 
@@ -594,7 +601,7 @@ nvme netapp ontapdevices -o json
 
 == 보안 대역내 인증을 설정합니다
 
-ONTAP 9.12.1부터 Oracle Linux 9.4 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP 및 NVMe/FC를 통해 보안 인밴드 인증이 지원됩니다.
+ONTAP 9.12.1부터 Oracle Linux 9.4 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.
 
 보안 인증을 설정하려면 각 호스트 또는 컨트롤러가 에 연결되어 있어야 합니다 `DH-HMAC-CHAP` 키 - NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀의 조합입니다. 피어를 인증하려면 NVMe 호스트 또는 컨트롤러가 피어와 연결된 키를 인식해야 합니다.
 

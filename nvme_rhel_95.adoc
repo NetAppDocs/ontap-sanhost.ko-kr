@@ -604,17 +604,24 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 ====
 [listing, subs="+quotes"]
 ----
-nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.24
-nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.24
-nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.25
-nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
+nvme connect-all -t	tcp	-w 192.168.1.31	-a 192.168.1.24
+nvme connect-all -t	tcp	-w 192.168.2.31	-a 192.168.2.24
+nvme connect-all -t	tcp	-w 192.168.1.31	-a 192.168.1.25
+nvme connect-all -t	tcp	-w 192.168.2.31	-a 192.168.2.25
 ----
 ====
 
 
+[NOTE]
+====
+RHEL 9.4부터 NVMe/TCP 설정  `ctrl_loss_tmo timeout` 자동으로 "꺼짐"으로 설정됩니다. 그 결과,
 
-NOTE: RHEL 9.5부터는 NVMe/TCP 시간 제한에 대한 기본 설정이 `ctrl_loss_tmo` 꺼집니다. 다시 시도 횟수에 제한이 없음을 의미합니다(무제한 재시도). 따라서 또는 `nvme connect-all` 명령(option-l)을 사용할 때 특정 시간 초과 기간을 `nvme connect` 수동으로 구성할 필요가 `ctrl_loss_tmo` 없습니다. 이 기본 동작에서는 경로 장애 발생 시 NVMe/TCP 컨트롤러가 시간 초과를 경험하지 않고 무기한 연결된 상태를 유지합니다.
+* 재시도 횟수에 제한이 없습니다(무기한 재시도).
+* 특정 항목을 수동으로 구성할 필요가 없습니다.  `ctrl_loss_tmo timeout` 사용 시 지속 시간  `nvme connect` 또는  `nvme connect-all` 명령어(옵션 -l).
+* NVMe/TCP 컨트롤러는 경로 장애가 발생해도 시간 초과가 발생하지 않으며 무기한 연결 상태를 유지합니다.
 
+
+====
 
 
 == NVMe-oF를 검증합니다
