@@ -2247,7 +2247,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="ece05e51adea1b8393f46534993e099e" category="sidebar">15 SP6입니다</block>
   <block id="587b796170a9abac4701cd8aa1bb38cb" category="listing-title">예제 출력</block>
   <block id="8b6a5845688d81720a1016c10aa9e843" category="list-text">ONTAP 9.16.1부터 새로 생성된 모든 NVMe 네임스페이스에 대해 기본적으로 공간 할당이 활성화됩니다.</block>
-  <block id="664436f4ce3f6d98f6df651147109cff" category="paragraph"><block ref="dc858e51d6de4761e03193e6d9baadfc" prefix="" category="inline-code"></block></block>
   <block id="0c48e7c4bbc87e64bef6a0afca5676b3" category="paragraph">예상 값은 0입니다.</block>
   <block id="e63e68670f6caa57aae357d60e7ea92c" category="paragraph"><block ref="5fb81999d6f54088d56d3a83b7e45bb2" prefix="" category="inline-code"></block></block>
   <block id="7b4c45ceb018e94a23feffc876757fd9" category="paragraph">예상 값은 1입니다.</block>
@@ -3949,4 +3948,5 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="42cbea0085bea3ec5496d092c502217b" category="paragraph">Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터로 NVMe/FC를 구성합니다.</block>
   <block id="0f2332cb3d4b010b45d6eb9fbbeab96c" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 모두 실행 예를 들어, SCSI LUN의 SCSI mpath 장치에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트의 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
   <block id="c28f1c588b284418e1f1f45095861195" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 실행 예를 들어, SCSI LUN의 SCSI mpath 장치에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트의 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
+  <block id="7b041227be300a97269b0c517c4d8a5c" category="paragraph"><block ref="b5c9ec30dafc3cdd07e22705d3fd28f9" prefix="" category="inline-code"></block></block>
 </blocks>

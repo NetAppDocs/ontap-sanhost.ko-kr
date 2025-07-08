@@ -280,7 +280,7 @@ ONTAP 9.16.1 이상에서 ESXi 8.0u2 이상에 대해 NVMe 할당 해제 명령�
 .단계
 . ESXi 호스트에서 TP4040 지원으로 DSM 할당 해제 설정을 확인합니다.
 +
-`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+`esxcfg-advcfg -g /Scsi/NVmeUseDsmTp4040`
 
 +
 예상 값은 0입니다.
@@ -291,7 +291,7 @@ ONTAP 9.16.1 이상에서 ESXi 8.0u2 이상에 대해 NVMe 할당 해제 명령�
 
 . TP4040 지원과 함께 DSM 할당 해제 설정이 활성화되어 있는지 확인합니다.
 +
-`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+`esxcfg-advcfg -g /Scsi/NVmeUseDsmTp4040`
 
 +
 예상 값은 1입니다.
