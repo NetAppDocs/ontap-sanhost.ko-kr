@@ -82,7 +82,7 @@ systemctl start multipathd
 | 프리오 | "ONTAP" 
 
 
-| 제품 | LUN. * 
+| 제품 | LUN입니다 
 
 
 | Retain_attached_hw_handler 를 참조하십시오 | 예 

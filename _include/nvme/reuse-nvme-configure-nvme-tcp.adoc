@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-NVMe/TCP 프로토콜이 작업을 지원하지 `auto-connect` 않습니다. 대신 NVMe/TCP 또는 `connect-all` 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 `connect` 있습니다.

@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_sles_15SP1.html 
-keywords: host utilities, suse linux enterprise server 15 sp1, suse, linux, 15 sp1, netapp, ontap 
-summary: SUSE Linux Enterprise Server 15 SP1에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다. 
+permalink: hu_sles_15SP7.html 
+keywords: host utilities, suse linux enterprise server 15 sp7, suse, linux, 15 sp7, netapp, ontap, fcp, iscsi 
+summary: SUSE Linux Enterprise Server 15 SP7에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리합니다. 
 ---
-= ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP1을 구성합니다
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP7을 구성합니다
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: SUSE Linux Enterprise Server 15 SP1에 Linux 호스트 유틸리티를 
 
 
 [role="lead"]
-Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP1 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
+Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP7 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
 
 
 NOTE: ONTAP LUN이 하이퍼바이저에 자동으로 매핑되므로 커널 기반 가상 머신(KVM) 설정을 수동으로 구성할 필요가 없습니다.
@@ -54,7 +54,7 @@ NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 �
 
 == 3단계: 호스트의 다중 경로 구성을 확인합니다
 
-SUSE Linux Enterprise Server 15 SP1의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.
+SUSE Linux Enterprise Server 15 SP7의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.
 
 호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
 
@@ -273,15 +273,8 @@ devices {
 
 == 6단계: 알려진 문제를 검토합니다
 
-SUSE Linux Enterprise Server 15 SP1 ONTAP 스토리지 릴리스에는 다음과 같은 알려진 문제가 있습니다.
+알려진 문제가 없습니다.
 
-[cols="3"]
-|===
-| NetApp 버그 ID | 제목 | 설명 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246622["1246622)를 참조하십시오"^] | 스토리지 페일오버 작업 중 Emulex LPe12002 8GB FC를 사용하는 SLES15SP1에서 원격 포트가 차단됨 상태로 전환됩니다. | 스토리지 페일오버 작업 중에 원격 포트가 Emulex LPe12002 8GB FC(Fibre Channel)를 통해 SLES15SP1에서 차단된 상태로 전송됩니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로뿐만 아니라 해당 LUN에 대한 I/O 중단이 발생할 수 있습니다. 다음 샘플 명령에 대해 remoteport의 세부 정보를 확인할 수 있습니다.--- cat/sys/class/fc_host/host * /device/rport * /fc_remote_ports/rport * /port_name cat/sys/class/fc_host/device/rport * /fc_remote_ports/rport * /port_state-- 
-|===
 
 
 == 다음 단계

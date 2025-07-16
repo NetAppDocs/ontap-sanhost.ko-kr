@@ -416,6 +416,79 @@ Oracle Linux 9.4부터 NVMe/TCP 설정  `ctrl_loss_tmo timeout` 자동으로 "�
 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
 
 .단계
+. in-kernel NVMe multipath가 활성화되어 있는지 확인합니다.
++
+[source, cli]
+----
+cat /sys/module/nvme_core/parameters/multipath
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+Y
+----
+. 각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: NetApp ONTAP 컨트롤러로 설정된 모델 및 라운드 로빈으로 설정된 로드 밸런싱 IPolicy가 호스트에 올바르게 반영되는지 확인합니다.
++
+.. 하위 시스템을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/model
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
+.. 정책을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+round-robin
+round-robin
+----
+
+
+. 호스트에서 네임스페이스가 생성되고 올바르게 검색되는지 확인합니다.
++
+[source, cli]
+----
+nvme list
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing]
+----
+Node         SN                   Model
+---------------------------------------------------------
+/dev/nvme4n1 81Ix2BVuekWcAAAAAAAB	NetApp ONTAP Controller
+
+
+Namespace Usage    Format             FW             Rev
+-----------------------------------------------------------
+1                 21.47 GB / 21.47 GB	4 KiB + 0 B   FFFFFFFF
+----
+====
+
+
+.단계
 . Oracle Liniux 9.4 호스트에서 다음 NVMe/FC 설정을 확인합니다.
 +
 .. `cat /sys/module/nvme_core/parameters/multipath`

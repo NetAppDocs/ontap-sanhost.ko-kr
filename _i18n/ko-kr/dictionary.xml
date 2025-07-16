@@ -3385,7 +3385,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="e97e46892f962abb9d135b9f4260bb28" category="list-text"><block ref="5fb7de3d2a2b97d13727ed55244c1d34" category="inline-link-rx"></block>..</block>
   <block id="83946a5f9a0c9e6468d1616ca938bdd0" category="list-text">RHEL 호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
   <block id="43075b4ae15209d42a33c26736b1a616" category="list-text">Rocky Linux 호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
-  <block id="3207068e1112e1d7bf44793a16243167" category="paragraph">NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다. 대신, NVMe/TCP 연결 또는 전체 연결 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 있습니다.</block>
   <block id="5b65dc582fc3a54b76dad70a8f267f3f" category="paragraph">Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를 구성할 수 있습니다. 또한 NVMe/TCP 하위 시스템과 네임스페이스를 수동으로 검색해야 합니다.</block>
   <block id="61b5a98a9fc13d3a4a8112007aef142d" category="admonition">Rocky Linux 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 적용되었습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
   <block id="59469b69c75b40a15b84cc48d2d1a5d4" category="paragraph">예상 출력은 1입니다.</block>
@@ -3949,4 +3948,47 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="0f2332cb3d4b010b45d6eb9fbbeab96c" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 모두 실행 예를 들어, SCSI LUN의 SCSI mpath 장치에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트의 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
   <block id="c28f1c588b284418e1f1f45095861195" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 실행 예를 들어, SCSI LUN의 SCSI mpath 장치에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트의 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
   <block id="7b041227be300a97269b0c517c4d8a5c" category="paragraph"><block ref="b5c9ec30dafc3cdd07e22705d3fd28f9" prefix="" category="inline-code"></block></block>
+  <block id="654a0efc10421b3fc1ee44ca772778aa" category="summary">SUSE Linux Enterprise Server 15 SP7에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
+  <block id="870d83d0bc4a1d675ccc1013c75b6763" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP7을 구성합니다</block>
+  <block id="2ac4e5f2f892e0f2c4b0350d60bb70b0" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP7 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="3fe0f7d7cd9a25242a7b121f3cc4ba8a" category="paragraph">SUSE Linux Enterprise Server 15 SP7의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="26b3769cd035d702f3e2a42ba7be4fa8" category="paragraph">&lt;stdin&gt;에 해결되지 않은 지시어가 있습니다 - include::_include/nvme/reuse-nvme-introduction.adoc[]</block>
+  <block id="65bf3e1e4bb025883d0086e33a28a554" category="paragraph">&lt;stdin&gt;에 해결되지 않은 지시어가 있습니다 - include::_include/nvme/reuse_nvme_enabling_broadcom_1mb_size.adoc[]</block>
+  <block id="183857c8fa21c8ded295c470367e6d0c" category="paragraph">&lt;stdin&gt;에 해결되지 않은 지시어가 있습니다 - include::_include/nvme/reuse-nvme-configure-nvme-tcp.adoc[]</block>
+  <block id="52f6009d5ed77735a270fafae76fba9b" category="paragraph">&lt;stdin&gt;에 해결되지 않은 지시어 - include::_include/nvme/reuse-nvme-validate-nvme-of.adoc[]</block>
+  <block id="2109e80434ca7c6e1b69cbc2e5974556" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP7용 NVMe/FC를 구성하는 방법을 설명합니다.</block>
+  <block id="656e0f0943759cd8053f13523268bf98" category="doc">ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP7용 NVMe-oF 호스트 구성</block>
+  <block id="a260df2c274288385d82b55968f53b84" category="paragraph">SUSE Linux Enterprise Server 15 SP7(SLES15 SP7)에 대한 NVMe-oF 호스트 구성을 사용하면 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
+  <block id="5393f0229b7c28049a490e7e149cce98" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 모두 실행 예를 들어, SCSI LUN에 대해 SCSI mpath 디바이스에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 디바이스를 구성할 수 있습니다.</block>
+  <block id="77b17c4b304e4bc88274ebbde24c1c87" category="list-text">NVMe/FC 프로토콜을 사용하여 SAN 부팅을 지원합니다.</block>
+  <block id="aa4dc57afbcb40684a5fdb0dd0c53e49" category="list-text">ONTAP 9.12.1부터 NVMe/TCP 및 NVMe/FC에 대한 보안 인밴드 인증이 지원됩니다. SLES15 SP7에서는 NVMe/TCP 및 NVMe/FC에 대한 보안 인밴드 인증을 사용할 수 있습니다.</block>
+  <block id="bc16fe46d91584e82782504c4c1c10d9" category="list-text">고유한 검색 NQN을 사용하여 지속적 검색 컨트롤러(PDC)를 지원합니다.</block>
+  <block id="c7d62b8831e26ca324eef03e565f77fb" category="list-text">NVMe/TCP에 대한 TLS 1.3 암호화 지원.</block>
+  <block id="4e301fd9374a22a48fdb4c33b2297fd4" category="list-text">NetApp <block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> SLES15 SP7 호스트에서는 NVMe-oF에 대한 호스트 유틸리티 지원을 사용할 수 없습니다. 대신 모든 NVMe-oF 전송에 대해 기본 패키지에 포함된 NetApp 플러그인을 사용할 수<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 있습니다.</block>
+  <block id="027d24fe581a1889d6b5752e3886e380" category="list-text">새로운 기능이 없습니다.</block>
+  <block id="6084e38c00232a21ee1233c5ca70b927" category="paragraph">다음 절차에 따라 지원되는 최소 SLES15 SP7 소프트웨어 버전을 확인하세요.</block>
+  <block id="991655482ba880c83b447bbd0d3a18db" category="list-text">서버에 SLES15 SP7을 설치하세요. 설치가 완료되면 지정된 SLES15 SP7 커널이 실행 중인지 확인하세요.</block>
+  <block id="23aa1a5f62f90e6896afa10f805ed9ca" category="paragraph">다음 예는 SLES 커널 버전을 보여줍니다.</block>
+  <block id="3939f5ab0e1b02b11f96cac181c4e774" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 버전:</block>
+  <block id="c31865eb0d6c686b54a6bc6a1da51ac8" category="paragraph">SLES 15 SP7을 사용하면 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템 부팅 중에 자동으로 시작되도록 설정됩니다. 시스템 부팅이 완료되면 부팅 서비스가 활성화되었는지 확인하세요.</block>
+  <block id="94628a030db9a09f8b90bd4725085b40" category="admonition">SLES 15 SP6부터 NVMe/TCP의 기본 설정은 <block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 시간 제한이 꺼져 있습니다. 즉, 재시도 횟수에 제한이 없으며(무기한 재시도), 특정 재시도 횟수를 수동으로 구성할 필요가 없습니다. <block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 사용 시 시간 초과 기간 <block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 또는 <block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령(옵션 <block ref="269889131ee4793a82191b78a2eb60e3" prefix=" " category="inline-code"></block> ). 또한 NVMe/TCP 컨트롤러는 경로 장애 발생 시 시간 초과가 발생하지 않으며 무기한 연결된 상태를 유지합니다.</block>
+  <block id="b9f923eff2af1f090cf2b63082e1eb11" category="section-title">8단계: 지속적인 검색 컨트롤러 만들기</block>
+  <block id="3b0141777552d60cadbd3ce34dd905d3" category="paragraph">ONTAP 9.11.1부터 SLES 15 SP7 호스트에 대한 지속적 검색 컨트롤러(PDC)를 생성할 수 있습니다. PDC는 NVMe 하위 시스템의 추가 또는 제거 작업과 검색 로그 페이지 데이터의 변경 사항을 자동으로 감지하기 위해 필요합니다.</block>
+  <block id="e30836f8afa231851eba05f11afb521a" category="section-title">9단계: 안전한 인밴드 인증 설정</block>
+  <block id="c273b14698c5a90f8016a97113ae1527" category="section-title">10단계: 전송 계층 보안 구성</block>
+  <block id="7e0ddf13eb92d7061cb3708e71d99050" category="list-text">다음 사항이 있는지 확인하세요. <block ref="464213eb09b43407b3c3aa2efea57161" prefix=" " category="inline-code"></block> , <block ref="50955d4b2031271f8fda1764c1a66ac3" prefix=" " category="inline-code"></block> , 그리고 <block ref="e585c6c1eda4439a86d95239513976b0" prefix=" " category="inline-code"></block> 호스트에 설치된 패키지:</block>
+  <block id="4d10c02099d2dde19960119e95abc85a" category="list-text">확인하다 <block ref="464213eb09b43407b3c3aa2efea57161" prefix=" " category="inline-code"></block> :</block>
+  <block id="b7f420dfb0cf55e5f8e1fbac4a1536b7" category="paragraph">다음과 같은 출력이 표시됩니다.</block>
+  <block id="103f74590d3fbef99a2c2de2fdefd35c" category="list-text">SSL 패키지를 확인하세요:</block>
+  <block id="1c7564461e942bf2912c76f37479a14a" category="list-text">호스트를 확인하세요:</block>
+  <block id="ac91936b8cfef3df92acc4035783916c" category="list-text">키를 확인하세요:</block>
+  <block id="9a188a453d6f7a4139c805197ffad6d7" category="list-text">ONTAP 컨트롤러에서 TLS PSK를 ONTAP 하위 시스템에 추가합니다.</block>
+  <block id="3a6a93137906aeb888c944ff8cd57c5a" category="list-text">TLS PSK를 호스트 커널 키링에 삽입합니다.</block>
+  <block id="aa3ad133382acb094d481896dd8db4fd" category="paragraph">다음 TLS 키가 표시되어야 합니다.</block>
+  <block id="91dbe7459493f6e118afd70f5b15c7a6" category="admonition">PSK는 다음과 같이 표시됩니다. <block ref="518b572e87a67ae131d1610dd4644d40" prefix=" " category="inline-code"></block> 왜냐하면 그것을 사용하기 때문이다 <block ref="3ef865691aa59ed6c588dc8f9da336f9" prefix=" " category="inline-code"></block> TLS 핸드셰이크 알고리즘에서. Identity v1은 ONTAP에서 지원하는 유일한 버전입니다.</block>
+  <block id="17a9f150c8c2ab60092808d0908e820b" category="list-text">삽입된 TLS PSK를 사용하여 ONTAP 하위 시스템에 연결합니다.</block>
+  <block id="b1b258fb46a71b5fd43928b89183c045" category="list-text">TLS PSK를 확인하세요.</block>
+  <block id="0727acee3b7aa117900f2830b1cb2fd0" category="list-text">list-subsys를 확인하세요:</block>
+  <block id="ffc899321bb51e568ff27d8d67516b4a" category="section-title">11단계: 알려진 문제를 검토합니다</block>
+  <block id="0f0224190f0b6b918a5e9d02a89ece08" category="sidebar">15 SP7입니다</block>
 </blocks>
