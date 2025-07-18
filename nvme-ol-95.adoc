@@ -16,7 +16,7 @@ summary: Oracle Linux 9.5 with ONTAP용 NVMe-oF 호스트 구성
 
 
 [role="lead"]
-<stdin>에 해결되지 않은 지시어가 있습니다 - include::_include/nvme/reuse-nvme-introduction.adoc[]
+NetApp SAN 호스트 구성은 ANA(Asymmetric Namespace Access)를 통해 NVMe-oF(NVMe over Fabrics) 프로토콜을 지원합니다. NVMe-oF 환경에서 ANA는 iSCSI 및 FCP 환경에서 ALUA(Asymmetric Logical Unit Access) 다중 경로와 같습니다. ANA는 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.
 
 .이 작업에 대해
 ONTAP 스토리지가 포함된 Oracle Linux 9.5 용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다.
@@ -359,7 +359,34 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 == 4단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.
 
-<stdin>에 해결되지 않은 지시어가 있습니다 - include::_include/nvme/reuse_nvme_enabling_broadcom_1mb_size.adoc[]
+ONTAP는 컨트롤러 식별 데이터에서 MDTS(MAX Data 전송 크기)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 매개 변수 값을 `lpfc_sg_seg_cnt` 기본값인 64에서 256으로 늘려야 `lpfc` 합니다.
+
+
+NOTE: 이 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+
+.단계
+.  `lpfc_sg_seg_cnt`매개변수를 256으로 설정합니다.
++
+[source, cli]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+다음 예와 비슷한 출력이 표시되어야 합니다.
+
++
+[listing]
+----
+options lpfc lpfc_sg_seg_cnt=256
+----
+.  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
+. 의 값이 256인지 `lpfc_sg_seg_cnt` 확인합니다.
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
+
 
 
 
@@ -429,7 +456,7 @@ Jul 02 16:45:46 interop-13-175 systemd[1]: Finished Auto-connect to subsystems o
 
 == 6단계: NVMe/TCP 구성
 
-<stdin>에 해결되지 않은 지시어가 있습니다 - include::_include/nvme/reuse-nvme-configure-nvme-tcp.adoc[]
+NVMe/TCP 프로토콜이 작업을 지원하지 `auto-connect` 않습니다. 대신 NVMe/TCP 또는 `connect-all` 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 `connect` 있습니다.
 
 .단계
 . 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
@@ -588,20 +615,25 @@ Oracle Linux 9.4부터 NVMe/TCP 설정  `ctrl_loss_tmo timeout` 자동으로 "�
 
 == 7단계: NVMe-oF 검증
 
-<stdin>에 해결되지 않은 지시어 - include::_include/nvme/reuse-nvme-validate-nvme-of.adoc[]
+커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
 
 .단계
-. Oracle Liniux 9.5 호스트에서 다음 NVMe/FC 설정을 확인합니다.
-+
-.. "multipath"가 설정되었는지 확인하세요.
+. in-kernel NVMe multipath가 활성화되어 있는지 확인합니다.
 +
 [source, cli]
 ----
 cat /sys/module/nvme_core/parameters/multipath
 ----
 +
-가치  `Y` 다중 경로 매개변수가 설정되었는지 확인합니다.
+다음과 같은 출력이 표시됩니다.
 
++
+[listing]
+----
+Y
+----
+. 각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: NetApp ONTAP 컨트롤러로 설정된 모델 및 라운드 로빈으로 설정된 로드 밸런싱 IPolicy가 호스트에 올바르게 반영되는지 확인합니다.
++
 .. 하위 시스템을 표시합니다.
 +
 [source, cli]
@@ -619,9 +651,9 @@ NetApp ONTAP Controller
 ----
 .. 정책을 표시합니다.
 +
-[source'cli]
+[source, cli]
 ----
-cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy`
+cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
 ----
 +
 다음과 같은 출력이 표시됩니다.
@@ -646,11 +678,9 @@ nvme list
 ====
 [listing]
 ----
-Node                  Generic               SN                   Model                                    Namespace  Usage                      Format           FW Rev
---------------------- --------------------- -------------------- ---------------------------------------- ---------- -------------------------- ---------------- --------
-/dev/nvme1n1          /dev/ng1n1            81Mc4FXd1tocAAAAAAAC NetApp ONTAP Controller                  0x1          0.00   B /  10.74  GB      4 KiB +  0 B   9.16.1
-
-
+Node          Generic       SN                   Model                     Namespace  Usage                   Format         FW Rev
+------------- ------------- -------------------- ------------------------- ---------- ----------------------- -------------- --------
+/dev/nvme1n1  /dev/ng1n1    81Mc4FXd1tocAAAAAAAC NetApp ONTAP Controller   0x1        0.00   B /  10.74  GB   4 KiB +  0 B   9.16.1
 ----
 ====
 . 각 경로의 컨트롤러 상태가 라이브이고 올바른 ANA 상태인지 확인합니다.
