@@ -475,6 +475,281 @@ Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-
 
 NVMe/TCP 프로토콜이 작업을 지원하지 `auto-connect` 않습니다. 대신 NVMe/TCP 또는 `connect-all` 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 `connect` 있습니다.
 
+.단계
+. 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
++
+[listing]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+nvme discover -t tcp -w 192.168.1.31 -a 192.168.1.24
+Discovery Log Number of Records 20, Generation counter 25
+=====Discovery Log Entry 0======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:discovery
+traddr:  192.168.2.25
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 1======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:discovery
+traddr:  192.168.1.25
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 2======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  5
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:discovery
+traddr:  192.168.2.24
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 3======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:discovery
+traddr:  192.168.1.24
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 4======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
+traddr:  192.168.2.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 5======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
+traddr:  192.168.1.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 6======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  5
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
+traddr:  192.168.2.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 7======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
+traddr:  192.168.1.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 8======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
+traddr:  192.168.2.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 9======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
+traddr:  192.168.1.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 10======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  5
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
+traddr:  192.168.2.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 11======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
+traddr:  192.168.1.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 12======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
+traddr:  192.168.2.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 13======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
+traddr:  192.168.1.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 14======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  5
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
+traddr:  192.168.2.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 15======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
+traddr:  192.168.1.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 16======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
+traddr:  192.168.2.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 17======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
+traddr:  192.168.1.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 18======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  5
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
+traddr:  192.168.2.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 19======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
+traddr:  192.168.1.24
+eflags:  none
+sectype: none
+----
+====
+. 다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.
++
+[listing]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+nvme discover -t tcp -w 192.168.1.31 -a 192.168.1.24
+nvme discover -t tcp -w 192.168.2.31 -a 192.168.2.24
+nvme discover -t tcp -w 192.168.1.31 -a 192.168.1.25
+nvme discover -t tcp -w 192.168.2.31 -a 192.168.2.25
+----
+====
+. 를 실행합니다 `nvme connect-all` 노드에 걸쳐 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대한 명령:
++
+[listing]
+----
+nvme connect-all -t tcp -w host-traddr -a traddr
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.24
+nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.24
+nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.25
+nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
+----
+====
+
+
 [NOTE]
 ====
 RHEL 9.4부터 NVMe/TCP 설정  `ctrl_loss_tmo timeout` 자동으로 "꺼짐"으로 설정됩니다. 그 결과,
