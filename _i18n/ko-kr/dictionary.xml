@@ -3491,7 +3491,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="3bc1130ce3e680520898e40ac7959fa2" category="list-text">Rocky Linux 8.7 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리보기 기능입니다 . <block ref="d32810211fa0fabac0569c4390e790dc" category="inline-link-macro-rx"></block> 자세한 내용은.</block>
   <block id="7e4a70bbcd93eaa6141e87546c6f1f21" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.7 소프트웨어 버전을 확인하세요.</block>
   <block id="f5ee36bf3ec3b3e921b0b7e9d925b748" category="list-text">서버에 Rocky Linux 8.7을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.7 커널이 실행 중인지 확인하세요.</block>
-  <block id="78e181f317983c9fedb366c4a37a16cd" category="paragraph">ONTAP을 사용하는 Rocky Linux 8.7의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="7a6a40bc5a4685658e1d343ed9b9dd39" category="cell">Rocky Linux 8.7 NVMe-oF 호스트가 중복된 영구 검색 컨트롤러를 생성합니다.</block>
   <block id="6d6607f7b41bf491341b99d0537f3629" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 ONTAP 9.10.1과 Rocky Linux 8.7을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="47ec11f02f0c8839abe0813debc4f014" category="summary">ONTAP을 사용하여 Rocky Linux 8.8에 NVMe-oF 호스트를 구성하는 방법</block>
@@ -3503,7 +3502,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="d48c8e0613a3d2462bab37e061f9c99a" category="list-text">Rocky Linux 8.8 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="c94cc770975ea6cce699ff8f723c184b" category="inline-link-rx"></block> 참조하십시오.</block>
   <block id="e52751aedc7ac7fdc35e859dec9d1a84" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.8 소프트웨어 버전을 확인하세요.</block>
   <block id="dd66f0672670077d5170dcb95b0cace0" category="list-text">서버에 Rocky Linux 8.8을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.8 커널이 실행 중인지 확인하세요.</block>
-  <block id="b8c3c07079892e4901770e27f4802ec1" category="paragraph">ONTAP 릴리스가 포함된 Rocky Linux 8.8의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="9d0224a2f615424bba089d74a7227ebe" category="cell">Rocky Linux 8.8 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 생성합니다.</block>
   <block id="4e8203cb1c6fbcc8f8c247946196d38e" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Rocky Linux 8.8을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="918e5346ad0239cf9b9c61db20bf484c" category="summary">ONTAP을 사용하여 Rocky Linux 8.9에 NVMe-oF 호스트를 구성하는 방법</block>
@@ -3515,7 +3513,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="e035f49458f62168d6a4c971dfb2508d" category="list-text">Rocky Linux 8.9 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="940755a456f09b2cfde71703a8e286af" category="inline-link-rx"></block> 참조하십시오.</block>
   <block id="74ba8ad92ae4c2a3b720f451f30601ab" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.9 소프트웨어 버전을 확인하세요.</block>
   <block id="94bace38b58b938918367d0c3cc6eaa5" category="list-text">서버에 Rocky Linux 8.9를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.9 커널이 실행 중인지 확인하세요.</block>
-  <block id="9f3a4c0a6d61ae1944d857976073d3fc" category="paragraph">ONTAP 릴리스가 포함된 Rocky Linux 8.9의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="4c6f9e46e9e7dc5d30fea3fe515730e0" category="cell">Rocky Linux 8.9 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 생성합니다.</block>
   <block id="0dbf100b5d804fe4caf4da2b664b2afa" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Rocky Linux 8.9를 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="f69e78a8431382f8f2ff25b30ad11ba3" category="summary">ONTAP을 사용하여 Rocky Linux 9.0에 NVMe-oF 호스트를 구성하는 방법</block>
@@ -3525,7 +3522,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="607045456dfb12bc04d3522b1f874865" category="list-text">Rocky Linux 9.0은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
   <block id="6cb5085ae04cfea89d334f12d091d300" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.0 소프트웨어 버전을 확인하세요.</block>
   <block id="57bec5364d8813b80d9ba8cbbe9cb4ed" category="list-text">서버에 Rocky Linux 9.0을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.0 커널이 실행 중인지 확인하세요.</block>
-  <block id="29a60b312aa9fdd9b477d6b295e0e45c" category="paragraph">ONTAP을 사용하는 Rocky Linux 9.0의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="d89f68cec4fde8cdd4a14a4ef45a06f6" category="cell">Rocky Linux 9.0 NVMe-oF 호스트가 중복된 영구 검색 컨트롤러를 생성합니다.</block>
   <block id="ff01f1039161c2b6b5ea51efcfc04188" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 ONTAP 9.10.1과 Rocky Linux 9.0을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="29af8d1042b30a5ba249a12d6db4fc61" category="summary">ONTAP을 사용하여 Rocky Linux 9.1에 NVMe-oF 호스트를 구성하는 방법</block>
@@ -3535,7 +3531,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="23dd49f82b27ef244f37aee158baf33e" category="list-text">Rocky Linux 9.1은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
   <block id="adfdcaae3a69aa1a3f89a3a550b3e16b" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.1 소프트웨어 버전을 확인하세요.</block>
   <block id="ae7b811595439cd8cfc0f414a032e104" category="list-text">서버에 Rocky Linux 9.1을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.1 커널이 실행 중인지 확인하세요.</block>
-  <block id="0c36435076f0978fbc5c56aadf37500b" category="paragraph">ONTAP 스토리지를 사용하는 Rocky Linux 9.1의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="97d2b9aba8be20cadd2e121636e33e94" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> 명령은 주어진 하위 시스템에 대해 나열된 반복되는 NVMe 컨트롤러를 반환합니다.</block>
   <block id="b68755a212f05b7fd208d599e6c87bde" category="cell">그만큼 <block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 주어진 하위 시스템과 연결된 NVMe 컨트롤러의 고유한 목록을 반환해야 합니다. Rocky Linux 9.1에서는 <block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 이 명령은 지정된 서브시스템에 속하는 모든 네임스페이스에 대해 해당 ANA 상태와 함께 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 네임스페이스별 속성이므로, 지정된 네임스페이스에 대한 서브시스템 명령 구문을 나열하는 경우 경로 상태를 포함하는 고유한 NVMe 컨트롤러 항목이 표시되어야 합니다.</block>
   <block id="88b5ad79d4202975070e7a14f54943ed" category="summary">ONTAP을 사용하여 Rocky Linux 9.2에 NVMe-oF 호스트를 구성하는 방법</block>
@@ -3922,10 +3917,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="833be5ef7e50baab093ee66a7f140d0c" category="paragraph">Oracle Linux 9.5를 사용하면 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다.</block>
   <block id="d5a1f1a62cc8cae53fc94a2e44a91963" category="paragraph">부팅이 완료된 후 다음을 확인하세요. <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 부팅 서비스가 활성화되었습니다.</block>
   <block id="3bac8ca72c0f8c144860e88aac75a1eb" category="paragraph">Oracle Linux 9.4부터 NVMe/TCP 설정 <block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block> 자동으로 "꺼짐"으로 설정됩니다. 그 결과,</block>
-  <block id="94c31dec48f0a9b6e3994042c63c9cb7" category="list-text">Oracle Liniux 9.5 호스트에서 다음 NVMe/FC 설정을 확인합니다.</block>
-  <block id="02963844c9defd7335edd075a1f2ac57" category="list-text">"multipath"가 설정되었는지 확인하세요.</block>
-  <block id="b370402dc8053b973ae927e350bb36c0" category="paragraph">가치 <block ref="57cec4137b614c87cb4e24a3d003a3e0" prefix=" " category="inline-code"></block> 다중 경로 매개변수가 설정되었는지 확인합니다.</block>
-  <block id="4af8c8f4ccd391c2b98bc0de3ef14b82" category="list-text">하위 시스템을 표시합니다.</block>
   <block id="21bbf4b57a95bba01a12c2b3bf2ce488" category="paragraph">ONTAP 9.12.1부터 Oracle Linux 9.5 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
   <block id="5e6b9d21bf7f0ca26372e62301cfb233" category="list-text">Linux 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="fb6678ea50cc87decdbcd2c48c0f594f" category="list-text">이번 릴리스에는 새로운 기능이 없습니다.</block>
@@ -3952,10 +3943,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="870d83d0bc4a1d675ccc1013c75b6763" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP7을 구성합니다</block>
   <block id="2ac4e5f2f892e0f2c4b0350d60bb70b0" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP7 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="3fe0f7d7cd9a25242a7b121f3cc4ba8a" category="paragraph">SUSE Linux Enterprise Server 15 SP7의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="26b3769cd035d702f3e2a42ba7be4fa8" category="paragraph">&lt;stdin&gt;에 해결되지 않은 지시어가 있습니다 - include::_include/nvme/reuse-nvme-introduction.adoc[]</block>
-  <block id="65bf3e1e4bb025883d0086e33a28a554" category="paragraph">&lt;stdin&gt;에 해결되지 않은 지시어가 있습니다 - include::_include/nvme/reuse_nvme_enabling_broadcom_1mb_size.adoc[]</block>
-  <block id="183857c8fa21c8ded295c470367e6d0c" category="paragraph">&lt;stdin&gt;에 해결되지 않은 지시어가 있습니다 - include::_include/nvme/reuse-nvme-configure-nvme-tcp.adoc[]</block>
-  <block id="52f6009d5ed77735a270fafae76fba9b" category="paragraph">&lt;stdin&gt;에 해결되지 않은 지시어 - include::_include/nvme/reuse-nvme-validate-nvme-of.adoc[]</block>
   <block id="2109e80434ca7c6e1b69cbc2e5974556" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP7용 NVMe/FC를 구성하는 방법을 설명합니다.</block>
   <block id="656e0f0943759cd8053f13523268bf98" category="doc">ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP7용 NVMe-oF 호스트 구성</block>
   <block id="a260df2c274288385d82b55968f53b84" category="paragraph">SUSE Linux Enterprise Server 15 SP7(SLES15 SP7)에 대한 NVMe-oF 호스트 구성을 사용하면 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
@@ -3991,4 +3978,10 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="0727acee3b7aa117900f2830b1cb2fd0" category="list-text">list-subsys를 확인하세요:</block>
   <block id="ffc899321bb51e568ff27d8d67516b4a" category="section-title">11단계: 알려진 문제를 검토합니다</block>
   <block id="0f0224190f0b6b918a5e9d02a89ece08" category="sidebar">15 SP7입니다</block>
+  <block id="3207068e1112e1d7bf44793a16243167" category="paragraph">NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다. 대신, NVMe/TCP 연결 또는 전체 연결 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 있습니다.</block>
+  <block id="f9373bf6fb792b7c646f5bec24ea0daf" category="paragraph">ONTAP 스토리지를 사용하는 Rocky Linux 8.7의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="de90af9b7865f783dbab0561bc93777d" category="paragraph">ONTAP 스토리지 릴리스가 포함된 Rocky Linux 8.8의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="cd55e97345547906b5919126d046528a" category="paragraph">ONTAP 스토리지 릴리스가 포함된 Rocky Linux 8.9의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="aa941996691732f26e58432a0029389e" category="paragraph">ONTAP 스토리지를 탑재한 Rocky Linux 9.0의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="12ac068aa4dcbbc35048b05dc3d74e3f" category="paragraph">ONTAP 스토리지를 사용하는 Rocky Linux 9.1의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
 </blocks>

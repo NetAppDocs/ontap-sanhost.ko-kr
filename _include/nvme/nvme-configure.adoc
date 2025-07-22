@@ -7,9 +7,9 @@ Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를
 [role="tabbed-block"]
 ====
 .Broadcom/Emulex
+--
 Broadcom/Emulex 어댑터용 NVMe/FC를 구성합니다.
 
---
 .단계
 . 지원되는 어댑터 모델을 사용하고 있는지 확인합니다.
 +
