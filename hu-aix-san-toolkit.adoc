@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: hu-aix-san-toolkit.html 
+keywords: san, toolkit, command, line, AIX, hot, utilities 
+summary: AIX Host Utilities 호스트 소프트웨어는 IBM AIX 호스트에서 명령줄 툴킷을 제공합니다. 
+---
+= ONTAP 스토리지용 AIX SAN Toolkit에 대해 알아보세요
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AIX Host Utilities는 IBM AIX 호스트에서 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다.  SAN 툴킷은 NetApp 호스트 유틸리티 패키지를 설치할 때 설치됩니다.  툴킷은 다음을 제공합니다. `sanlun` ONTAP LUN과 호스트 버스 어댑터(HBA)를 관리하는 데 도움이 되는 유틸리티입니다.  그만큼 `sanlun` 이 명령은 호스트에 매핑된 ONTAP LUN, 다중 경로, 이니시에이터 그룹을 만드는 데 필요한 정보에 대한 정보를 반환합니다.
+
+다음 예제 출력은 ONTAP LUN 정보를 반환합니다. `sanlun lun show` 명령:
+
+[listing]
+----
+controller(7mode)/ device host lun
+
+vserver(Cmode) lun-pathname filename adapter protocol size mode
+----------------------------------------------------------------
+data_vserver   /vol/vol1/lun1 hdisk0 fcs0    FCP      60g C
+data_vserver   /vol/vol2/lun2 hdisk0 fcs0    FCP      20g C
+data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
+data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
+----
+
+NOTE: SAN 툴킷은 모든 AIX 호스트 구성과 전송 프로토콜에서 공통적으로 사용됩니다.  결과적으로 모든 구성 요소가 모든 구성에 적용되는 것은 아닙니다.  사용하지 않는 구성 요소는 시스템 성능에 영향을 미치지 않습니다.  SAN Toolkit은 AIX 및 PowerVM/VIOS OS 버전에서 지원됩니다.
+
+
+
+== 다음 단계
+
+link:hu-aix-command-reference.html["AIX 호스트 유틸리티 도구 사용에 대해 알아보세요"] .

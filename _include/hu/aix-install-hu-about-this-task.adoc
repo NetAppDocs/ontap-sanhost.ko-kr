@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+.이 작업에 대해
+* AIX 호스트에 연결된 ONTAP 스토리지를 관리하려면 AIX MPIO와 함께 AIX Host Utilities SAN Toolkit을 설치해야 합니다.
+* AIX 호스트 유틸리티를 설치해도 AIX 호스트의 설정은 변경되지 않습니다.
+
+
+.시작하기 전에
+* 사용하세요link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] AIX OS, 프로토콜 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
+* 다음을 실행하여 모든 FC 및 FCoE 이니시에이터에 대한 동적 추적을 활성화합니다. `chdev -l <fscsi_device> -a dyntrk=ye` AIX 호스트의 명령.
+

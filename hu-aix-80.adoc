@@ -1,0 +1,160 @@
+---
+sidebar: sidebar 
+permalink: hu-aix-80.html 
+keywords: host utilities, aix, powervm, vios, 3.1, 7.0, netapp, ontap 
+summary: AIX 호스트 유틸리티는 AIX 호스트에 연결된 ONTAP 스토리지를 관리할 수 있도록 지원합니다. 
+---
+= ONTAP 스토리지용 AIX Host Utilities 8.0 설치
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AIX 호스트 유틸리티는 AIX 호스트에 연결된 ONTAP 스토리지를 관리하는 데 도움이 됩니다.  NetApp ONTAP 스토리지 관리를 개선하고 NetApp 지원팀이 구성에 대한 정보를 수집하는 데 도움이 되도록 AIX 호스트 유틸리티를 설치할 것을 적극 권장합니다.
+
+AIX Host Utilities 8.0은 다음과 같은 전송 프로토콜과 AIX 환경을 지원합니다.
+
+* FC, FCoE 및 iSCSI
+* AIX 다중 경로 I/O(MPIO)
+* PowerVM
++
+PowerVM에 대한 자세한 내용은 IBM PowerVM Live Partition Mobility Red Book을 참조하세요.
+
+
+
+.이 작업에 대해
+* AIX 호스트에 연결된 ONTAP 스토리지를 관리하려면 AIX MPIO와 함께 AIX Host Utilities SAN Toolkit을 설치해야 합니다.
+* AIX 호스트 유틸리티를 설치해도 AIX 호스트의 설정은 변경되지 않습니다.
+
+
+.시작하기 전에
+* 사용하세요link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] AIX OS, 프로토콜 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
+* 다음을 실행하여 모든 FC 및 FCoE 이니시에이터에 대한 동적 추적을 활성화합니다. `chdev -l <fscsi_device> -a dyntrk=ye` AIX 호스트의 명령.
+
+
+.단계
+. 호스트에 로그인하세요:
++
+[role="tabbed-block"]
+====
+.AIX
+--
+AIX 호스트에서 * root * 로 로그인합니다.
+
+--
+.PowerVM
+--
+PowerVM 호스트에서:
+
+.. *padmin*으로 로그인하세요.
+.. 루트 사용자가 되세요:
++
+[source, cli]
+----
+oem_setup_env
+----
+
+
+--
+====
+. 로 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp Support 사이트"^] 이동하여 Host Utilities가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.
+. 다운로드가 포함된 디렉터리로 이동합니다.
+. 파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지의 압축을 풉니다.
++
+[source, cli]
+----
+tar -xvf ntap_aix_host_utilities_8.0.tar.gz
+----
++
+그만큼 `ntap_aix_host_utilities_8.0.` 파일을 압축 해제하면 디렉토리가 생성됩니다.  이 디렉토리에는 다음 하위 디렉토리 중 하나가 포함되어 있습니다: MPIO, NON_MPIO 또는 SAN_Tool_Kit.
+
+. AIX MPIO 설치:
++
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_8.0/MPIO NetApp.MPIO_Host_Utilities_Kit
+----
+. SAN 툴킷을 설치합니다.
++
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_8.0/ NetApp.SAN_toolkit
+----
+. 호스트를 재부팅합니다.
+. 설치를 확인합니다.
++
+[source, cli]
+----
+lslpp -l |grep -i netapp
+----
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing]
+----
+NetApp.MPIO_Host_Utilities_Kit.config
+                             8.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.fcp
+                             8.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.iscsi
+                             8.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.pcmodm
+                             8.0.0.0 COMMITTED  NetApp MPIO PCM Host Utilities
+NetApp.SAN_toolkit.sanlun  8.0.0.0 COMMITTED NetApp SAN Toolkit sanlun
+----
+====
+. 소프트웨어 버전이 8.0.1f0fc74c인지 확인하세요.
++
+[source, cli]
+----
+sanlun version
+----
+. SCSI UNMAP을 확인하세요 `lbp_enabled` ODM에 매개변수가 추가되었습니다.
++
+[source, cli]
+----
+odmget -q "uniquetype=disk/fcp/NetAppMPIO" PdAt |grep  "lbp_enabled"
+----
++
+.출력 예
+[listing]
+----
+attribute = "lbp_enabled"
+----
++
+[source, cli]
+----
+odmget -q "uniquetype=disk/fcp/NetAppMPIO and attribute=lbp_enabled" PdAt`
+----
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing]
+----
+PdAt:
+        uniquetype = "disk/fcp/NetAppMPIO"
+        attribute = "lbp_enabled"
+        deflt = "true"
+        values = "true,false"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 18
+----
+====
+
+
+
+
+== 다음 단계
+
+link:hu-aix-san-toolkit.html["AIX SAN 툴킷에 대해 알아보세요"] .

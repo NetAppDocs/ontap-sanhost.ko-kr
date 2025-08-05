@@ -45,7 +45,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 NetApp은 ONTAP LUN 관리를 지원하고 기술 지원이 구성 데이터 수집을 돕기 위해 Linux 호스트 유틸리티를 설치할 것을 적극 권장합니다.
 
-link:hu_luhu_71.html["Linux Host Utilities 7.1을 설치합니다"]..
+link:hu-luhu-80.html["Linux Host Utilities 8.0 설치"] .
 
 
 NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 초과 설정은 변경되지 않습니다.
@@ -285,7 +285,7 @@ ONTAP 스토리지 릴리스가 포함된 RHEL 9.3에는 다음과 같은 알려
 
 == 다음 단계
 
-* link:hu_luhu_71_cmd.html["Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오"]..
+* link:hu-luhu-command-reference.html["Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오"] .
 * ASM 미러링에 대해 알아보십시오.
 +
 ASM(Automatic Storage Management) 미러링은 ASM이 문제를 인식하고 대체 장애 그룹으로 전환할 수 있도록 Linux 다중 경로 설정을 변경해야 할 수 있습니다. ONTAP의 대부분의 ASM 구성은 외부 이중화를 사용합니다. 즉, 외부 스토리지를 통해 데이터가 보호되고 ASM은 데이터를 미러링하지 않습니다. 일부 사이트는 ASM에서 일반적인 수준의 이중화를 사용하며 일반적으로 여러 사이트에 걸쳐 양방향 미러링을 제공합니다. 자세한 내용은 을 link:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["ONTAP 기반의 Oracle 데이터베이스"^]참조하십시오.

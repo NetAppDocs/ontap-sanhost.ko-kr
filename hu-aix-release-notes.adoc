@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: hu-aix-release-notes.html 
+keywords: host utilities, aix, 6.1 netapp, 7.0, ontap, powervm 
+summary: AIX Host Utilities 6.1의 릴리스 정보 
+---
+= AIX Host Utilities 릴리스 정보
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+릴리스 노트에서는 ONTAP 스토리지 시스템에서 특정 AIX 호스트를 구성하고 관리하는 데 관련된 새로운 기능과 향상된 기능, 현재 릴리스에서 해결된 문제점, 알려진 문제점과 제한 사항, 그리고 중요한 주의 사항을 설명합니다.
+
+Host Utilities에서 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오.link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]
+
+AIX 호스트 유틸리티 릴리스에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.
+
+
+
+== AIX Host Utilities 8.0의 새로운 기능
+
+AIX Host Utilities 8.0에 대한 IBM Interim Fix(ifix)가 제공됩니다. `sanlun fcp show adapter –v` 명령은 어댑터에 대해 지원되고 협상된 속도 등 올바른 HBA 속도 정보를 표시합니다.  다음 AIX 및 VIOS 버전에 ifix를 설치할 수 있습니다.
+
+* AIX: 7.3 TL3 SP0, 7.3 TL2 SP2, 7.3 TL1 SP4, 7.2 TL5 SP9, 7.2 TL5 SP8
+* VIOS: 4.1.1.0, 4.1.0.21, 3.1.4.50, 3.1.4.41
+
+
+
+
+== AIX Host Utilities 7.0의 새로운 기능
+
+AIX Host Utilities 7.0은 AIX 호스트 OS에서 SCSI UNMAP을 지원합니다. AIX Host Utilities 7.0에서는 SCSI 씬 프로비저닝이 FC 디바이스용 AIX 및 NetApp LUN과 원활하게 작동합니다.
+
+
+
+== AIX Host Utilities 6.1의 새로운 기능
+
+AIX Host Utilities 6.1에는 이전 버전의 AIX 호스트 OS에서 발생한 메모리 오류 문제에 대한 지원이 포함되어 있습니다. AIX Host Utilities 6.1에서는 sanlun 바이너리만 변경되었습니다. Microsoft MPIO(다중 경로 I/O) 및 관련 ODM은 변경되지 않습니다.
+
+
+
+== 알려진 문제 및 제한 사항
+
+특정 호스트의 성능에 영향을 줄 수 있는 다음과 같은 알려진 문제와 제한 사항을 알고 있어야 합니다.
+
+[cols="4"]
+|===
+| 버그 ID | 버전에 영향을 미칩니다 | 제목 | 설명 
+
+
+| 해당 없음 | 7.0 | ONTAP iSCSI LUN에 대한 SCSI UNMAP 지원 | AIX Host Utilities 7.0은 FC 디바이스에 대해 SCSI UNMAP 기능만 지원합니다. iSCSI 장치에 대한 SCSI UNMAP 지원은 이 릴리스에 포함되지 않습니다. 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"^] |  | AIX HU Sanlun가 잘못된 HBA 속도를 보고합니다 | sanlun fcp show adapter –v 명령을 실행하는 동안 잘못된 HBA 속도를 표시하는 sandlun 인스턴스가 보고됩니다. 'anlun fcp show adapter –v' 명령은 어댑터의 지원되는 속도와 협상된 속도와 같은 HBA 카드 정보를 표시합니다. 이는 보고 문제일 뿐입니다. 실제 속도를 확인하려면 'fcstat fcsx' 명령을 사용합니다. 
+|===
+link:https://mysupport.netapp.com/site/["NetApp 온라인 버그"^] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다. 사용할 수 있는 일부 키워드 조합과 버그 유형은 다음과 같습니다.
+
+* FCP 일반: 특정 호스트와 연결되지 않은 FC 및 HBA 버그를 표시합니다.
+* FCP - AIX
+

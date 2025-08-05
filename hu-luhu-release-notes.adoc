@@ -1,0 +1,93 @@
+---
+sidebar: sidebar 
+permalink: hu-luhu-release-notes.html 
+keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
+summary: Linux 호스트 유틸리티 릴리스 노트 
+---
+= Linux 호스트 유틸리티 릴리스 노트
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+릴리스 노트에서는 ONTAP 스토리지 시스템에서 특정 호스트를 구성하고 관리하는 데 필요한 새로운 기능, 향상된 기능, 해결된 문제, 알려진 문제, 제한 사항 및 중요 주의 사항을 설명합니다.
+
+Host Utilities에서 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오.link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]
+
+
+
+== Linux Host Utilities 8.0의 새로운 기능
+
+Linux Host Utilities 8.0 릴리스에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.
+
+Linux Host Utilities 8.0에는 64비트 속도 QLogic 및 Emulex FC 호스트 버스 어댑터(HBA)에 대한 지원이 포함되어 있습니다.
+
+다음 운영 체제가 지원됩니다.
+
+* Red Hat Enterprise Linux(RHEL) 9 및 8 시리즈
+* SUSE Linux Enterprise Server
+* Oracle Linux 9 및 8 시리즈
+* 우분투
+
+
+
+
+== Linux Host Utilities 7.1의 새로운 기능
+
+Linux Host Utilities 7.1 릴리스에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.
+
+* Linux 호스트 유틸리티는 SANtricity를 실행하는 NetApp E-Series 스토리지 시스템과 ONTAP을 실행하는 AFF, FAS 및 ASA 시스템을 지원하기 때문에 이제 _ Linux 통합 호스트 유틸리티라고 합니다.
+* 다음 운영 체제가 지원됩니다.
++
+** Citrix XenServer를 참조하십시오
+** KVM과 XEN, RHEV 6.5와 6.4
+** Oracle VM 3.2 시리즈
+** Oracle Linux 7 및 6 시리즈
+** RHEL 7 및 6 시리즈
+** SUSE Linux Enterprise Server 15 시리즈
+** SUSE Linux Enterprise Server 11 SP4
+
+
+* RHEL 6 및 7 호스트에서는 서버 프로필을 설정하기 위한 튜닝 패키지가 지원됩니다.  당신은 사용할 수 있습니다 `tuned-adm` 환경에 따라 다른 프로필을 설정하는 명령입니다.  예를 들어, 엔터프라이즈 스토리지 어레이의 LUN을 사용하는 경우 가상 게스트 프로필을 게스트 가상 머신으로 사용하고 엔터프라이즈 스토리지 프로필을 구성에 사용할 수 있습니다.  이러한 조정된 패키지를 사용하면 ONTAP 의 처리량과 지연 시간이 향상될 수 있습니다.
+* Linux Host Utilities 7.1에서는 Broadcom Emulex와 Marvell Qlogic의 32GB FC 어댑터에 대한 지원이 추가되었습니다.
+
+
+
+NOTE: NetApp 최초 릴리스 이후의 기능에 대한 지원을 추가하기 위해 Linux Host Utilities와 계속 협력하고 있습니다.  지원되는 기능 및 추가된 새 기능에 대한 최신 정보는 다음을 참조하세요.link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] .
+
+
+
+== 해결된 문제
+
+Linux Host Utilities에서는 다음 문제가 해결되었습니다.
+
+[cols="20, 80"]
+|===
+| 버전에서 수정됨 | 설명 
+
+
+| 7.1 | 실행 시 발생하는 간헐적인 호스트 OS 실패 문제 `sanlun lun show -p` SUSE Linux Enterprise Server 12 SP1, Oracle Linux 7.2, RHEL 7.2 및 RHEL 6.8의 명령입니다. 
+|===
+
+
+== 알려진 문제 및 제한 사항
+
+특정 호스트의 성능에 영향을 줄 수 있는 다음과 같은 알려진 문제와 제한 사항을 알고 있어야 합니다.
+
+[cols="15, 15, 30, 40"]
+|===
+| NetApp 버그 ID | 버전에 영향을 미칩니다 | 제목 | 설명 
+
+
+| 1457017 | 7.1 | Sanlun 설치는 libdevmapper.so와 libnl.so 라이브러리와 관련된 경고 메시지를 발행한다. 이러한 경고는 '선' 키트의 기능에 영향을 주지 않습니다. | SAN 호스트에서 Linux Host Utilities CLI 명령인 "sanlun fcp show adapter -v"를 실행하면 호스트 버스 어댑터 HBA 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시되면서 명령이 실패합니다.
+`[root@hostname ~]# sanlun fcp show adapter -v
+Unable to locate /usr/lib64/libHBAAPI.so library
+Make sure the package installing the library is installed & loaded` NetApp 버그 온라인을 참조하세요.link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] . 
+|===
+link:https://mysupport.netapp.com/site/bugs-online/product["NetApp 온라인 버그"^] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다.

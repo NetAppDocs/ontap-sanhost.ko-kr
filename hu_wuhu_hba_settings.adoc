@@ -4,7 +4,7 @@ permalink: hu_wuhu_hba_settings.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Windows Host Utilities에는 Windows 호스트가 ONTAP 및 E-Series 플랫폼에 대한 스토리지 시스템 동작을 올바르게 처리하도록 필요한 Windows 레지스트리 및 HBA 매개 변수를 설정하는 설치 프로그램이 포함되어 있습니다. 
 ---
-= Windows Host Utilities에 대한 레지스트리 설정을 구성합니다
+= ONTAP 스토리지를 사용하여 Windows 호스트 유틸리티에 대한 레지스트리 설정 구성
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -23,7 +23,7 @@ Host Utilities에서는 Windows 호스트가 스토리지 시스템 동작을 �
 
 Windows Host Utilities는 Windows 호스트가 데이터 지연 또는 손실에 반응하는 방식에 영향을 주는 매개 변수를 설정합니다. 특정 값을 선택하여 Windows 호스트가 스토리지 시스템에 있는 컨트롤러 중 하나의 페일오버와 같은 이벤트를 파트너 컨트롤러로 올바르게 처리하는지 확인합니다.
 
-모든 값이 SANtricity 저장소 관리자용 장치별 모듈(DSM)에 적용되는 것은 아니지만 호스트 유틸리티에서 설정한 값과 SANtricity 저장소 관리자용 DSM에서 설정한 값의 중복으로 인해 충돌이 발생하지 않습니다.
+모든 값이 SANtricity Storage Manager 의 장치별 모듈(DSM)에 적용되는 것은 아닙니다. 그러나 호스트 유틸리티에서 설정한 값과 SANtricity Storage Manager 의 DSM에서 설정한 값이 겹치더라도 충돌이 발생하지 않습니다.
 
 FC, NVMe/FC 및 iSCSI HBA에는 최상의 성능을 보장하고 스토리지 시스템 이벤트를 성공적으로 처리하도록 설정해야 하는 매개 변수도 있습니다.
 
@@ -35,18 +35,124 @@ iSCSI HBA 매개 변수를 수동으로 설정해야 합니다.
 
 [NOTE]
 ====
-Windows Host Utilities 7.2를 설치한 후 LimTransferSize 매개 변수 값을 변경해야 합니다. 를 참조하십시오.<<nvme_parameters,NVMe 매개 변수>>
+Windows Host Utilities 7.2를 설치한 후 LimTransferSize 매개변수 값을 변경해야 합니다. 보다 <<nvme_parameter,NVME 매개변수>> .
 
-Windows Host Utilities 7.2 및 7.1의 다른 모든 매개 변수와 레지스트리 키의 경우, 기술 지원 부서에서 지시하지 않는 한 값을 변경하지 마십시오.
+Windows Host Utilities 8.0, 7.2 또는 7.1의 다른 모든 매개변수와 레지스트리 키의 경우 기술 지원에서 지시하지 않는 한 값을 변경할 필요가 없습니다.
 
+====
+
+
+== Windows Host Utilities 8.0에서 설정한 레지스트리 값
+
+Windows 호스트 유틸리티 설치 프로그램은 설치 중에 선택한 사항에 따라 레지스트리 값과 NVMe 매개변수를 자동으로 설정합니다.  이러한 값과 운영 체제 버전을 알고 있어야 합니다.
+
+[role="tabbed-block"]
+====
+.HKLM 값
+--
+다음 레지스트리 값은 Windows 호스트 유틸리티 설치 프로그램에 의해 설정됩니다.  특별한 언급이 없는 한 모든 값은 10진수입니다.
+
+
+NOTE: HKLM은 의 약어입니다 `HKEY_LOCAL_MACHINE`.
+
+[cols="20,20,30"]
+|===
+| 레지스트리 키 | 값 | 설정합니다 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumRetryTimeDuringStateTransition | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumStateTransitionTime | 120 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmlSupportedDeviceList | "NetApp LUN", "NetApp LUN C-Mode", NVMe NetApp ONTAO Con" | MPIO 지원이 지정된 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control\Class\{iSCSI_driver_GUID}\Instance_ID\Parameters\IPSecConfigTimeout | 60 | 항상 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control\Class\{iSCSI_driver_GUID}\Instance_ID\Parameters\LinkDownTime | 10 | 항상 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\ClusDisk\Parameters\ManageDisksOnSystemBuses | 1 | 항상 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control\Class\{iSCSI_driver_GUID}\Instance_ID\Parameters\MaxRequestHoldTime | 120 | MPIO 지원을 선택하지 않은 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control\Class\{iSCSI_driver_GUID}\Instance_ID\Parameters\MaxRequestHoldTime | 30 | 항상 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control\MPDEV\MPIOSupportedDeviceList | "NetApp LUN", "NetApp LUN C-Mode", "NVMe NetApp ONTAO Con" | MPIO 지원이 지정된 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PathRecoveryInterval | 30 | 서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PathVerifyEnabled | 1 | MPIO 지원이 지정된 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PathVerifyEnabled | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\PathVerifyEnabled | 0 | MPIO 지원이 지정된 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PDORemovePeriodd | 130 | MPIO 지원이 지정된 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\PDORemovePeriodd | 130 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\PDORemovePeriod입니다 | 130 | MPIO 지원이 지정된 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\RetryCount | 6 | MPIO 지원이 지정된 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryCount | 6 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\RetryInterval | 1 | MPIO 지원이 지정된 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryInterval | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\RetryInterval | 1 | MPIO 지원이 지정된 경우 
+
+
+.2+| HKLM\SYSTEM\CurrentControlSet\Services\disk\TimeOutValue | 120 | MPIO 지원을 선택하지 않은 경우 
+
+
+| 60 | MPIO 지원이 지정된 경우 
+
+
+| MPIO 지원을 선택하지 않은 경우 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\UseCustomPathRecoveryInterval | 1 
+|===
+--
+.NVMe 매개 변수
+--
+Windows Host Utilities 8.0을 설치하면 다음 NVMe Emulex 드라이버 매개변수가 업데이트됩니다.
+
+* EnableNVMe=1
+* NVMeMode = 0
+
+
+--
 ====
 
 
 == Windows Host Utilities 7.2에서 설정한 레지스트리 값입니다
 
-Windows Host Utilities 설치 프로그램은 설치 중에 선택한 항목에 따라 레지스트리 값을 자동으로 설정합니다. 이러한 레지스트리 값과 운영 체제 버전을 알고 있어야 합니다.
+Windows 호스트 유틸리티 설치 프로그램은 설치 중에 선택한 사항에 따라 레지스트리 값과 NVMe 매개변수를 자동으로 설정합니다.  이러한 값과 운영 체제 버전을 알고 있어야 합니다.
 
-다음 값은 Windows Host Utilities 설치 프로그램에서 설정합니다. 달리 명시되지 않는 한 모든 값은 10진수로 표시됩니다.
+[#nvme_parameter,role="tabbed-block"]
+====
+.HKLM 값
+--
+다음 레지스트리 값은 Windows 호스트 유틸리티 설치 프로그램에 의해 설정됩니다.  특별한 언급이 없는 한 모든 값은 10진수입니다.
 
 
 NOTE: HKLM은 의 약어입니다 `HKEY_LOCAL_MACHINE`.
@@ -119,16 +225,18 @@ NOTE: HKLM은 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\RetryInterval | 1 | MPIO 지원이 지정된 경우 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\disk\TimeOutValue | 120 | MPIO 지원을 선택하지 않은 경우 
+.2+| HKLM\SYSTEM\CurrentControlSet\Services\disk\TimeOutValue | 120 | MPIO 지원을 선택하지 않은 경우 
+
+
+| 60 | MPIO 지원이 지정된 경우 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\UseCustomPathRecoveryInterval | 1 | MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019, 2016 또는 2012 R2인 경우 
 |===
-
-
-=== NVMe 매개 변수
-
-Windows Host Utilities 7.2를 설치할 때 다음 NVMe Emulex 드라이버 매개 변수가 업데이트됩니다.
+--
+.NVMe 매개 변수
+--
+Windows Host Utilities 7.2를 설치하면 다음 NVMe Emulex 드라이버 매개변수가 업데이트됩니다.
 
 * EnableNVMe=1
 * NVMeMode = 0
@@ -138,6 +246,8 @@ Windows Host Utilities 7.2를 설치할 때 LimTransferSize 매개 변수는 자
 
 
 
+--
+====
 
 
 == Windows Host Utilities 7.1에서 설정한 레지스트리 값입니다
@@ -238,10 +348,10 @@ NOTE: `HKLM` 의 약어입니다 `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\RetryInterval | 1 | MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외) 
 
 
-.2+| HKLM\SYSTEM\CurrentControlSet\Services\disk\TimeOutValue | 120 | MPIO 지원이 선택되지 않은 경우(Data ONTAP DSM이 감지된 경우 제외) 
+.2+| HKLM\SYSTEM\CurrentControlSet\Services\disk\TimeOutValue | 120 | MPIO 지원을 선택하지 않은 경우 
 
 
-| 60 | MPIO 지원이 지정된 경우(Data ONTAP DSM이 감지된 경우 제외) 
+| 60 | MPIO 지원이 지정된 경우 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\UseCustomPathRecoveryInterval | 1 | 서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우 
@@ -319,33 +429,33 @@ Host Utilities.(호스트 유틸리티 `fcconfig.ini` 파일 이 매개 변수�
 
 
 
-=== 호스트 유틸리티의 FC HBA 드라이버 설정 변경 사항을 이해합니다
+== FC HBA 드라이버 설정에 대한 호스트 유틸리티 변경 사항에 대해 알아보세요.
 
-FC 시스템에 필요한 Emulex 또는 QLogic HBA 드라이버를 설치하는 동안 여러 매개 변수를 확인하고 경우에 따라 수정합니다.
+FC 시스템에 필요한 Emulex 또는 QLogic HBA 드라이버를 설치하는 동안 여러 매개변수가 검사되고, 어떤 경우에는 Windows 호스트 유틸리티에서 수정됩니다.
 
-Windows MPIO용 MS DSM이 감지된 경우 Host Utilities는 다음 매개변수에 대한 값을 설정합니다.
+Windows MPIO용 MS DSM이 감지되면 Windows 호스트 유틸리티는 다음 매개변수에 대한 값을 설정합니다.
 
-* LinkTimeOut - 물리적 링크가 중단된 후 호스트 포트가 입출력을 재개하기 전에 대기하는 시간(초)을 정의합니다.
-* NodeTimeOut – 호스트 포트에서 타겟 디바이스와의 연결이 다운되었음을 인식하기 전의 시간(초)을 정의합니다.
+* *LinkTimeOut*: 물리적 링크가 끊어진 후 호스트 포트가 I/O를 재개하기 전에 기다리는 시간(초)을 정의합니다.
+* *NodeTimeOut*: 호스트 포트가 대상 장치에 대한 연결이 끊어졌음을 인식하기까지의 시간(초)을 정의합니다.
 
 
 HBA 문제를 해결할 때 이러한 설정이 올바른 값인지 확인하십시오. 올바른 값은 다음 두 가지 요소에 따라 달라집니다.
 
 * HBA 공급업체
-* 다중 경로 소프트웨어(MPIO)를 사용하는지 여부
+* MPIO 소프트웨어를 사용하고 있는지 여부.
 
 
-Windows Host Utilities 설치 프로그램의 복구 옵션을 실행하여 HBA 설정을 수정할 수 있습니다.
+HBA 설정은 다음을 통해 수정할 수 있습니다.link:hu_wuhu_repair_remove.html["복구 옵션 실행"] Windows 호스트 유틸리티 설치 프로그램에서.
 
 [role="tabbed-block"]
 ====
 .Emulex HBA 드라이버
 --
-FC 시스템을 사용하는 경우 Emulex HBA 드라이버 설정을 확인해야 합니다. 이러한 설정은 HBA의 각 포트에 대해 존재해야 합니다.
+FC 시스템이 있는 경우 Emulex HBA 드라이버 설정을 확인하세요.  이러한 설정은 HBA의 각 포트에 존재해야 합니다.
 
 .단계
 . OnCommand 관리자를 엽니다.
-. 목록에서 적절한 HBA를 선택하고 * Driver Parameters * 탭을 클릭합니다.
+. 목록에서 적절한 HBA를 선택하고 *드라이버 매개변수* 탭을 선택합니다.
 +
 드라이버 매개 변수가 나타납니다.
 
@@ -356,7 +466,7 @@ FC 시스템을 사용하는 경우 Emulex HBA 드라이버 설정을 확인해�
 *** NodeTimeOut-10
 
 
-.. MPIO 소프트웨어를 사용하지 않는 경우 다음 드라이버 설정이 있는지 확인합니다.
+.. MPIO 소프트웨어를 사용하지 않는 경우 다음 드라이버 설정이 있는지 확인하세요.
 +
 *** LinkTimeOut - 30
 *** NodeTimeOut-120
@@ -369,10 +479,10 @@ FC 시스템을 사용하는 경우 Emulex HBA 드라이버 설정을 확인해�
 --
 .QLogic HBA 드라이버
 --
-FC 시스템에서는 QLogic HBA 드라이버 설정을 확인해야 합니다. 이러한 설정은 HBA의 각 포트에 대해 존재해야 합니다.
+FC 시스템에서 QLogic HBA 드라이버 설정을 확인하세요.  이러한 설정은 HBA의 각 포트에 존재해야 합니다.
 
 .단계
-. QConvergConsole을 열고 도구 모음에서 * Connect * 를 클릭합니다.
+. QConvergeConsole을 열고 도구 모음에서 *연결*을 선택합니다.
 +
 호스트에 연결 * 대화 상자가 나타납니다.
 
@@ -388,7 +498,7 @@ HBA 목록이 FC HBA 창에 나타납니다.
 ** 포트 다운 재시도 횟수(portdwnrc) - 10
 
 
-. MPIO 소프트웨어를 사용하지 않는 경우 다음 드라이버 설정이 있는지 확인합니다.
+. MPIO 소프트웨어를 사용하지 않는 경우 다음 드라이버 설정이 있는지 확인하세요.
 +
 ** 링크 다운 시간 제한(linkdwnto) - 30
 ** 포트 다운 재시도 횟수(portdwnrc) - 120

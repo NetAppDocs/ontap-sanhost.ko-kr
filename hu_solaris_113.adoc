@@ -4,7 +4,7 @@ permalink: hu_solaris_113.html
 keywords: host utilities, solaris, 113, netapp, ontap 
 summary: Solaris Host Utilities를 설치하는 방법에 대해 설명합니다 
 ---
-= ONTAP와 함께 Solaris 11.3을 사용하십시오
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Solaris 11.3 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,139 +16,59 @@ summary: Solaris Host Utilities를 설치하는 방법에 대해 설명합니다
 
 
 [role="lead"]
-ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하는 Solaris 11.3을 구성할 수 있습니다.
+Solaris Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Solaris 호스트에 대한 관리 및 진단 도구를 제공합니다.  Solaris 11.3 호스트에 Solaris 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
 
 
 
-== Solaris 호스트 유틸리티를 설치합니다
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
-에서 Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 다운로드할 수 있습니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support 사이트"^]. 파일을 가지고 난 후, 호스트 유틸리티를 설치하는 데 필요한 소프트웨어 패키지를 얻기 위해 압축을 풀어야 합니다.
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 간소화하고 확장성을 개선할 수 있습니다.  구성이 SAN 부팅을 지원하지 않으면 로컬 부팅을 사용할 수 있습니다.
+
+[role="tabbed-block"]
+====
+.SAN 부팅
+--
+SAN 부팅은 SAN에 연결된 디스크(LUN)를 Solaris 호스트의 부팅 장치로 설정하는 프로세스입니다.  FC 프로토콜을 사용하고 Solaris 호스트 유틸리티를 실행하는 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다.  SAN 부팅 LUN을 설정하는 데 사용하는 방법은 볼륨 관리자와 파일 시스템에 따라 달라집니다.
 
 .단계
-. 에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support 사이트"^] 호스트의 디렉토리로 이동합니다.
-. 다운로드가 포함된 디렉터리로 이동합니다.
-. 파일의 압축을 풉니다.
+. 사용하세요link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] Solaris OS, 프로토콜 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
+. Solaris 공급업체 문서에서 SAN 부팅을 설정하는 모범 사례를 따르세요.
+
+
+--
+.로컬 부팅
+--
+예를 들어 SSD, SATA 또는 RAID에 설치하여 로컬 하드 디스크에 Solaris OS를 설치하여 로컬 부팅을 수행합니다.
+
+--
+====
+
+
+== 2단계: Solaris 호스트 유틸리티 설치
+
+NetApp ONTAP LUN 관리를 지원하고 기술 지원팀의 구성 데이터 수집을 돕기 위해 Solaris 호스트 유틸리티를 설치할 것을 강력히 권장합니다.
+
+
+NOTE: Solaris 호스트 유틸리티를 설치하면 Solaris 호스트의 일부 시간 초과 설정이 변경됩니다.
+
+link:hu_solaris_62.html["Solaris Host Utilities 6.2 설치"] .
+
+
+
+== 3단계: 호스트의 다중 경로 구성을 확인합니다
+
+Solaris 11.3에서는 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.
+
+다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 개의 네트워크 경로를 구성할 수 있습니다.  한 경로에 장애가 발생하더라도 나머지 경로로 교통이 계속 진행됩니다.
+
+호스트에 대해 다중 경로 및 권장 시간 초과 매개변수가 올바르게 구성되었는지 확인하려면 ONTAP LUN에 대해 NetApp 권장하는 설정을 사용하고 있는지 확인하세요.
+
+.단계
+. Solaris 호스트 유틸리티는 SPARC 및 x86_64 프로세서에 대해 NetApp 이 권장하는 매개변수 설정을 로드합니다.
 +
-다음 예에서는 SPARC 시스템에 대한 파일의 압축을 해제합니다. x86-64 플랫폼의 경우 x86/x64 패키지를 사용합니다.
-
-+
-'gunzip netapp_solaris_host_utilities_6_2N20170913_0304_sparc.tar.gz'
-
-. 파일의 압축을 해제하려면 'tar xvf' 명령을 사용합니다.
-+
-'tar xvf netapp_solaris_host_utilities_6_2N20170913_0304_sparc.tar'
-
-. tar 파일에서 추출한 패키지를 호스트에 추가합니다.
-+
-pkgadd-d NTAPtaggool.pkg
-
-+
-패키지는 '/opt/ntap/soolkit/bin' 디렉토리에 추가됩니다.
-
-+
-설치를 완료하려면 를 사용하여 사용자 환경의 호스트 매개 변수(이 경우 MPxIO)를 구성해야 합니다 `host_config` 명령.
-
-+
-'host_config' 명령의 형식은 다음과 같습니다.
-
-+
-'/opt/ntap/soolkit/bin/host_config\<-setup>\<-protocol fcp|iscsi|mixed>\<-multipath mpxio|dmp|non>[-noalua][-MCC 60|90|120]'
-
-+
-'host_config' 명령은 다음과 같은 작업을 수행합니다.
-
-+
-** x86 및 SPARC 시스템의 Fibre Channel 및 SCSI 드라이버 설정을 변경합니다
-** MPxIO 구성에 대한 SCSI 시간 초과 설정을 제공합니다
-** VID/PID 정보를 설정합니다
-** ALUA를 설정하거나 해제합니다
-** MPxIO 및 x86 및 SPARC 시스템 모두에 대해 SCSI 드라이버에서 사용되는 ALUA 설정을 구성합니다.
-
-
-. 호스트를 재부팅합니다.
-
-
-
-
-== SAN 툴킷을 참조하십시오
-
-NetApp 호스트 유틸리티 패키지를 설치하면 툴킷이 자동으로 설치됩니다. 이 키트에서 제공하는 `sanlun` 유틸리티를 사용하면 LUN과 호스트 버스 어댑터(HBA)를 관리할 수 있습니다.  `sanlun`이 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
-
-.예
-다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
-
-[listing]
-----
-#sanlun lun show
-
-controller(7mode)/                 device                                            host             lun
-vserver(Cmode)     lun-pathname    filename                                         adapter protocol  size  mode
-------------------------------------------------------------------------------------------------------
-data_vserver       /vol/vol1/lun1  /dev/rdsk/c0t600A098038314362692451465A2F4F39d0s2  qlc1  FCP       60g   C
-data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475d0s2  qlc1  FCP       20g   C
-----
-
-
-== SAN 부팅
-
-.시작하기 전에
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
-
-SAN 부팅은 Solaris 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다.
-
-FC 프로토콜을 사용하고 Solaris 호스트 유틸리티를 실행하여 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 설정하는 방법은 볼륨 관리자 및 파일 시스템에 따라 다를 수 있습니다. Solaris Microsoft MPIO(다중 경로 I/O) 환경의 SAN 부팅 LUN에 대한 자세한 내용은 을 https://docs.netapp.com/us-en/ontap-sanhost/hu_solaris_62.html["Solaris 호스트 유틸리티를 설치합니다"^] 참조하십시오.
-
-
-
-== 다중 경로
-
-다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 네트워크 경로를 구성할 수 있습니다. 한 경로에 장애가 발생하면 트래픽이 나머지 경로에서 계속됩니다.
-
-
-
-=== 비 ASA 구성
-
-비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
-
-.예
-다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
-
-OS native mpathadm show lu <lun>' 명령의 각 LUN에 대한 * 액세스 상태 * 섹션에 대해 경로 우선 순위가 표시됩니다.
-
-
-
-=== 모든 SAN 어레이 구성
-
-ASA(All SAN Array) 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
-
-.예
-다음 예제는 ONTAP LUN에 대한 올바른 출력을 보여줍니다.
-
-'sanlun' 명령의 출력은 ASA 및 non-ASA 구성과 동일합니다.
-
-OS native mpathadm show lu <lun>' 명령의 각 LUN에 대한 * 액세스 상태 * 섹션에 대해 경로 우선 순위가 표시됩니다.
-
-[listing]
-----
-#sanlun lun show -pv sparc-s7-16-49:/vol/solaris_vol_1_0/solaris_lun
-
-                    ONTAP Path: sparc-s7-16-49:/vol/solaris_vol_1_0/solaris_lun
-                           LUN: 0
-                      LUN Size: 30g
-                   Host Device: /dev/rdsk/c0t600A098038314362692451465A2F4F39d0s2
-                          Mode: C
-            Multipath Provider: Sun Microsystems
-              Multipath Policy: Native
-----
-
-NOTE: 모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 지원됩니다.
-
-
-
-== 권장 설정
-
-다음은 ONTAP LUN이 있는 Solaris 11.3 SPARC 및 x86_64에 권장되는 몇 가지 매개 변수 설정입니다. 이러한 매개 변수 값은 Host Utilities에서 설정합니다.
-
+.매개 변수 설정을 표시합니다
+[%collapsible]
+====
 [cols="2*"]
 |===
 | 매개 변수 | 값 
@@ -173,85 +93,335 @@ NOTE: 모든 SAN 어레이(ASA) 구성은 Solaris 호스트용 ONTAP 9.8부터 �
 
 
 | 물리적_블록_크기 | 4096 
+
+
+| 디스크 정렬 | 거짓 
+
+
+| 캐시-비휘발성 | true 
 |===
+====
+. 저장소 구성에 MetroCluster, Oracle Solaris 가상화 또는 SnapMirror Active Sync가 포함된 경우 기본 설정을 변경하세요.
++
+[role="tabbed-block"]
+====
+.MetroCluster
+--
+기본적으로 Solaris OS는 LUN에 대한 모든 경로가 손실되면 *20초* 후에 I/O 작업을 실행하지 못합니다.  이것은 다음에 의해 제어됩니다. `fcp_offline_delay` 매개변수.  기본값은 `fcp_offline_delay` 표준 ONTAP 클러스터에 적합합니다.  그러나 MetroCluster 구성에서는 값을 늘려야 합니다. `fcp_offline_delay` 계획되지 않은 장애 조치를 포함하여 작업 중에 I/O가 조기에 시간 초과되지 않도록 보장하기 위해 *120초*까지 설정됩니다.
 
+MetroCluster 의 기본 설정에 대한 추가 정보 및 권장 변경 사항은 기술 자료 문서를 참조하세요. https://kb.netapp.com/onprem/ontap/metrocluster/Solaris_host_support_considerations_in_a_MetroCluster_configuration["MetroCluster 구성에서 Solaris 호스트 지원 고려 사항"^] .
 
-=== MetroCluster에 대한 권장 설정입니다
+--
+.Oracle Solaris 가상화
+--
+** Solaris 가상화 옵션에는 Solaris Logical Domains(LDOM 또는 SPARC용 Oracle VM Server라고도 함), Solaris Dynamic Domains, Solaris Zones 및 Solaris Containers가 포함됩니다.  이러한 기술은 "오라클 가상 머신"이라고도 합니다.
+** 예를 들어 특정 Solaris 논리 도메인 내의 Solaris 컨테이너와 같이 여러 옵션을 함께 사용할 수 있습니다.
+** NetApp Oracle에서 전체 구성을 지원하고 LUN에 직접 액세스할 수 있는 모든 파티션이 나열되는 Solaris 가상화 기술 사용을 지원합니다.link:https://imt.netapp.com/matrix/#welcome["IMT"] 지원되는 구성에서.  여기에는 루트 컨테이너, LDOM I/O 도메인, NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.
+** 가상화된 스토리지 리소스만 사용하는 파티션 또는 가상 머신(예: `vdsk` ONTAP LUN에 직접 액세스할 수 없으므로 특정 자격이 필요하지 않습니다.  LDOM I/O 도메인과 같이 기본 LUN에 직접 액세스할 수 있는 파티션이나 가상 머신이 나열되어 있는지 확인하기만 하면 됩니다.link:https://imt.netapp.com/matrix/#welcome["IMT"^] .
 
-기본적으로 Solaris 운영 체제는 LUN에 대한 모든 경로가 손실된 경우 20초 후에 I/O에 실패합니다. 이 기능은 에 의해 제어됩니다 `fcp_offline_delay` 매개 변수. 의 기본값입니다 `fcp_offline_delay` 표준 ONTAP 클러스터에 적합합니다. 그러나 MetroCluster 구성에서 의 값은 입니다 `fcp_offline_delay` 비계획 페일오버 등 작업 중에 입출력이 조기에 시간 초과되지 않도록 * 120s * 로 늘려야 합니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 기술 자료 문서를 참조하십시오 https://kb.netapp.com/onprem/ontap/metrocluster/Solaris_host_support_considerations_in_a_MetroCluster_configuration["MetroCluster 구성에서 Solaris 호스트 지원 고려 사항"^].
-
-
-
-== Oracle Solaris 가상화
-
-* Solaris 가상화 옵션에는 Solaris Logical Domains(LDOM 또는 SPARC용 Oracle VM Server), Solaris Dynamic Domains, Solaris Zones 및 Solaris Containers가 있습니다. 이러한 기술은 서로 다른 아키텍처를 기반으로 하고 있음에도 불구하고 일반적으로 "Oracle Virtual Machines"로 재브랜딩되었습니다.
-* 경우에 따라 특정 Solaris 논리적 도메인 내의 Solaris 컨테이너와 같은 여러 옵션을 함께 사용할 수 있습니다.
-* NetApp는 일반적으로 Oracle에서 전체 구성을 지원하고 LUN에 직접 액세스할 수 있는 파티션이 지원되는 구성의 에 나열된 이러한 가상화 기술의 사용을 지원합니다. https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] 여기에는 루트 컨테이너, LDOM I/O 도메인 및 NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.
-* 와 같은 가상화된 스토리지 리소스만 사용하는 파티션 및/또는 가상 머신은 `vdsk` NetApp LUN에 직접 액세스할 수 없으므로 특정 조건이 필요하지 않습니다. LDOM IO 도메인과 같이 기본 LUN에 직접 액세스할 수 있는 파티션/VM만 에서 찾을 수 있습니다 https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^].
-
-
-
-
-=== 가상화에 권장되는 설정입니다
-
-LDOM 내에서 LUN을 가상 디스크 디바이스로 사용할 경우 LUN의 소스는 가상화를 통해 마스킹되고 LDOM은 블록 크기를 제대로 감지하지 못합니다. 이 문제를 방지하려면 LDOM 운영 체제에 Oracle 버그 15824910 패치를 적용하고 가상 디스크의 블록 크기를 4096으로 설정하는 "vdc.conf" 파일을 만들어야 합니다. 자세한 내용은 Oracle Doc 2157669.1을 참조하십시오.
-
-패치를 확인하려면 다음을 수행합니다.
 
 .단계
-. zpool을 생성합니다.
-. zdb-C를 zpool에 대해 실행하고 * ashift * 의 값이 12인지 확인합니다.
+LUN이 LDOM 내에서 가상 디스크 장치로 사용되는 경우 LUN의 소스는 가상화로 인해 마스크 처리되고 LDOM은 블록 크기를 올바르게 감지하지 못합니다.  이 문제를 방지하려면:
+
+.. _Oracle 버그 15824910_에 대한 LDOM OS 패치
+.. 생성하다 `vdc.conf` 가상 디스크의 블록 크기를 설정하는 파일 `4096` .  자세한 내용은 Oracle DOC: 2157669.1을 참조하세요.
+.. 패치 설치를 확인하여 권장 설정이 올바르게 구성되었는지 확인하세요.
 +
-shift * 값이 12가 아닌 경우 올바른 패치가 설치되었는지 확인하고 vdc.conf의 내용을 다시 확인하십시오.
+... zpool을 생성합니다.
++
+[source, cli]
+----
+zpool create zpool_name disk_list
+----
+... 실행 `zdb -C` zpool을 기준으로 * ashift * 의 값이 인지 확인합니다 `12`.
++
+*ashift*의 값이 아닌 경우 `12` , 다시 실행 `zdb -C11` , 올바른 패치가 설치되었는지 확인하고 내용을 다시 확인하십시오. `vdc.conf` .
 
 +
-shift * 가 12의 값을 표시할 때까지 진행하지 마십시오.
+*ashift*가 값을 표시할 때까지 진행하지 마십시오. `12` .
 
 
 
 
-NOTE: 다양한 버전의 Solaris에서 Oracle 버그 15824910 패치를 사용할 수 있습니다. 최상의 커널 패치를 결정하는 데 지원이 필요한 경우 Oracle에 문의하십시오.
 
 
+NOTE: 여러 Solaris 버전에서 Oracle 버그 15824910에 대한 패치가 제공됩니다.  가장 적합한 커널 패치를 결정하는 데 도움이 필요하면 Oracle에 문의하세요.
 
-== SnapMirror 액티브 동기화에 대한 권장 설정
-
-SnapMirror 활성 동기화 환경에서 계획되지 않은 사이트 장애 조치 전환이 발생할 때 Solaris 클라이언트 애플리케이션이 중단되지 않는지 확인하려면 Solaris 11.3 호스트에서 다음 설정을 구성해야 합니다. 이 설정은 페일오버 모듈을 재정의합니다 `f_tpgs` 모순을 감지하는 코드 경로의 실행을 방지합니다.
-
-
-NOTE: ONTAP 9.9.1부터 Solaris 11.3 호스트에서 SnapMirror 활성 동기화 설정 구성이 지원됩니다.
-
-다음 지침에 따라 override 매개변수를 구성합니다.
+--
+.SnapMirror 액티브 싱크
+--
+ONTAP 9.9.1부터 Solaris 호스트에서 SnapMirror 활성 동기화 설정 구성이 지원됩니다.  SnapMirror Active Sync 환경에서 계획되지 않은 사이트 장애 조치 전환이 발생할 때 Solaris 클라이언트 애플리케이션이 중단되지 않는지 확인하려면 다음을 구성해야 합니다. `scsi-vhci-failover-override` Solaris 호스트의 설정.  이 설정은 장애 조치 모듈을 재정의합니다. `f_tpgs` 모순을 감지한 코드 경로의 실행을 방지합니다.
 
 .단계
-. 구성 파일을 생성합니다 `/etc/driver/drv/scsi_vhci.conf` 호스트에 연결된 NetApp 스토리지 유형에 대해 다음과 유사한 항목을 제공합니다.
+.. 구성 파일을 만듭니다 `/etc/driver/drv/scsi_vhci.conf` 호스트에 연결된 NetApp 스토리지 유형에 대해 다음 예와 유사한 항목이 있습니다.
 +
 [listing]
 ----
 scsi-vhci-failover-override =
 "NETAPP  LUN","f_tpgs"
 ----
-. 를 사용합니다 `devprop` 및 `mdb` override 매개 변수가 성공적으로 적용되었는지 확인하는 명령:
+.. 재정의 매개변수가 성공적으로 적용되었는지 확인하세요.
 +
-' root@host-a:~#devprop-v -n /scsi_vhci scsi -vhci -failover -override scsi -vhci -failover -override=NetApp lun+f_tpgs root@host -a:~#echo" * scsi_vhci_dip: print -xi vci vdev vci vci vci vci vci vci vip ti 출력 pi vdev vci vci vci vci vci vci vci vci vci vci vdi ti ti vprint tp.pi
-
+[source, cli]
+----
+devprop
+----
 +
+[source, cli]
+----
+mdb
+----
++
+.예를 보여주세요
+[%collapsible]
+=====
+[listing]
+----
+root@host-A:~# devprop -v -n /scsi_vhci scsi-vhci-failover-override      scsi-vhci-failover-override=NETAPP  LUN + f_tpgs
+root@host-A:~# echo "*scsi_vhci_dip::print -x struct dev_info devi_child | ::list struct dev_info devi_sibling| ::print struct dev_info devi_mdi_client| ::print mdi_client_t ct_vprivate| ::print struct scsi_vhci_lun svl_lun_wwn svl_fops_name"| mdb -k
+----
 [listing]
 ----
 svl_lun_wwn = 0xa002a1c8960 "600a098038313477543f524539787938"
 svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 ----
+=====
 
 
 
-NOTE: 이후 `scsi-vhci-failover-override` 이(가) 적용되었습니다. `conf` 이(가) 에 추가됩니다 `svl_fops_name`.
-기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp KB 문서 를 참조하십시오 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["SnapMirror 액티브 동기화 구성에서 Solaris 호스트 지원 권장 설정"^].
+NOTE: 이후 `scsi-vhci-failover-override` 이(가) 적용되었습니다. `conf` 이(가) 에 추가됩니다 `svl_fops_name`. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp 기술 문서 를 참조하십시오 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["SnapMirror 액티브 동기화 구성에서 Solaris 호스트 지원 권장 설정"^].
+
+--
+====
+. ONTAP LUN을 사용하여 zpools에서 4KB 정렬 I/O가 지원되는지 확인하세요.
++
+.. Solaris 호스트에 최신 지원 저장소 업데이트(SRU)가 설치되어 있는지 확인하세요.
++
+[source, cli]
+----
+pkg info entire`
+----
+.. ONTAP LUN이 있는지 확인하십시오. `ostype` LUN 크기에 관계없이 "Solaris"와 같이:
++
+[source, cli]
+----
+lun show -vserver` <vsersver_name>
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing]
+----
+chat-a800-31-33-35-37::*> lun show -vserver solaris_fcp -path /vol/sol_195_zpool_vol_9/lun -fields ostype
+vserver     path                         ostype
+----------- ---------------------------- -------
+solaris_fcp /vol/sol_195_zpool_vol_9/lun solaris
+----
+====
+
+
+. ONTAP LUN에 대한 출력을 확인하세요.
++
+[source, cli]
+----
+sanlun lun show
+----
++
+ASA, AFF 또는 FAS 구성의 경우 다음 예와 유사한 출력이 표시되어야 합니다.
+
++
+.예제 보기
+[%collapsible]
+====
+[listing]
+----
+root@sparc-s7-55-148:~# sanlun lun show -pv
+
+                    ONTAP Path: Solaris_148_siteA:/vol/Triage/lun
+                           LUN: 0
+                      LUN Size: 20g
+                   Host Device: /dev/rdsk/c0t600A098038314B32685D573064776172d0s2
+                          Mode: C
+            Multipath Provider: Sun Microsystems
+              Multipath Policy: Native
+----
+====
+. ONTAP LUN의 경로 상태를 확인하세요.
++
+[source, cli]
+----
+mpathadm show lu <LUN>`
+----
++
+다음 예제 출력은 ASA, AFF 또는 FAS 구성에서 ONTAP LUN의 올바른 경로 상태를 보여줍니다.  출력에서 각 LUN의 "액세스 상태"에 대한 경로 우선순위가 표시됩니다.
+
++
+[role="tabbed-block"]
+====
+.ASA 구성
+--
+ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
+
+.예제 보기
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+root@sparc-s7-55-82:~# mpathadm show lu /dev/rdsk/c0t600A098038313953495D58674777794Bd0s2
+Logical Unit:  /dev/rdsk/c0t600A098038313953495D58674777794Bd0s2
+        mpath-support:  libmpscsi_vhci.so
+        Vendor:  NETAPP
+        Product:  LUN C-Mode
+        Revision:  9171
+        Name Type:  unknown type
+        Name:  600a098038313953495d58674777794b
+        Asymmetric:  yes
+        Current Load Balance:  round-robin
+        Logical Unit Group ID:  NA
+        Auto Failback:  on
+        Auto Probing:  NA
+
+        Paths:
+                Initiator Port Name:  100000109bd30070
+                Target Port Name:  20b9d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109bd30070
+                Target Port Name:  20b8d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109bd3006f
+                Target Port Name:  20b3d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109bd3006f
+                Target Port Name:  20b4d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+        Target Port Groups:
+                ID:  1003
+                Explicit Failover:  no
+                Access State:  *active optimized*
+                Target Ports:
+                        Name:  20b9d039ea593393
+                        Relative ID:  8
+
+                        Name:  20b4d039ea593393
+                        Relative ID:  3
+
+                ID:  1002
+                Explicit Failover:  no
+                Access State:  *active optimized*
+                Target Ports:
+                        Name:  20b8d039ea593393
+                        Relative ID:  7
+
+                        Name:  20b3d039ea593393
+                        Relative ID:  2
+----
+=====
+--
+.AFF 또는 FAS 구성
+--
+AFF 또는 FAS 구성에는 우선 순위가 높거나 낮은 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 더 높은 활성/최적화 경로는 애그리게이트가 위치한 컨트롤러에서 제공합니다. 낮은 우선 순위 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+.예제 보기
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+root@chatsol-54-195:~# mpathadm show lu /dev/rdsk/c0t600A0980383044376C3F4E694E506E44d0s2
+Logical Unit:  /dev/rdsk/c0t600A0980383044376C3F4E694E506E44d0s2
+        mpath-support:  libmpscsi_vhci.so
+        Vendor:  NETAPP
+        Product:  LUN C-Mode
+        Revision:  9171
+        Name Type:  unknown type
+        Name:  600a0980383044376c3f4e694e506e44
+        Asymmetric:  yes
+        Current Load Balance:  round-robin
+        Logical Unit Group ID:  NA
+        Auto Failback:  on
+        Auto Probing:  NA
+
+        Paths:
+
+                Initiator Port Name:  100000109b56c5fb
+                Target Port Name:  205200a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109b56c5fb
+                Target Port Name:  205000a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Demoted:  yes
+                Disabled:  no
+
+                Initiator Port Name:  100000109b56c5fa
+                Target Port Name:  204f00a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Demoted:  yes
+                Disabled:  no
+
+                Initiator Port Name:  100000109b56c5fa
+                Target Port Name:  205100a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+        Target Port Groups:
+                ID:  1001
+                Explicit Failover:  no
+                Access State:  *active not optimized*
+                Target Ports:
+                        Name:  205200a098ba7afe
+                        Relative ID:  8
+
+                        Name:  205100a098ba7afe
+                        Relative ID:  7
+
+                ID:  1000
+                Explicit Failover:  no
+                Access State:  *active optimized*
+                Target Ports:
+                        Name:  205000a098ba7afe
+                        Relative ID:  6
+
+                        Name:  204f00a098ba7afe
+                        Relative ID:  5
+----
+=====
+--
+====
 
 
 
-== 알려진 문제
 
-ONTAP 릴리즈가 포함된 Solaris 11.3에는 다음과 같은 알려진 문제가 있습니다.
+== 4단계: 알려진 문제 검토
+
+ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Solaris 11.3 릴리스에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="4*"]
 |===
@@ -263,3 +433,8 @@ ONTAP 릴리즈가 포함된 Solaris 11.3에는 다음과 같은 알려진 문�
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1368957["1368957을 참조하십시오"^] | Solaris 11.x 'cfgadm-c configure'로 인해 End-to-End Emulex 구성에서 I/O 오류가 발생합니다 | 실행 중입니다 `cfgadm -c configure` Emulex 엔드-투-엔드 구성에서는 I/O 오류가 발생합니다. 이 문제는 ONTAP 9.5P17, 9.6P14, 9.7P13 및 9.8P2에서 고정됩니다 | 해당 없음 
 |===
+
+
+== 다음 단계
+
+link:hu-solaris-62-cmd.html["Solaris Host Utilities 6.2 도구 사용에 대해 알아보세요"] .

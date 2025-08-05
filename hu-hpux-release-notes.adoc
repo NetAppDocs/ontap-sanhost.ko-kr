@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: hu-hpux-release-notes.html 
+keywords: host utilities, hpux, 6.0, netapp, ontap, release, notes 
+summary: HPUX Host Utilities 6.0 릴리스 정보 
+---
+= HP-UX 호스트 유틸리티 릴리스 노트
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+릴리스 노트에서는 ONTAP 스토리지 시스템에서 특정 HP-UX 호스트를 구성하고 관리하는 데 관련된 새로운 기능과 향상된 기능, 해결된 문제점, 알려진 문제점, 제한 사항 및 중요 주의 사항을 설명합니다.
+
+
+
+== HP-UX Host Utilities 6.0의 새로운 기능
+
+새로운 기능이나 향상된 기능은 없습니다.
+
+HP-UX Host Utilities 6.0은 다음 HP-UX OS 버전을 지원합니다.
+
+* HP-UX 11iv2
+* HP-UX 11iv3
+
+
+
+
+== 알려진 문제 및 제한 사항
+
+알려진 문제나 제한 사항은 없습니다.

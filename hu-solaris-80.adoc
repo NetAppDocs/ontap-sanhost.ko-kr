@@ -1,0 +1,179 @@
+---
+sidebar: sidebar 
+permalink: hu-solaris-80.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: ONTAP 과 함께 Solaris Host Utilities 8.0을 사용하는 방법을 설명합니다. 
+---
+= ONTAP 스토리지용 Solaris Host Utilities 8.0 설치
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Solaris 호스트 유틸리티는 Solaris 호스트에 연결된 ONTAP 스토리지를 관리하고 기술 지원팀이 구성 데이터를 수집하도록 돕습니다.
+
+Solaris 호스트 유틸리티는 다음과 같은 Solaris 환경과 전송 프로토콜을 지원합니다.  기본적으로 지원되는 환경은 다음과 같습니다.
+
+* SPARC 또는 x86/64 프로세서를 사용하는 시스템에서 Oracle Solaris I/O 다중 경로(MPxIO)와 FC 또는 iSCSI 프로토콜을 갖춘 기본 OS입니다.
+* SPARC 프로세서를 사용하는 시스템에서 FC 또는 iSCSI 프로토콜을 사용하는 Veritas Dynamic Multipathing(DMP)입니다.
+
+
+Solaris Host Utilities 8.0은 Solaris 11.4 시리즈를 지원합니다.
+
+.시작하기 전에
+iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하세요.  당신은 사용할 수 있습니다link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] 구성을 확인하세요.
+
+.단계
+. 호스트에 루트로 로그인합니다.
+. 에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support 사이트"^] 호스트의 디렉토리로 이동합니다.
++
+[role="tabbed-block"]
+====
+.스파크 CPU
+--
+[source, cli]
+----
+netapp_solaris_host_utilities_8_0_sparc.tar.gz
+----
+--
+.x86/x64 CPU
+--
+[source, cli]
+----
+netapp_solaris_host_utilities_8_0_amd.tar.gz
+----
+--
+====
+. 다운로드가 있는 호스트의 디렉토리로 이동합니다.
+. 다음을 사용하여 파일의 압축을 풉니다. `gunzip` 명령을 입력한 다음 파일을 추출합니다. `tar -xvf` :
++
+[source, cli]
+----
+gunzip netapp_solaris_host_utilities_8_0_sparc.tar.gz
+----
++
+[source, cli]
+----
+tar -xvf netapp_solaris_host_utilities_8_0_sparc.tar
+----
+. tar 파일에서 추출한 패키지를 호스트에 추가합니다.
++
+[source, cli]
+----
+pkgadd
+----
++
+패키지는 '/opt/ntap/soolkit/bin' 디렉토리에 추가됩니다.
+
++
+다음 예에서는 명령을 사용하여 `pkgadd` Solaris 설치 패키지를 설치합니다.
+
++
+[source, cli]
+----
+pkgadd -d ./NTAPSANTool.pkg
+----
+. 다음 명령을 설치된 경로에 입력하여 툴킷이 성공적으로 설치되었는지 확인하세요.
++
+[source, cli]
+----
+pkgchk
+----
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing]
+----
+# pkgchk -l -p /opt/NTAP/SANToolkit
+
+Pathname: /opt/NTAP/SANToolkit
+Type: directory
+Expected mode: 0755
+Expected owner: root
+Expected group: sys
+Referenced by the following packages: NTAPSANTool
+Current status: installed
+
+# ls -alR /opt/NTAP/SANToolkit
+/opt/NTAP/SANToolkit:
+total 1038
+drwxr-xr-x   3 root     sys            4 Mar  7 13:11 .
+drwxr-xr-x   3 root     sys            3 Mar  7 13:11 ..
+drwxr-xr-x   2 root     sys            6 Mar 17 18:32 bin
+-r-xr-xr-x   1 root     sys       432666 Dec 31 13:23 NOTICES.PDF
+
+/opt/NTAP/SANToolkit/bin:
+total 3350
+drwxr-xr-x   2 root     sys            6 Mar 17 18:32 .
+drwxr-xr-x   3 root     sys            4 Mar  7 13:11 ..
+-r-xr-xr-x   1 root     sys      1297000 Feb  7 22:22 host_config
+-r-xr-xr-x   1 root     root         996 Mar 17 18:32 san_version
+-r-xr-xr-x   1 root     sys       309700 Feb  7 22:22 sanlun
+-r-xr-xr-x   1 root     sys          677 Feb  7 22:22 vidpid.dat
+
+# cd /usr/share/man/man1; ls -al host_config.1 sanlun.1
+-r-xr-xr-x   1 root     sys        12266 Feb  7 22:22 host_config.1
+-r-xr-xr-x   1 root     sys         9044 Feb  7 22:22 sanlun.1
+----
+====
+. 다음을 사용하여 "MPxIO" 또는 "Veritas DMP" 환경에 대한 호스트 매개변수를 구성하십시오. `/opt/NTAP/SANToolkit/bin/host_config` 명령 참조의 멀티패스 스택을 사용한 명령:
++
+`/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp|iscsi|mixed -multipath mpxio|dmp|non [-noalua] [-mcc 60|90|120]`
+
++
+[cols="2*"]
+|===
+| 예를 들어, 설정이 다음과 같다면... | 다음 명령을 사용하세요... 
+
+
+| MPxIO로 멀티패스를 사용하는 FCP | `#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio`SnapMirror Active Sync의 구성 변경 사항에 대한 정보는 기술 자료 문서를 참조하세요.link:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/Solaris_Host_support_recommended_settings_in_SnapMirror_active_sync_formerly_SM_BC_configuration["SnapMirror Active Sync(이전 SM-BC) 구성에서 Solaris 호스트 지원 권장 설정"^] . 
+
+
+| DMP로 멀티패스를 사용하는 FCP | `#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath dmp` 
+
+
+| MPxIO로 멀티패스를 사용하는 MetroCluster 의 FCP, 모든 경로 다운 값은 120초로 설정됩니다.  (이것은 MetroCluster 구성에 권장되는 설정입니다). | `#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio -mcc 120`자세한 내용은 지식 기반 문서를 참조하세요.link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/Solaris_host_support_considerations_in_a_MetroCluster_configuration["MetroCluster 구성에서 Solaris 호스트 지원 고려 사항"^] . 
+|===
+. 호스트를 재부팅합니다.
++
+호스트 유틸리티는 ONTAP LUN에 대해 다음과 같은 NetApp 권장 시간 초과 매개변수 설정을 로드합니다.
+
++
+.예제 보기
+[%collapsible]
+====
+[listing]
+----
+#prtconf -v |grep NETAPP
+   value='NETAPP  LUN' +
+   physical-block-size:4096,
+   retries-busy:30,
+   retries-reset:30,
+   retries-notready:300,
+   retries-timeout:10,
+   throttle-max:64,
+   throttle-min:8,
+   disksort:false,
+   cache-nonvolatile:true'
+----
+====
+. 호스트 유틸리티 설치를 확인하세요.
++
+[source, cli]
+----
+sanlun version
+----
+
+
+
+
+== 다음 단계
+
+link:hu-solaris-san-toolkit.html["SAN 툴킷에 대해 알아보세요"] .

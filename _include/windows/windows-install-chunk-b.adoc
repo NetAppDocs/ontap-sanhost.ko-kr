@@ -1,0 +1,29 @@
+= 2단계: FC HBA 및 스위치 구성
+:allow-uri-read: 
+
+
+. 대상 서비스를 시작합니다.
+. 케이블 연결을 확인합니다.
++
+를 참조하세요 https://docs.netapp.com/us-en/ontap/san-config/index.html["SAN 구성 참조"^] 자세한 케이블링 및 구성 정보는 여기를 참조하세요.
+
+
+
+
+
+== 2단계: FC HBA 및 스위치 구성
+
+스토리지 시스템에 대한 FC 접속을 위해 지원되는 하나 이상의 FC HBA(호스트 버스 어댑터)를 설치하고 구성합니다.
+
+Windows Host Utilities 설치 프로그램에서 필요한 FC HBA 설정을 설정합니다.
+
+
+CAUTION: HBA 매개변수는 Windows 호스트 유틸리티 설치 프로그램에서만 설정해야 합니다.  이를 통해 Windows 호스트가 ONTAP 플랫폼의 스토리지 시스템 동작을 올바르게 처리할 수 있습니다.
+
+.단계
+. HBA 공급업체가 제공한 지침에 따라 하나 이상의 지원되는 FC HBA를 설치합니다.
+. 지원되는 HBA 드라이버 및 관리 유틸리티를 얻고 HBA 공급업체에서 제공하는 지침에 따라 설치합니다.
+. https://docs.netapp.com/us-en/ontap/san-management/index.html["HBA를 FC 스위치 또는 스토리지 시스템에 직접 연결하세요."^] .
+. https://docs.netapp.com/us-en/ontap/san-config/fibre-channel-fcoe-zoning-concept.html["FC 스위치 설명서에 따라 FC 스위치에 영역을 만듭니다."^] .
+. ONTAP 의 경우 WWPN으로 스위치를 구역화합니다.  스토리지 컨트롤러의 물리적 포트의 WWPN이 아닌 논리적 인터페이스(LIF)의 WWPN을 사용해야 합니다. 를 참조하세요  https://docs.netapp.com/us-en/ontap/san-config/index.html["SAN 구성 참조"^] 자세한 내용은.
+

@@ -1,0 +1,97 @@
+= 
+:allow-uri-read: 
+
+
+. 저장소 구성에 MetroCluster, Oracle Solaris 가상화 또는 SnapMirror Active Sync가 포함된 경우 기본 설정을 변경하세요.
++
+[role="tabbed-block"]
+====
+.MetroCluster
+--
+기본적으로 Solaris OS는 LUN에 대한 모든 경로가 손실되면 *20초* 후에 I/O 작업을 실행하지 못합니다.  이것은 다음에 의해 제어됩니다. `fcp_offline_delay` 매개변수.  기본값은 `fcp_offline_delay` 표준 ONTAP 클러스터에 적합합니다.  그러나 MetroCluster 구성에서는 값을 늘려야 합니다. `fcp_offline_delay` 계획되지 않은 장애 조치를 포함하여 작업 중에 I/O가 조기에 시간 초과되지 않도록 보장하기 위해 *120초*까지 설정됩니다.
+
+MetroCluster 의 기본 설정에 대한 추가 정보 및 권장 변경 사항은 기술 자료 문서를 참조하세요. https://kb.netapp.com/onprem/ontap/metrocluster/Solaris_host_support_considerations_in_a_MetroCluster_configuration["MetroCluster 구성에서 Solaris 호스트 지원 고려 사항"^] .
+
+--
+.Oracle Solaris 가상화
+--
+** Solaris 가상화 옵션에는 Solaris Logical Domains(LDOM 또는 SPARC용 Oracle VM Server라고도 함), Solaris Dynamic Domains, Solaris Zones 및 Solaris Containers가 포함됩니다.  이러한 기술은 "오라클 가상 머신"이라고도 합니다.
+** 예를 들어 특정 Solaris 논리 도메인 내의 Solaris 컨테이너와 같이 여러 옵션을 함께 사용할 수 있습니다.
+** NetApp Oracle에서 전체 구성을 지원하고 LUN에 직접 액세스할 수 있는 모든 파티션이 나열되는 Solaris 가상화 기술 사용을 지원합니다.link:https://imt.netapp.com/matrix/#welcome["IMT"] 지원되는 구성에서.  여기에는 루트 컨테이너, LDOM I/O 도메인, NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.
+** 가상화된 스토리지 리소스만 사용하는 파티션 또는 가상 머신(예: `vdsk` ONTAP LUN에 직접 액세스할 수 없으므로 특정 자격이 필요하지 않습니다.  LDOM I/O 도메인과 같이 기본 LUN에 직접 액세스할 수 있는 파티션이나 가상 머신이 나열되어 있는지 확인하기만 하면 됩니다.link:https://imt.netapp.com/matrix/#welcome["IMT"^] .
+
+
+.단계
+LUN이 LDOM 내에서 가상 디스크 장치로 사용되는 경우 LUN의 소스는 가상화로 인해 마스크 처리되고 LDOM은 블록 크기를 올바르게 감지하지 못합니다.  이 문제를 방지하려면:
+
+.. _Oracle 버그 15824910_에 대한 LDOM OS 패치
+.. 생성하다 `vdc.conf` 가상 디스크의 블록 크기를 설정하는 파일 `4096` .  자세한 내용은 Oracle DOC: 2157669.1을 참조하세요.
+.. 패치 설치를 확인하여 권장 설정이 올바르게 구성되었는지 확인하세요.
++
+... zpool을 생성합니다.
++
+[source, cli]
+----
+zpool create zpool_name disk_list
+----
+... 실행 `zdb -C` zpool을 기준으로 * ashift * 의 값이 인지 확인합니다 `12`.
++
+*ashift*의 값이 아닌 경우 `12` , 다시 실행 `zdb -C11` , 올바른 패치가 설치되었는지 확인하고 내용을 다시 확인하십시오. `vdc.conf` .
+
++
+*ashift*가 값을 표시할 때까지 진행하지 마십시오. `12` .
+
+
+
+
+
+
+NOTE: 여러 Solaris 버전에서 Oracle 버그 15824910에 대한 패치가 제공됩니다.  가장 적합한 커널 패치를 결정하는 데 도움이 필요하면 Oracle에 문의하세요.
+
+--
+.SnapMirror 액티브 싱크
+--
+ONTAP 9.9.1부터 Solaris 호스트에서 SnapMirror 활성 동기화 설정 구성이 지원됩니다.  SnapMirror Active Sync 환경에서 계획되지 않은 사이트 장애 조치 전환이 발생할 때 Solaris 클라이언트 애플리케이션이 중단되지 않는지 확인하려면 다음을 구성해야 합니다. `scsi-vhci-failover-override` Solaris 호스트의 설정.  이 설정은 장애 조치 모듈을 재정의합니다. `f_tpgs` 모순을 감지한 코드 경로의 실행을 방지합니다.
+
+.단계
+.. 구성 파일을 만듭니다 `/etc/driver/drv/scsi_vhci.conf` 호스트에 연결된 NetApp 스토리지 유형에 대해 다음 예와 유사한 항목이 있습니다.
++
+[listing]
+----
+scsi-vhci-failover-override =
+"NETAPP  LUN","f_tpgs"
+----
+.. 재정의 매개변수가 성공적으로 적용되었는지 확인하세요.
++
+[source, cli]
+----
+devprop
+----
++
+[source, cli]
+----
+mdb
+----
++
+.예를 보여주세요
+[%collapsible]
+=====
+[listing]
+----
+root@host-A:~# devprop -v -n /scsi_vhci scsi-vhci-failover-override      scsi-vhci-failover-override=NETAPP  LUN + f_tpgs
+root@host-A:~# echo "*scsi_vhci_dip::print -x struct dev_info devi_child | ::list struct dev_info devi_sibling| ::print struct dev_info devi_mdi_client| ::print mdi_client_t ct_vprivate| ::print struct scsi_vhci_lun svl_lun_wwn svl_fops_name"| mdb -k
+----
+[listing]
+----
+svl_lun_wwn = 0xa002a1c8960 "600a098038313477543f524539787938"
+svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
+----
+=====
+
+
+
+NOTE: 이후 `scsi-vhci-failover-override` 이(가) 적용되었습니다. `conf` 이(가) 에 추가됩니다 `svl_fops_name`. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 NetApp 기술 문서 를 참조하십시오 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["SnapMirror 액티브 동기화 구성에서 Solaris 호스트 지원 권장 설정"^].
+
+--
+====
+

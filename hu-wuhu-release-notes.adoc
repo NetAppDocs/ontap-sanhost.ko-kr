@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: hu-wuhu-release-notes.html 
+keywords: host utilities, linux, 7.1, 7.2, netapp, ontap, release, notes 
+summary: Windows Host Utilities 릴리스 정보 
+---
+= Windows Host Utilities 릴리스 정보
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+릴리스 노트에서는 ONTAP 스토리지 시스템을 사용하여 특정 Windows 호스트를 구성하고 관리하는 데 관련된 새로운 기능, 향상된 기능, 알려진 문제점, 제한 사항 및 중요 주의 사항을 설명합니다.
+
+Host Utilities에서 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오.link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]
+
+
+
+== Windows Host Utilities 8.0의 새로운 기능
+
+Windows Host Utilities 8.0에는 NVMe/FC 드라이버에 대한 추가 매개변수 설정이 포함되어 있습니다.  이러한 매개변수는 Windows Host Utilities 8.0을 설치하면 자동으로 로드됩니다.
+
+
+
+== Windows Host Utilities 7.2의 새로운 기능
+
+Windows Host Utilities 7.2에는 새 공급업체 카드에 대한 NVMe/FC 드라이버 매개 변수 설정 및 버그 수정이 포함됩니다.
+
+
+
+== Windows Host Utilities 7.1의 새로운 기능
+
+Windows Host Utilities 7.1에는 E-Series 스토리지 시스템, ONTAP 9 소프트웨어, 더 빠른 장애 조치를 위한 향상된 iSCSI 시간 초과에 대한 지원이 포함되어 있습니다.
+
+
+
+== 알려진 문제 및 제한 사항
+
+특정 호스트의 성능에 영향을 줄 수 있는 다음과 같은 알려진 문제와 제한 사항을 알고 있어야 합니다.
+
+[cols="30, 15, 30, 30"]
+|===
+| 제목 | 버전에 영향을 미칩니다 | 설명 | 해결 방법 
+
+
+| 를 실행합니다 `linux_gos_timeout-install.sh` Red Hat Enterprise Linux 또는 SUSE Linux Enterprise Server를 실행하는 Hyper-V 게스트에서는 스크립트가 더 이상 필요하지 않습니다 | 7.1 | 기본 시간 초과 설정이 사용되고 있으므로 Red Hat Enterprise Linux 5, Red Hat Enterprise Linux 6 또는 SUSE Linux Enterprise Server 11 Hyper-V 게스트에서 디스크 시간 제한을 변경하기 위해 더 이상 스크립트를 실행할 필요가 `linux_gos_timeout-install.sh` 없습니다.  `linux_gos_timeout-install.sh`이전 버전의 Host Utilities에 포함되어 있던 스크립트는 Windows Host Utilities 7.1 버전에 더 이상 포함되지 않습니다. Windows Host Utilities 7.1에서는 기본 디스크 시간 초과 설정을 사용합니다. | 해당 없음 
+|===
+link:https://mysupport.netapp.com/site/bugs-online/product["NetApp 온라인 버그"^] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다.

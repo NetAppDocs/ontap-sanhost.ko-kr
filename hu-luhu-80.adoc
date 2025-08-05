@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: hu-luhu-80.html 
+keywords: host utilities, unified, oracle, linux, 8.0, netapp, ontap 
+summary: ONTAP 과 함께 Linux Host Utilities 8.0을 사용하는 방법을 설명합니다. 
+---
+= ONTAP 스토리지용 Linux Host Utilities 8.0 설치
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Linux 호스트 유틸리티는 Linux 호스트에 연결된 ONTAP 스토리지를 관리하는 데 도움이 됩니다.  NetApp Linux 호스트 유틸리티를 설치할 것을 강력히 권장하지만 필수는 아닙니다.  이러한 유틸리티는 관리를 개선하고 NetApp 고객 지원팀이 구성에 대한 정보를 수집하는 데 도움을 줍니다.
+
+Linux Host Utilities 8.0은 다음과 같은 배포 유형을 지원합니다.
+
+* Red Hat Enterprise Linux
+* SUSE Linux Enterprise Server
+* Oracle Linux
+* Oracle VM
+
+
+
+NOTE: Linux Host Utilities 소프트웨어는 NVMe/FC(NVMe over Fibre Channel) 및 NVMe/TCP(NVMe over TCP) 호스트 프로토콜을 지원하지 않습니다.
+
+.이 작업에 대해
+Linux Host Utilities를 설치해도 Linux 호스트의 설정은 변경되지 않습니다.
+
+.시작하기 전에
+* 안정적인 작동을 위해 다음을 사용하십시오.link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하세요.
+* 공급업체 지원 사이트에서 제공하는 HBA(호스트 버스 어댑터) 관리 패키지를 설치합니다.  관리 소프트웨어를 사용하면 `sanlun` FC HBA에 대한 정보(예: WWPN)를 수집하는 명령입니다.
++
+다음 패키지가 올바르게 설치되었는지 확인하려면 공급업체의 설명서를 참조하세요.  이러한 패키지는 다음을 지원하는 데 필요합니다. `sanlun fcp show adapter` 명령:
+
++
+** Marvell QLogic HBA – QConvergeConsole CLI
+** Broadcom Emulex HBA-OneCommand Manager 핵심 응용 프로그램 CLI
+
+
+
+
+.단계
+. 현재 Linux Host Utilities 버전이 설치되어 있는 경우 제거하세요.
++
+[source, cli]
+----
+rpm -e netapp_linux_unified_host_utilities-8-0
+----
++
+이전 버전의 Linux Host Utilities의 경우, 호스트 유틸리티 소프트웨어가 설치된 디렉토리로 이동하고 uninstall 명령을 입력하여 설치된 패키지를 제거합니다.
+
+. NetApp Linux Host Utilities 소프트웨어 패키지는 NetApp 지원 사이트에서 64비트 .rpm 파일로 제공됩니다.  64비트 파일을 다운로드하세요link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^] 호스트에게.
+. 소프트웨어 패키지를 다운로드한 디렉토리로 이동하여 설치하세요.
++
+[source, cli]
+----
+rpm -ivh netapp_linux_unified_host_utilities-8-0.x86_xx.rpm
+----
++
+다음 예와 비슷한 출력이 표시되어야 합니다.
+
++
+[listing]
+----
+rpm -ivh netapp_linux_unified_host_utilities-8-0.x86_64.rpm
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:netapp_linux_unified_host_utiliti################################# [100%]
+
+----
++
+[NOTE]
+====
+Ubuntu 호스트 OS를 사용하는 경우 HBA 라이브러리에 수동으로 연결해야 합니다.
+
+[source, cli]
+----
+cp /opt/QLogic_Corporation/QConvergeConsoleCLI/lib64/libHBAAPI.so.2.0.2 /usr/lib64/libHBAAPI.so
+----
+====
+. 설치를 확인합니다.
++
+[source, cli]
+----
+sanlun version
+----
++
+다음 예와 비슷한 출력이 표시되어야 합니다.
+
++
+[listing]
+----
+sanlun version 8.0.386.1644
+----
+
+
+
+
+== 다음 단계
+
+* Linux 커널에서 권장되는 드라이버 설정
++
+Linux 커널과 함께 번들로 제공되는 기본 받은 편지함 드라이버를 사용하는 FC 환경을 구성하는 경우 드라이버의 기본값을 사용할 수 있습니다.
+
+* link:hu-luhu-sanlun-utility.html[""sanlun" 유틸리티에 대해 알아보세요"] .
+

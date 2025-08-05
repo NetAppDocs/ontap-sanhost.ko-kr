@@ -1,0 +1,28 @@
+= 1단계: 필요에 따라 SAN 부팅을 활성화합니다
+:allow-uri-read: 
+
+
+
+
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
+
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 간소화하고 확장성을 개선할 수 있습니다.  구성이 SAN 부팅을 지원하지 않으면 로컬 부팅을 사용할 수 있습니다.
+
+[role="tabbed-block"]
+====
+.SAN 부팅
+--
+SAN 부팅은 SAN에 연결된 디스크(LUN)를 Solaris 호스트의 부팅 장치로 설정하는 프로세스입니다.  FC 프로토콜을 사용하고 Solaris 호스트 유틸리티를 실행하는 Solaris MPxIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다.  SAN 부팅 LUN을 설정하는 데 사용하는 방법은 볼륨 관리자와 파일 시스템에 따라 달라집니다.
+
+.단계
+. 사용하세요link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] Solaris OS, 프로토콜 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
+. Solaris 공급업체 문서에서 SAN 부팅을 설정하는 모범 사례를 따르세요.
+
+
+--
+.로컬 부팅
+--
+예를 들어 SSD, SATA 또는 RAID에 설치하여 로컬 하드 디스크에 Solaris OS를 설치하여 로컬 부팅을 수행합니다.
+
+--
+====

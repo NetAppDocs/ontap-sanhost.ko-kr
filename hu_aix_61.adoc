@@ -16,94 +16,87 @@ summary: ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는
 
 
 [role="lead"]
-AIX 호스트 유틸리티는 AIX 호스트에 연결된 ONTAP 스토리지를 관리할 수 있도록 지원합니다.
+AIX 호스트 유틸리티는 AIX 호스트에 연결된 ONTAP 스토리지를 관리하는 데 도움이 됩니다.  NetApp ONTAP 스토리지 관리를 개선하고 NetApp 지원팀이 구성에 대한 정보를 수집하는 데 도움이 되도록 AIX 호스트 유틸리티를 설치할 것을 적극 권장합니다.
 
-AIX Host Utilities는 다음 프로토콜을 지원합니다.
+AIX Host Utilities 6.1은 다음과 같은 전송 프로토콜과 AIX 환경을 지원합니다.
 
-* FC
-* FCoE 를 참조하십시오
-* iSCSI
-
-
-AIX Host Utilities는 다음 환경을 지원합니다.
-
-* AIX Microsoft MPIO(다중 경로 I/O)(기본 OS)
+* FC, FCoE 및 iSCSI
+* AIX Microsoft 다중 경로 I/O(MPIO)
 * PowerVM
 +
 PowerVM에 대한 자세한 내용은 IBM PowerVM Live Partition Mobility Red Book을 참조하십시오.
 
 
 
+.이 작업에 대해
+* AIX 호스트에 연결된 ONTAP 스토리지를 관리하려면 AIX MPIO와 함께 AIX Host Utilities SAN Toolkit을 설치해야 합니다.
+* AIX 호스트 유틸리티를 설치해도 AIX 호스트의 설정은 변경되지 않습니다.
+
+
 .시작하기 전에
-* 안정적인 작업을 위해 전체 iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하십시오.
-+
-를 사용하여 구성을 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
+* 사용하세요link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] AIX OS, 프로토콜 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
+* 다음을 실행하여 모든 FC 및 FCoE 이니시에이터에 대한 동적 추적을 활성화합니다. `chdev -l <fscsi_device> -a dyntrk=ye` AIX 호스트의 명령.
 
-* 모든 FC 및 FCoE 이니시에이터에 대해 동적 추적을 설정합니다.
-
-
-
-NOTE: NetApp AIX 호스트 유틸리티 소프트웨어 패키지는 에서 압축된 형식으로 `tar.gz file` 사용할 수 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support 사이트"^]있습니다. AIX MPIO를 ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.
 
 .단계
 . 호스트에 로그인합니다.
 +
-** AIX 호스트에서 * root * 로 로그인합니다.
-** PowerVM 호스트에서 * padmin * 으로 로그인한 다음 `oem_setup_env` 명령을 입력하여 루트 사용자가 됩니다.
+[role="tabbed-block"]
+====
+.AIX
+--
+AIX 호스트에서 * root * 로 로그인합니다.
+
+--
+.PowerVM
+--
+PowerVM 호스트에서:
+
+.. *padmin*으로 로그인하세요.
+.. 루트 사용자가 되세요:
++
+[source, cli]
+----
+oem_setup_env
+----
 
 
+--
+====
 . 로 이동합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support 사이트"^] Host Utilities가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.
 . 다운로드가 포함된 디렉터리로 이동합니다.
 . 파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지를 추출합니다.
 +
-`# tar -xvf ntap_aix_host_utilities_6.1.tar.gz`
-
+[source, cli]
+----
+tar -xvf ntap_aix_host_utilities_6.1.tar.gz
+----
 +
 파일 압축을 풀 때 'tap_aix_host_utilities_6.1' 디렉토리가 생성됩니다. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 있습니다.
 
 . AIX MPIO를 설치합니다.
 +
-`# installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/MPIO NetApp.MPIO_Host_Utilities_Kit`
-
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/MPIO NetApp.MPIO_Host_Utilities_Kit
+----
 . SAN 툴킷을 설치합니다.
 +
-`# installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/SAN_Tool_Kit NetApp.SAN_toolkit`
-
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/SAN_Tool_Kit NetApp.SAN_toolkit
+----
 . 호스트를 재부팅합니다.
 . 설치를 확인합니다.
 +
-[listing]
+[source, cli]
 ----
-# sanlun version
-----
-
-
-
-
-== SAN 툴킷을 참조하십시오
-
-AIX 호스트 유틸리티는 IBM AIX 호스트에 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트에서 제공하는 `sanlun` 유틸리티를 사용하면 LUN과 호스트 버스 어댑터(HBA)를 관리할 수 있습니다.  `sanlun`이 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
-
-* 예 *
-
-다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
-
-[listing]
-----
-# sanlun lun show all
-----
-* 예제 출력 *
-
-[listing]
-----
-controller(7mode)/ device host lun
-
-vserver(Cmode) lun-pathname filename adapter protocol size mode
-----------------------------------------------------------------
-data_vserver   /vol/vol1/lun1 hdisk0 fcs0    FCP      60g C
-data_vserver   /vol/vol2/lun2 hdisk0 fcs0    FCP      20g C
-data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
-data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
+sanlun version
 ----
 
-NOTE: 이 툴킷은 모든 호스트 유틸리티 구성과 프로토콜에 공통적으로 적용됩니다. 따라서 모든 부품이 모든 설정에 적용되지 않습니다. 사용하지 않는 구성 요소는 시스템 성능에 영향을 주지 않습니다. SAN 툴킷은 AIX 및 PowerVM/VIOS OS 버전에서 지원됩니다
+
+
+
+== 다음 단계
+
+link:hu-aix-san-toolkit.html["AIX SAN 툴킷에 대해 알아보세요"] .

@@ -1,0 +1,339 @@
+---
+sidebar: sidebar 
+permalink: hu-aix-73.html 
+keywords: Host Utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
+summary: ONTAP 과 함께 IBM AIX 7.3 및/또는 PowerVM VIOS 4.x를 사용하는 방법을 설명합니다. 
+---
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 AIX 7.3/VIOS 4.x 구성
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AIX Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 AIX 호스트에 대한 관리 및 진단 도구를 제공합니다.  AIX 7.3/VIOS 4.x 호스트에 AIX 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
+
+
+
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
+
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 간소화하고 확장성을 개선할 수 있습니다.  구성이 SAN 부팅을 지원하지 않으면 로컬 부팅을 사용할 수 있습니다.
+
+[role="tabbed-block"]
+====
+.SAN 부팅
+--
+SAN 부팅은 AIX/PowerVM 호스트 호스트의 부팅 장치로 SAN에 연결된 디스크(LUN)를 설정하는 프로세스입니다.  FC 프로토콜을 사용하고 FC 또는 FCoE 프로토콜로 AIX 호스트 유틸리티를 실행하는 AIX Multipath I/O(MPIO) 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다.  AIX MPIO 환경에서 SAN 부팅 LUN을 생성하고 새 OS 이미지를 설치하는 데 사용하는 방법은 사용하는 프로토콜에 따라 달라집니다.
+
+.단계
+. 사용하세요link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] AIX OS, 프로토콜 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
+. 공급업체 설명서에서 SAN 부팅을 설정하는 모범 사례를 따르세요.
+
+
+--
+.로컬 부팅
+--
+예를 들어 SSD, SATA 또는 RAID 등 로컬 하드 디스크에 AIX OS를 설치하여 로컬 부팅을 수행합니다.
+
+--
+====
+
+
+== 2단계: AIX 호스트 유틸리티 설치
+
+NetApp ONTAP LUN 관리를 지원하고 기술 지원팀의 구성 데이터 수집을 돕기 위해 AIX 호스트 유틸리티를 설치할 것을 강력히 권장합니다.  Host Utilities의 MPIO 패키지는 AIX 및 VIOS에 대한 MPIO 지원을 제공합니다.
+
+
+NOTE: AIX 호스트 유틸리티를 설치하면 AIX 호스트에서 추가적인 시간 초과 설정이 제공됩니다.
+
+link:hu-aix-80.html["AIX 호스트 유틸리티 8.0 설치"] .
+
+
+
+== 3단계: 호스트의 다중 경로 구성을 확인합니다
+
+AIX 및 PowerVM에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.
+
+다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 개의 네트워크 경로를 구성할 수 있습니다.  한 경로에 장애가 발생하더라도 나머지 경로로 교통이 계속 진행됩니다.  Host Utilities의 AIX 및 PowerVM 환경은 AIX의 기본 다중 경로 솔루션(MPIO)을 사용합니다.
+
+PCM(Path Control Module)은 AIX 호스트의 여러 경로를 제어하는 역할을 합니다.  PCM은 경로 관리를 처리하는 스토리지 공급업체가 제공하는 코드이며 호스트 유틸리티 설치 중에 설치되고 활성화됩니다.
+
+호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하세요.
+
+.단계
+. "MPIO NetApp"을 사용할 수 있는지 확인하세요.  "MPIO NetApp"은 AIX 호스트 유틸리티 설치 중에 로드되며 호스트를 재부팅한 후 사용할 수 있게 됩니다.
++
+[source, cli]
+----
+lsdev -Cc disk
+----
++
+.예제 출력
+`hdisk1  Available 00-00-02 MPIO NetApp FCP Default PCM Disk`
+
+. AIX 호스트 유틸리티는 ONTAP LUN에 대해 다음 매개변수 설정을 로드합니다.
++
+.매개 변수 설정을 표시합니다
+[%collapsible]
+====
+[cols="4*"]
+|===
+| 매개 변수 | 방법입니다 | AIX의 값입니다 | 참고 
+
+
+| 알고리즘을 선택합니다 | MPIO | round_robin(라운드 로빈 | Host Utilities에서 설정합니다 
+
+
+| hcheck_cmd | MPIO | 문의 | Host Utilities에서 설정합니다 
+
+
+| hcheck_interval입니다 | MPIO | 30 | Host Utilities에서 설정합니다 
+
+
+| hcheck_mode를 선택합니다 | MPIO | 비활성 | Host Utilities에서 설정합니다 
+
+
+| lun_reset_spt입니다 | MPIO/비 MPIO | 예 | Host Utilities에서 설정합니다 
+
+
+| 최대 _ 전송 | MPIO/비 MPIO | FC LUN: 0x100000 바이트 | Host Utilities에서 설정합니다 
+
+
+| 아주 잘했습니다 | MPIO/비 MPIO | 2초 지연 | Host Utilities에서 설정합니다 
+
+
+| queue_depth(큐 깊이 | MPIO/비 MPIO | 64 | Host Utilities에서 설정합니다 
+
+
+| reserve_policy를 선택합니다 | MPIO/비 MPIO | no_reserve(예약 없음) | Host Utilities에서 설정합니다 
+
+
+| Re_timeout(디스크) | MPIO/비 MPIO | 30초 | OS 기본값을 사용합니다 
+
+
+| dyntrk | MPIO/비 MPIO | 예 | OS 기본값을 사용합니다 
+
+
+| fc_err_recov | MPIO/비 MPIO | fast_fail을 선택합니다 | OS 기본값을 사용합니다 
+
+
+| Q_TYPE | MPIO/비 MPIO | 단순함 | OS 기본값을 사용합니다 
+
+
+| num_cmd_elems입니다 | MPIO/비 MPIO | VIOS용 AIX 3072의 경우 1024입니다 | FC EN1B, FC EN1C 
+
+
+| num_cmd_elems입니다 | MPIO/비 MPIO | AIX의 경우 1024입니다 | FC EN0G 
+|===
+====
+. FC 및 iSCSI에 대한 I/O 작업을 최적화하려면 다음 설정을 구성하세요.
++
+[role="tabbed-block"]
+====
+.FCP
+--
+[cols="4*"]
+|===
+| 매개 변수 | AIX 버전 | AIX OS 기본값 | NetApp 권장 값 
+
+
+.4+| rw_timeout(디스크) | AIX 7.3TL3 | NPIV:30초, vSCSI:45초 | NPIV:30초, vSCSI:120초 
+
+
+| AIX 7.2TL5 | NPIV:30초, vSCSI:45초 | NPIV:30초, vSCSI:120초 
+
+
+| VIOS 3.1 | 30초 | 30초 
+
+
+| VIOS 4.1 | 30초 | 30초 
+|===
+--
+.iSCSI
+--
+[cols="4*"]
+|===
+| 매개 변수 | AIX 버전 | AIX OS 기본값 | NetApp 권장 값 
+
+
+.5+| rw_timeout(디스크) | AIX 7.3TL3 | vSCSI:45초 | vSCSI:120초 
+
+
+| AIX 7.2TL5 | vSCSI:45초 | vSCSI:120초 
+
+
+| VIOS 3.1 | 120초 | 30초 
+
+
+| VIOS 4.1 | 120초 | 30초 
+
+
+| 모든 AIX7.2 및 AIX 7.3 독립형 | 120초 | 30초 
+
+
+| isw_err_recov(iscsi0) | 모든 AIX7.2 및 AIX 7.3 독립형 | 지연된 실패 | 빠른 실패 
+|===
+--
+====
+. 저장소 구성에 MetroCluster 또는 SnapMirror Active Sync가 포함된 경우 기본 설정을 변경하세요.
++
+[role="tabbed-block"]
+====
+.MetroCluster
+--
+기본적으로 AIX OS는 LUN에 사용 가능한 경로가 없는 경우 더 짧은 I/O 시간 초과를 적용합니다.  이는 단일 스위치 SAN 패브릭을 포함하는 구성과 계획되지 않은 장애 조치를 경험하는 MetroCluster 구성에서 발생할 수 있습니다.  추가 정보 및 기본 설정에 대한 권장 변경 사항은 기술 자료 문서를 참조하세요.link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/What_are_AIX_Host_support_considerations_in_a_MetroCluster_configuration["MetroCluster 구성에서 AIX 호스트 지원에 대한 고려 사항은 무엇입니까?"^] .
+
+--
+.SnapMirror 액티브 싱크
+--
+ONTAP 9.11.1부터 AIX 호스트에 대해 SnapMirror 활성 동기화가 지원됩니다.  AIX 구성의 기본 클러스터는 "활성" 클러스터입니다.
+
+AIX 구성에서는 장애 조치가 중단됩니다.  각 장애 조치 시 I/O 작업을 재개하려면 호스트를 다시 검사해야 합니다.
+
+지식 기반 문서를 참조하세요.link:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/How_to_configure_AIX_Host_for_SnapMirror_active_sync_in_ONTAP["SnapMirror 액티브 동기화에 대해 AIX 호스트를 구성하는 방법"^] .
+
+--
+====
+. 매개변수 설정을 확인하고 ONTAP LUN에 대해 여러 경로가 나열되어 있는지 확인하세요.
++
+[source, cli]
+----
+lsmpio
+----
++
+다음은 AFF 또는 FAS 시스템에 대한 예이며, PCM은 NetApp 에 대해 나열됩니다.
+
++
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+# lsmpio -l hdisk1
+name    path_id  status   path_status  parent  connection
+
+hdisk1  0        Enabled  Non          fscsi6  203200a098ba7afe,5b000000000000
+hdisk1  1        Enabled  Non          fscsi8  203100a098ba7afe,5b000000000000
+hdisk1  2        Enabled  Sel,Opt      fscsi6  203000a098ba7afe,5b000000000000
+hdisk1  3        Enabled  Sel,Opt      fscsi8  203800a098ba7afe,5b000000000000
+#
+lsattr -El hdisk1
+*PCM             PCM/friend/NetAppDefaultPCM Path Control Module*                     False
+PR_key_value    0x6d0000000002              Persistant Reserve Key Value            True
+algorithm       round_robin                 Algorithm                               True
+clr_q           no                          Device CLEARS its Queue on error        True
+dist_err_pcnt   0                           Distributed Error Sample Time           True
+dist_tw_width   50                          Distributed Error Sample Time           True
+hcheck_cmd      inquiry                     Health Check Command                    True
+hcheck_interval 30                          Health Check Interval                   True
+hcheck_mode     nonactive                   Health Check Mode                       True
+location                                    Location Label                          True
+lun_id          0x5b000000000000            Logical Unit Number ID                  False
+lun_reset_spt   yes                         LUN Level Reset                         True
+max_transfer    0x100000                    Maximum TRANSFER Size                   True
+node_name       0x204800a098ba7afe          FC Node Name                            False
+pvid            none                        Physical volume identifier              False
+q_err           yes                         Use QERR bit                            True
+q_type          simple                      Queuing TYPE                            True
+qfull_dly       2                           Delay in seconds for SCSI TASK SET FULL True
+queue_depth     64                          Queue DEPTH                             True
+reassign_to     120                         REASSIGN time out value                 True
+reserve_policy  PR_shared                   Reserve Policy                          True
+rw_timeout      30                          READ/WRITE time out value               True
+scsi_id         0xec409                     SCSI ID                                 False
+start_timeout   60                          START unit time out value               True
+timeout_policy  fail_path                   Active/Passive Disk Path Control Module True
+ww_name         0x203200a098ba7afe          FC World Wide Name                      False
+----
+====
+. ONTAP LUN의 경로 상태를 확인하세요.
++
+[source, cli]
+----
+sanlun lun show
+----
++
+다음 예제 출력은 ASA, AFF 또는 FAS 구성에서 ONTAP LUN의 올바른 경로 상태를 보여줍니다.
+
++
+[role="tabbed-block"]
+====
+.ASA 구성
+--
+ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 이를 활성 상태("기본")로 유지합니다.  이렇게 하면 모든 경로를 통해 동시에 I/O 작업을 처리하여 성능이 향상됩니다.
+
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------ ------- ------ ------- --------- ----------
+host   vserver  AIX                      AIX MPIO
+path   path     MPIO   host    vserver     path
+state  type     path   adapter LIF       priority
+------ ------- ------ ------- --------- ----------
+up     primary  path0  fcs0    fc_aix_1     1
+up     primary  path1  fcs0    fc_aix_2     1
+up     primary  path2  fcs1    fc_aix_3     1
+up     primary  path3  fcs1    fc_aix_4     1
+----
+=====
+--
+.AFF 또는 FAS 구성
+--
+AFF 또는 FAS 구성에는 우선 순위가 높거나 낮은 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 더 높은 활성/최적화 경로는 애그리게이트가 위치한 컨트롤러에서 제공합니다. 낮은 우선 순위 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예제에서는 두 개의 활성/최적화("기본") 경로와 두 개의 활성/비최적화("보조") 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------- ---------- ------ ------- ---------- ----------
+host    vserver    AIX                        AIX MPIO
+path    path       MPIO   host    vserver         path
+state   type       path   adapter LIF         priority
+------- ---------- ------ ------- ---------- ----------
+up      secondary  path0  fcs0    fc_aix_1        1
+up      primary    path1  fcs0    fc_aix_2        1
+up      primary    path2  fcs1    fc_aix_3        1
+up      secondary  path3  fcs1    fc_aix_4        1
+----
+=====
+--
+====
+
+
+
+
+== 4단계: 알려진 문제 검토
+
+알려진 문제가 없습니다.
+
+
+
+== 다음 단계
+
+link:hu-aix-command-reference.html["AIX 호스트 유틸리티 도구 사용에 대해 알아보세요"] .

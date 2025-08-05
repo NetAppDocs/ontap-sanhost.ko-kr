@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: hu-solaris-release-notes.html 
+keywords: Host Utilities, solaris, 6.2, 8.0, netapp, ontap 
+summary: Solaris 호스트 유틸리티에 대한 릴리스 노트입니다. 
+---
+= Solaris 호스트 유틸리티 릴리스 노트
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Solaris Host Utilities 릴리스 노트에서는 ONTAP 스토리지 시스템에서 특정 Solaris 호스트를 구성하고 관리하는 데 관련된 새로운 기능, 향상된 기능, 알려진 문제점, 제한 사항 및 중요 주의 사항을 설명합니다.
+
+Host Utilities에서 지원하는 운영 체제 버전 및 업데이트에 대한 자세한 내용은 를 참조하십시오.link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]
+
+
+
+== Solaris Host Utilities 8.0의 새로운 기능
+
+* Solaris Host Utilities 8.0에서는 다음이 도입되었습니다. `disksort:false` 그리고 `cache-nonvolatile:true` 매개변수 설정.  이러한 매개변수는 호스트로부터의 지속적인 동기화 호출을 억제합니다.  동기화 호출은 성능에 영향을 주지만 ONTAP 휘발성 캐시가 없기 때문에 필요하지 않습니다. 자세한 내용은 다음을 참조하세요. link:https://docs.oracle.com/en/operating-systems/solaris/oracle-solaris/11.4/tuning/ensuring-proper-cache-flush-behavior-flash-and-nvram-storage-devices.html["플래시 및 NVRAM 저장 장치의 캐시 플러시 동작"^] .
+* Solaris Host Utilities 8.0은 FC 드라이버에 대한 자동 업데이트를 지원합니다.  Solaris 11.4의 매개변수를 바인딩하는 FC 드라이버는 SCSI 디스크를 사용합니다. 자세한 내용은 다음을 참조하십시오. link:https://support.oracle.com/knowledge/Sun%20Microsystems/2595926_1.html["Oracle 지원 문서 ID 2595926.1"^] .
+
+
+
+
+== 알려진 문제 및 제한 사항
+
+특정 호스트의 성능에 영향을 줄 수 있는 다음과 같은 알려진 문제와 제한 사항을 알고 있어야 합니다.
+
+[cols="15,15,15,55"]
+|===
+| 버그 ID | 버전에 영향을 미칩니다 | 제목 | 설명 
+
+
+|  | Solaris 호스트 유틸리티 8.0 |  | Solaris Host Utilities 8.0 릴리스는 SPARC 및 x86 플랫폼을 갖춘 Solaris 11.4만 지원합니다.  Solaris 11.3 및 이전 버전의 경우 Solaris Host Utilities 6.2를 사용해야 합니다. 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1385189["1385189"^] | 솔라리스 11.4 | HUK 6.2에서 Solaris 11.4 FC 드라이버 바인딩 변경이 필요합니다 | Solaris 11.4 및 HUK 권장 사항:
+FC 드라이버 바인딩이 에서 변경됩니다 `ssd(4D)` 를 선택합니다 `sd(4D)`. 에 있는 구성을 이동합니다 `ssd.conf` 를 선택합니다 `sd.conf` Oracle(문서 ID 2595926.1)에 설명된 대로, 이 동작은 새로 설치된 Solaris 11.4 시스템과 11.3 이하에서 업그레이드한 시스템에 따라 달라집니다. 
+|===
++link:https://mysupport.netapp.com/site/["NetApp 온라인 버그"^] 가능한 경우 제안되는 해결 방법을 포함하여 대부분의 알려진 문제에 대한 완전한 정보를 제공합니다.  사용할 수 있는 키워드 조합과 버그 유형은 다음과 같습니다.
+
+* FCP 일반: 특정 호스트와 관련되지 않은 FC 및 호스트 버스 어댑터(HBA) 버그를 표시합니다.
+* FCP - Solaris
+

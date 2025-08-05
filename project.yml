@@ -20,51 +20,75 @@ sidebar:
     - title: AIX 호스트 유틸리티
       entries:
       - title: 릴리스 정보
-        url: "/hu_aix_rn.html"
-      - title: AIX HU 7.0을 설치합니다
-        url: "/hu-aix-70.html"
-      - title: AIX HU 6.1을 설치합니다
-        url: "/hu_aix_61.html"
-      - title: 명령 참조 예
-        url: "/hu_aix_61_cmd.html"
+        url: "/hu-aix-release-notes.html"
+      - title: AIX 호스트 유틸리티 설치
+        entries:
+        - title: AIX 호스트 유틸리티 8.0 설치
+          url: "/hu-aix-80.html"
+        - title: AIX Host Utilities 7.0을 설치합니다
+          url: "/hu-aix-70.html"
+        - title: AIX 호스트 유틸리티 6.1 설치
+          url: "/hu_aix_61.html"
+      - title: AIX SAN Tollkit에 대해 알아보세요
+        url: "/hu-aix-san-toolkit.html"
+      - title: AIX 호스트 유틸리티 명령 참조
+        url: "/hu-aix-command-reference.html"
     - title: HP-UX 호스트 유틸리티
       entries:
       - title: 릴리스 정보
-        url: "/hu_hpux_60_rn.html"
-      - title: HP-UX HU 6.0을 설치합니다
+        url: "/hu-hpux-release-notes.html"
+      - title: HP-UX Host Utilities 6.0을 설치합니다
         url: "/hu_hpux_60.html"
-      - title: 명령 참조 예
+      - title: SAN 툴킷에 대해 알아보세요
+        url: "/hu-hpux-sanlun-toolkit.html"
+      - title: HP-UX 명령 참조에 대해 알아보세요
         url: "/hu_hpux_60_cmd.html"
     - title: Linux 호스트 유틸리티
       entries:
       - title: 릴리스 정보
-        url: "/hu_luhu_71_rn.html"
-      - title: Linux Host Utilities 7.1을 설치합니다
-        url: "/hu_luhu_71.html"
-      - title: 명령 참조 예
-        url: "/hu_luhu_71_cmd.html"
+        url: "/hu-luhu-release-notes.html"
+      - title: Linux 호스트 유틸리티 설치
+        entries:
+        - title: Linux Host Utilities 8.0 설치
+          url: "/hu-luhu-80.html"
+        - title: Linux Host Utilities 7.1을 설치합니다
+          url: "/hu_luhu_71.html"
+      - title: Sanlun 유틸리티에 대해 알아보세요
+        url: "/hu-luhu-sanlun-utility.html"
+      - title: Linux 호스트 유틸리티 명령 참조
+        url: "/hu-luhu-command-reference.html"
     - title: Solaris 호스트 유틸리티
       entries:
       - title: 릴리스 정보
-        url: "/hu_solaris_62_rn.html"
-      - title: Solaris HU 6.2를 설치합니다
-        url: "/hu_solaris_62.html"
-      - title: 명령 참조 예
-        url: "/hu_solaris_62_cmd.html"
+        url: "/hu-solaris-release-notes.html"
+      - title: Solaris 호스트 유틸리티를 설치합니다
+        entries:
+        - title: Solaris 호스트 유틸리티 8.0 설치
+          url: "/hu-solaris-80.html"
+        - title: Solaris Host Utilities 6.2 설치
+          url: "/hu_solaris_62.html"
+      - title: SAN 툴킷에 대해 알아보세요
+        url: "/hu-solaris-san-toolkit.html"
+      - title: Solaris 명령 참조에 대해 알아보세요
+        url: "/hu-solaris-command-reference.html"
     - title: Windows 호스트 유틸리티
       entries:
       - title: 릴리스 정보
-        url: "/hu_wuhu_71_rn.html"
-      - title: Windows Host Utilities 7.2를 설치합니다
-        url: "/hu_wuhu_72.html"
-      - title: Windows Host Utilities 7.1을 설치합니다
-        url: "/hu_wuhu_71.html"
+        url: "/hu-wuhu-release-notes.html"
+      - title: Windows 호스트 유틸리티 설치
+        entries:
+        - title: Windows Host Utilities 8.0 설치
+          url: "/hu-wuhu-80.html"
+        - title: Windows Host Utilities 7.2를 설치합니다
+          url: "/hu_wuhu_72.html"
+        - title: Windows Host Utilities 7.1을 설치합니다
+          url: "/hu_wuhu_71.html"
+      - title: Windows 호스트 유틸리티에 대한 설정 구성
+        url: "/hu_wuhu_hba_settings.html"
       - title: Windows Host Utilities를 업그레이드합니다
         url: "/hu_wuhu_upgrade.html"
       - title: Windows 호스트 유틸리티를 복구 및 제거합니다
         url: "/hu_wuhu_repair_remove.html"
-      - title: 레지스트리 설정을 구성합니다
-        url: "/hu_wuhu_hba_settings.html"
       - title: 문제 해결
         url: "/hu_wuhu_troubleshoot.html"
   - title: FCP 및 iSCSI로 호스트를 구성합니다
@@ -73,6 +97,8 @@ sidebar:
       url: "/hu_fcp_scsi_index.html"
     - title: AIX 및 PowerVM/VIOS
       entries:
+      - title: 7.3/4.x
+        url: "/hu-aix-73.html"
       - title: 7.2/3.1
         url: "/hu_aix_72.html"
       - title: '7.1'
@@ -364,7 +390,7 @@ sidebar:
     - title: Solaris
       entries:
       - title: '11.4'
-        url: "/hu_solaris_114.html"
+        url: "/hu-solaris-114.html"
       - title: '11.3'
         url: "/hu_solaris_113.html"
     - title: SUSE Linux Enterprise Server

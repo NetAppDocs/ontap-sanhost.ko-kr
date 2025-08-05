@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_luhu_71_cmd.html 
-keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+permalink: hu-luhu-command-reference.html 
+keywords: host utilities, unified, oracle, linux, 7.1, 8.0, netapp, ontap 
 summary: ONTAP와 함께 Linux 호스트 유틸리티 7.1을 사용하는 방법을 설명합니다 
 ---
-= Linux Host Utilities 7.1 명령 참조
+= Linux 호스트 유틸리티 명령을 사용하여 ONTAP 스토리지 구성을 확인하세요.
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: ONTAP와 함께 Linux 호스트 유틸리티 7.1을 사용하는 방법
 
 
 [role="lead"]
-Linux Host Utilities 7.1 샘플 명령 참조를 사용하면 호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성의 엔드 투 엔드 검증을 수행할 수 있습니다.
+Host Utilities 도구를 사용하여 NetApp 스토리지 구성의 종단 간 유효성 검사를 수행하려면 Linux Host Utilities 샘플 명령 참조를 사용할 수 있습니다.
 
 
 
@@ -26,10 +26,11 @@ Linux Host Utilities 7.1 샘플 명령 참조를 사용하면 호스트 유틸�
 
 [source, cli]
 ----
-# sanlun fcp show adapter -v
+sanlun fcp show adapter -v
 ----
-* 예제 출력 *
-
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
 adapter name:      host15
@@ -66,6 +67,7 @@ supported speed:   4 GBit/sec, 8 GBit/sec, 16 GBit/sec
 negotiated speed:  16 GBit/sec
 OS device name:    /sys/class/scsi_host/host16
 ----
+====
 
 
 == 호스트에 매핑된 모든 LUN을 나열합니다
@@ -74,10 +76,11 @@ OS device name:    /sys/class/scsi_host/host16
 
 [source, cli]
 ----
-# sanlun lun show -p -v all
+sanlun lun show -p -v all
 ----
-* 예제 출력 *
-
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
 
@@ -104,6 +107,7 @@ active      up        secondary  sdr    15:0:6:0     lif_19      65:16
 active      up        secondary  sdad   16:0:4:0     lif_27      66:96
 active      up        secondary  sdan   16:0:6:0     lif_28      66:112
 ----
+====
 
 
 == 해당 SVM에서 호스트에 매핑된 모든 LUN을 나열합니다
@@ -112,10 +116,11 @@ active      up        secondary  sdan   16:0:6:0     lif_28      66:112
 
 [source, cli]
 ----
-# sanlun lun show -p -v vs_sanboot
+sanlun lun show -p -v vs_sanboot
 ----
-* 예제 출력 *
-
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
 
@@ -142,6 +147,7 @@ active      up        secondary  sdcf    15:0:6:0     lif_16g_2       69:48
 active      up        secondary  sdfj    16:0:4:0     lif_16g_3       130:80
 active      up        secondary  sdfl    16:0:6:0     lif_16g_4       130:112
 ----
+====
 
 
 == 호스트에 매핑된 특정 LUN의 모든 특성을 나열합니다
@@ -150,10 +156,11 @@ active      up        secondary  sdfl    16:0:6:0     lif_16g_4       130:112
 
 [source, cli]
 ----
-# sanlun lun show -p -v vs_sanboot:/vol/sanboot_169/lun
+sanlun lun show -p -v vs_sanboot:/vol/sanboot_169/lun
 ----
-* 예제 출력 *
-
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
 
@@ -180,6 +187,7 @@ active      up        secondary  sdcf    15:0:6:0     lif_16g_2         69:48
 active      up        secondary  sdfj    16:0:4:0     lif_16g_3         130:80
 active      up        secondary  sdfl    16:0:6:0     lif_16g_4         130:112
 ----
+====
 
 
 == 지정된 LUN이 호스트에 매핑되는 ONTAP SVM ID를 나열합니다
@@ -188,10 +196,11 @@ active      up        secondary  sdfl    16:0:6:0     lif_16g_4         130:112
 
 [source, cli]
 ----
-# sanlun lun show -m -v vs_sanboot:/vol/sanboot_169/lun
+sanlun lun show -m -v vs_sanboot:/vol/sanboot_169/lun
 ----
-* 예제 출력 *
-
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
                                                              device          host                  lun
@@ -209,6 +218,7 @@ vs_sanboot                    /vol/sanboot_169/lun           /dev/sdfm       hos
            Vserver volume name: sanboot_169     MSID::0x000000000000000000000000809E7CC3
          Vserver snapshot name:
 ----
+====
 
 
 == 호스트 디바이스 파일 이름별 ONTAP LUN 속성 나열
@@ -217,10 +227,11 @@ vs_sanboot                    /vol/sanboot_169/lun           /dev/sdfm       hos
 
 [source, cli]
 ----
-# sanlun lun show -d /dev/sdce
+sanlun lun show -d /dev/sdce
 ----
-* 예제 출력 *
-
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
 controller(7mode/E-Series)/                          device        host                lun
@@ -229,6 +240,7 @@ vserver(cDOT/FlashRay)      lun-pathname           filename      adapter    prot
 vs_sanboot                 /vol/sanboot_169/lun    /dev/sdce     host15     FCP        160g    cDOT
 [root@sr630-13-169 ~]#
 ----
+====
 
 
 == 호스트에 연결된 모든 SVM 타겟 LIF WWPN을 나열합니다
@@ -237,10 +249,11 @@ vs_sanboot                 /vol/sanboot_169/lun    /dev/sdce     host15     FCP 
 
 [source, cli]
 ----
-# sanlun lun show -wwpn
+sanlun lun show -wwpn
 ----
-* 예제 출력 *
-
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
 controller(7mode/E-Series)/   target                                            device          host       lun
@@ -251,6 +264,7 @@ vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_9/lun        
 vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_7/lun        /dev/sdln       host18     10g     cDOT
 vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_5/lun        /dev/sdll       host18     10g     cDOT
 ----
+====
 
 
 == 지정된 SVM 타겟 LIF WWPN에서 호스트에 표시되는 ONTAP LUN을 나열합니다
@@ -259,10 +273,11 @@ vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_5/lun        
 
 [source, cli]
 ----
-# sanlun lun show -wwpn 2010d039ea1308e5
+sanlun lun show -wwpn 2010d039ea1308e5
 ----
-* 예제 출력 *
-
+.예제 보기
+[%collapsible]
+====
 [listing]
 ----
 controller(7mode/E-Series)/   target                                     device         host       lun
@@ -270,3 +285,4 @@ vserver(cDOT/FlashRay)        wwpn               lun-pathname            filenam
 ---------------------------------------------------------------------------------------------------------------
 vs_sanboot                    2010d039ea1308e5   /vol/sanboot_169/lun    /dev/sdfm      host16     160g    cDOT
 ----
+====

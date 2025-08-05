@@ -4,7 +4,7 @@ permalink: hu_aix_72.html
 keywords: Host Utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
 summary: ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는 방법에 대해 설명합니다 
 ---
-= IBM AIX 7.2 및/또는 PowerVM(VIOS 3.1)을 ONTAP와 함께 사용하십시오
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 AIX 7.2/VIOS 3.1 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,149 +16,60 @@ summary: ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는
 
 
 [role="lead"]
-ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하는 IBM AIX 7.2 및/또는 PowerVM(VIOS 3.1)을 구성할 수 있습니다.
+AIX Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 AIX 호스트에 대한 관리 및 진단 도구를 제공합니다.  AIX 7.2 및/또는 PowerVM(VIOS 3.1) 호스트에 AIX 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
 
 
 
-== AIX/VIOS Host Utilities를 설치합니다
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
-AIX Microsoft MPIO(다중 경로 I/O)를 ONTAP 스토리지와 함께 사용하는 동안 AIX 호스트 유틸리티 키트를 설치해야 합니다.
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 간소화하고 확장성을 개선할 수 있습니다.  구성이 SAN 부팅을 지원하지 않으면 로컬 부팅을 사용할 수 있습니다.
 
-Host Utilities 소프트웨어 패키지가 포함된 압축 파일을 에서 다운로드할 수 있습니다link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support 사이트"^]. 파일이 있는 경우 Host Utilities를 설치하는 데 필요한 두 개의 소프트웨어 패키지를 가져오려면 파일의 압축을 풀어야 합니다.
-
-AIX Host Utilities 6.1 릴리스는 이전 릴리스에서 보고된 메모리 누수 문제를 해결합니다. 자세한 내용은 을 link:hu_aix_rn.html["릴리즈 노트를 참조하십시오"]참조하십시오.
+[role="tabbed-block"]
+====
+.SAN 부팅
+--
+SAN 부팅은 AIX/PowerVM 호스트 호스트의 부팅 장치로 SAN에 연결된 디스크(LUN)를 설정하는 프로세스입니다.  FC 프로토콜을 사용하고 FC 또는 FCoE 프로토콜로 AIX 호스트 유틸리티를 실행하는 AIX Multipath I/O(MPIO) 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다.  AIX MPIO 환경에서 SAN 부팅 LUN을 생성하고 새 OS 이미지를 설치하는 데 사용하는 방법은 사용하는 프로토콜에 따라 달라집니다.
 
 .단계
-. 호스트에 로그인합니다.
+. 사용하세요link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] AIX OS, 프로토콜 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
+. 공급업체 설명서에서 SAN 부팅을 설정하는 모범 사례를 따르세요.
+
+
+--
+.로컬 부팅
+--
+예를 들어 SSD, SATA 또는 RAID 등 로컬 하드 디스크에 AIX OS를 설치하여 로컬 부팅을 수행합니다.
+
+--
+====
+
+
+== 2단계: AIX 호스트 유틸리티 설치
+
+NetApp ONTAP LUN 관리를 지원하고 기술 지원팀의 구성 데이터 수집을 돕기 위해 AIX 호스트 유틸리티를 설치할 것을 강력히 권장합니다.  Host Utilities의 MPIO 패키지는 AIX 및 VIOS에 대한 MPIO 지원을 제공합니다.
+
+
+NOTE: AIX 호스트 유틸리티를 설치하면 AIX 호스트에서 추가적인 시간 초과 설정이 제공됩니다.
+
+link:hu_aix_61.html["AIX 호스트 유틸리티 6.1 설치"] .
+
+
+
+== 3단계: 호스트의 다중 경로 구성을 확인합니다
+
+AIX 7.2 및 PowerVM에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.
+
+다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 개의 네트워크 경로를 구성할 수 있습니다.  한 경로에 장애가 발생하더라도 나머지 경로로 교통이 계속 진행됩니다.  Host Utilities의 AIX 및 PowerVM 환경은 AIX의 기본 다중 경로 솔루션(MPIO)을 사용합니다.
+
+PCM(Path Control Module)은 AIX 호스트의 여러 경로를 제어하는 역할을 합니다.  PCM은 경로 관리를 처리하는 스토리지 공급업체가 제공하는 코드이며 호스트 유틸리티 설치 중에 설치되고 활성화됩니다.
+
+호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하세요.
+
+. AIX 호스트 유틸리티는 ONTAP LUN에 대해 다음 매개변수 설정을 로드합니다.
 +
-** AIX 호스트에서 * root * 로 로그인합니다.
-** PowerVM 호스트에서 * padmin * 으로 로그인한 다음 "oem_setup_env" 명령을 입력하여 root가 됩니다.
-
-
-. NetApp Support 사이트에서 Host Utilities가 포함된 압축 파일 복사본을 호스트의 디렉토리로 다운로드합니다.
-. 다운로드가 포함된 디렉터리로 이동합니다.
-. 파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지를 추출합니다.
-+
-'tar-xvf ntap_aix_host_utilities_6.1.tar.gz'
-
-+
-파일 압축을 풀 때 'tap_aix_host_utilities_6.1' 디렉토리가 생성됩니다. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 있습니다.
-
-. AIX MPIO를 설치합니다.
-+
-'installp-aXYd/var/tmp/NTAP_aix_host_utilities_6.1/mpio NetApp.mpio_Host_Utilities_Kit'
-
-. SAN 툴킷을 설치합니다: 'installp-aXYd/var/tmp/ntap_aix_host_utilities_6.1/san_Tool_Kit NetApp.san_toolkit'
-. 호스트를 재부팅합니다.
-
-
-
-
-== SAN 툴킷을 참조하십시오
-
-NetApp 호스트 유틸리티 패키지를 설치하면 툴킷이 자동으로 설치됩니다. 이 키트에서 제공하는 `sanlun` 유틸리티를 사용하면 LUN과 호스트 버스 어댑터(HBA)를 관리할 수 있습니다.  `sanlun`이 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.
-
-.예
-다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.
-
-[listing]
-----
-#sanlun lun show
-
-controller(7mode)/                  device      host       lun
-vserver(Cmode)    lun-pathname     filename    adapter   protocol   size   mode
---------------------------------------------------------------------------------
-data_vserver      /vol/vol1/lun1    hdisk0      fcs0       FCP       60g    C
-data_vserver      /vol/vol2/lun2    hdisk0      fcs0       FCP       20g    C
-data_vserver      /vol/vol3/lun3    hdisk11     fcs0       FCP       20g    C
-data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
-
-----
-
-
-== SAN 부팅
-
-.시작하기 전에
-SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 link:https://imt.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]있습니다.
-
-SAN 부팅은 AIX/PowerVM 호스트의 부팅 장치로 SAN 연결 디스크(LUN)를 설정하는 프로세스입니다. FC 또는 FCoE 프로토콜을 사용하여 AIX Host Utilities를 실행하는 AIX MPIO 환경에서 작동하도록 SAN 부팅 LUN을 설정할 수 있습니다. SAN 부팅 LUN을 생성하고 AIX MPIO 환경에 새 OS 이미지를 설치하는 데 사용하는 방법은 사용 중인 프로토콜에 따라 다를 수 있습니다.
-
-
-
-== 다중 경로
-
-다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 네트워크 경로를 구성할 수 있습니다. 한 경로에 장애가 발생하면 트래픽이 나머지 경로에서 계속됩니다. Host Utilities의 AIX 및 PowerVM 환경은 AIX의 기본 다중 경로 솔루션(MPIO)을 사용합니다.
-
-AIX의 경우 PCM(경로 컨트롤 모듈)은 여러 경로를 제어하는 역할을 합니다. PCM은 경로 관리를 처리하는 스토리지 공급업체에서 제공하는 코드입니다. Host Utilities 설치의 일부로 설치 및 활성화됩니다.
-
-
-
-=== 비 ASA 구성
-
-비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
-
-.예
-다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
-
-[listing]
-----
-# sanlun lun show -p |grep -p hdisk78
-                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
-                           LUN: 37
-                      LUN Size: 15g
-                   Host Device: hdisk78
-                          Mode: C
-            Multipath Provider: AIX Native
-        Multipathing Algorithm: round_robin
-------- ---------- ------ ------- ---------- ----------
-host    vserver    AIX                        AIX MPIO
-path    path       MPIO   host    vserver         path
-state   type       path   adapter LIF         priority
-------- ---------- ------ ------- ---------- ----------
-up      secondary  path0  fcs0    fc_aix_1        1
-up      primary    path1  fcs0    fc_aix_2        1
-up      primary    path2  fcs1    fc_aix_3        1
-up      secondary  path3  fcs1    fc_aix_4        1
-
-----
-
-
-=== 모든 SAN 어레이 구성
-
-ASA(All SAN Array) 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
-
-.예
-다음 예제는 ONTAP LUN에 대한 올바른 출력을 보여줍니다.
-
-
-NOTE: 모든 SAN 어레이(ASA) 구성은 AIX 호스트용 ONTAP 9.8부터 지원됩니다.
-
-[listing]
-----
-# sanlun lun show -p |grep -p hdisk78
-                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
-                           LUN: 37
-                      LUN Size: 15g
-                   Host Device: hdisk78
-                          Mode: C
-            Multipath Provider: AIX Native
-        Multipathing Algorithm: round_robin
------- ------- ------ ------- --------- ----------
-host   vserver  AIX                      AIX MPIO
-path   path     MPIO   host    vserver     path
-state  type     path   adapter LIF       priority
------- ------- ------ ------- --------- ----------
-up     primary  path0  fcs0    fc_aix_1     1
-up     primary  path1  fcs0    fc_aix_2     1
-up     primary  path2  fcs1    fc_aix_3     1
-up     primary  path3  fcs1    fc_aix_4     1
-----
-
-
-== 권장 설정
-
-다음은 ONTAP LUN에 권장되는 매개 변수 설정입니다. ONTAP 호스트 유틸리티 키트를 설치하면 LUN에 대한 중요 매개 변수가 자동으로 설정됩니다.
-
+.매개 변수 설정을 표시합니다
+[%collapsible]
+====
 [cols="4*"]
 |===
 | 매개 변수 | 방법입니다 | AIX의 값입니다 | 참고 
@@ -191,7 +102,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 | reserve_policy를 선택합니다 | MPIO/비 MPIO | no_reserve(예약 없음) | Host Utilities에서 설정합니다 
 
 
-| rw_timeout(디스크) | MPIO/비 MPIO | 30초 | OS 기본값을 사용합니다 
+| Re_timeout(디스크) | MPIO/비 MPIO | 30초 | OS 기본값을 사용합니다 
 
 
 | dyntrk | MPIO/비 MPIO | 예 | OS 기본값을 사용합니다 
@@ -208,27 +119,110 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 | num_cmd_elems입니다 | MPIO/비 MPIO | AIX의 경우 1024입니다 | FC EN0G 
 |===
+====
+. 저장소 구성에 MetroCluster 또는 SnapMirror Active Sync가 포함된 경우 기본 설정을 변경하세요.
++
+[role="tabbed-block"]
+====
+.MetroCluster
+--
+기본적으로 AIX OS는 LUN에 사용 가능한 경로가 없는 경우 더 짧은 I/O 시간 초과를 적용합니다.  이는 단일 스위치 SAN 패브릭을 포함하는 구성과 계획되지 않은 장애 조치를 경험하는 MetroCluster 구성에서 발생할 수 있습니다.  추가 정보 및 기본 설정에 대한 권장 변경 사항은 기술 자료 문서를 참조하세요.link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/What_are_AIX_Host_support_considerations_in_a_MetroCluster_configuration["MetroCluster 구성에서 AIX 호스트 지원에 대한 고려 사항은 무엇입니까?"^] .
+
+--
+.SnapMirror 액티브 싱크
+--
+ONTAP 9.11.1부터 AIX 호스트에 대해 SnapMirror 활성 동기화가 지원됩니다.  AIX 구성의 기본 클러스터는 "활성" 클러스터입니다.
+
+AIX 구성에서는 장애 조치가 중단됩니다.  각 장애 조치 시 I/O 작업을 재개하려면 호스트를 다시 검사해야 합니다.
+
+지식 기반 문서를 참조하세요.link:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/How_to_configure_AIX_Host_for_SnapMirror_active_sync_in_ONTAP["SnapMirror 액티브 동기화에 대해 AIX 호스트를 구성하는 방법"^] .
+
+--
+====
+. ONTAP LUN의 경로 상태를 확인하세요.
++
+[source, cli]
+----
+sanlun lun show
+----
++
+다음 예제 출력은 ASA, AFF 또는 FAS 구성에서 ONTAP LUN의 올바른 경로 상태를 보여줍니다.
+
++
+[role="tabbed-block"]
+====
+.ASA 구성
+--
+ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 이를 활성 상태("기본")로 유지합니다.  이렇게 하면 모든 경로를 통해 동시에 I/O 작업을 처리하여 성능이 향상됩니다.
+
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------ ------- ------ ------- --------- ----------
+host   vserver  AIX                      AIX MPIO
+path   path     MPIO   host    vserver     path
+state  type     path   adapter LIF       priority
+------ ------- ------ ------- --------- ----------
+up     primary  path0  fcs0    fc_aix_1     1
+up     primary  path1  fcs0    fc_aix_2     1
+up     primary  path2  fcs1    fc_aix_3     1
+up     primary  path3  fcs1    fc_aix_4     1
+----
+=====
+--
+.AFF 또는 FAS 구성
+--
+AFF 또는 FAS 구성에는 우선 순위가 높거나 낮은 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 더 높은 활성/최적화 경로는 애그리게이트가 위치한 컨트롤러에서 제공합니다. 낮은 우선 순위 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예제에서는 두 개의 활성/최적화("기본") 경로와 두 개의 활성/비최적화("보조") 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.
+
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------- ---------- ------ ------- ---------- ----------
+host    vserver    AIX                        AIX MPIO
+path    path       MPIO   host    vserver         path
+state   type       path   adapter LIF         priority
+------- ---------- ------ ------- ---------- ----------
+up      secondary  path0  fcs0    fc_aix_1        1
+up      primary    path1  fcs0    fc_aix_2        1
+up      primary    path2  fcs1    fc_aix_3        1
+up      secondary  path3  fcs1    fc_aix_4        1
+----
+=====
+--
+====
 
 
-== MetroCluster에 대한 권장 설정입니다
-
-기본적으로 AIX 운영 체제는 LUN에 대한 경로를 사용할 수 없는 경우 더 짧은 입출력 시간 초과를 적용합니다. 이러한 현상은 단일 스위치 SAN 패브릭과 MetroCluster 구성을 포함하여 예상치 못한 페일오버를 경험한 구성에서 발생할 수 있습니다. 기본 설정에 대한 추가 정보 및 권장 변경 사항은 을 참조하십시오 link:https://kb.netapp.com/app/answers/answer_view/a_id/1001318["NetApp KB1001318"^]
 
 
-
-== SnapMirror 액티브 동기화에 대해 AIX 지원
-
-ONTAP 9.11.1부터 AIX는 SnapMirror 액티브 동기화에서 지원됩니다. AIX 구성에서 운영 클러스터는 "활성" 클러스터입니다.
-
-AIX 구성에서 페일오버는 중단을 야기합니다. 각 페일오버 시 호스트에서 재검색을 수행하여 I/O 작업을 재개해야 합니다.
-
-AIX for SnapMirror 활성 동기화를 구성하려면 기술 자료 문서 를 참조하십시오 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["SnapMirror 액티브 동기화에 대해 AIX 호스트를 구성하는 방법"^].
+== 4단계: 알려진 문제 검토
 
 
 
 == 알려진 문제
 
-ONTAP 릴리스가 포함된 IBM AIX 7.2 및/또는 PowerVM(VIOS 3.1)에는 다음과 같은 알려진 문제가 있습니다.
+ONTAP 스토리지가 포함된 IBM AIX 7.2 및/또는 PowerVM(VIOS 3.1) 릴리스에는 다음과 같은 알려진 문제가 있습니다.
 
 [cols="4*"]
 |===
@@ -243,3 +237,8 @@ ONTAP 릴리스가 포함된 IBM AIX 7.2 및/또는 PowerVM(VIOS 3.1)에는 다�
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653"^] | 입출력 문제는 SFO 장애 및 직선형 I/O 중에 VIOS 3.1.1.10에서 발생합니다 | VIOS 3.1.1에서는 16GB 또는 32GB FC 어댑터로 지원되는 NPIV 클라이언트 디스크에서 입출력 장애가 발생할 수 있습니다. 또한 `vfchost` 드라이버가 클라이언트의 I/O 요청 처리를 중지할 수 있습니다. IBM APAR IJ22990 IBM APAR IJ23222를 적용하면 문제가 해결됩니다. | 해당 없음 
 |===
+
+
+== 다음 단계
+
+link:hu-aix-command-reference.html["AIX 호스트 유틸리티 도구 사용에 대해 알아보세요"] .
