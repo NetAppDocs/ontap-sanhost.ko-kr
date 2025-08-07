@@ -94,7 +94,6 @@
   <block id="e562a7759abbf518b77dba4c6bf7b87d" category="section-title">호스트에 연결된 모든 SVM 타겟 LIF WWPN을 나열합니다</block>
   <block id="ccf6dcaf9d267935d140bb63387e1b16" category="section-title">지정된 SVM 타겟 LIF WWPN에서 호스트에 표시되는 ONTAP LUN을 나열합니다</block>
   <block id="6b83d866c4dfa9b95b03b5a6ede846f7" category="summary">ONTAP와 함께 Windows Server 2019를 사용합니다</block>
-  <block id="d39909bec744e2f2c23d014243c69d33" category="section-title">SAN 부팅</block>
   <block id="51da3f0f90428027f2a496d366e696eb" category="inline-link-macro">Microsoft Update Catalog 2019</block>
   <block id="5a3b43f9090be87b411af7ac82adcb38" category="list-text">Microsoft에서 제공하는 지침에 따라 핫픽스를 설치합니다.</block>
   <block id="4f27a34799ad8580f67b93c57e242ad0" category="section-title">SAN 구성</block>
@@ -961,7 +960,6 @@
   <block id="95a3009a54be763a347295539b3b924d" category="cell">를 클릭합니다<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템과 관련된 NVMe 컨트롤러의 고유 목록을 반환해야 합니다. RHEL 9.1에서<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템에 속한 모든 네임스페이스에 대한 각 ANA 상태가 있는 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 이름 공간 당 속성이므로 지정된 네임스페이스에 대한 하위 시스템 명령 구문을 나열하는 경우 경로 상태로 고유한 NVMe 컨트롤러 항목을 표시하는 것이 좋습니다.</block>
   <block id="54bb88571442321a8544c55cb834deb7" category="cell">RHEL 8.7 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
   <block id="c66549c6038d3ebbf4c13fa9699ba9c4" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트를 사용하여 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 8.7을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
-  <block id="2938598ecd7ea37f885251173aa43089" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우, 입니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일은 에 대한 값을 정의합니다<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 및<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN과 호환되지 않습니다. 다른 SAN 스토리지가 아직 호스트에 연결되어 있으므로 제거할 수 없는 경우 이러한 매개 변수를 특히 디바이스 스탠자가 있는 ONTAP LUN에 대해 수정할 수 있습니다.</block>
   <block id="2fefce185e7d7498c7e3da22bac84294" category="cell">1508554</block>
   <block id="11613812ad376f15dc5ee5a9f425cea1" category="cell">NetApp Linux Host Utilities CLI에서 Emulex HBA 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다</block>
   <block id="58cc994c670841fa2f2ecd4302d45e03" category="cell">RHEL 9.0 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
@@ -1691,21 +1689,9 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="4bd5bd4d2b1b5b4d45d52aa3025e20d9" category="paragraph">Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터에 대해 NVMe/FC를 구성할 수 있습니다.</block>
   <block id="5d672db52f749787478547eba4ca55f3" category="section-title">영구 검색 컨트롤러를 만듭니다</block>
   <block id="d3e220182499e43aeadc8bda16bcb3db" category="paragraph">다음 예에서는 HMAC이 3(SHA-512)으로 설정된 임의의 dhchap 키가 생성됩니다.</block>
-  <block id="4ac1d0cb33ca920ad318b5108ad35c83" category="summary">ONTAP에서 Ubuntu 20.04를 사용하는 방법을 설명합니다</block>
-  <block id="884709522224b2e2f9861c09fe418c9f" category="doc">ONTAP에서 Ubuntu 20.04를 사용합니다</block>
-  <block id="c47bdeb8aa6e7dfdadec0c481e4a21ce" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Ubuntu 20.04를 구성할 수 있습니다.</block>
-  <block id="17ce72ad1f5e6eaa8a603ac974a06f2d" category="paragraph">Ubuntu 20.04의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Ubuntu 20.04는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="cb22bc47f0f8e662ab604bbcbf236866" category="paragraph">Ubuntu 20.04 OS는 ONTAP LUN을 인식하도록 컴파일되고 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
-  <block id="47310b4ac9536318d7bb35ce155bbc39" category="paragraph">Ubuntu 20.04와 ONTAP 릴리스에 대해 알려진 문제는 없습니다.</block>
   <block id="3d945423f8e9496c429a5d8c65b4604f" category="sidebar">우분투</block>
   <block id="4ecf3c9493d36f3a582a25b68e645741" category="sidebar">Ubuntu - FCP</block>
   <block id="7cd95c816f8a04ff858a857e3e5a484d" category="sidebar">20.04</block>
-  <block id="61b07fd83e5960959693b88b1afdfcbe" category="summary">ONTAP에서 Ubuntu 22.04를 사용하는 방법을 설명합니다</block>
-  <block id="d2142f1d82ab3f8920c5e47446631d4b" category="doc">ONTAP에서 Ubuntu 22.04를 사용합니다</block>
-  <block id="4fbbd56106aac3814f8ddd0f05db140b" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Ubuntu 22.04를 구성할 수 있습니다.</block>
-  <block id="aa9b36be0bfd178660104314442edd58" category="paragraph">Ubuntu 22.04의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Ubuntu 22.04는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="918af3e81e1488cf1519a1f43482b774" category="paragraph">Ubuntu 22.04 OS는 ONTAP LUN을 인식하도록 컴파일되고 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
-  <block id="268d764f10521ffc4e0f9dfd03765bd6" category="paragraph">ONTAP 릴리스가 포함된 Ubuntu 22.04에는 알려진 문제가 없습니다.</block>
   <block id="78550e91fbb2b5810210b43b287b7c4e" category="summary">ONTAP를 사용하여 Ubuntu 22.04용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="c6846e0213409c96ad77f710fa307642" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access)가 포함된 Ubuntu 22.04에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
   <block id="71251761db71d74ce129581af51deea0" category="paragraph">ONTAP를 사용하는 Ubuntu 22.04의 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
@@ -1968,20 +1954,12 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="5825e25cd2548b8d4af651b91652e28d" category="paragraph"><block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="d2151dcee8f5a191a60c2d0cb4823f78" category="list-text">명령을 실행한<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block> 다음 호스트를 재부팅합니다.</block>
   <block id="318233b2432e2f51f31d04b8c0f7cbef" category="paragraph">기본 설정을 무시할 수 있는 레거시 설정은 항상 파일, 특히 기본값 섹션에서 확인해야<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 합니다.</block>
-  <block id="3ae9aaf85db63ed41ae37b1878de94b3" category="summary">ONTAP에서 Ubuntu 24.04를 사용하는 방법을 설명합니다</block>
-  <block id="5ec14b83feffb359d4444b755e719320" category="doc">ONTAP에서 Ubuntu 24.04를 사용합니다</block>
-  <block id="defdbb12ef0ae2d46274d8fe5aa59d06" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Ubuntu 24.04를 구성할 수 있습니다.</block>
-  <block id="1797c6fe21b28b6b8987ee970844bade" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다.</block>
-  <block id="be7b845c6ae84ed80593911a7b992a7f" category="paragraph">Ubuntu 24.04의 경우<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 존재해야 하지만 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 설정으로 Ubuntu 24.04가 컴파일되므로 파일을 변경할 필요가 없습니다.</block>
   <block id="8b40b4ef41e0aa8d3e61056f1c3f19a0" category="paragraph">모든 SAN 스토리지(ASA) 및 비 ASA 구성의 경우 다음 예와 같이 명령을 사용하여 ONTAP LUN에 대한 설정을 확인할 수 있습니다<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>.</block>
   <block id="4a69ba1535a62f4e118b39597d1edde0" category="section-title">ASA 구성</block>
   <block id="a8b4b0587b094d82b6d3386124d9175b" category="paragraph">ASA 구성에서는 지정된 LUN에 대한 모든 경로가 활성화되어 최적화되어 있습니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.</block>
   <block id="9fa498aba33ec7d79f732c26e2efc9d9" category="paragraph">다음 예제는 ASA 대상에 매핑된 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
   <block id="f340ac01fe767e25be9ddb4fa3e6d0a5" category="paragraph">비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 더 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에 의해 처리됩니다. 우선 순위가 낮은 경로는 활성 상태이지만 다른 컨트롤러에서 제공되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="41f471e5d42c21f9230c41ea515c384c" category="paragraph">다음 예는 두 개의 활성/최적화 경로와 두 개의 활성/최적화되지 않은 경로가 ASA 이외의 사용자에게 매핑되는 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
-  <block id="17e7cd74d1e06a3b09cc2ed56b832ac3" category="paragraph">Ubuntu 24.04 OS는 ONTAP LUN을 인식하도록 컴파일되고 ASA 및 비 ASA 구성에 대해 모든 구성 매개 변수를 자동으로 올바르게 설정합니다. 또한 다음과 같은 권장 설정을 사용하여 호스트 구성의 성능을 더욱 최적화할 수 있습니다.</block>
-  <block id="8df9c3964d22bd888b14a649ed45d753" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 파일에서 및<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN과 호환되지 않는 값을<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 정의합니다. 다른 SAN 스토리지가 아직 호스트에 연결되어 있으므로 제거할 수 없는 경우 이러한 매개 변수를 특히 디바이스 스탠자가 있는 ONTAP LUN에 대해 수정할 수 있습니다.</block>
-  <block id="4058762f4387b98428e1dd8ec8288b95" category="paragraph">ONTAP 릴리스가 포함된 Ubuntu 24.04에는 알려진 문제가 없습니다.</block>
   <block id="353cc9a5b9b1899de18cfe6696d32fff" category="list-text"><block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block>명령을 실행하고 호스트를 재부팅합니다.</block>
   <block id="7ed1d546734f7bd4b0ef96e269498a07" category="summary">ONTAP를 사용하여 Ubuntu 24.04용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="60996b6ae2fc149121c64d77e545be4d" category="doc">ONTAP를 사용하는 Ubuntu 24.04에 대한 NVMe-oF 호스트 구성</block>
@@ -2017,7 +1995,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="198ef744f24c6814a980b52a8b628dbd" category="paragraph">ONTAP 릴리스가 포함된 Ubuntu 24.04의 NVMe-oF 호스트 구성에 대해 알려진 문제는 없습니다.</block>
   <block id="cd5fcfe02b1d4f040fde5ba738d7572a" category="sidebar">24.04</block>
   <block id="4d2491544460a0c7af79b0ca7492e6fd" category="paragraph"> 항상기본 설정을 무시할 수 있는 레거시 설정은 확인해야<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일, 특히 기본값 섹션에서 합니다.</block>
-  <block id="d7b408d96809ae22d6292a5e84814c2a" category="admonition">단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 4개 이상의 경로로 인해 스토리지 장애 시 경로 문제가 발생할 수 있습니다.</block>
   <block id="ec1fba1237506df59a6228cbfc26fd26" category="admonition">단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.</block>
   <block id="d7eeafe16e993a6db0f390553a4f2af4" category="paragraph">NVMe/TCP 프로토콜이 작업을 지원하지<block ref="c73910bff7459eb78b9c2d1e7c0e3ed7" prefix=" " category="inline-code"></block> 않습니다. 대신 NVMe/TCP 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="15090de1ea1067de344502d808b5a4bd" category="summary">ONTAP에서 Oracle Linux 8.10을 사용하는 방법에 대해 설명합니다</block>
@@ -2429,10 +2406,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="b25ec790b4cbb02c184ec7d8479f9e72" category="summary">ONTAP에서 Solaris 호스트 유틸리티 6.2를 사용하는 방법을 설명합니다</block>
   <block id="22ee06c1124036b790e8e12bab28c94a" category="doc">ONTAP 스토리지용 Solaris Host Utilities 6.2를 설치합니다</block>
   <block id="12ce99988bb774881369b300029d0c1f" category="paragraph">다음 예에서는 명령을 사용하여<block ref="5187972b2183e07957bec1dbaf34d29c" prefix=" " category="inline-code"></block> Solaris 설치 패키지를 설치합니다.</block>
-  <block id="97f9e9274f6dc3116e102b9f9e29e4cf" category="admonition">NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 Ubuntu 20.04 OS에서 사용할 수 없습니다.</block>
-  <block id="36a3f8c9356af2833dfeecba1c622a0c" category="admonition">NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 Ubuntu 22.04 OS에서 사용할 수 없습니다.</block>
-  <block id="ed15c03c842cb2a2695650adf5e123c7" category="admonition">NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 Ubuntu 24.04 OS에서 사용할 수 없습니다.</block>
-  <block id="a21ffa856fbd1843f5375291ecd10dd9" category="paragraph">를 사용하여 <block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인합니다.</block>
   <block id="15d9fd1ff3011117296f7ee36d231ebd" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하는 Red Hat Enterprise Linux 및 Oracle Linux(Red Hat 호환 커널 기반) 플랫폼용 Veritas Storage Foundation 6 시리즈 릴리스에 ONTAP SAN 호스트 구성 설정을 사용할 수 있습니다.</block>
   <block id="fd1139296e6463001441b6b2bcf07035" category="paragraph">구성이 시스템 요구 사항을 충족하는지 확인해야 합니다. 자세한 내용은<block ref="d4eba3849609aea965d9c09098fd43df" category="inline-link-rx"></block> 및 Veritas HCL 매트릭스를 참조하십시오.</block>
   <block id="ebd757716a60a98a115db0a8540bc8d2" category="paragraph">NetApp는 스토리지 페일오버 작업에서 최적의 시스템 구성을 위해 다음과 같은 Veritas VxDMP 튜닝을 권장합니다.</block>
@@ -3843,11 +3816,8 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="c96052047f6e2280e6b7aa1f7a351896" category="cell">다음 명령을 사용하세요...</block>
   <block id="060c7613df3b0d7fd1bf71f18ab099cb" category="cell">MPxIO로 멀티패스를 사용하는 FCP</block>
   <block id="ad577776d81734f3f29e6764dbcc4520" category="inline-link-macro">SnapMirror Active Sync(이전 SM-BC) 구성에서 Solaris 호스트 지원 권장 설정</block>
-  <block id="29cf82657b8be502ce36ea12f289a417" category="cell"><block ref="c463d73ec1f40f47a93931626b8fc677" prefix="" category="inline-code"></block>SnapMirror Active Sync의 구성 변경 사항에 대한 정보는 기술 자료 문서를 참조하세요.<block ref="7c741ba5f1f526ee70c650413daefc0a" category="inline-link-macro-rx"></block> .</block>
   <block id="b823fb4d79c4390b2c148c74a9b89103" category="cell">DMP로 멀티패스를 사용하는 FCP</block>
-  <block id="93632c49f604d0b310c0babdc34326c2" category="cell"><block ref="06faf6d1b783c18c94681d6c1f16428a" prefix="" category="inline-code"></block></block>
   <block id="4e7c844ed51a666f84ad8bcf2e71d65a" category="cell">MPxIO로 멀티패스를 사용하는 MetroCluster 의 FCP, 모든 경로 다운 값은 120초로 설정됩니다.  (이것은 MetroCluster 구성에 권장되는 설정입니다).</block>
-  <block id="b07019d4f94787b75c1485b9c2611aaf" category="cell"><block ref="5f101970758620c2992abbe36bba041b" prefix="" category="inline-code"></block>자세한 내용은 지식 기반 문서를 참조하세요.<block ref="4063ba8be1734fe40e57f28ec9d72b76" category="inline-link-macro-rx"></block> .</block>
   <block id="3b73fde0526aa5735452da53c395dc38" category="paragraph">호스트 유틸리티는 ONTAP LUN에 대해 다음과 같은 NetApp 권장 시간 초과 매개변수 설정을 로드합니다.</block>
   <block id="64349882c1f787c3b5516b9e9f8ad791" category="list-text">호스트 유틸리티 설치를 확인하세요.</block>
   <block id="19b0b1ffb2094b2504c5f1a5a6ed4383" category="doc">Solaris 호스트 유틸리티 명령을 사용하여 ONTAP 스토리지 구성을 확인합니다.</block>
@@ -3944,8 +3914,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="1f7fcca8d7ffda3b845b35eb5e1b2d7a" category="paragraph">Solaris 11.3에서는 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="da81eb6295b00861bab1b50a7fe94dc9" category="paragraph">다중 경로를 사용하면 호스트와 스토리지 시스템 간에 여러 개의 네트워크 경로를 구성할 수 있습니다.  한 경로에 장애가 발생하더라도 나머지 경로로 교통이 계속 진행됩니다.</block>
   <block id="e1428e77099ea286a233c882eef3c5d5" category="paragraph">ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Solaris 11.3 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="aefa1c67bd56ed8b8ae7b71c91fabd7a" category="inline-link-macro">Solaris Host Utilities 6.2 도구 사용에 대해 알아보세요</block>
-  <block id="76ae943ec9d0c473e0ca68d35b9662ce" category="paragraph"><block ref="00c35a1e192164e9fc4b8a6af4d2db02" category="inline-link-macro-rx"></block> .</block>
   <block id="54db225106fc02ccdb6fa2058389400c" category="paragraph">Solaris 호스트 유틸리티는 여러 Solaris 환경과 여러 전송 프로토콜을 지원합니다.  다음은 주요 Solaris 호스트 유틸리티 환경입니다.</block>
   <block id="bc6f3dc142b02ac42cfba1de410cd59f" category="list-text">SPARC 프로세서나 x86/64 프로세서를 사용하는 시스템에서 MPxIO와 파이버 채널(FC) 또는 iSCSI 프로토콜을 갖춘 기본 OS입니다.</block>
   <block id="d9c6d7a6adf54489dc3d1c65712f561e" category="paragraph">Solaris Host Utilities 6.2는 다음 Solaris 시리즈를 지원합니다.</block>
@@ -4056,4 +4024,30 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="d4609abcc5de600b2cd5aa87443c612c" category="sidebar">Windows Host Utilities 8.0 설치</block>
   <block id="390e5244f8ae0a5b4cdd721ad6036cb9" category="sidebar">Windows 호스트 유틸리티에 대한 설정 구성</block>
   <block id="89a348be490d3be0bdc23d43fb585c56" category="sidebar">7.3/4.x</block>
+  <block id="f72cfd397ddcffbe2327665e83f6e4fd" category="doc">3단계: 선택적으로 다중 경로에서 장치 제외</block>
+  <block id="2767a9a2ad485daf64375577843d3ba2" category="doc">4단계: ONTAP LUN에 대한 다중 경로 매개변수 사용자 지정</block>
+  <block id="6b22e7ac9e8b2c938a9f3cfefc2acf42" category="paragraph">Linux Host Utilities 소프트웨어 패키지는 Ubuntu 운영 체제를 지원하지 않습니다.</block>
+  <block id="541fef17acfcdb9ddcecc5eea7c2d771" category="inline-link-macro">AIX 호스트 유틸리티 설치에 대해 알아보세요</block>
+  <block id="4943444f1b42627e453b1e0c8a2cd150" category="paragraph"><block ref="4943444f1b42627e453b1e0c8a2cd150" category="inline-link-macro-rx"></block></block>
+  <block id="3f9444261a484426c9ae23c5b9b82e8d" category="inline-link-macro">HP-UX 호스트 유틸리티 설치에 대해 알아보세요</block>
+  <block id="e79831ce53ed0916ad57668b90bc9a1b" category="paragraph"><block ref="e79831ce53ed0916ad57668b90bc9a1b" category="inline-link-macro-rx"></block></block>
+  <block id="e9930ee9972a09b2fa1b31e4f5fbe66f" category="inline-link-macro">Linux 호스트 유틸리티 설치에 대해 알아보세요</block>
+  <block id="e96921eeb66d57c1e2d154eb9ab78984" category="paragraph"><block ref="e96921eeb66d57c1e2d154eb9ab78984" category="inline-link-macro-rx"></block></block>
+  <block id="1d60707d2fd2532f7783d3c34fe248ce" category="paragraph">SnapMirror Active Sync의 구성 변경 사항에 대한 정보는 기술 자료 문서를 참조하세요.<block ref="7c741ba5f1f526ee70c650413daefc0a" category="inline-link-macro-rx"></block> .</block>
+  <block id="a947e38c0699762b6b117c5faa8af149" category="paragraph">자세한 내용은 기술 자료 문서를 참조하십시오. <block ref="4063ba8be1734fe40e57f28ec9d72b76" category="inline-link-macro-rx"></block> .</block>
+  <block id="5904ba8db5ff841e6a7d13a462291c66" category="inline-link-macro">Solaris 호스트 유틸리티 설치에 대해 알아보세요</block>
+  <block id="2a620c94e95b2a7a9b0a5187427a9dc9" category="paragraph"><block ref="2a620c94e95b2a7a9b0a5187427a9dc9" category="inline-link-macro-rx"></block></block>
+  <block id="f98d44b09f5d0cc59433485eb0048243" category="inline-link-macro">Windows 호스트 유틸리티 설치에 대해 알아보세요</block>
+  <block id="cc30e60c3bfc777355fb5c1a9f21201f" category="paragraph"><block ref="cc30e60c3bfc777355fb5c1a9f21201f" category="inline-link-macro-rx"></block></block>
+  <block id="eb9e9eaeca9a2fe6f091f95c60ceeda4" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 작업을 위한 다중 경로 및 특정 매개변수와 설정을 사용하여 Ubuntu 20.04를 구성합니다.</block>
+  <block id="2eea900ee581f5726b661093cf8ad505" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 위한 Ubuntu 20.04 구성</block>
+  <block id="dd8d9457c96c61b509341e8fc9c06a5a" category="section-title">2단계: 호스트에 대한 다중 경로 구성 확인</block>
+  <block id="86068021aef836dc1f6f1acf0c458729" category="paragraph">Ubuntu 20.04에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="e5c9aae3aa070feffc71ad22ae694781" category="section-title">5단계: 알려진 문제 검토</block>
+  <block id="00958a9c412688342677cda75697e733" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 작업을 위한 다중 경로 및 특정 매개변수와 설정을 사용하여 Ubuntu 22.04를 구성합니다.</block>
+  <block id="ff819e4a2fe4a976a60235e7548a85fb" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Ubuntu 22.04 구성</block>
+  <block id="0ec9e84225e24bae7e1764e1ec2d5208" category="paragraph">Ubuntu 22.04에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="7ffbdb03ebbe3dde997db38f057eaa6f" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Ubuntu 24.04 구성</block>
+  <block id="907d5397191da1f1ee4679d077fb0523" category="paragraph">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 작업을 위한 다중 경로 및 특정 매개변수와 설정을 사용하여 Ubuntu 24.04를 구성합니다.</block>
+  <block id="7346a23f776ee48b909f292127a35cfd" category="paragraph">Ubuntu 24.04에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
 </blocks>

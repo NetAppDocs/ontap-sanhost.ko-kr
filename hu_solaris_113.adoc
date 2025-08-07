@@ -437,4 +437,4 @@ ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Solaris 11.3 릴리스에는 �
 
 == 다음 단계
 
-link:hu-solaris-62-cmd.html["Solaris Host Utilities 6.2 도구 사용에 대해 알아보세요"] .
+link:hu-solaris-command-reference.html["Solaris 호스트 유틸리티 도구 사용에 대해 알아보세요"] .

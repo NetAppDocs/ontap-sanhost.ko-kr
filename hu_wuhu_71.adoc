@@ -129,10 +129,8 @@ NOTE: Hyper-V 가상 시스템에서 실행되는 Windows XP 또는 Windows Vist
 ====
 .대화형으로 설치합니다
 --
-.단계
 Host Utilities 설치 프로그램을 실행하고 화면의 지시를 따라 Host Utilities 소프트웨어 패키지를 대화형으로 설치합니다.
 
-.단계
 . 에서 실행 파일을 다운로드합니다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support 사이트"^].
 . 실행 파일을 다운로드한 디렉터리로 변경합니다.
 . 'NetApp_Windows_HOST_UTPITECTS_7.1_x64' 파일을 실행하고 화면의 지시를 따릅니다.
@@ -144,7 +142,6 @@ Host Utilities 설치 프로그램을 실행하고 화면의 지시를 따라 Ho
 --
 Windows 명령줄을 사용하여 호스트 유틸리티의 비대화형 설치를 수행합니다.  설치가 완료되면 시스템이 자동으로 재부팅됩니다.
 
-.단계
 . Windows 명령 프롬프트에서 다음 명령을 입력합니다.
 +
 [source, cli]
