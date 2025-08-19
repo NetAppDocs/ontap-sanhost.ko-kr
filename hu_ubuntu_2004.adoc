@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_ubuntu_2004.html 
 keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
-summary: ONTAP 스토리지를 사용하여 FCP 및 iSCSI 작업을 위한 다중 경로 및 특정 매개변수와 설정을 사용하여 Ubuntu 20.04를 구성합니다. 
+summary: ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업에 대한 특정 매개변수와 설정을 사용하여 다중 경로를 사용하도록 Ubuntu 20.04를 구성합니다. 
 ---
 = ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 위한 Ubuntu 20.04 구성
 :toc: macro
@@ -19,7 +19,7 @@ summary: ONTAP 스토리지를 사용하여 FCP 및 iSCSI 작업을 위한 다�
 
 
 [role="lead"]
-ONTAP 스토리지를 사용하여 FCP 및 iSCSI 작업을 위한 다중 경로 및 특정 매개변수와 설정을 사용하여 Ubuntu 20.04를 구성합니다.
+ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업에 대한 특정 매개변수와 설정을 사용하여 다중 경로를 사용하도록 Ubuntu 20.04를 구성합니다.
 
 [NOTE]
 ====

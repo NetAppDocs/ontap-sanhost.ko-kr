@@ -213,7 +213,6 @@
   <block id="f1893c3e5e775c895395a0a1524f20a9" category="list-text">파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지를 추출합니다.</block>
   <block id="ee3c9604966f68c69c5d81299e5c5913" category="paragraph">파일 압축을 풀 때 'tap_aix_host_utilities_6.1' 디렉토리가 생성됩니다. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 있습니다.</block>
   <block id="7479ee4eaf5b0a177d10a5a42ff8dc26" category="list-text">AIX MPIO를 설치합니다.</block>
-  <block id="3bb3263aa16bbeb228b8ecd7584a8064" category="summary">ONTAP에서 CentOS 7.3을 사용하는 방법에 대해 설명합니다</block>
   <block id="2d42bb9d7307ce616ea0bcece7fd8556" category="cell">"2 pg_init_retries 50"</block>
   <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="paragraph">예</block>
   <block id="b2d91944503b473fe8f36b2e57bc92ad" category="summary">ONTAP와 함께 Windows Server 2012 R2 사용</block>
@@ -235,7 +234,6 @@
   <block id="51a4a26e6b1bdae133374d340c097526" category="paragraph">다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
   <block id="2844e304c2e162332243113572206ac6" category="inline-link-macro">1308744)를 참조하십시오</block>
   <block id="939827454c3bb8453033ba1bd60c555e" category="cell"><block ref="c8bdc7961e7fb79cc7e51cf734b247fb" category="inline-link-macro-rx"></block></block>
-  <block id="f4bba4cff96aef30f859bc5d933b86d1" category="summary">ONTAP에서 CentOS 7.7을 사용하는 방법에 대해 설명합니다</block>
   <block id="97bfb8bbe6415581f3c953b6daabb241" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 detect_prio의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.</block>
   <block id="5116d27ab3c67a2413a9afe024b82a38" category="summary">ONTAP를 사용하여 RHEL 8.3에 대한 NVMe/FC 호스트를 구성하는 방법</block>
   <block id="20ef4219f8282a156b90a588df2efcd7" category="section-title">RHEL 8.3에서 NVMe/FC를 사용하도록 설정하십시오</block>
@@ -427,7 +425,6 @@
   <block id="911e585c5684ba9f5c2b87af879f4a13" category="summary">ONTAP를 사용하여 RHEL 8.2에 대해 NVMe/FC 호스트를 구성하는 방법</block>
   <block id="797aea72ebbc1431192817ec206cafb4" category="list-text">서버에 Red Hat Enterprise Linux 8.2 GA를 설치합니다.</block>
   <block id="360ef025710e08a61d1403840b1b7d2f" category="list-text">설치가 완료되면 지정된 Red Hat Enterprise Linux 커널을 실행 중인지 확인합니다.</block>
-  <block id="b0825624074d948cc02dab7178882abe" category="summary">ONTAP에서 CentOS 8.1을 사용하는 방법에 대해 설명합니다</block>
   <block id="e23d1316b6f8fd9d76ebc1a761f0ffa9" category="summary">ONTAP에서 RHEL 8.4용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="1124bd13d48eff16726e09da76f5e2b3" category="doc">ONTAP를 사용하는 RHEL 8.4에 대한 NVMe-oF 호스트 구성</block>
   <block id="dec4201e999d968c719dedcc36a07302" category="inline-link">RHEL 8.4 릴리스 정보</block>
@@ -469,7 +466,6 @@
   <block id="64ede1e6f2ef30c339f9a3e100f40cfc" category="cell">가져올 검색 로그 항목이 없습니다</block>
   <block id="abbdb018748bb6cd12284ad6c1685b67" category="cell">'/dev/NVMe-fabric에 쓸 수 없습니다: 작업이 이미 진행 중입니다.</block>
   <block id="5d58354522165b88ab742ec42aac9161" category="section-title">기술 지원 문의 시기</block>
-  <block id="fbd83cf0e839e6dec73fa3ff243bb8c5" category="summary">ONTAP에서 CentOS 7.8을 사용하는 방법에 대해 설명합니다</block>
   <block id="3a1eadc8d9bb3cf94717f7abc94eae77" category="inline-link">Red Hat Enterprise Linux 릴리스</block>
   <block id="ecd07dd2a42b46fb7e8f73e1e5544962" category="admonition">Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 해당 섹션의 알려진 문제점 섹션을 참조하십시오<block ref="939c54c506d35e0d0c1ee5e3c74f33dd" category="inline-link-rx"></block> 문서화:</block>
   <block id="81a952f0a3b26ee44dabb3aa10180e75" category="summary">ONTAP에서 CentOS 6.8을 사용하는 방법에 대해 설명합니다</block>
@@ -490,7 +486,6 @@
   <block id="f17e2682405234dfca14c2a2181e2cd1" category="list-text">lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인합니다.</block>
   <block id="36ee6988f1a73952a5c1d70203b97852" category="list-text">NVMe/FC 이니시에이터 포트가 활성화되어 실행 중이며 타겟 LIF를 볼 수 있는지 확인하십시오.</block>
   <block id="864d504d782b9fe5527151b8a795cdae" category="section-title">NVMe/FC 확인 중</block>
-  <block id="480c1af29fcb3cc17dbe8a841a6a3c06" category="summary">ONTAP에서 CentOS 8.2를 사용하는 방법에 대해 설명합니다</block>
   <block id="c517a5fb26b575817c996f5b44f027c8" category="inline-link-macro">1238719)를 참조하십시오</block>
   <block id="228d243156f27b227dbffd03f56f02b7" category="cell"><block ref="cf56f7936c19e5af5e4aa99ffc3fc54e" category="inline-link-macro-rx"></block></block>
   <block id="cb5cb6cd9eae3b558f871729ba82fea1" category="cell">스토리지 페일오버 작업 중 RHEL8에서 QLogic QLE2672 16GB FC의 커널 중단</block>
@@ -575,14 +570,12 @@
   <block id="f75fbeea110530ab4a9306fd42a5e085" category="summary">ONTAP와 함께 Oracle Linux 6.8을 사용하는 방법에 대해 설명합니다</block>
   <block id="f554c70908c90cf2ddb8539029693dc9" category="paragraph">Oracle Linux 6.8의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
   <block id="6485c78f22d3f3aa24bf7cbcea864cb3" category="paragraph">Oracle Linux 6.8 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일됩니다.</block>
-  <block id="b277f2029ada9ac25bce475d62557cb4" category="summary">ONTAP에서 CentOS 7.9를 사용하는 방법에 대해 설명합니다</block>
   <block id="d6a549e2961efba4f33c4deb10965085" category="summary">ONTAP와 함께 Oracle Linux 6.6을 사용하는 방법을 설명합니다</block>
   <block id="b17be161e93154b1a8e4c9e17fc3b190" category="paragraph">Oracle Linux 6.6의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.6은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
   <block id="3c92bea3eb2289a6ec3282c1090533ba" category="paragraph">Oracle Linux 6.6 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일되었습니다.</block>
   <block id="8e606d3994d1276c51a72c8493480d0d" category="summary">ONTAP에서 CentOS 6.4를 사용하는 방법에 대해 설명합니다</block>
   <block id="ed81d40ee1a062d4852e88bbb707608d" category="paragraph">CentOS 6.4의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="c5b0e8703af1ccb56a53d3ccc87f83ac" category="paragraph">CentOS 6.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="9128494ba0ee37c628f015b5af093f58" category="summary">ONTAP에서 CentOS 7.0을 사용하는 방법에 대해 설명합니다</block>
   <block id="f2ec2908e789bd4d085520a7536b0d19" category="summary">ONTAP에서 CentOS 6.10을 사용하는 방법에 대해 설명합니다</block>
   <block id="4b3e0af5715dc402a6648fb7a4556734" category="paragraph">CentOS 6.10의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.10은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
   <block id="78bd859689f18ba7562b89cdcdf70e0d" category="paragraph">CentOS 6.10은 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
@@ -615,7 +608,6 @@
   <block id="423532f885bb7c35f60dc0e51bc13213" category="paragraph">'lsdev -dev hdisk_name -attr' 명령은 다음과 같은 출력을 생성합니다.</block>
   <block id="90b557bc4fd94303190e979dcff9a912" category="paragraph">'OEM_setup_env' 모드로 들어가면 명령행 프롬프트가 달러 표시에서 파운드 기호로 바뀌고 종료 등의 명령을 입력하여 중단할 때까지 OEM_setup_env 모드로 유지됩니다.</block>
   <block id="11f09804b54aa2c55c142764b2502d82" category="paragraph">다음은 dotpath 유틸리티를 사용하는 예입니다.</block>
-  <block id="ba9c5cfb8923c683e175b0343242d5b2" category="summary">ONTAP에서 CentOS 8.0을 사용하는 방법에 대해 설명합니다</block>
   <block id="8eee884db44f521f0d19cac36bf258cc" category="summary">ONTAP와 함께 Windows Server 2016 사용</block>
   <block id="f5cba97c30a47867e3649fd136cca68c" category="inline-link-macro">Microsoft Update Catalog 2016</block>
   <block id="eea65c7c864efb688d55381c5b21a910" category="summary">ONTAP에서 Linux용 Veritas Infoscale 6.5 및 6.7을 사용하는 방법에 대해 설명합니다</block>
@@ -685,11 +677,9 @@
   <block id="b47148f0acf3e7b3db202890d4c8c0c4" category="cell">스토리지 페일오버 작업 중 Emulex LPe12002 8GB FC를 사용하는 SLES15SP1에서 원격 포트가 차단됨 상태로 전환됩니다.</block>
   <block id="15427ef3cacf89471c2525932d2937ee" category="cell">스토리지 페일오버 작업 중에 원격 포트가 Emulex LPe12002 8GB FC(Fibre Channel)를 통해 SLES15SP1에서 차단된 상태로 전송됩니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로뿐만 아니라 해당 LUN에 대한 I/O 중단이 발생할 수 있습니다. 다음 샘플 명령에 대해 remoteport의 세부 정보를 확인할 수 있습니다.--- cat/sys/class/fc_host/host * /device/rport * /fc_remote_ports/rport * /port_name cat/sys/class/fc_host/device/rport * /fc_remote_ports/rport * /port_state--</block>
   <block id="6b41fb8eea99b0d8d062e30f5b71d616" category="summary">ONTAP를 사용하는 Windows Server 2019용 NVMe/FC 호스트 구성</block>
-  <block id="41e7560cde89e1cd58f68637cb85187c" category="summary">ONTAP에서 CentOS 7.6을 사용하는 방법에 대해 설명합니다</block>
   <block id="9edc8f09fd5b1e5afec2430fd6f561df" category="paragraph">패키지는 '/opt/ntap/soolkit/bin' 디렉토리에 추가됩니다.</block>
   <block id="e84f6ac369848cb6d7e082d7741f9522" category="cell">x86_64 플랫폼에서 Emulex 펌웨어 버전 12.6.x 이상에서 나타납니다</block>
   <block id="bea05db7b205cebd49d85c581b86c97e" category="summary">Veritas Infoscale 6 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다</block>
-  <block id="62d54f77039c15fe0a65691e9ff3f4c2" category="summary">ONTAP에서 CentOS 7.5를 사용하는 방법에 대해 설명합니다</block>
   <block id="43b1876560748141954ab34c38e01ac0" category="summary">ONTAP를 사용하여 RHEL 8.1용 NVMe/FC를 구성하는 방법을 설명합니다</block>
   <block id="1f66f3a5a69d2cce3c5a6e2c4cee2b1a" category="list-text">서버에 Red Hat Enterprise Linux 8.1을 설치합니다.</block>
   <block id="3220aa43d981bbff1470bdfc949b411d" category="inline-link-macro">1275843)을 참조하십시오</block>
@@ -740,10 +730,6 @@
   <block id="cdf5d86cb1edacde3eb5e2a5ecdde6c3" category="summary">ONTAP와 함께 Oracle Linux 6.7을 사용하는 방법에 대해 설명합니다</block>
   <block id="7c7b1ac412755c409b674d6d1d5261c8" category="paragraph">Oracle Linux 6.7의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.7은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
   <block id="30551084db41b5a626c643ea028e9abc" category="paragraph">Oracle Linux 6.7 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일됩니다.</block>
-  <block id="0a4a555ba90159c1b3608a4b2e3295e1" category="summary">ONTAP에서 CentOS 7.4를 사용하는 방법에 대해 설명합니다</block>
-  <block id="39e2f887814ee9598f2240638f02ad73" category="summary">ONTAP에서 CentOS 8.3을 사용하는 방법에 대해 설명합니다</block>
-  <block id="35a2873560c7df91eb3565c5ce683568" category="summary">ONTAP에서 CentOS 7.2를 사용하는 방법에 대해 설명합니다</block>
-  <block id="0b9f55b9dffba7eae6a1222b3c2e4753" category="summary">ONTAP에서 CentOS 7.1을 사용하는 방법에 대해 설명합니다</block>
   <block id="b5532e466b7ace9d1d9ddb98b57ec0d7" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP3용 NVMe/FC를 구성하는 방법에 대해 설명합니다</block>
   <block id="59788ae5607a12c1afe34deb1ad155a2" category="doc">ONTAP가 포함된 SUSE Linux Enterprise Server 15 SP3의 NVMe-oF 호스트 구성</block>
   <block id="83314818bb7c47b391616d0ff767a7de" category="section-title">NVMe - 이니시에이터 패키지</block>
@@ -839,8 +825,6 @@
   <block id="2813f127dc58929fb553bc32684c2e46" category="section-title">알려진 문제 및 제한 사항</block>
   <block id="8b777dc32f2f743eb513fca0bfd52348" category="cell">1457017</block>
   <block id="0078173d6c66e3e11217e80e4ecc1d1b" category="cell">Sanlun 설치는 libdevmapper.so와 libnl.so 라이브러리와 관련된 경고 메시지를 발행한다. 이러한 경고는 '선' 키트의 기능에 영향을 주지 않습니다.</block>
-  <block id="3eeb371f92f74d2b6501646282092ca7" category="summary">ONTAP에서 CentOS 8.4를 사용하는 방법에 대해 설명합니다</block>
-  <block id="c33b879e8a189cf4ded38992165273b7" category="summary">ONTAP에서 CentOS 8.5를 사용하는 방법에 대해 설명합니다</block>
   <block id="ce081634ead33780d73e0e1f6b9ea0ca" category="paragraph">VxDMP(Veritas Dynamic Multipathing)를 사용하면 NetApp LUN을 Veritas Multipath Devices로 주장하는 구성 작업을 수행해야 합니다. Veritas가 NetApp 스토리지 시스템에 제공하는 ASL(Array Support Library) 및 APM(Array Policy Module) 패키지가 설치되어 있어야 합니다. Veritas Software Installation은 제품과 함께 기본 ASL APM 패키지를 로드하는 동안 Veritas 지원 포털에 나열된 최신 지원 패키지를 사용하는 것이 좋습니다.</block>
   <block id="697675a4c21edc6fc07599249d9fe748" category="paragraph">모든 SAN 어레이(ASA) 구성에서 지정된 LUN(논리 유닛)에 대한 모든 경로가 활성 및 최적화됩니다. 즉, 모든 경로를 통해 동시에 I/O를 처리할 수 있으므로 성능이 향상됩니다.</block>
   <block id="4e0b2b4c829cef3166a5190a135bb26f" category="sidebar">Infoscale 8</block>
@@ -1438,12 +1422,10 @@
 FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be33f42f91f00492c" prefix=" " category="inline-code"></block> 를 선택합니다<block ref="200efcf5dbc2c08d7c76deba0c7ecda8" prefix=" " category="inline-code"></block>. 에 있는 구성을 이동합니다<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 를 선택합니다<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> Oracle(문서 ID 2595926.1)에 설명된 대로, 이 동작은 새로 설치된 Solaris 11.4 시스템과 11.3 이하에서 업그레이드한 시스템에 따라 달라집니다.</block>
   <block id="eb5d1a08cb5aa5e6c62dcec6f972d7ef" category="list-text">FCP 일반: 특정 호스트와 관련되지 않은 FC 및 호스트 버스 어댑터(HBA) 버그를 표시합니다.</block>
   <block id="b2996e4a9c3c0535f864240f52e9bcdc" category="list-text">SPARC 프로세서를 사용하는 시스템에서 FC 또는 iSCSI 프로토콜을 사용하는 Veritas DMP(Dynamic Multipathing) 또는 x86/64 프로세서를 사용하는 시스템의 iSCSI 프로토콜</block>
-  <block id="43202c148f53a3c518890e18ae6998e4" category="list-text">에서 Host Utilities가 포함된 압축 파일 사본을 다운로드합니다 <block ref="71858c0235496b8ba65e5e8097fdda2a" category="inline-link-macro-rx"></block> 호스트의 디렉토리로 이동합니다.</block>
   <block id="f01e00e50e3260a96149df0279bca6c7" category="list-text">를 사용하여 파일의 압축을 풉니다<block ref="28c378002cbdc25e8dbf07ffe605f6ac" prefix=" " category="inline-code"></block> 명령:</block>
   <block id="16337c2b0ad3e64aaeb3714d78256deb" category="paragraph">Solaris Host Utilities는 Oracle Solaris 호스트에서 명령줄 툴킷을 제공하는 NetApp 호스트 소프트웨어입니다. 이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 설치됩니다. 이 키트는 를 제공합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> LUN 및 호스트 버스 어댑터(HBA)를 관리하는 데 유용한 유틸리티입니다. 를 클릭합니다<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.</block>
   <block id="5cbce7f0ea158500dcff175373e3cbcf" category="paragraph">릴리즈 노트에서는 새로운 기능 및 향상된 기능, 현재 릴리스에서 해결된 문제, 알려진 문제 및 제한 사항, ONTAP 스토리지 시스템을 사용하여 특정 AIX 호스트를 구성 및 관리하는 것과 관련된 중요한 주의 사항에 대해 설명합니다.</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="section-title">새로운 소식</block>
-  <block id="e4e1c13bb0b14f6cb7608cbecea948ef" category="list-text">iSCSI</block>
   <block id="c791b15d48a2be7d8c6a9c0b2badc362" category="list-text">PowerVM</block>
   <block id="f46d29974d2e1fa7b1fb4f55e009f7c2" category="paragraph">PowerVM에 대한 자세한 내용은 IBM PowerVM Live Partition Mobility Red Book을 참조하십시오.</block>
   <block id="7cfc2a0609811d433edc27220510bde6" category="list-text">로 이동합니다<block ref="4885f2a79813769d8236c375fd40eeb7" category="inline-link-rx"></block> Host Utilities가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.</block>
@@ -1556,7 +1538,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="b16452e3905ac336b68babc6fa562702" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.9를 구성할 수 있습니다.</block>
   <block id="a69f90991b7861bf298029c85947f926" category="paragraph">ONTAP가 설치된 Oracle Linux 6.9 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="95ee459b709d0e4cae7ea12ed33763f9" category="paragraph">SUSE Linux Enterprise Server 15 SP4(ONTAP 릴리스 포함)에는 알려진 문제가 없습니다.</block>
-  <block id="0d3d494fc08d768af320e003868e2ebc" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 HP-UX 11i v3을 구성할 수 있습니다.</block>
   <block id="1bc24cef68b137efe0e69c2b269dd7da" category="paragraph">ONTAP 릴리즈가 포함된 Linux용 Veritas Infoscale 8에는 알려진 문제가 없습니다.</block>
   <block id="7145b773c01d1ea2262969c3644747a0" category="paragraph">Windows Server 2022와 ONTAP 릴리즈에는 알려진 문제가 없습니다.</block>
   <block id="3d8d5b2f05311b66754ca058971f7e2e" category="paragraph">SUSE Linux Enterprise Server 15 SP5와 ONTAP 릴리스에 대해 알려진 문제는 없습니다.</block>
@@ -2944,14 +2925,9 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="c76dae5432bc09fa983706505086692e" category="list-text">RHEL 9.6 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9.6</block>
   <block id="c90e2c8eff8de67c2e01d748085394db" category="list-text">다음을 확인하십시오. <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 존재합니다. 파일이 없으면 0바이트 빈 파일을 만듭니다.</block>
-  <block id="9143f7bbdb93a1e9aa2dc28f3c922fcc" category="summary">ONTAP과 함께 Citrix Hypervisor 8.2를 사용하는 방법을 설명합니다.</block>
   <block id="0825e58b251b6f1e1956c9f982c69b3d" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Citrix Hypervisor 8.2 구성</block>
-  <block id="efb6a029c96ca3e81423fa8765c5e1f2" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Citrix Hypervisor 8.2 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="3e2e1ae5727d07e3ee9163e73df8e73f" category="paragraph">Citrix Hypervisor 8.2에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="b335d4f62ea30021bc1fd547fa7ca552" category="summary">ONTAP과 함께 Citrix XenServer 8.4를 사용하는 방법을 설명합니다.</block>
   <block id="6d9eef6a4c2617ee0a8dfdc9ae7a468a" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Citrix Xenserver 8.4 구성</block>
-  <block id="a2e2d0fcc9350f73f4294c53a7b2fa53" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Citrix Xenserver 8.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">Citrix Xenserver 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4을 참조하십시오</block>
   <block id="c4bb680e83ce918749e1d4853b0073d1" category="sidebar">하이퍼바이저 8.2(LTSR)</block>
   <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">SAN 부팅 LUN을 생성하고 호스트에 매핑합니다.</block>
@@ -3666,7 +3642,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="08c083ab3d2dc85cc17c16aa87be865d" category="list-text">*padmin*으로 로그인하세요.</block>
   <block id="5a5324c7cd51d134dd7b4074df426843" category="list-text">루트 사용자가 되세요:</block>
   <block id="930931415b499a122be49a153545f591" category="list-text">SCSI UNMAP을 확인하세요<block ref="ce7e54a230e7d7f6125c862b6201f954" prefix=" " category="inline-code"></block> ODM에 매개변수가 추가되었습니다.</block>
-  <block id="1902e1a7238623f94367d983e59c5a3b" category="summary">ONTAP 과 함께 IBM AIX 7.3 및/또는 PowerVM VIOS 4.x를 사용하는 방법을 설명합니다.</block>
   <block id="4743f8e0bf68713a9a85d0855c2d28cc" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 AIX 7.3/VIOS 4.x 구성</block>
   <block id="e3bdc2d79b7f752397bd2b07e719c94d" category="paragraph">AIX Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 AIX 호스트에 대한 관리 및 진단 도구를 제공합니다.  AIX 7.3/VIOS 4.x 호스트에 AIX 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="ea07c36b18e97a60b8e39185af2e70d2" category="inline-link-macro">AIX 호스트 유틸리티 8.0 설치</block>
@@ -3675,8 +3650,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="808f509e0f9c43c998453cb36e32d6b9" category="list-text">"MPIO NetApp"을 사용할 수 있는지 확인하세요.  "MPIO NetApp"은 AIX 호스트 유틸리티 설치 중에 로드되며 호스트를 재부팅한 후 사용할 수 있게 됩니다.</block>
   <block id="f3a66c03dd24364f67a928342777d333" category="paragraph"><block ref="e5220707910060523bb96d6b9caa48a3" prefix="" category="inline-code"></block></block>
   <block id="bc6a13eaaadb92e952fe0780a8c05fa5" category="list-text">AIX 호스트 유틸리티는 ONTAP LUN에 대해 다음 매개변수 설정을 로드합니다.</block>
-  <block id="b85351e18a5da33e0eb75ecc1fbda104" category="list-text">FC 및 iSCSI에 대한 I/O 작업을 최적화하려면 다음 설정을 구성하세요.</block>
-  <block id="a7c815fafe60ae637d38216fa6300395" category="open-title">FCP</block>
   <block id="92d3d1084eb6c8f1ef216786e227ba4d" category="cell">AIX 버전</block>
   <block id="f8b9e823d50ed3e99fd77acc2363ca70" category="cell">AIX OS 기본값</block>
   <block id="024c7088f8cb994f40e5d60b87c10cbb" category="cell">NetApp 권장 값</block>
@@ -3746,7 +3719,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="54d2be6229d60cd6144f8a215e8e77e9" category="list-text">공급업체 지원 사이트에서 제공하는 HBA(호스트 버스 어댑터) 관리 패키지를 설치합니다.  관리 소프트웨어를 사용하면<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> FC HBA에 대한 정보(예: WWPN)를 수집하는 명령입니다.</block>
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">다음 패키지가 올바르게 설치되었는지 확인하려면 공급업체의 설명서를 참조하세요.  이러한 패키지는 다음을 지원하는 데 필요합니다.<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block> 명령:</block>
   <block id="291498f8ec1453e277a2e2b46e71ae68" category="list-text">현재 Linux Host Utilities 버전이 설치되어 있는 경우 제거하세요.</block>
-  <block id="637c8507f72183e29c96c146c86d7988" category="list-text">NetApp Linux Host Utilities 소프트웨어 패키지는 NetApp 지원 사이트에서 64비트 .rpm 파일로 제공됩니다.  64비트 파일을 다운로드하세요<block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 호스트에게.</block>
   <block id="a47e489edc31ec3082b9f72fed5a5375" category="list-text">소프트웨어 패키지를 다운로드한 디렉토리로 이동하여 설치하세요.</block>
   <block id="b13f2391541d6900841a6b191f26531d" category="paragraph">Ubuntu 호스트 OS를 사용하는 경우 HBA 라이브러리에 수동으로 연결해야 합니다.</block>
   <block id="bf2fa1be3b14254d86cd9857c8495543" category="doc">Linux 호스트 유틸리티 명령을 사용하여 ONTAP 스토리지 구성을 확인하세요.</block>
@@ -4039,15 +4011,45 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="2a620c94e95b2a7a9b0a5187427a9dc9" category="paragraph"><block ref="2a620c94e95b2a7a9b0a5187427a9dc9" category="inline-link-macro-rx"></block></block>
   <block id="f98d44b09f5d0cc59433485eb0048243" category="inline-link-macro">Windows 호스트 유틸리티 설치에 대해 알아보세요</block>
   <block id="cc30e60c3bfc777355fb5c1a9f21201f" category="paragraph"><block ref="cc30e60c3bfc777355fb5c1a9f21201f" category="inline-link-macro-rx"></block></block>
-  <block id="eb9e9eaeca9a2fe6f091f95c60ceeda4" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 작업을 위한 다중 경로 및 특정 매개변수와 설정을 사용하여 Ubuntu 20.04를 구성합니다.</block>
   <block id="2eea900ee581f5726b661093cf8ad505" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 위한 Ubuntu 20.04 구성</block>
   <block id="dd8d9457c96c61b509341e8fc9c06a5a" category="section-title">2단계: 호스트에 대한 다중 경로 구성 확인</block>
   <block id="86068021aef836dc1f6f1acf0c458729" category="paragraph">Ubuntu 20.04에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="e5c9aae3aa070feffc71ad22ae694781" category="section-title">5단계: 알려진 문제 검토</block>
-  <block id="00958a9c412688342677cda75697e733" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 작업을 위한 다중 경로 및 특정 매개변수와 설정을 사용하여 Ubuntu 22.04를 구성합니다.</block>
   <block id="ff819e4a2fe4a976a60235e7548a85fb" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Ubuntu 22.04 구성</block>
   <block id="0ec9e84225e24bae7e1764e1ec2d5208" category="paragraph">Ubuntu 22.04에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="7ffbdb03ebbe3dde997db38f057eaa6f" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Ubuntu 24.04 구성</block>
-  <block id="907d5397191da1f1ee4679d077fb0523" category="paragraph">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 작업을 위한 다중 경로 및 특정 매개변수와 설정을 사용하여 Ubuntu 24.04를 구성합니다.</block>
   <block id="7346a23f776ee48b909f292127a35cfd" category="paragraph">Ubuntu 24.04에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="c57ba702358115215fa1859fbd41c62f" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 AIX 7.3/VIOS 4.x 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="7f47ce68c3e9712b2e5eeb570615f772" category="list-text">FC의 I/O 작업을 최적화하려면 다음 설정을 구성하세요.</block>
+  <block id="38df161a4bef837a9583cd463465319a" category="list-text">iSCSI에 대한 I/O 작업을 최적화하려면 다음 설정을 구성하세요.</block>
+  <block id="70b16312ca41521a63845d682d638bec" category="list-text">로 가다<block ref="4d71adee66f8e315be0be498f4a01c67" category="inline-link-rx"></block> 호스트 유틸리티가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.</block>
+  <block id="c294ad1e453d7b752c4a7b6ffca30fa7" category="list-text">NetApp Linux Host Utilities 소프트웨어 패키지는 NetApp 지원 사이트에서 64비트 .rpm 파일로 제공됩니다. 64비트 파일을 다운로드하세요<block ref="237990affc48ceaf00880be7be2d0c19" category="inline-link-macro-rx"></block> 호스트에게.</block>
+  <block id="23ca7e804a2f969375c0a54dad8a855e" category="list-text">호스트 유틸리티가 포함된 압축 파일의 사본을 다운로드하세요.<block ref="237990affc48ceaf00880be7be2d0c19" category="inline-link-macro-rx"></block> 호스트의 디렉토리로.</block>
+  <block id="8af7a3daa634a1fe75d982742d9c6988" category="list-text">실행 파일을 다운로드하세요<block ref="4d71adee66f8e315be0be498f4a01c67" category="inline-link-rx"></block> .</block>
+  <block id="7b14446bb459cc461b85225eb36e5ddb" category="list-text">실행하다<block ref="2ae3756e5933ab49d9a7fd370e8bb672" prefix=" " category="inline-code"></block> 파일을 선택하고 화면의 지시를 따르세요.</block>
+  <block id="33fc47220446607f038d8aa5cbb2f85f" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="06d16027989212eb9ec30fbbceecc483" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="d6736620899a1598c3323f146c329a47" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 CentOS 7.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="c7093ee3b2d76f9f54e1c7967a8757ed" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="f51784140f9e4c18aaaaabc97ab88175" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="bdc9a2b049ed8b5764f50150bca8aacd" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="f3a268ccef73be1a6f14d0c5e46779f4" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="3950d47aea232c7c0f4d9f45a43bda17" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="d539ad578c66b9df653e9cf83bd0c001" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="696f3bd641d1ac208e9dcbc482739bd0" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="252d89392684bcfcf4005f42db245f9a" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="5c8eef54a7730dec61d5ef002cd898f1" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="b683b84fbd22cd466d30eec590f61226" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 CentOS 8.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="09c8e0bd6acf9d6ae65366b23ef6a356" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="ac161b2d475197d66b93469d29587e22" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="49cc988afc6b092ce6281b15b9a60972" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="3c7efd424a20046d29e4da88c0d5c486" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업을 위한 특정 매개변수와 설정을 사용하여 Citrix Hypervisor 8.2를 다중 경로로 구성합니다.</block>
+  <block id="1f5a17864fe735a3a834371ab2c3043e" category="paragraph">Linux Host Utilities 소프트웨어 패키지는 Citrix Hypervisor 운영 체제를 지원하지 않습니다.</block>
+  <block id="de920f5dd498ae73930aaae6ead146f6" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업을 위한 특정 매개변수와 설정을 사용하여 Citrix Hypervisor 8.4를 다중 경로로 구성합니다.</block>
+  <block id="936b4d22e2607b9ac84f06791fe03923" category="paragraph">Citrix Hypervisor 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="56eaee8dcecb52bd60025f4df180e2f4" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 HP-UX 11i v3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="bb53e7efc63e8dc547146d694f3c97c1" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업에 대한 특정 매개변수와 설정을 사용하여 다중 경로를 사용하도록 Ubuntu 20.04를 구성합니다.</block>
+  <block id="3d4de8befb0eddb7be95b9eb899bcd21" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Ubuntu 24.04 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="faed4c9c8188f7390b773fb64e42fc29" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다.  Ubuntu 22.04 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="3b2ad8d11d49615d3cb062774e116630" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다.  Ubuntu 24.04 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
 </blocks>

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_centos_74.html 
 keywords: host utilities, centos, linux, 7.4, netapp, ontap 
-summary: ONTAP에서 CentOS 7.4를 사용하는 방법에 대해 설명합니다 
+summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.4 호스트에 Linux 호스트 유틸리티를 설치합니다. 
 ---
 = ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.4 구성
 :hardbreaks:

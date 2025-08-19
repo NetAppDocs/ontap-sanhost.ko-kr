@@ -63,7 +63,7 @@ oem_setup_env
 
 --
 ====
-. 로 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp Support 사이트"^] 이동하여 Host Utilities가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.
+. 로 가다 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/8.0/downloads["NetApp Support 사이트"^] 호스트 유틸리티가 포함된 압축 파일을 호스트의 디렉토리에 다운로드합니다.
 . 다운로드가 포함된 디렉터리로 이동합니다.
 . 파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지의 압축을 풉니다.
 +
