@@ -3707,7 +3707,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">다음 패키지가 올바르게 설치되었는지 확인하려면 공급업체의 설명서를 참조하세요.  이러한 패키지는 다음을 지원하는 데 필요합니다.<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block> 명령:</block>
   <block id="291498f8ec1453e277a2e2b46e71ae68" category="list-text">현재 Linux Host Utilities 버전이 설치되어 있는 경우 제거하세요.</block>
   <block id="a47e489edc31ec3082b9f72fed5a5375" category="list-text">소프트웨어 패키지를 다운로드한 디렉토리로 이동하여 설치하세요.</block>
-  <block id="b13f2391541d6900841a6b191f26531d" category="paragraph">Ubuntu 호스트 OS를 사용하는 경우 HBA 라이브러리에 수동으로 연결해야 합니다.</block>
   <block id="bf2fa1be3b14254d86cd9857c8495543" category="doc">Linux 호스트 유틸리티 명령을 사용하여 ONTAP 스토리지 구성을 확인하세요.</block>
   <block id="3a61827896464412c2e42d33f758f4f1" category="paragraph">Host Utilities 도구를 사용하여 NetApp 스토리지 구성의 종단 간 유효성 검사를 수행하려면 Linux Host Utilities 샘플 명령 참조를 사용할 수 있습니다.</block>
   <block id="509349566982f99a656299d84be158b8" category="summary">Linux 호스트 유틸리티 릴리스 노트</block>
@@ -4051,4 +4050,11 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="30fe8c509bd758431e60f7f83e9085f0" category="paragraph">Windows MPIO용 MS DSM이 감지되면 Windows 호스트 유틸리티는 다음 매개변수에 대한 값을 설정합니다.</block>
   <block id="d7ffc66640801d3b23e6403b53045607" category="paragraph">FC 시스템에서 Emulex HBA 드라이버 설정을 확인합니다. 이러한 설정은 HBA의 각 포트에 존재해야 합니다.</block>
   <block id="0aa9ab84e08417b1d87c1a5606b6b1b4" category="paragraph">FC 시스템에서 QLogic HBA 드라이버 설정을 확인합니다. 이러한 설정은 HBA의 각 포트에 존재해야 합니다.</block>
+  <block id="eb13ea1edb52f2f7cdf4b15544892c06" category="list-text">레드햇 엔터프라이즈 리눅스(RHEL)</block>
+  <block id="cfe19b0ae08454358fbe515d88fd6095" category="open-title">리눅스 호스트</block>
+  <block id="fc474797a9f95d446d20392a22b50563" category="paragraph">RHEL, SUSE Linux Enterprise Server 또는 Oracle Linux 호스트에서 Linux 호스트 유틸리티를 제거합니다.</block>
+  <block id="2b65cdb03e4760333180898a7c50951b" category="paragraph">Ubuntu 호스트에서 Linux 호스트 유틸리티 제거:</block>
+  <block id="de3b6129e1e522c8f5cf6e37ce4b9f22" category="paragraph">RHEL, SUSE Linux Enterprise Server 또는 Oracle Linux 호스트에 Linux Host Utilities 8.0을 설치하세요.</block>
+  <block id="b9e9a39780b968851bca7471c4bdb04f" category="list-text">Ubuntu 호스트에 Linux Host Utilities 8.0을 설치하세요:</block>
+  <block id="50a27e0ec26dfc22ecff73b4716eee33" category="list-text">Ubuntu OS를 HBA 라이브러리에 수동으로 연결합니다.</block>
 </blocks>
