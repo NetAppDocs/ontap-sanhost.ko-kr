@@ -1101,19 +1101,14 @@
   <block id="0ca827b324b67329c1c236782d79cacc" category="list-text">Windows * 프로그램 및 기능 * (Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 및 Windows 2022)을 엽니다.</block>
   <block id="b3d12894d56e85cc742cb855ce388cdf" category="list-text">변경 * 을 선택합니다.</block>
   <block id="26f9e6294b1a61ed4692d275ee8885e0" category="list-text">필요에 따라 * 복구 * 또는 * 제거 * 를 선택합니다.</block>
-  <block id="555c94ad53e123ccc406674df5fbc0ba" category="paragraph">Windows Host Utilities는 Windows 호스트가 데이터 지연 또는 손실에 반응하는 방식에 영향을 주는 매개 변수를 설정합니다. 특정 값을 선택하여 Windows 호스트가 스토리지 시스템에 있는 컨트롤러 중 하나의 페일오버와 같은 이벤트를 파트너 컨트롤러로 올바르게 처리하는지 확인합니다.</block>
-  <block id="5db0ac001d15414764c966da33036c9d" category="paragraph">FC, NVMe/FC 및 iSCSI HBA에는 최상의 성능을 보장하고 스토리지 시스템 이벤트를 성공적으로 처리하도록 설정해야 하는 매개 변수도 있습니다.</block>
-  <block id="fb08e9e706df430eb21a77dc77a7e2cf" category="paragraph">iSCSI HBA 매개 변수를 수동으로 설정해야 합니다.</block>
   <block id="c372bc249b31090fc161de15de7b7603" category="admonition">HKLM은 의 약어입니다<block ref="86565cb5d05fc56046ceb32627a70264" prefix=" " category="inline-code"></block>.</block>
   <block id="6393c224d437438785810287f79cf4dc" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmMaximumStateTransitionTime</block>
   <block id="507442ae6083cce9fd165274005cd952" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\DsmlSupportedDeviceList</block>
-  <block id="4032e28156cfb67550271f983690ac63" category="cell">"NetApp LUN", "NetApp LUN C-Mode", NVMe NetApp ONTAO Con"</block>
   <block id="2a10dce2db92496db6490d59d8a30023" category="cell">HKLM\SYSTEM\CurrentControlSet\Control\Class\{iSCSI_driver_GUID}\Instance_ID\Parameters\IPSecConfigTimeout</block>
   <block id="547dcf1ccffce27bb75b008ae19d2cad" category="cell">HKLM\SYSTEM\CurrentControlSet\Control\Class\{iSCSI_driver_GUID}\Instance_ID\Parameters\LinkDownTime</block>
   <block id="1f1ffa8ff21ddd6861b7c27dc7135597" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\ClusDisk\Parameters\ManageDisksOnSystemBuses</block>
   <block id="3f2bc56be3f6b729d16e1597fa8b4941" category="cell">HKLM\SYSTEM\CurrentControlSet\Control\Class\{iSCSI_driver_GUID}\Instance_ID\Parameters\MaxRequestHoldTime</block>
   <block id="86d63918f540a0e97186b88a4bd8db36" category="cell">HKLM\SYSTEM\CurrentControlSet\Control\MPDEV\MPIOSupportedDeviceList</block>
-  <block id="da30944c1d57c7273e8b0e5b8e7de029" category="cell">"NetApp LUN", "NetApp LUN C-Mode", "NVMe NetApp ONTAO Con"</block>
   <block id="011d6126050fa9b098fd5f8b3202e725" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\PathVerifyEnabled</block>
   <block id="0cb41c0c0339d303dbc72093df6e7bc2" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\MPIO\Parameters\PDORemovePeriodd</block>
   <block id="d157c38b633d15d34a4e43ef4ea3b75e" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\PDORemovePeriod입니다</block>
@@ -1122,8 +1117,6 @@
   <block id="dd0c0b55cec9c97153981c22e267be6d" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\msdsm\Parameters\RetryInterval</block>
   <block id="2faabf4d68e773f3251eae7f2305fe39" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\vnetApp\Parameters\RetryInterval</block>
   <block id="c5a575f6523964e8855617a1937db583" category="section-title">NVMe 매개 변수</block>
-  <block id="ed248deb33450195d58919cecd0cf8cd" category="paragraph">Emulex FC HBA의 경우 설치 프로그램에서 다음 매개 변수를 설정합니다.</block>
-  <block id="9e4350dab47d06fcefddc77af0b6f8d1" category="open-title">MPIO가 선택된 경우</block>
   <block id="f1ce082f6baf3c653cdd07d94a942859" category="list-text">문제를 해결할 수 없는 경우 NetApp 기술 지원 팀에 문의하여 지원을 받으십시오.</block>
   <block id="4a99bdb63932aafd9744169779509cbd" category="list-text">MPIO 소프트웨어를 사용하는 경우 다음과 같은 드라이버 설정이 있는지 확인합니다.</block>
   <block id="51cf8280ca9efd5addc2361e7896683a" category="paragraph">호스트에 연결 * 대화 상자가 나타납니다.</block>
@@ -1656,10 +1649,8 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="39a8fcfc2fec9eb3c35083b0b8a2cae4" category="list-text">검색<block ref="04daf00c3b5bc166fd02128d9bfd3254" category="inline-link-rx"></block> 최근에 발견된 문제에 대해.</block>
   <block id="9273ec471c4dd705bc01abe70b167469" category="list-text">고급 검색 아래의 버그 유형 필드에서 * iSCSI - Windows * 를 선택한 다음 * Go * 를 선택합니다. 버그 유형 * FCP - Windows * 에 대한 검색을 반복해야 합니다.</block>
   <block id="1a959178e792ae0c668c4f3a0bd45c65" category="list-text">시스템에 대한 정보를 수집합니다.</block>
-  <block id="ef127e2524262f219434d09112047ee0" category="paragraph">Host Utilities에서는 Windows 호스트가 스토리지 시스템 동작을 올바르게 처리하는지 확인하기 위해 특정 레지스트리 및 매개 변수 설정이 필요합니다.</block>
   <block id="40bb1ea4c1bbc484f41a531e80ddb519" category="admonition"><block ref="c6d731b2e6e90d0e19df48cb3d9d7498" prefix="" category="inline-code"></block> 의 약어입니다<block ref="86565cb5d05fc56046ceb32627a70264" prefix=" " category="inline-code"></block>.</block>
   <block id="a624f3024f6945790c5f3a01e38649bf" category="paragraph">를 참조하십시오<block ref="cc2304a59b5feaeebd0c5646fd22caf0" category="inline-link-rx"></block> 레지스트리 매개 변수에 대한 자세한 내용은 를 참조하십시오.</block>
-  <block id="d7b45eaf5a2c22cb7c622ea9675a6f32" category="paragraph">FC를 사용하는 시스템에서는 호스트 유틸리티 설치 프로그램이 Emulex 및 QLogic FC HBA에 필요한 시간 초과 값을 설정합니다.</block>
   <block id="b182eae32a0022889eab1f98a5ba3a49" category="admonition">매개 변수의 이름은 프로그램에 따라 약간 다를 수 있습니다.
 예를 들어, QLogic QConvergeConsole 프로그램에서 매개 변수는 로 표시됩니다<block ref="b554d47c6702123b3a28a3e04ed39621" prefix=" " category="inline-code"></block>.
 Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " category="inline-code"></block> 파일 이 매개 변수를 로 표시합니다<block ref="08a7801aadb2d395506d0735d17dcf62" prefix=" " category="inline-code"></block> 또는<block ref="e29ad18354768c222941f5de52fd92c9" prefix=" " category="inline-code"></block>, MPIO 지정 여부에 따라 다릅니다. 그러나 이러한 이름은 모두 동일한 HBA 매개 변수를 나타냅니다. 을 참조하십시오<block ref="6d63c8366c015331075fa86de38975e8" category="inline-link-rx"></block> 또는<block ref="4399df604c07a452cc084d95811dafae" category="inline-link-rx"></block> 시간 초과 매개 변수에 대한 자세한 내용을 보려면</block>
@@ -2417,11 +2408,8 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="1078de040a8679207e1783a9da9e836c" category="cell">기본 시간 초과 설정이 사용되고 있으므로 Red Hat Enterprise Linux 5, Red Hat Enterprise Linux 6 또는 SUSE Linux Enterprise Server 11 Hyper-V 게스트에서 디스크 시간 제한을 변경하기 위해 더 이상 스크립트를 실행할 필요가<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 없습니다. <block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block>이전 버전의 Host Utilities에 포함되어 있던 스크립트는 Windows Host Utilities 7.1 버전에 더 이상 포함되지 않습니다. Windows Host Utilities 7.1에서는 기본 디스크 시간 초과 설정을 사용합니다.</block>
   <block id="2c1c2305f2baefceb44e8e1b31927d88" category="doc">Windows Host Utilities 7.2를 설치합니다</block>
   <block id="b31a86b1dca7dfa1a67b27d591387cdb" category="paragraph">Host Utilities는 다양한 Windows 호스트 구성, 프로토콜 및 다중 경로 옵션을 지원합니다. 자세한 내용은 를<block ref="e29293ebfe5b9174e3113da62e6426ca" category="inline-link-rx"></block>참조하십시오.</block>
-  <block id="a1b5fc21b8f72dca8d1203383f6fcf00" category="paragraph">Windows Host Utilities와 함께 제공되는 설치 프로그램에서는 Windows, FC 및 NVMe/FC HBA 매개 변수를 지원되는 값으로 설정합니다.</block>
-  <block id="c6aa64a3d9475fd563f6e8ab36eafc09" category="paragraph">설치 프로그램은 설치 프로그램을 실행할 때 Microsoft MPIO(다중 경로 I/O) 지원을 지정하는지 여부에 따라 다른 값을 설정합니다.</block>
   <block id="3160be9723d9dc9c210d8c8b48bd0bcf" category="section-title">Windows Host Utilities 7.2에서 설정한 레지스트리 값입니다</block>
   <block id="4da5f705a95e0ed235573a4eb64fce01" category="section-title">Windows Host Utilities 7.1에서 설정한 레지스트리 값입니다</block>
-  <block id="cc28ccfb40f63eafdf4c15d20d5ee4bc" category="paragraph">Windows Host Utilities 설치 프로그램은 설치 중에 선택한 항목에 따라 레지스트리 값을 자동으로 설정합니다. 이러한 레지스트리 값, 즉 운영 체제 버전을 알고 있어야 합니다.</block>
   <block id="125e0f5615cef4db790518b2fd3b4491" category="paragraph">다음 값은 Windows Host Utilities 설치 프로그램에서 설정합니다. 별도로 명시하지 않는 한 모든 값은 10진수로 표시됩니다.</block>
   <block id="10ce28246e5d07ff8493b9244d2b2aca" category="list-text">NetApp Windows 호스트 유틸리티 * 를 선택합니다.</block>
   <block id="044af269e446bb1cbed59c4821cfa418" category="list-text">Windows 호스트 유틸리티 복구:</block>
@@ -2610,7 +2598,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="fa5c369c0560373ede3332d2508c4819" category="paragraph">Windows Host Utilities 7.2를 설치할 때 LimTransferSize 매개 변수는 자동으로 "1"로 설정됩니다. 설치 후 LimTransferSize 값을 수동으로 "0"으로 변경하고 서버를 재부팅해야 합니다.</block>
   <block id="70cefc9a608dc188dd16deb1397a1529" category="cell">MPIO 지원이 지정되고 서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우(Data ONTAP DSM이 감지된 경우를 제외)</block>
   <block id="28c4a2aff9dab89964d88a9594119baa" category="cell">서버가 Windows Server 2016, 2012 R2, 2012, 2008 R2 또는 2008인 경우</block>
-  <block id="88db364807adcc50e3c03e4e7c2eb386" category="paragraph">QLogic FC HBA의 경우 설치 프로그램에서 다음 매개 변수를 설정합니다.</block>
   <block id="b76b67fa1e708efcaa2d6a257e3dc3a5" category="summary">ONTAP를 사용하여 Windows Server 2052용 NVMe/FC 호스트 구성</block>
   <block id="e240b4a9acf4df1925780394d9f14be9" category="doc">ONTAP용 NVMe/FC로 Windows Server 2025를 구성합니다</block>
   <block id="1332a2397f4fcbb21e78a6e3c713af4b" category="paragraph">ONTAP LUN을 사용하여 Windows Server 2025를 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 구성할 수 있습니다.</block>
@@ -3906,32 +3893,23 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="50b0de549390e9fd0aff72d2cc76922d" category="paragraph">Host Utilities 설치 프로그램을 실행하고 화면의 지시를 따라 Host Utilities 소프트웨어 패키지를 대화형으로 설치합니다.</block>
   <block id="d539640f2a8ad84ff2b6b210b3c82a8b" category="doc">ONTAP 스토리지용 Windows Host Utilities 7.2 설치</block>
   <block id="62113ee23a34404b1f086b7ed1df786b" category="doc">ONTAP 스토리지를 사용하여 Windows 호스트 유틸리티에 대한 레지스트리 설정 구성</block>
-  <block id="4d1f74f34674eef0c5bdd0068e40ee04" category="paragraph">모든 값이 SANtricity Storage Manager 의 장치별 모듈(DSM)에 적용되는 것은 아닙니다. 그러나 호스트 유틸리티에서 설정한 값과 SANtricity Storage Manager 의 DSM에서 설정한 값이 겹치더라도 충돌이 발생하지 않습니다.</block>
   <block id="80fecb40ffb39e22d2139bf9886132bc" category="inline-xref">NVME 매개변수</block>
   <block id="40bd27b40d44b862091d49e4f0538774" category="paragraph">Windows Host Utilities 7.2를 설치한 후 LimTransferSize 매개변수 값을 변경해야 합니다. 보다 <block ref="f34264ec923664aedfb2a9ccd6257931" category="inline-xref-macro-rx"></block> .</block>
   <block id="05371652e7984167bbb3f85201a5b89b" category="paragraph">Windows Host Utilities 8.0, 7.2 또는 7.1의 다른 모든 매개변수와 레지스트리 키의 경우 기술 지원에서 지시하지 않는 한 값을 변경할 필요가 없습니다.</block>
   <block id="3552ff32d73200dbe48fb217ccbdfe65" category="section-title">Windows Host Utilities 8.0에서 설정한 레지스트리 값</block>
-  <block id="ec995b0ce5d8e95aabbe85d2749a66ea" category="paragraph">Windows 호스트 유틸리티 설치 프로그램은 설치 중에 선택한 사항에 따라 레지스트리 값과 NVMe 매개변수를 자동으로 설정합니다.  이러한 값과 운영 체제 버전을 알고 있어야 합니다.</block>
   <block id="a254beadccf36a8b85672cf8419d64d8" category="open-title">HKLM 값</block>
-  <block id="919cb244d228a3f71854b3231f8cff0c" category="paragraph">다음 레지스트리 값은 Windows 호스트 유틸리티 설치 프로그램에 의해 설정됩니다.  특별한 언급이 없는 한 모든 값은 10진수입니다.</block>
   <block id="071b3c301587fc461b5b5db6056fea64" category="cell">MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우</block>
   <block id="213770055804b675ffe14467be7be594" category="cell">서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우</block>
   <block id="ef7643028f04a4cac8da8e05df5237b1" category="cell">MPIO 지원이 지정되고 서버가 Windows Server 2025, 2022, 2019 또는 2016인 경우</block>
-  <block id="4be4845df45475c63e7fef3544b5e46d" category="paragraph">Windows Host Utilities 8.0을 설치하면 다음 NVMe Emulex 드라이버 매개변수가 업데이트됩니다.</block>
   <block id="408cf458ebdd52832b74587ec65fee92" category="paragraph">Windows Host Utilities 7.2를 설치하면 다음 NVMe Emulex 드라이버 매개변수가 업데이트됩니다.</block>
-  <block id="53ece88e8d0752adafe41f998a3f679e" category="open-title">MPIO가 선택되지 않은 경우</block>
   <block id="20aac534719ebb4b8d33960d910552ae" category="section-title">FC HBA 드라이버 설정에 대한 호스트 유틸리티 변경 사항에 대해 알아보세요.</block>
-  <block id="903900c64c64e66749538a5ee0627e74" category="paragraph">FC 시스템에 필요한 Emulex 또는 QLogic HBA 드라이버를 설치하는 동안 여러 매개변수가 검사되고, 어떤 경우에는 Windows 호스트 유틸리티에서 수정됩니다.</block>
-  <block id="00c6b6db42cf4f18229789d1bbfc4392" category="paragraph">Windows MPIO용 MS DSM이 감지되면 Windows 호스트 유틸리티는 다음 매개변수에 대한 값을 설정합니다.</block>
   <block id="290855c6daac5448d222f3c661f749fb" category="list-text">*LinkTimeOut*: 물리적 링크가 끊어진 후 호스트 포트가 I/O를 재개하기 전에 기다리는 시간(초)을 정의합니다.</block>
   <block id="9e02085844efecca4159003505f0e34a" category="list-text">*NodeTimeOut*: 호스트 포트가 대상 장치에 대한 연결이 끊어졌음을 인식하기까지의 시간(초)을 정의합니다.</block>
   <block id="31544e277536e777e9c3f798fd5e0913" category="list-text">MPIO 소프트웨어를 사용하고 있는지 여부.</block>
   <block id="62c6d5921cc25fa2fecef7c94356c189" category="inline-link-macro">복구 옵션 실행</block>
   <block id="7eaaf936e50fb533dab6ae4ba3b589bc" category="paragraph">HBA 설정은 다음을 통해 수정할 수 있습니다.<block ref="262b15737127f72127997ad6784b0e26" category="inline-link-macro-rx"></block> Windows 호스트 유틸리티 설치 프로그램에서.</block>
-  <block id="b43c94ea962672d4a5f84fbdbc6b42a8" category="paragraph">FC 시스템이 있는 경우 Emulex HBA 드라이버 설정을 확인하세요.  이러한 설정은 HBA의 각 포트에 존재해야 합니다.</block>
   <block id="623dcbddc542817cdcdf36e9ce6846ce" category="list-text">목록에서 적절한 HBA를 선택하고 *드라이버 매개변수* 탭을 선택합니다.</block>
   <block id="713471818764991427fe06a02c382d7c" category="list-text">MPIO 소프트웨어를 사용하지 않는 경우 다음 드라이버 설정이 있는지 확인하세요.</block>
-  <block id="de1f703ddcd801c8b7ae8fb7d88721b9" category="paragraph">FC 시스템에서 QLogic HBA 드라이버 설정을 확인하세요.  이러한 설정은 HBA의 각 포트에 존재해야 합니다.</block>
   <block id="d36746d8149fbda72e2e4e6b5a18add7" category="list-text">QConvergeConsole을 열고 도구 모음에서 *연결*을 선택합니다.</block>
   <block id="de65582b3d66343f81547ddec20392d3" category="list-text">MPIO 소프트웨어를 사용하지 않는 경우 다음 드라이버 설정이 있는지 확인하세요.</block>
   <block id="4986650d14b24086d20a38215ecb279e" category="doc">ONTAP 스토리지용 Windows 호스트 유틸리티 복구 및 제거</block>
@@ -4052,4 +4030,25 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="3d4de8befb0eddb7be95b9eb899bcd21" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Ubuntu 24.04 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="faed4c9c8188f7390b773fb64e42fc29" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다.  Ubuntu 22.04 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="3b2ad8d11d49615d3cb062774e116630" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다.  Ubuntu 24.04 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="876d8d634dabd3b4faa05168e2953c68" category="paragraph">Windows 호스트 유틸리티는 Windows 호스트가 스토리지 시스템 동작을 올바르게 처리하는지 확인하기 위해 특정 레지스트리 및 매개변수 설정이 필요합니다.</block>
+  <block id="3187b1de6020504a9ef2201371f4ddfb" category="paragraph">Windows 호스트 유틸리티는 Windows 호스트가 데이터 지연이나 손실에 대응하는 방식에 영향을 미치는 매개변수 값을 설정합니다.  이러한 값은 Windows 호스트가 스토리지 시스템의 한 컨트롤러에서 파트너 컨트롤러로 장애 조치되는 등의 이벤트를 올바르게 처리하는지 확인합니다.</block>
+  <block id="5761ec5c04ac77cb295ddef5c5adf39f" category="paragraph">일부 값은 SANtricity Storage Manager 의 장치별 모듈(DSM)에 적용되지 않습니다.  Windows 호스트 유틸리티와 DSM에서 SANtricity Storage Manager 대해 설정한 값이 겹치더라도 충돌이 발생하지 않습니다.</block>
+  <block id="1c45b11e7112ae3015b6528aac98db47" category="paragraph">또한 성능을 최적화하고 스토리지 시스템 이벤트를 성공적으로 처리하려면 FC, NVMe/FC 및 iSCSI HBA 매개변수를 설정해야 합니다.</block>
+  <block id="ac299bbbaa386f926bfeffd61f3f329a" category="paragraph">Windows 호스트 유틸리티 설치 프로그램은 Windows, FC 및 NVMe/FC HBA 매개변수를 지원되는 값으로 설정합니다.  iSCSI HBA 매개변수를 수동으로 설정해야 합니다.</block>
+  <block id="0600911da7c2ed3e4c75b35a8383464b" category="paragraph">설치 중에 Microsoft Multipath I/O(MPIO) 지원을 지정하면 설치 프로그램에서 다른 값이 설정됩니다.</block>
+  <block id="1289e36ad9af025f92a68eeb71942e45" category="paragraph">Windows 호스트 유틸리티 설치 프로그램은 설치 중에 선택한 사항에 따라 레지스트리 값과 NVMe 매개변수를 자동으로 설정합니다.  이러한 값과 운영 체제 버전을 검토해야 합니다.</block>
+  <block id="05ca7c309c201d00d9edda26c29f1814" category="paragraph">Windows 호스트 유틸리티 설치 프로그램은 다음 레지스트리 값을 설정합니다. 특별한 언급이 없는 한 모든 값은 10진수입니다.</block>
+  <block id="9315284a762c1471b85be43158649395" category="cell">"NETAPP LUN", "NETAPP LUN C-모드" "NVMe NetApp ONTAP Con"</block>
+  <block id="f43fc70fd90855c7e4c4c9cba7d7f1fd" category="cell">"NETAPP LUN", "NETAPP LUN C-모드", "NVMe NetApp ONTAP Con"</block>
+  <block id="65d5481255e5037a619c921fafb15def" category="paragraph">Windows Host Utilities 8.0은 설치 중에 다음 NVMe Emulex 드라이버 매개변수를 업데이트합니다.</block>
+  <block id="ab51b6ada28fc394eb4698434eaf6668" category="paragraph">Windows 호스트 유틸리티 설치 프로그램은 설치 중에 선택한 사항에 따라 레지스트리 값을 자동으로 설정합니다.  이러한 레지스트리 값과 운영 체제 버전을 검토해야 합니다.</block>
+  <block id="619778ebb1defb58b2f571d8beed6661" category="paragraph">Windows 호스트 유틸리티 설치 프로그램은 FC를 사용하는 시스템에서 Emulex 및 QLogic FC HBA에 필요한 시간 초과 값을 설정합니다.</block>
+  <block id="ca146b673983ec595aae317e1a1e764a" category="paragraph">설치 프로그램은 Emulex FC HBA에 대해 다음 매개변수를 설정합니다.</block>
+  <block id="187c9ec598092d65351eaf4f361d83f7" category="open-title">MPIO를 선택하면</block>
+  <block id="17f9a8611eed107aecf0406db4a2b59d" category="open-title">MPIO를 선택하지 않을 경우</block>
+  <block id="d915a9fedab871eb41a22f16bfb69c64" category="paragraph">설치 프로그램은 QLogic FC HBA에 대해 다음 매개변수를 설정합니다.</block>
+  <block id="2ff89f8cd6f01614cdfc9aff8ff7a2a4" category="paragraph">FC 시스템에 필요한 Emulex 또는 QLogic HBA 드라이버를 설치하는 동안 여러 매개변수가 검사되고, 어떤 경우에는 Windows 호스트 유틸리티에 의해 수정됩니다.</block>
+  <block id="30fe8c509bd758431e60f7f83e9085f0" category="paragraph">Windows MPIO용 MS DSM이 감지되면 Windows 호스트 유틸리티는 다음 매개변수에 대한 값을 설정합니다.</block>
+  <block id="d7ffc66640801d3b23e6403b53045607" category="paragraph">FC 시스템에서 Emulex HBA 드라이버 설정을 확인합니다. 이러한 설정은 HBA의 각 포트에 존재해야 합니다.</block>
+  <block id="0aa9ab84e08417b1d87c1a5606b6b1b4" category="paragraph">FC 시스템에서 QLogic HBA 드라이버 설정을 확인합니다. 이러한 설정은 HBA의 각 포트에 존재해야 합니다.</block>
 </blocks>
