@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme-rockylinux-10.html 
-keywords: nvme, linux, rocky, linux, red hat, enterprise 
-summary: ONTAP 스토리지를 사용하여 Rocky Linux 10.0에 NVMe-oF 호스트를 구성하는 방법 
+permalink: nvme-rhel-93.html 
+keywords: nvme, linux, rhel, red hat, enterprise 
+summary: ONTAP를 사용하여 RHEL 9.3용 NVMe-OF 호스트를 구성하는 방법 
 ---
-= ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 10.0 구성
+= ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.3 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,12 +18,11 @@ summary: ONTAP 스토리지를 사용하여 Rocky Linux 10.0에 NVMe-oF 호스�
 [role="lead"]
 Red Hat Enterprise Linux(RHEL) 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다.  ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.
 
-Rocky Linux 10.0에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.link:hu-nvme-index.html["NVME-oF 개요"^] .
+RHEL 9.3에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.link:hu-nvme-index.html["NVME-oF 개요"^] .
 
-*Rocky Linux 10.0을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*
+*RHEL 9.3의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*
 
-* NVMe-oF에 대한 DM 멀티패스 지원은 지원되지 않습니다.
-* 발행을 피하십시오  `nvme disconnect-all` NVMe-TCP 또는 NVMe-FC 네임스페이스를 통해 SAN에서 부팅하는 시스템에서 이 명령을 사용하면 루트 및 데이터 파일 시스템이 모두 분리되어 시스템이 불안정해질 수 있습니다.
+* NVMe-oF 프로토콜을 사용한 SAN 부팅은 현재 지원되지 않습니다.
 
 
 
@@ -48,19 +47,19 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 시스템이 소프트웨어 요구 사항을 충족하는지 확인하고 NVMe 패키지 설치와 호스트 구성을 확인하세요.
 
 .단계
-. 서버에 Rocky Linux 10.0을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 10.0 커널을 실행하고 있는지 확인하세요.
+. 서버에 RHEL 9.3을 설치합니다.  설치가 완료되면 필요한 RHEL 9.3 커널을 실행하고 있는지 확인하세요.
 +
 [source, cli]
 ----
 uname -r
 ----
 +
-Rocky Linux 커널 버전 예:
+RHEL 커널 버전 예:
 
 +
 [listing]
 ----
-6.12.0-55.9.1.el10_0.x86_64
+5.14.0-362.8.1.el9_3.x86_64
 ----
 . "NVMe-CLI" 패키지를 설치합니다.
 +
@@ -69,12 +68,12 @@ Rocky Linux 커널 버전 예:
 rpm -qa|grep nvme-cli
 ----
 +
-다음 예에서는 다음을 보여줍니다.  `nvme-cli` 패키지 버전:
+다음 예에서는 nvme-cli 패키지 버전을 보여줍니다.
 
 +
 [listing]
 ----
-nvme-cli-2.11-5.el10.x86_64
+nvme-cli-2.4-10.el9.x86_64
 ----
 . 를 설치합니다 `libnvme` 패키지:
 +
@@ -83,12 +82,12 @@ nvme-cli-2.11-5.el10.x86_64
 rpm -qa|grep libnvme
 ----
 +
-다음 예에서는 다음을 보여줍니다.  `libnvme` 패키지 버전:
+다음 예제는 libnvme 패키지 버전을 보여줍니다.
 
 +
 [listing]
 ----
-libnvme-1.11.1-1.el10.x86_64
+libnvme-1.4-7.el9.x86_64
 ----
 . 호스트에서 hostnqn 문자열을 확인하세요.  `/etc/nvme/hostnqn` :
 +
@@ -97,18 +96,18 @@ libnvme-1.11.1-1.el10.x86_64
 cat /etc/nvme/hostnqn
 ----
 +
-다음 예는 다음을 보여줍니다. `hostnqn` 값:
+다음 예에서는 다음을 보여줍니다.  `hostnqn` 버전:
 
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+nqn.2014-08.org.nvmexpress:uuid:060fd513-83be-4c3e-aba1-52e169056dcf
 ----
 . 를 확인합니다 `hostnqn` 문자열이 과 일치합니다 `hostnqn` ONTAP 배열의 해당 하위 시스템에 대한 문자열:
 +
 [source, cli]
 ----
-::> vserver nvme subsystem host show -vserver vs_nvme_194_rockylinux10
+::> vserver nvme subsystem host show -vserver vs_nvme147
 ----
 +
 .예제 보기
@@ -116,25 +115,15 @@ nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 ====
 [listing]
 ----
-Vserver Subsystem Priority  Host NQN
-------- --------- --------  ------------------------------------------------
-vs_nvme_194_rockylinux10
-        nvme4
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
-        nvme_1
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
-        nvme_2
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
-        nvme_3
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
-4 entries were displayed.
+Vserver     Subsystem          Host NQN
+----------- --------------- ----------------------------------------------------------
+vs_nvme147   rhel_147_LPe32002    nqn.2014-08.org.nvmexpress:uuid:060fd513-83be-4c3e-aba1-52e169056dcf
 ----
 ====
-+
+
+
 
 NOTE: 만약 `hostnqn` 문자열이 일치하지 않으면 다음을 사용하세요. `vserver modify` 업데이트 명령 `hostnqn` 해당 ONTAP 스토리지 시스템 하위 시스템의 문자열을 일치시키세요. `hostnqn` 문자열에서 `/etc/nvme/hostnqn` 호스트에서.
-
-
 
 
 
@@ -163,8 +152,8 @@ cat /sys/class/scsi_host/host*/modelname
 +
 [listing]
 ----
-LPe36002-M64
-LPe36002-M64
+LPe32002-M2
+LPe32002-M2
 ----
 .. 모델 설명을 표시합니다.
 +
@@ -178,8 +167,8 @@ cat /sys/class/scsi_host/host*/modeldesc
 +
 [listing]
 ----
-Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
-Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
 
 
@@ -197,8 +186,8 @@ cat /sys/class/scsi_host/host*/fwrev
 +
 [listing]
 ----
-14.0.539.16, sli-4:6:d
-14.0.539.16, sli-4:6:d
+14.2.539.16, sli-4:2:c
+14.2.539.16, sli-4:2:c
 ----
 .. 받은 편지함 드라이버 버전을 표시합니다.
 +
@@ -212,12 +201,12 @@ cat /sys/module/lpfc/version
 +
 [listing]
 ----
-0:14.4.0.6
+0:14.2.0.12
 ----
-
-
 +
 지원되는 어댑터 드라이버 및 펌웨어 버전의 현재 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
+
+
 
 . 확인합니다 `lpfc_enable_fc4_type` 가 로 설정되어 있습니다 `3`:
 +
@@ -237,8 +226,8 @@ cat /sys/class/fc_host/host*/port_name
 +
 [listing]
 ----
-0x2100f4c7aa0cd7c2
-0x2100f4c7aa0cd7c3
+0x100000109b3c081f
+0x100000109b3c0820
 ----
 . 이니시에이터 포트가 온라인 상태인지 확인합니다.
 +
@@ -268,30 +257,30 @@ cat /sys/class/scsi_host/host*/nvme_info
 [listing, subs="+quotes"]
 ----
 NVME Initiator Enabled
-XRI Dist lpfc2 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc2 WWPN x100000109bf044b1 WWNN x200000109bf044b1 DID x022a00 *ONLINE*
-NVME RPORT       WWPN x202fd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x021310 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x202dd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020b10 *TARGET DISCSRVC ONLINE*
+XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc0 WWPN x100000109b3c081f WWNN x200000109b3c081f DID x062300 *ONLINE*
+NVME RPORT       WWPN x2143d039ea165877 WWNN x2142d039ea165877 DID x061b15 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2145d039ea165877 WWNN x2142d039ea165877 DID x061115 *TARGET DISCSRVC ONLINE*
 
 NVME Statistics
-LS: Xmt 0000000810 Cmpl 0000000810 Abort 00000000
+LS: Xmt 000000040b Cmpl 000000040b Abort 00000000
 LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 000000007b098f07 Issue 000000007aee27c4 OutIO ffffffffffe498bd
-        abort 000013b4 noxri 00000000 nondlp 00000058 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 000013b4 Err 00021443
+Total FCP Cmpl 000000001f5c4538 Issue 000000001f58da22 OutIO fffffffffffc94ea
+abort 00000630 noxri 00000000 nondlp 00001071 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000630 Err 0001bd4a
 
 NVME Initiator Enabled
-XRI Dist lpfc3 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc3 WWPN x100000109bf044b2 WWNN x200000109bf044b2 DID x021b00 *ONLINE*
-NVME RPORT       WWPN x2033d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020110 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2032d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x022910 *TARGET DISCSRVC ONLINE*
+XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc1 WWPN x100000109b3c0820 WWNN x200000109b3c0820 DID x062c00 *ONLINE*
+NVME RPORT       WWPN x2144d039ea165877 WWNN x2142d039ea165877 DID x060215 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2146d039ea165877 WWNN x2142d039ea165877 DID x061815 *TARGET DISCSRVC ONLINE*
 
 NVME Statistics
-LS: Xmt 0000000840 Cmpl 0000000840 Abort 00000000
+LS: Xmt 000000040b Cmpl 000000040b Abort 00000000
 LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 000000007afd4434 Issue 000000007ae31b83 OutIO ffffffffffe5d74f
-        abort 000014a5 noxri 00000000 nondlp 0000006a qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 000014a5 Err 0002149a
+Total FCP Cmpl 000000001f5c3618 Issue 000000001f5967a4 OutIO fffffffffffd318c
+abort 00000629 noxri 00000000 nondlp 0000044e qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000629 Err 0001bd3d
 ----
 =====
 
@@ -314,8 +303,8 @@ cat /sys/class/fc_host/host*/symbolic_name
 +
 [listing]
 ----
-QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
-QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+QLE2772 FW:v9.10.11 DVR:v10.02.08.200-k
+QLE2772 FW:v9.10.11 DVR:v10.02.08.200-k
 ----
 . 확인합니다 `ql2xnvmeenable` 가 설정됩니다. 그러면 Marvell 어댑터가 NVMe/FC Initiator로 작동할 수 있습니다.
 +
@@ -346,18 +335,18 @@ nvme discover -t tcp -w host-traddr -a traddr
 =====
 [listing, subs="+quotes"]
 ----
-nvme discover -t tcp -w 192.168.20.1 -a 192.168.20.20
+nvme discover -t tcp -w 192.168.167.1 -a 192.168.167.16
 
-Discovery Log Number of Records 8, Generation counter 18
+Discovery Log Number of Records 8, Generation counter 10
 =====Discovery Log Entry 0======
 trtype:  tcp
 adrfam:  ipv4
 subtype: *current discovery subsystem*
 treq:    not specified
-portid:  4
+portid:  0
 trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
-traddr:  192.168.21.21
+subnqn:  nqn.1992-08.com.netapp:sn.bbfb4ee8dfb611edbd07d039ea165590:discovery
+traddr:  192.168.166.17
 eflags:  *explicit discovery connections, duplicate discovery information*
 sectype: none
 =====Discovery Log Entry 1======
@@ -365,10 +354,10 @@ trtype:  tcp
 adrfam:  ipv4
 subtype: *current discovery subsystem*
 treq:    not specified
-portid:  2
+portid:  1
 trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
-traddr:  192.168.20.21
+subnqn:  nqn.1992-08.com.netapp:sn.bbfb4ee8dfb611edbd07d039ea165590:discovery
+traddr:  192.168.167.17
 eflags:  *explicit discovery connections, duplicate discovery information*
 sectype: none
 =====Discovery Log Entry 2======
@@ -376,66 +365,23 @@ trtype:  tcp
 adrfam:  ipv4
 subtype: *current discovery subsystem*
 treq:    not specified
-portid:  3
+portid:  2
 trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
-traddr:  192.168.21.20
-eflags:  *explicit discovery connections, duplicate discovery information*
+subnqn:  nqn.1992-
+08.com.netapp:sn.bbfb4ee8dfb611edbd07d039ea165590:discovery
+traddr:  192.168.166.16
+eflags: *explicit discovery connections, duplicate discovery information*
 sectype: none
 =====Discovery Log Entry 3======
 trtype:  tcp
 adrfam:  ipv4
 subtype: *current discovery subsystem*
 treq:    not specified
-portid:  1
-trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
-traddr:  192.168.20.20
-eflags:  *explicit discovery connections, duplicate discovery information*
-sectype: none
-=====Discovery Log Entry 4======
-trtype:  tcp
-adrfam:  ipv4
-subtype: *nvme subsystem*
-treq:    not specified
-portid:  4
-trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rockylinux10_tcp_subsystem
-traddr:  192.168.21.21
-eflags:  none
-sectype: none
-=====Discovery Log Entry 5======
-trtype:  tcp
-adrfam:  ipv4
-subtype: *nvme subsystem*
-treq:    not specified
-portid:  2
-trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rockylinux10_tcp_subsystem
-traddr:  192.168.20.21
-eflags:  none
-sectype: none
-=====Discovery Log Entry 6======
-trtype:  tcp
-adrfam:  ipv4
-subtype: *nvme subsystem*
-treq:    not specified
 portid:  3
-trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rockylinux10_tcp_subsystem
-traddr:  192.168.21.20
-eflags:  none
-sectype: none
-=====Discovery Log Entry 7======
-trtype:  tcp
-adrfam:  ipv4
-subtype: *nvme subsystem*
-treq:    not specified
-portid:  1
-trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rockylinux10_tcp_subsystem
-traddr:  192.168.20.20
-eflags:  none
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.bbfb4ee8dfb611edbd07d039ea165590:discovery
+traddr:  192.168.167.16
+eflags:  *explicit discovery connections, duplicate discovery information*
 sectype: none
 ----
 =====
@@ -451,10 +397,10 @@ nvme discover -t tcp -w host-traddr -a traddr
 =====
 [listing, subs="+quotes"]
 ----
-nvme discover -t tcp -w 192.168.20.1 -a 192.168.20.20
-nvme discover -t tcp -w 192.168.21.1 -a 192.168.21.20
-nvme discover -t tcp -w 192.168.20.1 -a 192.168.20.21
-nvme discover -t tcp -w 192.168.21.1 -a 192.168.21.21
+nvme discover -t tcp -w 192.168.166.5 -a 192.168.166.22
+nvme discover -t tcp -w 192.168.166.5 -a 192.168.166.23
+nvme discover -t tcp -w 192.168.167.5 -a 192.168.167.22
+nvme discover -t tcp -w 192.168.167.5 -a 192.168.167.23
 ----
 =====
 . 를 실행합니다 `nvme connect-all` 노드에 걸쳐 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대한 명령:
@@ -469,24 +415,14 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 =====
 [listing, subs="+quotes"]
 ----
-nvme	connect-all	-t	tcp	-w	192.168.20.1	-a	192.168.20.20
-nvme	connect-all	-t	tcp	-w	192.168.21.1	-a	192.168.21.20
-nvme	connect-all	-t	tcp	-w	192.168.20.1	-a	192.168.20.21
-nvme	connect-all	-t	tcp	-w	192.168.21.1	-a	192.168.21.21
+nvme	connect-all	-t	tcp	-w	192.168.166.1	-a	192.168.166.16 -l	1800
+nvme	connect-all	-t	tcp	-w	192.168.166.1	-a	192.168.166.17 -l	1800
+nvme	connect-all	-t	tcp	-w	192.168.167.1	-a	192.168.167.16 -l	1800
+nvme	connect-all	-t	tcp	-w	192.168.167.1	-a	192.168.167.17 -l	1800
 ----
 =====
 
 
-[NOTE]
-====
-Rocky Linux 9.4부터 NVMe/TCP 설정  `ctrl_loss_tmo timeout` 자동으로 "꺼짐"으로 설정됩니다. 그 결과,
-
-* 재시도 횟수에 제한이 없습니다(무기한 재시도).
-* 특정 항목을 수동으로 구성할 필요가 없습니다.  `ctrl_loss_tmo timeout` 사용 시 지속 시간  `nvme connect` 또는  `nvme connect-all` 명령어(옵션 -l).
-* NVMe/TCP 컨트롤러는 경로 장애가 발생해도 시간 초과가 발생하지 않으며 무기한 연결 상태를 유지합니다.
-
-
-====
 --
 ====
 
@@ -524,62 +460,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
-== 5단계: NVMe 부팅 서비스 확인
-
-그만큼 `nvmefc-boot-connections.service` 그리고 `nvmf-autoconnect.service` NVMe/FC에 포함된 부팅 서비스 `nvme-cli` 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다.
-
-부팅이 완료된 후 다음을 확인하세요.  `nvmefc-boot-connections.service` 그리고  `nvmf-autoconnect.service` 부팅 서비스가 활성화되었습니다.
-
-.단계
-. 가 활성화되어 있는지 `nvmf-autoconnect.service` 확인합니다.
-+
-[source, cli]
-----
-systemctl status nvmf-autoconnect.service
-----
-+
-.예제 출력을 표시합니다
-[%collapsible]
-====
-[listing]
-----
-nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
-     Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: disabled)
-     Active: inactive (dead)
-
-Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: Starting Connect NVMe-oF subsystems automatically during boot...
-Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
-Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: Finished Connect NVMe-oF subsystems automatically during boot.
-----
-====
-. 가 활성화되어 있는지 `nvmefc-boot-connections.service` 확인합니다.
-+
-[source, cli]
-----
-systemctl status nvmefc-boot-connections.service
-----
-+
-.예제 출력을 표시합니다
-[%collapsible]
-====
-[listing]
-----
-nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
-     Loaded: loaded (/usr/lib/systemd/system/nvmefc-boot-connections.service; enabled; preset: enabled)
-     Active: inactive (dead) since Tue 2025-06-10 01:08:36 EDT; 2h 59min ago
-   Main PID: 7090 (code=exited, status=0/SUCCESS)
-        CPU: 30ms
-
-Jun 10 01:08:36 localhost systemd[1]: Starting Auto-connect to subsystems on FC-NVME devices found during boot...
-Jun 10 01:08:36 localhost systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
-Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-NVME devices found during boot.
-----
-====
-
-
-
-
-== 6단계: 다중 경로 구성 확인
+== 5단계: 다중 경로 구성 확인
 
 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
 
@@ -662,20 +543,20 @@ Namespace Usage    Format             FW             Rev
 --
 [source, cli]
 ----
-nvme list-subsys /dev/nvme5n1
+nvme list-subsys /dev/nvme4n5
 ----
 .예제 보기
 [%collapsible]
 =====
 [listing, subs="+quotes"]
 ----
-nvme-subsys5 - NQN=nqn.1992-08.com.netapp:sn.f7565b15a66911ef9668d039ea951c46:subsystem.nvme1
-               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
+nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.e80cc121ca6911ed8cbdd039ea165590:subsystem.rhel_
+147_LPE32002
 \
- +- nvme126 *fc* traddr=nn-0x2036d039ea951c45:pn-0x2038d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c3:pn-0x2100f4c7aa0cd7c3 *live optimized*
- +- nvme176 *fc* traddr=nn-0x2036d039ea951c45:pn-0x2037d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c2:pn-0x2100f4c7aa0cd7c2 *live optimized*
- +- nvme5 *fc* traddr=nn-0x2036d039ea951c45:pn-0x2039d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c2:pn-0x2100f4c7aa0cd7c2 *live non-optimized*
- +- nvme71 *fc* traddr=nn-0x2036d039ea951c45:pn-0x203ad039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c3:pn-0x2100f4c7aa0cd7c3 *live non-optimized*
+ +- nvme2 *fc* traddr=nn-0x2142d039ea165877:pn-0x2144d039ea165877,host_traddr=nn-0x200000109b3c0820:pn-0x100000109b3c0820 *live optimized*
+ +- nvme3 *fc* traddr=nn-0x2142d039ea165877:pn-0x2145d039ea165877,host_traddr=nn-0x200000109b3c081f:pn-0x100000109b3c081f *live non-optimized*
+ +- nvme4 *fc* traddr=nn-0x2142d039ea165877:pn-0x2146d039ea165877,host_traddr=nn-0x200000109b3c0820:pn-0x100000109b3c0820 *live non-optimized*
+ +- nvme6 *fc* traddr=nn-0x2142d039ea165877:pn-0x2143d039ea165877,host_traddr=nn-0x200000109b3c081f:pn-0x100000109b3c081f *live optimized*
 ----
 =====
 --
@@ -683,20 +564,18 @@ nvme-subsys5 - NQN=nqn.1992-08.com.netapp:sn.f7565b15a66911ef9668d039ea951c46:su
 --
 [source, cli]
 ----
-nvme list-subsys /dev/nvme4n2
+nvme list-subsys /dev/nvme1n1
 ----
 .예제 보기
 [%collapsible]
 =====
 [listing, subs="+quotes"]
 ----
-nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.nvme4
-               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-c2c04f444d33
-\
-+- nvme102 *tcp* traddr=192.168.21.20,trsvcid=4420,host_traddr=192.168.21.1,src_addr=192.168.21.1 *live non-optimized*
-+- nvme151 *tcp* traddr=192.168.21.21,trsvcid=4420,host_traddr=192.168.21.1,src_addr=192.168.21.1 *live optimized*
-+- nvme4 *tcp* traddr=192.168.20.20,trsvcid=4420,host_traddr=192.168.20.1,src_addr=192.168.20.1 *live non-optimized*
-+- nvme53 *tcp* traddr=192.168.20.21,trsvcid=4420,host_traddr=192.168.20.1,src_addr=192.168.20.1 *live optimized*
+nvme-subsys1 - NQN=nqn.1992- 08.com.netapp:sn. bbfb4ee8dfb611edbd07d039ea165590:subsystem.rhel_tcp_95
++- nvme1 *tcp* traddr=192.168.167.16,trsvcid=4420,host_traddr=192.168.167.1,src_addr=192.168.167.1 *live*
++- nvme2 *tcp* traddr=192.168.167.17,trsvcid=4420,host_traddr=192.168.167.1,src_addr=192.168.167.1 *live*
++- nvme3 *tcp* traddr=192.168.167.17,trsvcid=4420,host_traddr=192.168.166.1,src_addr=192.168.166.1 *live*
++- nvme4 *tcp* traddr=192.168.166.16,trsvcid=4420,host_traddr=192.168.166.1,src_addr=192.168.166.1 *live*
 ----
 =====
 --
@@ -716,14 +595,15 @@ nvme netapp ontapdevices -o column
 =====
 [listing, subs="+quotes"]
 ----
-
 Device        Vserver   Namespace Path
------------------------ ------------------------------------
-/dev/nvme10n1     vs_tcp_rockylinux10       /vol/vol10/ns10
+----------------------- ------------------------------
+/dev/nvme0n1 vs_tcp           /vol/vol1/ns1
+
+
 
 NSID       UUID                                   Size
------------------------ ------------------------------------
-1    bbf51146-fc64-4197-b8cf-8a24f6f359b3   21.47GB
+------------------------------------------------------------
+1          6fcb8ea0-dc1e-4933-b798-8a62a626cb7f	21.47GB
 ----
 =====
 --
@@ -739,19 +619,22 @@ nvme netapp ontapdevices -o json
 [listing, subs="+quotes"]
 ----
 {
-  "ONTAPdevices":[
-    {
-      "Device":"/dev/nvme10n1",
-      "Vserver":"vs_tcp_rockylinux10",
-      "Namespace_Path":"/vol/vol10/ns10",
-      "NSID":1,
-      "UUID":"bbf51146-fc64-4197-b8cf-8a24f6f359b3",
-      "Size":"21.47GB",
-      "LBA_Data_Size":4096,
-      "Namespace_Size":5242880
-}
+
+"ONTAPdevices" : [
+{
+
+"Device" : "/dev/nvme1n1",
+"Vserver" : "vs_tcp_95",
+"Namespace_Path" : "/vol/vol1/ns1",
+"NSID" : 1,
+"UUID" : "6fcb8ea0-dc1e-4933-b798-8a62a626cb7f",
+"Size" : "21.47GB",
+"LBA_Data_Size" : 4096,
+"Namespace_Size" : 5242880
+},
+
 ]
-    }
+}
 ----
 =====
 --
@@ -760,9 +643,9 @@ nvme netapp ontapdevices -o json
 
 
 
-== 7단계: 안전한 인밴드 인증 설정
+== 6단계: 안전한 인밴드 인증 설정
 
-ONTAP 9.12.1부터 Rocky Linux 10.0 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.
+ONTAP 9.12.1부터 RHEL 9.3 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.
 
 각 호스트 또는 컨트롤러는 다음과 연결되어야 합니다.  `DH-HMAC-CHAP` 보안 인증을 설정하는 키입니다 .  `DH-HMAC-CHAP` 키는 NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀번호의 조합입니다. 피어를 인증하려면 NVMe 호스트 또는 컨트롤러가 피어와 연결된 키를 인식해야 합니다.
 
@@ -781,7 +664,7 @@ CLI를 사용하여 보안 인밴드 인증을 설정합니다.
 ----
 cat /etc/nvme/hostnqn
 ----
-. Rocky Linux 10.0 호스트에 대한 dhchap 키를 생성합니다.
+. RHEL 9.3 호스트에 대한 dhchap 키를 생성합니다.
 +
 다음 출력은 다음을 설명합니다. `gen-dhchap-key` 명령 매개변수:
 
@@ -996,6 +879,6 @@ mzEKUbcWu26I33b93bil2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
 ====
 
 
-== 8단계: 알려진 문제를 검토합니다
+== 7단계: 알려진 문제를 검토합니다
 
 알려진 문제가 없습니다.

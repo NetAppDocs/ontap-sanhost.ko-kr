@@ -16,7 +16,7 @@ summary: Oracle Linux 9.5 with ONTAP용 NVMe-oF 호스트 구성
 
 
 [role="lead"]
-NetApp SAN 호스트 구성은 ANA(Asymmetric Namespace Access)를 통해 NVMe-oF(NVMe over Fabrics) 프로토콜을 지원합니다. NVMe-oF 환경에서 ANA는 iSCSI 및 FCP 환경에서 ALUA(Asymmetric Logical Unit Access) 다중 경로와 같습니다. ANA는 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.
+Red Hat Enterprise Linux(RHEL) 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다.  ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.
 
 .이 작업에 대해
 ONTAP 스토리지가 포함된 Oracle Linux 9.5 용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다.
@@ -53,18 +53,15 @@ NOTE: 넷앱  `sanlun` 호스트 유틸리티는 NVMe-oF를 지원하지 않습�
 
 == 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
-SAN 부팅을 사용하도록 호스트를 구성하여 배포를 단순화하고 확장성을 개선할 수 있습니다.
-
-.시작하기 전에
-를 사용하여 link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인합니다.
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 간소화하고 확장성을 개선할 수 있습니다. 사용하다link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
 
 .단계
-. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["SAN 부팅 네임스페이스를 생성하고 호스트에 매핑합니다."^]..
+. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["NVMe 네임스페이스를 생성하고 호스트에 매핑합니다."^] .
 . SAN 부팅 네임스페이스가 매핑된 포트에 대해 서버 BIOS에서 SAN 부팅을 활성화합니다.
 +
 HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
 
-. 호스트를 재부팅하고 OS가 실행 중인지 확인하여 구성이 성공했는지 확인합니다.
+. 호스트를 재부팅하고 OS가 제대로 실행 중인지 확인하세요.
 
 
 
@@ -359,7 +356,7 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 == 4단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.
 
-ONTAP는 컨트롤러 식별 데이터에서 MDTS(MAX Data 전송 크기)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 매개 변수 값을 `lpfc_sg_seg_cnt` 기본값인 64에서 256으로 늘려야 `lpfc` 합니다.
+ONTAP Identify Controller 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다.  즉, 최대 I/O 요청 크기는 1MB까지 가능합니다.  Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 다음을 늘려야 합니다. `lpfc` 의 가치 `lpfc_sg_seg_cnt` 매개변수를 기본값 64에서 256으로 변경합니다.
 
 
 NOTE: 이 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.

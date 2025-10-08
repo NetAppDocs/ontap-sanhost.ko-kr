@@ -208,7 +208,6 @@
   <block id="95a7c4ebc7538126d41cf3497f8e09b4" category="summary">ONTAP에서 Red Hat Enterprise Linux 6.4를 사용하는 방법에 대해 설명합니다</block>
   <block id="f0fac0f2b3b710a9568f39594d5f9df3" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.4의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
   <block id="857c2f89db30800ff3058931e331923e" category="paragraph">RHEL 6.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일되었습니다.</block>
-  <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">* 예 *</block>
   <block id="f22bfff17408247273e66b8771e95a3d" category="list-text">AIX 호스트에서 * root * 로 로그인합니다.</block>
   <block id="f1893c3e5e775c895395a0a1524f20a9" category="list-text">파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지를 추출합니다.</block>
   <block id="ee3c9604966f68c69c5d81299e5c5913" category="paragraph">파일 압축을 풀 때 'tap_aix_host_utilities_6.1' 디렉토리가 생성됩니다. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 있습니다.</block>
@@ -236,25 +235,18 @@
   <block id="939827454c3bb8453033ba1bd60c555e" category="cell"><block ref="c8bdc7961e7fb79cc7e51cf734b247fb" category="inline-link-macro-rx"></block></block>
   <block id="97bfb8bbe6415581f3c953b6daabb241" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 detect_prio의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.</block>
   <block id="5116d27ab3c67a2413a9afe024b82a38" category="summary">ONTAP를 사용하여 RHEL 8.3에 대한 NVMe/FC 호스트를 구성하는 방법</block>
-  <block id="20ef4219f8282a156b90a588df2efcd7" category="section-title">RHEL 8.3에서 NVMe/FC를 사용하도록 설정하십시오</block>
-  <block id="23cd3fb20334805933445d4e9e38f375" category="list-text">서버에 Red Hat Enterprise Linux 8.3 GA를 설치합니다.</block>
   <block id="6af8ec9e9e6b66a700434d4b32213979" category="list-text">'/etc/NVMe/host * ' 파일을 백업합니다.</block>
   <block id="70645ea09148c685de3985c33c7f1620" category="list-text">수동으로 편집한 'udev' 규칙이 있는 경우 제거합니다.</block>
   <block id="aa62c82ad70fa52092c6b694ab798a13" category="list-text">업그레이드를 수행합니다.</block>
   <block id="637c9dab407a19b5ffba6acd84571167" category="list-text">업그레이드가 완료된 후 다음 명령을 실행합니다.</block>
   <block id="29dfe6da86bf07e6603e28dfb347ad93" category="list-text">'/etc/NVMe/'에서 호스트 파일을 복구합니다.</block>
   <block id="6583872aab9c396f958f3f06d3512a9d" category="list-text">원래 '/etc/NVMe/host * ' 내용을 백업에서 '/etc/NVMe/'의 실제 호스트 파일로 복사합니다.</block>
-  <block id="dd04c64108aac34c4bea60bf8e6c1a4d" category="list-text">NVMe-CLI 패키지를 설치합니다.</block>
-  <block id="701947e628918eea072dd2f4c817f9ac" category="list-text">인커널 NVMe 다중 경로 지원</block>
-  <block id="b041c12317a88da69581757a98db42d2" category="list-text">Enable_Foreign 설정 _ (선택 사항) _ 을(를) 업데이트합니다.</block>
   <block id="4e9e6a353c31b00bcbf2e522fd8093c3" category="list-text">'stemctl restart multipathd'를 실행하여 multipathd 데몬을 다시 시작합니다.</block>
-  <block id="2f6bd60386ab0902a709ffef7502ea68" category="list-text">네임스페이스가 생성되어 호스트에서 제대로 검색되는지 확인합니다.</block>
   <block id="bf2fd4f30d4d99e83aea737d5c100ea0" category="section-title">NVMe/FC용 Broadcom FC 어댑터를 구성합니다</block>
   <block id="f89e24c920e9c7f547e3742a47871d9c" category="list-text">지원되는 어댑터를 사용하고 있는지 확인합니다.</block>
   <block id="8cd46a779e9b68135d1a640170cd6b2e" category="list-text">lpfc_enable_fc4_type이 " * 3 * "로 설정되어 있는지 확인합니다.</block>
   <block id="41ec6565fe85097ed5372fdce96af64d" category="list-text">이니시에이터 포트가 가동 및 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.</block>
   <block id="6218e0ecfb5322fccd6e215e3e9134d7" category="list-text">호스트를 부팅한 후 lpfc_sg_seg_cnt가 256으로 설정되어 있는지 확인합니다.</block>
-  <block id="eba3a332cb321562f0fc9dfcc5b1c84c" category="list-text">권장되는 Broadcom lpfc 펌웨어와 받은 편지함 드라이버를 사용하고 있는지 확인합니다.</block>
   <block id="abdf9c787f0ce3f5d12b402c6e131791" category="section-title">lpfc Verbose 로깅</block>
   <block id="f3a17d79f6544740456771291527984d" category="summary">ONTAP와 함께 Oracle Linux 6.5를 사용하는 방법에 대해 설명합니다</block>
   <block id="33d395db2629e42725961d07de66379b" category="paragraph">Oracle Linux 6.5의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
@@ -423,27 +415,16 @@
   <block id="7187b48095d030e01ab6d9d7338221f3" category="cell">VIOS 3.1.1.x를 통해 매핑된 가상 iSCSI 디스크의 AIX 7.2 TL4 호스트에서 스토리지 페일오버 작업 중에 I/O 중단이 발생할 수 있습니다 기본적으로 VIOC에서 vSCSI 어댑터의 RW_TIMEOUT 값은 45초입니다. 스토리지 페일오버 중에 I/O 지연이 45초 이상 발생하면 I/O 장애가 발생할 수 있습니다. 이 상황을 방지하려면 Burt에 설명된 해결 방법을 참조하십시오.</block>
   <block id="de6158aaf59eefd0e967674f80bf69a0" category="cell">1307653</block>
   <block id="911e585c5684ba9f5c2b87af879f4a13" category="summary">ONTAP를 사용하여 RHEL 8.2에 대해 NVMe/FC 호스트를 구성하는 방법</block>
-  <block id="797aea72ebbc1431192817ec206cafb4" category="list-text">서버에 Red Hat Enterprise Linux 8.2 GA를 설치합니다.</block>
-  <block id="360ef025710e08a61d1403840b1b7d2f" category="list-text">설치가 완료되면 지정된 Red Hat Enterprise Linux 커널을 실행 중인지 확인합니다.</block>
   <block id="e23d1316b6f8fd9d76ebc1a761f0ffa9" category="summary">ONTAP에서 RHEL 8.4용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="1124bd13d48eff16726e09da76f5e2b3" category="doc">ONTAP를 사용하는 RHEL 8.4에 대한 NVMe-oF 호스트 구성</block>
-  <block id="dec4201e999d968c719dedcc36a07302" category="inline-link">RHEL 8.4 릴리스 정보</block>
-  <block id="260a3557d08efe46355d18910743ceaa" category="list-text">RHEL 8.4의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오<block ref="bb64a8145ae27872979820bfd89ab97b" category="inline-link-rx"></block> 를 참조하십시오.</block>
   <block id="c8fe594dab6cb1395df34d73b005c900" category="section-title">구성 요구 사항</block>
   <block id="da5c98f4248ec7387bdaa6db8341fdef" category="section-title">In-kernel NVMe Multipath를 활성화합니다</block>
   <block id="81eeab9506186e2dca8faefa78d54067" category="paragraph">예:</block>
   <block id="6ba6a18088999d632ca174b9873a3b12" category="list-text">"NVMe-CLI" 패키지를 설치합니다.</block>
   <block id="e71d1275a2744aceb8d59932f2e5fe56" category="list-text">인커널 NVMe 다중 경로 지원:</block>
-  <block id="341d2003e57255a58ea7b3a85806bbb8" category="list-text">호스트에서 '/etc/NVMe/hostnqn'의 호스트 NQN 문자열을 확인하고 ONTAP 배열의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다. 예:</block>
-  <block id="f3852411c8956408a5a170c1d4d53651" category="admonition">호스트 NQN 문자열이 일치하지 않으면 "vserver modify" 명령을 사용하여 해당 ONTAP NVMe 하위 시스템의 호스트 NQN 문자열을 호스트에서 호스트 NQN 문자열 '/etc/NVMe/hostnqn'과 일치하도록 업데이트해야 합니다.</block>
-  <block id="2c4ca691e5adaf801e0bf8d274c9b482" category="list-text">새 설정을 적용하려면 'stemctl restart multipathd' 명령을 실행하여 multipathd 데몬을 다시 시작합니다.</block>
   <block id="c98fed57553daff5a2cf2fa022d54254" category="section-title">NVMe/FC 구성</block>
   <block id="3ea394f2d9cebf2dfc911ba5e025db7a" category="section-title">Broadcom/Emulex</block>
-  <block id="2defc9958244f438872605820e3ca11a" category="list-text">이니시에이터 포트가 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.</block>
   <block id="c0aa648bd7e5700f1ad07528684facf8" category="section-title">1MB I/O 크기 활성화(옵션)</block>
   <block id="2ca464fc1baee04e879e92c84915029a" category="section-title">Marvell/QLogic</block>
-  <block id="01e99a43df9a9e103daa49144d80325a" category="list-text">다음 명령을 사용하여 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행 중인지 확인합니다.</block>
-  <block id="996bc8c555f8b2265c43a9a361d7bcd2" category="list-text">Marvell 어댑터가 다음 명령을 사용하여 NVMe/FC 이니시에이터로 작동할 수 있도록 하는 "ql2xnvmeenable"이 설정되어 있는지 확인합니다.</block>
   <block id="f4091bd53ceacc19d9ac766c9cdb9866" category="section-title">NVMe/TCP를 구성합니다</block>
   <block id="02ec5a6431274b50044361aad326cbdc" category="paragraph">NVMe/FC와 달리 NVMe/TCP에는 자동 연결 기능이 없습니다. Linux NVMe/TCP 호스트에는 다음과 같은 두 가지 주요 제한 사항이 있습니다.</block>
   <block id="524fa08703d908aeca5cccda70508020" category="list-text">* 경로 복구 후 자동 재연결 불가 * NVMe/TCP는 경로 다운 후 10분 동안 기본 'Ctrl-Loss-TMO' 타이머 이후에 복구된 경로에 자동으로 다시 연결할 수 없습니다.</block>
@@ -681,7 +662,6 @@
   <block id="e84f6ac369848cb6d7e082d7741f9522" category="cell">x86_64 플랫폼에서 Emulex 펌웨어 버전 12.6.x 이상에서 나타납니다</block>
   <block id="bea05db7b205cebd49d85c581b86c97e" category="summary">Veritas Infoscale 6 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다</block>
   <block id="43b1876560748141954ab34c38e01ac0" category="summary">ONTAP를 사용하여 RHEL 8.1용 NVMe/FC를 구성하는 방법을 설명합니다</block>
-  <block id="1f66f3a5a69d2cce3c5a6e2c4cee2b1a" category="list-text">서버에 Red Hat Enterprise Linux 8.1을 설치합니다.</block>
   <block id="3220aa43d981bbff1470bdfc949b411d" category="inline-link-macro">1275843)을 참조하십시오</block>
   <block id="e6d42473201caaea82de0b5c2a555d7a" category="cell"><block ref="4f55b76a23d8369790b6e42bb31d2f7d" category="inline-link-macro-rx"></block></block>
   <block id="7d9311eb75abaaf8a1ae1ac3d36997a2" category="cell">스토리지 페일오버 작업 중 QLogic QLE2672 16GB FC HBA를 사용하는 Red Hat Enterprise Linux 8.1에서 커널 중단이 발생할 수 있습니다</block>
@@ -838,13 +818,6 @@
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX Host Utilities 6.1의 릴리스 정보</block>
   <block id="587384a32d909bff27b8405e18d9d7cf" category="summary">ONTAP를 사용하여 RHEL 9.0용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="d79792e27890df0330ac43850943e028" category="list-text">NVMe-CLI 패키지를 설치합니다.</block>
-  <block id="f5b9e6db2b2e5a554b55fd280914f516" category="list-text">호스트에서 '/etc/NVMe/hostnqn'의 호스트 NQN 문자열을 확인하고 ONTAP 배열의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다. 예를 들면, 다음과 같습니다.</block>
-  <block id="e842da2108d28a3593f8615a854fc699" category="admonition">호스트 NQN 문자열이 일치하지 않으면 "vserver modify" 명령을 사용하여 해당 ONTAP NVMe 하위 시스템의 호스트 NQN 문자열을 업데이트하여 호스트의 '/etc/NVMe/hostnqn'에서 호스트 NQN 문자열과 일치시켜야 합니다.</block>
-  <block id="f3eaa9e3e89c370c17729852377aed2f" category="list-text">lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인한다.</block>
-  <block id="055436915aa042f3fdf8045e013acbb5" category="list-text">이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.</block>
-  <block id="351f4726c12d45250df101c8bd9578d6" category="list-text">마찬가지로, 다른 NVMe/TCP 이니시에이터 타겟 LIF 콤보에서 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인하십시오. 예를 들면, 다음과 같습니다.</block>
-  <block id="dc53dad0b533fb8bfe7d6c60ef1fa91e" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMf 설정(예: 모델이 'NetApp ONTAP 컨트롤러'로 설정되고 로드 밸런싱이 '라운드 로빈'으로 설정된 모델)이 호스트에 올바로 반영되는지 확인합니다.</block>
-  <block id="cebb9dfdc378481f9e93e7b505fe4f1d" category="paragraph">예 (b):</block>
   <block id="e3f05e6b08d377aca967243a953ecfb9" category="section-title">일반적인 NVMe-CLI 오류 및 해결 방법</block>
   <block id="dfd9db293eabf1724158b5cc08e4dd12" category="cell">HP-UX 11.31 호스트가 ASA 설정에서 간헐적으로 경로 상태를 잘못 보고합니다.</block>
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">HP-UX LVM 생성 시 블록 크기의 I/O가 1MB 이상으로 전송됩니다</block>
@@ -861,22 +834,8 @@
   <block id="cf5f238fca8b6e155078aa41c175743a" category="sidebar">9.0</block>
   <block id="38aef0bc7cf230dfcf5476915774aa95" category="sidebar">RHEL 9</block>
   <block id="3f11bd75d4bcc18b35f7eeb9b9966c9c" category="summary">ONTAP를 사용하여 RHEL 8.6에 대한 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="d5328c13c170a1ce1607fad34405b646" category="list-text">RHEL 8.6은 NVMe/FC 외에 NVMe/TCP(기술 미리 보기 기능)에 대한 지원을 포함합니다. 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시할 수 있습니다.</block>
-  <block id="8b247e50297ab7aed14b6a8ff2b845c9" category="list-text">RHEL 8.6의 경우, 기본적으로 in-kernel NVMe multipath가 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="be5312f4fb03f3ebb989659ec7b543ee" category="inline-link">RHEL 8.6 릴리즈 노트</block>
-  <block id="4e51b6ca34ea06c883ab4b1c963bee49" category="list-text">RHEL 8.6의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오<block ref="e25c0351018067ddae5b70edc45d84fc" category="inline-link-rx"></block> 를 참조하십시오.</block>
   <block id="71dcdd59971df1a5bb4dfbb60ffe2bad" category="list-text">이니시에이터 포트가 가동 및 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.</block>
-  <block id="346a874868cfe5950cc070d607e10dda" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF combos가 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다. 예를 들면 다음과 같습니다.</block>
-  <block id="3bb5487a25f2c91e7d62566cb6026b68" category="list-text">ONTAP 네임스페이스가 호스트에 제대로 반영되는지 확인합니다. 예를 들면 다음과 같습니다.</block>
-  <block id="f2af591771f10d63662bd947024ee100" category="list-text">각 경로의 컨트롤러 상태가 라이브이고 적절한 ANA 상태인지 확인합니다. 예를 들면 다음과 같습니다.</block>
-  <block id="c13733aade7c22e1d6c0fb7be8a8c754" category="list-text">NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다. 예를 들면 다음과 같습니다.</block>
   <block id="dcda2cb33413b9ab0c8373225de75578" category="summary">ONTAP에서 RHEL 8.5용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="ec81597eac06c85c5ddfa44cc8fcbd52" category="list-text">RHEL 8.5에는 NVMe/FC 외에도 NVMe/TCP(기술 미리 보기 기능) 지원이 포함되어 있습니다. 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시할 수 있습니다.</block>
-  <block id="206f20ba4ee9fc54736165b9006258a5" category="list-text">RHEL 8.5의 경우, in-kernel NVMe multipath가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="46e2bc1ba1e17f9c87c8bdd0665dde6a" category="inline-link">RHEL 8.5 릴리스 정보</block>
-  <block id="ba53163a27cd9bc34ed5a326c3bcd717" category="list-text">RHEL 8.5의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오<block ref="e17db2abe54f171cfce139c1feeab28f" category="inline-link-rx"></block> 를 참조하십시오.</block>
-  <block id="3010e81137392b43d689728401eb1ea9" category="list-text">lpfc_enable_fc4_type이 3으로 설정되어 있는지 확인한다</block>
-  <block id="9b2d197e1555229882f18589d7c32cce" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: "NetApp ONTAP Controller"로 설정된 모델 및 "라운드 로빈"으로 설정된 로드 밸런싱 "iopolicy"가 호스트에 올바르게 반영되는지 확인합니다.</block>
   <block id="fc42d5b62a406fecb7a634ca014f42c2" category="paragraph">7.0U3c부터 필요한 NVMe/TCP 모듈이 기본적으로 로드됩니다. 네트워크 및 NVMe/TCP 어댑터를 구성하려면 VMware vSphere 설명서를 참조하십시오.</block>
   <block id="209ae9abdc2efd05e90e3a97a8913a9b" category="section-title">NVMe/TCP를 검증합니다</block>
   <block id="e4dbb8bc2f2492f010d3f33dd68f00c8" category="list-text">NVMe/TCP 어댑터의 상태를 확인합니다.</block>
@@ -884,7 +843,6 @@
   <block id="75d2257ae841105f67aa7e6940b3fccb" category="list-text">NVMe 네임스페이스에 대한 경로 수를 나열하려면 다음 명령을 사용합니다.</block>
   <block id="cf79be42f6c9a2f2225f202bfec080c2" category="sidebar">15 SP4</block>
   <block id="8da61845fa1ac07e5d54097fe9d2a4cb" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP4용 NVMe/FC를 구성하는 방법에 대해 설명합니다</block>
-  <block id="0882578f9915da36a8ab5c612728ad30" category="paragraph">예 (A):</block>
   <block id="806707e47ee8fe684a6d5e5b0898539a" category="sidebar">NVMeF OL</block>
   <block id="29b512fbc4379581cd2fd8694ca529c4" category="summary">ONTAP와 함께 Windows Server 2022 사용</block>
   <block id="8d1d5b8defd8dab28a7e51c7b4ff5d33" category="inline-link-macro">Microsoft Update 카탈로그 2022</block>
@@ -920,36 +878,16 @@
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">클라우드 환경에서 호스트는 일반적으로 클라이언트라고 합니다. 이 콘텐츠의 모든 호스트별 정보는 클라우드 클라이언트에도 적용됩니다.</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 동안 다시 시도하도록 합니다. 예를 들면, 다음과 같습니다.</block>
   <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다. Ctrl_Loss_TMO 타이머 값을 증가시켜 재시도 기간을 늘릴 수 있습니다. 다음은 세부 정보입니다.</block>
-  <block id="1de6caecfe16b961f2f1c858579203f0" category="list-text">를 실행합니다<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 재시도합니다. 예를 들면 다음과 같습니다.</block>
-  <block id="ad6d243201e40d0f0153f9cf8a6eca49" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정하십시오<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>) 연결 중 - 경로 손실이 발생할 경우 더 오랜 시간 동안 다시 시도하도록 합니다. 예를 들면 다음과 같습니다.</block>
   <block id="30f60d67f457bb040dffde52197a54da" category="paragraph-title">관련 정보</block>
   <block id="98a246e1f1b81f16a2ceb0cc274c4da8" category="summary">ONTAP를 사용하여 RHEL 8.7용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="a3492942cb4c45f8a31e3e3845c9f04a" category="paragraph">RHEL 8.7에는 NVMe/FC 외에 NVMe/TCP(기술 미리 보기 기능)에 대한 지원이 포함되어 있습니다. 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시할 수 있습니다.</block>
-  <block id="0e15c36dca614df066cc960ea227ce1c" category="list-text">RHEL 8.7의 경우 커널 내 NVMe 다중 경로가 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="22bdfd7e91e72cf608df0b09fc912791" category="inline-link-macro">RHEL 8.7 릴리즈 노트</block>
-  <block id="8c2b765ab97c39979798e34af69b0f1c" category="list-text">RHEL 8.7의 NVMe/TCP는 미해결 문제로 인해 기술 미리보기 기능으로 유지됩니다. 을 참조하십시오 <block ref="3b0b5f7859cfdb8f0e4748ec41710206" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
   <block id="4c865e0cb70fa33868e69a5e88daad47" category="cell">1479047</block>
   <block id="c7ed23f5281d7f5b606a1019ecd9fd97" category="sidebar">8.7</block>
-  <block id="58640a39ebacf1c649f790a018923dc7" category="list-text">RHEL 8.7을 서버에 설치합니다.</block>
-  <block id="579f8656182e55995ca799f60b8b3706" category="list-text">확인합니다<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 이 옵션을 설정하면 Marvell 어댑터가 다음 명령을 사용하여 NVMe/FC 이니시에이터로 작동할 수 있습니다.</block>
   <block id="0dea8ccda08dc1647ed0a458849e5cda" category="doc">Oracle Linux 8.6 with ONTAP용 NVMe/FC 호스트 구성</block>
   <block id="309cf24349edc5122d2f31c53280bf27" category="doc">Oracle Linux 8.5 및 ONTAP용 NVMe/FC 호스트 구성</block>
-  <block id="362156721e24ceedbadf34c0abc7e007" category="list-text">RHEL 9.1에는 명시적 설정 없이 기본적으로 활성화된 NVMe 네임스페이스에 대한 인커널 NVMe 다중 경로 지원이 포함되어 있습니다.</block>
-  <block id="79d6a4c19ab1815ebac474c0cb176558" category="section-title">인커널 NVMe 다중 경로 지원</block>
-  <block id="2d012da343e217426e95ab334286ee04" category="list-text">확인합니다<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 다음 명령을 사용하여 Marvell 어댑터가 NVMe/FC 이니시에이터로 작동할 수 있도록 설정됩니다.</block>
-  <block id="4b74cb8caf9869d9c39202f5a7c8cd4d" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF combos가 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다. 예를 들면 다음과 같습니다.</block>
-  <block id="7912d4b61044915bf839431d678f055d" category="list-text">실행<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 노드를 통해 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대해 명령을 실행합니다. 를 더 길게 설정해야 합니다<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 타이머 재시도 기간(예: 에서 설정할 수 있는 30분<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>)를 실행하는 동안<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 경로 손실이 발생할 경우 더 긴 시간 동안 재시도하도록 명령을 내립니다. 예를 들면 다음과 같습니다.</block>
   <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
   <block id="2f8adf6e51ddcf7b0618dad0e63a4144" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> 명령은 지정된 하위 시스템에 대해 반복되는 NVMe 컨트롤러 목록을 반환합니다</block>
-  <block id="95a3009a54be763a347295539b3b924d" category="cell">를 클릭합니다<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템과 관련된 NVMe 컨트롤러의 고유 목록을 반환해야 합니다. RHEL 9.1에서<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 지정된 하위 시스템에 속한 모든 네임스페이스에 대한 각 ANA 상태가 있는 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 이름 공간 당 속성이므로 지정된 네임스페이스에 대한 하위 시스템 명령 구문을 나열하는 경우 경로 상태로 고유한 NVMe 컨트롤러 항목을 표시하는 것이 좋습니다.</block>
-  <block id="54bb88571442321a8544c55cb834deb7" category="cell">RHEL 8.7 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
-  <block id="c66549c6038d3ebbf4c13fa9699ba9c4" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트를 사용하여 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 8.7을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="2fefce185e7d7498c7e3da22bac84294" category="cell">1508554</block>
   <block id="11613812ad376f15dc5ee5a9f425cea1" category="cell">NetApp Linux Host Utilities CLI에서 Emulex HBA 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다</block>
-  <block id="58cc994c670841fa2f2ecd4302d45e03" category="cell">RHEL 9.0 NVMe-of 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
-  <block id="e4c38008038c9c0402e9f00d369b82ea" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 그러나 NVMe-oF 호스트를 가진 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 9.0을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
-  <block id="de92f8bcc4d493d57927d45de496dfcd" category="cell">RHEL 8.6 NVMe-oF 호스트에서는 중복 영구 검색 컨트롤러가 생성됩니다</block>
-  <block id="67eaffbea4f4f435b98dfd9d82b810fe" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트와 함께 ONTAP 9.10.1 및 Red Hat Enterprise Linux(RHEL) 8.6을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="796d3a90e43ce105cbf37298c5065f7e" category="sidebar">9.1</block>
   <block id="19c0ae184ff29a5cb77c04c8bea684af" category="list-text">ONTAP 9.7부터 VMware vSphere 릴리즈를 위해 NVMe/FC(NVMe over Fibre Channel) 지원이 추가되었습니다.</block>
   <block id="3a34596144aee2d13108623781ca1789" category="list-text">7.0U3c부터 ESXi 하이퍼바이저에 대해 NVMe/TCP 기능이 지원됩니다.</block>
@@ -1249,14 +1187,8 @@
   <block id="18246cd8a2065d6c9969e5b7974134d4" category="cell">1537359)를 참조하십시오</block>
   <block id="6a3ab9709740397036937a3dd3536644" category="cell">Emulex HBA를 사용하는 Red Hat Linux 9.2 SAN 부팅 호스트에서는 커널이 중단되는 작업이 발생합니다</block>
   <block id="8a6c2cd607c7c6f2122c62101018f706" category="cell">스토리지 페일오버 반환 작업 중에 Emulex 호스트 버스 어댑터(HBA)가 설치된 Red Hat Linux 9.2 SAN 부팅 호스트에서 커널이 중단되는 작업이 발생합니다. 커널이 중단되면 운영 체제가 재부팅되고<block ref="0f4f5143108e314ddd308d075021efb3" prefix=" " category="inline-code"></block> 가 구성되어 있으면 가 생성됩니다<block ref="fa8dda84ceacd7343d25ccd506ad982a" prefix=" " category="inline-code"></block> 파일 아래에 있습니다<block ref="0e1f3f8d334b46b5beffee9e435a3fcc" prefix=" " category="inline-code"></block> 디렉토리. 이 문제는 와 함께 삼각 측량을 진행 중입니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 드라이버를 재생하지만 일관되게 재현할 수는 없습니다.</block>
-  <block id="34fedef752e7a52649043c91aeccbee2" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe over Fabrics(NVMe-oF)는 ANA(비대칭 네임스페이스 액세스)가 포함된 RHEL(Red Hat Enterprise Linux) 9.2에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
-  <block id="04ec169afac6b24f7cf654cbb22077ab" category="paragraph">RHEL 9.2 및 ONTAP의 NVMe-oF 호스트 구성에 대해 다음 지원이 제공됩니다.</block>
   <block id="0741c9b5716032a843b4139129bd0a9e" category="list-text">NVMe/FC 외에 NVMe over TCP(NVMe/TCP) 지원 네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시합니다.</block>
-  <block id="4d2ae5c4147bd8c995dbe69166bc3a3d" category="list-text">RHEL 9.2에는 기본적으로 NVMe 네임스페이스에 대한 인 NVMe 다중 경로가 활성화되어 있으므로 명시적 설정이 필요하지 않습니다.</block>
-  <block id="2c2fae605b7bbec73458d1d17d0a7bc2" category="paragraph">다음 절차를 사용하여 지원되는 최소 RHEL 9.2 소프트웨어 버전을 검증할 수 있습니다.</block>
-  <block id="5db1c1effe3062cedd30e6f6e6b1b127" category="list-text">서버에 RHEL 9.2를 설치합니다. 설치가 완료된 후 지정된 RHEL 9.2 커널을 실행 중인지 확인합니다.</block>
   <block id="174bb021781f59df2db4c30e37782cb2" category="list-text">를 설치합니다<block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> 패키지:</block>
-  <block id="cc26637366706aa36b30823e96bdbe3c" category="list-text">RHEL 9.2 호스트에서 hostnqn 문자열을 에서 확인하십시오<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
   <block id="6362c7afdb076db9b67492227263935e" category="admonition">를 누릅니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치하지 않습니다. 를 사용하십시오<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 명령을 사용하여 를 업데이트합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 와 일치하는 해당 ONTAP 배열 하위 시스템의 문자열입니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열 시작<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트.</block>
   <block id="4dab1b4f451ec45a30431478018d4fd5" category="list-text">권장 Broadcom을 사용하고 있는지 확인합니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 펌웨어 및 받은 편지함 드라이버.</block>
   <block id="b36540ee1aea09e40e2e7cb8bdd31c82" category="list-text">이니시에이터 포트가 가동 및 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.</block>
@@ -1280,24 +1212,8 @@
   <block id="91a845901382406af3acfb27b99025ea" category="cell">Oracle Linux 9.1 NVMe-of-호스트에서 영구 검색 컨트롤러를 생성하지 못합니다</block>
   <block id="da80aa62fc6cf6b66539a5a3933874a8" category="cell"><block ref="da80aa62fc6cf6b66539a5a3933874a8" category="inline-link-rx"></block></block>
   <block id="b8aa99c2e58dbe6b9f5fbd80d2ef3c41" category="summary">ONTAP를 사용하여 RHEL 8.8에 대한 NVMe-of 호스트를 구성하는 방법</block>
-  <block id="627fc5ce0d88e0997ea80bdeecc63bc3" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access) 8.8 기반의 RHEL(Red Hat Enterprise Linux)에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
-  <block id="ab15b05ddb0c07381067dd0a70972dfd" category="paragraph">ONTAP 기반의 RHEL 8.8에 대한 NVMe-oF 호스트 구성에 대해 다음 지원이 제공됩니다.</block>
-  <block id="ba770fdddd491fed0ed0aa2d9bce30bc" category="list-text">RHEL 8.8 NVMe-of 호스트에 대해 커널 내 NVMe 다중 경로가 기본적으로 비활성화됩니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="c55d87b5714812a0110cd0c2b93d2102" category="list-text">RHEL 8.8 호스트에서 NVMe/TCP는 미해결 문제로 인한 기술 미리보기 기능입니다.</block>
-  <block id="b533797bfe32a06fb40a831b72c0e6fc" category="section-title">인커널 다중 경로를 활성화합니다</block>
-  <block id="682268ee3623608f6aaa4d97948590b9" category="paragraph">다음 절차를 사용하여 커널 내 다중 경로를 활성화할 수 있습니다.</block>
-  <block id="79f5508560fcdeeb0f8f5e35cfeeb028" category="list-text">호스트 서버에 RHEL 8.8을 설치합니다.</block>
-  <block id="3f941eb23733b5fc256825fb8360af1e" category="list-text">설치가 완료된 후 지정된 RHEL 8.8 커널을 실행 중인지 확인합니다.</block>
   <block id="0b2a1cf2bd4cdd2ea23a2f0ea592a4d6" category="list-text">NVMe-CLI 패키지를 설치합니다.</block>
-  <block id="22ac38109d566f08520d1c578277fad1" category="list-text">인커널 NVMe 다중 경로 지원:</block>
-  <block id="1c30079002b0176bf0beeaed68880244" category="list-text">호스트에서 에서 호스트 NQN 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
-  <block id="94ba0506900b15b89968be3bc20d71af" category="admonition">호스트 NQN 문자열이 일치하지 않으면 를 사용할 수 있습니다<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 명령을 사용하여 해당 ONTAP NVMe 하위 시스템에서 호스트 NQN 문자열을 호스트 NQN 문자열과 일치하도록 업데이트합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트.</block>
-  <block id="e6e7ba3eb589d8ecc8281c644469c6e5" category="paragraph">동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우, NetApp는 ONTAP 네임스페이스에 대한 인커널 NVMe 다중 경로와 ONTAP LUN에 대한 dm-multipath를 각각 사용할 것을 권장합니다. 즉, dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하도록 ONTAP 네임스페이스를 dm-multipath에서 제외해야 합니다. 이 작업은 를 추가하여 수행할 수 있습니다<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
   <block id="5aae5284420b8ceb0aa0f5d959c566bc" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.</block>
-  <block id="9bdba773d50bb88232e3e64ea6e985b9" category="list-text">적절한 NVMe-oF 설정(예:<block ref="20f35e630daf44dbfa4c3f68f5399d8c" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="756ad8952bac6a54235a8fd3a5378672" prefix=" " category="inline-code"></block> 부하 분산<block ref="9dcdd7789010499b5bf49690aa44b8e9" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>) 각 ONTAP 네임스페이스는 호스트에 올바르게 반영됩니다.</block>
-  <block id="d7442f3fc53686df869915abb03259d5" category="paragraph">RHEL 8.8 with ONTAP 릴리스에 대한 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="03ae8eb9222d50f723280c24049da8ff" category="cell">RHEL 8.8 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 만듭니다</block>
-  <block id="1e33904ede6309a554b35640a5cef193" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다.  그러나 NVMe-oF 호스트에서 Red Hat Enterprise Linux(RHEL) 8.8을 실행하는 경우 "NVMe Discover-p"가 실행될 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="317bd3f8323d3750053ef303ee6f5813" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access)가 포함된 Oracle Linux(OL) 9.1에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
   <block id="403f78a784ce2b6ea83a425d2530e736" category="paragraph">OL 9.1 및 ONTAP 릴리즈의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="c43b3026b84082f6f8a8e5dbf4fc8359" category="cell">Oracle Linux 9.1 NVMe-of 호스트에서는 을 사용할 수 있습니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> PDC(영구적 검색 컨트롤러)를 생성하는 명령입니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 PDC 하나를 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Oracle Linux 9.1을 실행 중인 경우, 가 실행될 때 PDC 생성이 실패합니다<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 명령어가 수행된다.</block>
@@ -1320,7 +1236,6 @@
   <block id="cc4117db48a5e96b1494712383b1b668" category="doc">ONTAP와 함께 Oracle Linux 6.4를 사용합니다</block>
   <block id="6088639a5afca847eaa9177590532eea" category="doc">ONTAP와 함께 Oracle Linux 6.9를 사용합니다</block>
   <block id="d8fbd5ac0666d17248d83c1cba75a567" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.7을 사용하십시오</block>
-  <block id="1f7d8244b764d5a7c149c4cbfad4c873" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 NVMe over TCP(NVMe/TCP)를 포함한 NVMe over Fabrics(NVMe-oF) 프로토콜을 위해 ONTAP를 타겟으로 사용하여 특정 SAN 호스트를 구성할 수 있습니다. 호스트 운영 체제와 ONTAP 버전에 따라 호스트에서 NVMe/FC 또는 NVMe/TCP 프로토콜을 구성하거나 유효성을 검사합니다.</block>
   <block id="91addf30a04c0c5249fa7d52c99ad1b2" category="doc">ONTAP와 함께 Oracle Linux 6.5를 사용하십시오</block>
   <block id="1298fa83c27263623f4780e10072ad20" category="doc">ONTAP에서 CentOS 6.9를 사용합니다</block>
   <block id="379f97722abe4a13e4bed62c347317a6" category="doc">ONTAP와 함께 CentOS 6.8을 사용합니다</block>
@@ -1367,9 +1282,7 @@
   <block id="47851fc857cb6267d67c526211828e1e" category="paragraph">Linux Host Utilities 7.1 릴리스에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.</block>
   <block id="92d4f2c8b053dc173575e4ac46223415" category="list-text">Linux 호스트 유틸리티는 SANtricity를 실행하는 NetApp E-Series 스토리지 시스템과 ONTAP을 실행하는 AFF, FAS 및 ASA 시스템을 지원하기 때문에 이제 _ Linux 통합 호스트 유틸리티라고 합니다.</block>
   <block id="7d21aae7a58430ed491d0dcc91fdc835" category="paragraph">OL 8.4의 ONTAP용 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="9139a77e42fad6b63368eea822f35757" category="paragraph">ONTAP를 사용하는 RHEL 8.6의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="13dea42e38aa7f2230bd74fcabf6b0e8" category="paragraph">OL 8.6의 ONTAP에 대한 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="4036ce7f5249110346ac2f0ee1325460" category="paragraph">ONTAP가 있는 RHEL 9.1의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="2007c4c5bd8a037f1d8e640cb7e961c0" category="paragraph">호스트에 매핑된 호스트 이니시에이터 목록을 검색할 수 있습니다.</block>
   <block id="0f72498039f4dd70eff202dff74b269e" category="paragraph">지정된 SVM에서 호스트에 매핑된 모든 LUN 목록을 검색할 수 있습니다.</block>
   <block id="f7f35aac075a8552952158a8b905355f" category="paragraph">호스트에 매핑된 지정된 LUN의 모든 특성 목록을 검색할 수 있습니다.</block>
@@ -1380,8 +1293,6 @@
   <block id="e1cd7b537be6453e906049c111d7b248" category="paragraph">호스트 디바이스 파일 이름으로 ONTAP LUN 속성 목록을 검색할 수 있습니다.</block>
   <block id="364c9974898b89845661be07a4997db2" category="paragraph">지정된 SVM 타겟 LIF WWPN을 통해 호스트에서 인식한 ONTAP LUN 목록을 검색할 수 있습니다.</block>
   <block id="e214de5ea0b1a8eb765598cf4b80a404" category="summary">NVMe-oF(NVMe over Fabrics) 프로토콜용 특정 SAN 호스트를 구성할 수 있습니다.</block>
-  <block id="b1199565b654a20a5acee144d68ae4cb" category="paragraph">ONTAP가 있는 RHEL 9.0에 대한 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="71451af1b87baede129f9469cc138039" category="paragraph">ONTAP를 사용하는 RHEL 8.7의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="5196c04a99b765f6b853ef816161d88a" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하는 vSphere 6.5.x 및 6.7.x 릴리스에 대한 ONTAP SAN 호스트 구성 설정을 사용할 수 있습니다.</block>
   <block id="844ceca32955aae871407702dd7263d9" category="paragraph">ONTAP가 설치된 Oracle Linux 9.0의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="9b55f0ca59df9237a11b8ead77f876a0" category="paragraph">OL 8.5 및 ONTAP의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
@@ -1428,68 +1339,15 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="411f721c4d437c447636df81f300973a" category="list-text">의 압축을 풉니다<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> 파일:</block>
   <block id="685e21144e7e399ef67e8a809cd52a1e" category="list-text">소프트웨어를 설치합니다.</block>
   <block id="09244b95824d6e702b6eaab2034bdeec" category="list-text">FCP - AIX</block>
-  <block id="afc3139b9a5ce9140077247baba212a3" category="doc">ONTAP가 포함된 RHEL 9.1에 대한 NVMe-oF 호스트 구성</block>
-  <block id="e802f1c65746460c075fbf1bcaef4d32" category="doc">ONTAP 포함 RHEL 9.2에 대한 NVMe-oF 호스트 구성</block>
-  <block id="d3d6235f1d9607f635bdb0b082a11e7a" category="doc">ONTAP가 포함된 RHEL 8.7에 대한 NVMe-oF 호스트 구성</block>
-  <block id="581e000517ad44dff26955230ec9cdad" category="paragraph">ANA(비대칭 네임스페이스 액세스)를 사용하는 RHEL(Red Hat Enterprise Linux) 8.7에서 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)가 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 비대칭 논리 유닛 액세스(ALUA)이며, 현재 In-kernel NVMe Multipath를 통해 구현되고 있습니다. 이 절차를 수행하는 동안 RHEL 8.7의 ANA 및 타겟으로 ONTAP를 사용하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화합니다.</block>
-  <block id="59fe4f7fa151d75ffc06f1365abf0ec3" category="paragraph">다음 절차를 사용하여 커널 내 NVMe 다중 경로를 활성화할 수 있습니다.</block>
-  <block id="938a487b4d5b2818f0bdb94717d9e8f0" category="paragraph">동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우 NetApp에서는 ONTAP 네임스페이스에 커널 내 NVMe 다중 경로를, ONTAP LUN에 대해 dm-multipath를 각각 사용하는 것이 좋습니다. 즉, dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하도록 ONTAP 네임스페이스를 dm-multipath에서 제외해야 합니다. ENABLE_FORENAL 설정을 에 추가하여 이 작업을 수행할 수 있습니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
-  <block id="816662a42ba84806449e0d8f94225c18" category="open-title">NVMe/FC용 Marvell/QLogic FC 어댑터</block>
-  <block id="1577dd37415be29b61964cccdc0a5bd6" category="paragraph">ANA(Asymmetric Namespace Access)가 포함된 RHEL(Red Hat Enterprise Linux) 8.4에서 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)가 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 비대칭 논리 유닛 액세스(ALUA)이며, 현재 In-kernel NVMe Multipath를 통해 구현되고 있습니다. RHEL 8.4의 ANA 및 타겟으로 ONTAP를 사용하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화할 수 있습니다.</block>
   <block id="344b83be976d50cb0bd99eec20c5e8ea" category="paragraph">이 릴리즈에는 새로운 기능이 없습니다.</block>
-  <block id="2727e7ffa6856651573ac44628ddc5ac" category="list-text">RHEL 8.4의 경우 커널 내 NVMe 다중 경로는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="70d87aa78bc7b21f24a7862014534950" category="list-text">RHEL 8.4 GA를 서버에 설치합니다.</block>
-  <block id="8678ae08dbf54c915ff331ad4afa5ea6" category="doc">ONTAP 탑재 RHEL 8.2에 대한 NVMe/FC 호스트 구성</block>
-  <block id="772d4b2bb4515441328bfc9a4db16c9c" category="list-text">RHEL 8.2부터 시작합니다<block ref="ab775c875d5f89d991a670444dd32ad2" prefix=" " category="inline-code"></block> 규칙은 이미 의 일부로 제공됩니다<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> NVMe 다중 경로에 라운드 로빈 로드 밸런싱을 지원하는 패키지 이 규칙을 더 이상 수동으로 생성할 필요가 없습니다(RHEL 8.1에서 수행됨).</block>
-  <block id="ea7c3f45f79be017099817dd7addd11e" category="list-text">RHEL 8.2부터 NetApp 플러그인이 기본 제공됩니다<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 ONTAP 네임스페이스에 대한 ONTAP 세부 정보를 표시할 수 있습니다.</block>
-  <block id="f109365e2ed260951e1ba369aae9628e" category="list-text">RHEL 8.2의 경우 커널 내 NVMe 다중 경로는 기본적으로 사용하지 않도록 설정됩니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="4e6c732a6984d7b7d180b129496f3259" category="paragraph">다음 절차를 사용하여 NVMe/FC를 활성화할 수 있습니다.</block>
-  <block id="4add81017e5e5098709e11ad21f479e9" category="list-text">를 사용하여 RHEL 8.1에서 RHEL 8.2로 업그레이드하는 경우<block ref="4b91f72ab534b1d3dcfb50a2faf0b424" prefix=" " category="inline-code"></block>, 내<block ref="e82750eaf1d7258b5557bfe448245cd4" prefix=" " category="inline-code"></block> 파일이 손실될 수 있습니다. 파일 손실을 방지하려면 다음을 수행합니다.</block>
-  <block id="566e67d92de5fb0c39ecc4487219ec43" category="list-text">RHEL 8.2 호스트에서 에서 호스트 NQN 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 그리고 ONTAP 어레이의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다.</block>
-  <block id="51a659af535aaed6f0bfdd8c2a65cb13" category="paragraph">호스트 NQN 문자열이 일치하지 않으면 를 사용합니다<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 에서 호스트 NQN 문자열과 일치하도록 해당 ONTAP 배열 하위 시스템의 호스트 NQN 문자열을 업데이트하는 명령입니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트.</block>
-  <block id="3b78ba529de35448439cfb08a088feaa" category="paragraph">다음 절차에 따라 Broadcom FC 어댑터를 구성할 수 있습니다.</block>
-  <block id="d58d6a6bc4bcc9e58a624ec09d60806b" category="doc">ONTAP가 포함된 RHEL 8.3에 대한 NVMe/FC 호스트 구성</block>
-  <block id="fd3c57460c26b4e899b44b0d00cb0b98" category="list-text">RHEL 8.3의 경우 커널 내 NVMe 다중 경로는 기본적으로 사용하지 않도록 설정됩니다. 수동으로 활성화할 수 있습니다.</block>
-  <block id="9acecbc6a5b17e38b32fd17df556292c" category="list-text">를 사용하여 RHEL 8.2에서 RHEL 8.3으로 업그레이드하는 경우<block ref="4b91f72ab534b1d3dcfb50a2faf0b424" prefix=" " category="inline-code"></block> 명령, 사용자<block ref="e82750eaf1d7258b5557bfe448245cd4" prefix=" " category="inline-code"></block> 파일이 손실될 수 있습니다. 파일 손실을 방지하려면 다음 절차를 따르십시오.</block>
-  <block id="ec9266e4f36c6ee8d067bd721ebb7e27" category="list-text">설치가 완료되면 지정된 RHEL 커널을 실행 중인지 확인합니다.</block>
-  <block id="2ecd99e4847f3d91dc4bf84f6ca6b4be" category="list-text">RHEL 8.3 호스트에서 에서 호스트 NQN 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>  ONTAP 스토리지의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다.</block>
   <block id="10dce9030ad8783afd2b4e831da49b7f" category="paragraph">* 출력 예 *:</block>
-  <block id="597f45fa822e41cd0f3a40e1eea32d24" category="list-text">를 확인합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> string은 ONTAP 스토리지의 해당 하위 시스템에 대한 hostnqn 문자열과 일치합니다.</block>
   <block id="79d54ad2be013dc1efba6b62f8feb800" category="list-text">필요한 경우 를 업데이트합니다<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 설정.</block>
-  <block id="d507dcd392a29e7eb8db71bdce83ffc6" category="list-text">다음 NVMe/FC 설정을 확인합니다.</block>
-  <block id="a833a80edb42ee1d4aee5a0778562c87" category="list-text">ONTAP 장치용 NetApp 플러그인을 확인합니다.</block>
-  <block id="94dc90776247ab0aec4eafa7e523b565" category="list-text">권장 Broadcom lpfc 펌웨어와 받은 편지함 드라이버를 사용하고 있는지 확인합니다.</block>
-  <block id="40a1c3d00d83be8425c89d856b65a1b7" category="doc">ONTAP 지원 RHEL 9.0에 대한 NVMe-oF 호스트 구성</block>
-  <block id="c680569888a011858f16587de401cc7c" category="list-text">서버에 RHEL 9.0을 설치합니다.</block>
   <block id="72c8898bab867ffe51404357bb7e09df" category="list-text">지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.</block>
-  <block id="bc027fb574cf7acf0bf73cdcbb16dadb" category="doc">ONTAP 포함 RHEL 8.8에 대한 NVMe-oF 호스트 구성</block>
-  <block id="c25185d4760b30fe4e53a3766a10b495" category="doc">ONTAP가 포함된 RHEL 8.5에 대한 NVMe-oF 호스트 구성</block>
-  <block id="cb0b1786f68534cba2b459c86e0ab3ef" category="paragraph">ANA(Asymmetric Namespace Access)가 포함된 RHEL(Red Hat Enterprise Linux) 8.5에서 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)가 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 비대칭 논리 유닛 액세스(ALUA)이며, 현재 In-kernel NVMe Multipath를 통해 구현되고 있습니다. 이 절차를 수행하는 동안 RHEL 8.5에서 ANA를 사용하고 ONTAP를 타겟으로 하여 NVMe-oF를 커널 내 NVMe 다중 경로와 함께 활성화합니다.</block>
-  <block id="64bd48e10d357155efdc0e904f79426a" category="doc">ONTAP가 포함된 RHEL 8.1에 대한 NVMe/FC 호스트 구성</block>
-  <block id="544766d3bbc2685cef7f1a9d235d422f" category="list-text">기본 NVMe/FC 자동 연결 스크립트는 에서 사용할 수 없습니다<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지. HBA(호스트 버스 어댑터) 공급업체에서 제공한 외부 자동 연결 스크립트를 사용할 수 있습니다.</block>
-  <block id="13979b8343c984acf2a2b313ff3e38c6" category="list-text">NVMe 다중 경로는 기본적으로 사용하지 않도록 설정됩니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="cc1a35558875c7c16413307c13c89c86" category="list-text">기본적으로 라운드 로빈 부하 분산은 사용되지 않습니다. 을 작성하여 이 기능을 활성화할 수 있습니다<block ref="ab775c875d5f89d991a670444dd32ad2" prefix=" " category="inline-code"></block> 규칙.</block>
-  <block id="afc97be774c1663ff647ba74281303d3" category="list-text">설치가 완료되면 지정된 RHEL 커널을 실행하고 있는지 확인합니다.</block>
   <block id="8011cf80f5dd20dfddd3b92b4d5d01ac" category="list-text">를 설치합니다<block ref="891ed8cccffd2c63b191f54b44b5ae65" prefix=" " category="inline-code"></block> 패키지:</block>
   <block id="4221dbb6ea6b43719aae88d86846d722" category="list-text">에서 다음 문자열을 별도의 udev 규칙으로 추가합니다<block ref="99434fae4c03e5f280aa41106396dfa1" prefix=" " category="inline-code"></block>. 따라서 NVMe 다중 경로에 대한 라운드 로빈 로드 밸런싱이 가능합니다.</block>
-  <block id="8246b48c71a51bcce567746b3fed6aa8" category="list-text">RHEL 8.1 호스트에서 에서 호스트 NQN 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 그리고 ONTAP 스토리지의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다.</block>
   <block id="7620805eadd8352b0e3c343da7a49853" category="admonition">호스트 NQN 문자열이 일치하지 않으면 를 사용합니다<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 명령을 사용하여 해당 ONTAP 어레이 서브시스템의 호스트 NQN 문자열을 의 호스트 NQN 문자열과 일치시킵니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트.</block>
   <block id="e2ca5e94cb7ab3712e0cf796ebeda62e" category="list-text">Broadcom lpfc outbox 드라이버 및 자동 연결 스크립트 복사 및 설치:</block>
   <block id="3bb8b43ed1b1526e68b2b7ee931b531a" category="admonition">OS와 함께 번들로 제공되는 기본 드라이버를 받은 편지함 드라이버라고 합니다. 아웃박스 드라이버(OS 릴리스에 포함되지 않은 드라이버)를 다운로드하는 경우 자동 연결 스크립트가 다운로드에 포함되어 드라이버 설치 프로세스의 일부로 설치되어야 합니다.</block>
-  <block id="b5f643243918e34a302b9dfa8dcc1daa" category="list-text">권장 Broadcom lpfc 펌웨어, 아웃박스 드라이버 및 자동 연결 패키지 버전을 사용하고 있는지 확인합니다.</block>
-  <block id="05c7b64f9f23969b05964e7d54e01b58" category="list-text">확인합니다<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block> 3으로 설정:</block>
-  <block id="513bc51d7e387d0c69185ffdcb343ec9" category="list-text">NVMe/FC 이니시에이터 포트가 활성화 및 실행되고 있는지 확인하고 타겟 LIF를 확인할 수 있습니다.</block>
-  <block id="7012889cc926d9aed72cc4dc0fd4e057" category="doc">ONTAP 포함 RHEL 8.6에 대한 NVMe-oF 호스트 구성</block>
-  <block id="6a7cb6a9e050e971cb54222db7ae4540" category="paragraph">ANA(Asymmetric Namespace Access)가 포함된 RHEL(Red Hat Enterprise Linux) 8.6에서 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)가 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 비대칭 논리 유닛 액세스(ALUA)이며, 현재 In-kernel NVMe Multipath를 통해 구현되고 있습니다. 이 절차를 수행하는 동안 RHEL 8.6의 ANA 및 타겟으로 ONTAP를 사용하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화합니다</block>
-  <block id="7d2f5cc21497b0cde87934fbd84c0694" category="paragraph">동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우 NetApp에서는 ONTAP 네임스페이스에 커널 내 NVMe 다중 경로를, ONTAP LUN에 대해 dm-multipath를 각각 사용하는 것이 좋습니다. 즉, dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하도록 ONTAP 네임스페이스를 dm-multipath에서 제외해야 합니다. 이 작업은 에 enable_Foreign 설정을 추가하여 수행할 수 있습니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
-  <block id="6a19313e8113ac2c1e15410e39bf21fb" category="paragraph">ONTAP를 사용하는 RHEL 9.1의 NVMe-oF 호스트 구성에 대해 다음 지원을 이용할 수 있습니다.</block>
-  <block id="05df89d060e2fb1042048336db58af01" category="list-text">서버에 RHEL 9.1을 설치합니다.</block>
-  <block id="6ba8f2fd9b26537c1f509d73b5b3c3e8" category="list-text">NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다.</block>
-  <block id="55475dcd5bcfa96d71d74b2d692fe800" category="list-text">RHEL 9.0부터 NVMe/TCP는 RHEL 8과 달리 더 이상 기술 미리 보기 기능이 아니라 완전히 지원되는 엔터프라이즈 기능 그 자체입니다.</block>
-  <block id="450353fa421bb4ae9174f35ab8787934" category="list-text">RHEL 9.0부터, RHEL 8과 달리 명시적인 설정 없이 기본적으로 NVMe 네임스페이스에 대해 커널 내 NVMe 다중 경로가 활성화됩니다.</block>
-  <block id="f881ebad820aa982c82a8b50a1b39070" category="list-text">ONTAP 네임스페이스가 호스트에 제대로 반영되는지 확인합니다.</block>
-  <block id="e35ada62930c3b590684fb1ae4386cac" category="list-text">각 경로의 컨트롤러 상태가 라이브이고 적절한 ANA 상태인지 확인합니다.</block>
-  <block id="051ff3071e673676a5e48635fa7f872b" category="list-text">NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다.</block>
   <block id="25bf44f4015fc028f21a62c878e44061" category="list-text">실행<block ref="1615297782a0dff59b20451e2ca97ea7" prefix=" " category="inline-code"></block> zpool을 기준으로 * ashift * 의 값이 인지 확인합니다<block ref="c20ad4d76fe97759aa27a0c99bff6710" prefix=" " category="inline-code"></block>.</block>
   <block id="ea97d5c2ead91159f0f6b9bb0c5482a0" category="cell">Solaris 11.4 및 HUK 권장 사항을 참조하십시오. FC 드라이버 바인딩이 에서 변경됩니다<block ref="4ac64d4c80a809df47ac078b5c56d623" prefix=" " category="inline-code"></block> 를 선택합니다<block ref="0d1e6498671862209810e5029cd1e779" prefix=" " category="inline-code"></block>. 에서 기존 설정을 이동합니다<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 를 선택합니다<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> Oracle DOC:2595926.1)에 설명되어 있습니다. 이 동작은 새로 설치된 Solaris 11.4 시스템과 Solaris 11.3 이전 버전에서 업그레이드한 시스템에 따라 달라집니다.</block>
   <block id="65afcaea10e26dc5c66de4f6bf0ade99" category="cell">x86 Arch에서 Emulex 32G 호스트 버스 어댑터(HBA)를 사용하여 스토리지 페일오버(SFO) 반환 작업 중에 Solaris LIF 문제가 발견되었습니다</block>
@@ -1597,31 +1455,10 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="5464d39105cc61c77c01f61a6c049eae" category="summary">ONTAP를 사용하여 RHEL 9.2용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="13aa98a5d20992675bbf7111d4bcf7cc" category="cell">NetApp Linux 호스트 유틸리티 CLI에서 Emulex HBA(호스트 버스 어댑터) 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다</block>
   <block id="447d82560b23d134af7247622d397daf" category="summary">ONTAP를 사용하여 RHEL 9.3용 NVMe-OF 호스트를 구성하는 방법</block>
-  <block id="73e91cc996ce2d039530485f96ea07bb" category="doc">ONTAP 기반 RHEL 9.3에 대한 NVMe-oF 호스트 구성</block>
-  <block id="d825b944ff2e130a26d9c4f866191cb5" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 Red Hat Enterprise Linux(RHEL) 9.3에서 ANA(Asymmetric Namespace Access) 지원 NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
-  <block id="17e6fca095916e663e6874f461b7cd2b" category="paragraph">ONTAP를 사용하는 RHEL 9.3에 대한 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
-  <block id="42edbb6b2787a5246d32929c778d04e1" category="list-text">NVMe 네임스페이스를 요청하지 않도록 명시적인 dm-multipath 설정 없이 지정된 HBA(호스트 버스 어댑터)에서 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용합니다.</block>
-  <block id="53b33721fef6f8bedb109eed881ea6a5" category="paragraph">RHEL 9.3에는 기본적으로 NVMe 네임스페이스를 위해 커널 내 NVMe 다중 경로가 활성화되어 있으므로 명시적 설정이 필요하지 않습니다.</block>
-  <block id="23ef7f4e50c0c07c0f66e08c60163597" category="paragraph">다음 절차에 따라 지원되는 최소 RHEL 9.3 소프트웨어 버전을 검증할 수 있습니다.</block>
-  <block id="cd78954dacd072b75b2c79c3cecedcd3" category="list-text">서버에 RHEL 9.3을 설치합니다. 설치가 완료되면 지정된 RHEL 9.3 커널을 실행하고 있는지 확인합니다.</block>
-  <block id="f0df503d34398fb211cacbbacc8824b9" category="list-text">RHEL 9.3 호스트에서 에서 hostnqn 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
   <block id="af1363e13388a6153d5ee5e31361b059" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.</block>
-  <block id="4d2ccda8ed0dd9cdf2d1d56f266ef18c" category="paragraph">ONTAP 릴리즈가 포함된 RHEL 9.3의 NVMe-oF 호스트 구성에는 알려진 문제가 없습니다.</block>
   <block id="7391a7cd9aaad0e97cd0084d95a4c0fd" category="sidebar">9.3</block>
   <block id="4407c95e5daa7102b34d0879e4eb12ed" category="sidebar">8.9</block>
   <block id="b434464d1a1076f0912b586e6f0da437" category="summary">ONTAP를 사용하여 RHEL 8.9용 NVMe-OF 호스트를 구성하는 방법</block>
-  <block id="77cb6ce6b5771f472e998f91b24df1d8" category="doc">ONTAP를 사용하는 RHEL 8.9에 대한 NVMe-oF 호스트 구성</block>
-  <block id="34c678313217e1652ad03feef8847586" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 Red Hat Enterprise Linux(RHEL) 8.9와 ANA(Asymmetric Namespace Access)에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
-  <block id="da90c6502b166b990e4597540fab45f1" category="paragraph">ONTAP가 포함된 RHEL 8.9에 대한 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
-  <block id="9acbcdf236a131602c43133c826c1cf0" category="list-text">RHEL 8.9 NVMe-oF 호스트에서는 커널 내 NVMe 다중 경로가 기본적으로 비활성화됩니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="9cc30a8ae74eb53c08ef6662a46c13ff" category="list-text">RHEL 8.9 호스트에서 NVMe/TCP는 미해결 문제로 인한 기술 미리 보기 기능입니다.</block>
-  <block id="9122912f58fa882044fcab72507c8ee9" category="paragraph">다음 절차를 사용하여 커널 내 다중 경로를 활성화할 수 있습니다.</block>
-  <block id="581fd0f922f7530dd86eaa5a01ad9dff" category="list-text">호스트 서버에 RHEL 8.9를 설치합니다.</block>
-  <block id="8a1c0f590b55b233cc831d3edab5e663" category="list-text">설치가 완료되면 지정된 RHEL 8.9 커널을 실행하고 있는지 확인합니다.</block>
-  <block id="868c750d60086f65688792e47ff303d5" category="paragraph">동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우, NetApp는 ONTAP 네임스페이스에 대한 인커널 NVMe 다중 경로와 ONTAP LUN에 대한 dm-multipath를 각각 사용할 것을 권장합니다. 이렇게 하면 ONTAP 네임스페이스가 dm-multipath에서 제외되고 dm-multipath가 이러한 네임스페이스 디바이스를 소유하지 못하게 됩니다. 을 추가하여 이 작업을 수행할 수 있습니다<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
-  <block id="fb117390ac885fd422b6653159fac30e" category="paragraph">ONTAP 릴리즈가 포함된 RHEL 8.9에 대한 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="c6f6aa643de410a6ea50d0b32d115bbb" category="cell">RHEL 8.9 NVMe-oF 호스트는 중복 영구 검색 컨트롤러를 생성합니다</block>
-  <block id="e46afea398abac288711eb6774571ab9" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다.  그러나 NVMe-oF 호스트에서 RHEL(Red Hat Enterprise Linux) 8.9를 실행하는 경우 "NVMe discover-p"를 실행할 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="3ffd22c07b48a1c76b76f941ad1cad96" category="list-text">Windows 2022</block>
   <block id="0a412bceaa4a8d671231ab04d2e0296e" category="list-text">윈도우즈 2019</block>
   <block id="4083fee85864d55c66d5e0b21a7928b3" category="list-text">Windows 2016</block>
@@ -1684,16 +1521,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link-macro">NetApp ONTAP용 Amazon FSx</block>
   <block id="cbd5bf3ac18c40540e157027878d3965" category="paragraph">예를 들어, 온프레미스 ONTAP 스토리지를 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결하도록 구성할 수 있습니다. 등의 클라우드 환경에서 실행 중인 스토리지 서비스를 구성할 수도 있습니다 <block ref="54a9edfbbcc641d603aea65a27251f05" category="inline-link-macro-rx"></block> 또는 <block ref="32496c00ec9be403fcfaf96fbaeed4b1" category="inline-link-macro-rx"></block> 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결할 수 있습니다.</block>
   <block id="99fc62da3c4063c517d61da1e5cb3ea3" category="summary">ONTAP가 포함된 RHEL 9.4용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="0f57fe9eb655baeaa1793e610b42c2f4" category="doc">ONTAP 탑재 RHEL 9.4 에 대한 NVMe-oF 호스트 구성</block>
-  <block id="d6b5282a090c91c3f085ec6086ba3812" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 비롯한 NVMe-oF(NVMe over Fabrics)는 Red Hat Enterprise Linux(RHEL) 9.4 및 ANA(Asymmetric Namespace Access) 에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
-  <block id="90cb969c9c4cfedd40361241a5d9c71b" category="paragraph">ONTAP가 포함된 RHEL 9.4에 대한 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
-  <block id="7e625f4c4c9c1ccd710847cc4037c2c5" category="list-text">RHEL 9.4에는 기본적으로 NVMe 네임스페이스를 위해 커널 내 NVMe 다중 경로가 활성화되어 있으므로 명시적 설정이 필요하지 않습니다.</block>
-  <block id="f3dc69e0cba8d4237a37a786c899f4c3" category="list-text">NVMe/FC 프로토콜을 사용한 SAN 부팅이 지원됩니다.</block>
-  <block id="1733de5a596dfd8c9179b7f061fe9051" category="paragraph">알려진 제한은 없습니다.</block>
-  <block id="ad9672840bc0ef8e354ab95610d4aad0" category="paragraph">다음 절차에 따라 지원되는 최소 RHEL 9.4 소프트웨어 버전을 검증할 수 있습니다.</block>
-  <block id="1fc43ef5bbf00643a63f0cb17e89513c" category="list-text">서버에 RHEL 9.4를 설치합니다. 설치가 완료되면 지정된 RHEL 9.4 커널을 실행하고 있는지 확인합니다.</block>
-  <block id="a64e6eb6496dd553f89b6df74f0198bd" category="list-text">RHEL 9.4 호스트에서 에서 hostnqn 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
-  <block id="93955aae7b33676909e1f1724f699b74" category="paragraph">ONTAP 릴리즈가 포함된 RHEL 9.4의 NVMe-oF 호스트 구성에는 알려진 문제가 없습니다.</block>
   <block id="b68de8f1f938e0330acdf64c63b08b9a" category="sidebar">9.4 를 참조하십시오</block>
   <block id="b6758eb9c7ac57209dfad7db602a24d4" category="inline-link-macro">SnapMirror 액티브 동기화에 대해 AIX 호스트를 구성하는 방법</block>
   <block id="a9e760f9ba2dad33870cce967a12f75a" category="cell"><block ref="a9e760f9ba2dad33870cce967a12f75a" category="inline-link-macro-rx"></block></block>
@@ -1701,20 +1528,9 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="0d2b4c4b2840eab7bfae167b812970ef" category="cell"><block ref="0d2b4c4b2840eab7bfae167b812970ef" category="inline-link-macro-rx"></block></block>
   <block id="af3b3cf0d6ceafbe31919aa407157743" category="cell"><block ref="af3b3cf0d6ceafbe31919aa407157743" category="inline-link-macro-rx"></block></block>
   <block id="bc2c3049c0f4d679fb14b74cd64723c8" category="cell"><block ref="bc2c3049c0f4d679fb14b74cd64723c8" category="inline-link-macro-rx"></block></block>
-  <block id="e3fc51a32f8d53fd1edcd8a7ba414fd5" category="list-text">NVMe 네임스페이스를 요청하지 않도록 명시적인 dm-multipath 설정 없이 지정된 HBA(호스트 버스 어댑터)에서 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용합니다.</block>
   <block id="c96b4702a07478185cc851585d0055b6" category="inline-link-macro">NetApp vMSC(VMware vSphere Metro Storage Cluster)와 SnapMirror Active Sync가 있는 NetApp ONTAP</block>
   <block id="8b3f58063486fce853bcbb473e73c56f" category="list-text"><block ref="8b3f58063486fce853bcbb473e73c56f" category="inline-link-macro-rx"></block></block>
   <block id="7ce2c81c828f2a1b54c1127149fe015e" category="summary">ONTAP를 사용하여 RHEL 8.10용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="f10d0e37a588d1f07d49d4a8fcea4752" category="doc">ONTAP 탑재 RHEL 8.10에 대한 NVMe-oF 호스트 구성</block>
-  <block id="b4c08aaedf475ce47e6623660aaa00df" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 Red Hat Enterprise Linux(RHEL) 8.10에서 ANA(Asymmetric Namespace Access)를 통해 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
-  <block id="5a5bc5602fe9f931767405aaaef0de37" category="paragraph">ONTAP를 사용하는 RHEL 8.10에 대한 NVMe-oF 호스트 구성에 대해 다음 지원을 이용할 수 있습니다.</block>
-  <block id="25faad39893d37d8787d5e2b02fb8ea6" category="list-text">RHEL 8.10 NVMe-oF 호스트에서는 커널 내 NVMe 다중 경로가 기본적으로 사용하지 않도록 설정됩니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="d66635253b6aaf6f2db675ed35185ba0" category="list-text">RHEL 8.10 호스트에서 NVMe/TCP는 미해결 문제로 인한 기술 미리 보기 기능입니다.</block>
-  <block id="f98bcccbb710d0c88303ee4bb4c26d7a" category="list-text">호스트 서버에 RHEL 8.10을 설치합니다.</block>
-  <block id="559ebd58b1ddd945caa1b9c033782855" category="list-text">설치가 완료되면 지정된 RHEL 8.10 커널을 실행하고 있는지 확인합니다.</block>
-  <block id="54d5fbe39d4349a06e6a2dc7b7d5b917" category="paragraph">ONTAP가 있는 RHEL 8.10에 대한 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="18afb8a9c90d10fa4944c5e77101cab1" category="cell">RHEL 8.10 NVMe-oF 호스트는 영구적 검색 컨트롤러를 중복하여 생성합니다</block>
-  <block id="45e7643ebc2b41741a8515e9d1730a76" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다.  그러나 NVMe-oF 호스트에서 RHEL(Red Hat Enterprise Linux) 8.10을 실행하는 경우 "NVMe discover-p"를 실행할 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="23c3f6b1dc0958b81d21563a91eecfa6" category="cell"><block ref="23c3f6b1dc0958b81d21563a91eecfa6" category="inline-link-macro-rx"></block></block>
   <block id="e59f05c9149caf590d63da27c24797cb" category="inline-link-macro">NetApp ® SnapMirror 액티브 동기화에서 VMware vSphere 6.x 및 7.x를 지원합니다</block>
   <block id="2a41c03d949869222b758867aff845ff" category="inline-link-macro">NetApp SnapMirror 액티브 동기화에서 VMware vSphere 6.x 및 7.x를 지원합니다</block>
@@ -1819,23 +1635,7 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="d9a48615491837ccb262ccfb1d3ccf8a" category="paragraph">OL 9.1 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
   <block id="6a3fec5b7c64e18a24f8464b57684819" category="paragraph">OL 9.2 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
   <block id="b623f955d0640a548a9adf2b167fbb9c" category="paragraph">OL 9.3 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 픽스가 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="6eaa3145e4b932d7b17a3215e3aae202" category="paragraph">RHEL 8.10 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="f9c98a8dbf40aaae09217c39a87ce766" category="list-text">RHEL 8.2부터<block ref="dafde1b5ed9f22cccd76aeeb9844345b" prefix=" " category="inline-code"></block> 스크립트는 기본 패키지에 포함되어<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 있습니다. 외부 공급업체에서 제공하는 자동 연결 스크립트를 설치하는 대신 이러한 기본 자동 연결 스크립트를 사용할 수 있습니다.</block>
-  <block id="f63e79402698cabf72c2e9a22a2b191d" category="paragraph">RHEL 8.4 GA 커널에 포함된 기본 받은 편지함<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block> 드라이버에는 최신 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="af6455585abf1b98c62482e31b958d0c" category="paragraph">RHEL 8.5 GA 커널에 포함된 기본 받은 편지함<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block> 드라이버에는 최신 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="218e63c66365babae76a173e55900006" category="paragraph">RHEL 8.6 커널에 포함된 기본 받은 편지함<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block> 드라이버에는 최신 업스트림 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="9a58838c906156b5ca738af2ebee16c5" category="paragraph">RHEL 8.7 커널에 포함된 기본 받은 편지함<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block> 드라이버에는 최신 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="4cd52c2cdf0167ac61d74f70c5e450d3" category="paragraph">RHEL 8.8 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
   <block id="26b17225b626fb9238849fd60eabdf60" category="paragraph">를 누릅니다</block>
-  <block id="f49d619e58aa6bfb5347ad0f31fc2aa2" category="paragraph">+ * 예제 출력 *</block>
-  <block id="50f804934e3d9d9c5b7332a0865b08cf" category="paragraph">RHEL 8.9 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 픽스가 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="688fd390210ca3d20dd19c70ca7a978d" category="paragraph">NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상적인 스토리지 장애 조치(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 있는 RHEL 9.0에서 지원됩니다. ANA는 NVM-of 환경에서 ALUA와 동등한 제품이며 현재 In-kernel NVMe Multipath로 구현되고 있습니다. 이 절차를 사용하면 RHEL 9.0에서 ANA를 사용하고 ONTAP를 타겟으로 하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화할 수 있습니다.</block>
-  <block id="5c6e49242675c979970284590419948e" category="paragraph">RHEL 9.0 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 포함되어 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="d926083aa6b800cd3fabfc9b191e507c" category="paragraph">NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 NVMe/TCP 포함)는 ONTAP 어레이에서 정상 작동하는 스토리지 페일오버(SFO)에 필요한 ANA(Asymmetric Namespace Access)가 포함된 RHEL 9.1에서 지원됩니다. ANA는 NVMe-oF 환경에 해당하는 비대칭 논리 유닛 액세스(ALUA)이며, 현재 In-kernel NVMe Multipath를 통해 구현되고 있습니다. 이 절차를 사용하면 RHEL 9.1의 ANA 및 ONTAP를 대상으로 사용하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화할 수 있습니다.</block>
-  <block id="e81cf5e6fc4f1f5937c8b1e3e2474d2e" category="paragraph">RHEL 9.1 커널에 포함된 기본 받은 편지함<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block> 드라이버에는 최신 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="b9878305790c185df1d9210983c79621" category="paragraph">RHEL 9.2 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 수정 사항이 포함되어 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="8677aa1aa4fd519ff6f08a97a120426f" category="paragraph">RHEL 9.3 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="35a282ef807a49dea44ebc22c4bd955c" category="paragraph">RHEL 9.4 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 포함되어 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
   <block id="473733802c02f67f489689f787461e62" category="list-text">SUSE Linux Enterprise Server 15 SP1</block>
   <block id="a1e3e223ffe62b0c4daec6746ea79cc8" category="paragraph">SUSE Linux Enterprise Server 15 SP1 호스트는 동일한 파이버 채널 이니시에이터 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 실행할 수 있습니다. 지원되는 FC 어댑터 및 컨트롤러 목록은 를 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 참조하십시오.</block>
   <block id="197f121a9eabe5a0325431d875ee33dc" category="list-text">기본 NVMe/FC 자동 연결 스크립트가 NVMe-CLI 패키지에 포함되어 있습니다. SUSE Linux Enterprise Server 15 SP1에서 기본 받은 편지함 lpfc 드라이버를 사용할 수 있습니다.</block>
@@ -1880,7 +1680,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="7b4c45ceb018e94a23feffc876757fd9" category="paragraph">예상 값은 1입니다.</block>
   <block id="f664c687d53cbadf53c910f16307ad27" category="list-text">NVMe-oF에는 sandlun 지원이 없습니다. 따라서 OL 8.8 호스트에서 NVMe-oF에 대한 호스트 유틸리티 지원이 없습니다. <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>모든 NVMe-oF 전송에 대해 기본 패키지에 포함된 NetApp 플러그인을 사용할 수 있습니다.</block>
   <block id="5681ca777f3abafe80823417b4bf2991" category="list-text">NVMe-oF에는 sandlun 지원이 없습니다. 따라서 Oracle Linux 8.9 호스트에서는 NVMe-oF에 대한 호스트 유틸리티가 지원되지 않습니다. <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>모든 NVMe-oF 전송에 대해 기본 패키지에 포함된 NetApp 플러그인을 사용할 수 있습니다.</block>
-  <block id="835146cfecc77bcddbeed80155294c7a" category="paragraph">NVMe/TCP에는 자동 연결 기능이 없습니다. 대신 NVMe/TCP 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="d5c963031ebab3b2bca7a1f55d3518de" category="paragraph">ANA(비대칭 네임스페이스 액세스)가 있는 SUSE Linux Enterprise Server 15 SP3에 대해 NVMe over Fabrics 또는 NVMe-oF(NVMe/FC 및 기타 전송 포함)가 지원됩니다. ANA는 NVMe-oF 환경에서 ALUA에 상응하는 제품으로 현재 커널 내 NVMe 다중 경로를 통해 구현됩니다. 이 절차를 사용하면 SUSE Linux Enterprise Server 15 SP3의 ANA 및 ONTAP를 대상으로 사용하여 커널 내 NVMe 다중 경로와 함께 NVMe-oF를 활성화할 수 있습니다.</block>
   <block id="300eba3ec960aac99dba9766c398991d" category="list-text">NVMe-oF에 대한 sanlun 지원은 없습니다. 따라서 SUSE Linux Enterprise Server 15 SP5 호스트에서 NVMe-oF에 대한 호스트 유틸리티 지원을 사용할 수 없습니다. 모든 NVMe-oF 전송에 대해 기본 NVMe-CLI 패키지에 포함된 NetApp 플러그인을 사용할 수 있습니다.</block>
   <block id="160d4596eb5b2d29630ce187c2b4aa3c" category="list-text"><block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>시스템 부팅 후 및<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 가 실행 중인지 확인합니다.</block>
@@ -1970,7 +1769,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="ec1fba1237506df59a6228cbfc26fd26" category="admonition">단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.</block>
   <block id="d7eeafe16e993a6db0f390553a4f2af4" category="paragraph">NVMe/TCP 프로토콜이 작업을 지원하지<block ref="c73910bff7459eb78b9c2d1e7c0e3ed7" prefix=" " category="inline-code"></block> 않습니다. 대신 NVMe/TCP 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="15090de1ea1067de344502d808b5a4bd" category="summary">ONTAP에서 Oracle Linux 8.10을 사용하는 방법에 대해 설명합니다</block>
-  <block id="2405d152712524b9eb2f91ba3cd97f49" category="section-title">SAN 부팅을 활성화합니다</block>
   <block id="db1e7207d8777a9c2c96489e2ef61867" category="summary">Oracle Linux 8.10 with ONTAP용 NVMe-oF 호스트 구성</block>
   <block id="95769ef42ae4724a8deb0d386fbf6b88" category="paragraph">Oracle Linux 8.10용 NVMe-oF 호스트 구성에 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
   <block id="7415be93e6df69c72126d277c3b7cc16" category="list-text">사용 가능한 지원:</block>
@@ -2012,7 +1810,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="125316bd33fa278b6852a16d6a7e9aa5" category="doc">KVM 설정을 구성합니다</block>
   <block id="5d896adeb3ef8a2ffa075f87226d15f8" category="paragraph">다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 없습니다. 원치 않는 디바이스를 제외하려면 파일에 다음 구문을<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 추가하여 &lt;DevId&gt;를 제외할 디바이스의 WWID(Worldwide Identifier) 문자열로 대체합니다.</block>
   <block id="fd97e6af5040ad49359412a731cf9a48" category="paragraph">NetApp 호스트 유틸리티 패키지를 설치하면 툴킷이 자동으로 설치됩니다. 이 키트에서 제공하는<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 유틸리티를 사용하면 LUN과 호스트 버스 어댑터(HBA)를 관리할 수 있습니다. <block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>이 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.</block>
-  <block id="3aeb4eb76668e1a648ac20167d1fd7aa" category="paragraph">NetApp SAN 호스트 구성은 ANA(Asymmetric Namespace Access)를 통해 NVMe-oF(NVMe over Fabrics) 프로토콜을 지원합니다. NVMe-oF 환경에서 ANA는 iSCSI 및 FCP 환경에서 ALUA(Asymmetric Logical Unit Access) 다중 경로와 같습니다. ANA는 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
   <block id="f236c844e8dbdb37680ec9722ff657bb" category="admonition">이 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.</block>
   <block id="b26e74ed6e2892c7e2bb95e414d460c6" category="cell">LUN입니다</block>
   <block id="a243e92c34f812e7c56005c42a770271" category="summary">Oracle Linux 9.4 with ONTAP용 NVMe-oF 호스트 구성</block>
@@ -2028,18 +1825,11 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="9a8c8fd6ced80cbe4db0d4c4fef7bf6e" category="list-text">OL 9.4 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="d481825a9f6d37ba25450de94597b251" category="paragraph">Oracle Linux 9.4과 ONTAP 릴리스의 경우 알려진 문제가 없습니다.</block>
   <block id="5dca4677c0eb60175de3486097fb7e31" category="summary">ONTAP가 포함된 RHEL 9.5용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="a84296aedc6011b8c397f3233477b461" category="paragraph">RHEL(Red Hat Enterprise Linux) 9.5용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
   <block id="c396639e860651e2d3cd53ecae736ced" category="list-text">NVMe/FC(NVMe over Fibre Channel) 외에도 NVMe over TCP(NVMe/TCP) 지원 네이티브 패키지의 NetApp 플러그인은<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> NVMe/FC 및 NVMe/TCP 네임스페이스 모두에 대한 ONTAP 세부 정보를 표시합니다.</block>
-  <block id="b1f115278eb622d0e0153250bf01cf4c" category="list-text">ONTAP 9.12.1부터 NVMe-oF에 대한 안전한 대역 내 인증 지원이 도입되었습니다. RHEL 9.5와 함께 NVMe-oF에 대해 보안 인밴드 인증을 사용할 수 있습니다.</block>
-  <block id="3b0bb03e8ddfc0fdfe70ebd97a424add" category="list-text">RHEL 9.5는 기본적으로 NVMe 네임스페이스를 위한 커널 내 NVMe 다중 경로를 지원하므로 명시적인 설정이 필요하지 않습니다.</block>
-  <block id="923d49c871b0aa57758a6ec2690cf467" category="paragraph">다음 절차에 따라 지원되는 최소 RHEL 9.5 소프트웨어 버전을 검증할 수 있습니다.</block>
-  <block id="461e7f95e5f2d1eb8ac5995384e12da4" category="list-text">서버에 RHEL 9.5를 설치합니다. 설치가 완료되면 지정된 RHEL 9.5 커널을 실행하고 있는지 확인합니다.</block>
   <block id="38f6bc852d1bbe27e299d387064a34e3" category="list-text">RHEL 9.5 호스트에서 다음 위치에서 hostnqn 문자열을<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 확인합니다.</block>
   <block id="81f52aae1ae4c5a7cdc70ef7d5def232" category="list-text">의 예상 출력이<block ref="eccbc87e4b5ce2fe28308fd9f2a7baf3" prefix=" " category="inline-code"></block> 다음과 같이 설정되었는지 확인합니다<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block>.</block>
-  <block id="330271c95537a2e849e0052ab0da4ef1" category="admonition">RHEL 9.5 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 포함되어 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
   <block id="d8133302f3833708e05d2a65a4efe359" category="paragraph">ONTAP 9.12.1부터 RHEL 9.5 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP 및 NVMe/FC를 통해 보안 인밴드 인증이 지원됩니다.</block>
   <block id="710b53594e3ee110c5fc61ba3387e351" category="list-text">RHEL 9.5 호스트에 대한 dhchap 키를 생성합니다.</block>
-  <block id="9e4ea029a49b7e7586107af115c15f41" category="paragraph">ONTAP 릴리즈가 포함된 RHEL 9.5의 NVMe-oF 호스트 구성에 대해 알려진 문제는 없습니다.</block>
   <block id="eab7e959c5707439b9e2c1fe3e86d60c" category="sidebar">9.5</block>
   <block id="a4ac74af7c81edef10a1710e62ceadeb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block> 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
   <block id="e78866ae0ff845eed770c2b938efee3b" category="paragraph">항상<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일, 특히 기본값 섹션에서 기본 설정을 무시할 수 있는 레거시 설정을 확인하십시오.</block>
@@ -2309,7 +2099,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="5148a3be25112ef6a9deea3e8d0967b3" category="paragraph">지원되는 어댑터의 현재 목록은 를 참조하십시오<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>.</block>
   <block id="f24defc0882455995b56894bb6c6c2fd" category="list-text">1MB 입출력 크기 설정 _ (선택 사항) _.</block>
   <block id="5de1f1ffc4af04a7ba0c559424a84841" category="paragraph"><block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>lpfc 드라이버에서 최대 1MB의 I/O 요청을 실행하려면 매개변수를 256으로 설정해야 합니다.</block>
-  <block id="f2869e809227203f20526542f378586c" category="paragraph">ONTAP는 컨트롤러 식별 데이터에서 MDTS(MAX Data 전송 크기)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 매개 변수 값을<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 기본값인 64에서 256으로 늘려야<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 합니다.</block>
   <block id="01f3b61694e835dc0ccae70425e4829e" category="list-text">의 값이 256인지<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 확인합니다.</block>
   <block id="22882a842ed3381cf11f4f74315c331a" category="summary">AIX 호스트 유틸리티는 AIX 호스트에 연결된 ONTAP 스토리지를 관리할 수 있도록 지원합니다.</block>
   <block id="d44d09aed881c51268051c872ad6bdc3" category="list-text">파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지의 압축을 풉니다.</block>
@@ -2459,28 +2248,7 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="f2f6a040ad29f6c345ddd104e24abee1" category="paragraph">동일한 Oracle Linux 8.7 호스트에서 NVMe 및 SCSI 트래픽을 모두 실행하려는 경우 NetApp에서는 ONTAP 네임스페이스에 커널 내 NVMe 다중 경로를 사용하고 ONTAP LUN에 대해 dm-multipath를 각각 사용하는 것이 좋습니다. 이는 또한 dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하도록 ONTAP 네임스페이스를 dm-multipath에 블랙리스트에 표시해야 함을 의미합니다. 이 작업은 파일에 설정을<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 추가하여 수행할 수<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="35ab699d7bbda2407f40be5ed8a72b3f" category="list-text">NVMe 및 SCSI 트래픽을 모두 동일한 호스트에서 실행할 수 있습니다. 따라서 SCSI LUN의 경우 SCSI mpath 장치에 대해 dm-multipath를 구성할 수 있지만 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
   <block id="6f82546541bd2351e6feee43aea1d598" category="list-text">NVMe 및 SCSI 트래픽을 모두 동일한 호스트에서 실행할 수 있습니다. 따라서 SCSI LUN에 대해 SCSI mpath 장치에 대해 dm-multipath를 구성할 수 있지만 NVMe 다중 경로를 사용하여 호스트에 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
-  <block id="8e16a4d869f5b9ee4fa21c6af3e732b0" category="paragraph">ONTAP 9.6부터 RHEL(Red Hat Enterprise Linux) 8.1에서 NVMe/FC가 지원됩니다. RHEL 8.1 호스트는 동일한 FC Initiator 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행할 수 있습니다. 지원되는 FC 어댑터 및 컨트롤러 목록은 를 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 참조하십시오.</block>
-  <block id="4e428101c25b019d4f4946071fd3d01a" category="paragraph">지원되는 구성의 현재 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="223706c7e9ef0ac1f0ddbfb231bf181c" category="paragraph">지원되는 버전의 최신 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="beea3c4e3c5fbfba439b72dcf220fe49" category="list-text">지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터의 최신 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="03fb735758548b3015135e0ea0a1c14a" category="paragraph">ONTAP 9.6부터 RHEL(Red Hat Enterprise Linux) 8.2에서 NVMe/FC가 지원됩니다. RHEL 8.2 호스트는 동일한 파이버 채널(FC) 이니시에이터 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행합니다. 지원되는 FC 어댑터 및 컨트롤러 목록은 를 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 참조하십시오.</block>
-  <block id="1a7e83a4fa525ff05912dfb78de303e1" category="list-text">RHEL 8.2부터는 NVMe 트래픽과 SCSI 트래픽을 모두 동일한 호스트에서 실행할 수 있습니다. 실제로 이는 예상되는 배포된 호스트 구성입니다. 따라서 SCSI의 경우 SCSI LUN에 대해 평소와 같이<block ref="9582f77d18d621414e37c3ce239d4688" prefix=" " category="inline-code"></block> 구성하여<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 장치를 사용할 수 있는 반면, NVMe 다중 경로를 사용하여 호스트에서 NVMe-oF 다중 경로 장치를 구성할 수 있습니다.</block>
-  <block id="46b466fe232511c5a69707eb1a7926fb" category="paragraph">동일한 RHEL 8.2 호스트에서 NVMe 트래픽과 SCSI 트래픽을 모두 NetApp 실행하려면 ONTAP 네임스페이스에 커널 내 NVMe 다중 경로를 사용하고 ONTAP LUN에 대해 dm-multipath를 각각 사용하는 것이 좋습니다. 또한 dm-multipath에서 ONTAP 네임스페이스를 블랙리스트에 포함시켜 dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하게 해야 합니다. 아래와 같이 에 설정을<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 추가하여 이 작업을 수행할 수<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="d33256d5564e8843c558a1de218e3aca" category="paragraph">ONTAP 9.6부터 RHEL(Red Hat Enterprise Linux) 8.3에서 NVMe/FC가 지원됩니다. RHEL 8.3 호스트는 동일한 FC 이니시에이터 어댑터 포트를 통해 NVMe 및 SCSI 트래픽을 모두 실행합니다. 지원되는 FC 어댑터 및 컨트롤러 목록은 를 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 참조하십시오.</block>
-  <block id="799e62743383fd575d7a03ef4defc7dc" category="paragraph">동일한 RHEL 8.3 호스트에서 NVMe 및 SCSI 트래픽을 모두 실행하려는 경우 NetApp ONTAP 네임스페이스에 커널 내 NVMe 다중 경로를, ONTAP LUN에 대해 dm-다중 경로를 각각 사용하는 것이 좋습니다. 또한 dm-multipath에서 ONTAP 네임스페이스를 블랙리스트에 포함시켜 dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하게 해야 합니다. 아래와 같이 /etc/multipath.conf에 설정을 추가하여 이 작업을 수행할 수<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="074fa27c64e5562d1b345a1c4cd50474" category="list-text">설치가 완료되면 지정된 RHEL 8.4 커널을 실행하고 있는지 확인합니다. 지원되는 버전의 최신 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="2575819b82d12e9109581acdab9442a5" category="paragraph">동일한 호스트에서 NVMe와 SCSI가 공존하는 트래픽을 모두 실행하려는 경우 ONTAP 네임스페이스에는 인커널 NVMe 다중 경로, ONTAP LUN에는 dm-multipath를 각각 사용하는 것이 좋습니다. 즉, dm-multipath가 이러한 네임스페이스 장치를 변경하지 못하도록 ONTAP 네임스페이스를 dm-multipath에서 제외해야 합니다. 이 작업은 파일에 enable_external 설정을 추가하여 수행할 수<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="0291a0822bb5dd2b6179be857b9300ae" category="list-text">권장 Broadcom lpfc 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지 확인합니다. 지원되는 어댑터 드라이버 및 펌웨어 버전의 최신 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="194b8efe84a01d8ae91b65d5c9768440" category="paragraph">지원되는 구성에 대한 정확한 세부 정보는 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="0f6e5d4e4cffdc36c3a244971dc1178d" category="list-text">서버에 RHEL 8.5 GA를 설치합니다. 설치가 완료되면 지정된 RHEL 8.5 GA 커널을 실행하고 있는지 확인합니다. 지원되는 버전의 최신 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="fba609b317d4914c01b3681145249ba3" category="list-text">서버에 RHEL 8.6를 설치합니다. 설치가 완료되면 지정된 RHEL 8.6 커널을 실행하고 있는지 확인합니다. 지원되는 버전의 최신 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="1665fe2dc8c9c9734b202628b157044d" category="list-text">설치가 완료되면 지정된 RHEL 8.6 커널을 실행하고 있는지 확인합니다. 지원되는 버전의 최신 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="d3b63547e15e280c314ac1fe39850a0d" category="list-text">설치가 완료되면 지정된 RHEL 8.7 커널을 실행하고 있는지 확인합니다. 지원되는 버전의 최신 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="44a8c47b05a07b4fa6a9523abf0130ff" category="list-text">설치가 완료되면 지정된 RHEL 9.0 커널을 실행하고 있는지 확인합니다. 지원되는 버전의 최신 목록은 을 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="588f5d6038e63a5eace647418bf068c5" category="list-text">지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터에 대한 자세한 내용은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="ca36a54d51ae398f8edb29138f773280" category="list-text">권장 Broadcom lpfc 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지 확인합니다. 지원되는 어댑터 드라이버 및 펌웨어 버전의 현재 목록은 을 참조하십시오<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>.</block>
   <block id="1ccb5475c6691d8e8fa59ba52bbd23c8" category="paragraph">지원되는 구성에 대한 정확한 세부 정보는 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="6b6952fce75024fe0de93da5bb0f8a7a" category="list-text">설치가 완료되면 지정된 RHEL 9.1 커널을 실행하고 있는지 확인합니다. 지원되는 버전의 최신 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
   <block id="b958a979fcafd5d5147f6e3445156806" category="paragraph">ONTAP 9.6부터 다음과 같은 SUSE Linux Enterprise Server 버전에 대해 NVMe/FC가 지원됩니다.</block>
   <block id="0165be7cd394cccab7986599e1568438" category="paragraph">지원되는 구성 및 버전의 최신 목록은 를 참조하십시오<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>.</block>
   <block id="71482a8fcc1538bc1fdca1e59e767e06" category="list-text">지원되는 어댑터를 사용하고 있는지 확인합니다. 지원되는 어댑터의 현재 목록은 를 <block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>참조하십시오.</block>
@@ -2851,19 +2619,11 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="d7c1825e0f2407a4d10d399ac78c1f95" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 10를 구성하고 iSCSI에 대해 RHEL 9.5를 구성합니다</block>
   <block id="d7b201e34bf72ed2024522784d92bd59" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 10 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="0171e05f7a58a96089d554991286cd67" category="paragraph">RHEL 10에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="429ffdde936d5759e07807c3b66f38d2" category="summary">ONTAP가 포함된 RHEL 10용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="cd64186b2c2cedea7d5dfd05d86304c6" category="doc">ONTAP 탑재 RHEL 10에 대한 NVMe-oF 호스트 구성</block>
-  <block id="c0cd0678856b67d02b2dfc3c9646fac2" category="paragraph">RHEL(Red Hat Enterprise Linux) 10용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="bf21bd2f7b624998085c3d69986dbe53" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. RHEL 10에서는 NVMe/TCP에 대한 보안 인밴드 인증을 사용할 수 있습니다.</block>
-  <block id="4baea929c29e972312029711f923ecc9" category="list-text">RHEL 10부터 기본 NVMe 다중 경로가 항상 활성화되어 있으며 NVMe-oF에 대한 DM 다중 경로 지원은 지원되지 않습니다.</block>
   <block id="9ce1ac3eb326fa20a6e4cc846d38ef38" category="list-text">SAN 부팅 네임스페이스를 생성하여 호스트에 매핑합니다.</block>
   <block id="20cd59705d89627333024680d966bb16" category="inline-link">NVMe 스토리지 프로비저닝</block>
   <block id="2ae5f54ecc4375d7e4bc5d4417d72e85" category="paragraph">을<block ref="0cb485556fb9e40c82f55474b807ef26" category="inline-link-rx"></block>참조하십시오.</block>
   <block id="80eb2a3788bc043e0e117027749a3b7a" category="list-text">SAN 부팅 네임스페이스가 매핑된 포트에 대해 서버 BIOS에서 SAN 부팅을 활성화합니다.</block>
   <block id="8796e28d4a4ab01704a45b84e10299f3" category="section-title">2단계: 소프트웨어 버전 검증</block>
-  <block id="bfa758a2fd039564c81329a71d8a55b8" category="paragraph">다음 절차에 따라 지원되는 최소 RHEL 10 소프트웨어 버전을 확인하세요.</block>
-  <block id="8686219d94060c8bb51e3307818e48c4" category="list-text">서버에 RHEL 10를 설치합니다. 설치가 완료되면 지정된 RHEL 10 커널을 실행하고 있는지 확인합니다.</block>
-  <block id="207b3f28e8aa21d614e81b31699e50bf" category="paragraph">다음 예는 RHEL 커널 버전을 보여줍니다.</block>
   <block id="fb47e45e6131ce8573db817dc34e3ba6" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지 버전:</block>
   <block id="d14319cd9fe8bb3c15b66611ee50ab63" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> 패키지 버전:</block>
   <block id="353615218a31d80048bde6c36a52f6d6" category="list-text">호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
@@ -2885,10 +2645,8 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="7ebd106b9b1cfecd3d6fb0451340153e" category="list-text">하위 시스템을 표시합니다.</block>
   <block id="924a2d9478a76ff931a7b33da760a8aa" category="list-text">정책을 표시합니다.</block>
   <block id="33f7abd10cff2281a91b19ee32201623" category="section-title">8단계: 안전한 인밴드 인증 설정</block>
-  <block id="3f2aed41975c4d98d941e8a7b03bf8e5" category="paragraph">ONTAP 9.12.1부터 RHEL 10 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
   <block id="ffc19e5b6958faf88524a792e1c1635d" category="paragraph">각 호스트 또는 컨트롤러는 다음과 연결되어야 합니다. <block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block> 보안 인증을 설정하는 키입니다 . <block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block> 키는 NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀번호의 조합입니다. 피어를 인증하려면 NVMe 호스트 또는 컨트롤러가 피어와 연결된 키를 인식해야 합니다.</block>
   <block id="e50800c92fe482bd476da8e2b8778963" category="paragraph">CLI나 구성 JSON 파일을 사용하여 안전한 인밴드 인증을 설정합니다. 서로 다른 하위 시스템에 대해 다른 dhchap 키를 지정해야 하는 경우 구성 JSON 파일을 사용해야 합니다.</block>
-  <block id="d1864d59ca252f6be1b9b7a1114e5ec4" category="list-text">RHEL 10 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="0d99f1978c6ac8e224f5b9429539befa" category="paragraph">사용하세요 <block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> JSON 파일을 생성하는 옵션입니다. 자세한 구문 옵션은 NVMe Connect - 모든 설명서 페이지를 참조하십시오.</block>
   <block id="aeafecb6e5d6ff8d736488ca4255a495" category="list-text">JSON 파일을 구성합니다.</block>
   <block id="abf3e38be1e135b4689023b375f16aed" category="admonition">다음 예에서, <block ref="b4ccff4fcae86dd694df37690970d401" prefix=" " category="inline-code"></block> 에 대응하다 <block ref="b564e1f3e83c3835c800589da9434401" prefix=" " category="inline-code"></block> 그리고 <block ref="7c5692629f37b2fc3b73d10ecb68180e" prefix=" " category="inline-code"></block> 에 대응하다 <block ref="c74aa421e1eeec8a71897cfdbf55b4c4" prefix=" " category="inline-code"></block> .</block>
@@ -2902,13 +2660,7 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="5cecbf0e006813819e7ea0d92ccca8df" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.6 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="c655b9821bde0a911428a133bb7ef67f" category="paragraph">RHEL 9.6에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="6cbcd68038ece1dbafa173add2c90697" category="summary">ONTAP가 포함된 RHEL 9.6용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="fdee72360607bede29fc52844f306e62" category="paragraph">RHEL(Red Hat Enterprise Linux) 9.6용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="770bddea589c1a8e5b2541551754b4e4" category="list-text">RHEL 9.6는 기본적으로 NVMe 네임스페이스를 위한 커널 내 NVMe 다중 경로를 지원하므로 명시적인 설정이 필요하지 않습니다.</block>
-  <block id="e118d7e4742cf0454d407a22991c4f23" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. RHEL 9.6에서는 NVMe/TCP에 대한 보안 인밴드 인증을 사용할 수 있습니다.</block>
-  <block id="3b6f23fb41215bfbde13af4b92268902" category="paragraph">다음 절차에 따라 지원되는 최소 RHEL 9.6 소프트웨어 버전을 확인하세요.</block>
-  <block id="61e91ca529ce5516397f8af4ff223ab0" category="list-text">서버에 RHEL 9.6를 설치합니다. 설치가 완료되면 지정된 RHEL 9.6 커널을 실행하고 있는지 확인합니다.</block>
   <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">다음 예에서는 nvme-cli 패키지 버전을 보여줍니다.</block>
-  <block id="103bbc9741f09ef806d7d9f1ff8e4957" category="paragraph">ONTAP 9.12.1부터 RHEL 9.6 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
   <block id="c76dae5432bc09fa983706505086692e" category="list-text">RHEL 9.6 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9.6</block>
   <block id="c90e2c8eff8de67c2e01d748085394db" category="list-text">다음을 확인하십시오. <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 존재합니다. 파일이 없으면 0바이트 빈 파일을 만듭니다.</block>
@@ -2920,12 +2672,9 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">SAN 부팅 LUN을 생성하고 호스트에 매핑합니다.</block>
   <block id="23f9932633d90fac9929676a3d96b73c" category="list-text"><block ref="d3b050efbc8875625662ab7a3bc1d82e" category="inline-link-macro-rx"></block>..</block>
   <block id="55e68527d8c164dc338b18da64611305" category="admonition">ONTAP LUN이 KVM 하이퍼바이저에 자동으로 매핑되므로 KVM(커널 기반 가상 머신) 설정을 구성할 필요가 없습니다.</block>
-  <block id="ca1309f891bafcb692fbf3149982c0e9" category="inline-link">SAN 부팅 네임스페이스를 생성하고 호스트에 매핑합니다.</block>
-  <block id="e97e46892f962abb9d135b9f4260bb28" category="list-text"><block ref="5fb7de3d2a2b97d13727ed55244c1d34" category="inline-link-rx"></block>..</block>
   <block id="83946a5f9a0c9e6468d1616ca938bdd0" category="list-text">RHEL 호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
   <block id="43075b4ae15209d42a33c26736b1a616" category="list-text">Rocky Linux 호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
   <block id="5b65dc582fc3a54b76dad70a8f267f3f" category="paragraph">Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를 구성할 수 있습니다. 또한 NVMe/TCP 하위 시스템과 네임스페이스를 수동으로 검색해야 합니다.</block>
-  <block id="61b5a98a9fc13d3a4a8112007aef142d" category="admonition">Rocky Linux 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 수정 사항이 적용되었습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
   <block id="59469b69c75b40a15b84cc48d2d1a5d4" category="paragraph">예상 출력은 1입니다.</block>
   <block id="255f7dd737c93c62e180bd5b0eb68abb" category="paragraph">Broadcom 어댑터로 구성된 NVMe/FC에 대해 1MB 크기의 I/O 요청을 활성화할 수 있습니다. ONTAP은 컨트롤러 식별 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. 1MB 크기의 I/O 요청을 실행하려면 lpfc 값을 늘려야 합니다. <block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 매개변수를 기본값 64에서 256으로 늘립니다.</block>
   <block id="769454dbe77ed2cae45ab11f15c3cdfe" category="paragraph">ONTAP 9.12.1부터 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP 및 NVMe/FC를 통한 안전한 인밴드 인증이 지원됩니다.</block>
@@ -2964,152 +2713,33 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="60d78a670282f7a61eae67f19d440c37" category="paragraph">Rocky Linux 9.5에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="b4d05655be91566f9bc3cf128c212819" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.6 구성</block>
   <block id="ecb4bd3c426003f3430e774eac3ce2f6" category="paragraph">Rocky Linux 9.6에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="73f17c790fb6e615fc4015f793dd7853" category="summary">ONTAP 스토리지를 사용하여 Rocky Linux 10에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="95d56a95c4a46cb4d634d496d6e9b039" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 맞게 Rocky Linux 10 구성</block>
-  <block id="0adc460f96fe4e3f2127561051d8615e" category="paragraph">Rocky Linux 10의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="6611e2d11dfe627f04440281f705b6e8" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. Rocky Linux 10에서는 NVMe/TCP에 대한 안전한 인밴드 인증을 사용할 수 있습니다.</block>
-  <block id="1b17124b24dbc39a0d7becfce134f36c" category="list-text">Rocky Linux 10부터 기본 NVMe 멀티패스가 항상 활성화되어 있으며, NVMe-oF에 대한 DM 멀티패스 지원은 지원되지 않습니다.</block>
-  <block id="6ea036c9f961aeb2208dfa3070bd3a2c" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 10 소프트웨어 버전을 확인하세요.</block>
-  <block id="d82ff982ee38964fef1789b7031e01e7" category="list-text">서버에 Rocky Linux 10을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 10 커널이 실행 중인지 확인하세요.</block>
-  <block id="e3fbd13dfb8ea61b75afa9bbdecb654e" category="paragraph">다음 예는 Rocky Linux 커널 버전을 보여줍니다.</block>
-  <block id="594486d9bd4257ab1e26ff0ae5a35fed" category="paragraph">ONTAP 9.12.1부터 Rocky Linux 10 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
-  <block id="a9c8004e9d1e07204938f2e404aa5aed" category="list-text">Rocky Linux 10 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="222d00f6dedce44fb4277bf5767839a3" category="summary">ONTAP을 사용하여 Rocky Linux 8.10에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="8e628a7900ccbcbe897613470b379397" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.10 구성</block>
-  <block id="85c8cdeb7264230e3576dcdedf0caad5" category="paragraph">Rocky Linux 8.10 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 비대칭 논리 장치 액세스(ALUA) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="c264db98e31638c1a8a87666a604a58e" category="paragraph">Rocky Linux 8.10의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="dcccf8a1b4217ccff67e37945ae5e664" category="list-text">Rocky Linux 8.10 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="46fede53b7d1ee83fe8a87bd6ecb6b28" category="inline-link">Rocky Linux 8.10 릴리스 노트</block>
-  <block id="9ddcffe2b5bcdcca37f41378bd6c4381" category="list-text">Rocky Linux 8.10 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="47fab428b8102b062e87d7a496d804cc" category="inline-link-rx"></block> 참조하십시오.</block>
-  <block id="d46cc0e0ee3c68f52f6d36c351129d8a" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.10 소프트웨어 버전을 확인하세요.</block>
-  <block id="7510807cecede571c43031ae720a798c" category="list-text">서버에 Rocky Linux 8.10을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.6 커널을 실행 중인지 확인하세요.</block>
-  <block id="0819fa6cde25c22d102ee0a7adf88eec" category="section-title">5단계: NVMe/TCP 구성</block>
-  <block id="c9fd308128312c542567755665c5daf4" category="section-title">6단계: NVMe-oF 검증</block>
   <block id="7aa8a009723869e0077d1b9c7c2f290b" category="section-title">7단계: 알려진 문제를 검토합니다</block>
-  <block id="5315051bad3c79e778c3721bb1d84a2c" category="paragraph">ONTAP을 사용하는 Rocky Linux 8.10의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="a11f845df28a0287efbe676d4569a11b" category="cell">Rocky Linux 8.10 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 생성합니다.</block>
-  <block id="79342b66ce0b3b109cfdb66b5a341d0f" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Rocky Linux 8.10을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="200f9314bb04c0424d3c67a467844971" category="summary">ONTAP을 사용하여 Rocky Linux 8.4에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="b98c3ab1117113f8763443775e07dead" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.4 구성</block>
-  <block id="4f12792386d05508f13ace15f7e59b85" category="paragraph">Rocky Linux 8.4 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="2c89af6ab4363b71fc42e24987b4973d" category="paragraph">Rocky Linux 8.4의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="fd8c87b26ab96a99f138d63b24cba7c1" category="list-text">Rocky Linux 8.4 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="57435656bb50b9c00a00430b972d3fdf" category="inline-link">Rocky Linux 8.4 릴리스 노트</block>
-  <block id="4ffa3ebd23b62aecb45b930ba9555c65" category="list-text">Rocky Linux 8.4 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="2a17fbed2340943dd5ec68e4ca7512c3" category="inline-link-rx"></block> 참조하십시오.</block>
-  <block id="ea55a5cb337f262d1971ff2eef04508d" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.4 소프트웨어 버전을 확인하세요.</block>
-  <block id="ec2181acb237ce00035e0613f097d0ca" category="list-text">서버에 Rocky Linux 8.4를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.4 커널이 실행 중인지 확인하세요.</block>
-  <block id="8339e0de02e908b9d22d68001692825d" category="paragraph">ONTAP 릴리스가 적용된 Rocky Linux 8.4의 NVMe-oF 호스트 구성에는 알려진 문제가 없습니다.</block>
   <block id="23a1570197793cedbad374c67a7107c0" category="summary">ONTAP을 사용하여 Rocky Linux 8.5에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="fe62864e17ae35435cb1bd029a48b198" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.5 구성</block>
-  <block id="cab6b10f41d1fcbd48aee28f43ba11e8" category="paragraph">Rocky Linux 8.5 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="c0d7d1447e97ceac0585e2b01811be28" category="paragraph">Rocky Linux 8.5의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="54f4647cbb6172c0ad1ab3cf12b032cf" category="list-text">Rocky Linux 8.5 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="054e513aa4940f2bd0268fdfceca2842" category="inline-link">Rocky Linux 8.5 릴리스 노트</block>
-  <block id="b7d1751b18b73c8e88858d5d4775f559" category="list-text">Rocky Linux 8.5 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="6334192d64a3a2e96b74c4d9684a48e9" category="inline-link-rx"></block> 참조하십시오.</block>
-  <block id="df96769874d4c9dbda21427b70785532" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.5 소프트웨어 버전을 확인하세요.</block>
-  <block id="83423a9254d95179df87f66a8c191a7b" category="list-text">서버에 Rocky Linux 8.5를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.5 커널이 실행 중인지 확인하세요.</block>
-  <block id="fc14ce7599aa7cd808d8b453fe4576ac" category="paragraph">ONTAP 릴리스가 적용된 Rocky Linux 8.5의 NVMe-oF 호스트 구성에는 알려진 문제가 없습니다.</block>
   <block id="28fa950d7bb5ed27988b7b903d6758bb" category="summary">ONTAP을 사용하여 Rocky Linux 8.6에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="731e49e4b7f038e10007118817aa3208" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.6 구성</block>
-  <block id="99386c68c131c2c0226f1d0fbfea8fbd" category="paragraph">Rocky Linux 8.6 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="180356a6fba90baca127157cd761f3fb" category="paragraph">Rocky Linux 8.6의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="09ab4917eb1810647094e83ab60779ca" category="list-text">Rocky Linux 8.6 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="e7e49cf8fccf3c12dc036caaaaf0dada" category="inline-link">Rocky Linux 8.6 릴리스 노트</block>
-  <block id="90faee298dba82f1ebd942e4153d68b7" category="list-text">Rocky Linux 8.6 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="5a58ce93441eb12ea0edf37566d2c8be" category="inline-link-rx"></block> 참조하십시오.</block>
-  <block id="d3080448660c547e2fe83a242512ae71" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.6 소프트웨어 버전을 확인하세요.</block>
-  <block id="18e838a3626451c6faff91c27f20d56b" category="list-text">서버에 Rocky Linux 8.6을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.6 커널이 실행 중인지 확인하세요.</block>
-  <block id="69b0be8d747936b2b5465fe4b57ddfdf" category="paragraph">ONTAP을 사용하는 Rocky Linux 8.6의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="10941bbc35cc1d748498953a221e9b38" category="cell">Rocky Linux 8.6 NVMe-oF 호스트가 중복된 영구 검색 컨트롤러를 생성합니다.</block>
-  <block id="a883fd44cbff0b861d15b8136a3952f4" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 ONTAP 9.10.1과 Rocky Linux 8.6을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="7b5fa3004cbc3003a3262683ec6c65cc" category="summary">ONTAP을 사용하여 Rocky Linux 8.7에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="ed03e9560c294d3ddc83cba29fba4b05" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.7 구성</block>
-  <block id="969737c5049b17a5654a19dd3a43afbc" category="paragraph">Rocky Linux 8.7 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="53d262d878919873c5cb3f4e6985d831" category="paragraph">Rocky Linux 8.7의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="45db8b6cf55c39bce94424f2ddb798e3" category="list-text">Rocky Linux 8.7 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="e5d41b287558420b1da193ecbe60cc50" category="inline-link-macro">Rocky Linux 8.7 릴리스 노트</block>
-  <block id="3bc1130ce3e680520898e40ac7959fa2" category="list-text">Rocky Linux 8.7 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리보기 기능입니다 . <block ref="d32810211fa0fabac0569c4390e790dc" category="inline-link-macro-rx"></block> 자세한 내용은.</block>
-  <block id="7e4a70bbcd93eaa6141e87546c6f1f21" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.7 소프트웨어 버전을 확인하세요.</block>
-  <block id="f5ee36bf3ec3b3e921b0b7e9d925b748" category="list-text">서버에 Rocky Linux 8.7을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.7 커널이 실행 중인지 확인하세요.</block>
-  <block id="7a6a40bc5a4685658e1d343ed9b9dd39" category="cell">Rocky Linux 8.7 NVMe-oF 호스트가 중복된 영구 검색 컨트롤러를 생성합니다.</block>
-  <block id="6d6607f7b41bf491341b99d0537f3629" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 ONTAP 9.10.1과 Rocky Linux 8.7을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="47ec11f02f0c8839abe0813debc4f014" category="summary">ONTAP을 사용하여 Rocky Linux 8.8에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="c4b8d1690b30d457411a155632154e0f" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.8 구성</block>
-  <block id="6f343957984f9d2eb78e0f01ea024112" category="paragraph">Rocky Linux 8.8 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="256f058874befacad0f6f9566228e7d6" category="paragraph">Rocky Linux 8.8의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="8a14068da00827a35251d7ba986f9103" category="list-text">Rocky Linux 8.8 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="159be813da4c10f2d5745d1aad3f34dc" category="inline-link">Rocky Linux 8.8 릴리스 노트</block>
-  <block id="d48c8e0613a3d2462bab37e061f9c99a" category="list-text">Rocky Linux 8.8 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="c94cc770975ea6cce699ff8f723c184b" category="inline-link-rx"></block> 참조하십시오.</block>
-  <block id="e52751aedc7ac7fdc35e859dec9d1a84" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.8 소프트웨어 버전을 확인하세요.</block>
-  <block id="dd66f0672670077d5170dcb95b0cace0" category="list-text">서버에 Rocky Linux 8.8을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.8 커널이 실행 중인지 확인하세요.</block>
   <block id="9d0224a2f615424bba089d74a7227ebe" category="cell">Rocky Linux 8.8 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 생성합니다.</block>
-  <block id="4e8203cb1c6fbcc8f8c247946196d38e" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Rocky Linux 8.8을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="918e5346ad0239cf9b9c61db20bf484c" category="summary">ONTAP을 사용하여 Rocky Linux 8.9에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="c4cb2a6f173b95d0c4f67c8f96f7534b" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 8.9 구성</block>
-  <block id="8e81ec9f25b772637f16944133db022c" category="paragraph">Rocky Linux 8.9 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="6e06dba9b7fe75fff25b335a9ecd497e" category="paragraph">Rocky Linux 8.9에 대한 NVMe-oF 호스트 구성을 사용하면 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="f23ce81eebb3426d889da5f6ca6f568b" category="list-text">Rocky Linux 8.9 NVMe-oF 호스트의 경우 커널 내부 NVMe 멀티패스는 기본적으로 비활성화되어 있습니다. 따라서 수동으로 활성화해야 합니다.</block>
-  <block id="decc234e2e25bcd439c62a6924b45e43" category="inline-link">Rocky Linux 8.9 릴리스 노트</block>
-  <block id="e035f49458f62168d6a4c971dfb2508d" category="list-text">Rocky Linux 8.9 호스트에서는 NVMe/TCP가 미해결 문제로 인해 기술 미리 보기 기능입니다. 자세한 내용은 을<block ref="940755a456f09b2cfde71703a8e286af" category="inline-link-rx"></block> 참조하십시오.</block>
-  <block id="74ba8ad92ae4c2a3b720f451f30601ab" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 8.9 소프트웨어 버전을 확인하세요.</block>
-  <block id="94bace38b58b938918367d0c3cc6eaa5" category="list-text">서버에 Rocky Linux 8.9를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 8.9 커널이 실행 중인지 확인하세요.</block>
   <block id="4c6f9e46e9e7dc5d30fea3fe515730e0" category="cell">Rocky Linux 8.9 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 생성합니다.</block>
-  <block id="0dbf100b5d804fe4caf4da2b664b2afa" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 Rocky Linux 8.9를 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="f69e78a8431382f8f2ff25b30ad11ba3" category="summary">ONTAP을 사용하여 Rocky Linux 9.0에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="3031a6683c69d81249fa58f63e1d9e07" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.0 구성</block>
-  <block id="e31a3bbcdce6caad6e848512cf31530f" category="paragraph">Rocky Linux 9.0 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="b81970d4f1aac579c43532a6541b65f8" category="paragraph">Rocky Linux 9.0의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="607045456dfb12bc04d3522b1f874865" category="list-text">Rocky Linux 9.0은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
-  <block id="6cb5085ae04cfea89d334f12d091d300" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.0 소프트웨어 버전을 확인하세요.</block>
-  <block id="57bec5364d8813b80d9ba8cbbe9cb4ed" category="list-text">서버에 Rocky Linux 9.0을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.0 커널이 실행 중인지 확인하세요.</block>
   <block id="d89f68cec4fde8cdd4a14a4ef45a06f6" category="cell">Rocky Linux 9.0 NVMe-oF 호스트가 중복된 영구 검색 컨트롤러를 생성합니다.</block>
-  <block id="ff01f1039161c2b6b5ea51efcfc04188" category="cell">NVMe over Fabrics (NVMe-oF) 호스트에서 "NVMe discover -p" 명령을 사용하여 영구 Discovery 컨트롤러(PDB)를 생성할 수 있습니다. 이 명령을 사용할 경우 이니시에이터-타겟 조합당 하나의 PDC만 생성해야 합니다. 하지만 NVMe-oF 호스트에서 ONTAP 9.10.1과 Rocky Linux 9.0을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
   <block id="29af8d1042b30a5ba249a12d6db4fc61" category="summary">ONTAP을 사용하여 Rocky Linux 9.1에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="459e7abdd281255af78f1e72bc455c23" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.1 구성</block>
-  <block id="0dfa9a7d24501e1c4aafaba720bcdd20" category="paragraph">Rocky Linux 9.1 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="71bceb39747a320dfdde9ed4ba485664" category="paragraph">Rocky Linux 9.1의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="23dd49f82b27ef244f37aee158baf33e" category="list-text">Rocky Linux 9.1은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
-  <block id="adfdcaae3a69aa1a3f89a3a550b3e16b" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.1 소프트웨어 버전을 확인하세요.</block>
-  <block id="ae7b811595439cd8cfc0f414a032e104" category="list-text">서버에 Rocky Linux 9.1을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.1 커널이 실행 중인지 확인하세요.</block>
   <block id="97d2b9aba8be20cadd2e121636e33e94" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> 명령은 주어진 하위 시스템에 대해 나열된 반복되는 NVMe 컨트롤러를 반환합니다.</block>
   <block id="b68755a212f05b7fd208d599e6c87bde" category="cell">그만큼 <block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 주어진 하위 시스템과 연결된 NVMe 컨트롤러의 고유한 목록을 반환해야 합니다. Rocky Linux 9.1에서는 <block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 이 명령은 지정된 서브시스템에 속하는 모든 네임스페이스에 대해 해당 ANA 상태와 함께 NVMe 컨트롤러를 반환합니다. 그러나 ANA 상태는 네임스페이스별 속성이므로, 지정된 네임스페이스에 대한 서브시스템 명령 구문을 나열하는 경우 경로 상태를 포함하는 고유한 NVMe 컨트롤러 항목이 표시되어야 합니다.</block>
   <block id="88b5ad79d4202975070e7a14f54943ed" category="summary">ONTAP을 사용하여 Rocky Linux 9.2에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="85c64415b5d598f73c6e847a0d77410b" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.2 구성</block>
-  <block id="e3692d133b287428ed899012d278dcda" category="paragraph">Rocky Linux 9.2 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="0709e6e65dd199a6186a638123174eb6" category="paragraph">Rocky Linux 9.2의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="9fe2171ff825eeae99977b246486ab45" category="list-text">Rocky Linux 9.2는 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
-  <block id="67d55e75a94efcc45736cc2f3005df0a" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.2 소프트웨어 버전을 확인하세요.</block>
-  <block id="aafcc0ab42ecf88d7324e3d1846a32f6" category="list-text">서버에 Rocky Linux 9.2를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.2 커널이 실행 중인지 확인하세요.</block>
   <block id="83fa364538f4cac4c88dd64c121c63f0" category="summary">ONTAP을 사용하여 Rocky Linux 9.3에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="5d2b9a878794488507acc5f9357b82a0" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.3 구성</block>
-  <block id="ceea4faa2a523b50b23f09456e8f2b21" category="paragraph">Rocky Linux 9.3 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 비대칭 논리 장치 액세스(ALUA) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="11c1761f4dde8eab6ffa9e7154617c1a" category="paragraph">Rocky Linux 9.3의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="010c3b777e508a607c8f39ab91ec1128" category="list-text">Rocky Linux 9.3은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 되었습니다.</block>
-  <block id="c46e4a14e05a675d4ae1d9f257e2ba34" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.3 소프트웨어 버전을 확인하세요.</block>
-  <block id="d5bbf51ec330863d1ccc5503b65c3524" category="list-text">서버에 Rocky Linux 9.3을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.3 커널이 실행 중인지 확인하세요.</block>
   <block id="2441617d277c4f79e18a934101ee4495" category="summary">ONTAP을 사용하여 Rocky Linux 9.4에 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="80da56795c34c574eef35bf2da92aadc" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.4 구성</block>
-  <block id="54a0478f5c2c3d3d1764051d125e32d5" category="paragraph">Rocky Linux 9.4 호스트는 ANA(비대칭 네임스페이스 액세스)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="93662bdab777129c11baf70f652cdfd2" category="paragraph">Rocky Linux 9.4의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="de4920db6ed57af93eae69e1fbc5ea8e" category="list-text">Rocky Linux 9.4에서는 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 되었습니다.</block>
-  <block id="53046fddde2a2d460ce72f8252c37d97" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.4 소프트웨어 버전을 확인하세요.</block>
   <block id="a0d9f55046993dfcf93d5c6ff3dfb996" category="list-text">서버에 Rocky Linux 9.4를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.4 커널이 실행 중인지 확인하세요.</block>
   <block id="3e6b663dba2b6902083525e800d7dd95" category="summary">ONTAP을 사용하여 Rocky Linux 9.5에 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="67ece1bbad231b0b59e17bc01e23f7e0" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Rocky Linux 9.5 구성</block>
-  <block id="ec299f59585f77b9058a264fa7db5713" category="paragraph">Rocky Linux 9.5 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe/FC 및 NVMe/TCP 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 비대칭 논리 장치 액세스(ALUA) 다중 경로 지정과 동일하며, 커널 내 NVMe 다중 경로 기능을 사용하여 구현됩니다.</block>
-  <block id="49a87e259c17e1ec85b982e20d8ee89f" category="paragraph">Rocky Linux 9.5의 NVMe-oF 호스트 구성에서는 다음 지원과 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="e895eafc85f1ab6f7089bac854ff13ef" category="list-text">ONTAP 9.12.1부터 Rocky Linux 9.5에서 NVMe-oF에 대한 안전한 인밴드 인증을 사용할 수 있습니다.</block>
-  <block id="88009a7e4f8c0e41f21ef4110cfa1d17" category="list-text">Rocky Linux 9.5는 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
-  <block id="42f338e7a67b898d8724af87a7eafa47" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.5 소프트웨어 버전을 확인하세요.</block>
-  <block id="e0099a38b3f447f8615155f10805bd03" category="list-text">서버에 Rocky Linux 9.5를 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.5 커널이 실행 중인지 확인하세요.</block>
   <block id="0148f17cc04647b8533a3c01ec3b7393" category="section-title">7단계: 안전한 인밴드 인증 설정</block>
   <block id="dd181852761e35c13f645a9f053c77c7" category="section-title">8단계: 알려진 문제를 검토합니다</block>
   <block id="cf2e09333e9b9de1b169b6c32eeff962" category="summary">ONTAP을 사용하여 Rocky Linux 9.6에 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="331d7a0b82cb882efa5b3b430281a9d8" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 9.6 구성</block>
-  <block id="470d036f1186ddd5fa5cd71478e6f05c" category="paragraph">Rocky Linux 9.6의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
-  <block id="59188a56ae080a58348d66924900e8da" category="list-text">Rocky Linux 9.6은 기본적으로 NVMe 네임스페이스에 대한 커널 내 NVMe 멀티패스를 활성화하여 명시적 설정이 필요 없게 했습니다.</block>
-  <block id="4ddb6dd0b1c0f78cd4fe39e69f93616c" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. Rocky Linux 9.6에서는 NVMe/TCP에 대한 안전한 인밴드 인증을 사용할 수 있습니다.</block>
-  <block id="2f7acc3e67a351a5288af0031f2b39b0" category="paragraph">다음 절차에 따라 지원되는 최소 Rocky Linux 9.6 소프트웨어 버전을 확인하세요.</block>
-  <block id="befda5dfe1dca92c182f569e3a267615" category="list-text">서버에 Rocky Linux 9.6을 설치하세요. 설치가 완료되면 지정된 Rocky Linux 9.6 커널이 실행 중인지 확인하세요.</block>
   <block id="d4454d1f91fdbee65b5b084bbf2c935c" category="paragraph">ONTAP 9.12.1부터 Rocky Linux 9.6 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
   <block id="e5f095ea13bd0114b461048aa3c82608" category="list-text">Rocky Linux 9.6 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="9b26e38834ec2f2df9641c2b954ff579" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.5 구성</block>
@@ -3458,16 +3088,11 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="3bac8ca72c0f8c144860e88aac75a1eb" category="paragraph">Oracle Linux 9.4부터 NVMe/TCP 설정 <block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block> 자동으로 "꺼짐"으로 설정됩니다. 그 결과,</block>
   <block id="21bbf4b57a95bba01a12c2b3bf2ce488" category="paragraph">ONTAP 9.12.1부터 Oracle Linux 9.5 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
   <block id="5e6b9d21bf7f0ca26372e62301cfb233" category="list-text">Linux 호스트에 대한 dhchap 키를 생성합니다.</block>
-  <block id="fb6678ea50cc87decdbcd2c48c0f594f" category="list-text">이번 릴리스에는 새로운 기능이 없습니다.</block>
   <block id="1838aef895ac5272f6222dbabc057df3" category="list-text">발행을 피하십시오 <block ref="de5ac85ea45047f4dbeea79d7b729b7d" prefix=" " category="inline-code"></block> NVMe-TCP 또는 NVMe-FC 네임스페이스를 통해 SAN에서 부팅하는 시스템에서 이 명령을 사용하면 루트 및 데이터 파일 시스템이 모두 분리되어 시스템이 불안정해질 수 있습니다.</block>
-  <block id="f3e7be572062257b30aaa835617e738d" category="paragraph">RHEL 9.6을 사용하면 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템 부팅 시 자동으로 활성화됩니다.</block>
   <block id="383a7f0b627766628c1401340e5c41da" category="paragraph">RHEL 9.4부터 NVMe/TCP 설정 <block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block> 자동으로 "꺼짐"으로 설정됩니다. 그 결과,</block>
-  <block id="379a951035f282c9e2ac4ae9a1f597e5" category="paragraph">Rocky Linux 10에서는 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다.</block>
   <block id="074a67ebd91595adc758b4c88e040371" category="paragraph">Rocky Linux 9.4부터 NVMe/TCP 설정 <block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block> 자동으로 "꺼짐"으로 설정됩니다. 그 결과,</block>
-  <block id="c8e22b2226cedbe13c19b077e984a280" category="paragraph">Rocky Linux 9.6에서는 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다.</block>
   <block id="bbe83218e80933d7323a91068298993f" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. Oracle Linux 9.4에서는 NVMe/TCP에 대해 안전한 인밴드 인증을 사용할 수 있습니다.</block>
   <block id="f02516212fea2d7fc04b5ea71f9fe66c" category="paragraph">ONTAP 9.12.1부터 Oracle Linux 9.4 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
-  <block id="f488aac6b02d1458f1cf7e7c07747bd5" category="paragraph">RHEL 10을 사용하면 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템 부팅 시 자동으로 활성화됩니다.</block>
   <block id="4588ab094dff9b2456ca757278cf07ed" category="sidebar">Oracle Linux 9</block>
   <block id="73ab7233c5edabec8f510d9bf8812cd1" category="sidebar">Oracle Linux 8</block>
   <block id="1b7514bd57f9cc1b09f9148e93151331" category="sidebar">Oracle Linux 7</block>
@@ -3476,7 +3101,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="ae032d5b125754c1697aed6e1d8f7432" category="list-text">ONTAP 9.12.1부터 NVMe/TCP에 대한 보안 인밴드 인증이 지원됩니다. Oracle Linux 9.5에서는 NVMe/TCP에 대한 안전한 인밴드 인증을 사용할 수 있습니다.</block>
   <block id="42cbea0085bea3ec5496d092c502217b" category="paragraph">Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터로 NVMe/FC를 구성합니다.</block>
   <block id="0f2332cb3d4b010b45d6eb9fbbeab96c" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 모두 실행 예를 들어, SCSI LUN의 SCSI mpath 장치에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트의 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
-  <block id="c28f1c588b284418e1f1f45095861195" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 실행 예를 들어, SCSI LUN의 SCSI mpath 장치에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트의 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
   <block id="7b041227be300a97269b0c517c4d8a5c" category="paragraph"><block ref="b5c9ec30dafc3cdd07e22705d3fd28f9" prefix="" category="inline-code"></block></block>
   <block id="654a0efc10421b3fc1ee44ca772778aa" category="summary">SUSE Linux Enterprise Server 15 SP7에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
   <block id="870d83d0bc4a1d675ccc1013c75b6763" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP7을 구성합니다</block>
@@ -3518,11 +3142,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="ffc899321bb51e568ff27d8d67516b4a" category="section-title">11단계: 알려진 문제를 검토합니다</block>
   <block id="0f0224190f0b6b918a5e9d02a89ece08" category="sidebar">15 SP7입니다</block>
   <block id="3207068e1112e1d7bf44793a16243167" category="paragraph">NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다. 대신, NVMe/TCP 연결 또는 전체 연결 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 있습니다.</block>
-  <block id="f9373bf6fb792b7c646f5bec24ea0daf" category="paragraph">ONTAP 스토리지를 사용하는 Rocky Linux 8.7의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="de90af9b7865f783dbab0561bc93777d" category="paragraph">ONTAP 스토리지 릴리스가 포함된 Rocky Linux 8.8의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="cd55e97345547906b5919126d046528a" category="paragraph">ONTAP 스토리지 릴리스가 포함된 Rocky Linux 8.9의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="aa941996691732f26e58432a0029389e" category="paragraph">ONTAP 스토리지를 탑재한 Rocky Linux 9.0의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="12ac068aa4dcbbc35048b05dc3d74e3f" category="paragraph">ONTAP 스토리지를 사용하는 Rocky Linux 9.1의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="ae57893456ba890d9be313f45c89b49a" category="list-text">ONTAP LUN의 경로 상태를 확인하세요.</block>
   <block id="e74cde91767e734e99cfb172af811316" category="paragraph">다음 예제 출력은 ASA, AFF 또는 FAS 구성에서 ONTAP LUN의 올바른 경로 상태를 보여줍니다.</block>
   <block id="9376575465ca90697f172c2aeaf3187c" category="paragraph">ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 이를 활성 상태("기본")로 유지합니다.  이렇게 하면 모든 경로를 통해 동시에 I/O 작업을 처리하여 성능이 향상됩니다.</block>
@@ -4057,4 +3676,299 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="de3b6129e1e522c8f5cf6e37ce4b9f22" category="paragraph">RHEL, SUSE Linux Enterprise Server 또는 Oracle Linux 호스트에 Linux Host Utilities 8.0을 설치하세요.</block>
   <block id="b9e9a39780b968851bca7471c4bdb04f" category="list-text">Ubuntu 호스트에 Linux Host Utilities 8.0을 설치하세요:</block>
   <block id="50a27e0ec26dfc22ecff73b4716eee33" category="list-text">Ubuntu OS를 HBA 라이브러리에 수동으로 연결합니다.</block>
+  <block id="ea6fc538363b79ec9dcde53b8eb6cebd" category="paragraph">SAN 부팅을 사용하도록 호스트를 구성하여 배포를 간소화하고 확장성을 개선할 수 있습니다. 사용하다<block ref="1ed2ba1980a264d01ab3597cde177180" category="inline-link-macro-rx"></block> Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.</block>
+  <block id="cc1e0ea3a190973972e5f85fe71ffcf1" category="inline-link">NVMe 네임스페이스를 생성하고 호스트에 매핑합니다.</block>
+  <block id="9198b47fa48bb022a24bc306806b669b" category="list-text"><block ref="e477ae587472cb821a619d8051eab7f7" category="inline-link-rx"></block> .</block>
+  <block id="dab46064e9979aa768e2502ebac43ae8" category="list-text">호스트를 재부팅하고 OS가 제대로 실행 중인지 확인하세요.</block>
+  <block id="8cca30c00d7b58ae82ba68619e441b9d" category="paragraph">Broadcom/Emulex 또는 Marvell/QLogic 어댑터를 사용하여 NVMe/FC를 구성하거나 수동 검색 및 연결 작업을 사용하여 NVMe/TCP를 구성합니다.</block>
+  <block id="7f66da3657150fb15d4ce789097de757" category="open-title">FC - 브로드컴/에뮬렉스</block>
+  <block id="1851c869c2022530f362076901f3518b" category="paragraph">이 명령은 펌웨어 버전을 반환합니다.</block>
+  <block id="0c02fc6122d793747240a4748a7b0870" category="open-title">FC - 마벨/Q로직</block>
+  <block id="b136ef5f6a01d816991fe3cf7a6ac763" category="open-title">TCP</block>
+  <block id="55b681d5bd903c1879888f64f2c2071a" category="paragraph">NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다.  대신 NVMe/TCP를 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 있습니다.<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 수동으로 작업합니다.</block>
+  <block id="0e16c4ea2d6c980325dad5dad20b303f" category="list-text">지원되는 NVMe/TCP LIF를 통해 개시자 포트가 검색 로그 페이지 데이터를 가져올 수 있는지 확인하세요.</block>
+  <block id="c66e8f141f367b0a5a1d201cc49ccc72" category="paragraph">ONTAP Identify Controller 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다.  즉, 최대 I/O 요청 크기는 1MB까지 가능합니다.  Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 다음을 늘려야 합니다.<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 의 가치<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 매개변수를 기본값 64에서 256으로 변경합니다.</block>
+  <block id="cfa5b6e557299c1ae7c635f08785f365" category="paragraph">Red Hat Enterprise Linux(RHEL) 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다.  ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.</block>
+  <block id="e8584093909cb01d1e4390beaad82a5f" category="paragraph">그만큼<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다.</block>
+  <block id="38ebfab3a4661e076a180498de8db502" category="paragraph">시스템이 소프트웨어 요구 사항을 충족하는지 확인하고 NVMe 패키지 설치와 호스트 구성을 확인하세요.</block>
+  <block id="660bcc8bfdb485b79b7dede726eb2358" category="doc">NVMe-OF를 사용하여 ONTAP SAN 호스트를 구성하는 방법에 대해 알아보세요.</block>
+  <block id="be1e5922c13f8cd92deb77a78a07375f" category="paragraph">ONTAP 스토리지 대상으로 사용하여 NVMe over Fabrics(NVMe-oF) 프로토콜을 사용하도록 지원되는 SAN 호스트를 구성할 수 있습니다.  NVMe-oF에는 NVMe over Fibre Channel(NVMe/FC)과 NVMe over TCP(NVMe/TCP)가 포함됩니다.  호스트 운영 체제와 ONTAP 버전에 따라 호스트에서 NVMe/FC 또는 NVMe/TCP 프로토콜, 또는 둘 다를 구성하고 검증합니다.</block>
+  <block id="b0e0bd8207ba62457f58c3e06f3f7bec" category="section-title">ONTAP 지원 및 기능</block>
+  <block id="c083727c571f8ac1566efd9a6c818983" category="paragraph">표는 ONTAP 버전과 SAN 호스트 운영 체제에서 지원하는 ONTAP 기능을 보여줍니다.</block>
+  <block id="0a0891df749e36f8a1da70eeb7191ff8" category="cell">ONTAP 기능</block>
+  <block id="aefa7649e1e29e479910b089b2d642d0" category="cell">지원되는 SAN 호스트</block>
+  <block id="3b2a75ebc087c7f3c4fa9ac0e2a92ebe" category="cell">ONTAP 버전</block>
+  <block id="b48dd7b275ed5be01568bf3fea421774" category="cell">*NVMe/TCP에 대한 안전한 인밴드 인증*</block>
+  <block id="f50ad339a2fcf7aedfe431f3ae3ef107" category="list-text">RHEL 10.0</block>
+  <block id="1080847e44693bff1e1d0a62e357d97c" category="list-text">RHEL 9.6, 9.5</block>
+  <block id="aafcc7be030d124544f5c9bee1ca41f2" category="list-text">로키 리눅스 10.0</block>
+  <block id="bae2f5c72217fa9eb5a4c27196e340f0" category="list-text">로키 리눅스 9.6, 9.5</block>
+  <block id="84de463f38d2bd8631492023d51c423f" category="cell">지원은 9.12.1부터 시작됩니다.</block>
+  <block id="205c456d8edaaf80b1bc352753ffc7fc" category="cell">*NVMe/FC 외에 NVMe/TCP* 기본 네임스페이스를 사용하여 NVMe/FC 및 NVMe/TCP 네임스페이스에 대한 ONTAP 세부 정보를 제공합니다.<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지.</block>
+  <block id="45b0d7be0acab674ffba143dc3e0a918" category="list-text">RHEL 9.6, 9.5, 9.4, 9.3, 9.2, 9.1</block>
+  <block id="2cb74808d6693532821746fc716c0381" category="list-text">RHEL 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.8, 8.2</block>
+  <block id="91b91776d78f74933e5f5858c59366ac" category="list-text">로키 리눅스 9.6, 9.5, 9.4, 9.3, 9.2, 9.1</block>
+  <block id="396f6ca2135cbfa76729310561aa4ba9" category="list-text">로키 리눅스 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.8, 8.2</block>
+  <block id="6eddaf2e77d53e1283b1daab6a61df94" category="cell">지원은 9.10.1부터 시작됩니다.</block>
+  <block id="7ac6c334971283da5d076b1534b082f3" category="cell">*NVMe/TCP는 완벽하게 지원되는 엔터프라이즈 기능입니다.*</block>
+  <block id="80178f74d6b9fce071b5b0f0b6274d65" category="list-text">RHEL 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0</block>
+  <block id="fd40da61045ca76b0b52080a584e5391" category="list-text">로키 리눅스 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0</block>
+  <block id="f18c7176c7f79f5ffbf2b78c9429be7f" category="cell">*동일한 호스트에서 NVMe 및 SCSI 트래픽 지원* SCSI LUN에는 dm-multipath를 사용하고 NVMe-oF 네임스페이스에는 NVMe multipath를 사용합니다.</block>
+  <block id="8e4e5423889b9c96a5f9389d54c74f97" category="list-text">RHEL 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2</block>
+  <block id="60c189e08484a64fff69b7a79b4563f6" category="list-text">로키 리눅스 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2</block>
+  <block id="31e59474dea301e167fa6ede6c6a33e1" category="cell">지원은 9.4부터 시작됩니다</block>
+  <block id="eb74a6c58611be9f641b975602744854" category="paragraph">ONTAP 시스템 설정에서 실행되는 ONTAP 버전에 관계없이 다음과 같은 SAN 호스트 기능을 지원합니다.</block>
+  <block id="74b948fb40f71fa2ceaff2854cb6a302" category="cell">*네이티브 NVMe 멀티패스는 항상 활성화되어 있습니다.* ONTAP NVMe-oF에 대한 장치 매퍼(DM) 멀티패스를 지원하지 않습니다.</block>
+  <block id="544512b3b597000544bd5bf828c0a760" category="cell">*NVMe/FC 프로토콜을 사용한 SAN 부팅*</block>
+  <block id="98aa5d7769ae8d6ef5341d2a326a7959" category="list-text">RHEL 9.6, 9.5, 9.4</block>
+  <block id="66a70875b9c109ad80588f8942c780d8" category="list-text">로키 리눅스 9.6, 9.5, 9.4</block>
+  <block id="343115f4d9e53080ec64de12f9f6cfd2" category="cell"><block ref="e1667929105bf030b9f367fc21f8d216" prefix="*" category="inline-code"></block>패키지에는 자동 연결 스크립트가 포함되어 있습니다.* 타사 스크립트는 필요하지 않습니다.</block>
+  <block id="0c3c8d0b4f3ef98adbe43f1114adb219" category="cell">*네이티브 udev 규칙<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지* NVMe 멀티패스에 대한 라운드 로빈 로드 밸런싱을 제공합니다.</block>
+  <block id="06b82420e8e8aa665b9eeb4cac33e56c" category="cell">*NVMe 네임스페이스를 위한 커널 내 NVMe 멀티패스* ONTAP 기본적으로 이 기능을 활성화합니다. 설정을 변경할 필요가 없습니다.</block>
+  <block id="d66d64f553dfd862f68036b9e5fcaaa1" category="admonition">지원되는 구성에 대한 자세한 내용은 다음을 참조하세요.<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block> .</block>
+  <block id="a711f567596d88e746e95770f343d065" category="inline-link-macro">NetApp 지식 기반: NVMe-oF에 대해 알아보기</block>
+  <block id="b225a8d62c5126b34eef960debf4a7d2" category="list-text"><block ref="3ca35c6105331fc07b327260aeca73b4" category="inline-link-macro-rx"></block> .</block>
+  <block id="2bacb82eac763cb42ebecc41069bbc13" category="summary">ONTAP 사용하여 RHEL 10.0에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="129843e0ca03d063512c5d1d66ecade2" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 10.0 구성</block>
+  <block id="42f901a5e0385b74e46671aa6a4bc20c" category="inline-link-macro">NVME-oF 개요</block>
+  <block id="fb4038911955a875023c06ed3eebacad" category="paragraph">RHEL 10.0에 대한 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="fe682fb68de933011daacd85b2450671" category="paragraph">*RHEL 10.0을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="018e7e3157a1d237d053e8a05683c5ac" category="list-text">NVMe-oF에 대한 DM 멀티패스 지원은 지원되지 않습니다.</block>
+  <block id="392c26bef490517500e70c527c7f0958" category="section-title">2단계: 소프트웨어 버전 및 NVMe 구성 확인</block>
+  <block id="32a2c569f5025310ae2af3537308f394" category="list-text">서버에 RHEL 10.0을 설치합니다.  설치가 완료되면 필요한 RHEL 10.0 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="7b38cd7357c50824c462a690ab2c7e64" category="paragraph">RHEL 커널 버전 예:</block>
+  <block id="7ca0b86a69f6feef87cf7c24a1422e47" category="admonition">만약<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치하지 않으면 다음을 사용하세요.<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 업데이트 명령<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 해당 ONTAP 스토리지 시스템 하위 시스템의 문자열을 일치시키세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열에서<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트에서.</block>
+  <block id="0846f796a67ab827e48866ee9d867e7e" category="section-title">3단계: NVMe/FC 및 NVMe/TCP 구성</block>
+  <block id="3a3389ef589dfce02feb77c9c8bf0726" category="paragraph">다음 예와 비슷한 출력이 표시됩니다.</block>
+  <block id="97f9a8bc058f969713afc7e49ff602ef" category="paragraph">다음과 유사한 출력이 표시됩니다.</block>
+  <block id="b6af11b3c0a8b80fb9689c4535f30828" category="list-text">지원되는 어댑터 드라이버와 펌웨어 버전을 사용하고 있는지 확인하세요.</block>
+  <block id="ecf2f5d54ee701fadaed20b14f41130d" category="paragraph">다음 예에서는 드라이버와 펌웨어 버전을 보여줍니다.</block>
+  <block id="d6d1236e99f0a7666fc4dd786441dfb0" category="list-text">다른 NVMe/TCP 개시자-대상 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 검색할 수 있는지 확인합니다.</block>
+  <block id="978a5dbdb2510cf2ab4bbb4f077211e4" category="section-title">6단계: 다중 경로 구성 확인</block>
+  <block id="0200302b1ae55f5fee0081a5d1dea5c7" category="paragraph">ONTAP 9.12.1부터 RHEL 10.0 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
+  <block id="422ecfe408ef7636ddfdeefdb618082b" category="list-text">RHEL 10.0 호스트에 대한 dhchap 키를 생성합니다.</block>
+  <block id="c6435210311cdc2f2fd7178e9e2a07bc" category="paragraph">다음 출력은 다음을 설명합니다.<block ref="d7688aca31d2d9a6f7b631fc004ab8a3" prefix=" " category="inline-code"></block> 명령 매개변수:</block>
+  <block id="688a7a038e61f63c371af3de097cb6d5" category="paragraph">ONTAP 컨트롤러에서 여러 NVMe 하위 시스템을 사용할 수 있는 경우 다음을 사용할 수 있습니다.<block ref="2be2042afe5d55c4305aa3ff91b1ff5f" prefix=" " category="inline-code"></block> 파일로 저장<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령.</block>
+  <block id="cb7a2a49d05cbe42594d333153703124" category="paragraph">사용하다<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> JSON 파일을 생성하는 옵션입니다.  더 많은 구문 옵션은 NVMe connect-all 매뉴얼 페이지를 참조하세요.</block>
+  <block id="679a72a5a047d7f34b2f0486462e530c" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.1 구성</block>
+  <block id="163e74418bca100f90bcee8e3163d2bd" category="paragraph">RHEL 8.1에 대한 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="3b456e5670e5eb7629779fd9381e04bb" category="paragraph">*RHEL 8.1을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="7fb5b376b57fa8396d7c55b71420580b" category="list-text">NVMe-oF 프로토콜을 사용한 SAN 부팅은 현재 지원되지 않습니다.</block>
+  <block id="8acd593a26cf8903ebf9a7efb128a66f" category="list-text">RHEL 8.1의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있으므로 수동으로 활성화해야 합니다.</block>
+  <block id="dfbbce3148930ead96d3edfdd5fb1ae1" category="list-text">원주민<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지에는 포함되지 않습니다<block ref="dafde1b5ed9f22cccd76aeeb9844345b" prefix=" " category="inline-code"></block> 스크립트.  호스트 버스 어댑터(HBA) 공급업체가 제공하는 외부 자동 연결 스크립트를 사용할 수 있습니다.</block>
+  <block id="8507484c096ff8eb2c3755f2b5fdc1dc" category="list-text">기본적으로 라운드 로빈 부하 분산은 활성화되어 있지 않습니다.  다음을 작성하여 활성화할 수 있습니다.<block ref="ab775c875d5f89d991a670444dd32ad2" prefix=" " category="inline-code"></block> 규칙.</block>
+  <block id="e6770839657464a1af0c4b9ef7743087" category="list-text">서버에 RHEL 8.1을 설치합니다.  설치가 완료되면 필요한 RHEL 8.1 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="b0a5b26ba23a76668427cf975fcdc6c2" category="list-text">RHEL 8.1 호스트에서 호스트 NQN 문자열을 확인하세요.<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="52fcd5d23e1390e3538c49440c99e092" category="paragraph">다음 예제는 hostnqn 문자열을 보여줍니다.</block>
+  <block id="bb7a4cc570ffcf7c817e139cb0946b34" category="list-text">호스트 NQN 문자열이 ONTAP 어레이의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인하세요.</block>
+  <block id="105455d504b605ae4b31eddf81a122d7" category="section-title">3단계: Broadcom/Emulex에 대한 NVMe/FC 구성</block>
+  <block id="e8a367d33a68cdf61c2ce0d9e015e8f0" category="paragraph">Broadcom/Emulex에 대해 NVMe/FC를 구성할 수 있습니다.</block>
+  <block id="a7e1091a0a42f0e299ec8c514ec2ae0b" category="list-text">권장되는 Broadcom 구성을 사용하고 있는지 확인하세요.</block>
+  <block id="0110dc47e1d6dd1d02d8805b0b450406" category="list-text">lpfc 펌웨어를 확인하세요:</block>
+  <block id="a188b2d0859fc5f2f5ba5941b197856a" category="list-text">아웃박스 드라이버를 확인하세요.</block>
+  <block id="11c709eb0775467d3b89fd90265ca8e7" category="list-text">자동 연결 패키지 버전을 확인하세요.</block>
+  <block id="16cebc7a38a4dce095838ddef6521e63" category="list-text">이니시에이터 포트가 작동 중이고 대상 LIF를 볼 수 있는지 확인하세요.</block>
+  <block id="49114cde17f4e681ed58cb826c3e6e82" category="section-title">5단계: NVMe-oF 검증</block>
+  <block id="49d00482095a0415684dd0e66a8130ec" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.10 구성</block>
+  <block id="4302da1c8b29a730731bf7189b62424c" category="paragraph">RHEL 8.10에 대한 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="af7fd56fc52ad273fc229faba8d68c43" category="paragraph">*RHEL 8.10의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="cdfc2f9f79d1c6ce8c817dfbec647045" category="list-text">RHEL 8.10의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="a91509a4d71e2f2d7e848538dc5299e3" category="list-text">알려진 문제로 인해 NVMe/TCP는 기술 미리보기로 제공됩니다.</block>
+  <block id="849693ce4cdceac58e9408b73fc14a3e" category="list-text">서버에 RHEL 8.10을 설치합니다.  설치가 완료되면 필요한 RHEL 8.10 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="f694b9fc6aaf6fd4838bee331f5cb375" category="paragraph">다음 예제는 libnvme 패키지 버전을 보여줍니다.</block>
+  <block id="2ce3b261541cc0a973a66fa7b5f3c7fa" category="list-text">RHEL 8.10 호스트에서 다음을 확인하세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="340a0bacce719cd899100302d7028ba6" category="list-text">다음을 확인하십시오.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> ONTAP 스토리지 시스템의 해당 하위 시스템에 대한 문자열:</block>
+  <block id="3d8c2f20c69104516adf8f11842395df" category="paragraph">동일한 호스트에서 NVMe와 SCSI 트래픽을 모두 실행하려면 NetApp ONTAP 네임스페이스에 커널 내 NVMe 멀티패스를 사용하고 ONTAP LUN에 dm-multipath를 사용할 것을 권장합니다.  dm-multipath가 ONTAP 네임스페이스 장치를 청구하지 못하도록 하려면 다음을 추가하여 제외합니다.<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 설정<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
+  <block id="5728fbd1a5c8ae099d988e87299f3dd9" category="paragraph">알려진 문제는 다음과 같습니다.</block>
+  <block id="35505b505808a2ecc05d9086eb0b98b6" category="cell">RHEL 8.10 NVMe-oF 호스트는 중복된 PDC(지속적 검색 컨트롤러)를 생성합니다.</block>
+  <block id="3a2717aac0a9a2c23b94e869e7c85523" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 RHEL 8.10을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="4f1c176c271e0d7b6534ed125441128a" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.2 구성</block>
+  <block id="553a133f1b2319db8f2c802d3fa24f7b" category="paragraph">RHEL 8.2에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="d72df1a55eec086d10717b81be383fff" category="paragraph">*RHEL 8.2를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="76067c107fea1f7d020796ad9897703a" category="list-text">RHEL 8.2의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="8f704db9a482d70c3e2400e43b3a628a" category="list-text">서버에 RHEL 8.2를 설치합니다.  설치가 완료되면 필요한 RHEL 8.2 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="3f9d6dd28519f2fc07d89b8937f95007" category="list-text">RHEL 8.2 호스트에서 호스트 NQN 문자열을 확인하세요.<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="1d2397b8639aa9a3ba6723be8a5ad9a2" category="list-text">RHEL 8.2 호스트에서 hostnqn 문자열을 확인하세요.<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="957752664da1bd7961121b5738ea8947" category="admonition">호스트 NQN 문자열이 일치하지 않으면 다음을 사용하십시오.<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 해당 ONTAP 어레이 서브시스템에서 호스트 NQN 문자열을 업데이트하여 호스트 NQN 문자열과 일치하도록 하는 명령<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트에서.</block>
+  <block id="535a1f23163f7188dd4a4f537fb5beb1" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.3 구성</block>
+  <block id="27a21bb7a09ddd52e686193a20a6eaf8" category="paragraph">RHEL 8.3에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="c272a364e6d6e72af5618b3140c979d0" category="paragraph">*RHEL 8.3의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="2a5430c305f8a20db1f3678b58f7bd97" category="list-text">RHEL 8.3의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="2145e186c33dbe3721d851f085070dc0" category="list-text">서버에 RHEL 8.3을 설치합니다.  설치가 완료되면 필요한 RHEL 8.3 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="7f39c64f880dc155527174bb703d4b46" category="list-text">RHEL 8.3 호스트에서 hostnqn 문자열을 확인하세요.<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="fb705c0cc0153c1e6c7e70a9d7a4f914" category="paragraph">다음 예에서는 hostnqn 버전을 보여줍니다.</block>
+  <block id="19be893708a6341a343917b13e708cea" category="section-title">3단계: NVMe/FC Broadcom/Emulex 어댑터 구성</block>
+  <block id="d54a71f306074fc0b37b53f097c3adbb" category="paragraph">Broadcom/Emulex 어댑터로 NVMe/FC를 구성합니다.</block>
+  <block id="a47de2fa4d4773268bb8c644c6a1a348" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.4 구성</block>
+  <block id="acde332f45cbed39a381159aacc9778c" category="paragraph">RHEL 8.4에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="d17cf3668f22c35bbfa148b6d46e0473" category="paragraph">*RHEL 8.4를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="948e5a31820fec6fe7047764662c5019" category="list-text">RHEL 8.4의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="573de97378110c30b7c1aeb7fd449da2" category="list-text">서버에 RHEL 8.4를 설치합니다.  설치가 완료되면 필요한 RHEL 8.4 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="19ede0bde4d016f8a078afaf319783e2" category="list-text">RHEL 8.4 호스트에서 hostnqn 문자열을 확인하세요.<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="b5eafa6a4892d9eae2d6d95bb2d12704" category="section-title">3단계: NVMe/FC 또는 NVMe/TCP 구성</block>
+  <block id="da889eb1d8779b97362fe9b5efe9870a" category="list-text">지원되는 어댑터 모델, 드라이버 및 펌웨어 버전을 사용하고 있는지 확인하세요.</block>
+  <block id="6d12cc3db20258699d44680774535034" category="paragraph">예상 출력은 1입니다.</block>
+  <block id="784ca6d159eef3bed8698f2db9dd3fb5" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.5 구성</block>
+  <block id="3d8c75cd5e94f468fbffd3b3072f1a6e" category="paragraph">RHEL 8.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="ef65eec45eac729fdd322502ce6274ca" category="paragraph">*RHEL 8.5를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="d44e1c82ef19e30deb2b3b3c856a45e1" category="list-text">RHEL 8.5의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="8d78cc7e45434e1fc1fb521e34124eb8" category="list-text">서버에 RHEL 8.5를 설치합니다.  설치가 완료되면 필요한 RHEL 8.5 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="bb52c301410cc09e43d848da53a755b6" category="list-text">RHEL 8.5 호스트에서 다음을 확인하세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="e47437f6f6c7f05a3c94465ea23f765b" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.6 구성</block>
+  <block id="9028906909c2befed38c0746a9a8ef87" category="paragraph">RHEL 8.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="67e753553d9adf0e555af10ca07450b2" category="paragraph">*RHEL 8.6을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="5c3d8ad8024558fe89aeeebe311379ad" category="list-text">RHEL 8.6의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="a8e486f46b1903dacd320dfc3f08a0d6" category="list-text">서버에 RHEL 8.6을 설치합니다.  설치가 완료되면 필요한 RHEL 8.6 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="2065b685428cd419272baf94e03258c5" category="list-text">RHEL 8.6 호스트에서 다음을 확인하세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="127ef0abf6a5dc2707bcaef613a8711c" category="admonition">만약<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치하지 않으면 다음을 사용해야 합니다.<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 업데이트 명령<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 해당 ONTAP 스토리지 시스템 NVMe 하위 시스템의 문자열을 일치시키세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 끈<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트에서.</block>
+  <block id="5f34a4b67e30c5dbda63616f9d145079" category="cell">RHEL 8.7 NVMe-oF 호스트는 중복된 PDC(지속적 검색 컨트롤러)를 생성합니다.</block>
+  <block id="6d251e9e06c922ae1a58f52c67f46d31" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 RHEL 8.8을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="e7074ac8440ad062f16f1fa861a573c5" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.7 구성</block>
+  <block id="4ced6d177673c6864d02cfb22ea4f00b" category="paragraph">RHEL 8.7에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="64dc60f7d81b618c268d23933a674863" category="paragraph">*RHEL 8.7을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="ffa0239154d3a20c4bc2040b98de8467" category="list-text">RHEL 8.7의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="de0b330dcc751103e057cea258f2f217" category="list-text">서버에 RHEL 8.7을 설치합니다.  설치가 완료되면 필요한 RHEL 8.7 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="0e9d225010e76c1d7455569a92e82d15" category="list-text">RHEL 8.7 호스트에서 다음을 확인하세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="47b72b770e3bc6333e83ef4375777dd1" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.8 구성</block>
+  <block id="8548b77c8a4ffd200f994be29915cede" category="paragraph">RHEL 8.8에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="510756716252d2ebe14a80b6f7f8b100" category="paragraph">*RHEL 8.8을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="1d5cc795af560b82ce6d4d8120046a1b" category="list-text">RHEL 8.8의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="bcf47c4655a31350eae693e8602b40ee" category="list-text">서버에 RHEL 8.8을 설치합니다.  설치가 완료되면 필요한 RHEL 8.8 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="6fdcbf106a92a13a8edd6c7d3f38adbd" category="list-text">RHEL 8.8 호스트에서 다음을 확인하세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="376b18320d14537f1dbf35f2ddd5e14c" category="cell">RHEL 8.8 NVMe-oF 호스트는 중복된 PDC(지속적 검색 컨트롤러)를 생성합니다.</block>
+  <block id="33b255e8ba7e4b382ddd049140c265a8" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.9 구성</block>
+  <block id="60840edffab8e6a6e4d686d5e000c32a" category="paragraph">RHEL 8.9에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="cd91f8c38ed75ac597a3eee673f9b1a2" category="paragraph">*RHEL 8.9를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="7184938a3e8987e6582ceb73615149fd" category="list-text">RHEL 8.9의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="adff4bd3bc2ab86bbd4e6b4daef33f73" category="list-text">서버에 RHEL 8.9를 설치합니다.  설치가 완료되면 필요한 RHEL 8.9 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="6cf2fb93dbf3c13b40b2d908f64efb3a" category="list-text">RHEL 8.9 호스트에서 다음을 확인하세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="af42387b4df9ca744c344a717e2da653" category="paragraph">Marvell/QLogic 어댑터에 대한 NVMe/FC 구성</block>
+  <block id="2c7e80d3e0edbd175044b5210ee87f03" category="cell">RHEL 8.9 NVMe-oF 호스트는 중복된 PDC(지속적 검색 컨트롤러)를 생성합니다.</block>
+  <block id="e89e81029b125b1f7d687255c45c5f6e" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 RHEL 8.9를 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="fc4979c03acab2ac0889a771e3b9d511" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.0 구성</block>
+  <block id="ee74c6ac2ce54cb9b38ef34a7f5baaf8" category="paragraph">RHEL 9.0에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="1814316aab7e20cd4ec09035693769e6" category="paragraph">*RHEL 9.0을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="2fecaf41b8d7f353a0701e68e554ed70" category="list-text">서버에 RHEL 9.0을 설치합니다.  설치가 완료되면 필요한 RHEL 9.0 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="063a08597b54946b6cd54d3c191eae26" category="list-text">RHEL 9.0 호스트에서 다음을 확인하세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="82922a8f8df6b3fbacca2fc1bfc05096" category="list-text">다른 NVMe/TCP 개시자-대상 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 검색할 수 있는지 확인합니다.</block>
+  <block id="ac783620bd79a6f903c67f639a9962f6" category="section-title">5단계: 다중 경로 구성 확인</block>
+  <block id="3ac8a887d7c6b1750dee1f66e33d2041" category="cell">RHEL 9.0 NVMe-oF 호스트는 중복된 PDC(Persistent Discovery Controller)를 생성합니다.</block>
+  <block id="da2d45849155dbe5ea43ca29451e3092" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트와 함께 ONTAP 9.10.1과 RHEL 9.0을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="f1672372b6b592218f4781d65bf636d2" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.1 구성</block>
+  <block id="a4b62dafdc2a28790b92f9e3b7483170" category="paragraph">RHEL 9.1에 대한 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="a59fe170d9e7adb5f529e168a6df3bde" category="paragraph">*RHEL 9.1을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="17e3be28e4b8005aa8e0ec9ab05fbde4" category="list-text">서버에 RHEL 9.1을 설치합니다.  설치가 완료되면 필요한 RHEL 9.1 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="f897397bef67775310f9103be634b964" category="list-text">RHEL 9.1 호스트에서 다음을 확인하세요.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
+  <block id="3ac93f7cf1853dfbc16c8472fc66d07d" category="cell">그만큼<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 주어진 하위 시스템에 대한 NVMe 컨트롤러 목록을 반환합니다.  RHEL 9.1에서 이 명령은 하위 시스템의 모든 네임스페이스에 대한 ANA 상태와 함께 컨트롤러를 표시합니다.  ANA 상태는 네임스페이스별 속성이므로 명령은 각 네임스페이스의 경로 상태를 포함하는 고유한 컨트롤러 항목을 표시해야 합니다.</block>
+  <block id="5490957bacbdac38823467759d812104" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.2 구성</block>
+  <block id="5c95b17efd4f88d66b9d5395dcae29a2" category="paragraph">RHEL 9.2에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="5ce3189ac3042d6a7e3c4c4720d47457" category="paragraph">*RHEL 9.2를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="bf141f95cfb77b75940b63bb598d2d05" category="list-text">서버에 RHEL 9.2를 설치합니다.  설치가 완료되면 필요한 RHEL 9.2 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="32b76ab29bb1f35c79f18f676034cf0a" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.3 구성</block>
+  <block id="60596f77501fff0f4e90db7a26158414" category="paragraph">RHEL 9.3에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="0b6caa2c80f6be5c3289aaa00cedde1f" category="paragraph">*RHEL 9.3의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="b65783cc8c4fe2183259045f24093872" category="list-text">서버에 RHEL 9.3을 설치합니다.  설치가 완료되면 필요한 RHEL 9.3 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="d1137ffaeb3a0ca88e57e0f4130f3134" category="section-title">6단계: 안전한 인밴드 인증 설정</block>
+  <block id="bf4fc5b96abe44f1ebb2698601ba500c" category="paragraph">ONTAP 9.12.1부터 RHEL 9.3 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
+  <block id="408ff77f4628dc6c0b1dbe0045a80b91" category="list-text">RHEL 9.3 호스트에 대한 dhchap 키를 생성합니다.</block>
+  <block id="99600619391da824baa4507a38cfebb5" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.4 구성</block>
+  <block id="6376c8ca914cd1f1b91e9e81b347854c" category="paragraph">RHEL 9.4에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="9304770d7124e59d6e7f17917a129922" category="paragraph">RHEL 9.4의 NVMe-oF에는 알려진 제한 사항이 없습니다.</block>
+  <block id="9c4c99909075dcb8253eb802dd100e36" category="list-text">서버에 RHEL 9.4를 설치합니다.  설치가 완료되면 필요한 RHEL 9.4 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="a02fa3f1e64906beba11b70cceddfd08" category="paragraph">ONTAP 9.12.1부터 RHEL 9.4 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
+  <block id="05b6001078009a66d7398f78cec2ee21" category="list-text">RHEL 9.4 호스트에 대한 dhchap 키를 생성합니다.</block>
+  <block id="ed716a98f38437d5ab93ec6f89f663bb" category="paragraph">Red Hat Enterprise Linux(RHEL) 9.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="dbfb199274d1063eab16fa9e3a4eea71" category="paragraph">RHEL 9.5의 NVMe-oF에는 알려진 제한 사항이 없습니다.</block>
+  <block id="ceb59c3db0b79174ade65f5440374b63" category="list-text">서버에 RHEL 9.5를 설치합니다.  설치가 완료되면 필요한 RHEL 9.5 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="ba7ad92a9a328fc4086bbe645b158443" category="paragraph">Red Hat Enterprise Linux(RHEL) 9.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="0e2a6ca17682f87afed8a24fd851c31b" category="paragraph">*RHEL 9.6을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="fbe70a9e4e86428613212ca9bafab36e" category="list-text">서버에 RHEL 9.6을 설치합니다.  설치가 완료되면 필요한 RHEL 9.6 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="abcdfaf745ecf46fa48ee4febc561be5" category="section-title">udev 규칙에서 iopolicy를 수정합니다.</block>
+  <block id="2f09f4b0e6b1ec31753a355af2e93f1a" category="paragraph">RHEL 9.6은 NVMe-oF에 대한 기본 iopolicy를 다음과 같이 설정합니다.<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block> .  iopolicy를 변경하려면<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> , udev 규칙 파일을 다음과 같이 수정합니다.</block>
+  <block id="ece25d4c541fbae683416549d3f4ac05" category="list-text">루트 권한으로 텍스트 편집기에서 udev 규칙 파일을 엽니다.</block>
+  <block id="b9908e7dd449843af949631c92e15e09" category="list-text">NetApp ONTAP 컨트롤러에 대한 iopolicy를 설정하는 줄을 찾으세요.</block>
+  <block id="87a7f5650d1515a9aa05f05e2e75e27c" category="paragraph">다음 예는 규칙의 예를 보여줍니다.</block>
+  <block id="1cdf0be14ba09adc81c1095b08aa7aa2" category="list-text">규칙을 다음과 같이 수정하세요.<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block> 된다<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> :</block>
+  <block id="d16ef16e8667a481333eb9c4c5b96da2" category="list-text">다음 명령을 실행하여 udev 규칙을 다시 로드하고 변경 사항을 적용합니다.</block>
+  <block id="5d33a0e191bd5777ae2be8e33feabe51" category="list-text">하위 시스템의 현재 iopolicy를 확인하세요.  &lt;하위 시스템&gt;을 적절한 이름으로 바꾸세요. 예:<block ref="621b1b464ec30e8b168fcad04cefe44c" prefix=" " category="inline-code"></block> .</block>
+  <block id="84acde248a4e307a6672632785153fc4" category="admonition">새로운 iopolicy는 일치하는 NetApp ONTAP Controller 장치에 자동으로 적용됩니다.  재부팅이 필요하지 않습니다.</block>
+  <block id="8368841b470b6e92a17171fdc50066e4" category="summary">ONTAP 스토리지를 사용하여 Rocky Linux 10.0에 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="3bb0dd42b9baf9976e4fd910388b116d" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 10.0 구성</block>
+  <block id="a4948b48f1c713b5c83e88817c8e854d" category="paragraph">Rocky Linux 10.0에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="353c5da630e8437465e2bac779b53241" category="paragraph">*Rocky Linux 10.0을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="f80057125870dd8fcdb5724934b94611" category="list-text">서버에 Rocky Linux 10.0을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 10.0 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="47b12d977e58e4eab7ccd70d2694af53" category="paragraph">Rocky Linux 커널 버전 예:</block>
+  <block id="0fe3920489a515504bc99fd4bc2a0cfa" category="paragraph">다음 예는 다음을 보여줍니다.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 값:</block>
+  <block id="49b93db902bfe2e6ebda3a7184947901" category="paragraph">ONTAP 9.12.1부터 Rocky Linux 10.0 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
+  <block id="8425313d42b15365aae1ff69464f1dca" category="list-text">Rocky Linux 10.0 호스트에 대한 dhchap 키를 생성합니다.</block>
+  <block id="6211a3c33e0f4a48c60de5341c3a2a81" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 8.10 구성</block>
+  <block id="f0a82e15426482ff89d74b86cec00591" category="paragraph">Rocky Linux 8.10에서 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="bdbd81a0d21d774923ec9b8001556aa9" category="paragraph">*Rocky Linux 8.10의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="ce84c293f4533ead89e44c141c39e24d" category="list-text">Rocky Linux 8.10의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="2d5fd08f975c42bc4116ef7ba2522228" category="list-text">서버에 Rocky Linux 8.10을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 8.10 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="288cbbee1aaa32bace43584affb5e317" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC(Persistent Discovery Controller)를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 Rocky Linux 8.10을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="f2bdba23e5036ab5e18eb00629c59223" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 8.4 구성</block>
+  <block id="6fe0fb638e188ad70110dc8a5005d58b" category="paragraph">Rocky Linux 8.4에서 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="24f087a5d398659484aeb7222f5ad111" category="paragraph">*Rocky Linux 8.4의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="f8e44043b30e00f88f1ac3dbee8f4377" category="list-text">Rocky Linux 8.4의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="5f47d85aa7566fadf90e5654cc3ca615" category="list-text">서버에 Rocky Linux 8.4를 설치합니다.  설치가 완료되면 필요한 Rocky Linux 8.4 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="b0690b13a0da9891dafda2ced1883512" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 8.5 구성</block>
+  <block id="a43b3f792de05e2c8056433a1aa4d55a" category="paragraph">Rocky Linux 8.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="c27f85c9b8b42c98a0e8eb9dcd2eef2d" category="paragraph">*Rocky Linux 8.5의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="eb6dc69b63757073330de2a73a580209" category="list-text">Rocky Linux 8.5의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="732d43e40946ef08d0fef5d2a9d5eb5e" category="list-text">서버에 Rocky Linux 8.5를 설치합니다.  설치가 완료되면 필요한 Rocky Linux 8.5 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="a9797c338c90b2ca4b7c1065a078812a" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 8.6 구성</block>
+  <block id="b556747903cbff020f9092fb0d3a737c" category="paragraph">Rocky Linux 8.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="9b6a7e5d5e7dbcf0b5fcc4ceb6b82fd4" category="paragraph">*Rocky Linux 8.6을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="ac376874a384a110cab792d727f955a0" category="list-text">Rocky Linux 8.6의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="74bc6972055c10543fe719f9744de269" category="list-text">서버에 Rocky Linux 8.6을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 8.6 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="0b1c01bc9bd9968ea6669a8b0eb4e0ee" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC(Persistent Discovery Controller)를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 Rocky Linux 8.6을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="805bbaac088928ad38815c5ab4d63bd9" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 8.7 구성</block>
+  <block id="1dc2213bbe36ae75b8b4bf78f95652c3" category="paragraph">Rocky Linux 8.7에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="f5502fa53fe357f04271558187af263f" category="paragraph">*Rocky Linux 8.7의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="255064172f7c96f2aa67377f4530dddf" category="list-text">Rocky Linux 8.7의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="070fd89fe102d8db6595913c97eb74d8" category="list-text">서버에 Rocky Linux 8.7을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 8.7 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="1015a8611097f1b3bdb2ba6ca3a89bea" category="cell">Rocky Linux 8.7 NVMe-oF 호스트가 중복된 영구 검색 컨트롤러를 생성합니다.</block>
+  <block id="ea62aaafb4e214b16cd5e4a1677445f6" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC(Persistent Discovery Controller)를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 Rocky Linux 8.7을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="135ade99cb8fe34986bcf078c5826edb" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 8.8 구성</block>
+  <block id="63b24701ac21bf85677ce66f416ae1a9" category="paragraph">Rocky Linux 8.8에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="1050d38d7182f0d37a6cdd97f306305b" category="paragraph">*Rocky Linux 8.8의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="4c277658506ee9574c7298c6dc0074ea" category="list-text">Rocky Linux 8.8의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="931c64bb24529c7556328fc7ffa80aae" category="list-text">서버에 Rocky Linux 8.8을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 8.8 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="408d44ef10f9b5b901eeae5e10fbd62f" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC(Persistent Discovery Controller)를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 Rocky Linux 8.8을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="61de719e8163a47d7586d02547026101" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 8.9 구성</block>
+  <block id="20d0cfacf8049da727f8b6b2dd340e93" category="paragraph">Rocky Linux 8.9에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="1543368a046f9c834265c82de853cbb0" category="paragraph">*Rocky Linux 8.9의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="dbfff7853c1db30bdf535f30e8ff82ed" category="list-text">Rocky Linux 8.9의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.</block>
+  <block id="6678b392edcf995e583d47cce2e84d0b" category="list-text">서버에 Rocky Linux 8.9를 설치합니다.  설치가 완료되면 필요한 Rocky Linux 8.9 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="9c70948283cbf873b47aee1b77995b01" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC(Persistent Discovery Controller)를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 Rocky Linux 8.9를 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="20583acc86439b91edb5803bac8804cd" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 9.0 구성</block>
+  <block id="91a08c1029ff9143f286e8fb8278d4c1" category="paragraph">Rocky Linux 9.0을 위한 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="296dcd7996a7108a86e50054cac41d16" category="paragraph">*Rocky Linux 9.0을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="fb13800809bac1aebf60326ab33c6885" category="list-text">서버에 Rocky Linux 9.0을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 9.0 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="dfc278b2eed97e06f727ddb4c0e26912" category="cell">NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC(Persistent Discovery Controller)를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 ONTAP 9.10.1과 Rocky Linux 9.0을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
+  <block id="8c3e4189914813b00284263638fb1fd7" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 9.1 구성</block>
+  <block id="e7dcdfc3dde5b3d60a838f92b55e532b" category="paragraph">Rocky Linux 9.1에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="793f00de5e5b3b29aed3ddd5254c5445" category="paragraph">*Rocky Linux 9.1을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="4f222424dd46c1f376ecb4fa33e18a14" category="list-text">서버에 Rocky Linux 9.1을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 9.1 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="7864882a6cbe77092cb7a6cac1b75653" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 9.2 구성</block>
+  <block id="0f6ce4c4de1d6fe51551d79e17475662" category="paragraph">Rocky Linux 9.2에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="a49c3a9696717a7cb9cfd1d3c004827f" category="paragraph">*Rocky Linux 9.2를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="b0ebc82cbc862d9c5d0f0080dcd0de32" category="list-text">서버에 Rocky Linux 9.2를 설치합니다.  설치가 완료되면 필요한 Rocky Linux 9.2 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="3ff973089721be7dc9372719fcda8427" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 9.3 구성</block>
+  <block id="faaa60b8a063ee72a3fe2c2ba168e71d" category="paragraph">Rocky Linux 9.3에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="0f4cd1f3a12ab9584b817aef6895b1d5" category="paragraph">*Rocky Linux 9.3의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="7809c44309e984847c2a771474f871f0" category="list-text">서버에 Rocky Linux 9.3을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 9.3 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="0dbc54d5c7981f138a4789b8660c4b04" category="paragraph">Rocky Linux 9.4에서 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="1f3d75c592e176946dc1cf68a250b546" category="paragraph">Rocky Linux 9.4의 NVMe-oF에는 알려진 제한 사항이 없습니다.</block>
+  <block id="2d591a45e9330d70b6c75efed3161333" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 Rocky Linux 9.5 구성</block>
+  <block id="9551e64a9ba96676d7b433847891f913" category="paragraph">Rocky Linux 9.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="c09d9e2245886db14a9eef945cfebc84" category="paragraph">Rocky Linux 9.5의 NVMe-oF에는 알려진 제한 사항이 없습니다.</block>
+  <block id="ffb0571980efe2c82ed0b7b16cde197d" category="list-text">서버에 Rocky Linux 9.5를 설치합니다.  설치가 완료되면 필요한 Rocky Linux 9.5 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="ec19c9da8ee51caa1a9c506e22592869" category="paragraph">Rocky Linux 9.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
+  <block id="d02174711fef247a48b38e51d5db562f" category="paragraph">*Rocky Linux 9.6을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
+  <block id="812b9a27245a2daec29f5e3d12ebaa1a" category="list-text">서버에 Rocky Linux 9.6을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 9.6 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="bdd85bb9fb61697998b63578c3818344" category="paragraph">NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다.  NVMe/TCP 하위 시스템과 네임스페이스를 검색하려면 NVMe/TCP 연결 또는 모두 연결 작업을 수동으로 수행해야 합니다.</block>
+  <block id="3832446aa2ef6619ecfdb886641a60fe" category="list-text">다른 NVMe/TCP 개시자-대상 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.</block>
+  <block id="0adc0ccfa62ac1a4fb645ca5d3f148ff" category="sidebar">NVMe-oF 호스트 구성에 대해 알아보세요</block>
 </blocks>
