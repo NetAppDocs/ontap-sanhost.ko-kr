@@ -1519,7 +1519,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="e764fe6b8f8825a307a87cedbef45678" category="sidebar">22.04</block>
   <block id="829d28d8727a4d458f1c35bda30f5ad7" category="sidebar">NVMeoF Ubuntu</block>
   <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link-macro">NetApp ONTAP용 Amazon FSx</block>
-  <block id="cbd5bf3ac18c40540e157027878d3965" category="paragraph">예를 들어, 온프레미스 ONTAP 스토리지를 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결하도록 구성할 수 있습니다. 등의 클라우드 환경에서 실행 중인 스토리지 서비스를 구성할 수도 있습니다 <block ref="54a9edfbbcc641d603aea65a27251f05" category="inline-link-macro-rx"></block> 또는 <block ref="32496c00ec9be403fcfaf96fbaeed4b1" category="inline-link-macro-rx"></block> 온프레미스 SAN 호스트 또는 SAN 클라우드 클라이언트에 연결할 수 있습니다.</block>
   <block id="99fc62da3c4063c517d61da1e5cb3ea3" category="summary">ONTAP가 포함된 RHEL 9.4용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="b68de8f1f938e0330acdf64c63b08b9a" category="sidebar">9.4 를 참조하십시오</block>
   <block id="b6758eb9c7ac57209dfad7db602a24d4" category="inline-link-macro">SnapMirror 액티브 동기화에 대해 AIX 호스트를 구성하는 방법</block>
@@ -2667,8 +2666,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="0825e58b251b6f1e1956c9f982c69b3d" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Citrix Hypervisor 8.2 구성</block>
   <block id="3e2e1ae5727d07e3ee9163e73df8e73f" category="paragraph">Citrix Hypervisor 8.2에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="6d9eef6a4c2617ee0a8dfdc9ae7a468a" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Citrix Xenserver 8.4 구성</block>
-  <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4을 참조하십시오</block>
-  <block id="c4bb680e83ce918749e1d4853b0073d1" category="sidebar">하이퍼바이저 8.2(LTSR)</block>
   <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">SAN 부팅 LUN을 생성하고 호스트에 매핑합니다.</block>
   <block id="23f9932633d90fac9929676a3d96b73c" category="list-text"><block ref="d3b050efbc8875625662ab7a3bc1d82e" category="inline-link-macro-rx"></block>..</block>
   <block id="55e68527d8c164dc338b18da64611305" category="admonition">ONTAP LUN이 KVM 하이퍼바이저에 자동으로 매핑되므로 KVM(커널 기반 가상 머신) 설정을 구성할 필요가 없습니다.</block>
@@ -3108,22 +3105,13 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="3fe0f7d7cd9a25242a7b121f3cc4ba8a" category="paragraph">SUSE Linux Enterprise Server 15 SP7의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="2109e80434ca7c6e1b69cbc2e5974556" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP7용 NVMe/FC를 구성하는 방법을 설명합니다.</block>
   <block id="656e0f0943759cd8053f13523268bf98" category="doc">ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP7용 NVMe-oF 호스트 구성</block>
-  <block id="a260df2c274288385d82b55968f53b84" category="paragraph">SUSE Linux Enterprise Server 15 SP7(SLES15 SP7)에 대한 NVMe-oF 호스트 구성을 사용하면 다음 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
   <block id="5393f0229b7c28049a490e7e149cce98" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 모두 실행 예를 들어, SCSI LUN에 대해 SCSI mpath 디바이스에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 디바이스를 구성할 수 있습니다.</block>
   <block id="77b17c4b304e4bc88274ebbde24c1c87" category="list-text">NVMe/FC 프로토콜을 사용하여 SAN 부팅을 지원합니다.</block>
-  <block id="aa4dc57afbcb40684a5fdb0dd0c53e49" category="list-text">ONTAP 9.12.1부터 NVMe/TCP 및 NVMe/FC에 대한 보안 인밴드 인증이 지원됩니다. SLES15 SP7에서는 NVMe/TCP 및 NVMe/FC에 대한 보안 인밴드 인증을 사용할 수 있습니다.</block>
   <block id="bc16fe46d91584e82782504c4c1c10d9" category="list-text">고유한 검색 NQN을 사용하여 지속적 검색 컨트롤러(PDC)를 지원합니다.</block>
   <block id="c7d62b8831e26ca324eef03e565f77fb" category="list-text">NVMe/TCP에 대한 TLS 1.3 암호화 지원.</block>
-  <block id="4e301fd9374a22a48fdb4c33b2297fd4" category="list-text">NetApp <block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> SLES15 SP7 호스트에서는 NVMe-oF에 대한 호스트 유틸리티 지원을 사용할 수 없습니다. 대신 모든 NVMe-oF 전송에 대해 기본 패키지에 포함된 NetApp 플러그인을 사용할 수<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="027d24fe581a1889d6b5752e3886e380" category="list-text">새로운 기능이 없습니다.</block>
-  <block id="6084e38c00232a21ee1233c5ca70b927" category="paragraph">다음 절차에 따라 지원되는 최소 SLES15 SP7 소프트웨어 버전을 확인하세요.</block>
-  <block id="991655482ba880c83b447bbd0d3a18db" category="list-text">서버에 SLES15 SP7을 설치하세요. 설치가 완료되면 지정된 SLES15 SP7 커널이 실행 중인지 확인하세요.</block>
-  <block id="23aa1a5f62f90e6896afa10f805ed9ca" category="paragraph">다음 예는 SLES 커널 버전을 보여줍니다.</block>
   <block id="3939f5ab0e1b02b11f96cac181c4e774" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 버전:</block>
-  <block id="c31865eb0d6c686b54a6bc6a1da51ac8" category="paragraph">SLES 15 SP7을 사용하면 <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고 <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스 <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템 부팅 중에 자동으로 시작되도록 설정됩니다. 시스템 부팅이 완료되면 부팅 서비스가 활성화되었는지 확인하세요.</block>
-  <block id="94628a030db9a09f8b90bd4725085b40" category="admonition">SLES 15 SP6부터 NVMe/TCP의 기본 설정은 <block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 시간 제한이 꺼져 있습니다. 즉, 재시도 횟수에 제한이 없으며(무기한 재시도), 특정 재시도 횟수를 수동으로 구성할 필요가 없습니다. <block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 사용 시 시간 초과 기간 <block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 또는 <block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령(옵션 <block ref="269889131ee4793a82191b78a2eb60e3" prefix=" " category="inline-code"></block> ). 또한 NVMe/TCP 컨트롤러는 경로 장애 발생 시 시간 초과가 발생하지 않으며 무기한 연결된 상태를 유지합니다.</block>
   <block id="b9f923eff2af1f090cf2b63082e1eb11" category="section-title">8단계: 지속적인 검색 컨트롤러 만들기</block>
-  <block id="3b0141777552d60cadbd3ce34dd905d3" category="paragraph">ONTAP 9.11.1부터 SLES 15 SP7 호스트에 대한 지속적 검색 컨트롤러(PDC)를 생성할 수 있습니다. PDC는 NVMe 하위 시스템의 추가 또는 제거 작업과 검색 로그 페이지 데이터의 변경 사항을 자동으로 감지하기 위해 필요합니다.</block>
   <block id="e30836f8afa231851eba05f11afb521a" category="section-title">9단계: 안전한 인밴드 인증 설정</block>
   <block id="c273b14698c5a90f8016a97113ae1527" category="section-title">10단계: 전송 계층 보안 구성</block>
   <block id="7e0ddf13eb92d7061cb3708e71d99050" category="list-text">다음 사항이 있는지 확인하세요. <block ref="464213eb09b43407b3c3aa2efea57161" prefix=" " category="inline-code"></block> , <block ref="50955d4b2031271f8fda1764c1a66ac3" prefix=" " category="inline-code"></block> , 그리고 <block ref="e585c6c1eda4439a86d95239513976b0" prefix=" " category="inline-code"></block> 호스트에 설치된 패키지:</block>
@@ -3641,8 +3629,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="49cc988afc6b092ce6281b15b9a60972" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="3c7efd424a20046d29e4da88c0d5c486" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업을 위한 특정 매개변수와 설정을 사용하여 Citrix Hypervisor 8.2를 다중 경로로 구성합니다.</block>
   <block id="1f5a17864fe735a3a834371ab2c3043e" category="paragraph">Linux Host Utilities 소프트웨어 패키지는 Citrix Hypervisor 운영 체제를 지원하지 않습니다.</block>
-  <block id="de920f5dd498ae73930aaae6ead146f6" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업을 위한 특정 매개변수와 설정을 사용하여 Citrix Hypervisor 8.4를 다중 경로로 구성합니다.</block>
-  <block id="936b4d22e2607b9ac84f06791fe03923" category="paragraph">Citrix Hypervisor 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="56eaee8dcecb52bd60025f4df180e2f4" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 HP-UX 11i v3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="bb53e7efc63e8dc547146d694f3c97c1" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업에 대한 특정 매개변수와 설정을 사용하여 다중 경로를 사용하도록 Ubuntu 20.04를 구성합니다.</block>
   <block id="3d4de8befb0eddb7be95b9eb899bcd21" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Ubuntu 24.04 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
@@ -3971,4 +3957,20 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="bdd85bb9fb61697998b63578c3818344" category="paragraph">NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다.  NVMe/TCP 하위 시스템과 네임스페이스를 검색하려면 NVMe/TCP 연결 또는 모두 연결 작업을 수동으로 수행해야 합니다.</block>
   <block id="3832446aa2ef6619ecfdb886641a60fe" category="list-text">다른 NVMe/TCP 개시자-대상 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.</block>
   <block id="0adc0ccfa62ac1a4fb645ca5d3f148ff" category="sidebar">NVMe-oF 호스트 구성에 대해 알아보세요</block>
+  <block id="1c79280a42a5cd3a48fa9fefe62fd0a5" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업을 위한 특정 매개변수와 설정을 사용하여 Citrix Xenserver 8.4를 다중 경로로 구성합니다.</block>
+  <block id="e3570aecc41d92af1fdf504fc5bd3927" category="paragraph">Linux Host Utilities 소프트웨어 패키지는 Citrix Xenserver 운영 체제를 지원하지 않습니다.</block>
+  <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">Citrix Xenserver 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="6777a33e557c747716d7b5c89c08e209" category="paragraph">SUSE Linux Enterprise Server 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다.  ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.</block>
+  <block id="f880ac448e6e50a8b2acd73367cb84c3" category="paragraph">SUSE Linux Enterprise Server 15 SP7의 NVMe-oF 호스트 구성에서는 다음 지원 및 기능을 사용할 수 있습니다. 구성 과정을 시작하기 전에 알려진 제한 사항도 검토해야 합니다.</block>
+  <block id="b6d788f4a78e973bb3a39cc6a41dbadf" category="list-text">ONTAP 9.12.1부터 NVMe/TCP 및 NVMe/FC에 대한 안전한 인밴드 인증 지원이 도입되었습니다.  SUSE Linux Enterprise Server 15 SP7에서는 NVMe/TCP 및 NVMe/FC에 대한 안전한 인밴드 인증을 사용할 수 있습니다.</block>
+  <block id="615aa8cdcc32761b028c3f8a323a6cc7" category="list-text">NetApp<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> SUSE Linux Enterprise Server15 SP7 호스트에서는 NVMe-oF에 대한 호스트 유틸리티 지원을 사용할 수 없습니다.  대신, 기본으로 포함된 NetApp 플러그인을 사용할 수 있습니다.<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 모든 NVMe-oF 전송을 위한 패키지입니다.</block>
+  <block id="fee6faa142e2688b32958e9fc0ffffff" category="paragraph">다음 절차에 따라 지원되는 최소 SUSE Linux Enterprise Server 15 SP7 소프트웨어 버전을 확인하세요.</block>
+  <block id="74c00bdffd78cb1619b356f1edc0d233" category="list-text">서버에 SUSE Linux Enterprise Server15 SP7을 설치합니다.  설치가 완료되면 지정된 SUSE Linux Enterprise Server 15 SP7 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="eafcc54cd223c39abcd1b9a23194d53a" category="paragraph">다음 예는 SUSE Linux Enterprise Server 커널 버전을 보여줍니다.</block>
+  <block id="dc7b768a8d751d88715186e7e9481815" category="paragraph">SUSE Linux Enterprise Server 15 SP7을 사용하면<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템 부팅 중에 자동으로 시작되도록 설정됩니다.  시스템 부팅이 완료되면 부팅 서비스가 활성화되었는지 확인하세요.</block>
+  <block id="b423ded7031f915c1eef46f79773bbff" category="admonition">SUSE Linux Enterprise Server 15 SP6부터 NVMe/TCP의 기본 설정은 다음과 같습니다.<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 시간 초과가 해제되었습니다.  이는 재시도 횟수에 제한이 없고(무기한 재시도) 특정 재시도를 수동으로 구성할 필요가 없음을 의미합니다.<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 사용 시 시간 초과 기간<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 또는<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령(옵션<block ref="269889131ee4793a82191b78a2eb60e3" prefix=" " category="inline-code"></block> ).  또한, NVMe/TCP 컨트롤러는 경로 장애가 발생해도 시간 초과가 발생하지 않으며 무기한 연결 상태를 유지합니다.</block>
+  <block id="b523b3776ea6194b27cd840c1deb284c" category="paragraph">ONTAP 9.11.1부터 SUSE Linux Enterprise Server 15 SP7 호스트에 대한 영구 검색 컨트롤러(PDC)를 생성할 수 있습니다.  PDC는 NVMe 하위 시스템 추가 또는 제거 작업과 검색 로그 페이지 데이터의 변경 사항을 자동으로 감지하는 데 필요합니다.</block>
+  <block id="813cc633e0459359ed043e6d76025c2c" category="paragraph">예를 들어, 온프레미스 ONTAP 스토리지를 구성하여 온프레미스 SAN 호스트나 SAN 클라우드 클라이언트에 연결할 수 있습니다.  클라우드 환경에서 실행되는 스토리지 서비스도 구성할 수 있습니다.<block ref="cdfecfe4eb59bc17d075f2da08aa8dad" category="inline-link-macro-rx"></block> 또는<block ref="8ad7a6b53b9076e00c14225601db07c4" category="inline-link-macro-rx"></block> 온프레미스 SAN 호스트나 SAN 클라우드 클라이언트에 연결합니다.</block>
+  <block id="9831e45ea03c86b202350b5eb137e309" category="sidebar">젠서버 8.4</block>
+  <block id="df472899f555ad076c9b90f4bd508f91" category="sidebar">하이퍼바이저 8.2</block>
 </blocks>
