@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Windows 호스트 유틸리티는 호스트 컴퓨터를 NetApp SAN의 가상 디스크(LUN)에 연결할 수 있도록 하는 설명서가 포함된 소프트웨어 프로그램 세트입니다.  NetApp 최신 유틸리티 키트를 다운로드하여 설치할 것을 권장합니다.  Windows 호스트 유틸리티 구성 정보 및 지침은 다음을 참조하세요.link:https://docs.netapp.com/us-en/ontap-sanhost/hu-wuhu-release-notes.html["Windows Host Utilities 설명서"] Windows Host Utilities 버전에 맞는 설치 절차를 선택하세요.
