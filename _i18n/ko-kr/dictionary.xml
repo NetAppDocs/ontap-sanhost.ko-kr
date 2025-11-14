@@ -747,7 +747,6 @@
   <block id="f418ab5fac16133ff4e30e12dffff5f7" category="sidebar">7.2/3.1</block>
   <block id="7cd31cf6820896d838535a73cafb15ca" category="sidebar">7.1</block>
   <block id="aa1fc3398e84bda331b47203c1e53ad5" category="sidebar">CentOS</block>
-  <block id="0460305b9f6d43c9d7668d990a229d26" category="sidebar">CentOS 8</block>
   <block id="585375c1448bfa3494298bdd79408081" category="sidebar">8.0</block>
   <block id="cb2238914d3b44e270be41b02866c1b5" category="sidebar">CentOS 7</block>
   <block id="5960276c0e365f7a81a90baab3a72051" category="sidebar">7.6</block>
@@ -842,7 +841,6 @@
   <block id="8d1d5b8defd8dab28a7e51c7b4ff5d33" category="inline-link-macro">Microsoft Update 카탈로그 2022</block>
   <block id="3a824154b16ed7dab899bf000b80eeee" category="sidebar">2022</block>
   <block id="452d8ca267c17453aeeac8e238531175" category="sidebar">ol-FCP</block>
-  <block id="e6a493a32b49704e906197646788a842" category="sidebar">ol-8-FCP</block>
   <block id="3ef2771cb2d57467dc2cdd1c03e0b795" category="sidebar">OL-7-FCP</block>
   <block id="bfad018c3813e7bc5482c07db9347a41" category="sidebar">ol-6-FCP</block>
   <block id="8479d6fad2633b26cf495862e89ca1c9" category="sidebar">RHEL-9-FCP</block>
@@ -1753,7 +1751,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="4d2491544460a0c7af79b0ca7492e6fd" category="paragraph"> 항상기본 설정을 무시할 수 있는 레거시 설정은 확인해야<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일, 특히 기본값 섹션에서 합니다.</block>
   <block id="ec1fba1237506df59a6228cbfc26fd26" category="admonition">단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.</block>
   <block id="d7eeafe16e993a6db0f390553a4f2af4" category="paragraph">NVMe/TCP 프로토콜이 작업을 지원하지<block ref="c73910bff7459eb78b9c2d1e7c0e3ed7" prefix=" " category="inline-code"></block> 않습니다. 대신 NVMe/TCP 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="15090de1ea1067de344502d808b5a4bd" category="summary">ONTAP에서 Oracle Linux 8.10을 사용하는 방법에 대해 설명합니다</block>
   <block id="db1e7207d8777a9c2c96489e2ef61867" category="summary">Oracle Linux 8.10 with ONTAP용 NVMe-oF 호스트 구성</block>
   <block id="95769ef42ae4724a8deb0d386fbf6b88" category="paragraph">Oracle Linux 8.10용 NVMe-oF 호스트 구성에 다음과 같은 지원 및 기능을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.</block>
   <block id="7415be93e6df69c72126d277c3b7cc16" category="list-text">사용 가능한 지원:</block>
@@ -2059,7 +2056,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="bb559c6421377ba8691783146145f853" category="admonition">Oracle Linux RHCK의 알려진 문제는 RHEL 6.8용 을 <block ref="7703b3b38de881e061b6dbcbbcaf9f81" category="inline-link-macro-rx"></block>참조하십시오.</block>
   <block id="01959cefae34c9172600de87478915b8" category="admonition">Oracle Linux 6.9 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.9용 을 <block ref="e6290e19ce3858749b0edbfa1565d904" category="inline-link-macro-rx"></block>사용하십시오.</block>
   <block id="9933915a8c8496b899a0b703737d9f01" category="admonition">Oracle Linux RHCK의 알려진 문제는 RHEL 6.9용 을 참조하십시오<block ref="6381fe6a72f9bd9f067a0ec390d2a8fb" category="inline-link-macro-rx"></block>.</block>
-  <block id="8615fb2fd88be1c6019d2c1bf3ebec1f" category="admonition">Oracle Linux RHCK의 알려진 문제는 해당 Red Hat Enterprise Linux 릴리스 설명서의 섹션을 참조하십시오<block ref="10ee08d1b3d909bc389f3b317276174b" category="inline-link-macro-rx"></block>.</block>
   <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
   <block id="a1a9afcf552a769c282769271829889a" category="paragraph"><block ref="a1a9afcf552a769c282769271829889a" category="inline-link-macro-rx"></block></block>
   <block id="f99aa604031e5049799e73b5c3748a98" category="inline-link-macro"><block ref="f99aa604031e5049799e73b5c3748a98" category="inline-link-rx"></block></block>
@@ -2135,8 +2131,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="9fc9bdaf569f62449156719f31a27f03" category="cell">Emulex LPe16002(16G)를 사용하여 스토리지 페일오버 중에 I/O 지연이 관찰되고 보고가 차단됨, 존재하지 않음 상태로 전환됨</block>
   <block id="55044503b133c5b4c97864a314a57c73" category="cell">Qlogic QLE2672(16G) 및 QLE2742(32G)를 사용하여 스토리지 페일오버 중에 I/O 지연이 관찰되고 Rports가 Blocked, Not Present 상태로 전환됨</block>
   <block id="1b9a343a05e32d1550875621b82c0b1a" category="cell">스토리지 페일오버 작업 중에 RHEL(Red Hat Enterprise Linux) 7.6에서 QLogic QLE2672 16G 호스트를 사용하는 FC(Fibre Channel) 원격 포트가 차단될 수 있습니다. 스토리지 노드가 다운될 때 논리 인터페이스가 다운되기 때문에 원격 포트는 스토리지 노드 상태를 차단됨 으로 설정합니다. QLogic QLE2672 16G 호스트와 QLE2742 32Gb FC(Fibre Channel) HBA(호스트 버스 어댑터)를 모두 실행하는 경우 차단된 포트로 인해 I/O 진행률이 중지될 수 있습니다. 스토리지 노드가 최적 상태로 돌아오면 논리 인터페이스도 함께 가동되고 원격 포트는 온라인 상태가 됩니다. 그러나 원격 포트는 여전히 차단되어 있을 수 있습니다. 이 차단된 상태는 다중 경로 계층의 LUN에 장애가 발생한 것으로 등록됩니다. 다음 명령을 사용하여 원격 포트의 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_stat 차단된 온라인 온라인 온라인 온라인 온라인 온라인 상태의 출력은 다음과 같습니다</block>
-  <block id="663c29c691b9392361f072ff1c647494" category="paragraph">SAN 호스트에서 Linux Host Utilities CLI 명령 "sanlun fcp show adapter -v"를 실행하면 명령이 실패하고 HBA(호스트 버스 어댑터) 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시됩니다.</block>
-  <block id="fc09646256c1151d030354598d75230b" category="paragraph">SAN 호스트에서 Linux Host Utilities CLI 명령 "sanlun fcp show adapter -v"를 실행하면 명령이 실패하고 HBA(호스트 버스 어댑터) 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시됩니다.</block>
   <block id="23cd5840e42365c634c6242d03cd4c9e" category="cell">RHEL 6U4에서 저장소 장애 시 QLogic 16G FC(QLE2672) 호스트에서 최대 300초의 I/O 중지</block>
   <block id="4ab0ffec7c4a080af27b43ce5f05a0ed" category="cell">스토리지/Fabric 장애 시 QLogic 16G FC(QLE2672) 호스트에서 최대 300초의 I/O 스톨이 관찰될 수 있습니다.</block>
   <block id="a8ef8037d8bc65ce5c031566c94c1bdf" category="cell">RHEL 9.1에서 NetApp Linux SAN Host Utilities CLI는<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> HBA 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
@@ -2448,62 +2442,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="c03b2b8b8f3e7592387eb48c09025f97" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.9 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="cdec23a6dd205642c08c3dae43a8bb57" category="paragraph">RHEL 7.9에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="4daca65b9dae2e242aaa6a2277999402" category="paragraph">RHEL 7.9 및 ONTAP 스토리지 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="14dfcc43056d8c9d66119938d80c91b1" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 8.0과 iSCSI를 구성합니다</block>
-  <block id="fb19abe5a6b5d3909b17818824ac6a49" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.0 호스트에 Linux 호스트 유틸리티를 설치할 때 Host Utilities를 사용하면 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리하는 데 도움이 됩니다.</block>
-  <block id="cfb61557ec375a34976e74b594e10cf6" category="paragraph">RHEL 8.0에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="2484c66dbb51aab2023931439f1119eb" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 8.0에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="2d076b7a88cbb2373d2a0530133f667c" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 8.1과 iSCSI를 구성합니다</block>
-  <block id="2e2731e3f053ae0f6f388c7426044726" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.1 호스트에 Linux 호스트 유틸리티를 설치할 때 Host Utilities를 사용하여 ONTAP LUN에 대한 FCP 및 iSCSI 프로토콜 작업 관리를 지원할 수 있습니다.</block>
-  <block id="d60f06e4803f41fdef4c3f8cd8d22de0" category="paragraph">RHEL 8.1에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="11b16033eea63378a72ed721ea048daf" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 8.1에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="5f221111bb01dee7664b4e654cc51fa9" category="doc">FCP에 대해 RHEL 8.10을 구성하고 ONTAP 스토리지를 사용하여 iSCSI를 구성합니다</block>
-  <block id="ee259eef2ad89e22d691b70bbf582346" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.10 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="2f1fe7434d9a8691353a4b49531fca13" category="paragraph">RHEL 8.10에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="acdc67be9f8c6efe4cb88e6744b435ff" category="doc">ONTAP 스토리지를 사용하여 FCP에 RHEL 8.2를 구성하고 iSCSI를 구성합니다</block>
-  <block id="37bb7a099c28222c4da8ac5dfa51ae52" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.2 호스트에 Linux 호스트 유틸리티를 설치할 때 Host Utilities를 사용하면 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="d40f646bd40446058aa597cac4f91a6a" category="paragraph">RHEL 8.2에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="a5874beec36cd74a46c345a80830c681" category="doc">ONTAP 스토리지로 FCP를 위한 RHEL 8.3을 구성하고 iSCSI를 구성합니다</block>
-  <block id="b1816576eeeb42e0d3a1e06312382e37" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.3 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="307ca9b828f7a80554244daaded195e3" category="paragraph">RHEL 8.3에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="fcfefadbc8afa810126debed3f258fcb" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 8.4와 iSCSI를 구성합니다</block>
-  <block id="9eca8edd9cadefc1a339eb3ebbe5b9b4" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.4 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="158c8636e91d94395fdb8c9aec0f80e1" category="paragraph">RHEL 8.4에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="7b2a70885d624171a9c4fb1cbafa8d82" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 8.5와 iSCSI를 구성합니다</block>
-  <block id="783bb370a2a2a8b728d8d16649d84101" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.5 호스트에 Linux 호스트 유틸리티를 설치할 경우 호스트 유틸리티를 사용하여 ONTAP LUN에 대한 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="008186359791bc62440cef42700c33c6" category="paragraph">RHEL 8.5에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="7c987b863d7ca2c29d2220aafc03e213" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 8.6을 구성하고 iSCSI에 대해 RHEL 8.6을 구성합니다</block>
-  <block id="bec354c917bd9702d35e2cbd234ddceb" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.6 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN에 대한 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="2909899dd005b017ba3f4b2e304d8441" category="paragraph">RHEL 8.6에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="899f55df06fff94c8f5e6e8810acd144" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 8.7을 구성하고 iSCSI를 구성합니다</block>
-  <block id="c6e4ec4093e067c6de448d96ad1c1117" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.7 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="45cffe7c99748c71db5f530b62ea3acc" category="paragraph">RHEL 8.7에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="ab6b0c6dac94bc48ddc030ecb77e253d" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 8.8과 iSCSI를 구성합니다</block>
-  <block id="501cb99a36ad5973c8c8886317f017d7" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.8 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리하는 데 도움을 줄 수 있습니다.</block>
-  <block id="cf6de343c5b865db5b3971059438a068" category="paragraph">RHEL 8.8에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="202510ab76ea7250ddd0910da254b0eb" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 8.9를 구성하고 iSCSI에 대해 RHEL 8.9를 구성합니다</block>
-  <block id="96396cc94d3f9590cc68201a09e41090" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 8.9 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="3c21b998cd6d8416fa4a16a4a285e09b" category="paragraph">RHEL 8.9에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="4ea02644e380e876cb6ebdd29f34d635" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 9.0과 iSCSI를 구성합니다</block>
-  <block id="c42bf555b266791e6d0644e79f565aa3" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.0 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에 대한 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="b5d9d75e2c365357b06f6f9a7206d67c" category="paragraph">RHEL 9.0에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="08e3752db10507a6aca17851f8ebf0d3" category="doc">ONTAP 스토리지로 FCP용 RHEL 9.1과 iSCSI를 구성합니다</block>
-  <block id="1a832116de8fd171def513205eb4e870" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.1 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="cabab11b9f068bc11794c81e459e0685" category="paragraph">RHEL 9.1에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="afbdc08f531c5440d1dc851ccbfc99c4" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 9.1에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="e2b40a955624e66df59b1d53a0844038" category="doc">ONTAP 스토리지로 FCP 및 iSCSI에 대해 RHEL 9.2를 구성합니다</block>
-  <block id="559b5da8fdf41820984763b571c383cd" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.2 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="14071197fca988f01fd2f99abdd4cb5e" category="paragraph">RHEL 9.2에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="f24e6daa78df75c3492694fcff6a9b3c" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 9.2에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="c5e5a948eba1b3de6364bd24121c4fba" category="doc">ONTAP 스토리지를 사용하여 FCP에 대한 RHEL 9.3과 iSCSI를 구성합니다</block>
-  <block id="c408646a49798427079f19d1ace534b5" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.3 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="7473625948f7967bfb459bbaa8d50271" category="paragraph">RHEL 9.3에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="1689189290598975ccaaee0cb0cd602e" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 9.3에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="6807e487e43970b90b38cac148ba9c49" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 9.4를 구성하고 iSCSI를 구성합니다</block>
-  <block id="ba9a8d5b4376d03fc61ae2bcc0bc9eab" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.4 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="5435ac89b9cd76c7031b996f3e38344f" category="paragraph">RHEL 9.4에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="bf2e2850028a550db4d4777a6c320006" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 9.5를 구성하고 iSCSI에 대해 RHEL 9.5를 구성합니다</block>
-  <block id="9c2f294f2ce9dacd34475fe6a3fa5c52" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.5 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="0f1de05675767624511aae207e8e0251" category="paragraph">RHEL 9.5에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="43d4d647f16dbd3d230e0439558b88db" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 12를 구성합니다</block>
   <block id="dfeac90f4b243e13abf1a334467b65be" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 12 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="40821342e4bc79cbad2926f4ac5e6e9b" category="paragraph">SUSE Linux Enterprise Server 12에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
@@ -2525,30 +2463,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="3a0736cdf2a565e3d5f79ecb7eee0b95" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 12 SP5 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="43398cfb8eda87e25787443ae87a9706" category="paragraph">SUSE Linux Enterprise Server 12 SP5의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="2d2ceaeb1cde218bda6ef5263308fea7" category="paragraph">ONTAP 스토리지 릴리스가 포함된 SUSE Linux Enterprise Server 12 SP5에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="65ec0acea8dc658d42864eb8199c4a97" category="doc">ONTAP 스토리지를 사용하여 FCP용 SUSE Linux Enterprise Server 15 및 iSCSI를 구성합니다</block>
-  <block id="a98a5e4b86d0238c6b4cf9a25592f1d0" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="274928dc553a85ffa2039505e1dba3cc" category="paragraph">SUSE Linux Enterprise Server 15에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="da8936c01732467d49e464e3885d6ed9" category="paragraph">ONTAP 스토리지 릴리스가 포함된 SUSE Linux Enterprise Server 15에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="e9da4ceaeb8abb9f5a6ce5e86e7c004e" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP1을 구성합니다</block>
-  <block id="6047ed4191c41e5830317c5ff8f3bae2" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP1 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="236290ad6bbcf9108c749778d91c7ee9" category="paragraph">SUSE Linux Enterprise Server 15 SP1의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="285a8ea56b494f0e7f9ef408dfd8e2f0" category="paragraph">SUSE Linux Enterprise Server 15 SP1 ONTAP 스토리지 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="03b5584b1473bd0a7f27e7d6785cdeb2" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP2를 구성합니다</block>
-  <block id="ff08249403db05b9f51bad07ee544882" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP2 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c6c2fd19574635f87eadff5006e23099" category="paragraph">SUSE Linux Enterprise Server 15 SP2에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="35000ca2392192513d21d7097322df24" category="paragraph">SUSE Linux Enterprise Server 15 SP2 ONTAP 스토리지 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="23dcddc6f19ef2cbc48ff53a3ba674ff" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP3을 구성합니다</block>
-  <block id="f26bc0ed31f715db66595e7231d19236" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP3 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="291af0b61cf44d9aba50f8e917c9cc20" category="paragraph">SUSE Linux Enterprise Server 15 SP3에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="7878bbc9cd6db18a02d8cc2ab119856f" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP4를 구성합니다</block>
-  <block id="f3f7ac99c54661cfb6664028039913ce" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP4 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="fb77cb024980a692b58965ac6f43c0c7" category="paragraph">SUSE Linux Enterprise Server 15 SP4의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="fbfda9dc43eb95af656463d4d122b1f8" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP5를 구성합니다</block>
-  <block id="13fe823d32722f24f2d8237c0f06ecbc" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP5 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="445c0c2ad7f9e2eb3c7970310f8bcb3d" category="paragraph">SUSE Linux Enterprise Server 15 SP5에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="9af395dd782a22baa71b47ef0f212af9" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP6을 구성합니다</block>
-  <block id="224e434e0a89bdaae5dfa71999e91d79" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP6 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c3f6ae35d84e612be71b323602fe985e" category="paragraph">SUSE Linux Enterprise Server 15 SP6의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="d29ad9efbcae6053e82420f1cc871c51" category="paragraph">VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서 및 및 를<block ref="c45840700e4ab6d55371aa3a3251b306" category="inline-link-rx"></block> 참조하십시오.<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block></block>
   <block id="764c3360f3f7d6cb07c2ff1a79f2cf58" category="paragraph">VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서 및 및 를 <block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>참조하십시오.<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block></block>
   <block id="d04eb85f6d5ba5f0fcd2c894dea16fe5" category="paragraph">VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서, <block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>및 를 참조하십시오.<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block></block>
@@ -2578,9 +2492,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="cd3cfdbbdf68695695503ec99f60b54f" category="list-text"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block></block>
   <block id="c8ba574e6385bfff25580806e2cfd27d" category="paragraph"><block ref="2c3856aef23f7e774c0fec3948e0a8b5" prefix="" category="inline-code"></block></block>
   <block id="44e9f27b29f987774dffc9a83910b3f1" category="paragraph">다음 예와 비슷한 출력이 표시되어야 합니다.</block>
-  <block id="d7c1825e0f2407a4d10d399ac78c1f95" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 10를 구성하고 iSCSI에 대해 RHEL 9.5를 구성합니다</block>
-  <block id="d7b201e34bf72ed2024522784d92bd59" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 10 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="0171e05f7a58a96089d554991286cd67" category="paragraph">RHEL 10에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="9ce1ac3eb326fa20a6e4cc846d38ef38" category="list-text">SAN 부팅 네임스페이스를 생성하여 호스트에 매핑합니다.</block>
   <block id="20cd59705d89627333024680d966bb16" category="inline-link">NVMe 스토리지 프로비저닝</block>
   <block id="2ae5f54ecc4375d7e4bc5d4417d72e85" category="paragraph">을<block ref="0cb485556fb9e40c82f55474b807ef26" category="inline-link-rx"></block>참조하십시오.</block>
@@ -2618,9 +2529,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="b4da3417a3bbac7760c5f326458d9927" category="sidebar">RHEL 10 를 참조하십시오</block>
   <block id="63da114c28add40c319de84e3a92a8ed" category="sidebar">RHEL-10-FCP를 참조하십시오</block>
   <block id="43a1437f7f656cd8be7c996c58719e0a" category="sidebar">10.0</block>
-  <block id="f4e7617d1cef5f8ab23add41d40625fb" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 9.6를 구성하고 iSCSI에 대해 RHEL 9.5를 구성합니다</block>
-  <block id="5cecbf0e006813819e7ea0d92ccca8df" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 9.6 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c655b9821bde0a911428a133bb7ef67f" category="paragraph">RHEL 9.6에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="6cbcd68038ece1dbafa173add2c90697" category="summary">ONTAP가 포함된 RHEL 9.6용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">다음 예에서는 nvme-cli 패키지 버전을 보여줍니다.</block>
   <block id="c76dae5432bc09fa983706505086692e" category="list-text">RHEL 9.6 호스트에 대한 dhchap 키를 생성합니다.</block>
@@ -2641,38 +2549,7 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="23634d6048eb22a5ca8d8ab3d1e781a7" category="list-text">호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="4d8e0dfcc8e342905265f68006cfcd68" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대해 Rocky Linux 10 구성</block>
   <block id="c81edf36dc000954d363cf834dc3e1c0" category="paragraph">Rocky Linux 10에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="cba38e964105989c754ebf56baca9af3" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.10 구성</block>
-  <block id="5d989adb4f7d32eee4124400262bf918" category="paragraph">Rocky Linux 8.10에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="ba416f8aef0f245b847812984b757ce4" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.4 구성</block>
-  <block id="171627c824ed442ad84a4d90a3c97952" category="paragraph">Rocky Linux 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="410c38d7b5e3599337485ae6ef459a7e" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.5 구성</block>
-  <block id="5e88c1ca753afc9d771cd2019db114b3" category="paragraph">Rocky Linux 8.5에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="04ece8dfbc674327a705caceeb81d62b" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.6 구성</block>
-  <block id="9ae000a5d4fd91006240cf7e33d05c05" category="paragraph">Rocky Linux 8.6에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="ce9599e816b36cb18a7a8cfb3f45fe7d" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.7 구성</block>
-  <block id="bc0c16ca58e238a03817bc8d978d189a" category="paragraph">Rocky Linux 8.7에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="6217618a3143d0b9754e92036e9305e4" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.8 구성</block>
-  <block id="202c52d6d4b643e7c3eac015375fbfd5" category="paragraph">Rocky Linux 8.8에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="b16b1826e8443110e92767189b4a8551" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.9 구성</block>
-  <block id="e50750a077fa75109a2de3f93bb42adf" category="paragraph">Rocky Linux 8.9에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="d7425bae8e902a7d5ec33ee8629b1dc5" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.0 구성</block>
-  <block id="07e4b32f34b896d73ffb495a88037151" category="paragraph">Rocky Linux 9.0에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="88f18a7ceb1d58730bbfabf1519c5648" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.1 구성</block>
-  <block id="e548f8628d947c00bc3b480707821d79" category="paragraph">Rocky Linux 9.1에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="64c13bc414e8523921f8ccfce8736da0" category="paragraph">ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Rocky Linux 9.1 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="83d23b030ca5295c7d8736002bf1f7d2" category="cell">Rocky Linux 9.1에서는 NetApp Linux SAN 호스트 유틸리티 CLI가 있습니다. <block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> HBA 검색을 지원하는 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
-  <block id="c300ebce91df3cb39e5e31308b78de62" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.2 구성</block>
-  <block id="ebf412f3fd0e93aa81a3155388db822e" category="paragraph">Rocky Linux 9.2에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="0407ec3e3bff4e8012825fa1d5226f7b" category="paragraph">ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Rocky Linux 9.2 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="3ebca8bd785348ea265e78526a21a8cf" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.3 구성</block>
-  <block id="505f24ab9736799ecc985bb9732c1386" category="paragraph">Rocky Linux 9.3에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="f1c5e93b02cb69209200bb18dd6c3fce" category="paragraph">ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Rocky Linux 9.3 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="867a3c3b3a78822b79f9e274bd05645b" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.4 구성</block>
-  <block id="da56ef3d8d73918e1ec023d3cccd7660" category="paragraph">Rocky Linux 9.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="b28624e5c1d5f27d9bb572967555b42b" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.5 구성</block>
-  <block id="60d78a670282f7a61eae67f19d440c37" category="paragraph">Rocky Linux 9.5에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="b4d05655be91566f9bc3cf128c212819" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 9.6 구성</block>
-  <block id="ecb4bd3c426003f3430e774eac3ce2f6" category="paragraph">Rocky Linux 9.6에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="222d00f6dedce44fb4277bf5767839a3" category="summary">ONTAP을 사용하여 Rocky Linux 8.10에 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="7aa8a009723869e0077d1b9c7c2f290b" category="section-title">7단계: 알려진 문제를 검토합니다</block>
   <block id="a11f845df28a0287efbe676d4569a11b" category="cell">Rocky Linux 8.10 NVMe-oF 호스트는 중복된 영구 검색 컨트롤러를 생성합니다.</block>
@@ -2749,32 +2626,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="424fbbe58d081fac8928ddb2baa0049a" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.9 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="4884d9c0ac331c0961ce8e16922aa141" category="paragraph">CentOS 7.9에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="e85e8ae42253cb29511a2226b89895d8" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.9 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="67fe770b4e5ec363d5b444f0a42400c2" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.0 구성</block>
-  <block id="593e47ca359b07667f8c8082996de465" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="f38c7afa5f1fae5f3c81c03486c5c344" category="paragraph">CentOS 8.0에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="59ea615947a2020a6db99a2d73a8168d" category="paragraph">ONTAP 스토리지를 사용하는 FCP 및 iSCSI의 CentOS 8.0에는 알려진 문제가 없습니다.</block>
-  <block id="992b0745667f7e03e6212332aaa1a053" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.0용입니다.</block>
-  <block id="9cfa8186483ff450023200a05da37267" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.1 구성</block>
-  <block id="cdacdfbbaee0210b6811d1ebe4dfa607" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.1 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="b4426f8f1f811f0295e0ea075a55bdfc" category="paragraph">CentOS 8.1에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="a92e4863e842960763753ee0623a3ec7" category="paragraph">ONTAP 스토리지를 사용하는 FCP 및 iSCSI의 경우 CentOS 8.1에 알려진 문제는 없습니다.</block>
-  <block id="5fba6fb979e49186d9e32d97656b6f30" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.1용입니다.</block>
-  <block id="b172ee9e291293e67be5403167362055" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.2 구성</block>
-  <block id="ca4cc088e6a5ddd41a0523eb74c25c28" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.2 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c89ef9efe1f9164958e5c1e01640f08e" category="paragraph">CentOS 8.2에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="b238747cf8ec0ee5148c9cc373085bd4" category="paragraph">ONTAP 스토리지를 사용하는 FCP 및 iSCSI의 경우 CentOS 8.2에 알려진 문제는 없습니다.</block>
-  <block id="6a30496b8d4d20c682c6bae2fa331205" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.2용입니다.</block>
-  <block id="46eac72545de48bc29ab8e760d07d946" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.3 구성</block>
-  <block id="ff6dc31606f5c670f3fc3f4d9664e2b3" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.3 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="d541665cad3a72efaff542f26600afbe" category="paragraph">CentOS 8.3에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="4f32092493e839d18510a94dbab55c30" category="paragraph">ONTAP 스토리지를 사용하는 FCP 및 iSCSI의 경우 CentOS 8.3에 알려진 문제는 없습니다.</block>
-  <block id="6e6e182611ac0bf525073fea056f339e" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.3용입니다.</block>
-  <block id="bb3e38cea1c1be488bdf74187ab980f9" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.4 구성</block>
-  <block id="b9312ab92841fb9e83f2ac8bae8aa0c5" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="62fb36c811aaf23e2eba1001dffff7d1" category="paragraph">CentOS 8.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="e02248ab51c300e9606fb5813ed1ca78" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.5 구성</block>
-  <block id="9a9d47d430bc0ccaf329d88297d4948c" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 8.5 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="67280eacf99cd3591c58a61aba24967f" category="paragraph">CentOS 8.5에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="ec2b69a90d4ad7c0b52ee36206d73d00" category="paragraph">구성에 따라 UEK 3 또는 UEK 4 탭을 선택하세요.</block>
   <block id="cc8b422ca0fb64a2e3dca2a58a9fbd5a" category="open-title">UEK 3 를 참조하십시오</block>
   <block id="cd63b2a656064944e61df028e283858e" category="paragraph">ALUA 기능이 있거나 없는 Oracle Linux UEK 3의 설정은 자동으로 업데이트됩니다. 설정 업데이트 후에는 "ALUA 핸들러"를 활성화해야 합니다.</block>
@@ -2785,42 +2636,9 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="5dd29161b38ded1b0182c73e6e601911" category="paragraph">Oracle Linux UEK 4의 경우 다음을 확인하십시오. <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 정의되어 있고 NetApp에서 권장하는 설정이 ONTAP LUN에 대해 구성되어 있는지 확인하세요.</block>
   <block id="3bdb7006bc10348c455a69d6d21f1f08" category="paragraph">기본 다중 경로 매개변수는 AFF 및 FAS 구성을 지원합니다. 이러한 구성에서는 단일 ONTAP LUN에 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로에 문제가 발생할 수 있습니다.</block>
   <block id="702585b74cd8e66c02a1414878b2ad93" category="paragraph">다음 예제 출력은 두 개의 활성/최적화 경로와 두 개의 활성/비최적화 경로가 있는 AFF 또는 FAS 구성에서 ONTAP LUN에 대한 올바른 매개변수 설정과 경로 상태를 보여줍니다.</block>
-  <block id="8238c178b375772de481394e0541d723" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.10 구성</block>
-  <block id="c2825dfc27bd2327c364381067ba6b5e" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.10 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="b7b748e9ac018cd64b536573e8b56137" category="paragraph">Oracle Linux 8.10에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="549576fc3d040915bc1d736a8d302e70" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.10에 권장되는 설정</block>
-  <block id="60acb8ab223c20a531ca67714ea46156" category="admonition">당신은 사용할 수 있습니다 <block ref="7086a0e9ea9060060de9931b9f626ca1" category="inline-link-macro-rx"></block> Oracle Linux 8.10에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="3a311013ebf6c1f20ecdfaddec95bac3" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 9.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="1c7d17bc7c1ded98c5fa5864d2adc78b" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 10 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="31f66dd0901349520fbfd979a57834c5" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 10 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="9de6a58a42e3c57aa7665ee2c2c7a0e5" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 8.10 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="940dbdef24a6bd2c45f673a1a3171985" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.10 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="0e67c5c5146ddcf6fde33ac9bea5c54d" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 8.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="d4bbec1281b5fdb00fbd378e65e7c338" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.4 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c4dd8bc9f9264d443603e258ed786748" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 8.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="25a5a44555c4132ffc762b6318c7ebfd" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.5 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="1e8e5607f85f82c227dccfed9d0ca73d" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 8.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="287eb2de37a791f38ea38ea4d61aab8b" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.6 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="3007c123f6c414105c501aa4e298181e" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 8.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="269d95d9dee55d057f9502a5e29001db" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.7 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="aa1e660ee3ff4148c32ae4196ccef9aa" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 8.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="eefa61e90345b0ff344017d92441c737" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.8 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c6bb155a07205e396a4766a9eb3ed2a1" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 8.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="e0cc26052c2f93d04fc7c38d186481f9" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 8.9 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="25a10d01f13e5f3914655216c35f5263" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 9.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="8156c1e6d9467dd53746b20a5e8bf9ff" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.0 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="0b3ab7652684a395a25cee9112d56b74" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 9.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="07ab2188d56279f80ec398b9cc44c6a3" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.1 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="fc0c29880c3c5b0307d6cc1b2d71d94b" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 9.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="e079e342c978c592dc7d0e3a5b23a801" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.2 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="579129cd946473e9e586f5e3f5ce83e9" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 9.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="eb52ea4dd9b17e5bcab3bb6e5fd295a5" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.3 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="6f46e4695ce3e0caf1363d71e09fbf18" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 9.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="af528926e51a5435bfc5ad7e4cc497b4" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.4 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="8dde410fe326735107ffb3699e018e38" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 9.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="53a6609840c8a368980f308107801253" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.5 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="9c30dd57a87df3d1297a2eb2a0359510" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 9.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="7593795b02b0a4db0c3803d5aa395b63" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Rocky Linux 9.6 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="06bee3156fdb14564c410b4498b097cb" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="b6723505a37d0b64b9b52432313b8852" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.0 구성</block>
   <block id="c98016ceb7330c62da586826bc6e84a9" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
@@ -2888,102 +2706,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="35571988552b93433dd9185ea0c1ca22" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.9에 권장되는 설정</block>
   <block id="20583a975c87e103781e8c8c43404f2e" category="admonition">당신은 사용할 수 있습니다 <block ref="17e9fe7ec973757c89c438e3bb4550f7" category="inline-link-macro-rx"></block> Oracle Linux 7.9에 대한 Red Hat 호환 커널을 구성합니다.</block>
   <block id="12f506f1dd3100eb63869051d94173e5" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 7.9 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="f4bcd6c3c7541be6d9c282cde07d6723" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="999c2d7f3e32b0b9cbe0bcbeddff7a9f" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.0 구성</block>
-  <block id="c56f0e294aa580d31cbb782a9104723c" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="323f2cd9192132c239f64b511a199e2d" category="paragraph">Oracle Linux 8.0에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="88ed21531e184a33c15a4ea8d2829c39" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.0에 권장되는 설정</block>
-  <block id="92183432ba044f2cc8e8ba2dda2713a7" category="admonition">당신은 사용할 수 있습니다 <block ref="6ba9406ca5c999684fe0553c71d5d7b5" category="inline-link-macro-rx"></block> Oracle Linux 8.0에 대한 Red Hat 호환 커널을 구성하는 방법.</block>
-  <block id="6ac71c03546fbda1a1039c1c984b8da6" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="9024d2f866ceedca4b1e5a9938311f4a" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.1 구성</block>
-  <block id="69365da14b07be32df64d6c95613fbcd" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.1 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="7fe5035ce819c0ab51d0c59cc3e5d236" category="paragraph">Oracle Linux 8.1에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="7bfec256b1647d210a22e6f870efa0ab" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.1에 권장되는 설정</block>
-  <block id="72731823f1e3d559e16968860e64efbf" category="admonition">당신은 사용할 수 있습니다 <block ref="9458f794078e6df38bc9810d6888abda" category="inline-link-macro-rx"></block> Oracle Linux 8.1에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="55c9a966d6ca502c6b79622041cf2939" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="190adfad8ab7e877ebccb8281291cd42" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.2 구성</block>
-  <block id="2be5b19cea489c99c4a7b8bb0502bbba" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.2 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="bb45f9344c4b74b61923dd13350e8f0f" category="paragraph">Oracle Linux 8.2에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="89ef4cb32878dd86644de584c5d8897a" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.2에 권장되는 설정</block>
-  <block id="e49fb616246ddfd9e32fa98fd9de8849" category="admonition">당신은 사용할 수 있습니다 <block ref="954b7531a89381d9600f0d408641b8a5" category="inline-link-macro-rx"></block> Oracle Linux 8.2에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="630a90caa51b275aadc6fb8d7336911c" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="7d47a9147a495e1864fbdb7fd149037d" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.3 구성</block>
-  <block id="b6f02c50ac71efd57c806519a03ebd1d" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.3 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="9b90c5a4ab32e64460a8ed2de1985099" category="paragraph">Oracle Linux 8.3에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="e24bfcfcb24d6491f58f36b878938409" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.3에 권장되는 설정</block>
-  <block id="fc206a9921229da86f708c669b2141ca" category="admonition">당신은 사용할 수 있습니다 <block ref="7802643199848d9d64693a4babc7bd01" category="inline-link-macro-rx"></block> Oracle Linux 8.3에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="44a6cff586d9269de8b12455aeb0a112" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="d3108768c1dfefc33deca58c739d30c3" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.4 구성</block>
-  <block id="3a38c5ee61825ca94e533ec33699a59d" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="77be5193b45443f626a6e9d6213e952e" category="paragraph">Oracle Linux 8.4에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="7ad5aca208b3c1c1cc1ff0b6e6a16c63" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.4에 권장되는 설정</block>
-  <block id="896dc3ea0f496b1b5710d0b53c0b636a" category="admonition">당신은 사용할 수 있습니다 <block ref="15e6093c22e127a52279418a3e5bc8b6" category="inline-link-macro-rx"></block> Oracle Linux 8.4에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="fbd5b9e649c3698241d4b6800ae0fe60" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="8b9500eb6c9bc5e4ac9f65df73abd989" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.5 구성</block>
-  <block id="fbcd69d658f296d0bf5ed662800df424" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.5 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="3c2421af95a3bb7493f20f472559aac1" category="paragraph">Oracle Linux 8.5에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="741acf4433b7c0ec7f431dd6a4c4e436" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.5에 권장되는 설정</block>
-  <block id="8d1699f53aba828c2280688e53e94624" category="admonition">당신은 사용할 수 있습니다 <block ref="43f96c8c9a15f4ce1aed7298a0c6f935" category="inline-link-macro-rx"></block> Oracle Linux 8.5에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="eff9480fa02c45b284d9f5c06d2b75b5" category="admonition">Oracle Linux RHCK의 알려진 문제는 해당 Red Hat Enterprise Linux 릴리스 설명서의 섹션을 참조하십시오<block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block>.</block>
-  <block id="1faa4c9a4e6df3a50c93f963648b0d50" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="f2bde696f4c7971cb30d43a050f48b4c" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.6 구성</block>
-  <block id="d9688598a5f2bec2d86b0da5b38fa08a" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.6 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="2f444e2f177610181d23bd08556bd757" category="paragraph">Oracle Linux 8.6에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="8f32564246bc85e70f3e69d4ff3a9359" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.6에 권장되는 설정</block>
-  <block id="a0fd4ce4db3c3952f004c83659fce9de" category="admonition">당신은 사용할 수 있습니다 <block ref="3eda1f30fb1f3351abbe8e250d644d69" category="inline-link-macro-rx"></block> Oracle Linux 8.6에 대한 Red Hat 호환 커널을 구성하는 방법.</block>
-  <block id="664e738de6712fad20d04bcf79163631" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="2d180b6dc38a31feb28d0ab49f6ce6ee" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.7 구성</block>
-  <block id="9304d74280c78e740caec4f6d8b1b9a7" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.7 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="64ecd5ad8670d83781adfdcb4b80e656" category="paragraph">Oracle Linux 8.7에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="2909b1b949392d9235332140bbba66fe" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.7에 권장되는 설정</block>
-  <block id="71617e870174075e2c02ea3cccc6cfc4" category="admonition">당신은 사용할 수 있습니다 <block ref="ebb179218a7cbfdfab41605a99aee705" category="inline-link-macro-rx"></block> Oracle Linux 8.7에 대한 Red Hat 호환 커널을 구성하는 방법.</block>
-  <block id="21978a3489c0b5d43302041f17083056" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="9cbeccbe659564cf8219a777b8f6dfd3" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.8 구성</block>
-  <block id="9f04c93ad496d279c6eac8641d8b8d86" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.8 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="4577b6c859e73f4060b9b953b04d4c65" category="paragraph">Oracle Linux 8.8에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="e73a684d695c31e67ef0b8b5a236a0e2" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.8에 권장되는 설정</block>
-  <block id="fd9d56be5ddabf3369dab595b5bb77f1" category="admonition">당신은 사용할 수 있습니다 <block ref="f5289092bdacf8e5660354ca5bb62175" category="inline-link-macro-rx"></block> Oracle Linux 8.8에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="f693fe696a7ffc6e4ddf210fc76fb211" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 8.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="7a308264a2a40d2d5c59db748e8b82ae" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.9 구성</block>
-  <block id="ac4e8c957289ced36307ad07180d6271" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 8.9 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c54d216bdb777fbfac640d8cf091f4d6" category="paragraph">Oracle Linux 8.9에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="6fb8e696dc9ee7ed46ac08306ba43f80" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.9에 권장되는 설정</block>
-  <block id="38bc1f301461bf3be0a04f927b4e1629" category="admonition">당신은 사용할 수 있습니다 <block ref="eaa2d700d33bb0123f5f87bdd9ab14c3" category="inline-link-macro-rx"></block> Oracle Linux 8.9에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="875420c4aaecbc5462859e27358abc1f" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 9.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="2bd7ff2cb28220ef5bda887b95c8a45f" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 9.0 구성</block>
-  <block id="f321069dcb919f822b3720a4a21af0f2" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 9.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="7c6255fe32a6f849aaf4be7f15f42101" category="paragraph">Oracle Linux 9.0에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="0fae22e795e31d13bdcb0ce5dddff2bc" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 9.0에 권장되는 설정</block>
-  <block id="be230ec9ee469a11b5bb2bc90badb7b2" category="admonition">당신은 사용할 수 있습니다 <block ref="c11e30c25af3deba44f22d48ef505c5a" category="inline-link-macro-rx"></block> Oracle Linux 9.0에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="8a9a549a5ac4c5ba672f6f33e98bf192" category="paragraph">NetApp ONTAP 스토리지 릴리스가 포함된 Oracle Linux 9.0에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="d354ccb72b4befdaa9bded283f6a70d7" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 9.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="42632891659ec1108b91004839ba9b01" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 9.1 구성</block>
-  <block id="c60fe2b0db6f39c490c1bb15f1c8c495" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 9.1 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="607afbb3343d4563954472cda3a9e5ca" category="paragraph">Oracle Linux 9.1에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="65abd2be53d3ecb608d65f39457db6da" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 9.1에 권장되는 설정</block>
-  <block id="4c685549dfc0191a5bdc7610293c5588" category="admonition">당신은 사용할 수 있습니다 <block ref="58989c0f01862f7e4717a3d2b1366b08" category="inline-link-macro-rx"></block> Oracle Linux 9.1에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="9637ad37da87c8c7e4d5b540ee138e73" category="paragraph">NetApp ONTAP 스토리지가 탑재된 Oracle Linux 9.1 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="476b8a16251f248a688e7924db177862" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 9.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="30ed664de994b71e7525ba6f6c902563" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 9.2 구성</block>
-  <block id="8edfcdb845758f26a2fd2a4cbf9aec00" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 9.2 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="f71fbfb80260e3fab763ce416d0d6d19" category="paragraph">Oracle Linux 9.2에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="17771eb5ab663bfed538d65f9f99e0f7" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 9.2에 권장되는 설정</block>
-  <block id="70a54cf7fe733790e0037214778b3459" category="admonition">당신은 사용할 수 있습니다 <block ref="f2d21c4ecb47af696707024264eae196" category="inline-link-macro-rx"></block> Oracle Linux 9.2에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="81d78d444b07786f14a47d5a5111c349" category="paragraph">ONTAP 스토리지 릴리스가 포함된 Oracle Linux 9.2에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="3dd87c405d16607cdaa8a3f9f712899a" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 9.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="7c8da9a97d487e3060ac0c47961859bc" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 9.3 구성</block>
-  <block id="b4144bfeaae1a9ce5ec07d19ae2427bb" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 9.3 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="32d641b42127d469c3425ab0b2007107" category="paragraph">Oracle Linux 9.3에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="60790ee4071450fad1962ab68985f2fe" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 9.3에 권장되는 설정</block>
-  <block id="897dd847b13f3001343cf4230c9893ff" category="admonition">당신은 사용할 수 있습니다 <block ref="347ca057c68a3fb73d8f480257c79c3e" category="inline-link-macro-rx"></block> Oracle Linux 9.3에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="2d266628c7cea26615c2561109e09839" category="paragraph">ONTAP 스토리지 릴리스가 포함된 Oracle Linux 9.3에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="7b232deb8f2c35e2b2f6fd16538dbcc2" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 9.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="094e7831fc26720037e87e60e6196da0" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 9.4 구성</block>
-  <block id="e4a3bcf5c2bc9cf708fa6d9fa7c44e82" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 9.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="694d1c1ba05dbcdc2c9d22f0e29b61c0" category="paragraph">Oracle Linux 9.4에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="a5d0a1dbb7e8becb503c30856b792961" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 9.4에 권장되는 설정</block>
-  <block id="da3fe49f381d8829027708653dbdd505" category="admonition">당신은 사용할 수 있습니다 <block ref="4fb05e42f065e4749fd8345707426b42" category="inline-link-macro-rx"></block> Oracle Linux 9.4에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="3e2ae734ca739ef2f098df9b39b981e1" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 RHEL 10 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="f81b596fa05185bc389b5d37043c9987" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="616f42b9d1cf230290811cbb3daaf2b2" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="0100c79208916b122fa3c6a115562118" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
@@ -2994,44 +2716,16 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="9874504d4668432b051678d515b18231" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="6dce2c0b1e66005b92a8131b37bc2ca6" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="0b088c29cf019a622aef2e06a8707d14" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="45c71bf7384985f5f5af1802a83e4685" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="c2d713e00b7e7515ab6fa4c6035403d2" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="bed0d3eccee475c03bc42b1ee17e1f97" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.10 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="d78464055ada1cb03ec0e4b60d8ad602" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="f5459704c79f1392099694412b65aac8" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="8e6f7d7844d206667d227497de2891f9" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="cc425ef1f044032e3a8ed63530a21fdd" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="4c212408477e7c559f508d6aea056745" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="1bc24ea3deb61c23fd75b8ff892f79f6" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="8f7af92f5abef1a7a9c609f0f6ad1ffc" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="8dc97cd9fe18cd1a66b3b7ca13309ba5" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="c7210b31d3ea1977f3b29aac307c644f" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 9.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="ca5a493f7dbb4408a3ba652d86bfc61c" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 9.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="d6fc37d1252e76096c0bfd2d82ea104f" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 9.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="94e561f64c69455b466b0872f3c13a83" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 9.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="8aeb3a578ecd62aa83719e552c7878b9" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 9.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="2b0a80ebba707c31bf7f1f481aa82a6c" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 9.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="a5b922e7d189ddfd380722cbad08b7f3" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 SUSE Linux Enterprise Server 12에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="a6714f6a5c15e6b53cac3b72ca626587" category="summary">SUSE Linux Enterprise Server 12 SP1에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
   <block id="4e00c4c72dba50d94956ab89b937145e" category="summary">SUSE Linux Enterprise Server 12 SP2에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
   <block id="94dc6201856e91e2db374fc0be05514a" category="summary">SUSE Linux Enterprise Server 12 SP3에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
   <block id="0f55f1c828d7228be745c9d52c08c612" category="summary">SUSE Linux Enterprise Server 12 SP4에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
   <block id="7524604f05c4cb312f8b4368134ca71b" category="summary">SUSE Linux Enterprise Server 12 SP5에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="c491c0fa9e897041d3b9f0df2a0a2764" category="summary">SUSE Linux Enterprise Server 15에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="b3db0e5cfa4855c059a52c62fc4d634b" category="summary">SUSE Linux Enterprise Server 15 SP1에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="98b2d843bd6c0f759f7277db27879a37" category="summary">SUSE Linux Enterprise Server 15 SP2에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="96149fde5d594cfca173dadf77245d79" category="summary">SUSE Linux Enterprise Server 15 SP3에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="00657f2ca90f779d20eb517b9f9c3769" category="summary">SUSE Linux Enterprise Server 15 SP4에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="ca7194f14c6027a9f97c1cdabdf5ca5d" category="summary">SUSE Linux Enterprise Server 15 SP5에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="d53d88d1a12ba669b0ee9217bd940b4b" category="summary">SUSE Linux Enterprise Server 15 SP6에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
   <block id="338966e2b23b6122da979eca43ad6e4f" category="list-text">재시도 횟수에 제한이 없습니다(무기한 재시도).</block>
   <block id="d403d0cd9e43abcce3cb23b419142aa4" category="list-text">특정 항목을 수동으로 구성할 필요가 없습니다. <block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block> 사용 시 지속 시간 <block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 또는 <block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령어(옵션 -l).</block>
   <block id="c11a8d4b4a55c4406dbae65b3938c149" category="list-text">NVMe/TCP 컨트롤러는 경로 장애가 발생해도 시간 초과가 발생하지 않으며 무기한 연결 상태를 유지합니다.</block>
   <block id="05d21b34631751308344068ae06d8729" category="admonition">넷앱 <block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 호스트 유틸리티는 NVMe-oF를 지원하지 않습니다. 대신, 기본 패키지에 포함된 NetApp 플러그인을 사용할 수 있습니다. <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 모든 NVMe-oF 전송에 대해.</block>
-  <block id="3b2a777782651fbf907cef5f12a4c171" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Oracle Linux 9.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="b4d35ca4f8b0f921f828b460c1057a43" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 9.5 구성</block>
-  <block id="e92c5cbf89310f1e5a4ac5a1344cbe4b" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 9.5 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="ed8dd92a6dbf20a53daf08d5bea867e1" category="paragraph">Oracle Linux 9.5에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="eff004a97a3f649dcaaaf3fc93c51266" category="summary">Oracle Linux 9.5 with ONTAP용 NVMe-oF 호스트 구성</block>
   <block id="379e2b5ae5b7c7e267439eb94baea215" category="doc">ONTAP 스토리지를 위한 NVMe-oF로 Oracle Linux 9.5 구성</block>
   <block id="ac17418128183e6567213b4eb19b624e" category="paragraph">ONTAP 스토리지가 포함된 Oracle Linux 9.5 용 NVMe-oF 호스트 구성에서 다음과 같은 지원 및 기능을 사용할 수 있습니다.</block>
@@ -3063,9 +2757,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="0f2332cb3d4b010b45d6eb9fbbeab96c" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 모두 실행 예를 들어, SCSI LUN의 SCSI mpath 장치에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트의 NVMe-oF 네임스페이스 장치를 구성할 수 있습니다.</block>
   <block id="7b041227be300a97269b0c517c4d8a5c" category="paragraph"><block ref="b5c9ec30dafc3cdd07e22705d3fd28f9" prefix="" category="inline-code"></block></block>
   <block id="654a0efc10421b3fc1ee44ca772778aa" category="summary">SUSE Linux Enterprise Server 15 SP7에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="870d83d0bc4a1d675ccc1013c75b6763" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 15 SP7을 구성합니다</block>
-  <block id="2ac4e5f2f892e0f2c4b0350d60bb70b0" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 15 SP7 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="3fe0f7d7cd9a25242a7b121f3cc4ba8a" category="paragraph">SUSE Linux Enterprise Server 15 SP7의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="2109e80434ca7c6e1b69cbc2e5974556" category="summary">ONTAP를 사용하여 SUSE Linux Enterprise Server 15 SP7용 NVMe/FC를 구성하는 방법을 설명합니다.</block>
   <block id="656e0f0943759cd8053f13523268bf98" category="doc">ONTAP를 사용하는 SUSE Linux Enterprise Server 15 SP7용 NVMe-oF 호스트 구성</block>
   <block id="5393f0229b7c28049a490e7e149cce98" category="list-text">동일한 호스트에서 NVMe 및 SCSI 트래픽 모두 실행 예를 들어, SCSI LUN에 대해 SCSI mpath 디바이스에 대해 dm-multipath를 구성하고 NVMe multipath를 사용하여 호스트에 NVMe-oF 네임스페이스 디바이스를 구성할 수 있습니다.</block>
@@ -3581,12 +3272,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="3950d47aea232c7c0f4d9f45a43bda17" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="d539ad578c66b9df653e9cf83bd0c001" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="696f3bd641d1ac208e9dcbc482739bd0" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="252d89392684bcfcf4005f42db245f9a" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="5c8eef54a7730dec61d5ef002cd898f1" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="b683b84fbd22cd466d30eec590f61226" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 CentOS 8.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="09c8e0bd6acf9d6ae65366b23ef6a356" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="ac161b2d475197d66b93469d29587e22" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="49cc988afc6b092ce6281b15b9a60972" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="3c7efd424a20046d29e4da88c0d5c486" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업을 위한 특정 매개변수와 설정을 사용하여 Citrix Hypervisor 8.2를 다중 경로로 구성합니다.</block>
   <block id="1f5a17864fe735a3a834371ab2c3043e" category="paragraph">Linux Host Utilities 소프트웨어 패키지는 Citrix Hypervisor 운영 체제를 지원하지 않습니다.</block>
   <block id="56eaee8dcecb52bd60025f4df180e2f4" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 HP-UX 11i v3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
@@ -3823,10 +3508,8 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="9c4c99909075dcb8253eb802dd100e36" category="list-text">서버에 RHEL 9.4를 설치합니다.  설치가 완료되면 필요한 RHEL 9.4 커널을 실행하고 있는지 확인하세요.</block>
   <block id="a02fa3f1e64906beba11b70cceddfd08" category="paragraph">ONTAP 9.12.1부터 RHEL 9.4 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.</block>
   <block id="05b6001078009a66d7398f78cec2ee21" category="list-text">RHEL 9.4 호스트에 대한 dhchap 키를 생성합니다.</block>
-  <block id="ed716a98f38437d5ab93ec6f89f663bb" category="paragraph">Red Hat Enterprise Linux(RHEL) 9.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
   <block id="dbfb199274d1063eab16fa9e3a4eea71" category="paragraph">RHEL 9.5의 NVMe-oF에는 알려진 제한 사항이 없습니다.</block>
   <block id="ceb59c3db0b79174ade65f5440374b63" category="list-text">서버에 RHEL 9.5를 설치합니다.  설치가 완료되면 필요한 RHEL 9.5 커널을 실행하고 있는지 확인하세요.</block>
-  <block id="ba7ad92a9a328fc4086bbe645b158443" category="paragraph">Red Hat Enterprise Linux(RHEL) 9.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block> .</block>
   <block id="0e2a6ca17682f87afed8a24fd851c31b" category="paragraph">*RHEL 9.6을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*</block>
   <block id="fbe70a9e4e86428613212ca9bafab36e" category="list-text">서버에 RHEL 9.6을 설치합니다.  설치가 완료되면 필요한 RHEL 9.6 커널을 실행하고 있는지 확인하세요.</block>
   <block id="abcdfaf745ecf46fa48ee4febc561be5" category="section-title">udev 규칙에서 iopolicy를 수정합니다.</block>
@@ -3942,7 +3625,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="9fd90abc366dc82707cd08614fb03cc1" category="paragraph">ASA 구성에는 단일 우선순위를 갖는 활성/최적화된 경로 그룹이 하나 있어야 합니다.  컨트롤러는 경로를 서비스하고 모든 활성 경로에 I/O를 전송합니다.</block>
   <block id="2668d75d00d2b0c89fc0268c581eea9a" category="paragraph">AFF 또는 FAS 구성에는 우선순위가 다른 두 그룹의 경로가 있어야 합니다.  우선순위가 높은 경로는 활성/최적화되어 있으며 집계가 있는 컨트롤러에서 서비스를 제공합니다.  우선순위가 낮은 경로는 다른 컨트롤러에서 서비스를 받습니다.  이러한 경로는 활성화되어 있지만 최적화되어 있지 않으며 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="778265cdd82e615c65e819202c4f1a45" category="paragraph">로컬 부팅이나 SAN 부팅을 사용하여 Windows OS를 부팅할 수 있습니다.  NetApp 배포를 간소화하고 확장성을 개선하기 위해 SAN 부팅을 사용할 것을 권장합니다.</block>
-  <block id="da42b168559eb3f7c8663fcad45f08cb" category="list-text"><block ref="6cdc790cf038e6e4c1fc6fe01e6057a7" category="inline-link-macro-rx"></block>.</block>
   <block id="9c3530e2722834048b2844c3d51c3f9d" category="paragraph">예를 들어 SSD, SATA 또는 RAID 등 로컬 하드 디스크에 Windows OS를 설치하여 로컬 부팅을 수행합니다.</block>
   <block id="732f2da8f62b9da0ea923952084874de" category="inline-link-macro">Window Host Utilities의 레지스트리 설정에 대해 알아보세요</block>
   <block id="adb6b5051a1f8d77d4d01917e922a3e4" category="paragraph"><block ref="c1331b771adf93ff52db3f4f543e95b0" category="inline-link-macro-rx"></block>.</block>
@@ -3966,4 +3648,53 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="c837c9f198826f442b66f894573d645a" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Windows Server 2022 구성</block>
   <block id="5ace3cca365ccbdb8f0e3d9f7ad3cbc4" category="paragraph">Windows 호스트 유틸리티를 사용하면 Windows 호스트를 NetApp SAN의 가상 디스크(LUN)에 연결할 수 있습니다.  ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하는 데 도움이 되는 Windows Server 2022 호스트에 Windows 호스트 유틸리티를 설치합니다.</block>
   <block id="389fe84231bcd8fc6a6af990aeeab91b" category="summary">ONTAP 사용한 Windows Server 2025에 대한 NVMe/FC 호스트 구성.</block>
+  <block id="97bff5b54b533dc2b2bd6dbc939719f5" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 8.x 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="f41f106fe6317bf1fffbc4d33580f3d8" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.x 구성</block>
+  <block id="cf833d77734e30b1539d8f93f0b110b0" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. CentOS 8.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="f29ce90064042fdf54d7f129472e1a29" category="paragraph">CentOS 8.x에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="37818604bc325c12da17d12c5a11b2c6" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="38e57a44e96058881795f8bd23b80525" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.x 시리즈용입니다.</block>
+  <block id="2d0bfc473ee44f864dd566c0718022a0" category="summary">ONTAP 과 함께 Oracle Linux 8.x를 사용하는 방법을 설명합니다.</block>
+  <block id="ba67fad4eca07067a073d76c746b6f4d" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.x 구성</block>
+  <block id="dc041beabf1d67c4a880346af0ab38cb" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Oracle Linux 8.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="3bb28dea8f7ea92ac3ce44d04d9d0cfb" category="paragraph">Oracle Linux 8.x에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="cdacba2630b5838c8c056fce424209a8" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 8.x에 권장되는 설정</block>
+  <block id="5058ae459145f1ccf86355dd5f578b4f" category="admonition">당신은 사용할 수 있습니다 <block ref="e2ae4b9119cbc046d0c2128ea1d5a644" category="inline-link-macro-rx"></block> Oracle Linux 8.x에 대한 Red Hat 호환 커널을 구성합니다.</block>
+  <block id="c2be141f9771b9678cedc217ef16a1b7" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Oracle Linux 9.x 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="de4df2bb56a6dd96c5aa8b4ddfb1370c" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 9.x 구성</block>
+  <block id="b72680c8c0c632d8365db7df592ffeb2" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Oracle Linux 9.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="6d0d62455ddcc2e2663940d352dfd7ed" category="paragraph">Oracle Linux 9.x에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="d02686596819e33bae1494c476cc4046" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 9.3, 9.2, 9.1 및 9.0에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="e2a4ffda52d4058942376ec8457e5e5f" category="cell">SAN 호스트에서 Linux Host Utilities CLI 명령인 "sanlun fcp show adapter -v"를 실행하면 호스트 버스 어댑터(HBA) 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시되면서 명령이 실패합니다. ---- [root@hostname ~]# sanlun fcp show adapter -v /usr/lib64/libHBAAPI.so 라이브러리를 찾을 수 없습니다. 라이브러리를 설치하는 패키지가 설치 및 로드되었는지 확인하세요. ----</block>
+  <block id="a7a38198eff5258108ff6a5098a49e45" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.x 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="e2aef7fa2192be71ab8ffc57f8a8ec55" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 RHEL 8.x 구성</block>
+  <block id="000b577dcf01b1bbd6d531af999b0911" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Red Hat Enterprise Linux(RHEL) 8.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="aeb3df404d270d1757316b4d9221eda9" category="paragraph">RHEL 8.x에서는 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="6d4abb15d6c8863cbe4a3954decbdff8" category="paragraph">ONTAP 스토리지를 탑재한 RHEL 8.x에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="6b896376edc62834aada5fdf3c4072e3" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 RHEL 9.x 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="9943f66abf8246a952197a36b6ebae0a" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 RHEL 9.x 구성</block>
+  <block id="853337aa29013a97f96870e7d2f10f1e" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Red Hat Enterprise Linux(RHEL) 9.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="7bf7f9c71ffb97fd94ef9cfdd36ff7df" category="paragraph">RHEL 9.x에서는 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="072f2e7d6b820c2e2398ab458c0f3a82" category="paragraph">ONTAP 스토리지를 탑재한 RHEL 9.x에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="cd243542bc9904c72b230932ea74f5f9" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.x 구성</block>
+  <block id="12a24a78e2e6166f7b0523bf7d3e9aa7" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Rocky Linux 8.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 통해 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="90fd31bfd08c82d921d995f40f9f7d08" category="paragraph">Rocky Linux 8.x에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="0cacaa666e0892a5a1f4e2c1643d1e70" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 9.x 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="3ecee060cadcc57341a8b80710cf208c" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대해 Rocky Linux 9.x 구성</block>
+  <block id="876cbf68046dad7ebba1afab3c80c137" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Rocky Linux 9.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 통해 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="dd92545ea5719253bc707fbef2dcc96c" category="paragraph">Rocky Linux 9.x에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="ac9e7b44c6f76fed43b63dbf5d89d376" category="paragraph">ONTAP 스토리지를 탑재한 Rocky Linux 9.x에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="d0b902c04680ff9676fb34d09a5952a9" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 SUSE Linux Enterprise Server 15 SPx 구성</block>
+  <block id="184d73c3e73e940410390b1d3eccaee1" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. SUSE Linux Enterprise Server 15 SPx 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="d8a7e98e6a80f5570d0d9d848e259cd3" category="paragraph">SUSE Linux Enterprise Server 15 SPx에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="3d3c3e3b44ea208fbe0adc756eaf2f8d" category="paragraph">ONTAP 스토리지가 포함된 SUSE Linux Enterprise Server 15 SPx에는 다음과 같은 알려진 문제가 있습니다.</block>
+  <block id="8735a4440d500827cfdf795952d67b09" category="paragraph">RHEL 9.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>.</block>
+  <block id="52a37a88318fad922723be47f50ede75" category="paragraph">RHEL 9.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>.</block>
+  <block id="bf3d61234a95ca1b30fcf4069234c324" category="paragraph">git pull origin main --- 퍼머링크: hu_sles_15SP1.html 리디렉트: ontap-sanhost/hu-sles-15spx.html ---</block>
+  <block id="1eaa600ad4870574c79128f26c23dd48" category="sidebar">센트OS 8.x</block>
+  <block id="e4fc61fa9a616ca27d481649f48b573a" category="sidebar">오라클 리눅스 9.x</block>
+  <block id="f2578dcaf6fad5c4f9ecbb1871268441" category="sidebar">오라클 리눅스 8.x</block>
+  <block id="9f17458dfbe60319fd46bddd814d9474" category="sidebar">RHEL 9.x</block>
+  <block id="9871c3e3eef10eb83f1020bf0f40a11c" category="sidebar">RHEL 8.x</block>
+  <block id="c4980b39600ff4c0ecb0fa2f23fe5a78" category="sidebar">로키 리눅스 9.x</block>
+  <block id="58a2f4956f7990585638b66df29826ba" category="sidebar">로키 리눅스 8.x</block>
 </blocks>
