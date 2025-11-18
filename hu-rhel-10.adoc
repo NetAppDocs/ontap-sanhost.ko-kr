@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-ol-9x.html 
-keywords: host utilities, oracle, linux, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0 netapp, ontap 
-summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Oracle Linux 9.x 호스트에 Linux 호스트 유틸리티를 설치합니다. 
+permalink: hu-rhel-10.html 
+keywords: host utilities, red hat, rhel, linux, 10, netapp, ontap, rhel 
+summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 RHEL 10 호스트에 Linux 호스트 유틸리티를 설치합니다. 
 ---
-= ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 9.x 구성
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 RHEL 10 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,10 +16,10 @@ summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리�
 
 
 [role="lead"]
-Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Oracle Linux 9.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
+Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Red Hat Enterprise Linux(RHEL) 10 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
 
 
-NOTE: ONTAP LUN이 KVM 하이퍼바이저에 자동으로 매핑되므로 KVM(커널 기반 가상 머신) 설정을 구성할 필요가 없습니다.
+NOTE: ONTAP LUN이 하이퍼바이저에 자동으로 매핑되므로 커널 기반 가상 머신(KVM) 설정을 수동으로 구성할 필요가 없습니다.
 
 
 
@@ -54,7 +54,7 @@ NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 �
 
 == 3단계: 호스트의 다중 경로 구성을 확인합니다
 
-Oracle Linux 9.x에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.
+RHEL 10에서는 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.
 
 호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
 
@@ -162,21 +162,17 @@ multipath -ll
 --
 ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
 
-.예제 보기
-[%collapsible]
-=====
 [listing]
 ----
-multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+# multipath -ll
+3600a098038314e535a24584e4b496252 dm-32 NETAPP,LUN C-Mode
 size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:6   sdbz 68:208  active ready running
-  |- 11:0:11:6  sddn 71:80   active ready running
-  |- 11:0:15:6  sdfb 129:208 active ready running
-  |- 12:0:1:6   sdgp 132:80  active ready running
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:0:41 sdan 66:112  active ready running
+  |- 11:0:1:41 sdcb 68:240  active ready running
+  |- 14:0:2:41 sdfd 129:240 active ready running
+  `- 14:0:0:41 sddp 71:112  active ready running
 ----
-=====
 --
 .AFF 또는 FAS 구성
 --
@@ -184,22 +180,18 @@ AFF 또는 FAS 구성에는 우선 순위가 높거나 낮은 두 개의 경로 
 
 다음 예에서는 활성/최적화 경로 2개와 활성/최적화되지 않은 경로 2개가 있는 ONTAP LUN에 대한 출력을 표시합니다.
 
-.예제 보기
-[%collapsible]
-=====
 [listing]
 ----
-multipath -ll
-3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+# multipath -ll
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
+size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 16:0:6:35 sdwb  69:624  active ready running
-| |- 16:0:5:35 sdun  66:752  active ready running
+| |- 16:0:3:0  sdcg 69:64  active ready running
+| `- 10:0:0:0  sdb  8:16   active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 15:0:0:35 sdaj  66:48   active ready running
-  |- 15:0:1:35 sdbx  68:176  active ready running
+  |- 10:0:1:0  sdc  8:32   active ready running
+  `- 16:0:2:0  sdcf 69:48  active ready running
 ----
-=====
 --
 ====
 
@@ -273,15 +265,8 @@ devices {
 
 == 6단계: 알려진 문제를 검토합니다
 
-ONTAP 스토리지를 탑재한 Oracle Linux 9.3, 9.2, 9.1 및 9.0에는 다음과 같은 알려진 문제가 있습니다.
+알려진 문제가 없습니다.
 
-[cols="20,40,40"]
-|===
-| NetApp 버그 ID | 제목 | 설명 
-
-
-| https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | Emulex HBA를 사용하는 SAN LUN 유틸리티에는 라이브러리 패키지의 심볼 링크가 필요합니다 | SAN 호스트에서 Linux Host Utilities CLI 명령인 "sanlun fcp show adapter -v"를 실행하면 호스트 버스 어댑터(HBA) 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시되면서 명령이 실패합니다. ---- [root@hostname ~]# sanlun fcp show adapter -v /usr/lib64/libHBAAPI.so 라이브러리를 찾을 수 없습니다. 라이브러리를 설치하는 패키지가 설치 및 로드되었는지 확인하세요. ---- 
-|===
 
 
 == 다음 단계
