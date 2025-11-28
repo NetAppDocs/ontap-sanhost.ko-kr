@@ -16,9 +16,9 @@ summary: ONTAP을 사용하여 Rocky Linux 9.6에 NVMe-oF 호스트를 구성하
 
 
 [role="lead"]
-Red Hat Enterprise Linux(RHEL) 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다.  ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.
+Rocky Linux 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.
 
-Rocky Linux 9.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요.  추가 지원 및 기능 정보는 다음을 참조하세요.link:hu-nvme-index.html["NVME-oF 개요"^] .
+Rocky Linux 9.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. link:nvme-rockylinux-overview.html["Rocky Linux ONTAP 지원 및 기능"].
 
 *Rocky Linux 9.6을 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.*
 
@@ -44,7 +44,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 == 2단계: 소프트웨어 버전 및 NVMe 구성 확인
 
-시스템이 소프트웨어 요구 사항을 충족하는지 확인하고 NVMe 패키지 설치와 호스트 구성을 확인하세요.
+호스트를 NVMe-oF로 구성하려면 호스트 및 NVMe 소프트웨어 패키지를 설치하고, 다중 경로를 활성화하고, 호스트 NQN 구성을 확인해야 합니다.
 
 .단계
 . 서버에 Rocky Linux 9.6을 설치합니다.  설치가 완료되면 필요한 Rocky Linux 9.6 커널을 실행하고 있는지 확인하세요.
