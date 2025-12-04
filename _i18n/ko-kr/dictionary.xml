@@ -2278,7 +2278,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="d211c3930b27be56feb1a5044f105d64" category="paragraph">NetApp은 호스트 서버에 Microsoft Update 카탈로그에서 제공되는 * 최신 누적 업데이트 * 를 설치할 것을 권장합니다.</block>
   <block id="c6e9e839e8304cacb5378299e7f6ca42" category="inline-link-macro">Microsoft Update 카탈로그 2025</block>
   <block id="68e5c8d1251c633565ba668446a95b32" category="list-text">에서 핫픽스를 <block ref="86167046a85b88d4b396a82107daadba" category="inline-link-macro-rx"></block>다운로드합니다.</block>
-  <block id="4be31bb14f28cd1a1a92b994b241b6e3" category="paragraph">Windows Server 2025와 ONTAP 릴리즈에는 알려진 문제가 없습니다.</block>
   <block id="769a40f63534a31b2b123052ac1da6ad" category="list-text"><block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>명령의 출력을 확인하여 설정이 완료되었는지 확인합니다. <block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="47e930d345db593756a39027df077a51" category="paragraph">비 ASA 구성의 경우 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="d7b8955c7b96bef9985fd48649d70251" category="list-text">에서 핫픽스를 <block ref="c91fa8395bb99838be8ab4e7b48666cc" category="inline-link-macro-rx"></block>다운로드합니다.</block>
@@ -3475,7 +3474,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="184d73c3e73e940410390b1d3eccaee1" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. SUSE Linux Enterprise Server 15 SPx 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="d8a7e98e6a80f5570d0d9d848e259cd3" category="paragraph">SUSE Linux Enterprise Server 15 SPx에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="3d3c3e3b44ea208fbe0adc756eaf2f8d" category="paragraph">ONTAP 스토리지가 포함된 SUSE Linux Enterprise Server 15 SPx에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="bf3d61234a95ca1b30fcf4069234c324" category="paragraph">git pull origin main --- 퍼머링크: hu_sles_15SP1.html 리디렉트: ontap-sanhost/hu-sles-15spx.html ---</block>
   <block id="1eaa600ad4870574c79128f26c23dd48" category="sidebar">센트OS 8.x</block>
   <block id="e4fc61fa9a616ca27d481649f48b573a" category="sidebar">오라클 리눅스 9.x</block>
   <block id="f2578dcaf6fad5c4f9ecbb1871268441" category="sidebar">오라클 리눅스 8.x</block>
@@ -3561,25 +3559,69 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="5d0c8eb2133aebd1b84ae7eadb64443d" category="inline-link-macro">NVMe 프로토콜 관리에 대해 알아보세요</block>
   <block id="ea103ce11fa3acd9ff613573f07e83a8" category="paragraph"><block ref="ea103ce11fa3acd9ff613573f07e83a8" category="inline-link-macro-rx"></block></block>
   <block id="46df6d1dcf1bfe1d293e698a53cb025f" category="inline-link-macro">Rocky Linux ONTAP 지원 및 기능</block>
-  <block id="2bcba8bad4fcf760dffcacf8b4a4cc62" category="paragraph">Rocky Linux 10.0에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="ef6b2f6e617a38d7878383a8f2b7d19b" category="paragraph">Rocky Linux 8.10에서 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="eff346b10e9abaf1f4d714ca9df21bc0" category="paragraph">Rocky Linux 8.4에서 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="682922c7ea5594fe7bdcd2b7277e9753" category="paragraph">Rocky Linux 8.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="120b950f8a485a339e959e9b7a66047d" category="paragraph">Rocky Linux 8.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="5d818d94d4d7b336ddf7f5e1c710ed41" category="paragraph">Rocky Linux 8.7에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="4bfb47d472f173a03cd1d2df2af129ff" category="paragraph">Rocky Linux 8.8에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="646d73193bcb07c45f83d548cefb34fa" category="paragraph">Rocky Linux 8.9에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="8bc36568c971e7b3df3a392d30b311c8" category="paragraph">Rocky Linux 9.0을 위한 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="05009c1e9d40ab93e9501109fb7ea18d" category="paragraph">Rocky Linux 9.1에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="3d4b393ca8cab92825657c10c9d8c1cf" category="paragraph">Rocky Linux 9.2에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="4a6b31a56b173440740905400c439e09" category="paragraph">Rocky Linux 9.3에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="0e394156b915862ea0b130800ff5e59d" category="paragraph">Rocky Linux 9.4에서 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="33b5872c4a7a0e71bfc3330b089f9464" category="paragraph">Rocky Linux 9.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
-  <block id="67e1bc19eec84fea93766fe5fa8a33df" category="paragraph">Rocky Linux 9.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>.</block>
   <block id="fc35bf5b5ac3f79b1fa6a280a58f05d4" category="summary">Rocky Linux에 대한 ONTAP 지원 및 기능에 대해 알아보세요.</block>
   <block id="d4c250eac77deea13f8e9d9293a5aad2" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능은 ONTAP 및 Rocky Linux 버전에 따라 다릅니다.</block>
   <block id="3127b50785e82cd676744d9673a7bb86" category="cell">Rocky Linux 호스트 버전</block>
   <block id="4b91f32a6e7c9347e242c6a3cfe81831" category="sidebar">10x</block>
   <block id="41d60d32d9ec705b3d3409e5c37a47ed" category="sidebar">9x</block>
   <block id="22d3c538ae9a7893a8cca2d17abd46ce" category="sidebar">8x</block>
+  <block id="e01b830a5cda09eafed964519b00a13a" category="doc">2단계: 선택적으로 다중 경로에서 장치 제외</block>
+  <block id="904cc9711392ab11f24202a7482e210d" category="doc">3단계: ONTAP LUN에 대한 다중 경로 매개변수 사용자 지정</block>
+  <block id="2589c63c17df176e198728a79c3e5212" category="cell">"언제나"</block>
+  <block id="2f7bb230c70819aeb10b45a709bcf48f" category="cell">"1"</block>
+  <block id="e937998e5a3fcf2887fa0312475809ad" category="list-text">선택적으로 기본값을 재정의합니다.<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block> ONTAP LUN이 multipathd에 의해 올바르게 검색되고 관리되도록 보장하는 매개변수:</block>
+  <block id="b4c2f617736da5488cca3d052f3d5b22" category="list-text">세트<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block> 기본 섹션에서 "아니요"로 설정<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> :</block>
+  <block id="7c7bd4a6ffb911a5e03abd98deb728a2" category="list-text">멀티패스 서비스를 다시 로드합니다.</block>
+  <block id="e357b4342a0f3c9f0335b0a8236f0f56" category="admonition">기본적으로 Proxmox OS 기본 다중 경로 구성 세트<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block> 빈 0바이트를 사용하여 "*strict*"로 변경<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 호스트를 부팅할 때마다 구성 파일을 업데이트합니다.  이를 통해 호스트가 새로 제공된 ONTAP LUN을 다중 경로 장치로 검색하는 것을 방지할 수 있으며, 이는 해당 LUN이 자동으로 다중 경로 제어에 나타나지 않음을 의미합니다.  기존 ONTAP LUN은 재부팅 후에도 계속 검색되고 다중 경로로 제어됩니다.</block>
+  <block id="d916cdb52453f1297e01a7f2fb93f68b" category="paragraph">다음 예에서는 두 개의 활성/최적화 경로와 두 개의 활성/비최적화 경로가 있는 ONTAP LUN에 대한 출력을 보여줍니다.</block>
+  <block id="a67072e0fcf576d467b0d59c6e975a4f" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Proxmox VE 9.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
+  <block id="2108c565af875cfc1e318c7dc8e41e56" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Proxmox VE 9.0 구성</block>
+  <block id="56ea3377f895b5d98eb5cfb4d8112b4e" category="paragraph">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업을 위한 특정 매개변수와 설정을 사용하여 Proxmox VE 9.0을 다중 경로로 구성합니다.</block>
+  <block id="ee4895e76707b7f8c336bca634b35b63" category="list-text">Linux 호스트 유틸리티는 Proxmox VE 9.0 운영 체제를 지원하지 않습니다.</block>
+  <block id="9b75a9b32f86018debc00585d6f260d7" category="list-text">Proxmox VE 9.0은 SAN 부팅 구성을 지원하지 않습니다.</block>
+  <block id="9c3789f3b828a3db86a5becb5c29475e" category="paragraph">Proxmox VE 9.0에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="62f90d2b36f26e75648f8fbc863d2103" category="summary">Proxmox 호스트에 대한 ONTAP 지원 및 기능에 대해 알아보세요.</block>
+  <block id="2b32731d6a5ce83c7ab86fa39ec46a48" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능은 ONTAP 및 Proxmox 버전에 따라 다릅니다.</block>
+  <block id="0a0891df749e36f8a1da70eeb7191ff8" category="cell">ONTAP 기능</block>
+  <block id="458078e18e047c43a6e6db3e150f66f5" category="cell">Proxmox 호스트 버전</block>
+  <block id="56884779bcdf2531adce3644feb5d5ad" category="cell">네이티브를 사용하여 NVMe/FC 및 NVMe/TCP 네임스페이스에 대한 ONTAP 세부 정보를 제공합니다.<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지.</block>
+  <block id="3dd207a3086b972d8d447b71f51ad45b" category="inline-link-macro">Proxmox VE 9.0 구성에 대해 알아보세요</block>
+  <block id="8e152c1aa088847e146b4fe57394d80d" category="paragraph"><block ref="8e152c1aa088847e146b4fe57394d80d" category="inline-link-macro-rx"></block></block>
+  <block id="1d871fa88754498eb3c93e5a73370e81" category="paragraph"><block ref="1d871fa88754498eb3c93e5a73370e81" category="inline-link-macro-rx"></block></block>
+  <block id="e2afbb1d7ff46d2d42900177365daf65" category="summary">ONTAP 스토리지를 사용하여 Proxmox VE 9.0에 대한 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="a905e3804e13e4478f22570d7b1c6daa" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF에 대한 Proxmox VE 9.0 구성</block>
+  <block id="db808e8d5fb0a993c938763824fac885" category="paragraph">Proxmox VE 9.0 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.</block>
+  <block id="4ae846af7b3e3b1ee9fce8a61764e7b3" category="paragraph">Proxmox VE 9.0에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="e9c9618cb4ec473c29fc8069ba3262ca" category="inline-link-macro-rx"></block>.</block>
+  <block id="11dc508ee4171316cc84faf1df7da0d1" category="admonition">Proxmox VE 9.0은 NVMe-FC에 대한 SAN 부팅 구성을 지원하지 않습니다.</block>
+  <block id="a2cfdbabc7f82da552ac8a6f31932690" category="section-title">1단계: 소프트웨어 버전 및 NVMe 구성 확인</block>
+  <block id="d87c2970a586e621db74a1d4a13c1b7d" category="list-text">서버에 Proxmox VE 9.0을 설치합니다.  설치가 완료되면 필요한 Proxmox VE 9.0 커널을 실행하고 있는지 확인하세요.</block>
+  <block id="5c6d8604a5ef6f3ebc5e8f9e0a358981" category="paragraph">Proxmox VE 9.0 커널 버전 예:</block>
+  <block id="2522863fc857cac71478b47c2b4ce58a" category="section-title">2단계: NVMe/FC 및 NVMe/TCP 구성</block>
+  <block id="ffe16d9eb39aa355eb74e268533641c2" category="open-title">NVMe/FC - Broadcom/Emulex</block>
+  <block id="ac966a87b7f17d061600251cdc258bdf" category="list-text">모델 설명을 보여주세요:</block>
+  <block id="567bbee303676695a37f51693d9e02b7" category="open-title">NVMe/FC - Marvell/QLogic</block>
+  <block id="83014af3ddd4a5320ebd08e08ff420bc" category="paragraph">NVMe/TCP 설정<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block> 자동으로 "꺼짐"으로 설정됩니다.  결과적으로:</block>
+  <block id="fdd88a13d7f11baa3b88e7e4bed9deb4" category="section-title">3단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.</block>
+  <block id="e1e2b9375828665c220dd1388f6ad3cf" category="section-title">4단계: NVMe 부팅 서비스 확인</block>
+  <block id="c61f03ab8365ee468d0fbc89f627b83e" category="list-text">ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: 모델을 NetApp ONTAP 컨트롤러로 설정하고 부하 분산 iopolicy를 라운드 로빈으로 설정)이 호스트에 올바르게 표시되는지 확인합니다.</block>
+  <block id="20e3bd3445baddb0173656fe96366a23" category="list-text">하위 시스템을 보여주세요:</block>
+  <block id="7946782d09fa1f600cc061a6029875ef" category="paragraph">Rocky Linux 10.0에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="fd81caa2737a7c6c74b17366ebc3b26d" category="paragraph">Rocky Linux 8.10에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="990c806cf38153e0a6e4dbb8598255b2" category="paragraph">Rocky Linux 8.4에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="33c9bf1050a9c9db8e8e61de30256522" category="paragraph">Rocky Linux 8.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="e30c06dad54ac3ae27429c41e278c465" category="paragraph">Rocky Linux 8.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="260633d077bafcfbd059d54c5fec54a7" category="paragraph">Rocky Linux 8.7에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="01908d182c262ae0b43c00d1bdb3017a" category="paragraph">Rocky Linux 8.8에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="0209fe0414b2aa411c2b874b9b8f01b5" category="paragraph">Rocky Linux 8.9에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="1f0c6f6038f9033e358db54ed0f5316b" category="paragraph">Rocky Linux 9.0에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="c694321770eda6e6c3c3d966f139483c" category="paragraph">Rocky Linux 9.1에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="c85c322c1118a325cd049f1a6411b364" category="paragraph">Rocky Linux 9.2에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="f65dc7c65a753920136d2faf44d0829b" category="paragraph">Rocky Linux 9.3에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="6d4e00db5093c8e417dafca4594cb369" category="paragraph">Rocky Linux 9.4에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="3c4949e90c3e10a54cdb4e6858c43140" category="paragraph">Rocky Linux 9.5에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="62168331fe38405a2f9f80d6cf376342" category="paragraph">Rocky Linux 9.6에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>.</block>
+  <block id="75e680a777df7d1ca001dab2b59ac1ad" category="sidebar">프록스목스</block>
+  <block id="f66ee9162b6416e5d8581c7b1b3e7b15" category="sidebar">프록스목스 9.0</block>
+  <block id="7c0fddb795e074f6d14458a8975b1aa6" category="sidebar">NVMeoF 프로크스목스</block>
+  <block id="5fe2096f9921d0fba5e418c83d4ae235" category="sidebar">프록스목스 VE 9x</block>
 </blocks>

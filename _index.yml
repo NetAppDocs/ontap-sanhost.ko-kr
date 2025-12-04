@@ -30,7 +30,7 @@ indexpage:
     - title: FCP 및 iSCSI로 호스트를 구성합니다
       url: "/hu_fcp_scsi_index.html"
     - title: NVMe-oF를 사용하여 호스트 구성
-      url: "/hu_nvme_index.html"
+      url: "/hu-nvme-index.html"
   - title: 더 많은 리소스
     links:
     - title: Cloud Volumes ONTAP
