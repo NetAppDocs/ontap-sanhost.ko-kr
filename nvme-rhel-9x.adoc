@@ -866,7 +866,6 @@ CLI나 구성 JSON 파일을 사용하여 안전한 인밴드 인증을 설정�
 --
 CLI를 사용하여 보안 인밴드 인증을 설정합니다.
 
-.단계
 . 호스트 NQN 가져오기:
 +
 [source, cli]
@@ -961,7 +960,6 @@ ONTAP 컨트롤러에서 여러 NVMe 하위 시스템을 사용할 수 있는 �
 
 사용하다 `-o` JSON 파일을 생성하는 옵션입니다.  더 많은 구문 옵션은 NVMe connect-all 매뉴얼 페이지를 참조하세요.
 
-.단계
 . JSON 파일을 구성합니다.
 +
 
@@ -1101,5 +1099,5 @@ DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJ
 | 1503468 | RHEL 9.1에서는 `nvme list-subsys` 명령은 주어진 하위 시스템에 대한 반복된 NVME 컨트롤러 목록을 반환합니다. | 그만큼 `nvme list-subsys` 명령은 주어진 하위 시스템에 대한 NVMe 컨트롤러 목록을 반환합니다.  RHEL 9.1에서 이 명령은 하위 시스템의 모든 네임스페이스에 대한 ANA 상태와 함께 컨트롤러를 표시합니다.  ANA 상태는 네임스페이스별 속성이므로 명령은 각 네임스페이스의 경로 상태를 포함하는 고유한 컨트롤러 항목을 표시해야 합니다. 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 9.0 NVMe-oF 호스트는 중복된 PDC(Persistent Discovery Controller)를 생성합니다. | NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트와 함께 ONTAP 9.10.1과 RHEL 9.0을 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 9.0 NVMe-oF 호스트는 중복된 PDC(Persistent Discovery Controller)를 생성합니다. | NVMe-oF 호스트에서   `nvme discover -p` 명령을 사용하여 PDC를 생성할 수 있습니다. 이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다. 그러나 NVMe-oF 호스트를 사용하여 ONTAP 9.10.1 및 RHEL 9.0을 실행하는 경우 `nvme discover -p` 가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다. 
 |===
