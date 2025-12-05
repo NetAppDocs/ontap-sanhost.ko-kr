@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
-permalink: hu-proxmox-9x.html 
-keywords: proxmox 9.0, netapp, ontap, iscsi, fcp 
+permalink: hu-proxmox-ve-9x.html 
+keywords: proxmox, VE, 9.0, netapp, ontap, iscsi, fcp 
 summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 Proxmox VE 9.0 호스트에 Linux 호스트 유틸리티를 설치합니다. 
 ---
 = ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Proxmox VE 9.0 구성
@@ -18,13 +18,12 @@ summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리�
 [role="lead"]
 ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업을 위한 특정 매개변수와 설정을 사용하여 Proxmox VE 9.0을 다중 경로로 구성합니다.
 
-[NOTE]
-====
+Proxmox VE 9.0을 사용하는 FCP 및 iSCSI에는 다음과 같은 알려진 제한 사항이 있습니다.
+
 * Linux 호스트 유틸리티는 Proxmox VE 9.0 운영 체제를 지원하지 않습니다.
-* Proxmox VE 9.0은 SAN 부팅 구성을 지원하지 않습니다.
+* SAN 부팅 구성은 지원되지 않습니다.
 
 
-====
 
 
 == 1단계: 호스트에 대한 다중 경로 구성 확인

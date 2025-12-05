@@ -212,8 +212,8 @@ sidebar:
           url: "/hu_ol_64.html"
     - title: 프록스목스
       entries:
-      - title: 프록스목스 9.0
-        url: "/hu-proxmox-9x.html"
+      - title: 프록스목스 VE 9.0
+        url: "/hu-proxmox-ve-9x.html"
     - title: RHEL을 참조하십시오
       entries:
       - title: RHEL 10 를 참조하십시오
