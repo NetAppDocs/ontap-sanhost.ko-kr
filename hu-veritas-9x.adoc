@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_veritas_6x.html 
-keywords: host utilities, veritas, infoscale, 6.x, netapp, ontap, san, lun, multipathing, iscsi 
-summary: Veritas Infoscale 6 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다 
+permalink: hu-veritas-9x.html 
+keywords: host utilities, veritas, infoscale, 9, netapp, ontap, sanhost, iscsi, red, hat linux, oracle, linux 
+summary: RHEL 및 Oracle Linux 호스트용 Veritas Infoscale 9와 함께 Linux 호스트 유틸리티를 사용하면 ONTAP LUN을 통해 FC, FCoE 및 iSCSI 프로토콜 작업을 관리하는 데 도움이 됩니다. 
 ---
-= ONTAP 스토리지를 사용하여 FC, FCoE 및 iSCSI에 대해 Veritas Infoscale 6 구성
+= ONTAP 스토리지를 사용하여 FC, FCoE 및 iSCSI에 대해 Veritas Infoscale 9 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Veritas Infoscale 6 시리즈 릴리스에 대한 ONTAP SAN 호스트 �
 
 
 [role="lead"]
-Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. ONTAP LUN을 사용하여 FC, FCoE 및 iSCSI 프로토콜 작업을 관리하는 기능을 지원하려면 Veritas Infoscale 6 for Oracle Linux(Red Hat 호환 커널 기반), Red Hat Enterprise Linux(RHEL) 및 SUSE Linux Enterprise Server 호스트와 함께 Linux 호스트 유틸리티를 사용하세요.
+Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Veritas Infoscale 9 for Oracle Linux(Red Hat 호환 커널 기반), Red Hat Enterprise Linux(RHEL), SUSE Linux Enterprise Server 호스트와 함께 Linux 호스트 유틸리티를 사용하면 ONTAP LUN을 사용하여 FC, FCoE, iSCSI 프로토콜 작업을 관리할 수 있습니다.
 
 
 
@@ -51,7 +51,7 @@ NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 �
 
 == 3단계: 호스트에 대한 Veritas Dynamic Multipathing 구성 확인
 
-Veritas Infoscale 6과 함께 Veritas Dynamic Multipathing(VxDMP)을 사용하여 ONTAP LUN을 관리합니다.
+Veritas Infoscale 9와 함께 Veritas Dynamic Multipathing(VxDMP)을 사용하여 ONTAP LUN을 관리합니다.
 
 호스트에 VxDMP가 올바르게 설정되었는지 확인하려면 VxDMP 구성을 검증하고 ASL(Array Support Library)과 APM(Array Policy Module) 구성을 확인해야 합니다. NetApp 스토리지 시스템용 ASL 및 APM 패키지는 Veritas 소프트웨어 설치 중에 설치됩니다.
 
@@ -74,14 +74,15 @@ vxdmpadm
 ====
 [listing]
 ----
-# vxdmpadm listenclosure
-ENCLR_NAME   ENCLR_TYPE  ENCLR_SNO     STATUS      ARRAY_TYPE    LUN_COUNT    FIRMWARE
-=====================================================================================
-sfrac0       SFRAC       804Xw$PqE52h  CONNECTED   ALUA          43           9800
+#vxdmpadm listenclosure
+ENCLR_NAME        ENCLR_TYPE     ENCLR_SNO      STATUS       ARRAY_TYPE     LUN_COUNT    FIRMWARE
+===================================================================================================
+info_asa0         Info_ASA       81KDT+YTg35P         CONNECTED    ALUA       20         9161
+infoscal1         Infoscal       81Ocq?Z7hPzC         CONNECTED    ALUA       23         9181
 # vxdmpadm getdmpnode
 NAME       STATE    ENCLR-TYPE  PATHS  ENBL  DSBL ENCLR-NAME
 ===================================================================
-sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0
+infoscal1_22         ENABLED      Infoscal     4      4     0     infoscal1
 ----
 ====
 . ASL 및 APM 패키지의 구성을 확인하세요. NetApp Veritas 지원 포털에 나열된 최신 지원 패키지를 사용할 것을 권장합니다.
@@ -91,14 +92,15 @@ sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0
 ====
 [listing]
 ----
-# vxdmpadm list dmpnode dmpnodename=sfrac0_47 | grep asl
-asl        = libvxnetapp.so
+#  vxdmpadm list dmpnode dmpnodename=infoscal1_22 | grep asl
+asl             = libvxnetapp.so
+
 # vxddladm listversion |grep libvxnetapp.so
 libvxnetapp.so                  vm-8.0.0-rev-1   8.0
 
 # rpm -qa |grep VRTSaslapm
-VRTSaslapm-x.x.x.0000-RHEL8.X86_64
-vxddladm listsupport libname=libvxnetapp.so
+VRTSaslapm-9.0.3-RHEL9.x86_64
+#vxddladm listsupport libname=libvxnetapp.so
 ATTR_NAME   ATTR_VALUE
 =========================================
 LIBNAME     libvxnetapp.so
@@ -196,20 +198,6 @@ node.session.timeo.replacement_timeout = 120
 ----
 --
 ====
-. 스토리지 장애 조치 시나리오에서 Veritas Infoscale 환경을 지원하려면 RHEL 8 및 9 시리즈 호스트에 대한 호스트 "udev rport" 값을 설정합니다.
-+
-파일을 생성하여 "udev rport" 값을 구성합니다. `/etc/udev/rules.d/40-rport.rules` 다음 파일 내용이 포함되어 있습니다.
-
-+
-[listing]
-----
-# cat /etc/udev/rules.d/40-rport.rules
-KERNEL=="rport-*", SUBSYSTEM=="fc_remote_ports", ACTION=="add", RUN+=/bin/sh -c 'echo 20 > /sys/class/fc_remote_ports/%k/fast_io_fail_tmo;echo 864000 >/sys/class/fc_remote_ports/%k/dev_loss_tmo'"
-----
-+
-
-NOTE: Veritas에 특정한 다른 모든 설정에 대해서는 표준 Veritas Infoscale 제품 설명서를 참조하세요.
-
 . ONTAP LUN의 매개 변수 설정 및 경로 상태를 확인합니다.
 +
 AFF, FAS 또는 ASA 구성에서는 단일 ONTAP LUN에 4개 이상의 경로가 필요하지 않습니다. 4개 이상의 경로가 있는 경우 저장 장애 발생 시 문제가 발생할 수 있습니다.
@@ -229,13 +217,13 @@ ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 �
 =====
 [listing]
 ----
-# vxdmpadm getsubpaths dmpnodename-sfrac0_47
-NAME  STATE[A]   PATH-TYPE[M]   CTLR-NAME   ENCLR-TYPE  ENCLR-NAME  ATTRS  PRIORITY
+# vxdmpadm getsubpaths dmpnodename=infoscal1_21
+NAME   STATE[A]    PATH-TYPE[M] CTLR-NAME  ENCLR-TYPE  ENCLR-NAME   ATTRS  PRIORITY
 ===================================================================================
-sdas  ENABLED (A)    Active/Optimized c13   SFRAC       sfrac0     -      -
-sdb   ENABLED(A) Active/Optimized     c14   SFRAC       sfrac0     -      -
-sdcj  ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
-sdea  ENABLED (A)    Active/Optimized c14   SFRAC       sfrac0     -
+sdby   ENABLED(A)  Active/Optimized  c1    Infoscal    infoscal1    -      -
+sddx   ENABLED(A)  Active/Optimized  c2    Infoscal    infoscal1    -      -
+sdfe   ENABLED(A)  Active/Optimized  c1    Infoscal    infoscal1    -      -
+sdfo   ENABLED(A)  Active/Optimized  c2    Infoscal    infoscal1    -      -
 ----
 =====
 --

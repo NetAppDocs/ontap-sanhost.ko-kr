@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_veritas_6x.html 
-keywords: host utilities, veritas, infoscale, 6.x, netapp, ontap, san, lun, multipathing, iscsi 
-summary: Veritas Infoscale 6 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다 
+permalink: hu-veritas-8x.html 
+keywords: host utilities, veritas, infoscale, 8, netapp, ontap, sanhost, iscsi, red, hat linux, oracle, linux 
+summary: RHEL 및 Oracle Linux 호스트용 Veritas Infoscale 8과 함께 Linux 호스트 유틸리티를 사용하면 ONTAP LUN을 통해 FC, FCoE 및 iSCSI 프로토콜 작업을 관리하는 데 도움이 됩니다. 
 ---
-= ONTAP 스토리지를 사용하여 FC, FCoE 및 iSCSI에 대해 Veritas Infoscale 6 구성
+= ONTAP 스토리지를 사용하여 FC, FCoE 및 iSCSI에 대해 Veritas Infoscale 8 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Veritas Infoscale 6 시리즈 릴리스에 대한 ONTAP SAN 호스트 �
 
 
 [role="lead"]
-Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. ONTAP LUN을 사용하여 FC, FCoE 및 iSCSI 프로토콜 작업을 관리하는 기능을 지원하려면 Veritas Infoscale 6 for Oracle Linux(Red Hat 호환 커널 기반), Red Hat Enterprise Linux(RHEL) 및 SUSE Linux Enterprise Server 호스트와 함께 Linux 호스트 유틸리티를 사용하세요.
+Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Veritas Infoscale 8 for Oracle Linux(Red Hat 호환 커널 기반), Red Hat Enterprise Linux(RHEL), SUSE Linux Enterprise Server 호스트와 함께 Linux 호스트 유틸리티를 사용하면 ONTAP LUN을 사용하여 FC, FCoE, iSCSI 프로토콜 작업을 관리할 수 있습니다.
 
 
 
@@ -51,7 +51,7 @@ NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 �
 
 == 3단계: 호스트에 대한 Veritas Dynamic Multipathing 구성 확인
 
-Veritas Infoscale 6과 함께 Veritas Dynamic Multipathing(VxDMP)을 사용하여 ONTAP LUN을 관리합니다.
+Veritas Infoscale 8과 함께 Veritas Dynamic Multipathing(VxDMP)을 사용하여 ONTAP LUN을 관리합니다.
 
 호스트에 VxDMP가 올바르게 설정되었는지 확인하려면 VxDMP 구성을 검증하고 ASL(Array Support Library)과 APM(Array Policy Module) 구성을 확인해야 합니다. NetApp 스토리지 시스템용 ASL 및 APM 패키지는 Veritas 소프트웨어 설치 중에 설치됩니다.
 
