@@ -143,7 +143,7 @@ Broadcom/Emulex 또는 Marvell/QLogic 어댑터를 사용하여 NVMe/FC를 구�
 
 [role="tabbed-block"]
 ====
-.FC - 브로드컴/에뮬렉스
+.NVMe/FC - Broadcom/Emulex
 --
 Broadcom/Emulex 어댑터용 NVMe/FC를 구성합니다.
 
@@ -294,7 +294,7 @@ FCP CMPL: xb 000014a5 Err 0002149a
 
 
 --
-.FC - 마벨/Q로직
+.NVMe/FC - Marvell/QLogic
 --
 Marvell/QLogic 어댑터용 NVMe/FC를 구성합니다.
 
@@ -325,7 +325,7 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 
 --
-.TCP
+.NVMe/TCP
 --
 NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다.  대신 NVMe/TCP를 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 있습니다. `connect` 또는 `connect-all` 수동으로 작업합니다.
 

@@ -67,6 +67,11 @@ ONTAP 시스템 설정에서 실행되는 ONTAP 버전에 관계없이 다음과
 | 네이티브 udev 규칙 `nvme-cli` 패키지는 NVMe 멀티패스에 대한 라운드 로빈 로드 밸런싱을 제공합니다.  a| 
 8.2 이상
 
+
+
+| 네이티브 udev 규칙 `nvme-cli` 이 패키지는 NVMe 멀티패스에 대한 큐 깊이 기반 로드 밸런싱을 제공합니다.  a| 
+9.6 이상
+
 |===
 
 NOTE: 지원되는 구성에 대한 자세한 내용은 다음을 참조하세요.link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^] .
