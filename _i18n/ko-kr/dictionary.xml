@@ -3341,4 +3341,5 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="92520caa5da5fd65237a96731d101aee" category="list-text">호스트에서 각 ONTAP 네임스페이스에 대해 적절한 NVMe-oF 설정(예: 모델이 NetApp ONTAP 컨트롤러로 설정되고 로드 밸런싱 iopolicy가 라운드 로빈으로 설정됨)이 올바르게 표시되는지 확인하십시오.</block>
   <block id="bf4dbd3d81297258bdb9391343d3d393" category="cell">네이티브 udev 규칙<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 이 패키지는 NVMe 멀티패스에 대한 큐 깊이 기반 로드 밸런싱을 제공합니다.</block>
   <block id="b62ae28652ddc6a2c9bb15373668f0d0" category="paragraph">9.6 이상</block>
+  <block id="3bf7b9cd443b3cb0c9b741f8a4deb9dc" category="paragraph">RHEL 10.0은 NVMe-oF에 대한 기본 iopolicy를 다음과 같이 설정합니다.<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block> . RHEL 10.0을 사용하고 iopolicy를 변경하려는 경우<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> , udev 규칙 파일을 다음과 같이 수정합니다.</block>
 </blocks>
