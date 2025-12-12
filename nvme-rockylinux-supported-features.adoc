@@ -71,5 +71,22 @@ ONTAP 시스템 설정에서 실행되는 ONTAP 버전에 관계없이 다음과
 
 NOTE: 지원되는 구성에 대한 자세한 내용은 다음을 참조하세요.link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^] .
 
+
+
+== 다음은 무엇입니까?
+
+[cols="50,50"]
+|===
+| Rocky Linux 버전이 ...인 경우 | ..에 대해 알아보세요 
+
+
+| 10 시리즈 | link:nvme-rockylinux-10x.html["Rocky Linux 10.x용 NVMe 구성"] 
+
+
+| 9 시리즈 | link:nvme-rockylinux-9x.html["Rocky Linux 9.x용 NVMe 구성"] 
+
+
+| 8시리즈 | link:nvme-rockylinux-8x.html["Rocky Linux 8.x용 NVMe 구성"] 
+|===
 .관련 정보
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["NVMe 프로토콜 관리에 대해 알아보세요"]
