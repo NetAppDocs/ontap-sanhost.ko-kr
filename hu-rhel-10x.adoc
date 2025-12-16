@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-rhel-10.html 
-keywords: host utilities, red hat, rhel, linux, 10, netapp, ontap, rhel 
-summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 RHEL 10 호스트에 Linux 호스트 유틸리티를 설치합니다. 
+permalink: hu-rhel-10x.html 
+keywords: host utilities, red hat, rhel, linux, 10.x, netapp, ontap, rhel 
+summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 RHEL 10.x 호스트에 Linux 호스트 유틸리티를 설치합니다. 
 ---
-= ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 RHEL 10 구성
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 RHEL 10.x 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리�
 
 
 [role="lead"]
-Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Red Hat Enterprise Linux(RHEL) 10 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
+Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Red Hat Enterprise Linux(RHEL) 10.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
 
 
 NOTE: ONTAP LUN이 하이퍼바이저에 자동으로 매핑되므로 커널 기반 가상 머신(KVM) 설정을 수동으로 구성할 필요가 없습니다.
@@ -54,7 +54,7 @@ NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 �
 
 == 3단계: 호스트의 다중 경로 구성을 확인합니다
 
-RHEL 10에서는 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.
+RHEL 10.x에서는 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.
 
 호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
 

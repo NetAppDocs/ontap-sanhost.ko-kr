@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: nvme-rhel-9x.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: ONTAP 사용하여 RHEL 9x에 NVMe-oF 호스트를 구성하는 방법 
+summary: ONTAP 사용하여 RHEL 9.x에 NVMe-oF 호스트를 구성하는 방법 
 ---
-= ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9x 구성
+= ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 9.x 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,9 +18,9 @@ summary: ONTAP 사용하여 RHEL 9x에 NVMe-oF 호스트를 구성하는 방법
 [role="lead"]
 Red Hat Enterprise Linux(RHEL) 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다.  ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.
 
-RHEL 9x에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. link:nvme-rhel-supported-features.html["RHEL ONTAP 지원 및 기능"].
+RHEL 9.x에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. link:nvme-rhel-supported-features.html["RHEL ONTAP 지원 및 기능"].
 
-RHEL 9x를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.
+RHEL 9.x를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.
 
 * 그만큼 `nvme disconnect-all` 이 명령을 실행하면 루트와 데이터 파일 시스템의 연결이 모두 끊어지고 시스템이 불안정해질 수 있습니다.  NVMe-TCP 또는 NVMe-FC 네임스페이스를 통해 SAN에서 부팅하는 시스템에서는 이 명령을 실행하지 마세요.
 
@@ -47,7 +47,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 NVMe-oF를 사용하도록 호스트를 구성하려면 호스트 및 NVMe 소프트웨어 패키지를 설치하고, 멀티패싱을 활성화하고, 호스트의 NQN 구성을 확인해야 합니다.
 
 .단계
-. 서버에 RHEL 9x를 설치합니다.  설치가 완료되면 필요한 RHEL 9x 커널을 실행하고 있는지 확인하세요.
+. 서버에 RHEL 9.x를 설치합니다. 설치가 완료되면 필요한 RHEL 9.x 커널을 실행하고 있는지 확인하세요.
 +
 [source, cli]
 ----
@@ -847,7 +847,7 @@ nvme netapp ontapdevices -o json
 
 == 8단계: 안전한 인밴드 인증 설정
 
-RHEL 9x 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통해 안전한 인밴드 인증이 지원됩니다.
+RHEL 9.x 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통해 안전한 인밴드 인증이 지원됩니다.
 
 각 호스트 또는 컨트롤러는 다음과 연결되어야 합니다.  `DH-HMAC-CHAP` 보안 인증을 설정하는 키입니다 .  `DH-HMAC-CHAP` 키는 NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀번호의 조합입니다. 피어를 인증하려면 NVMe 호스트 또는 컨트롤러가 피어와 연결된 키를 인식해야 합니다.
 
@@ -865,7 +865,7 @@ CLI를 사용하여 보안 인밴드 인증을 설정합니다.
 ----
 cat /etc/nvme/hostnqn
 ----
-. RHEL 9x 호스트에 대한 dhchap 키를 생성합니다.
+. RHEL 9.x 호스트에 대한 dhchap 키를 생성합니다.
 +
 다음 출력은 다음을 설명합니다. `gen-dhchap-key` 명령 매개변수:
 

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: nvme-rhel-8x.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: ONTAP 사용하여 RHEL 8x에 대한 NVMe-oF 호스트를 구성하는 방법 
+summary: ONTAP 사용하여 RHEL 8.x에 NVMe-oF 호스트를 구성하는 방법 
 ---
-= ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8x 구성
+= ONTAP 스토리지를 사용하여 NVMe-oF에 대한 RHEL 8.x 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,12 +18,12 @@ summary: ONTAP 사용하여 RHEL 8x에 대한 NVMe-oF 호스트를 구성하는 
 [role="lead"]
 Red Hat Enterprise Linux(RHEL) 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다.  ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.
 
-RHEL 8x에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. link:nvme-rhel-supported-features.html["RHEL ONTAP 지원 및 기능"].
+RHEL 8.x에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. link:nvme-rhel-supported-features.html["RHEL ONTAP 지원 및 기능"].
 
-RHEL 8x를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.
+RHEL 8.x를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.
 
 * NVMe-oF 프로토콜을 사용한 SAN 부팅은 현재 지원되지 않습니다.
-* RHEL 8x의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.
+* RHEL 8.x의 NVMe-oF 호스트에서는 커널 내부 NVMe 멀티패스가 기본적으로 비활성화되어 있습니다. 수동으로 활성화해야 합니다.
 * 알려진 문제로 인해 NVMe/TCP는 기술 미리보기로 제공됩니다.
 
 
@@ -49,7 +49,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 NVMe-oF를 사용하도록 호스트를 구성하려면 호스트 및 NVMe 소프트웨어 패키지를 설치하고, 멀티패싱을 활성화하고, 호스트의 NQN 구성을 확인해야 합니다.
 
 .단계
-. 서버에 RHEL 8x를 설치합니다.  설치가 완료되면 필요한 RHEL 8x 커널을 실행하고 있는지 확인하세요.
+. 서버에 RHEL 8.x를 설치합니다. 설치가 완료되면 필요한 RHEL 8.x 커널을 실행하고 있는지 확인하세요.
 +
 [source, cli]
 ----
@@ -97,7 +97,7 @@ libnvme-1.4-3.el8.x86_64
 ----
 grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-553.el8_10.x86_64
 ----
-. RHEL 8x 호스트에서 다음을 확인하세요. `hostnqn` 문자열 `/etc/nvme/hostnqn` :
+. RHEL 8.x 호스트에서 다음을 확인하세요. `hostnqn` 문자열 `/etc/nvme/hostnqn` :
 +
 [source, cli]
 ----
@@ -655,5 +655,5 @@ nvme netapp ontapdevices -o json
 | NetApp 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8x NVMe-oF 호스트는 중복된 PDC(지속적 검색 컨트롤러)를 생성합니다. | NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC를 생성할 수 있습니다.  이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다.  하지만 NVMe-oF 호스트에서 RHEL 8x를 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다.  이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8.x NVMe-oF 호스트는 중복된 PDC(지속적 검색 컨트롤러)를 생성합니다. | NVMe-oF 호스트에서는 "nvme discover -p" 명령을 사용하여 PDC를 생성할 수 있습니다. 이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다. 하지만 NVMe-oF 호스트에서 RHEL 8.x를 실행하는 경우 "nvme discover -p"를 실행할 때마다 중복된 PDC가 생성됩니다. 이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다. 
 |===

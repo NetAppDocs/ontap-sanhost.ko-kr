@@ -1,0 +1,194 @@
+= 
+:allow-uri-read: 
+
+
+NVMe/FC는 Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 구성할 수 있습니다.  Broadcom 어댑터로 구성된 NVMe/FC의 경우 1MB 크기의 I/O 요청을 활성화할 수 있습니다.
+
+[role="tabbed-block"]
+====
+.Broadcom/Emulex
+--
+Broadcom/Emulex 어댑터용 NVMe/FC를 구성합니다.
+
+.단계
+. 지원되는 어댑터 모델을 사용하고 있는지 확인합니다.
++
+.. 모델 이름을 표시합니다:
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modelname
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+LPe36002-M64
+LPe36002-M64
+----
+.. 모델 설명을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modeldesc
+----
++
+다음 예와 비슷한 출력이 표시되어야 합니다.
+
++
+[listing]
+----
+Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
+Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
+----
+
+
+. 권장 Broadcom을 사용하고 있는지 확인합니다 `lpfc` 펌웨어 및 받은 편지함 드라이버:
++
+.. 펌웨어 버전을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/fwrev
+----
++
+다음 예에서는 펌웨어 버전을 보여줍니다.
+
++
+[listing]
+----
+14.0.539.16, sli-4:6:d
+14.0.539.16, sli-4:6:d
+----
+.. 받은 편지함 드라이버 버전을 표시합니다.
++
+[source, cli]
+----
+cat /sys/module/lpfc/version
+----
++
+다음 예에서는 드라이버 버전을 보여줍니다.
+
++
+[listing]
+----
+0:14.4.0.6
+----
+
+
++
+지원되는 어댑터 드라이버 및 펌웨어 버전의 현재 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
+
+. 의 예상 출력이 `3` 다음과 같이 설정되었는지 확인합니다 `lpfc_enable_fc4_type`.
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+----
+. 이니시에이터 포트를 볼 수 있는지 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_name
+----
++
+다음 예에서는 포트 ID를 보여줍니다.
+
++
+[listing]
+----
+0x2100f4c7aa0cd7c2
+0x2100f4c7aa0cd7c3
+----
+. 이니시에이터 포트가 온라인 상태인지 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_state
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+Online
+Online
+----
+. NVMe/FC 이니시에이터 포트가 활성화되었고 타겟 포트가 표시되는지 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+----
++
+.예제 보기
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+NVME Initiator Enabled
+XRI Dist lpfc2 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc2 WWPN x100000109bf044b1 WWNN x200000109bf044b1 DID x022a00 *ONLINE*
+NVME RPORT       WWPN x202fd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x021310 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x202dd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020b10 *TARGET DISCSRVC ONLINE*
+
+NVME Statistics
+LS: Xmt 0000000810 Cmpl 0000000810 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000007b098f07 Issue 000000007aee27c4 OutIO ffffffffffe498bd
+        abort 000013b4 noxri 00000000 nondlp 00000058 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 000013b4 Err 00021443
+
+NVME Initiator Enabled
+XRI Dist lpfc3 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc3 WWPN x100000109bf044b2 WWNN x200000109bf044b2 DID x021b00 *ONLINE*
+NVME RPORT       WWPN x2033d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020110 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2032d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x022910 *TARGET DISCSRVC ONLINE*
+
+NVME Statistics
+LS: Xmt 0000000840 Cmpl 0000000840 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000007afd4434 Issue 000000007ae31b83 OutIO ffffffffffe5d74f
+        abort 000014a5 noxri 00000000 nondlp 0000006a qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 000014a5 Err 0002149a
+----
+=====
+
+
+--
+.Marvell/QLogic
+--
+Marvell/QLogic 어댑터용 NVMe/FC를 구성합니다.
+
+.단계
+. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/symbolic_name
+----
++
+다음 예에서는 드라이버 및 펌웨어 버전을 보여줍니다.
+
++
+[listing]
+----
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+----
+. 확인합니다 `ql2xnvmeenable` 가 설정됩니다. 그러면 Marvell 어댑터가 NVMe/FC Initiator로 작동할 수 있습니다.
++
+[source, cli]
+----
+cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
+----
++
+예상 아웃투트는 1입니다.
+
+
+
+--
+====

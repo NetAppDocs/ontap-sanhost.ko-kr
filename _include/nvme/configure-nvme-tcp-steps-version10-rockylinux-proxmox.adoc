@@ -1,0 +1,158 @@
+= 
+:allow-uri-read: 
+
+
+.단계
+. 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
++
+[source, cli]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+nvme discover -t tcp -w 192.168.20.1 -a 192.168.20.20
+
+Discovery Log Number of Records 8, Generation counter 18
+=====Discovery Log Entry 0======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
+traddr:  192.168.21.21
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 1======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
+traddr:  192.168.20.21
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 2======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  3
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
+traddr:  192.168.21.20
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 3======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
+traddr:  192.168.20.20
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 4======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.proxmox84_tcp_subsystem
+traddr:  192.168.21.21
+eflags:  none
+sectype: none
+=====Discovery Log Entry 5======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.proxmox84_tcp_subsystem
+traddr:  192.168.20.21
+eflags:  none
+sectype: none
+=====Discovery Log Entry 6======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  3
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.proxmox84_tcp_subsystem
+traddr:  192.168.21.20
+eflags:  none
+sectype: none
+=====Discovery Log Entry 7======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.proxmox84_tcp_subsystem
+traddr:  192.168.20.20
+eflags:  none
+sectype: none
+----
+====
+. 다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.
++
+[source, cli]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+nvme discover -t tcp -w 192.168.20.1 -a 192.168.20.20
+nvme discover -t tcp -w 192.168.21.1 -a 192.168.21.20
+nvme discover -t tcp -w 192.168.20.1 -a 192.168.20.21
+nvme discover -t tcp -w 192.168.21.1 -a 192.168.21.21
+----
+====
+. 를 실행합니다 `nvme connect-all` 노드에 걸쳐 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대한 명령:
++
+[source, cli]
+----
+nvme connect-all -t tcp -w host-traddr -a traddr
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+nvme	connect-all	-t	tcp	-w	192.168.20.1	-a	192.168.20.20
+nvme	connect-all	-t	tcp	-w	192.168.21.1	-a	192.168.21.20
+nvme	connect-all	-t	tcp	-w	192.168.20.1	-a	192.168.20.21
+nvme	connect-all	-t	tcp	-w	192.168.21.1	-a	192.168.21.21
+----
+====
+
+
+[NOTE]
+====
+NVMe/TCP 설정 `ctrl_loss_tmo timeout` 자동으로 "꺼짐"으로 설정됩니다.  결과적으로:
+
+* 재시도 횟수에 제한이 없습니다(무기한 재시도).
+* 특정 항목을 수동으로 구성할 필요가 없습니다.  `ctrl_loss_tmo timeout` 사용 시 지속 시간  `nvme connect` 또는  `nvme connect-all` 명령어(옵션 -l).
+* NVMe/TCP 컨트롤러는 경로 장애가 발생해도 시간 초과가 발생하지 않으며 무기한 연결 상태를 유지합니다.
+
+
+====

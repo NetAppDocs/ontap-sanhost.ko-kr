@@ -85,13 +85,13 @@ NOTE: 지원되는 구성에 대한 자세한 내용은 다음을 참조하세�
 | RHEL 버전이 .. | ..에 대해 알아보세요 
 
 
-| 10 시리즈 | link:nvme-rhel-10x.html["RHEL 10x에 대한 NVMe 구성"] 
+| 10 시리즈 | link:nvme-rhel-10x.html["RHEL 10.x에 대한 NVMe 구성"] 
 
 
-| 9 시리즈 | link:nvme-rhel-9x.html["RHEL 9x에 대한 NVMe 구성"] 
+| 9 시리즈 | link:nvme-rhel-9x.html["RHEL 9.x에 대한 NVMe 구성"] 
 
 
-| 8시리즈 | link:nvme-rhel-8x.html["RHEL 8x에 대한 NVMe 구성"] 
+| 8시리즈 | link:nvme-rhel-8x.html["RHEL 8.x에 대한 NVMe 구성"] 
 |===
 .관련 정보
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["NVMe 프로토콜 관리에 대해 알아보세요"^]

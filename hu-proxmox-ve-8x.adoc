@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-proxmox-ve-9x.html 
-keywords: proxmox, VE, 9.x, netapp, ontap, iscsi, fcp 
-summary: Proxmox VE 9.x 호스트에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리하세요. 
+permalink: hu-proxmox-ve-8x.html 
+keywords: host utilities, proxmox, linux, 8.x, netapp, ontap 
+summary: Proxmox VE 8.x 호스트에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리하세요. 
 ---
-= ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 위한 Proxmox VE 9.x 구성
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 위한 Proxmox VE 8.x 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,11 +16,11 @@ summary: Proxmox VE 9.x 호스트에 Linux 호스트 유틸리티를 설치하�
 
 
 [role="lead"]
-ONTAP 스토리지를 사용하는 FCP 및 iSCSI 프로토콜 작동을 위한 특정 매개변수 및 설정을 통해 Proxmox VE 9.x를 멀티패싱하도록 구성합니다.
+ONTAP 스토리지를 사용하는 FCP 및 iSCSI 프로토콜 작동을 위한 특정 매개변수 및 설정을 통해 Proxmox VE 8.x를 멀티패싱하도록 구성합니다.
 
-Proxmox VE 9.x에서 FCP 및 iSCSI를 사용할 때 다음과 같은 알려진 제한 사항이 있습니다.
+Proxmox VE 8.x에서 FCP 및 iSCSI를 사용할 때 다음과 같은 알려진 제한 사항이 있습니다.
 
-* Linux 호스트 유틸리티는 Proxmox VE 9.x 운영 체제를 지원하지 않습니다.
+* Linux 호스트 유틸리티는 Proxmox VE 8.x 운영 체제를 지원하지 않습니다.
 * SAN 부팅 구성은 지원되지 않습니다.
 
 
@@ -28,7 +28,7 @@ Proxmox VE 9.x에서 FCP 및 iSCSI를 사용할 때 다음과 같은 알려진 �
 
 == 1단계: 호스트에 대한 다중 경로 구성 확인
 
-Proxmox VE 9.x에서는 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.
+Proxmox VE 8.x에서는 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.
 
 호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
 

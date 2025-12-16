@@ -24,7 +24,7 @@ NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능�
 
 
 | 네이티브를 사용하여 NVMe/FC 및 NVMe/TCP 네임스페이스에 대한 ONTAP 세부 정보를 제공합니다. `nvme-cli` 패키지.  a| 
-9.0
+8.0
 | 9.10.1 이상 
 
 
@@ -34,7 +34,7 @@ NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능�
 
 
 | NVMe 및 SCSI 트래픽은 NVMe-oF 네임스페이스의 경우 NVMe 멀티패스를 사용하고 SCSI LUN의 경우 dm-multipath를 사용하여 동일한 호스트에서 지원됩니다.  a| 
-9.0
+8.0
 | 9.4 이상 
 |===
 ONTAP 시스템 설정에서 실행되는 ONTAP 버전에 관계없이 다음과 같은 SAN 호스트 기능을 지원합니다.
@@ -45,7 +45,7 @@ ONTAP 시스템 설정에서 실행되는 ONTAP 버전에 관계없이 다음과
 
 
 | 기본적으로 네이티브 NVMe 멀티패스가 활성화되어 있습니다.  a| 
-9.0
+8.0
 
 
 
@@ -65,7 +65,15 @@ NOTE: 지원되는 구성에 대한 자세한 내용은 다음을 참조하세�
 
 == 다음은 무엇입니까?
 
-link:nvme-proxmox-ve-9x.html["Proxmox VE 9.0 구성에 대해 알아보세요"]
+[cols="50,50"]
+|===
+| Proxmox VE 버전이 ...인 경우 | ..에 대해 알아보세요 
 
+
+| 9 시리즈 | link:nvme-proxmox-ve-9x.html["Proxmox VE 9.x용 NVMe 구성"] 
+
+
+| 8시리즈 | link:nvme-proxmox-ve-8x.html["Proxmox VE 8.x용 NVMe 구성"] 
+|===
 .관련 정보
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["NVMe 프로토콜 관리에 대해 알아보세요"^]

@@ -1,0 +1,236 @@
+= 
+:allow-uri-read: 
+
+
+ONTAP 9.12.1 버전부터 RHEL 10 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통한 안전한 인밴드 인증이 지원됩니다.
+
+각 호스트 또는 컨트롤러는 다음과 연결되어야 합니다.  `DH-HMAC-CHAP` 보안 인증을 설정하는 키입니다 .  `DH-HMAC-CHAP` 키는 NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀번호의 조합입니다. 피어를 인증하려면 NVMe 호스트 또는 컨트롤러가 피어와 연결된 키를 인식해야 합니다.
+
+CLI나 구성 JSON 파일을 사용하여 안전한 인밴드 인증을 설정합니다. 서로 다른 하위 시스템에 대해 다른 dhchap 키를 지정해야 하는 경우 구성 JSON 파일을 사용해야 합니다.
+
+[role="tabbed-block"]
+====
+.CLI를 참조하십시오
+--
+CLI를 사용하여 보안 인밴드 인증을 설정합니다.
+
+.단계
+. 호스트 NQN 가져오기:
++
+[source, cli]
+----
+cat /etc/nvme/hostnqn
+----
+. RHEL 10 호스트용 dhchap 키를 생성합니다.
++
+다음 출력에서는 명령 매개 변수에 대해 `gen-dhchap-key` 설명합니다.
+
++
+[listing]
+----
+nvme gen-dhchap-key -s optional_secret -l key_length {32|48|64} -m HMAC_function {0|1|2|3} -n host_nqn
+•	-s secret key in hexadecimal characters to be used to initialize the host key
+•	-l length of the resulting key in bytes
+•	-m HMAC function to use for key transformation
+0 = none, 1- SHA-256, 2 = SHA-384, 3=SHA-512
+•	-n host NQN to use for key transformation
+----
++
+다음 예에서는 HMAC이 3(SHA-512)으로 설정된 임의의 dhchap 키가 생성됩니다.
+
++
+[listing]
+----
+nvme gen-dhchap-key -m 3 -n nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-c2c04f444d33
+DHHC-1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
+----
+. ONTAP 컨트롤러에서 호스트를 추가하고 두 dhchap 키를 모두 지정합니다.
++
+[source, cli]
+----
+vserver nvme subsystem host add -vserver <svm_name> -subsystem <subsystem> -host-nqn <host_nqn> -dhchap-host-secret <authentication_host_secret> -dhchap-controller-secret <authentication_controller_secret> -dhchap-hash-function {sha-256|sha-512} -dhchap-group {none|2048-bit|3072-bit|4096-bit|6144-bit|8192-bit}
+----
+. 호스트는 단방향 및 양방향이라는 두 가지 유형의 인증 방법을 지원합니다. 호스트에서 ONTAP 컨트롤러에 연결하고 선택한 인증 방법에 따라 dhchap 키를 지정합니다.
++
+[source, cli]
+----
+nvme connect -t tcp -w <host-traddr> -a <tr-addr> -n <host_nqn> -S <authentication_host_secret> -C <authentication_controller_secret>
+----
+. 의 유효성을 검사합니다 `nvme connect authentication` 호스트 및 컨트롤러 dhchap 키를 확인하여 명령:
++
+.. 호스트 dhchap 키를 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
+----
++
+.단방향 설정에 대한 출력 예제를 표시합니다
+[%collapsible]
+=====
+[listing]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
+DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
+il2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
+DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
+il2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
+DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
+il2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
+DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
+il2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
+----
+=====
+.. 컨트롤러 dhchap 키를 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_ctrl_secret
+----
++
+.에는 양방향 구성의 출력 예가 나와 있습니다
+[%collapsible]
+=====
+[listing]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys6/nvme*/dhchap_ctrl_secret
+DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
+1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
+
+DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
+1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
+
+DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
+1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
+
+DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
+1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
+----
+=====
+
+
+
+
+--
+.JSON 파일
+--
+ONTAP 컨트롤러 구성에서 여러 NVMe 서브시스템을 사용할 수 있는 경우 파일을 명령과 함께 `nvme connect-all` 사용할 수 `/etc/nvme/config.json` 있습니다.
+
+사용하세요  `-o` JSON 파일을 생성하는 옵션입니다. 자세한 구문 옵션은 NVMe Connect - 모든 설명서 페이지를 참조하십시오.
+
+.단계
+. JSON 파일을 구성합니다.
++
+
+NOTE: 다음 예에서,  `dhchap_key` 에 대응하다  `dhchap_secret` 그리고  `dhchap_ctrl_key` 에 대응하다  `dhchap_ctrl_secret` .
+
++
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+cat /etc/nvme/config.json
+[
+{
+"hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-c2c04f444d33",
+"hostid":"4c4c4544-0035-5910-804b-c2c04f444d33",
+"dhchap_key":"DHHC-1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:",
+"subsystems":[
+{
+"nqn":"nqn.1992-08.com.netapp:sn.127ade26168811f0a50ed039eab69ad3:subsystem.inband_unidirectional",
+"ports":[
+{
+"transport":"tcp",
+"traddr":"192.168.20.17",
+"host_traddr":"192.168.20.1",
+"trsvcid":"4420"
+},
+{
+"transport":"tcp",
+"traddr":"192.168.20.18",
+"host_traddr":"192.168.20.1",
+"trsvcid":"4420"
+},
+{
+"transport":"tcp",
+"traddr":"192.168.21.18",
+"host_traddr":"192.168.21.1",
+"trsvcid":"4420"
+},
+{
+"transport":"tcp",
+"traddr":"192.168.21.17",
+"host_traddr":"192.168.21.1",
+"trsvcid":"4420"
+}]
+----
+=====
+. config JSON 파일을 사용하여 ONTAP 컨트롤러에 연결합니다.
++
+[source, cli]
+----
+nvme connect-all -J /etc/nvme/config.json
+----
++
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+traddr=192.168.20.20 is already connected
+traddr=192.168.20.20 is already connected
+traddr=192.168.20.20 is already connected
+traddr=192.168.20.20 is already connected
+traddr=192.168.20.20 is already connected
+traddr=192.168.20.20 is already connected
+traddr=192.168.20.20 is already connected
+traddr=192.168.20.20 is already connected
+traddr=192.168.20.21 is already connected
+traddr=192.168.20.21 is already connected
+traddr=192.168.20.21 is already connected
+traddr=192.168.20.21 is already connected
+traddr=192.168.20.21 is already connected
+traddr=192.168.20.21 is already connected
+traddr=192.168.20.21 is already connected
+traddr=192.168.20.21 is already connected
+----
+=====
+. 각 하위 시스템의 해당 컨트롤러에 대해 dhchap 비밀번호가 활성화되었는지 확인하세요.
++
+.. 호스트 dhchap 키를 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
+----
++
+다음 예에서는 dhchap 키를 보여줍니다.
+
++
+[listing]
+----
+DHHC-1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia1
+aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
+----
+.. 컨트롤러 dhchap 키를 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
+----
++
+다음 예와 비슷한 출력이 표시되어야 합니다.
+
++
+[listing]
+----
+DHHC-1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jT
+mzEKUbcWu26I33b93bil2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
+----
+
+
+
+
+--
+====

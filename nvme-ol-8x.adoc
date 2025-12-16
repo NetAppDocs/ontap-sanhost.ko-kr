@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: nvme-ol-8x.html 
-keywords: nvme, oracle linux, 8x, host configuration 
-summary: ONTAP 사용한 Oracle Linux 8x용 NVMe-oF 호스트 구성 
+keywords: nvme, oracle linux, 8.x, host configuration 
+summary: ONTAP 사용한 Oracle Linux 8.x용 NVMe-oF 호스트 구성 
 ---
-= ONTAP 스토리지를 위한 NVMe-oF로 Oracle Linux 8x 구성
+= ONTAP 스토리지를 위한 NVMe-oF로 Oracle Linux 8.x 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,12 +18,12 @@ summary: ONTAP 사용한 Oracle Linux 8x용 NVMe-oF 호스트 구성
 [role="lead"]
 Oracle Linux 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.
 
-Oracle Linux 8x에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. link:nvme-ol-supported-features.html["Oracle Linux ONTAP 지원 및 기능"].
+Oracle Linux 8.x에 대해 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보세요. 추가 지원 및 기능 정보는 다음을 참조하세요. link:nvme-ol-supported-features.html["Oracle Linux ONTAP 지원 및 기능"].
 
-Oracle Linux 8x를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.
+Oracle Linux 8.x를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.
 
 * NVMe-oF 프로토콜을 사용한 SAN 부팅은 지원되지 않습니다.
-* NetApp sanlun 호스트 유틸리티는 Oracle Linux 8x 호스트의 NVMe-oF에 대해 지원되지 않습니다. 대신, 기본으로 포함된 NetApp 플러그인을 사용할 수 있습니다. `nvme-cli` 모든 NVMe-oF 전송을 위한 패키지입니다.
+* NetApp sanlun 호스트 유틸리티는 Oracle Linux 8.x 호스트의 NVMe-oF에 대해 지원되지 않습니다. 대신, 기본으로 포함된 NetApp 플러그인을 사용할 수 있습니다. `nvme-cli` 모든 NVMe-oF 전송을 위한 패키지입니다.
 * Oracle Linux 8.2 및 이전 버전의 경우 nvme-cli 패키지에서 기본 NVMe/FC 자동 연결 스크립트를 사용할 수 없습니다.  HBA 공급업체가 제공하는 외부 자동 연결 스크립트를 사용하세요.
 * Oracle Linux 8.2 및 이전 버전의 경우 NVMe 멀티패스에 대한 라운드 로빈 부하 분산이 기본적으로 활성화되어 있지 않습니다.  이 기능을 활성화하려면 다음 단계로 이동하세요.<<udev-rule,udev 규칙 작성>> .
 
@@ -32,10 +32,10 @@ Oracle Linux 8x를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 
 
 == 1단계: Oracle Linux 및 NVMe 소프트웨어 설치 및 구성 확인
 
-다음 절차에 따라 지원되는 최소 Oracle Linux 8x 소프트웨어 버전을 확인하세요.
+다음 절차에 따라 지원되는 최소 Oracle Linux 8.x 소프트웨어 버전을 확인하세요.
 
 .단계
-. 서버에 Oracle Linux 8x를 설치합니다.  설치가 완료된 후 지정된 Oracle Linux 8x 커널을 실행하고 있는지 확인하세요.
+. 서버에 Oracle Linux 8.x를 설치합니다. 설치가 완료된 후 지정된 Oracle Linux 8.x 커널을 실행하고 있는지 확인하세요.
 +
 [source, cli]
 ----
@@ -71,7 +71,7 @@ cat /lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules
 Enable round-robin for NetApp ONTAP
 ACTION=="add", SUBSYSTEMS=="nvme-subsystem", ATTRS{model}=="NetApp ONTAP Controller", ATTR{iopolicy}="round-robin"
 ----
-. Oracle Linux 8x 호스트에서 다음을 확인하세요. `hostnqn` 문자열 `/etc/nvme/hostnqn` :
+. Oracle Linux 8.x 호스트에서 다음을 확인하세요. `hostnqn` 문자열 `/etc/nvme/hostnqn` :
 +
 [source, cli]
 ----
@@ -710,5 +710,5 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 | NetApp 버그 ID | 제목 | 설명 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | Oracle Linux 8x NVMe-oF 호스트는 중복된 PDC(Persistent Discovery Controller)를 생성합니다. | NVMe-oF 호스트에서  `nvme discover -p` 명령을 사용하여 PDC를 생성할 수 있습니다. 이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다. 그러나 NVMe-oF 호스트를 사용하여 ONTAP 9.10.1 및 RHEL 9.0을 실행하는 경우 `nvme discover -p` 가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | Oracle Linux 8.x NVMe-oF 호스트는 중복된 PDC(Persistent Discovery Controller)를 생성합니다. | NVMe-oF 호스트에서   `nvme discover -p` 명령을 사용하여 PDC를 생성할 수 있습니다. 이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다. 하지만 Oracle Linux 8.x를 NVMe-oF 호스트에서 실행하는 경우 매번 PDC가 중복 생성됩니다. `nvme discover -p` 실행됩니다. 이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다. 
 |===

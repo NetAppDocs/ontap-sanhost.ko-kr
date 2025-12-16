@@ -78,13 +78,13 @@ NOTE: 지원되는 구성에 대한 자세한 내용은 다음을 참조하세�
 | Oracle Linux 버전이 .. | ..에 대해 알아보세요 
 
 
-| 9 시리즈 | link:nvme-ol-9x.html["Oracle Linux 9x를 위한 NVMe 구성"] 
+| 9 시리즈 | link:nvme-ol-9x.html["Oracle Linux 9.x를 위한 NVMe 구성"] 
 
 
-| 8시리즈 | link:nvme-ol-8x.html["Oracle Linux 8x를 위한 NVMe 구성"] 
+| 8시리즈 | link:nvme-ol-8x.html["Oracle Linux 8.x를 위한 NVMe 구성"] 
 
 
-| 7시리즈 | link:nvme-ol-7x.html["Oracle Linux 7x를 위한 NVMe 구성"] 
+| 7시리즈 | link:nvme-ol-7x.html["Oracle Linux 7.x를 위한 NVMe 구성"] 
 |===
 .관련 정보
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["NVMe 프로토콜 관리에 대해 알아보세요"^]
