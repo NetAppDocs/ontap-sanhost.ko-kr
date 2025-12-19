@@ -1940,7 +1940,6 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="11b7981a4bc487d4291cc9a0614db625" category="list-text"><block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block></block>
   <block id="18833e14b5b5c7c59e24b7d84a7675c8" category="paragraph"><block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block> <block ref="3940cdefc46aa67d16ed6a8e41f9c401" category="inline-link-macro-rx"></block> <block ref="d28f7a65afd9b0a0129dadbafa84555d" category="inline-link-macro-rx"></block></block>
   <block id="75bf2e375bd6a6c261100e60951c4331" category="paragraph"><block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block> <block ref="3940cdefc46aa67d16ed6a8e41f9c401" category="inline-link-macro-rx"></block> <block ref="5f61a87054f37a4d758972ec77cfdf5e" category="inline-link-macro-rx"></block></block>
-  <block id="60552876cd9a8f6a2b1629563b3efc70" category="list-text">ASM 미러링에 대해 알아보십시오.</block>
   <block id="2042f6b0f24c7e66a0696f995c26649f" category="doc">4단계: 필요에 따라 경로 다중화에서 디바이스를 제외합니다</block>
   <block id="613ab33f622153c715120fe35873e05e" category="paragraph">필요한 경우 원치 않는 디바이스의 WWID를 파일의 "블랙리스트" 스탠자에 추가하여 디바이스를 경로 다중화에서 제외할 수<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="445d6b5f796f2b279f00ab2c9c5e6254" category="paragraph">"sda"는 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
@@ -3270,4 +3269,17 @@ Host Utilities.(호스트 유틸리티<block ref="a49e6041666308abe45789ecfadd59
   <block id="72c86330f335f27ea520136a0d95b881" category="sidebar">VE 9.x</block>
   <block id="af795b652b215e481ae2fd213d8bf52e" category="sidebar">VE 8.x</block>
   <block id="b1db54564fe54a4c74a975b18a791532" category="sidebar">7.x</block>
+  <block id="cf597ee6db6eb5a52e95ed70bc80ea6d" category="list-text">ASM 미러링에 대해 알아보세요.</block>
+  <block id="af33896d6f21a4613d34583adf0faeff" category="list-text">CentOS Linux 가상화(KVM)에 대해 알아보세요.</block>
+  <block id="04e58eebcf75cb293377858448959e3c" category="paragraph">CentOS Linux는 KVM 호스트 역할을 할 수 있습니다. 이를 통해 Linux 커널 기반 가상 머신(KVM) 기술을 사용하여 단일 물리적 서버에서 여러 가상 머신을 실행할 수 있습니다. KVM 호스트는 ONTAP LUN에 대한 명시적인 호스트 구성 설정이 필요하지 않습니다.</block>
+  <block id="8c7500032ac19578c2535581b7d4ae63" category="list-text">Red Hat Linux 가상화(KVM)에 대해 알아보세요.</block>
+  <block id="bab8e45a6b079e3f37a6bed2fcdd6f4a" category="paragraph">Red Hat Linux는 KVM 호스트 역할을 할 수 있습니다. 이를 통해 Linux 커널 기반 가상 머신(KVM) 기술을 사용하여 단일 물리적 서버에서 여러 가상 머신을 실행할 수 있습니다. KVM 호스트는 ONTAP LUN에 대한 명시적인 호스트 구성 설정이 필요하지 않습니다.</block>
+  <block id="7b81b138a443e9332b956961b4a8b183" category="list-text">Rocky Linux 가상화(KVM)에 대해 알아보세요.</block>
+  <block id="ed9c9c8fb38c4c92301232a89350fab3" category="paragraph">Rocky Linux는 KVM 호스트 역할을 할 수 있습니다. 이를 통해 Linux 커널 기반 가상 머신(KVM) 기술을 사용하여 단일 물리적 서버에서 여러 가상 머신을 실행할 수 있습니다. KVM 호스트는 ONTAP LUN에 대한 명시적인 호스트 구성 설정이 필요하지 않습니다.</block>
+  <block id="a9cae39d57c85b43333af5023c67fd84" category="list-text">SUSE Linux 가상화(KVM)에 대해 알아보세요.</block>
+  <block id="edfddc7a7f5e2a54fe8396a1c2bfc07f" category="paragraph">SUSE Linux는 KVM 호스트 역할을 할 수 있습니다. 이를 통해 Linux 커널 기반 가상 머신(KVM) 기술을 사용하여 단일 물리적 서버에서 여러 가상 머신을 실행할 수 있습니다. KVM 호스트는 ONTAP LUN에 대한 명시적인 호스트 구성 설정이 필요하지 않습니다.</block>
+  <block id="536e79dfb2b6b93dce7117b37985df3a" category="list-text">Ubuntu Linux 가상화(KVM)에 대해 알아보세요.</block>
+  <block id="6a0599385b13d0b4c36d7d2b71c14d0f" category="paragraph">Ubuntu Linux는 KVM 호스트 역할을 할 수 있습니다. 이를 통해 Linux 커널 기반 가상 머신(KVM) 기술을 사용하여 단일 물리적 서버에서 여러 가상 머신을 실행할 수 있습니다. KVM 호스트는 ONTAP LUN에 대한 명시적인 호스트 구성 설정이 필요하지 않습니다.</block>
+  <block id="a5c716013078dd15638d6d9cf1466975" category="list-text">Oracle Linux KVM 및 가상화에 대해 알아보세요.</block>
+  <block id="b3e018ca1c4737bdf435a321f361476b" category="paragraph">Oracle Linux는 KVM 호스트 역할을 할 수 있습니다. 이를 통해 Linux 커널 기반 가상 머신(KVM) 기술을 사용하여 단일 물리적 서버에서 여러 가상 머신을 실행할 수 있습니다. 오픈소스 oVirt 프로젝트를 기반으로 구축된 Oracle Linux Virtualization Manager를 사용하면 여러 Oracle Linux KVM 호스트를 관리하고 지원할 수 있습니다. KVM 호스트는 ONTAP LUN에 대한 명시적인 호스트 구성 설정이 필요하지 않습니다.</block>
 </blocks>
