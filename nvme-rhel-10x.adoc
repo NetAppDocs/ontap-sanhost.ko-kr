@@ -644,7 +644,7 @@ Oct 12 19:40:33 localhost systemd[1]: Finished nvmefc-boot-connections.service -
 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
 
 .단계
-. 호스트에서 각 ONTAP 네임스페이스에 대해 적절한 NVMe-oF 설정(예: 모델이 NetApp ONTAP 컨트롤러로 설정되고 로드 밸런싱 iopolicy가 라운드 로빈으로 설정됨)이 올바르게 표시되는지 확인하십시오.
+. 호스트에서 각 ONTAP 네임스페이스에 대해 적절한 NVMe-oF 설정(예: 모델이 NetApp ONTAP 컨트롤러로 설정되고 로드 밸런싱 iopolicy가 queue-depth로 설정됨)이 올바르게 표시되는지 확인하십시오.
 +
 .. 하위 시스템을 표시합니다.
 +

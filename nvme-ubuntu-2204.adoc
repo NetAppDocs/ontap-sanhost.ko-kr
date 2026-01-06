@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: nvme_ubuntu_2204.html 
+permalink: nvme-ubuntu-2204.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: ONTAP를 사용하여 Ubuntu 22.04용 NVMe-oF 호스트를 구성하는 방법 
 ---
@@ -120,7 +120,6 @@ Broadcom/Emulex 또는 Marvell/Qlogic 어댑터에 대해 NVMe/FC를 구성할 �
 ====
 .Broadcom/Emulex
 --
-.단계
 . 지원되는 어댑터 모델을 사용하고 있는지 확인합니다.
 +
 [listing]
@@ -221,7 +220,6 @@ FCP CMPL: xb 00000000 Err 00000000
 --
 Ubuntu 22.04 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.
 
-.단계
 . 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
 +
 [listing]

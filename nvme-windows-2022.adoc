@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_windows_2012r2.html 
+permalink: nvme-windows-2022.html 
 keywords: nvme, windows, enterprise 
-summary: 'ONTAP LUN과 함께 작동하도록 Windows Server 2012 R2를 실행하는 호스트에서 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.' 
+summary: 'ONTAP LUN과 함께 작동하도록 Windows Server 2022를 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 구성할 수 있습니다.' 
 ---
-= Windows Server 2012 R2와 ONTAP용 NVMe/FC를 구성합니다
+= ONTAP용 NVMe/FC로 Windows Server 2022를 구성합니다
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,17 +16,14 @@ summary: 'ONTAP LUN과 함께 작동하도록 Windows Server 2012 R2를 실행�
 
 
 [role="lead"]
-ONTAP LUN과 함께 작동하도록 Windows Server 2012 R2를 실행하는 호스트에서 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.
+ONTAP LUN과 함께 작동하도록 Windows Server 2022를 실행하는 호스트에서 NVMe over Fibre Channel(NVMe/FC)을 구성할 수 있습니다.
 
 .이 작업에 대해
-Windows 2012 R2의 NVMe/FC 호스트 구성에 다음 지원을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.
-
-
-NOTE: 이 절차에 제공된 구성 설정을 사용하여 및 에 연결된 클라우드 클라이언트를 구성할 수 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["ONTAP용 Amazon FSx"^]있습니다.
+Windows 2022용 NVMe/FC 호스트 구성에 다음 지원을 사용할 수 있습니다. 또한 구성 프로세스를 시작하기 전에 알려진 제한 사항을 검토해야 합니다.
 
 * 사용 가능한 지원:
 +
-ONTAP 9.7부터 Windows Server 2012 R2에서 NVMe/FC가 지원됩니다.
+ONTAP 9.7부터 Windows Server 2022에서 NVMe/FC가 지원됩니다.
 
 +
 지원되는 FC 어댑터 및 컨트롤러 목록은 을 참조하십시오link:https://hwu.netapp.com/Home/Index["Hardware Universe"^]. 지원되는 구성 및 버전의 최신 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].

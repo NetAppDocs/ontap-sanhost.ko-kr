@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-TLS(전송 계층 보안)는 NVMe-oF 호스트와 ONTAP 어레이 간 NVMe 연결을 위한 안전한 엔드 투 엔드 암호화를 제공합니다. ONTAP 9.16.1부터 CLI 및 구성된 사전 공유 키(PSK)를 사용하여 TLS 1.3을 구성할 수 있습니다.
+전송 계층 보안(TLS)은 NVMe-oF 호스트와 ONTAP 어레이 간의 NVMe 연결에 대해 안전한 종단 간 암호화를 제공합니다. CLI와 구성된 사전 공유 키(PSK)를 사용하여 TLS 1.3을 구성할 수 있습니다.
 
-.이 작업에 대해
-ONTAP 컨트롤러에서 단계를 수행하도록 지정한 경우를 제외하고, 이 절차의 모든 단계는 SUSE Linux Enterprise Server 호스트에서 수행합니다.
+
+NOTE: ONTAP 컨트롤러에서 단계를 수행하도록 지정된 경우를 제외하고, 다음 단계를 SUSE Linux Enterprise Server 호스트에서 수행하십시오.

@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: nvme_ubuntu_2404.html 
+permalink: nvme-ubuntu-2404.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: ONTAP를 사용하여 Ubuntu 24.04용 NVMe-oF 호스트를 구성하는 방법 
 ---
@@ -109,7 +109,6 @@ Broadcom/Emulex 또는 Marvell/Qlogic 어댑터에 대해 NVMe/FC를 구성할 �
 --
 Broadcom/Emulex 어댑터용 NVMe/FC를 구성합니다.
 
-.단계
 . 지원되는 어댑터 모델을 사용 중인지 확인합니다.
 +
 .. `cat /sys/class/scsi_host/host*/modelname`
@@ -218,7 +217,6 @@ Ubuntu 24.04 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버
 
 Marvell/QLogic 어댑터용 NVMe/FC를 구성합니다.
 
-.단계
 . 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
 +
 [listing]

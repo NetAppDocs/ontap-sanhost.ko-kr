@@ -522,6 +522,7 @@ RHEL 9.4부터 NVMe/TCP 설정  `ctrl_loss_tmo timeout` 자동으로 "꺼짐"으
 
 RHEL 9.6은 NVMe-oF에 대한 기본 iopolicy를 다음과 같이 설정합니다. `round-robin` .  RHEL 9.6을 사용하고 iopolicy를 변경하려는 경우 `queue-depth` , udev 규칙 파일을 다음과 같이 수정합니다.
 
+.단계
 . 루트 권한으로 텍스트 편집기에서 udev 규칙 파일을 엽니다.
 +
 [source, cli]

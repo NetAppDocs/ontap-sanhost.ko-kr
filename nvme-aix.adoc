@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: nvme_aix.html 
+permalink: nvme-aix.html 
 keywords: nvme, linux, rhel, red hat, enterprise, aix, ontap 
 summary: ONTAP를 사용하여 AIX용 NVMe/FC 호스트를 구성하는 방법 
 ---
