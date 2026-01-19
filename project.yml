@@ -83,8 +83,8 @@ sidebar:
           url: "/hu_wuhu_72.html"
         - title: Windows Host Utilities 7.1을 설치합니다
           url: "/hu_wuhu_71.html"
-      - title: Windows 호스트 유틸리티에 대한 설정 구성
-        url: "/hu_wuhu_hba_settings.html"
+      - title: Windows 호스트 유틸리티 구성을 검토하세요.
+        url: "/hu-wuhu-configuration.html"
       - title: Windows Host Utilities를 업그레이드합니다
         url: "/hu_wuhu_upgrade.html"
       - title: Windows 호스트 유틸리티를 복구 및 제거합니다

@@ -164,4 +164,4 @@ image::nonasa.png[활성/최적화 경로 2개와 액티브/비최적화 경로 
 
 == 다음 단계
 
-link:hu_wuhu_hba_settings.html["Window Host Utilities의 레지스트리 설정에 대해 알아보세요"].
+link:hu-wuhu-configuration.html["ONTAP 스토리지용 Windows 호스트 유틸리티 구성에 대해 알아보세요."]
