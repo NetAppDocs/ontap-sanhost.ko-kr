@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
-  <block id="039c572446bfd0a2b1ec8e52fc45283c" category="summary">ONTAP에서 CentOS 6.9를 사용하는 방법에 대해 설명합니다</block>
   <block id="9d2169c1c2855b78a7aeaa4f42d27dc7" category="inline-link-macro">NetApp Support 사이트</block>
   <block id="9ed4a475dd3705157a9fed8811f63ce2" category="inline-link-macro">NetApp 상호 운용성 매트릭스 툴</block>
-  <block id="04a6a4dcd6c76702d2da3ff70e4a7ec8" category="paragraph">"rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_64"</block>
-  <block id="b80744314bf569766c44748e7c613ca7" category="section-title">SAN 툴킷을 참조하십시오</block>
-  <block id="fdc9ca1731d1c119aadc1c244f9b44ce" category="paragraph">이 툴킷은 NetApp Host Utilities 패키지를 설치할 때 자동으로 설치됩니다. 이 키트는 LUN과 HBA를 관리하는 데 도움이 되는 'anlun' 유틸리티를 제공합니다. 'anlun' 명령은 호스트에 매핑된 LUN, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보에 대한 정보를 반환합니다.</block>
-  <block id="35182f1950df8120cb4894c510afca6f" category="section-title">SAN 부팅</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">단계</block>
   <block id="12979f8a3c6b4227894a0c63e81784a9" category="list-text">SAN 부팅 LUN을 호스트에 매핑합니다.</block>
   <block id="ae2b455a54af72efa36eb66631dcf444" category="list-text">SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.</block>
   <block id="482fb3c22fb491f46c3f0e54cea6b9d1" category="paragraph">HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.</block>
   <block id="4150162ad42bffea7bb903b4c7a4ffd9" category="section-title">다중 경로</block>
-  <block id="82449d0fd1c4caa6f1316fc8c60a0965" category="paragraph">CentOS 6.9의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.9는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="43387e22eb25565e2d012f61068ff5ff" category="paragraph">ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="76b3ab7d42f49c0911f72a955e15db22" category="list-text">initrd-image의 백업을 생성합니다.</block>
-  <block id="8bec1661077d28352868870f186e4392" category="list-text">' rdloaddriver=scsi_dh_ALUA'를 작동하려면 다음 매개 변수 값을 ALUA 및 비 ALUA용 커널에 추가하십시오</block>
-  <block id="b18c060669cade5ce424afe8e8256931" category="list-text">mkinitrd 명령을 사용하여 initrd-image를 다시 생성합니다. CentOS 6x 이상 버전에서는 mkinitrd -f /boot/initrd-"uname -r".img uname -r" 명령을 사용하거나 dracut -f 명령을 사용합니다</block>
   <block id="8418b94a2a307b3e96b6474bc55e08b7" category="list-text">호스트를 재부팅합니다.</block>
-  <block id="fa75e27f7177881cb444c05d8eae6152" category="list-text">'cat/proc/CMDLINE' 명령의 출력을 확인하여 설정이 완료되었는지 확인합니다.</block>
   <block id="5fedfc5a04eb29a4d6e049f629f9d9b2" category="paragraph">다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
   <block id="21a58bdeaf70327c6f6f5fd597b24fa3" category="section-title">권장 설정</block>
-  <block id="4c8b41567795f35c88d1ebcfb4c0daec" category="paragraph">CentOS 6.9 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="4d70a817ac85626aff88bbc73d0a2deb" category="list-text">다음 명령을 실행하여 WWID를 확인하십시오.</block>
   <block id="83f499a540b1323009c200d6f8cc9396" category="cell">매개 변수</block>
   <block id="51ac4bf63a0c6a9cefa7ba69b4154ef1" category="cell">설정</block>
   <block id="dbffbd283cd0d9c7937014167893297e" category="cell">detect_prio(사전 감지)</block>
@@ -46,7 +33,6 @@
   <block id="1c51c00662754cd025cb61ff206ae0f1" category="cell">path_grouping_policy</block>
   <block id="81641add62ae647cd1c02f52241922a9" category="cell">"group_by_prio(그룹 기준/원시)"</block>
   <block id="8f95a0e667787fdfd1050c84a0a3242d" category="cell">경로 선택</block>
-  <block id="5990eef79be7b76a71fd8654f163960d" category="cell">"라운드 로빈 0"</block>
   <block id="e2f0125c5971e1ce714f86f145386ee3" category="cell">polling_interval입니다</block>
   <block id="768ece56ce712f5866156382bfc1361a" category="cell">프리오</block>
   <block id="fdbe87552687527a87a881e55c25f96d" category="cell">"ONTAP"</block>
@@ -59,29 +45,13 @@
   <block id="7fa3b767c460b54a2be4d49030b349c7" category="cell">아니요</block>
   <block id="7c3613dba5171cb6027c67835dd3b9d4" category="cell">공급업체</block>
   <block id="971c047750d8e3b03c71d24020b3816f" category="cell">넷엡</block>
-  <block id="e652073cb2a43641b24496c09164f62a" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 no_path_retry의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.</block>
   <block id="e7565a20fc615772fc73eed9c1b34d4a" category="inline-link-macro">알려진 문제</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="section-title">릴리즈 노트</block>
-  <block id="f87d076eb7d3558e4df3a472ec88d6f2" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 6.6을 사용하는 방법을 설명합니다</block>
-  <block id="aaa84a008bcbd7b13ea49132c73d1afa" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.6의 경우 /etc/multipath.conf 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.6은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="72421574ca16f2cc8486132314d384b7" category="list-text">mkinitrd 명령을 사용하여 initrd-image를 다시 생성합니다. RHEL 6x 이상 버전에서는 mkinitrd -f /boot/initrd-"uname -r".img uname -r" 명령을 사용하거나 dracut -f 명령을 사용합니다</block>
-  <block id="0280cbd8a9282986e27e929164001013" category="paragraph">RHEL 6.6 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="8e164918c56328c6560a73785d09e24f" category="cell">NetApp 버그 ID</block>
   <block id="b78a3223503896721cca1303f776159b" category="cell">제목</block>
   <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">설명</block>
   <block id="a071ebe8686e61a0aa4fe307a3225ad9" category="cell">"서비스 시간 0"</block>
-  <block id="0ab1d58d11afaa3c04cf66282eb98ab3" category="inline-link-macro">권장 설정</block>
-  <block id="c0b03114da162e4c4ce8e3c9e573e1f7" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 6.7을 사용하는 방법을 설명합니다</block>
-  <block id="7e6f60bf7bd831ecb9a591f4ed8bd2f2" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.7의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.7은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="5592861a9331f6fc89845ea236081712" category="paragraph">RHEL 6.7 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성에 대한 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="579d7a7046fd4b01f78000a1f5680baa" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 6.5를 사용하는 방법에 대해 설명합니다</block>
-  <block id="85e17eb00215b5ddc7559e4c06c95724" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.5의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="9ae9889f119b7b05c0dd62bfe7085ce7" category="paragraph">RHEL 6.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="e373b253d3dda0488582e96b90463674" category="paragraph">"rpm -e netapp_linux_unified_host_utilities-7-1"</block>
-  <block id="d01163b5f1a458851231ad2885e038b0" category="list-text">소프트웨어 패키지를 다운로드한 디렉토리로 이동한 후 다음 명령을 사용하여 설치합니다.</block>
-  <block id="d47e6034707138c9dbef5d431a5e5151" category="paragraph">"rpm -ivh NetApp_linux_unified_host_utilities-7-1.x86_xx.rpm"</block>
   <block id="fac4447e0ea2e4cd1a2d9e2fefeab694" category="list-text">설치를 확인합니다.</block>
-  <block id="9101768b4d54a2f6e27232b9fbe17223" category="paragraph">안런 버전</block>
   <block id="33e3a93ebe70160b86590a742c254d67" category="section-title">호스트에 매핑된 모든 호스트 이니시에이터를 나열합니다</block>
   <block id="98baefaf33f7b1a7340fecca79b121d7" category="section-title">호스트에 매핑된 모든 LUN을 나열합니다</block>
   <block id="db8b5cb66e41a6692e5280271b55feb6" category="section-title">해당 SVM에서 호스트에 매핑된 모든 LUN을 나열합니다</block>
@@ -104,7 +74,6 @@
   <block id="482723983a4f2af954e36ff41e567451" category="section-title">알려진 제한 사항</block>
   <block id="1669e5f0b1148e1054b39b7a819b7fdb" category="summary">ONTAP와 함께 IBM AIX 7.2 및/또는 PowerVM VIOS 3.1을 사용하는 방법에 대해 설명합니다</block>
   <block id="c454d997c91275b70f2f0433fad3fe36" category="list-text">다운로드가 포함된 디렉터리로 이동합니다.</block>
-  <block id="8d3237fb2b6bc072b413d450b7bcf588" category="paragraph">다음 예에서는 'show'라는 'anlun lun show' 명령을 사용하여 LUN 정보를 반환합니다.</block>
   <block id="689202409e48743b914713f96d93947c" category="cell">값</block>
   <block id="c0710e4c6669e9d9625063dae931aff1" category="cell">throttle_max</block>
   <block id="c9f0f895fb98ab9159f51fd0297e236d" category="cell">8</block>
@@ -176,9 +145,6 @@
   <block id="85becc53ef98b63dce1fc3e1b356bd02" category="list-text">PDORemovedPeriod: * 130 *</block>
   <block id="a0ae59a68ecc7cb46a13fb68c3b08410" category="list-text">MPIO Policy * Round Robin with Subset * 를 선택합니다.</block>
   <block id="2dca3dab4f027df43c5e5409a002b806" category="list-text">레지스트리 값을 변경합니다.</block>
-  <block id="95a7c4ebc7538126d41cf3497f8e09b4" category="summary">ONTAP에서 Red Hat Enterprise Linux 6.4를 사용하는 방법에 대해 설명합니다</block>
-  <block id="f0fac0f2b3b710a9568f39594d5f9df3" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.4의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="857c2f89db30800ff3058931e331923e" category="paragraph">RHEL 6.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일되었습니다.</block>
   <block id="f22bfff17408247273e66b8771e95a3d" category="list-text">AIX 호스트에서 * root * 로 로그인합니다.</block>
   <block id="f1893c3e5e775c895395a0a1524f20a9" category="list-text">파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지를 추출합니다.</block>
   <block id="ee3c9604966f68c69c5d81299e5c5913" category="paragraph">파일 압축을 풀 때 'tap_aix_host_utilities_6.1' 디렉토리가 생성됩니다. 이 디렉토리에는 MPIO, non_MPIO 또는 SAN_Tool_Kit 하위 디렉토리 중 하나가 있습니다.</block>
@@ -189,14 +155,6 @@
   <block id="51a4a26e6b1bdae133374d340c097526" category="paragraph">다음 예는 두 개의 Active/Optimized 경로와 두 개의 Active/Non-Optimized 경로가 있는 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
   <block id="2844e304c2e162332243113572206ac6" category="inline-link-macro">1308744)를 참조하십시오</block>
   <block id="939827454c3bb8453033ba1bd60c555e" category="cell"><block ref="c8bdc7961e7fb79cc7e51cf734b247fb" category="inline-link-macro-rx"></block></block>
-  <block id="97bfb8bbe6415581f3c953b6daabb241" category="paragraph">다음 예제에서는 재정의된 기본값을 수정하는 방법을 보여 줍니다. 이 경우 'multitpath.conf' 파일은 ONTAP LUN과 호환되지 않는 path_checker와 detect_prio의 값을 정의합니다. 호스트에 아직 연결된 다른 SAN 스토리지 때문에 제거할 수 없는 경우 이러한 매개 변수를 디바이스 스탠자가 있는 ONTAP LUN에 대해 특별히 수정할 수 있습니다.</block>
-  <block id="f3a17d79f6544740456771291527984d" category="summary">ONTAP와 함께 Oracle Linux 6.5를 사용하는 방법에 대해 설명합니다</block>
-  <block id="33d395db2629e42725961d07de66379b" category="paragraph">Oracle Linux 6.5의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="4c489d4721694c4117162307ded4345c" category="list-text">mkinitrd 명령을 사용하여 initrd-image를 다시 생성합니다. Oracle 6x 이상 버전에서는 mkinitrd -f /boot/initrd-"uname -r".img uname -r" 명령을 사용하거나 dracut -f 명령을 사용합니다</block>
-  <block id="b027f2cb101039990e34b69dadd64cc9" category="paragraph">Oracle Linux 6.5 OS는 ONTAP LUN을 인식하고 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="99d5775ff67d3ebcdc6e872f0bb0e7bd" category="summary">Oracle Linux 6.10을 ONTAP와 함께 사용하는 방법에 대해 설명합니다</block>
-  <block id="3b3051e9028e74cd5ada27ca8f32e352" category="paragraph">Oracle Linux 6.10의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.10은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="00d1a8ad09df702e5b164c26cbd1bc1a" category="paragraph">Oracle Linux 6.10 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일되었습니다.</block>
   <block id="d350f9964b658ccb5399ae6c7b4e75b4" category="paragraph">Windows 호스트 컴퓨터에 설치된 프로그램 및 파일은 다음과 같습니다. 기본 디렉토리는 'C:\Program Files\NetApp\Windows Host Utilities'입니다.</block>
   <block id="95c50c7cc68e399ac5540898dfd06820" category="cell">프로그램</block>
   <block id="261addf78c7b2c961032b3dd08ba0b1f" category="cell">목적</block>
@@ -287,17 +245,6 @@
   <block id="32b426d292728e3b54d4487c435db8bc" category="list-text">포트 다운 재시도 횟수(portdwnrc) - 10</block>
   <block id="64e869d9ef872c0eb27623237f739ca1" category="list-text">링크 다운 시간 제한(linkdwnto) - 30</block>
   <block id="c41a9d8b262cc81ee865acdfb4ddd138" category="list-text">포트 다운 재시도 횟수(portdwnrc) - 120</block>
-  <block id="1c3173a9a070b56365701cc841994766" category="summary">ONTAP에서 CentOS 6.6을 사용하는 방법에 대해 설명합니다</block>
-  <block id="f2ff9a4318af2aff0dcf758e87fcd4c8" category="paragraph">CentOS 6.6의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.6은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="c9266caf4d9776dead8063d2c3d71e40" category="paragraph">CentOS 6.6 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="04a5e299cf45ffa9952cc41f997c1f37" category="paragraph">'multipath -ll' 명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다.</block>
-  <block id="de0fb073bc25cf2e534d5a146ab9165f" category="summary">ONTAP에서 Oracle Linux 6.9를 사용하는 방법에 대해 설명합니다</block>
-  <block id="b2e31960cfc83035081d62c551af6ad1" category="paragraph">Oracle Linux 6.9의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.9는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="31000f5c5314f347ab410a2c9b059d03" category="paragraph">Oracle Linux 6.9 OS는 ONTAP LUN을 인식하고 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="634ce17c0c1f028975bdefe291d45220" category="inline-link-macro">1082780</block>
-  <block id="777197cb0e422c596874100405fc362f" category="cell"><block ref="91e82093309bf20c099d28c5559f3009" category="inline-link-macro-rx"></block></block>
-  <block id="38b857ac7145e662f13bf1705fe21a46" category="cell">펌웨어 덤프는 QLE8362 카드가 장착된 OL6.9 하이퍼바이저에서 가끔 관찰됩니다</block>
-  <block id="10968bb02641daba6ea997ddf4f9106c" category="cell">QLE8362 카드가 있는 OL6.9 하이퍼바이저에서 스토리지 페일오버 작업 중에 펌웨어 덤프가 가끔 관찰됩니다. 펌웨어 덤프를 수행하면 호스트에서 I/O 중단이 발생할 수 있으며 이 경우 최대 1,000초가 될 수 있습니다. 어댑터가 펌웨어 덤프를 완료하면 I/O 작업이 정상적으로 재개됩니다. 호스트에 추가 복구 절차가 필요하지 않습니다. 펌웨어 덤프를 표시하기 위해 /var/log/message 파일에 다음 메시지가 표시됩니다. ql2xxx[0000:0c:00.3]-d001:3: 임시 버퍼(3/ffc90008901000)에 저장된 펌웨어 덤프, 덤프 상태 플래그(0x3f).</block>
   <block id="0ba29c6a1afacf586b03a26162c72274" category="cell">방법입니다</block>
   <block id="e282cd884ba9b656c4bc8b82b5d8be14" category="cell">AIX의 값입니다</block>
   <block id="3b0649c72650c313a357338dcdfb64ec" category="cell">참고</block>
@@ -358,11 +305,6 @@
   <block id="64ede1e6f2ef30c339f9a3e100f40cfc" category="cell">가져올 검색 로그 항목이 없습니다</block>
   <block id="abbdb018748bb6cd12284ad6c1685b67" category="cell">'/dev/NVMe-fabric에 쓸 수 없습니다: 작업이 이미 진행 중입니다.</block>
   <block id="5d58354522165b88ab742ec42aac9161" category="section-title">기술 지원 문의 시기</block>
-  <block id="3a1eadc8d9bb3cf94717f7abc94eae77" category="inline-link">Red Hat Enterprise Linux 릴리스</block>
-  <block id="ecd07dd2a42b46fb7e8f73e1e5544962" category="admonition">Oracle Linux(Red Hat 호환 커널) 알려진 문제에 대해서는 해당 섹션의 알려진 문제점 섹션을 참조하십시오<block ref="939c54c506d35e0d0c1ee5e3c74f33dd" category="inline-link-rx"></block> 문서화:</block>
-  <block id="81a952f0a3b26ee44dabb3aa10180e75" category="summary">ONTAP에서 CentOS 6.8을 사용하는 방법에 대해 설명합니다</block>
-  <block id="60f8eeb8d7158ff3d8c8948d846f8e3b" category="paragraph">CentOS 6.8의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="b470854a78b9856c135ae5a7ed45b720" category="paragraph">CentOS 6.8은 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 설정하도록 컴파일됩니다.</block>
   <block id="c517a5fb26b575817c996f5b44f027c8" category="inline-link-macro">1238719)를 참조하십시오</block>
   <block id="228d243156f27b227dbffd03f56f02b7" category="cell"><block ref="cf56f7936c19e5af5e4aa99ffc3fc54e" category="inline-link-macro-rx"></block></block>
   <block id="cb5cb6cd9eae3b558f871729ba82fea1" category="cell">스토리지 페일오버 작업 중 RHEL8에서 QLogic QLE2672 16GB FC의 커널 중단</block>
@@ -387,9 +329,6 @@
   <block id="128e6e11e880ba8678f174b92f4abec5" category="cell"><block ref="8cec4913fe5b07185f0c16a8a3e0f3c5" category="inline-link-macro-rx"></block></block>
   <block id="bf5a222f8e3d9f399a1266b069eb4993" category="cell">스토리지 페일오버 작업 중 Emulex LPe32002 32Gb FC를 사용하여 RHEL8에서 원격 포트를 차단 상태로 전환합니다</block>
   <block id="d68e531e9b1b70b7033496b5b71eda91" category="cell">스토리지 페일오버 작업 중 Emulex LPe32002 32GB파이버 채널(FC)을 사용하여 RHEL8에서 원격 포트를 차단 상태로 전환합니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로가 발생할 수 있습니다.</block>
-  <block id="7b226a13926b533ec9331dd4d86cd914" category="summary">ONTAP에서 CentOS 6.7을 사용하는 방법에 대해 설명합니다</block>
-  <block id="2a1ab1135667d6dc77c69e8562aa36e0" category="paragraph">CentOS 6.7의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.7은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="eb694d82bb8432a9005a1a1f219b1fa0" category="paragraph">CentOS 6.7 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="9571def175ecc3ee331559407e9d5ed4" category="summary">AIX에서 LUN을 검색 및 구성하는 방법에 대한 설명은 에 나와 있습니다</block>
   <block id="080e9c7916d00328189e183a451bff56" category="list-text">호스트에서 루트로 로그인합니다.</block>
   <block id="21b450809d7909679670d0d0f4be983f" category="paragraph">cfgmgr 명령을 사용하면 다음과 같은 작업을 수행할 수 있습니다.</block>
@@ -417,39 +356,6 @@
   <block id="1288c56822a6bb56a7acdc5941948855" category="cell">1306354)를 참조하십시오</block>
   <block id="0960de670071121018c377f3ca40c5e7" category="summary">ONTAP에서 IBM AIX 7.1을 사용하는 방법에 대해 설명합니다</block>
   <block id="297f86e3f009c4831d4973ff8e686c8e" category="cell">AIX(독립 실행형/물리적)의 경우 500, VIOC의 경우 200</block>
-  <block id="894e4bdfe9d6da54721793a917a39e41" category="summary">ONTAP에서 Oracle Linux 6.4를 사용하는 방법에 대해 설명합니다</block>
-  <block id="acc24e9cf246ca31a5b0a8efe708e78a" category="paragraph">Oracle Linux 6.4의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="07cbee168940977c800471bc6700728e" category="paragraph">Oracle Linux 6.4 OS는 ONTAP LUN을 인식하고 모든 구성 매개 변수를 올바르게 자동 설정할 수 있도록 컴파일되었습니다.</block>
-  <block id="1974e1837127ea7adab8a19f52272924" category="inline-link-macro">713555)를 참조하십시오</block>
-  <block id="0cd135086668eba9ddaef37e78d77f1e" category="cell"><block ref="f16938549e28826d7c8dd807dbea5e81" category="inline-link-macro-rx"></block></block>
-  <block id="dbfbaf84e7d693312dc4a94d1b83d0c8" category="cell">컨트롤러 장애(인수, 반환 및 재부팅 등)가 발생할 때 UEK2(kernel-UEK-2.6.39-400.17.1.el6uek) 또는 UEK2(kernel-UEK-2.6.39 400.17.1.el5uek)가 있는 OL5.9 호스트에서 QLogic 어댑터 재설정이 표시됩니다. 이러한 재설정은 간헐적으로 발생합니다. 이러한 어댑터가 재설정되는 경우 어댑터가 재설정되고 경로 상태가 dm-multipath에 의해 업데이트될 때까지 10분 이상 긴 I/O 중단(경우에 따라)이 발생할 수 있습니다. /var/log/messages에서 이 버그가 적중될 때 다음과 유사한 메시지가 표시됩니다. kernel:qla2xxx[0000:11:00.0]-8018:0: 어댑터 재설정이 Nexus=0:2:13. 이 문제는 OL6.4의 커널 버전: kernel-UEK-2.6.39-400.17.1.el6uek(OL5.9의 커널-UEK-2.6.39-400.17.1.el5uek)에서 관찰됩니다</block>
-  <block id="102e1da9281e0b32f9b431ce48529bea" category="inline-link-macro">715217</block>
-  <block id="45d39d9a54a6f9899f9b5ea6d07e6087" category="cell">UEK2 커널을 사용하는 Oracle Linux 6.4 또는 Oracle Linux 5.9 호스트의 I/O에서 컨트롤러 장애(스토리지 페일오버 또는 반환, 재부팅 등) 또는 패브릭 장애(FC 포트 비활성화 또는 활성화)가 발생할 경우 DM 다중 경로를 사용한 경로 복구는 시간이 오래 걸립니다(4분). 10분). 활성 상태로 복구 중인 경로 중에 커널: sd 0:0:8:3: [SDLT] 결과: hostbyte= DID_ERROR driverbyte=driver_OK 장애 이벤트 중 경로 복구가 지연되어 I/O 재개 또한 지연됩니다. OL 6.4 버전: device-mapper-1.02.77-9.el6 device-mapper-multipath-0.4.9-64.0.1.el6 kernel-UEK-2.6.39-400.17.1.el6uek OL 5.9 버전: device-mapper-1.02.77-9.el5 device-mapper-0.4.9-64.0.1.eleK-5EK-5EK 커널 .5EK.5EK-5EK-5EK-2.60-5EK</block>
-  <block id="6f3a2ae9be03559c1880f12626561ea5" category="inline-link-macro">709911</block>
-  <block id="402ff352b5b7120831a3dccefef4b5dc" category="cell"><block ref="4222d77b1ef65545c702a6cbec804e78" category="inline-link-macro-rx"></block></block>
-  <block id="9aeace4ea17e27b31802153d35eb0e3e" category="cell">Oracle Linux 6 Update4 및 UEK2(Unbreakable Enterprise Kernel Release 2)가 포함된 Oracle Linux 5 Update9 iSCSI를 실행하는 시스템에서 DMMP(DM 다중 경로)가 DM(Device Mapper) 장치(LUN)의 경로 상태를 업데이트하는 데 약 15분이 걸리는 스토리지 장애 이벤트가 발생했습니다. 이 간격 동안 "multipath -ll" 명령을 실행하면 해당 DM 디바이스(LUN)에 대한 경로 상태가 "failed ready running"으로 표시됩니다. 경로 상태는 결국 "활성 준비 실행"으로 업데이트됩니다. 이 문제는 Oracle Linux 6 업데이트 4:UEK2 커널: 2.6.39-400.17.1.el6uek.x86_64 다중 경로: device-mapper-multipath-0.4.9-64.0.1.el6.x86_64 iSCSI: iscsi-initiator-utils-6.2.6.2.0.873-2.0.1.el6.el6.u64 다중 경로 iSCSI 경로 unath.u64.u64.u64.u64.u64.u64.u64.u64.u64.u64.u64.uacle.uk.u64.u64.u64.u64.u64.u64.u64.u64.u64.u64.u64.u64.uacle.u64.u64.uessel.u</block>
-  <block id="842cd6b2d622e6f6d6f096991479222c" category="inline-link-macro">739909</block>
-  <block id="23aa57b371bac8344dedcd1613b8be86" category="cell"><block ref="27cd76b3a4455543cfaba6391cb8f5b5" category="inline-link-macro-rx"></block></block>
-  <block id="c0f2efac60484d28bcdd08cfb17caa1d" category="cell">OL6.x 및 OL5.x 호스트에서 UEK2를 사용하는 FC 장애가 발생한 후 dm-multipath 장치에서 SG_IO ioctl 시스템 호출이 실패합니다</block>
-  <block id="97e64aa1a81f574216de1997c1b5ba68" category="cell">UEK2 커널이 있는 Oracle Linux 6.x 호스트와 UEK2 커널이 있는 Oracle Linux 5.x 호스트에서 문제가 발생합니다. 활성 경로 그룹의 모든 경로가 다운되는 패브릭 오류 후 다중 경로 장치의 sg_ * 명령이 EAGAIN 오류 코드(errno)로 실패합니다. 이 문제는 다중 경로 장치에 I/O가 발생하지 않는 경우에만 나타납니다. 다음은 예제입니다. # sg_inq -v /dev/mapper/3600a098041764937303f436c75324370 조회: 12 00 00 00 24 00 ioctl (SG_IO v3)이 OS_err(errno) = 11 조회: OS 오류 통과: 리소스를 일시적으로 사용할 수 없음 HDIO_get_identity octl 실패: 리소스를 일시적으로 사용할 수 없음 [11] /dev/mapper/3600a098041764937303f436c75324370# 이 문제는 DM 다중 경로 장치에서 I/O가 발생하지 않을 때 다른 활성 그룹으로 경로 그룹 전환이 활성화되지 않기 때문에 발생합니다. 이 문제는 다음 버전의 kernel-UEK 및 device-mapper-multipath 패키지에서 발견되었습니다. OL6.4 버전: kernel-UEK-2.6.39-400.17.1.el6uek device-mapper-0.4.9-64.0.1.el6 OL5.9 버전: kernel-UEK-2.6.39-400.1.17.1.el5uek 장치.60.4.multipath-4</block>
-  <block id="903b07b1963af0c45e65b6d887a9b059" category="summary">ONTAP에서 Red Hat Enterprise Linux 6.9를 사용하는 방법을 설명합니다</block>
-  <block id="b2da1ca8334b29f1d40436a25662d8d6" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.9의 경우 /etc/multipath.conf 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.9는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="481485305bd44028530f59a9a9614451" category="paragraph">RHEL 6.9 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="04dff1447143c8e4e6195f792be9979e" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 6.8을 사용하는 방법을 설명합니다</block>
-  <block id="d58ee726eea2726eefac984fb7e051d6" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.8의 경우 /etc/multipath.conf 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="27903dacace5a068c1878082e92ceefc" category="paragraph">RHEL 6.8 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="f75fbeea110530ab4a9306fd42a5e085" category="summary">ONTAP와 함께 Oracle Linux 6.8을 사용하는 방법에 대해 설명합니다</block>
-  <block id="f554c70908c90cf2ddb8539029693dc9" category="paragraph">Oracle Linux 6.8의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.8은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="6485c78f22d3f3aa24bf7cbcea864cb3" category="paragraph">Oracle Linux 6.8 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일됩니다.</block>
-  <block id="d6a549e2961efba4f33c4deb10965085" category="summary">ONTAP와 함께 Oracle Linux 6.6을 사용하는 방법을 설명합니다</block>
-  <block id="b17be161e93154b1a8e4c9e17fc3b190" category="paragraph">Oracle Linux 6.6의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.6은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="3c92bea3eb2289a6ec3282c1090533ba" category="paragraph">Oracle Linux 6.6 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일되었습니다.</block>
-  <block id="8e606d3994d1276c51a72c8493480d0d" category="summary">ONTAP에서 CentOS 6.4를 사용하는 방법에 대해 설명합니다</block>
-  <block id="ed81d40ee1a062d4852e88bbb707608d" category="paragraph">CentOS 6.4의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.4는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="c5b0e8703af1ccb56a53d3ccc87f83ac" category="paragraph">CentOS 6.4 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="f2ec2908e789bd4d085520a7536b0d19" category="summary">ONTAP에서 CentOS 6.10을 사용하는 방법에 대해 설명합니다</block>
-  <block id="4b3e0af5715dc402a6648fb7a4556734" category="paragraph">CentOS 6.10의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.10은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="78bd859689f18ba7562b89cdcdf70e0d" category="paragraph">CentOS 6.10은 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="53cded606153345462c89bc6a568b1dc" category="summary">Veritas Infoscale 7 시리즈 릴리스에 대한 ONTAP SAN 호스트 구성 설정에 대한 지침을 제공합니다</block>
   <block id="9b0192429a485fa5f5e51d83b096590e" category="cell">dmp_lun_retry_timeout입니다</block>
   <block id="cb1bbd675719233c5bfc23916692e065" category="cell">dmp_path_age입니다</block>
@@ -544,12 +450,6 @@
   <block id="be2cbf983ce5aaf5cec559b7a8d44b84" category="cell"><block ref="35083bea0af3fa7f91401543bde4bbe0" category="inline-link-macro-rx"></block></block>
   <block id="9e6450c950b8558765ce9270afe312a9" category="cell">iSCSI SAN LUN에 Red Hat Enterprise Linux 8.1을 설치하는 동안 여러 경로에 로그인할 수 없습니다</block>
   <block id="30045ce4258ea19d1fa94bb454681b76" category="cell">iSCSI SAN LUN 다중 경로 장치에 Red Hat Enterprise Linux 8.1을 설치하는 동안에는 여러 경로에 로그인할 수 없습니다. 다중 경로 iSCSI 장치에 설치할 수 없으며 다중 경로 서비스가 SAN 부팅 장치에서 활성화되지 않습니다.</block>
-  <block id="c79c427e663f5e0ed0a4be02d2ceac02" category="summary">ONTAP와 함께 Red Hat Enterprise Linux 6.10을 사용하는 방법을 설명합니다</block>
-  <block id="0279bb3bb8efcbb42b9c3f0326ab775c" category="paragraph">RHEL(Red Hat Enterprise Linux) 6.10의 경우 /etc/multipath.conf 파일이 존재해야 하지만 파일을 구체적으로 변경할 필요는 없습니다. RHEL 6.10은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="845baae8777888665cfa3588985a095e" category="paragraph">RHEL 6.10 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
-  <block id="c11d050c295bbaf2511d25fa05b61010" category="summary">ONTAP에서 CentOS 6.5를 사용하는 방법에 대해 설명합니다</block>
-  <block id="13d3312f60a1a5da3e4a008267f577b7" category="paragraph">CentOS 6.5의 경우 '/etc/multipath.conf' 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. CentOS 6.5는 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다.</block>
-  <block id="81f9e960f5644067d610e1042c8ad0af" category="paragraph">CentOS 6.5 OS는 ONTAP LUN을 인식하여 ASA 및 비 ASA 구성 모두에 대해 모든 구성 매개 변수를 올바르게 자동 설정하도록 컴파일됩니다.</block>
   <block id="f8f27557fe3d0fcb534e0bcda02971bf" category="summary">ONTAP에서 Linux용 Veritas Infoscale 7.3을 사용하는 방법에 대해 설명합니다</block>
   <block id="77f38b70929f13918b5629531d0f2d04" category="paragraph">* ``esxcli storage nmp device list -d naa.600a098038313530772b4d673979372f' *</block>
   <block id="d462fc30c32028744b7aa67a6cf0e13c" category="paragraph">VVOL(가상 볼륨)은 가상 머신(VM) 디스크와 해당 스냅샷 및 고속 클론에 해당하는 VMware 오브젝트 유형입니다.</block>
@@ -562,15 +462,9 @@
   <block id="b7c74c258f112727be39c4b747d743ec" category="paragraph">다음 명령을 사용하여 IOP 설정을 확인합니다.</block>
   <block id="32014634f5e91fea92881a76289729e4" category="paragraph">다음 명령을 사용하여 QFullSampleSize를 확인합니다</block>
   <block id="784c795c066fdf3c4713aae58af639ff" category="paragraph">알려진 문제가 없습니다.</block>
-  <block id="cdf5d86cb1edacde3eb5e2a5ecdde6c3" category="summary">ONTAP와 함께 Oracle Linux 6.7을 사용하는 방법에 대해 설명합니다</block>
-  <block id="7c7b1ac412755c409b674d6d1d5261c8" category="paragraph">Oracle Linux 6.7의 경우 /etc/multipath.conf 파일이 있어야 하지만 파일을 구체적으로 변경할 필요는 없습니다. Oracle Linux 6.7은 ONTAP LUN을 인식하고 올바르게 관리하는 데 필요한 모든 설정으로 컴파일됩니다. ALUA 처리기를 활성화하려면 다음 단계를 수행하십시오.</block>
-  <block id="30551084db41b5a626c643ea028e9abc" category="paragraph">Oracle Linux 6.7 OS는 ONTAP LUN을 인식하여 모든 구성 매개 변수를 올바르게 설정하도록 컴파일됩니다.</block>
   <block id="1aa66ef3a8e34a7a538960a80d2e1e31" category="sidebar">ESXi</block>
   <block id="fdcd362ac5f5f9817e70642dd2a48bfd" category="sidebar">Oracle Linux</block>
   <block id="d6422a625045167156b3c0d85ca23ebf" category="sidebar">8.1</block>
-  <block id="299e5505ce975112afaefec130cc83e0" category="sidebar">7.9</block>
-  <block id="90cc3a10dc0cf2e7e72098e531c4d970" category="sidebar">7.8</block>
-  <block id="971455e5b307f416baac0cb24b710792" category="sidebar">7.7</block>
   <block id="8b6f93f33bce541c7f50f8aff637e2e1" category="sidebar">RHEL을 참조하십시오</block>
   <block id="1b1e6d45b618db5397c656f0df1d4b85" category="sidebar">15 SP2</block>
   <block id="7ceb3cac51dbf44c807f7e83fabc5016" category="sidebar">15 SP1</block>
@@ -582,32 +476,15 @@
   <block id="7cd31cf6820896d838535a73cafb15ca" category="sidebar">7.1</block>
   <block id="aa1fc3398e84bda331b47203c1e53ad5" category="sidebar">CentOS</block>
   <block id="585375c1448bfa3494298bdd79408081" category="sidebar">8.0</block>
-  <block id="cb2238914d3b44e270be41b02866c1b5" category="sidebar">CentOS 7</block>
-  <block id="5960276c0e365f7a81a90baab3a72051" category="sidebar">7.6</block>
-  <block id="0d640498fb206f2d67e1829ba976d945" category="sidebar">7.5</block>
-  <block id="d0201c3c7c67230ad82ad841f7c8e260" category="sidebar">7.4</block>
-  <block id="6924f66d3c42e6c8f021dc7c8693ba4c" category="sidebar">7.3</block>
-  <block id="74c5d9234051010a38a669f48bfeb435" category="sidebar">7.2</block>
   <block id="01deebfa87b938c89ecb3dcb4effcbe2" category="sidebar">7.0</block>
-  <block id="bc853047decb6a91c42e889222d0b09a" category="sidebar">CentOS 6</block>
-  <block id="ffa77cbb9dad679ec827da3f460683d6" category="sidebar">6.10</block>
-  <block id="6e0728ebb67d668afa587a54f804e703" category="sidebar">6.9</block>
-  <block id="2ceaf9eabe4492adc67c8e715b93cb37" category="sidebar">6.8</block>
-  <block id="c3e22f2ae1ddef844509890f97faa80b" category="sidebar">6.7</block>
-  <block id="10851bea5d822eacda7e5b46812b1b33" category="sidebar">6.6</block>
-  <block id="f884cc5c56f9c9a8d4d61568ff64db9c" category="sidebar">6.5</block>
-  <block id="ded681fc154529ebbc7562fb0c73ba47" category="sidebar">6.4</block>
   <block id="44259680bd01002134994d85d023710c" category="sidebar">Citrix를 참조하십시오</block>
   <block id="b0781c18fd091c4f9e79ff11eb4b9fc5" category="sidebar">VMware vSphere 7</block>
   <block id="11b4279628bd5bd99185024194584bba" category="sidebar">VMware vSphere 6.5 및 6.7</block>
   <block id="b1fd823d262032e04291313f72be9452" category="sidebar">HP-UX를 참조하십시오</block>
   <block id="d5b12213e8526feaa7c520b3b736f9b8" category="sidebar">11i v3</block>
-  <block id="acfb4fbe1ed02bf6b4487b4fcd0ef690" category="sidebar">RHEL 7</block>
-  <block id="bf3e0fdab36bb430e7fb32be5ece1f81" category="sidebar">RHEL 6</block>
   <block id="3c9435015579e19dc2fb6312a2258ab5" category="sidebar">11.4</block>
   <block id="b831e71b782a1e06e4e5f24e84680fb6" category="sidebar">11.3</block>
   <block id="9bf31c7ff062936a96d3c8bd1f8f2ff3" category="sidebar">15</block>
-  <block id="c20ad4d76fe97759aa27a0c99bff6710" category="sidebar">12</block>
   <block id="27467eebfd85deae554fa659c40d5f50" category="sidebar">Veritas</block>
   <block id="47d254fd002b7f1a6c06e1aa7c25a4ef" category="sidebar">Infoscale 7</block>
   <block id="66b0812a8cbedc46db133ed5327291bd" category="sidebar">스토리지 기반 6</block>
@@ -634,7 +511,6 @@
   <block id="64c42781be8a2208b9ffdc60d28bc076" category="cell">sanlun fcp show adapter –v 명령을 실행하는 동안 잘못된 HBA 속도를 표시하는 sandlun 인스턴스가 보고됩니다. 'anlun fcp show adapter –v' 명령은 어댑터의 지원되는 속도와 협상된 속도와 같은 HBA 카드 정보를 표시합니다. 이는 보고 문제일 뿐입니다. 실제 속도를 확인하려면 'fcstat fcsx' 명령을 사용합니다.</block>
   <block id="31dade612c24301b89dad4a9747ed73e" category="list-text">FCP 일반: 특정 호스트와 연결되지 않은 FC 및 HBA 버그를 표시합니다.</block>
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX Host Utilities 6.1의 릴리스 정보</block>
-  <block id="e3f05e6b08d377aca967243a953ecfb9" category="section-title">일반적인 NVMe-CLI 오류 및 해결 방법</block>
   <block id="dfd9db293eabf1724158b5cc08e4dd12" category="cell">HP-UX 11.31 호스트가 ASA 설정에서 간헐적으로 경로 상태를 잘못 보고합니다.</block>
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">HP-UX LVM 생성 시 블록 크기의 I/O가 1MB 이상으로 전송됩니다</block>
   <block id="d73ed314065ad31059ac799a62ab4558" category="inline-link-macro">1385189</block>
@@ -656,12 +532,8 @@
   <block id="8d1d5b8defd8dab28a7e51c7b4ff5d33" category="inline-link-macro">Microsoft Update 카탈로그 2022</block>
   <block id="3a824154b16ed7dab899bf000b80eeee" category="sidebar">2022</block>
   <block id="452d8ca267c17453aeeac8e238531175" category="sidebar">ol-FCP</block>
-  <block id="3ef2771cb2d57467dc2cdd1c03e0b795" category="sidebar">OL-7-FCP</block>
-  <block id="bfad018c3813e7bc5482c07db9347a41" category="sidebar">ol-6-FCP</block>
   <block id="8479d6fad2633b26cf495862e89ca1c9" category="sidebar">RHEL-9-FCP</block>
   <block id="c3491b1c6045b4ab49c098b050003b88" category="sidebar">RHEL-8-FCP</block>
-  <block id="219200e596813435a28215318a2e517d" category="sidebar">RHEL-7-FCP</block>
-  <block id="b3b940fc372d8951896f13c236f63d70" category="sidebar">RHEL-6-FCP</block>
   <block id="c11de2cda31d67ed47c0182334a7ac91" category="sidebar">SLES-15 - FCP</block>
   <block id="2f7ca50ec80cb8bec6ae8dd04c29748c" category="sidebar">Windows - FCP</block>
   <block id="c345c92c1db74865c1b5cb8dad478651" category="summary">이 내용은 ONTAP 스토리지에 연결된 SAN 클라이언트를 구성하는 방법에 대한 배포 관련 지침을 제공합니다.</block>
@@ -695,7 +567,6 @@
   <block id="01281e2990c631b64037834e8b22bd4c" category="cell">rw_timeout(디스크)</block>
   <block id="53a86d5c1b5a726e2014e8e7789d3e96" category="list-text">를 설정합니다<block ref="6a6d27f670629373aedb61a672b398f8" prefix=" " category="inline-code"></block> 다음 값 중 하나에 대한 드라이버 설정을 사용하여 NVMe/FC 이벤트를 기록합니다.</block>
   <block id="ac680a7503424f513ba95ee46f269bd8" category="list-text">값을 설정한 후 를 실행합니다<block ref="212b9aebab74c7199bb59cfbc6fb92f9" prefix=" " category="inline-code"></block> 명령을 실행하여 호스트를 재부팅합니다.</block>
-  <block id="814cc8b053fd0d3c9d35f87411477d5f" category="list-text">설정을 확인합니다.</block>
   <block id="9c2f86beda575f2401b682f52ff52734" category="paragraph">에 표시되는 오류입니다<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 를 참조하십시오<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>,<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>, 또는<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 작업 및 해결 방법은 다음 표에 나와 있습니다.</block>
   <block id="f9ffceb0310fe0428aa1a0ea1847693f" category="cell">에 대한 올바른 구문을 사용하고 있는지 확인합니다<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>,<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>, 및<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령.</block>
   <block id="399c48f51a24097568f4d7f84e8946fb" category="cell">예를 들어, 여러 문제로 인해 이 문제가 발생할 수 있습니다. NVMe 명령에 잘못된 인수를 제공하는 것은 일반적인 원인 중 하나입니다.</block>
@@ -734,7 +605,6 @@
   <block id="2f749c740a41c151c1485b84206264ca" category="list-text">지원되는 어댑터 모델을 사용하고 있는지 확인합니다.</block>
   <block id="fd3cbdb4a32644d25b951ee0b3bc5aae" category="open-title">NVMe/FC용 Marvell/QLogic FC 어댑터</block>
   <block id="25f321fe018cf20163dc0c70e2eea888" category="section-title">자세한 정보 로깅을 사용합니다</block>
-  <block id="65427f0cfd42249488837342e79863a2" category="paragraph">Qlogic(qla2xxx)에 대한 자세한 로깅 설정 절차는 lpfc 세부 정보 로깅 설정 절차와 다릅니다.</block>
   <block id="2401f6c892699dd24f7fa72c9a39b053" category="open-title">lpfc</block>
   <block id="db9afb1f05f1d6930c84839b76060ccc" category="open-title">qla2xxx</block>
   <block id="6faca8b2572cd22ef1b619e4be0a8165" category="paragraph">NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 경로가 10분의 기본 시간 제한 내에 복원되지 않고 다운되면 NVMe/TCP가 자동으로 다시 연결되지 않습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다.</block>
@@ -870,8 +740,6 @@
   <block id="9fd88788efc2039d4c86e3d60310b147" category="paragraph">가상 어댑터 목록을 검색합니다.</block>
   <block id="e31c4b8d2ef22d8837e50793ada5f2e9" category="cell">기본적으로 AIX 운영 체제는 NVMe/FC에 대해 모든 경로 다운(APD) 시간 초과 값 20초를 사용합니다.  하지만 ONTAP MetroCluster 자동 비계획 전환(AUSO) 및 Tiebreaker가 시작한 스위치오버 워크플로우가 APD 시간 초과 기간보다 약간 오래 걸릴 수 있으며, 이로 인해 I/O 오류가 발생할 수 있습니다.</block>
   <block id="9e10b0a5aea11686043890a4e7f7d67d" category="list-text">여러 경로를 사용할 수 있는지 확인합니다.</block>
-  <block id="ddd1090ee13f345d376753ed7188e15e" category="section-title">모든 SAN 어레이 구성</block>
-  <block id="3b8031b77b02d24160100543956f1809" category="list-text">소프트웨어 패키지를 설치합니다.</block>
   <block id="e92702d12f6aa1afc14988d919e8a06e" category="list-text">명시적 dm-multipath 설정 없이 특정 호스트 버스 어댑터(HBA)의 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용하여 NVMe 네임스페이스를 주장하지 못하게 합니다.</block>
   <block id="f6f33242227bf5d079f46a94f3780b75" category="paragraph">Broadcom/Emulex 또는 Marvell/Qlogic 어댑터에 대해 NVMe/FC를 구성할 수 있습니다.</block>
   <block id="10ce16d02c992727f1f013108c8de76e" category="list-text">권장 Broadcom을 사용하고 있는지 확인합니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 펌웨어 및 받은 편지함 드라이버:</block>
@@ -882,7 +750,6 @@
   <block id="1976d7f704de389d9fe064e08ea35b2d" category="open-title">열</block>
   <block id="0ecd11c1d7a287401d148a23bbd7a2f8" category="open-title">JSON을 참조하십시오</block>
   <block id="390aba4e671b0fd367d546b4f0fedeba" category="list-text">를 추가합니다<block ref="7f82ca1acc93bec0dcd43c7f37ce4512" prefix=" " category="inline-code"></block> 에서 블랙리스트로<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>:</block>
-  <block id="cb92646723384142b732079acc35b146" category="list-text">이 WWID를 의 "블랙리스트" 스탠자에 추가합니다<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>:</block>
   <block id="18246cd8a2065d6c9969e5b7974134d4" category="cell">1537359)를 참조하십시오</block>
   <block id="6a3ab9709740397036937a3dd3536644" category="cell">Emulex HBA를 사용하는 Red Hat Linux 9.2 SAN 부팅 호스트에서는 커널이 중단되는 작업이 발생합니다</block>
   <block id="8a6c2cd607c7c6f2122c62101018f706" category="cell">스토리지 페일오버 반환 작업 중에 Emulex 호스트 버스 어댑터(HBA)가 설치된 Red Hat Linux 9.2 SAN 부팅 호스트에서 커널이 중단되는 작업이 발생합니다. 커널이 중단되면 운영 체제가 재부팅되고<block ref="0f4f5143108e314ddd308d075021efb3" prefix=" " category="inline-code"></block> 가 구성되어 있으면 가 생성됩니다<block ref="fa8dda84ceacd7343d25ccd506ad982a" prefix=" " category="inline-code"></block> 파일 아래에 있습니다<block ref="0e1f3f8d334b46b5beffee9e435a3fcc" prefix=" " category="inline-code"></block> 디렉토리. 이 문제는 와 함께 삼각 측량을 진행 중입니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 드라이버를 재생하지만 일관되게 재현할 수는 없습니다.</block>
@@ -899,29 +766,8 @@
   <block id="5aae5284420b8ceb0aa0f5d959c566bc" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.</block>
   <block id="675cd8e52ba395fba110b2ae7c90675b" category="cell">Emulex HBA를 사용하는 SAN LUN 유틸리티에는 라이브러리 패키지의 심볼 링크가 필요합니다</block>
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">ONTAP와 함께 VMware vSphere 8.x를 사용합니다</block>
-  <block id="92434d9005fca09d1be87854a8eba962" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.4를 사용하십시오</block>
-  <block id="7e0b815f73afb730e7ee19f798970799" category="doc">ONTAP와 함께 Oracle Linux 6.10을 사용합니다</block>
-  <block id="3944147aca4bcb3598602ba7abb8ecb6" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.9를 사용하십시오</block>
-  <block id="1a397af520340e4380a5c55e26c5d54d" category="doc">ONTAP와 함께 CentOS 6.7을 사용합니다</block>
-  <block id="cc4117db48a5e96b1494712383b1b668" category="doc">ONTAP와 함께 Oracle Linux 6.4를 사용합니다</block>
-  <block id="6088639a5afca847eaa9177590532eea" category="doc">ONTAP와 함께 Oracle Linux 6.9를 사용합니다</block>
-  <block id="d8fbd5ac0666d17248d83c1cba75a567" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.7을 사용하십시오</block>
-  <block id="91addf30a04c0c5249fa7d52c99ad1b2" category="doc">ONTAP와 함께 Oracle Linux 6.5를 사용하십시오</block>
-  <block id="1298fa83c27263623f4780e10072ad20" category="doc">ONTAP에서 CentOS 6.9를 사용합니다</block>
-  <block id="379f97722abe4a13e4bed62c347317a6" category="doc">ONTAP와 함께 CentOS 6.8을 사용합니다</block>
-  <block id="91cbf6680aa73c0fd3805226334a31ec" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.5를 사용하십시오</block>
-  <block id="94b44acd6321eb98d389648c6d23e87f" category="doc">ONTAP와 함께 CentOS 6.6을 사용합니다</block>
-  <block id="8081080397baec608d84fd3afffdb29d" category="doc">CentOS 6.5와 ONTAP를 사용합니다</block>
-  <block id="fcd5a26f819291c5057cf1bf9ba4b0e3" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.10을 사용하십시오</block>
-  <block id="136a479cd65c7a7cb09b6cb800da37d1" category="doc">ONTAP에서 CentOS 6.10을 사용합니다</block>
-  <block id="19a3c68cbfae18afb1720bc598ea12bb" category="doc">ONTAP와 함께 Oracle Linux 6.8을 사용합니다</block>
   <block id="8d19958f3e338523c5e956fbddc3c9af" category="doc">ONTAP와 함께 VMware vSphere 6.5 및 6.7을 사용합니다</block>
-  <block id="d5c69ee7983a74c7b20cb2b125456c2f" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.6을 사용하십시오</block>
-  <block id="d9cce7ecf669e2c8bb05f82a666a162d" category="doc">ONTAP와 함께 Red Hat Enterprise Linux 6.8을 사용하십시오</block>
-  <block id="3f774282fcdfb6c27b50967041caabfe" category="doc">ONTAP와 함께 CentOS 6.4를 사용합니다</block>
   <block id="40db5019ed68654f4eb2cf21ec5021db" category="doc">ONTAP와 함께 VMware vSphere 7.x를 사용합니다</block>
-  <block id="96c79d6b70b9da95c3236e3cf0b071a3" category="doc">ONTAP와 함께 Oracle Linux 6.7을 사용합니다</block>
-  <block id="bb6a1ceb13d5a6a98f1fab62ea2d512f" category="doc">ONTAP와 함께 Oracle Linux 6.6을 사용합니다</block>
   <block id="8a4e695bd23e65bc1993b3356eeb2277" category="sidebar">AIX 호스트 유틸리티 릴리스 노트</block>
   <block id="360baa7584a9f61d637775beeeeab041" category="sidebar">HP-UX Host Utilities 릴리스 정보</block>
   <block id="e8496e75812b6bc1fac8161323e4bf5f" category="sidebar">Linux Host Utilities 릴리스 정보</block>
@@ -934,10 +780,8 @@
   <block id="04e8d5a4c40a30787e3a35e62dfd0c1e" category="paragraph">NVMe/FC용 lpfc 드라이버를 설정합니다.</block>
   <block id="e62de6043f25aae2915aa8c10fbaec9d" category="cell"><block ref="e62de6043f25aae2915aa8c10fbaec9d" category="inline-link-macro-rx"></block></block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="doc">문제 해결</block>
-  <block id="4a446daa2697df931fbab571c023baef" category="admonition">문제 해결 지침은 AIX, Windows 및 ESXi 호스트에는 적용되지 않습니다.</block>
   <block id="96050aafb2fca1409b0f952e7597fd11" category="paragraph">NVMe/FC에 대한 과 유사한 특정 qla2xxx 로깅이 없습니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 드라이버. 대신 일반 qla2xxx 로깅 수준을 설정합니다.</block>
   <block id="0659d428df833a806e29e65e632d380a" category="inline-link-macro">NetApp 지원</block>
-  <block id="b3303f1e3e1d5672f6b839c968637989" category="paragraph">여전히 문제가 발생하는 경우 다음 파일 및 명령 출력을 수집하고 에 문의하십시오 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 추가 분류:</block>
   <block id="8e2fe53ccb05734b777fbcc2363d25ab" category="paragraph">FC, FCoE 및 iSCSI 프로토콜을 사용하는 vSphere 7.x 릴리스에 대해 ONTAP SAN 호스트 구성 설정을 사용할 수 있습니다.</block>
   <block id="16739062558f135a2a67b7745e31e80d" category="paragraph">호스트에 매핑된 모든 호스트 이니시에이터 목록을 검색할 수 있습니다.</block>
   <block id="416012ceac18a0ac6c16db45563c9298" category="paragraph">호스트에 매핑된 모든 LUN 목록을 검색할 수 있습니다.</block>
@@ -994,37 +838,9 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="bc3d78b9928b53d2bf1c5a9d42dda638" category="cell">실행 중입니다<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> Emulex에서 종단간 구성으로 인해 I/O 오류가 발생합니다. 이는 ONTAP 9.5P17, 9.6P14, 9.7P13 및 9.8P2에서 수정되었습니다</block>
   <block id="9a3d1b207d17fa417c10e7c159b0b0fd" category="cell">OS 기본 명령을 사용하는 ASA/PPorts를 사용하여 Solaris 호스트에서 비정상적인 경로 보고</block>
   <block id="b3158ff5812b423b7633a78e4d877db7" category="cell">ASA(All SAN Array)를 사용하는 Solaris 11.4에서 간헐적인 경로 보고 문제가 발생합니다.</block>
-  <block id="d0e316336a8b1aa9192fa5b84596d3cd" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하여 CentOS 6.8을 구성할 수 있습니다.</block>
-  <block id="1e1aabe902ce49322df6aba455576bfc" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 있는 Red Hat Enterprise Linux 6.5를 대상으로 구성할 수 있습니다.</block>
-  <block id="1e63f8c03568b214efdd000b3c1ebab0" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 6.4를 구성할 수 있습니다.</block>
-  <block id="708aa4255b7e46bb95ff47e221b37a0f" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 6.6을 구성할 수 있습니다.</block>
-  <block id="8cf5a4e1d8829324666d40a8ffd9c07e" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.6을 구성할 수 있습니다.</block>
-  <block id="475c59981753e28a3bbd2b2786d32646" category="paragraph">ONTAP 릴리스가 포함된 Oracle Linux 6.6에는 알려진 문제가 없습니다.</block>
-  <block id="e02c2cc5214ba6c1cf13b3f55f182816" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.5를 구성할 수 있습니다.</block>
-  <block id="504e0c30fb2645a6baa2039125e4db84" category="paragraph">ONTAP 릴리즈를 사용하는 Oracle Linux 6.5에는 알려진 문제가 없습니다.</block>
-  <block id="955a8ba1531bb4020623ab18e6949cfc" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 6.5를 구성할 수 있습니다.</block>
-  <block id="bfb861b4de60d3c31c0349baa46c51b3" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 6.9를 구성할 수 있습니다.</block>
-  <block id="7f3cd8ca9b188ba04b39e8260b58d5c0" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.7을 구성할 수 있습니다.</block>
-  <block id="f6b1759ad7072aeed9f9cf3348794762" category="paragraph">Oracle Linux 6.7 및 ONTAP 릴리즈에는 알려진 문제가 없습니다.</block>
-  <block id="12ad5d1ab65dc516a74a9b12db0d378f" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 6.10을 구성할 수 있습니다.</block>
-  <block id="cbda152ea4d3b0dbc23c508508e1de79" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 6.6을 구성할 수 있습니다.</block>
-  <block id="5b88a090e813de0c838f7197c24a3c75" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 6.9를 구성할 수 있습니다.</block>
-  <block id="89803e3bc17feeb475170d3dcd320e4e" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 타겟으로 사용하여 CentOS 6.10을 구성할 수 있습니다.</block>
-  <block id="92ecdf60dd5c6225e905e0a3eea885da" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.4를 구성할 수 있습니다.</block>
-  <block id="0938dfec19dd45c8a6f64aa8b0b1eda4" category="paragraph">ONTAP 릴리즈가 포함된 Oracle Linux 6.4 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="001844af86b0a1f099720e6aed9988f7" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 6.8을 구성할 수 있습니다.</block>
   <block id="c5041d07d38095b8620f889d70dea95d" category="paragraph">VMware vSphere 7.x 및 ONTAP 릴리즈에는 알려진 문제가 없습니다.</block>
-  <block id="6963533acedb1b8942f9674f67500cd3" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.8을 구성할 수 있습니다.</block>
-  <block id="4af84170930f2b57214e727fee146131" category="paragraph">Oracle Linux 6.8과 ONTAP 릴리스에 대해서는 알려진 문제가 없습니다.</block>
-  <block id="0eb65f1785cb89eb886adbf9059ea5f7" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 CentOS 6.7을 구성할 수 있습니다.</block>
-  <block id="a13006b9ebf1ba115456ee81fff754af" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP가 포함된 Red Hat Enterprise Linux 6.7을 대상으로 구성할 수 있습니다.</block>
   <block id="f55878d5db78235140cd87e36b5e1afc" category="paragraph">ONTAP가 포함된 VMware vSphere 8.x 릴리즈에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="e03ce41b558f38979d0e0d140a375ebd" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Red Hat Enterprise Linux 6.4를 구성할 수 있습니다.</block>
   <block id="367978ec29f45d00d1f34cb9df274d1f" category="paragraph">ONTAP 릴리즈가 설치된 VMware vSphere 6.5 및 6.7 버전에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="b16452e3905ac336b68babc6fa562702" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.9를 구성할 수 있습니다.</block>
-  <block id="a69f90991b7861bf298029c85947f926" category="paragraph">ONTAP가 설치된 Oracle Linux 6.9 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="ee0e00ac8a597d343ecf7da72dd6effd" category="paragraph">ONTAP SAN 호스트 구성 설정을 사용하여 ONTAP를 대상으로 Oracle Linux 6.10을 구성할 수 있습니다.</block>
-  <block id="c7512b0badc93efcac520b6d3264ca72" category="paragraph">Oracle Linux 6.10과 ONTAP 릴리스의 경우 알려진 문제가 없습니다.</block>
   <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris 호스트 유틸리티</block>
   <block id="4cd8a0ed1af264c4d308453d188bf895" category="list-text">이니시에이터 포트를 볼 수 있는지 확인합니다.</block>
   <block id="ed1d503af7b244498872a4e8f68ad0ea" category="list-text">이니시에이터 포트가 온라인 상태인지 확인합니다.</block>
@@ -1152,21 +968,13 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="364053ddb08791e86bba8694da89f153" category="cell">CONTAPEXT-2037를 참조하십시오</block>
   <block id="e53d231580138a5c74d1783c30057235" category="cell">Ubuntu 22.04 NVMe-oF 호스트가 중복 영구 검색 컨트롤러를 만듭니다</block>
   <block id="f7529407d6b5167c4740699e83603d32" category="cell">NVMe-oF 호스트에서 "NVMe discover-p" 명령을 사용하여 영구적 검색 컨트롤러(PDC)를 생성할 수 있습니다. 이 명령은 각 이니시에이터-타겟 조합에 대해 하나의 PDC만 생성해야 합니다. 그러나 NVMe-oF 호스트에서 Ubuntu 22.04를 실행하는 경우 "NVMe discover-p"가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 타겟 모두에서 리소스가 불필요하게 사용됩니다.</block>
-  <block id="19da5996e127dc42574323b94bce7dc8" category="paragraph">다음 섹션에서는 ASA 및 비 ASA 대상에 매핑된 LUN에 대한 다중 경로 출력 예를 제공합니다.</block>
   <block id="f3478c814fd82f33620059d2d7656ea9" category="list-text">WWID 확인:</block>
-  <block id="9eb91e4550c86ff0aa1e87339af6ac4a" category="paragraph">다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우, 파일에 장치를 직접 추가할 필요가<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 없습니다. 원치 않는 디바이스를 제외하려면 파일에 다음 구문을<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 추가하여 &lt;DevId&gt;를 제외할 디바이스의 WWID 문자열로 대체합니다.</block>
-  <block id="26abbb90105e84ce5c3470d46cb09443" category="paragraph">다음 예에서는<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
   <block id="48a57465c9050da3e456de11a1bce0f0" category="list-text">호스트를 재부팅하여 부팅이 성공했는지 확인합니다.</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>명령을 실행하면 다음과 같은 유형의 출력이 생성됩니다. 다음 예제의 출력은 잘립니다.</block>
   <block id="1f9090c13a627840d3e8110654671ecd" category="cell">SUSE Linux Enterprise Server 15s P2 OS 설치를 완료한 후 SAN에서 iSCSI 부팅이 정적 IP 구성으로 부팅되지 않습니다</block>
   <block id="74fe7cde6e68f9607ef6c16f62916dd8" category="paragraph">정적 IP 구성으로 SUSE Linux Enterprise Server 15 SP2 OS 설치를 완료한 후 iSCSI sanboted LUN을 부팅하지 못했습니다. 부팅 실패는 고정 IP 구성을 사용할 때마다 발생합니다. 이로 인해 서버가 다음 오류 메시지와 함께 부팅 프로세스를 계속하기를 거부하게 됩니다.</block>
   <block id="adcc6b5e38256f637746539b3d3cb7b3" category="paragraph">Ubuntu 22.04 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
-  <block id="c426d92ef08a303266728068c71ae1c0" category="paragraph">RHEL, OL 및 SUSE Linux Enterprise Server 호스트에 대한 NVMe-oF 장애를 해결하기 전에 IMT(Interoperability Matrix Tool) 사양을 준수하는 구성을 실행하고 있는지 확인한 후 호스트 측 문제를 디버깅하기 위해 다음 단계를 진행합니다.</block>
   <block id="896c6d73b474c57fd4a882830cd2a6de" category="sidebar">SUSE Linux Enterprise Server 15</block>
-  <block id="3f1d7a4bfc5b1615c1bd76d6f7ea917e" category="sidebar">SUSE Linux Enterprise Server 12</block>
-  <block id="fc471da28a10b288c7becc2d14173bdb" category="paragraph">다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우, 파일에 장치를 직접 추가할 필요가<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 없습니다. 파일에 다음 구문을 추가하여 원치 않는 디바이스를 제외할 수 있습니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>. &lt;DevId&gt;를 제외할 디바이스의 WWID 문자열로 대체합니다.</block>
-  <block id="eaa95f8be0a818bc84d23c1b3fef5725" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block> 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
-  <block id="26bbc264025eb640d0a21b5280ca517a" category="paragraph">다음 표에서는<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> ONTAP LUN에 대한 중요 매개 변수와 필요한 값을 보여 줍니다. 호스트가 다른 공급업체의 LUN에 접속되어 있고 이러한 매개 변수 중 하나라도 재정의되면<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> ONTAP LUN에 특별히 적용되는 파일의 이후 stanzas에서 해당 매개 변수를 수정해야 합니다. 그렇지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다. 이러한 기본값은 NetApp 및/또는 OS 공급업체와 상담하여 영향을 완전히 이해할 때만 재정의할 수 있습니다.</block>
   <block id="587b796170a9abac4701cd8aa1bb38cb" category="listing-title">예제 출력</block>
   <block id="8b6a5845688d81720a1016c10aa9e843" category="list-text">ONTAP 9.16.1부터 새로 생성된 모든 NVMe 네임스페이스에 대해 기본적으로 공간 할당이 활성화됩니다.</block>
   <block id="0c48e7c4bbc87e64bef6a0afca5676b3" category="paragraph">예상 값은 0입니다.</block>
@@ -1188,15 +996,8 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="cc03b98609648131cf98c136c9325ae6" category="list-text">다음을 사용하여 TLS PSK를<block ref="75260898c7ef0a545e10c9413524db08" prefix=" " category="inline-code"></block> 생성합니다.</block>
   <block id="ca320bf6c4ad8f767e85d406ee4fde14" category="list-text">TLS PSK가 올바르게 삽입되었는지 확인합니다.</block>
   <block id="8424d580c7f527bd670292899f979c75" category="list-text">대상을 추가하고 지정된 ONTAP 하위 시스템에 대한 TLS 연결을 확인합니다.</block>
-  <block id="2ec9c91229d2e2f17a8f17a73a54304b" category="admonition">단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상인 경우 스토리지 장애 시 경로 문제가 발생할 수 있습니다.</block>
   <block id="5825e25cd2548b8d4af651b91652e28d" category="paragraph"><block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>다중 경로 데몬을 시작하려면 파일이 있어야 합니다. 이 파일이 없는 경우 명령을 사용하여 0바이트 빈 파일을 만들 수<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="318233b2432e2f51f31d04b8c0f7cbef" category="paragraph">기본 설정을 무시할 수 있는 레거시 설정은 항상 파일, 특히 기본값 섹션에서 확인해야<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 합니다.</block>
-  <block id="8b40b4ef41e0aa8d3e61056f1c3f19a0" category="paragraph">모든 SAN 스토리지(ASA) 및 비 ASA 구성의 경우 다음 예와 같이 명령을 사용하여 ONTAP LUN에 대한 설정을 확인할 수 있습니다<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>.</block>
   <block id="4a69ba1535a62f4e118b39597d1edde0" category="section-title">ASA 구성</block>
-  <block id="a8b4b0587b094d82b6d3386124d9175b" category="paragraph">ASA 구성에서는 지정된 LUN에 대한 모든 경로가 활성화되어 최적화되어 있습니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.</block>
-  <block id="9fa498aba33ec7d79f732c26e2efc9d9" category="paragraph">다음 예제는 ASA 대상에 매핑된 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
-  <block id="f340ac01fe767e25be9ddb4fa3e6d0a5" category="paragraph">비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 더 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에 의해 처리됩니다. 우선 순위가 낮은 경로는 활성 상태이지만 다른 컨트롤러에서 제공되기 때문에 최적화되지 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
-  <block id="41f471e5d42c21f9230c41ea515c384c" category="paragraph">다음 예는 두 개의 활성/최적화 경로와 두 개의 활성/최적화되지 않은 경로가 ASA 이외의 사용자에게 매핑되는 ONTAP LUN에 대한 올바른 출력을 표시합니다.</block>
   <block id="353cc9a5b9b1899de18cfe6696d32fff" category="list-text"><block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block>명령을 실행하고 호스트를 재부팅합니다.</block>
   <block id="7ed1d546734f7bd4b0ef96e269498a07" category="summary">ONTAP를 사용하여 Ubuntu 24.04용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="60996b6ae2fc149121c64d77e545be4d" category="doc">ONTAP를 사용하는 Ubuntu 24.04에 대한 NVMe-oF 호스트 구성</block>
@@ -1231,265 +1032,21 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="b297fab030eb1c0e21f8c1c43eb2cefb" category="list-text"><block ref="8449e535ecd6773d321bf1358b514b8b" prefix="" category="inline-code"></block></block>
   <block id="198ef744f24c6814a980b52a8b628dbd" category="paragraph">ONTAP 릴리스가 포함된 Ubuntu 24.04의 NVMe-oF 호스트 구성에 대해 알려진 문제는 없습니다.</block>
   <block id="cd5fcfe02b1d4f040fde5ba738d7572a" category="sidebar">24.04</block>
-  <block id="4d2491544460a0c7af79b0ca7492e6fd" category="paragraph"> 항상기본 설정을 무시할 수 있는 레거시 설정은 확인해야<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일, 특히 기본값 섹션에서 합니다.</block>
-  <block id="ec1fba1237506df59a6228cbfc26fd26" category="admonition">단일 LUN에는 4개 이상의 경로가 필요하지 않습니다. 8개 이상의 경로로 인해 스토리지 장애가 발생했을 때 경로 문제가 발생할 수 있습니다.</block>
   <block id="d7eeafe16e993a6db0f390553a4f2af4" category="paragraph">NVMe/TCP 프로토콜이 작업을 지원하지<block ref="c73910bff7459eb78b9c2d1e7c0e3ed7" prefix=" " category="inline-code"></block> 않습니다. 대신 NVMe/TCP 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="7415be93e6df69c72126d277c3b7cc16" category="list-text">사용 가능한 지원:</block>
   <block id="0a5a93fe10977e9a49e662acd10bf0ce" category="list-text">알려진 제한 사항:</block>
   <block id="2ebe6803d2b24e32429f3079c068ce01" category="list-text">가 "3"으로 설정되어 있는지<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block> 확인합니다.</block>
-  <block id="fa640404f3db33fc75eb43c58963820c" category="paragraph">다음 예에서는 디바이스의 WWID를 확인하고 해당 디바이스를 파일에 추가합니다<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>.</block>
-  <block id="09aca3663737216f41f954da83e7fb5a" category="paragraph">ASA(All SAN Array) 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.</block>
-  <block id="5235e05531bf4930a5cd9d16f28eba17" category="paragraph">다음 예제는 ONTAP LUN에 대한 올바른 출력을 보여줍니다.</block>
-  <block id="125316bd33fa278b6852a16d6a7e9aa5" category="doc">KVM 설정을 구성합니다</block>
   <block id="5d896adeb3ef8a2ffa075f87226d15f8" category="paragraph">다중 경로를 관리하지 않으려는 장치가 있거나 기본값을 재정의하는 기존 설정이 없는 경우 파일에 직접 아무것도 추가할 필요가<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 없습니다. 원치 않는 디바이스를 제외하려면 파일에 다음 구문을<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 추가하여 &lt;DevId&gt;를 제외할 디바이스의 WWID(Worldwide Identifier) 문자열로 대체합니다.</block>
-  <block id="fd97e6af5040ad49359412a731cf9a48" category="paragraph">NetApp 호스트 유틸리티 패키지를 설치하면 툴킷이 자동으로 설치됩니다. 이 키트에서 제공하는<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 유틸리티를 사용하면 LUN과 호스트 버스 어댑터(HBA)를 관리할 수 있습니다. <block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>이 명령을 실행하면 호스트에 매핑된 LUN에 대한 정보, 다중 경로 및 이니시에이터 그룹을 생성하는 데 필요한 정보가 반환됩니다.</block>
   <block id="f236c844e8dbdb37680ec9722ff657bb" category="admonition">이 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.</block>
   <block id="b26e74ed6e2892c7e2bb95e414d460c6" category="cell">LUN입니다</block>
   <block id="a23683a8828843e30b307af86bb0df14" category="admonition">문자열이 일치하지 않으면<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 명령을 사용하여 해당 ONTAP 배열 하위 시스템의 문자열을<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트의 문자열과 일치하도록<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 업데이트할<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 수<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="81f52aae1ae4c5a7cdc70ef7d5def232" category="list-text">의 예상 출력이<block ref="eccbc87e4b5ce2fe28308fd9f2a7baf3" prefix=" " category="inline-code"></block> 다음과 같이 설정되었는지 확인합니다<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block>.</block>
   <block id="a4ac74af7c81edef10a1710e62ceadeb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block> 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
   <block id="e78866ae0ff845eed770c2b938efee3b" category="paragraph">항상<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일, 특히 기본값 섹션에서 기본 설정을 무시할 수 있는 레거시 설정을 확인하십시오.</block>
-  <block id="fa82877b3beb26d7d7bc882389d60aca" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.10용 을 참조하십시오<block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block>.</block>
-  <block id="38e584f52f25fb096dead8f8866657b0" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.4용 을 참조하십시오<block ref="f736929b1834226891236b2c0b0b218e" category="inline-link-macro-rx"></block>.</block>
-  <block id="e79780a12540c43b1147fb9232479dc4" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.5용 을 참조하십시오<block ref="0158dc1052dab85818a92b1a427c95b7" category="inline-link-macro-rx"></block>.</block>
-  <block id="ff74c42c74c13fedc08a8ca1624e32b4" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.6용 을 참조하십시오<block ref="aad294b0550f33ea846ebc2598292576" category="inline-link-macro-rx"></block>.</block>
-  <block id="9d2a87ba78cec8237c139f77ffb44261" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.7용 을 참조하십시오<block ref="fd679b4991af24edfd6d66f5cbc5db76" category="inline-link-macro-rx"></block>.</block>
-  <block id="1d153902c02cd7301318e3e1be83184a" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.8용 을 참조하십시오<block ref="7703b3b38de881e061b6dbcbbcaf9f81" category="inline-link-macro-rx"></block>.</block>
-  <block id="9c5b436e1bb8a6899180fe9890e5395b" category="paragraph">CentOS(Red Hat 호환 커널) 알려진 문제는 RHEL(Red Hat Enterprise Linux) 6.9용 을 참조하십시오<block ref="6381fe6a72f9bd9f067a0ec390d2a8fb" category="inline-link-macro-rx"></block>.</block>
-  <block id="0d22c29a0eb01e70e085a44916b321b4" category="cell">1440718</block>
-  <block id="2a80f8446aa4a429e9f97920b1e74d2c" category="cell">SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트에서 데이터가 손상될 수 있습니다.</block>
-  <block id="432a6b98702aceeda0bf1a325e31bcf4" category="inline-link-macro">NetApp 기술 자료: Oracle Linux 7의 iSCSI LUN에서 파일 시스템이 손상되었습니다</block>
-  <block id="0317854ad5c788fd489e5dfe652c06cd" category="cell">'isable_changed_WWID' 다중 경로 구성 매개변수를 Yes로 설정하면 WWID 변경 시 경로 장치에 대한 액세스를 비활성화합니다. 경로 WWID가 다중 경로 장치의 WWID로 복구될 때까지 다중 경로가 경로 장치에 대한 액세스를 비활성화합니다. 자세한 내용은 을 참조하십시오<block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>.</block>
-  <block id="141ad1ff5cf1058b78e7b327d5363940" category="inline-link-macro">901558</block>
-  <block id="36449de1465a8388d5bd6898a3ae93a1" category="cell"><block ref="7ace244e7f60745da9174ac22c242ea9" category="inline-link-macro-rx"></block></block>
-  <block id="f7f82c29a44c5277ce27b17a6e4a45c0" category="cell">OL7.0: Emulex 8G(LPe12002) 호스트에서 OL 7.0 UEK r3U5 베타의 "RSCN timeout" 오류로 인해 호스트가 LUN에 대한 모든 경로를 손실하고 중단됩니다</block>
-  <block id="09e33a526489b73c952a64dd843c9a3b" category="cell">Emulex 8G(LPe12002) 호스트가 중단되고 I/O를 통한 스토리지 페일오버 작업 중에 I/O 중단이 높은 것을 볼 수 있습니다 호스트가 모든 경로를 손실하고 중단되기 때문에 RSCN 시간 초과로 인해 복구되지 않는 경로를 관찰할 수 있습니다. 이 문제를 해결할 가능성이 높습니다.</block>
-  <block id="b15feddd9b4f1d23e73c109324c3a1d3" category="inline-link-macro">901557</block>
-  <block id="4e9eb27f9ba0d13fc056bc68489f4cc5" category="cell"><block ref="757afc833102d287158052ecff4aa0f8" category="inline-link-macro-rx"></block></block>
-  <block id="b57fe8d67ce7e8b23436c6228a9844ae" category="inline-link-macro">894766</block>
-  <block id="1e7db3fd2dab6919804846f952f02300" category="cell"><block ref="6960627c9953978229447a40b4f35f7e" category="inline-link-macro-rx"></block></block>
-  <block id="243e8d80abd39f22538ed54c7b95b785" category="cell">OL7.0: Dracut가 UEKR3U5 알파의 initramfs에 scsi_dH_ALUA.ko 모듈을 포함하지 못했습니다</block>
-  <block id="2b240993e14d428bca40885f69c834d2" category="cell">커널 명령줄에 매개 변수 "rdloaddriver=scsi_dh_ALUA"를 추가하고 Dracut를 생성한 후에도 SCSI_DH_ALUA 모듈이 로드되지 않을 수 있습니다. 따라서 NetApp LUN에 대해 권장된 대로 ALUA가 사용되지 않습니다.</block>
-  <block id="0f52c52921eb352109559caece80f1fe" category="inline-link-macro">894796</block>
-  <block id="ecc82191bb7a9a243d2283ea9c7b0216" category="cell"><block ref="e5c2727a17035b48e2347f7bebb799e2" category="inline-link-macro-rx"></block></block>
-  <block id="43bce7f4fa80451d6519c90b20bc882a" category="cell">OL 7.0 OS 설치 중에 로그인이 성공하더라도 Anaconda는 iSCSI 로그인 실패 메시지를 표시합니다</block>
-  <block id="111244c57c63118901aaf37fd7dc6652" category="cell">OL 7.0을 설치할 때 anaconda 설치 화면에 iSCSI 로그인이 성공적임에도 여러 대상 IP에 대한 iSCSI 로그인이 실패했음을 표시합니다. Anaconda는 "노드 로그인 실패" 오류 메시지를 표시합니다. iSCSI 로그인에 대해 여러 대상 IP를 선택할 경우에만 이 오류가 표시됩니다. "확인" 버튼을 클릭하여 OS 설치를 계속할 수 있습니다. 이 버그는 iSCSI 또는 OL 7.0 OS 설치를 방해하지 않습니다.</block>
-  <block id="0b49dd30562999499de068c03e8d8475" category="inline-link-macro">894771</block>
-  <block id="e36fc25b14a43aecb2be9299a4d1a15f" category="cell"><block ref="2ade0e7a464a0266f27561f87bd72d36" category="inline-link-macro-rx"></block></block>
-  <block id="76ac94ee86c78014de635dac93c950cb" category="cell">OL7.0: Anaconda는 커널 cmd 행에 bootdev 인수를 추가하지 않고 iSCSI SANboot OS 설치의 IP 주소를 설정합니다</block>
-  <block id="5e60ad980d93367ed750fec269220ca4" category="cell">Anaconda는 커널 명령줄에 bootdev 인수를 추가하지 않습니다. 여기서 iSCSI 다중 경로 dl에 OL 7.0 OS를 설치하는 동안 IPv4 주소를 설정합니다. 따라서 OL 7.0 부팅 중에 스토리지 서브시스템과 iSCSI 세션을 설정하도록 구성된 이더넷 인터페이스에 IP 주소를 할당할 수 없습니다. iSCSI 세션이 설정되지 않았으므로 OS 부팅 시 루트 LUN이 검색되지 않아 OS 부팅이 실패합니다.</block>
-  <block id="31d4b7b1b5735d1ba80e9d02816156ef" category="inline-link-macro">916501</block>
-  <block id="d29e31150c6fcebfe259ef1e60f97a7a" category="cell"><block ref="aaf2fffdc60a7c2259559deac3f25e1c" category="inline-link-macro-rx"></block></block>
-  <block id="f6a519893db9e6c1633112ee90905e2a" category="inline-link-macro">1109468</block>
-  <block id="7079c64a5b24cdd32462fc31603b1135" category="cell"><block ref="db94b7133d12176606a6a4461fe651e0" category="inline-link-macro-rx"></block></block>
-  <block id="82acca8af52f5f8d8536c7d62c245815" category="cell">QLE8362 카드가 있는 OL7.4 하이퍼바이저에서 펌웨어 덤프를 발견했습니다</block>
-  <block id="d6afe009ea52239221866c17107326f9" category="cell">OL7.4 하이퍼바이저에서 QLE8362 카드를 사용하여 스토리지 페일오버 작업을 수행하는 동안 펌웨어 덤프가 가끔 관찰됩니다. 펌웨어 덤프하면 호스트에서 I/O 중단이 발생할 수 있으며 이 경우 최대 500초가 될 수 있습니다. 어댑터가 펌웨어 덤프를 완료하면 I/O 작업이 정상적으로 재개됩니다. 호스트에 추가 복구 절차가 필요하지 않습니다. 펌웨어 덤프를 표시하기 위해 /var/log/message 파일에 다음 메시지가 표시됩니다. ql2xxx[0000:0c:00.3]-d001:8: 임시 버퍼에 저장된 펌웨어 덤프(8/ffc90008901000), 덤프 상태 플래그(0x3f)</block>
-  <block id="3c146e54f2928af3c6df39922419b24f" category="inline-link-macro">1177239</block>
-  <block id="9104aa498f971a4f36b36c41f445ce30" category="cell"><block ref="a8f52c228282c2c6ed4c049cc277ae5a" category="inline-link-macro-rx"></block></block>
-  <block id="7d937b6efb504d37a46095c07e7716cd" category="cell">스토리지 페일오버 작업 중에 OL7.5에서 Qlogic QLE2672 16G FC가 있는 커널 중단이 관찰되었습니다</block>
-  <block id="7a1b52e64826aa344229a4f10a14cabf" category="cell">커널 4.1.12-112.16.4.el7uek.x86_64 및 Qlogic QLE2672 HBA를 사용하는 Oracle Linux 7(OL7.5)에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 그러면 운영 체제를 재부팅하여 응용 프로그램이 중단됩니다. kdump가 구성된 경우 커널 중단은 /var/crash/ 디렉토리에 vmcore 파일을 생성합니다. 이러한 중단은 vmcore 파일에 기록되고 "exception RIP:kmem_cache_alloc+118" 문자열로 식별되는 모듈 "kmem_cache_alloc+118"에서 관찰될 수 있습니다. 커널 중단 후 호스트 운영 체제를 재부팅하고 애플리케이션을 다시 시작하여 복구할 수 있습니다.</block>
-  <block id="9f1d7307449f2a1971a05bc6e54a02e9" category="inline-link-macro">1202736</block>
-  <block id="ff09581cb2c13d8ad132e71c1320dc7e" category="cell"><block ref="108e2d22c5beb633cb3cfe03baa4f66f" category="inline-link-macro-rx"></block></block>
-  <block id="3b8a92ff3e01668248ad17ab6e44808a" category="cell">QLogic QLE2742 어댑터가 있는 OL7U6 호스트의 원격 포트 "없음" 상태로 인해 호스트 검색 중에 LUN을 사용할 수 없습니다</block>
-  <block id="266caf48844d8cdb3bb559a8663357b3" category="cell">호스트 검색 중에 QLogic QLE2742 어댑터가 있는 OL7U6 호스트의 FC(Fibre Channel) 원격 포트 상태가 "없음" 상태로 전환될 수 있습니다. "없음" 상태의 원격 포트로 인해 LUN에 대한 경로를 사용할 수 없게 될 수 있습니다. 스토리지 페일오버 중에 경로 이중화가 감소되어 I/O 중단이 발생할 수 있습니다. 다음 명령을 입력하여 원격 포트 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_state 온라인 상태가 온라인 상태가 아닌 온라인 상태로 표시되는 출력의 예입니다</block>
-  <block id="5624202524c863954fd4270ff814d9ec" category="inline-link-macro">1204078</block>
-  <block id="e053b68e3667628d3c9f9104950b35b4" category="cell"><block ref="779f6732159318ae884ba5b402eebb3b" category="inline-link-macro-rx"></block></block>
-  <block id="110e0b5a03d1167053a9543acb43aacf" category="cell">스토리지 페일오버 작업 중 Qlogic(QLE2672) 16GB FC HBA를 사용하여 실행되는 Oracle Linux 7.6에서 커널 중단이 발생합니다</block>
-  <block id="c0bf7a084fa2c4a01bd1c93955f36853" category="cell">Qlogic QLE2672 FC(Fibre Channel) HBA(호스트 버스 어댑터)를 사용하는 Oracle Linux 7.6에서 스토리지 페일오버 작업 중에 커널의 패닉이 발생합니다. 커널 패닉이 발생하면 Oracle Linux 7.6이 재부팅되어 애플리케이션이 중단됩니다. kdump 메커니즘이 활성화된 경우 커널 패닉이 /var/crash/ 디렉토리에 있는 vmcore 파일을 생성합니다. vmcore 파일을 분석하여 패닉 원인을 확인할 수 있습니다. 커널이 중단된 후 호스트 OS를 재부팅하고 운영 체제를 복구한 다음 필요에 따라 모든 애플리케이션을 다시 시작할 수 있습니다.</block>
-  <block id="f9de5b33d228fc7a257b05e2d0b6c683" category="inline-link-macro">1204351</block>
-  <block id="3c392133be4d94a24a2bafbe80d3f9fa" category="cell"><block ref="e4f067f2a87df9a65f3b48107d7ac51a" category="inline-link-macro-rx"></block></block>
-  <block id="4b97d2c9a1fc0afb4fde2570b328366a" category="cell">스토리지 페일오버 작업 중에 Qlogic(QLE2742) 32Gb FC HBA를 사용하여 실행되는 Oracle Linux 7.6에서 커널 중단이 발생할 수 있습니다</block>
-  <block id="a41dd8fa5c4b21d6d565247a17260afc" category="cell">Qlogic QLE2742 FC(Fibre Channel) HBA(호스트 버스 어댑터)가 있는 Oracle Linux 7.6에서 스토리지 페일오버 작업 중에 커널의 패닉이 발생할 수 있습니다. 커널 패닉이 발생하면 Oracle Linux 7.6이 재부팅되어 애플리케이션이 중단됩니다. kdump 메커니즘이 활성화된 경우 커널 패닉이 /var/crash/ 디렉토리에 있는 vmcore 파일을 생성합니다. vmcore 파일을 분석하여 패닉 원인을 확인할 수 있습니다. 커널이 중단된 후 호스트 OS를 재부팅하고 운영 체제를 복구한 다음 필요에 따라 모든 애플리케이션을 다시 시작할 수 있습니다.</block>
-  <block id="d6c0c50761ad6452637a662cef9b7c83" category="inline-link-macro">1204352</block>
-  <block id="49c68535f9d278fae88a21a2b48a79ef" category="cell"><block ref="2d73099ef4fd4b2be1ad69d22e7490ca" category="inline-link-macro-rx"></block></block>
-  <block id="233dfa37455a25cad0ff70b82758fd04" category="cell">스토리지 페일오버 작업 중 Emulex(LPe32002-M2) 32Gb FC HBA와 함께 실행되는 Oracle Linux 7.6에서 커널 중단이 발생할 수 있습니다</block>
-  <block id="de4751a6623d2dc19176d3eefc40a63a" category="cell">Emulex LPe32002-M2 FC(Fibre Channel) HBA(호스트 버스 어댑터)가 있는 Oracle Linux 7.6에서 스토리지 페일오버 작업 중에 커널 패닉이 발생할 수 있습니다. 커널 패닉이 발생하면 Oracle Linux 7.6이 재부팅되어 애플리케이션이 중단됩니다. kdump 메커니즘이 활성화된 경우 커널 패닉이 /var/crash/ 디렉토리에 있는 vmcore 파일을 생성합니다. vmcore 파일을 분석하여 패닉 원인을 확인할 수 있습니다. 커널이 중단된 후 호스트 OS를 재부팅하고 운영 체제를 복구한 다음 필요에 따라 모든 애플리케이션을 다시 시작할 수 있습니다.</block>
-  <block id="1be16d281967c5fd1105ba268364fdff" category="inline-link-macro">11246134</block>
-  <block id="596f5900897f794536e4fd09d9e67d1b" category="cell"><block ref="b642b2365a114acdecf31316d612089a" category="inline-link-macro-rx"></block></block>
-  <block id="6493a407c9bbe979a9aad945277aad29" category="cell">스토리지 페일오버 작업 중에 Emulex LPe16002B-M6 16G FC HBA를 사용하여 실행되는 UEK5U2 커널이 있는 Oracle Linux 7.6에서 I/O 진행률이 없습니다</block>
-  <block id="310e18c99baea86232364acadb939a15" category="cell">Emulex LPe16002B-M6 16G FC(Fibre Channel) HBA(호스트 버스 어댑터)를 사용하여 실행되는 UEK5U2 커널이 있는 Oracle Linux 7.6에서 스토리지 페일오버 작업 중에 보고서가 차단되어 I/O 진행이 중지될 수 있습니다. 스토리지 페일오버 작업에서 변경 사항을 "온라인" 상태에서 "차단됨" 상태로 보고하여 읽기 및 쓰기 작업이 지연됩니다. 작업이 성공적으로 완료되면 보고서가 "온라인" 상태로 다시 이동하지 못하고 "차단됨" 상태로 유지됩니다.</block>
-  <block id="7f7d7442869ba0a43e1c8a7628283fb6" category="inline-link-macro">1246327</block>
-  <block id="425d6a0675c65fcbb55962fe041d3750" category="cell"><block ref="2fc4638611f41ecf99c51cb3b7693e41" category="inline-link-macro-rx"></block></block>
-  <block id="803346e13fcd7415573e4bec58e22f89" category="cell">스토리지 페일오버 작업 중에 QLogic QLE2672 16G 호스트의 원격 포트 상태가 차단되었습니다</block>
-  <block id="1b61a7a3856fdbc478513136a65d30e6" category="inline-link-macro">1311575</block>
-  <block id="a30ebc25935788a02b62f5c31dd68ff4" category="cell"><block ref="267c5dd990c8ab56721888f5900e0ee0" category="inline-link-macro-rx"></block></block>
-  <block id="1a0e4d0026b3ac15a923132544984581" category="cell">QLogic QLE2672 16G HBA를 사용하는 Oracle Linux 7.7 커널(5.4.17-2011.0.7.el7uek.x86_6)에서 스토리지 페일오버 작업 중에 보조 경로를 통해 I/O 작업을 재개하지 못할 수 있습니다. 스토리지 페일오버 중 운영 경로가 차단되어 입출력 진행이 중지되는 경우 보조 경로를 통해 입출력 작업이 재개되지 않아 입출력 지연이 발생할 수 있습니다. I/O 작업은 스토리지 페일오버 반환 작업이 완료된 후 기본 경로가 온라인 상태가 된 후에만 다시 시작됩니다.</block>
-  <block id="f32d9fbfd3260ad4f93224817ee55b7b" category="inline-link-macro">1311576</block>
-  <block id="8f82eaddc5433072fa47bef87ad2bbbb" category="cell"><block ref="cccef1478e8fcadf27979573716d7b1c" category="inline-link-macro-rx"></block></block>
-  <block id="11530752ab9f40fa1149a3d6f8ba9999" category="cell">Emulex LPe16002 16G HBA를 사용하는 Oracle Linux 7.7 커널(5.4.17-2011.0.7.el7uek.x86_6)에서 스토리지 페일오버 작업 중에 보조 경로를 통해 I/O 작업을 재개하지 못할 수 있습니다. 스토리지 페일오버 중 운영 경로가 차단되어 입출력 진행이 중지되는 경우 보조 경로를 통해 입출력 작업이 재개되지 않아 입출력 지연이 발생할 수 있습니다. I/O 작업은 스토리지 페일오버 반환 작업이 완료된 후 기본 경로가 온라인 상태가 된 후에만 다시 시작됩니다.</block>
-  <block id="4e486911a10e3fffaba70e13f82fd319" category="inline-link-macro">1246134</block>
-  <block id="f1ed8010b222ca665b73581bc564dfbb" category="cell"><block ref="9f94588b71f175c6fb8a48dc1c897075" category="inline-link-macro-rx"></block></block>
-  <block id="d1e8c721d32f2d555893470672bb537f" category="cell">Emulex LPe16002B-M6 16G FC(Fibre Channel) HBA(호스트 버스 어댑터)를 사용하여 실행되는 UEK5U2 커널이 있는 Oracle Linux 7.6에서 스토리지 페일오버 작업 중에 보고서가 차단되어 I/O 진행이 중지될 수 있습니다. 스토리지 페일오버 작업에서 변경된 상태가 "온라인" 상태에서 "차단됨" 상태로 보고되어 읽기 및 쓰기 작업이 지연됩니다. 작업이 성공적으로 완료된 후 보고서가 "온라인" 상태로 다시 이동하지 못하고 "차단됨" 상태로 유지됩니다.</block>
-  <block id="eb1fc035eeba662cf025ce042074e2b4" category="cell">SCSI 재검색을 수행하지 않고 LUN을 매핑 해제하거나 매핑하면 호스트의 데이터가 손상될 수 있습니다</block>
-  <block id="e70f1869df403451e259e10988ea5f80" category="cell"><block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block>다중 경로 구성 매개 변수를 Yes로 설정하면 WWID(Worldwide Identifier)가 변경될 경우 경로 장치에 대한 액세스가 비활성화됩니다. MultiPath는 경로의 WWID가 다중 경로 디바이스의 WWID로 복구될 때까지 경로 디바이스에 대한 액세스를 비활성화합니다. <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>자세한 내용은 를 참조하십시오.</block>
-  <block id="b4fd571d0a72855bfe7c33832138bcaa" category="paragraph">ONTAP 릴리스가 포함된 RHEL 6.10에는 알려진 문제가 없습니다.</block>
-  <block id="f40357634c33f034611ff10bf2cf0bb3" category="paragraph">RHEL 6.4과 ONTAP 릴리스의 알려진 문제는 다음과 같습니다.</block>
-  <block id="523f9962862f3611c9e9f05e775a3ff2" category="inline-link-macro">673009</block>
-  <block id="a9927553fafc276c5d2ee1dad0e61037" category="cell"><block ref="2ed902a18c5937c4d45e0f1b6d65e574" category="inline-link-macro-rx"></block></block>
-  <block id="4576384480fab68c9ff4fab12c287bd5" category="cell">15개 이상의 삭제 가능한 씬 프로비저닝된 다중 경로 장치에 걸쳐 스트라이핑된 LV에서 ext4 파일 시스템을 생성하면 "요청 보트된" 커널 오류가 발생합니다</block>
-  <block id="bc9d2295f7997ff93de371bc0c88ea73" category="cell">사용자가 폐기되고 씬 프로비저닝된 다중 경로 장치에서 ext4 파일 시스템을 만들려고 할 때 "Request blotted" 커널 오류가 발견되었습니다. 따라서 ext4 파일 시스템을 만드는 데 시간이 오래 걸리고 가끔 중단이 발생할 수 있습니다. 이 문제는 사용자가 Red Hat Enterprise Linux 6.x 및 Data ONTAP 8.1.3 이상을 7-Mode에서 실행하는 시스템에서 15개 이상의 폐기된 다중 경로 장치에 걸쳐 LV에서 ext4 파일 시스템을 생성하려고 시도할 때만 발생합니다. 이 문제는 커널이 현재 Red Hat Enterprise Linux 6.x에서 지원되지 않는 삭제 요청을 병합하려고 잘못 시도하기 때문에 발생합니다. 이 문제가 발생하면 다음 메시지의 여러 인스턴스가 syslog(/var/log/messages): kernel:blk: request botted에 기록됩니다. 따라서 파일 시스템 생성이 예상보다 완료되는 데 시간이 더 오래 걸릴 수 있습니다.</block>
-  <block id="372496c541b6d2288b69f4f74a31cbfd" category="paragraph">RHEL 6.5과 ONTAP 릴리스의 알려진 문제는 다음과 같습니다.</block>
-  <block id="a59016517c085a5d945f2e32273f6c6f" category="inline-link-macro">760515</block>
-  <block id="243da89cf867b347c2cdf3a124dd79b3" category="cell"><block ref="7ebb9447894bd2a8ae903079bdb0ba32" category="inline-link-macro-rx"></block></block>
-  <block id="35ff8a31e7e43ab2149f0953acd85e95" category="cell">스토리지 페일오버 작업 중에 RHEL 6.5 8G Qlogic FC SAN 호스트에서 경로 장애 또는 호스트 작동이 멈춤을 관찰했습니다</block>
-  <block id="5fb0af32d419d1ce3bf31b76b50c3d02" category="cell">스토리지 페일오버 작업 중에 RHEL 6.5 8G Qlogic FC SAN 호스트에서 경로 장애 또는 호스트 작동이 멈춤을 관찰했습니다.</block>
-  <block id="28701edb25458185d37b2540356e6277" category="inline-link-macro">758271</block>
-  <block id="50cd670c75298aa10c9b84b4b7994363" category="cell"><block ref="b3048e7a899eced67978d5ffa9d56597" category="inline-link-macro-rx"></block></block>
-  <block id="89c1277823b0a1248fc95de91b1ea803" category="cell">사용자 지정 initrd(dracut -f)로 부팅할 때 bnx2 펌웨어가 로드되지 않음</block>
-  <block id="8c8f585604e1606fc35bdcace1522cf7" category="cell">사용자 지정 initrd로 부팅하는 동안 bnx2 펌웨어가 로드되지 않아 Broadcom NetXtreme II 기가비트 컨트롤러 포트가 ping을 하지 않습니다.</block>
-  <block id="16840b9e6effbc5ab69dd8881a6ccfab" category="inline-link-macro">799394</block>
-  <block id="654eadcb200b9ffa725b02fdd8afc0a5" category="cell"><block ref="e2a85abec4200c0008487aa3cd10ccd6" category="inline-link-macro-rx"></block></block>
-  <block id="8923d2902e44fe7f3f8794dea2c1ed47" category="cell">RHEL 6U5: Emulex 16G FC(LPe16002B-M6) 호스트 충돌은 스토리지 페일오버 작업이 있는 I/O에서 관찰됩니다</block>
-  <block id="89bd24c458ce5bb4aef9ad351b120d0a" category="cell">스토리지 페일오버 작업이 수행되는 I/O 중에는 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 표시됩니다.</block>
-  <block id="9ff744f86f7d5b8f9aa97a474d022d3d" category="inline-link-macro">786571</block>
-  <block id="cca285e74c2f9677ba98375d8baef66b" category="cell"><block ref="1f0bad4c5ece7b0a35dcbf01ee955754" category="inline-link-macro-rx"></block></block>
-  <block id="281ed23f425fc37d1a62ffd7bce04ae9" category="cell">스토리지 페일오버 작업 시 I/O 도중 RHEL 6.5에서 QLogic FCoE 호스트 중단/경로 장애가 관찰되었습니다</block>
-  <block id="205f0b8a90fa3a29cfd7137d063a9ef6" category="cell">스토리지 페일오버 작업이 있는 I/O 동안 RHEL 6.5에서 QLogic FCoE(QLE8242) 호스트 중단/경로 오류가 관찰되었습니다. 이러한 경우 "Mailbox cmd timeout occurred, cmd=0x54, MB[0]=0x54"라는 메시지가 표시될 수 있습니다. ISP 중단 예약" 메시지가 호스트 중단/경로 오류로 이어집니다.</block>
-  <block id="ac143edc551ca0f939bb8e4b680e5ba4" category="inline-link-macro">801580</block>
-  <block id="963f318de0bb50b8c58b27664dff7bd9" category="cell"><block ref="bebaa8c57093221d69ca3e75cf045786" category="inline-link-macro-rx"></block></block>
-  <block id="46b5e459ba83be6f3933222f42a4caac" category="cell">스토리지 페일오버 작업 중 I/O 중에 QLogic 16G FC 호스트가 중단되거나 RHEL 6.5에서 경로 장애가 관찰되었습니다</block>
-  <block id="a62e4298a14b3b2b0eed1e03a1901a18" category="cell">스토리지 페일오버 작업 중에 QLogic 16G FC 호스트(QLE2672)에서 600초 이상의 I/O 지연이 관찰됩니다. 이러한 경우 "Failed mbx[0] = 54, MB[1] = 0, MB[2] = 76b9, MB[3] = 5200, cmd = 54" 메시지가 표시됩니다.</block>
-  <block id="62fb1383f4b014d958cc5bb04c5f3d5f" category="paragraph">RHEL 6.6과 ONTAP 릴리스의 알려진 문제는 다음과 같습니다.</block>
-  <block id="3dd1380ca8825e58f232363f493daa52" category="inline-link-macro">863878</block>
-  <block id="7c6368b45cd4a10d967aedcac959efaa" category="cell"><block ref="d55a62707aaaf29806d28ef6f3b7058c" category="inline-link-macro-rx"></block></block>
-  <block id="cfc3ef228e5c554b3af78e00b3866bd7" category="cell">스토리지 장애 시 RHEL 6U6 호스트에서 커널 충돌이 발생합니다</block>
-  <block id="86bcd8bb1315a4f054fd1f555f9d899c" category="cell">스토리지/Fabric 중에 RHEL 6U6 호스트에서 커널 충돌이 발생할 수 있습니다.</block>
-  <block id="41c83455913a93be4b440521e4eac4a6" category="inline-link-macro">1076584</block>
-  <block id="2704e91bd5f573cbad7eba20723ba864" category="cell"><block ref="378b02b2d7a64c9eae783f8e2a49ec5e" category="inline-link-macro-rx"></block></block>
-  <block id="b9f3e02ef3d9223f789bce52be09acab" category="inline-link-macro">795684</block>
-  <block id="c7d76ba7e2d3e0a292f2b51c84704276" category="cell"><block ref="61a24ea643a2edb19ad6c476806b4823" category="inline-link-macro-rx"></block></block>
-  <block id="43736b02ccf596e4213cc67f0c6102c5" category="cell">RHEL6 U5 multipathd가 MOD 및 스토리지 장애 조치 작업 중에 다중 경로 맵을 잘못 그룹화합니다</block>
-  <block id="f549ae562768e489107707fb1bef11e9" category="cell">LUN 필요 시 이동 작업 중에 스토리지 오류와 함께 LUN에 대한 경로 그룹화가 잘못되는 것을 관찰할 수 있습니다. LUN 이동 작업 중에 다중 경로 경로 우선 순위가 변경되며 스토리지 장애로 인한 장치 오류로 인해 다중 경로가 장치 테이블을 다시 로드할 수 없습니다. 이로 인해 경로 그룹화가 잘못될 수 있습니다.</block>
-  <block id="d19953e22684756c9889d44178f664e8" category="paragraph">ONTAP 릴리스가 포함된 RHEL 6.7에는 알려진 문제가 없습니다.</block>
-  <block id="c5485eb0c7882c6575d6c7713c2fb21d" category="paragraph">ONTAP 릴리스가 포함된 RHEL 6.8에는 알려진 문제가 없습니다.</block>
-  <block id="62e41fa6c4017dbb4d6912d9353592ef" category="paragraph">RHEL 6.9과 ONTAP 릴리스의 알려진 문제는 다음과 같습니다.</block>
-  <block id="ae8092674c13f36003f14ece68d3c42c" category="inline-link-macro">1067272</block>
-  <block id="15af5af1296f3b00950876c7349c589b" category="cell"><block ref="eb38e5b23df5e0f2a1ba579e254db319" category="inline-link-macro-rx"></block></block>
-  <block id="6689d526e6da9f46eb73959de7ccfb3d" category="cell">스토리지 페일오버 작업 중에 Emulex LPe32002 호스트의 원격 포트 상태가 '차단됨' 상태일 수 있습니다</block>
-  <block id="dfc052f6b0b40c1faced595a085c2d50" category="cell">스토리지 페일오버 작업 중에 LPe32002 어댑터가 있는 RHEL 6.9 호스트의 특정 원격 포트 상태가 '차단됨' 상태가 될 수 있습니다. 스토리지 노드가 다운되면 논리 인터페이스가 중단되기 때문에 원격 포트는 스토리지 노드 상태를 "차단됨" 상태로 설정합니다. 그러나 스토리지 노드가 최적 상태로 돌아오면 논리 인터페이스도 함께 가동되고 원격 포트 상태는 '온라인'이 됩니다. 그러나 특정 상황에서 원격 포트는 계속 '차단됨' 상태입니다. 이 상태는 다중 경로 계층의 LUN에 대해 '장애 발생'으로 나타납니다.</block>
-  <block id="bd280470f9fb5a81e270305b53204d0f" category="cell"><block ref="9caa015d3334857faa7c3d61e0b9334f" category="inline-link-macro-rx"></block></block>
-  <block id="8a35d17d4ad08e708a249ff2f9752b5a" category="cell">스토리지 페일오버 작업 중에 Red Hat Enterprise Linux 6.9 QLogic QE8362 HBA에서 펌웨어 덤프가 발생합니다</block>
-  <block id="c61e89bea3bd59d60d354b2b2ee41bb6" category="cell">펌웨어 덤프는 QLogic QLE8362 HBA(호스트 버스 어댑터)가 있는 RHEL(Red Hat Enterprise Linux) 6.9 호스트에서 스토리지 페일오버 작업 중에 발생할 수 있으며 펌웨어 덤프가 가끔 관찰됩니다. 펌웨어 덤프는 최대 1200초 동안 지속될 수 있는 호스트에서 I/O 중단으로 나타날 수 있습니다. 어댑터가 펌웨어 코어 덤핑이 완료되면 I/O 작업이 정상적으로 재개됩니다. 호스트에 추가 복구 절차가 필요하지 않습니다. 펌웨어 덤프를 표시하기 위해 /var/log/message 파일에 다음 메시지가 표시됩니다. kernel: qla2xxx[0000:0c:00.3]-d001:3: 임시 버퍼에 저장된 펌웨어 덤프(3/ffc90018b01000), 덤프 상태 플래그(0x3f)</block>
-  <block id="04488a0bd269503a1ea3a47fe93a7b7f" category="inline-link-macro">844417</block>
-  <block id="6c17b0f0234f39da13553a38107913c1" category="cell"><block ref="95a9102507af9f3ef170e893db92aa0d" category="inline-link-macro-rx"></block></block>
-  <block id="69460499fb32604ce99d2202e67c3b50" category="cell">스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트가 충돌합니다</block>
-  <block id="938ae41ce3b0130f6ec39355095fef8e" category="cell">스토리지 페일오버 작업 중 I/O에서 16G FC Emulex(LPe16002B-M6) 호스트 충돌이 관찰될 수 있습니다.</block>
-  <block id="6405b7880498750d41c93c6ff89cff96" category="inline-link-macro">811587</block>
-  <block id="d92bbc344480c1c4676dd6c7e7c9051a" category="cell"><block ref="25d4a04a283671c8f8df69363684eeb6" category="inline-link-macro-rx"></block></block>
-  <block id="e3a4319bc10063852c504b5613965892" category="inline-link-macro">803071</block>
-  <block id="18b0326d52bd20b9f07e25f01ff7a7f8" category="cell"><block ref="d76156bb15a180ce870200aaa220a25c" category="inline-link-macro-rx"></block></block>
-  <block id="fe10bf02cac14b527073d56ad68ea0d9" category="inline-link-macro">820163</block>
-  <block id="e61b41ec03dc6a7a5c73f96233f3f803" category="cell"><block ref="911c76fb9ad4021a1f383f66b11e6a74" category="inline-link-macro-rx"></block></block>
-  <block id="6b1b934c2f0a24d69275ea2e6f568b91" category="cell">스토리지 페일오버 작업이 있는 I/O에서 QLogic 호스트 중단 또는 경로 장애가 관찰되었습니다</block>
-  <block id="44c8ddef58e9a1a6681cc56a75963cce" category="cell">스토리지 페일오버 작업 중 입출력 중에 QLogic 호스트에서 호스트 중단 또는 경로 장애가 발생할 수 있습니다. 이러한 경우 "Mailbox cmd timeout occurred, cmd=0x54, MB[0]=0x54 and Firmware dump saved to temp buffer"(사서함 cmd 시간 초과 발생, cmd=0x54, MB[0]=0x54 및 펌웨어 덤프가 임시 버퍼에 저장됨)" 메시지가 나타나고 호스트 멈춤/경로 오류가 발생할 수 있습니다.</block>
-  <block id="7ced44d26ed0cab51eebd7115b20664d" category="inline-link-macro">799323</block>
-  <block id="adb237a95eaa1f6584cb4481fea5bbb1" category="cell"><block ref="f10a7befc9bc4d4101abc10635a20919" category="inline-link-macro-rx"></block></block>
-  <block id="28ffca95f560b372f37e92a47d022750" category="cell">Emulex FCoE(OCe10102-FX-D) 호스트 중단 또는 경로 장애가 스토리지 페일오버 작업 중 I/O에서 관찰되었습니다</block>
-  <block id="d55d79b6330424fc43bbdce9eb47ec8b" category="cell">스토리지 페일오버 작업이 포함된 I/O에서 Emulex 10G FCoE 호스트(OCe10102-FX-D)의 호스트 중단 또는 경로 장애가 관찰될 수 있습니다. 이러한 경우 "드라이버 버퍼 풀이 비어 있음, IO 버스 작동 및 SCSI 계층 I/O 중단 요청 상태" 메시지가 나타나면서 호스트 중단/경로 오류가 발생할 수 있습니다.</block>
-  <block id="d696987992555daac44e6e0221ca5aa8" category="inline-link-macro">849212</block>
-  <block id="333d134a2f4244baf148d678579abef9" category="cell"><block ref="4c874aa4796d22540097a0906a154f2c" category="inline-link-macro-rx"></block></block>
-  <block id="f4d030c17534e71245b7ad007df27f45" category="cell">Emulex 16G FC(LPe16002B-M6) 호스트 중단 또는 경로 장애가 스토리지 페일오버 작업 중 I/O에서 관찰되었습니다</block>
-  <block id="4ca1bd1052174da8e9aa737bbb1b32fd" category="cell">스토리지 페일오버 작업이 수행되는 I/O 중에 Emulex 16G FC(LPe16002B-M6) 호스트에서 호스트 중단 또는 경로 장애가 관찰될 수 있습니다. 이러한 경우 "RSCN timeout Data and iotag x1301 is out of range: max iotag" 메시지가 나타나면서 호스트 중단/경로 오류가 발생할 수 있습니다.</block>
-  <block id="4ef8ad7e74bdf446d5db36da2dd1b24a" category="inline-link-macro">836800</block>
-  <block id="3d23d6bf2cafcca60ba9774578396d12" category="cell"><block ref="5adc4cadb3537d660246eb69c4800937" category="inline-link-macro-rx"></block></block>
-  <block id="56c232b9fb8984a71220d9c5a78fea18" category="cell">RHEL 7.0 OS 설치 중에 로그인이 성공하더라도 Anaconda는 iSCSI 로그인 실패 메시지를 표시합니다</block>
-  <block id="99e7a8ab2ec7111edb9e26a71a6c0a86" category="cell">iSCSI 다중 경로(iSCI) LUN에 루트(/)를 설치할 때 이더넷 인터페이스의 IP 주소가 커널 명령줄에 지정되어 iSCSI 서비스가 시작되기 전에 IP 주소가 할당됩니다. 그러나 iSCSI 서비스가 시작되기 전에 dracut은 부팅 중에 모든 이더넷 포트에 IP 주소를 할당할 수 없습니다. 이로 인해 IP 주소가 없는 인터페이스에서 iSCSI 로그인이 실패합니다. iSCSI 서비스가 로그인을 여러 번 시도하여 OS 부팅 시간이 지연되는 것을 볼 수 있습니다.</block>
-  <block id="a8c077074773359e7cd193725f41a860" category="inline-link-macro">836875</block>
-  <block id="5f2c9318592eaf6ee83d6c6bb5a5d002" category="cell"><block ref="83d2e393f0ac9d3a1c3786fb315d90c6" category="inline-link-macro-rx"></block></block>
-  <block id="d44e6fb07493c929aa84d152539e0412" category="cell">iSCSI 다중 경로 LUN에 설치된 RHEL 7.0 OS를 부팅하는 동안 IP 주소가 항상 할당되는 것은 아닙니다</block>
-  <block id="8b5e0ba2f3aea90174a30a7c43bebcee" category="cell">RHEL 7.0을 설치할 때 anaconda 설치 화면에 iSCSI 로그인이 성공적임에도 여러 대상 IP에 대한 iSCSI 로그인이 실패했음을 표시합니다. Anaconda는 다음과 같은 오류 메시지를 표시합니다. "노드 로그인 실패" iSCSI 로그인에 대해 여러 대상 IP를 선택한 경우에만 이 오류가 발생합니다. "확인" 버튼을 클릭하여 OS 설치를 계속할 수 있습니다. 이 버그는 iSCSI 또는 RHEL 7.0 OS 설치를 방해하지 않습니다.</block>
-  <block id="ecf13e437df4cb2ff5ec5edeeab0adbe" category="inline-link-macro">836657</block>
-  <block id="8f1e30f29d9588ad4042431720826957" category="cell"><block ref="041c2851ebb0c7c2f188babcdefb8252" category="inline-link-macro-rx"></block></block>
-  <block id="d8eb8fe260fdcd93af7707dd8bac33ee" category="cell">Anaconda는 커널 cmd 행에 bootdev 인수를 추가하지 않고 iSCSI 다중 경로 dun LUN에 설치된 RHEL 7.0 OS의 IP 주소를 설정합니다</block>
-  <block id="6ad39c26575ec2ca15832d288d5cb802" category="cell">Anaconda는 커널 명령줄에 bootdev 인수를 추가하지 않습니다. 여기서 iSCSI 다중 경로 dl에 RHEL 7.0 OS를 설치하는 동안 IPv4 주소를 설정합니다. 따라서 RHEL 7.0 부팅 중에 스토리지 서브시스템과 iSCSI 세션을 설정하도록 구성된 이더넷 인터페이스에 IP 주소를 할당하지 못합니다. iSCSI 세션이 설정되지 않았으므로 OS 부팅 시 루트 LUN이 검색되지 않아 OS 부팅이 실패합니다.</block>
-  <block id="decf77540b0827bf2f8607451a3743f3" category="cell">스토리지 페일오버 작업이 포함된 I/O에서 Emulex 10G FCoE 호스트(OCe10102-FX-D)의 호스트 중단 또는 경로 장애가 관찰될 수 있습니다. 이러한 경우 "드라이버 버퍼 풀이 비어 있음, IO 작동 중 및 SCSI 계층 I/O 중단 요청 상태" 메시지가 표시될 수 있습니다.</block>
-  <block id="7383337d244878e79e189215ad6bfdc7" category="inline-link-macro">1139053</block>
-  <block id="1295ae9315edfd5b220cf2daf1aa17e6" category="cell"><block ref="007697ca9026c19e168d3fdf666001ca" category="inline-link-macro-rx"></block></block>
-  <block id="9dc352394728d1be345a1e8fa64a71ad" category="cell">스토리지 페일오버 작업 중 RHEL7.5에서 QLogic QLE2672 16GB FC가 발생한 경우 커널 중단이 발생합니다</block>
-  <block id="c72893cf0f959738c7d9d4448ab69c9c" category="cell">QLogic QLE2672 16GB 파이버 채널 호스트 버스 어댑터를 사용하는 RHEL7U5 커널에서 스토리지 페일오버 작업 중에 커널 패닉이 발생합니다. 커널 패닉으로 인해 RHEL 7.5가 재부팅되어 애플리케이션 중단이 발생합니다. kdump가 구성된 경우 커널 패닉이 /var/crash/directory 아래에 vmcore 파일을 생성합니다. vmcore 파일은 실패의 원인을 이해하는 데 사용됩니다. 이 경우 커널 중단 후 "[exception RIP:get_next_timer_interrupt+440]" 문자열을 사용하여 vmcore 파일에 기록되는 "get_next_interrupt+440" 모듈에서 패닉이 관찰되었습니다. 호스트 운영 체제를 재부팅하고 필요에 따라 애플리케이션을 재시작하여 운영 체제를 복구할 수 있습니다.</block>
-  <block id="a091672e9523f13695b5ce236a025cfa" category="inline-link-macro">1138536</block>
-  <block id="a596200cfc306d0de00f26be2a8f777c" category="cell"><block ref="c6f70118bf7bd1ac73b4c76b9feb75ea" category="inline-link-macro-rx"></block></block>
-  <block id="f7fff0e4d49653725b3503ea6599c461" category="cell">스토리지 페일오버 작업 중 RHEL7U5에서 QLogic QLE2742 32Gb FC를 사용하는 RHEL7U5에서 커널 중단이 발생합니다</block>
-  <block id="b531bab4f04d588f25830af15dd9732f" category="cell">RHEL(Red Hat Enterprise Linux) RHEL7U5 커널에서 QLogic QLE2742 HBA를 통한 스토리지 페일오버 작업 중에 커널 패닉이 발생합니다. 커널 패닉은 운영 체제를 재부팅하여 애플리케이션 중단을 일으킵니다. kdump가 구성된 경우 커널 패닉이 /var/crash/directory 아래에 vmcore 파일을 생성합니다. 커널에 패닉이 발생하면 vmcore 파일을 사용하여 장애의 원인을 조사할 수 있습니다. 다음 예제는 bget_next_timer_interrupt+440b 모듈의 패닉을 보여줍니다. 패닉이 vmcore 파일에 "[exception RIP:get_next_timer_interrupt+440]" 문자열을 사용하여 기록됩니다. 호스트 OS를 재부팅하고 필요에 따라 애플리케이션을 다시 시작하여 운영 체제를 복구할 수 있습니다.</block>
-  <block id="692dec64260aae5d0dd37a2adee5ade4" category="inline-link-macro">1148090</block>
-  <block id="1bf7bac4b210e706865d12510d6cd9cc" category="cell"><block ref="7f5fbed4010b651f3d0035e9e60eec99" category="inline-link-macro-rx"></block></block>
-  <block id="2889b5c407bd32dd8473d8f2ea939832" category="cell">스토리지 페일오버 작업 중 QLogic QLE2742 32Gb FC HBA를 사용하는 RHEL 7.5에서 커널 중단이 발생합니다</block>
-  <block id="e780d267955ef9d13c386e99e3e69711" category="cell">QLogic QLE2742 FC(Fibre Channel) HBA(호스트 버스 어댑터)가 있는 RHEL(Red Hat Enterprise Linux) 7.5 커널에서 스토리지 페일오버 작업 중에 커널의 패닉이 발생합니다. 커널 패닉으로 인해 RHEL 7.5가 재부팅되어 애플리케이션 중단이 발생합니다. kdump 메커니즘이 활성화된 경우 커널 패닉이 /var/crash/ 디렉토리에 있는 vmcore 파일을 생성합니다. vmcore 파일을 분석하여 패닉 원인을 확인할 수 있습니다. 이 경우 QLogic QLE2742 HBA 이벤트를 통한 스토리지 페일오버가 발생하면 "NATIVE_QUODISTED_SPIN_LOCK_STORAGE PATH + 464" 모듈에 영향을 미칩니다. 커널 중단 후 "[exception RIP: native_queued_spin_lock_spreppath + 464]" 문자열을 찾아 vmcore 파일에서 이벤트를 찾을 수 있습니다. 호스트 OS를 재부팅하고 운영 체제를 복구한 다음 필요에 따라 애플리케이션을 다시 시작할 수 있습니다.</block>
-  <block id="ca04edb5871b22fb77d8fe405800b5aa" category="inline-link-macro">1146898</block>
-  <block id="682e4a71760a5129450fd59e2e95f3c4" category="cell"><block ref="220f7a19228a0baba7045dc91e92095a" category="inline-link-macro-rx"></block></block>
-  <block id="49aace017ee0842a9697ff4e8796b414" category="cell">스토리지 페일오버 작업 중에 Emulex HBA를 사용하는 RHEL 7.5에서 커널 중단이 발생합니다</block>
-  <block id="cd254c710e508f1521cd808f014d9514" category="cell">Emulex LPe32002-M2 32GB FC HBA(호스트 버스 어댑터)가 있는 RHEL(Red Hat Enterprise Linux) 7.5 시스템에서 스토리지 페일오버 작업 중에 커널이 중단됩니다. 커널이 중단되면 운영 체제가 재부팅되며, 이로 인해 응용 프로그램이 중단됩니다. kdump를 구성하는 경우 커널 중단은 /var/crash/ 디렉토리 아래에 vmcore 파일을 생성합니다. vmcore 파일을 사용하여 장애 원인을 확인할 수 있습니다. 다음 예에서는 "lpfc_hba_clean_txcmplq + 368" 모듈에서 중단 사태를 확인할 수 있습니다. 이러한 중단은 vmcore 파일에 "[exception RIP: lpfc_hba_clean_txcmplq + 368]" 문자열을 사용하여 기록됩니다. 커널 중단 후 호스트 OS를 재부팅하여 운영 체제를 복구합니다. 필요에 따라 응용 프로그램을 다시 시작합니다.</block>
-  <block id="e3d8ce1190bfeaa278be5f7e8b0d5995" category="inline-link-macro">1186754</block>
-  <block id="532edc5b4fd01c5e7e8eece87dabaeb4" category="cell"><block ref="8dbfd01f5544aaaa573a97a85d555718" category="inline-link-macro-rx"></block></block>
-  <block id="4fdd995ab037517f3a8a22f0d1dce429" category="cell">QLogic QLE2742 호스트가 있는 RHEL7U6의 원격 포트 상태는 호스트 검색 중에 차단될 수 있습니다</block>
-  <block id="63881d899fc9dba0492fe0e8b9ba540e" category="cell">호스트를 검색하는 동안 QLogic QLE2742 어댑터를 사용하는 RHEL7U6 호스트의 FC 원격 포트 상태가 차단됨 상태로 전환될 수 있습니다. 이러한 원격 포트가 차단되면 LUN에 대한 경로를 사용할 수 없게 될 수 있습니다. 스토리지 페일오버 중에 경로 이중화가 감소되어 I/O 중단이 발생할 수 있습니다. 다음 명령을 입력하여 원격 포트 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_state</block>
-  <block id="1b602286dc5045d99a549759ecfdc9d2" category="inline-link-macro">1190698</block>
-  <block id="a5fcd7e0e32bcd7b79ba21fcbaab4a61" category="cell"><block ref="1c061382cffd1ef980d60e4d1cda99f0" category="inline-link-macro-rx"></block></block>
-  <block id="2afcce12bf741e426f0a49dfee981cdc" category="cell">스토리지 페일오버 작업 중에 RHEL7U6에서 QLogic QLE2672 호스트를 사용하는 원격 포트 상태가 차단되었을 수 있습니다</block>
-  <block id="6ec9e586bca93270bdd317231ac24e7f" category="cell">스토리지 페일오버 작업 중에 QLogic QLE2672 호스트를 사용하는 RHEL(Red Hat Enterprise Linux) 7U6에서 FC 원격 포트가 차단될 수 있습니다. 스토리지 노드가 다운될 때 논리 인터페이스가 다운되기 때문에 원격 포트는 스토리지 노드 상태를 차단됨 으로 설정합니다. 스토리지 노드가 최적 상태로 돌아오면 논리 인터페이스도 함께 가동되고 원격 포트는 온라인 상태가 됩니다. 그러나 원격 portsmight는 여전히 차단되어 있습니다. 이 차단된 상태는 다중 경로 계층의 LUN에 장애가 발생한 것으로 등록됩니다. 다음 명령을 사용하여 원격 포트 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_state</block>
-  <block id="d7fad245b12b629fd89fe1e208312a84" category="inline-link-macro">1258856</block>
-  <block id="3b6b215a71077b84727e3c7236fe2162" category="cell"><block ref="8cbdd34ea1179295cbf8f3baf8a265b7" category="inline-link-macro-rx"></block></block>
-  <block id="f0bf2f8e80766c6042932e1f36ea6c1e" category="cell">스토리지 페일오버 작업 중 Emulex LPe16002 16GB FC를 사용하는 RHEL7U7에서 원격 포트가 차단됨 상태로 전환되었습니다</block>
-  <block id="a41cff6600524079541f57663691afd7" category="cell">스토리지 페일오버 작업 중에 원격 포트가 LPe16002 16GB FC 어댑터가 있는 RHEL 7.7 호스트에서 차단됨 상태로 전환될 수 있습니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로가 발생할 수 있습니다.</block>
-  <block id="655dd2c13c5d63b0a2fc94b680533b22" category="inline-link-macro">1261474</block>
-  <block id="208f21e7140ce8dbee86e2ae4acc5c66" category="cell"><block ref="0d668094fd68805b827c56bb7f3873cf" category="inline-link-macro-rx"></block></block>
-  <block id="24d7acc632c5ded196817c3cfb589a5a" category="cell">Emulex LPe32002 32Gb FC를 사용하는 RHEL7U7에서 원격 포트를 차단 상태로 전환합니다</block>
-  <block id="6074aae24d017a1d81afefcd4fd284f3" category="cell">스토리지 페일오버 작업 중에 원격 포트가 LPe32002 32Gb FC 어댑터가 있는 RHEL 7.7 호스트에서 차단됨 상태로 전환될 수 있습니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로가 발생할 수 있습니다.</block>
-  <block id="1ad7f1f0694cd5d565246dd8f5e08ff3" category="inline-link-macro">873555</block>
-  <block id="5bc6dd2808e58ceb12daa3fa188c92d2" category="cell"><block ref="46d58291164df69e74195823c43d724c" category="inline-link-macro-rx"></block></block>
-  <block id="3f173227feb8878f022ad1b36c91e876" category="cell">SCSI_DH_ALUA 모듈이 로컬 부팅에서 다중 경로 시작 중에 로드되지 않았습니다</block>
-  <block id="d3810cc1f6dda6df4587ddfeb62972ee" category="cell">SCSI_DH_ALUA는 Linux ALUA 장치 핸들러 모듈입니다. 로컬 부팅 시 multipathd를 시작하는 동안에는 로드되지 않습니다. 대상 측에서 ALUA를 사용하도록 설정해도 이 장치 핸들러는 로드되지 않습니다.</block>
-  <block id="79c7a9bb0aa24422c212e2b382099d0a" category="inline-link-macro">863584</block>
-  <block id="4d73614eae0a505c039fae3f1ee9900d" category="cell"><block ref="3c45cc75b4c66415e3786feb781dcee8" category="inline-link-macro-rx"></block></block>
-  <block id="a42499118062067bb57ae3e080112f10" category="cell">SLES12에서 DM 디바이스를 생성할 때 화면에 "충돌하는 장치 노드'/dev/mapper/360xx '발견" 메시지가 나타납니다</block>
-  <block id="0f002f358a4edc403bdbf073453e31c0" category="cell">SLES 12의 /dev/mapper dir 아래에서 DM 장치에 대한 링크를 생성하는 중에 오류가 발생하여 "충돌하는 장치 노드'/dev/mapper/360xx'found" 메시지가 표시될 수 있습니다.</block>
-  <block id="43f008f2dfc233acd97b155115e02d78" category="inline-link-macro">847490</block>
-  <block id="442330e970ceb587a68e59d052af913a" category="cell"><block ref="4c1cf8590d2642eac66c4c5c98ac5df5" category="inline-link-macro-rx"></block></block>
-  <block id="aa5d2614a5cdd3ecb6439fff78eae1c5" category="cell">다중 경로 데몬은 SLES 12의 경로 오류를 표시합니다</block>
-  <block id="f3c857b5b590c65054bfa6277dd7b8d8" category="cell">스토리지 또는 패브릭 장애가 있는 I/O 중에 SLES12 다중 경로 데몬에서 경로 장애를 관찰할 수 있습니다.</block>
-  <block id="faa333743d9719ffabaef492f9d3addf" category="inline-link-macro">1089555</block>
-  <block id="2c88ec62d1d721428e4602e651219de8" category="cell"><block ref="70d91751d74c1680862a2be7b819ad17" category="inline-link-macro-rx"></block></block>
-  <block id="0474958a1d6d3dac5a2d4f89aa906f00" category="cell">스토리지 페일오버 작업 중 Emulex LPe16002 16GB FC를 사용하는 커널 버전 SLES12 SP3에서 커널 중단이 관찰되었습니다</block>
-  <block id="e473d01bdff0fd380180c07445efe5f1" category="cell">Emulex LPe16002 HBA를 사용하는 커널 버전 SLES12 SP3에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 커널 중단은 운영 체제를 재부팅하라는 메시지를 표시합니다. 그러면 응용 프로그램이 중단됩니다. kdump가 구성된 경우 커널 중단은 /var/crash/ 디렉토리 아래에 vmcore 파일을 생성합니다. vmcore 파일에서 실패의 원인을 조사할 수 있습니다. 예: 관찰된 경우 "lpfc_sli_ringtxcmpl_put+51" 모듈에서 커널 중단이 관찰되었으며 vmcore 파일에 기록됩니다(예외 RIP: lpfc_sli_ringtxcmpl_put+51). 커널 중단 후 호스트 운영 체제를 재부팅하고 애플리케이션을 다시 시작하여 운영 체제를 복구합니다.</block>
-  <block id="a589b9691d471fdbcfcbed00289ff95f" category="inline-link-macro">1089561</block>
-  <block id="52b22b314256e76d5ce7c9f4b449e75e" category="cell"><block ref="c46197206f006ddca20b9528971eb8a2" category="inline-link-macro-rx"></block></block>
-  <block id="50468e9e489c6f64df69a9b2050b5c03" category="cell">스토리지 페일오버 작업 중 Emulex LPe32002 32Gb FC를 사용하는 커널 버전 SLES12 SP3에서 커널 중단이 관찰되었습니다</block>
-  <block id="35bd2083d35550687ccc83eda9de58bd" category="cell">Emulex LPe32002 HBA를 사용하는 커널 버전 SLES12 SP3에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 커널 중단은 운영 체제를 재부팅하라는 메시지를 표시합니다. 그러면 응용 프로그램이 중단됩니다. kdump가 구성된 경우 커널 중단은 /var/crash/ 디렉토리 아래에 vmcore 파일을 생성합니다. vmcore 파일에서 실패의 원인을 조사할 수 있습니다. 예: 관찰된 경우 "lpfc_sli_free_hbq+76" 모듈에서 커널 중단이 관찰되었으며 vmcore 파일에 기록됩니다. 예외 RIP: lpfc_sli_free_hbq+76. 커널 중단 후 호스트 운영 체제를 재부팅하고 애플리케이션을 다시 시작하여 운영 체제를 복구합니다.</block>
-  <block id="87cb91fa2b27bd295cf6cb3ab5625b5a" category="inline-link-macro">1117248</block>
-  <block id="8e44470268c498635871633867199cf8" category="cell"><block ref="2bc8591437ea8a0ab5e4a9dc7b8cf226" category="inline-link-macro-rx"></block></block>
-  <block id="8657c4ef49cd9bde003a33d3c79613d9" category="cell">스토리지 페일오버 작업 중 QLogic QLE2562 8GB FC가 설치된 SLES12SP3에서 커널 중단이 관찰되었습니다</block>
-  <block id="069104042a617bd6267aa1b9aa15c171" category="cell">QLogic QLE2562 HBA를 사용하는 Sles12sp3 커널(kernel-default-4.4.82-6.3.1)에서 스토리지 페일오버 작업 중에 커널에서 패닉이 발생하여 커널 중단이 관찰되었습니다. 커널 패닉은 운영 체제를 재부팅하여 애플리케이션 중단을 일으킵니다. kdump가 구성된 경우 커널 패닉이 /var/crash/directory 아래에 vmcore 파일을 생성합니다. 커널 패닉이 발생하면 vmcore 파일을 사용하여 장애의 원인을 파악할 수 있습니다. 예: 이 경우 "BLK_finish_request + 289" 모듈에서 패닉이 관찰되었습니다. 이 파일은 다음 문자열을 사용하여 vmcore 파일에 기록됩니다. "exception RIP: BLK_finish_request + 289" 커널 중단 후 호스트 OS를 재부팅하여 운영 체제를 복구할 수 있습니다. 필요에 따라 응용 프로그램을 다시 시작할 수 있습니다.</block>
-  <block id="5f8a31b40158a3881c423f19cbe43336" category="inline-link-macro">1117261</block>
-  <block id="b9041783185cb4c07cb13dc636f9fe2c" category="cell"><block ref="610aa731a80c19f0997775dc3dd0e227" category="inline-link-macro-rx"></block></block>
-  <block id="a8955b831ee58d47a67ef51745c0b4c5" category="cell">스토리지 페일오버 작업 중 Qlogic QLE2662 16GB FC를 사용하는 SLES12SP3에서 커널 중단이 관찰되었습니다</block>
-  <block id="02b00e954d820a7d9250b98b4049906d" category="cell">Qlogic QLE2662 HBA를 사용하는 Sles12sp3 커널(kernel-default-4.4.82-6.3.1)에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 그러면 운영 체제를 재부팅하여 응용 프로그램이 중단됩니다. kdump가 구성된 경우 커널 중단은 /var/crash/directory 아래에 vmcore 파일을 생성합니다. vmcore 파일을 사용하여 장애의 원인을 파악할 수 있습니다. 예: 이 경우 "알 수 없거나 잘못된 주소" 모듈에서 커널 중단이 관찰되었으며 다음 문자열을 사용하여 vmcore 파일에 기록됩니다. - 예외 RIP: 알 수 없거나 잘못된 주소. 커널이 중단된 후에는 호스트 운영 체제를 재부팅하고 필요에 따라 애플리케이션을 다시 시작하여 운영 체제를 복구할 수 있습니다.</block>
-  <block id="3b13be33c3c4e5bc96d1614404203912" category="inline-link-macro">1117274</block>
-  <block id="1fc265bafea1a8916f986a6847bd1910" category="cell"><block ref="06edb5bde68f86e3606b213ec5575e58" category="inline-link-macro-rx"></block></block>
-  <block id="3800975d23c462cc9945e7b5174cd2ff" category="cell">스토리지 페일오버 작업 중 Emulex LPe16002 16GB FC를 사용하는 SLES12SP3에서 커널 중단이 관찰되었습니다</block>
-  <block id="751f8b88fa9fa7a82232c514979e6d24" category="cell">Emulex LPe16002 HBA를 사용하는 Sles12sp3 커널(kernel-default-4.4.87-3.1)에서 스토리지 페일오버 작업 중에 커널 중단이 발생할 수 있습니다. 그러면 운영 체제를 재부팅하여 응용 프로그램이 중단됩니다. kdump가 구성된 경우 커널 중단은 /var/crash/ 디렉토리 아래에 vmcore 파일을 생성합니다. vmcore 파일을 사용하여 장애의 원인을 파악할 수 있습니다. 예: 이 경우 "raw_spin_lock_irqsave +30" 모듈에서 커널 중단이 관찰되었으며 다음 문자열을 사용하여 vmcore 파일에 기록됩니다. –exception RIP:_raw_spin_lock_irqsave +30. 커널이 중단된 후에는 호스트 운영 체제를 재부팅하고 필요에 따라 애플리케이션을 다시 시작하여 운영 체제를 복구할 수 있습니다.</block>
-  <block id="e5a77b1a174097186e6d1fb9a005709f" category="inline-link-macro">1284293</block>
-  <block id="1de66e64e76f786a82bec52a2cab5118" category="cell"><block ref="579531e464015b6b9b3dc77dc4c47e40" category="inline-link-macro-rx"></block></block>
-  <block id="d92dccde54014b78d3cee57124dc1c25" category="cell">스토리지 페일오버 작업 중 QLogic QLE2562 8GB FC HBA가 있는 SLES12 SP5에서 커널 중단이 발생합니다</block>
-  <block id="c086ba1cb82d2640bcad8ebcee84deca" category="cell">QLogic QLE2562 FC(Fibre Channel) HBA(호스트 버스 어댑터)가 있는 SLES12 SP5 커널에서 스토리지 페일오버 작업 중에 커널 중단이 발생합니다. 커널이 중단되면 SLES12 SP5가 재부팅되어 응용 프로그램이 중단됩니다. kdump 메커니즘이 활성화된 경우 커널 중단은 /var/crash/ 디렉토리에 있는 vmcore 파일을 생성합니다. vmcore 파일을 확인하여 운영 중단의 원인을 파악합니다. QLogic QLE2562 HBA 이벤트를 사용한 스토리지 페일오버는 "thread_Info:ffff8aedf723c2c0" 모듈에 영향을 줍니다. vmcore 파일에서 "[thread_Info:ffff8aedf723c2c0]" 문자열을 찾아 이 이벤트를 찾습니다. 커널이 중단된 후 호스트 OS를 재부팅하여 복구하도록 설정합니다. 그런 다음 응용 프로그램을 다시 시작합니다.</block>
   <block id="9eb138f8329b6a05b2da910e54b750c9" category="inline-link-macro">1154309</block>
   <block id="1e45eb414e878e896ff6c8568d44aaed" category="cell"><block ref="409bdf20edf896ce4497acd46087929e" category="inline-link-macro-rx"></block></block>
   <block id="4ccdcef8fc98cb6452f9ba7aa1df1c0c" category="cell">매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다</block>
   <block id="c6bc802c921069bf472f1e8359672c59" category="cell">매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다. 유지보수 모드는 다음 메시지 이후에 단일 사용자 모드가 됩니다.<block ref="3e4fc983295eaca22de2d8651a4d47f0" prefix=" " category="inline-code"></block></block>
-  <block id="02b22a4665a408c3e680f6e2b9bafdcc" category="paragraph">LUN이 하이퍼바이저에 매핑되므로 커널 기반 가상 머신에 대한 설정을 구성할 필요가 없습니다.</block>
-  <block id="0740b5df22667a7e744aa71953beb230" category="admonition">Oracle Linux 6.10 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.10용 을 <block ref="a294cf4df5bbbd1673f2ccf0dacf7b03" category="inline-link-macro-rx"></block>사용하십시오.</block>
-  <block id="b3f1ab4f1021cad5dbb0ecebe3b01119" category="admonition">Oracle Linux RHCK의 알려진 문제는 RHEL 6.10용 을 참조하십시오<block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block>.</block>
-  <block id="a4cd81eccdcd73aff6505e3d429a130b" category="admonition">Oracle Linux 6.4 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.4용 을 <block ref="a06e2728aa3780c72bf0b5a9e2b2f14f" category="inline-link-macro-rx"></block>사용하십시오.</block>
-  <block id="25a94284ceccc99fb23a79e416c8173a" category="admonition">Oracle Linux RHCK의 알려진 문제는 RHEL 6.4용 을 참조하십시오<block ref="f736929b1834226891236b2c0b0b218e" category="inline-link-macro-rx"></block>.</block>
-  <block id="31b224cd5a639428743a26ab8a72737a" category="admonition">Oracle Linux 6.5 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.5용 을 <block ref="d9929df24012e2c19b3258bd0a117bc4" category="inline-link-macro-rx"></block>사용하십시오.</block>
-  <block id="6f1ac0afba6703725e1d230220a7f5b0" category="admonition">Oracle Linux RHCK의 알려진 문제점은 RHEL 6.5용 을 참조하십시오<block ref="0158dc1052dab85818a92b1a427c95b7" category="inline-link-macro-rx"></block>.</block>
-  <block id="83a1102b5f5a4a8d6c50e4286e9367b2" category="admonition">Oracle Linux 6.6 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.6용 을 <block ref="206a39f130bf92080cb56256dd2c28f9" category="inline-link-macro-rx"></block>사용하십시오.</block>
-  <block id="8230a070d602725403fc0401e3ac41e9" category="admonition">Oracle Linux RHCK의 알려진 문제는 RHEL 6.6용 을 <block ref="aad294b0550f33ea846ebc2598292576" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="6eb7cef06003ab6d67f8b80987f771f5" category="admonition">Oracle Linux 6.7 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.7용 을 <block ref="8889d65b7bf0d43fb28eb69a57d4d394" category="inline-link-macro-rx"></block>사용하십시오.</block>
-  <block id="813c544a12f1cafc63829bad2d1ddecd" category="admonition">Oracle Linux RHCK의 알려진 문제는 <block ref="fd679b4991af24edfd6d66f5cbc5db76" category="inline-link-macro-rx"></block>RHEL 6.7용 을 참조하십시오.</block>
-  <block id="41030c1f63542a66b6745f483c36130a" category="admonition">Oracle Linux 6.8 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.8용 을 <block ref="1d07883740b2178a6c8bf634ff911c00" category="inline-link-macro-rx"></block>사용하십시오.</block>
-  <block id="bb559c6421377ba8691783146145f853" category="admonition">Oracle Linux RHCK의 알려진 문제는 RHEL 6.8용 을 <block ref="7703b3b38de881e061b6dbcbbcaf9f81" category="inline-link-macro-rx"></block>참조하십시오.</block>
-  <block id="01959cefae34c9172600de87478915b8" category="admonition">Oracle Linux 6.9 RHCK(Red Hat Compatible Kernel)을 구성하려면 RHEL(Red Hat Enterprise Linux) 6.9용 을 <block ref="e6290e19ce3858749b0edbfa1565d904" category="inline-link-macro-rx"></block>사용하십시오.</block>
-  <block id="9933915a8c8496b899a0b703737d9f01" category="admonition">Oracle Linux RHCK의 알려진 문제는 RHEL 6.9용 을 참조하십시오<block ref="6381fe6a72f9bd9f067a0ec390d2a8fb" category="inline-link-macro-rx"></block>.</block>
   <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
   <block id="a1a9afcf552a769c282769271829889a" category="paragraph"><block ref="a1a9afcf552a769c282769271829889a" category="inline-link-macro-rx"></block></block>
   <block id="f99aa604031e5049799e73b5c3748a98" category="inline-link-macro"><block ref="f99aa604031e5049799e73b5c3748a98" category="inline-link-rx"></block></block>
@@ -1499,23 +1056,12 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
   <block id="1c14245df6ab2e81be70dc52cca5c6a7" category="list-text"> 않으면<block ref="86265333b9052ec5fde056eeddb3a5ef" prefix=" " category="inline-code"></block>위의 예제와 같이 명령 출력에 타겟 LIF가 표시되지 및<block ref="6b8cf905772edc32b7a7d638713c0075" prefix=" " category="inline-code"></block> 명령 출력에 의심스러운 NVMe/FC 오류가 있는지 확인한<block ref="452905a167cf4509fd08acb964fdb20c" prefix=" " category="inline-code"></block> 후 이에 따라 보고하거나 수정합니다.</block>
-  <block id="3586718df821d9ed09f536913d3bd9a7" category="paragraph">NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 32비트 또는 64비트 .rpm 파일로 에서 사용할 수<block ref="f3adb37009df4865b12833eb62333f96" category="inline-link-rx"></block> 있습니다.</block>
-  <block id="f359caedd63f71eeac23c0d8ceff8c7c" category="paragraph">NetApp은 Linux 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.</block>
-  <block id="ed6980402e673a897eebc507fe61dda9" category="list-text">현재 Linux Host Utilities 버전이 설치되어 있는 경우 다음 명령을 사용하여 제거합니다.</block>
-  <block id="3711e8a759b37df67abde096f802d964" category="paragraph">이전 버전의 Linux Host Utilities의 경우, 호스트 유틸리티 소프트웨어가 설치된 디렉토리로 이동하여 명령을 입력합니다<block ref="fe98497efedbe156ecc4b953aea77e07" prefix=" " category="inline-code"></block>.</block>
-  <block id="a135ef26add2b374cc7e890cc40070ad" category="list-text">에서 호스트로 32비트 또는 64비트 Linux Host Utilities 소프트웨어 패키지를 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block>다운로드합니다.</block>
   <block id="918d32b75f0ab883abba3a8dc0c3ae8d" category="inline-link-macro">상호 운용성 매트릭스 툴</block>
-  <block id="42d17d7d4b5b5876e51c0354558f565b" category="paragraph">NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 32비트 및 64비트 .rpm 파일로 에서 사용할 수 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block>있습니다. 구성에 적합한 파일을 모르는 경우 를 사용하여 필요한 파일을 <block ref="1ed2ba1980a264d01ab3597cde177180" category="inline-link-macro-rx"></block>확인합니다.</block>
-  <block id="1b80d752b74fcd7677f71f325d2164fb" category="paragraph">NetApp은 Linux 호스트 유틸리티를 설치할 것을 적극 권장하지만 필수는 아닙니다. 이 유틸리티는 Linux 호스트의 설정을 변경하지 않습니다. 유틸리티를 사용하면 관리를 개선하고 NetApp 고객 지원 이 귀사의 구성 정보를 수집할 수 있도록 지원합니다.</block>
-  <block id="6435b8a207f05951dfeb7fd056caf33c" category="paragraph">현재 Linux Host Utilities가 설치되어 있는 경우 최신 버전으로 업그레이드하거나 제거한 후 다음 단계에 따라 최신 버전을 설치해야 합니다.</block>
   <block id="d6abc4db771f86dc1c4f6d99fd7bf5af" category="list-text">에서 호스트로 32비트 또는 64비트 Linux Host Utilities 소프트웨어 패키지를 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block>다운로드합니다.</block>
-  <block id="b52e837974b9d8d8ddd74ad17e6ce8fa" category="paragraph">NetApp Linux 호스트 유틸리티 소프트웨어 패키지는 에서 64-bit.rpm 파일로 다운로드할 수 있습니다<block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block>.</block>
-  <block id="97aa5491a59bdf765819c6816141ff31" category="list-text">에서 호스트에 64비트 Linux Host Utilities 소프트웨어 패키지를<block ref="f3adb37009df4865b12833eb62333f96" category="inline-link-rx"></block> 다운로드합니다.</block>
   <block id="01f3b61694e835dc0ccae70425e4829e" category="list-text">의 값이 256인지<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 확인합니다.</block>
   <block id="22882a842ed3381cf11f4f74315c331a" category="summary">AIX 호스트 유틸리티는 AIX 호스트에 연결된 ONTAP 스토리지를 관리할 수 있도록 지원합니다.</block>
   <block id="d44d09aed881c51268051c872ad6bdc3" category="list-text">파일의 압축을 풀고 SAN Toolkit 소프트웨어 패키지의 압축을 풉니다.</block>
   <block id="221c50744b3c4471b399c8dfa3509684" category="list-text">SAN 툴킷을 설치합니다.</block>
-  <block id="1c5b4d360e35ca810d1f0d9e9f5c5f11" category="section-title">Linux Host Utilities를 설치합니다</block>
   <block id="0061b8b2da9499e43ee5bb81cca2cc75" category="doc">ONTAP 스토리지용 AIX 호스트 유틸리티 6.1을 설치합니다</block>
   <block id="8528c64bd506ec73ae372e3daf3db608" category="summary">호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성의 엔드 투 엔드 검증에 AIX 호스트 유틸리티 샘플 명령 참조를 사용할 수 있습니다.</block>
   <block id="f649e10e42e29ffba2e2835946ada018" category="paragraph">SAN 부팅을 사용하려는 경우 구성에 의해 지원되어야 합니다. 를 사용하여 OS, HBA, HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 지원되는지 확인할 수 <block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>있습니다.</block>
@@ -1548,22 +1094,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="53aa5d6687de6e1ac7fc2fd3ae4ab539" category="doc">Linux Host Utilities 7.1을 설치합니다</block>
   <block id="d895168ecaf0f9622aa5a6fc78ac6433" category="admonition">Linux Host Utilities 소프트웨어는 NVMe/FC(NVMe over Fibre Channel) 및 NVMe/TCP(NVMe over TCP) 호스트 프로토콜을 지원하지 않습니다.</block>
   <block id="17f8692005ca3aae6a8d4543ddd9c587" category="paragraph">이전 버전의 Linux Host Utilities의 경우, 호스트 유틸리티 소프트웨어가 설치된 디렉토리로 이동하고 uninstall 명령을 입력하여 설치된 패키지를 제거합니다.</block>
-  <block id="f21a97e5f93a332ec5e10589f1cc0cde" category="cell">QLogic 어댑터 재설정은 Takeover/Giveback과 같은 컨트롤러 오류에서 UEK2를 사용하는 OL 6.4 및 OL 5.9에서 확인되고 재부팅됩니다</block>
-  <block id="fcd36226316847b6cd7249c1c5b2a29e" category="cell"><block ref="6c47b91e986798fecb612c7c033d4440" category="inline-link-macro-rx"></block></block>
-  <block id="931233fb0786a45cf8b017c785befc99" category="cell">UEK2가 있는 OL 6.4 또는 OL 5.9 호스트에서 경로 복구가 지연되면 컨트롤러 또는 Fabric 장애에서 I/O 재개가 지연될 수 있습니다</block>
-  <block id="333fc2a743331254f325cc4eba33bffd" category="cell">OL 6.4 및 UEK2 커널을 사용하는 OL 5.9 iSCSI의 DM 다중 경로는 스토리지 장애 후 LUN 경로 상태를 업데이트하는 데 오랜 시간이 걸립니다</block>
-  <block id="2b309818a09bd146377b80b8a3b4b0fa" category="cell">OL 7.0: I/O를 사용한 스토리지 페일오버 작업 중에 QLogic 8G FC(QLE2562) SAN 호스트에서 높은 I/O 중단이 관찰되었습니다</block>
-  <block id="c2c411452516aebacab5c79863d8309a" category="cell">I/O를 사용한 스토리지 페일오버 작업 중에 QLogic 8G FC(QLE2562) 호스트에서 높은 I/O 중단이 발생할 수 있습니다 호스트에서 I/O 중단이 발생하면 중단 및 디바이스 재설정이 나타납니다. 이러한 I/O 중단에 도달할 확률은 높습니다.</block>
-  <block id="47b9eac8af8366ae4f0b0465c721421a" category="cell">I/O에서 스토리지 페일오버 작업 중에 QLogic 10G FCoE(QLE8152) 호스트 커널 충돌이 관찰되었습니다</block>
-  <block id="bac308bb2508ea231c1ae7a0d35966b6" category="cell">10G FCoE Qlogic(QLE8152) 호스트에서 Qlogic 드라이버 모듈에서 커널 충돌이 관찰될 수 있습니다. 충돌은 I/O와 함께 스토리지 페일오버 작업 중에 발생합니다 이 충돌에 도달할 가능성이 높으므로 호스트에서 입출력 중단이 더 길어집니다.</block>
-  <block id="3de92c25933a0a9d0f55d63ecc97863c" category="cell">스토리지 페일오버 작업 중에 RHEL(Red Hat Enterprise Linux) 7.6에서 QLogic QLE2672 16G 호스트를 사용하는 FC(Fibre Channel) 원격 포트가 차단될 수 있습니다. 스토리지 노드가 다운될 때 논리 인터페이스가 다운되기 때문에 원격 포트는 스토리지 노드 상태를 차단됨 으로 설정합니다. QLogic QLE2672 16G 호스트와 QLE2742 32Gb FC(Fibre Channel) HBA(호스트 버스 어댑터)를 모두 실행하는 경우 차단된 포트로 인해 I/O 진행률이 중지될 수 있습니다. 스토리지 노드가 최적 상태로 돌아오면 논리 인터페이스도 함께 가동되고 원격 포트는 온라인 상태가 됩니다. 그러나 원격 포트는 여전히 차단되어 있을 수 있습니다. 이 차단된 상태는 다중 경로 계층의 LUN에 장애가 발생한 것으로 등록됩니다. 다음 명령을 사용하여 원격 포트의 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_stat 차단된 온라인 온라인 온라인 온라인 온라인 온라인 상태의 출력은 다음과 같습니다</block>
-  <block id="c6d32c98e166f82fc8f562dfaf17e0f1" category="cell">Qlogic QLE2672(16G)를 사용하여 스토리지 페일오버 중에 보조 경로를 통해 전환하지 못해 읽기/쓰기 작업으로 인해 관찰된 I/O 지연</block>
-  <block id="69d57e3d0b6f0c5e0f03a7d5dca87f6e" category="cell">Emulex LPe16002(16G)를 사용한 스토리지 페일오버 중에 보조 경로를 통한 전환이 실패하여 읽기/쓰기 작업이 관찰되는 입출력 지연</block>
-  <block id="9fc9bdaf569f62449156719f31a27f03" category="cell">Emulex LPe16002(16G)를 사용하여 스토리지 페일오버 중에 I/O 지연이 관찰되고 보고가 차단됨, 존재하지 않음 상태로 전환됨</block>
-  <block id="55044503b133c5b4c97864a314a57c73" category="cell">Qlogic QLE2672(16G) 및 QLE2742(32G)를 사용하여 스토리지 페일오버 중에 I/O 지연이 관찰되고 Rports가 Blocked, Not Present 상태로 전환됨</block>
-  <block id="1b9a343a05e32d1550875621b82c0b1a" category="cell">스토리지 페일오버 작업 중에 RHEL(Red Hat Enterprise Linux) 7.6에서 QLogic QLE2672 16G 호스트를 사용하는 FC(Fibre Channel) 원격 포트가 차단될 수 있습니다. 스토리지 노드가 다운될 때 논리 인터페이스가 다운되기 때문에 원격 포트는 스토리지 노드 상태를 차단됨 으로 설정합니다. QLogic QLE2672 16G 호스트와 QLE2742 32Gb FC(Fibre Channel) HBA(호스트 버스 어댑터)를 모두 실행하는 경우 차단된 포트로 인해 I/O 진행률이 중지될 수 있습니다. 스토리지 노드가 최적 상태로 돌아오면 논리 인터페이스도 함께 가동되고 원격 포트는 온라인 상태가 됩니다. 그러나 원격 포트는 여전히 차단되어 있을 수 있습니다. 이 차단된 상태는 다중 경로 계층의 LUN에 장애가 발생한 것으로 등록됩니다. 다음 명령을 사용하여 원격 포트의 상태를 확인할 수 있습니다. #cat/sys/class/fc_remote_ports/rport- * /port_stat 차단된 온라인 온라인 온라인 온라인 온라인 온라인 상태의 출력은 다음과 같습니다</block>
-  <block id="23cd5840e42365c634c6242d03cd4c9e" category="cell">RHEL 6U4에서 저장소 장애 시 QLogic 16G FC(QLE2672) 호스트에서 최대 300초의 I/O 중지</block>
-  <block id="4ab0ffec7c4a080af27b43ce5f05a0ed" category="cell">스토리지/Fabric 장애 시 QLogic 16G FC(QLE2672) 호스트에서 최대 300초의 I/O 스톨이 관찰될 수 있습니다.</block>
   <block id="a8ef8037d8bc65ce5c031566c94c1bdf" category="cell">RHEL 9.1에서 NetApp Linux SAN Host Utilities CLI는<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> HBA 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
   <block id="97cd8ca681a54160b844883a804a9d15" category="cell">RHEL 9.2에서 NetApp Linux SAN Host Utilities CLI는<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> HBA 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
   <block id="202b2328413819343791c425b58e837e" category="cell">RHEL 9.x에서 NetApp Linux SAN Host Utilities CLI<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block>는 Emulex HBA(호스트 버스 어댑터) 검색을 지원하는 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
@@ -1630,7 +1160,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="5bd371b303a08f10ed03a43a40df6b03" category="sidebar">Windows 호스트 유틸리티를 복구 및 제거합니다</block>
   <block id="ebbd466160e6d2d7f97b6dab115ddc71" category="admonition">이 절차에 제공된 구성 설정을 사용하여 및 에 연결된 클라우드 클라이언트를 구성할 수 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block><block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>있습니다.</block>
   <block id="64850e5ba65ccd603def52fce0d8ef52" category="paragraph">비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
-  <block id="3ac0cbe21a89eff36272c46427a6190f" category="paragraph">우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="f2e04893e244d58e7312b018d7c330cd" category="admonition">호스트 OS가 가동되고 경로에서 실행되면 여러 경로를 사용할 수 있습니다.</block>
   <block id="39c75b1752c16e4e7cf46909e305e32e" category="paragraph">커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.</block>
   <block id="570f72c2c071dfe2d63d01eb26c78095" category="paragraph">ONTAP은 현재 NVMe/FC를 통한 영구 예약을 지원하지 않으므로 Windows 페일오버 클러스터가 NVMe/FC에서 지원되지 않습니다.</block>
@@ -1667,7 +1196,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="d211c3930b27be56feb1a5044f105d64" category="paragraph">NetApp은 호스트 서버에 Microsoft Update 카탈로그에서 제공되는 * 최신 누적 업데이트 * 를 설치할 것을 권장합니다.</block>
   <block id="c6e9e839e8304cacb5378299e7f6ca42" category="inline-link-macro">Microsoft Update 카탈로그 2025</block>
   <block id="68e5c8d1251c633565ba668446a95b32" category="list-text">에서 핫픽스를 <block ref="86167046a85b88d4b396a82107daadba" category="inline-link-macro-rx"></block>다운로드합니다.</block>
-  <block id="769a40f63534a31b2b123052ac1da6ad" category="list-text"><block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>명령의 출력을 확인하여 설정이 완료되었는지 확인합니다. <block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>명령을 사용하여 ONTAP LUN의 설정을 확인할 수 있습니다. 우선 순위가 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.</block>
   <block id="d7b8955c7b96bef9985fd48649d70251" category="list-text">에서 핫픽스를 <block ref="c91fa8395bb99838be8ab4e7b48666cc" category="inline-link-macro-rx"></block>다운로드합니다.</block>
   <block id="d933dd46766685abc25b001848a8b8a5" category="list-text">에서 핫픽스를 <block ref="6e6b75f4256049ee1dbc008868e8aa3a" category="inline-link-macro-rx"></block>다운로드합니다.</block>
   <block id="35fec4b95b75bf64df4556334d921ef8" category="list-text">에서 핫픽스를 <block ref="145f31fd192f816eb74b3bac6d3cac60" category="inline-link-macro-rx"></block>다운로드합니다.</block>
@@ -1718,13 +1246,11 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="445d6b5f796f2b279f00ab2c9c5e6254" category="paragraph">"sda"는 블랙리스트에 추가할 로컬 SCSI 디스크입니다.</block>
   <block id="e1a0a896b133a9df3a5dc3d31ed27985" category="paragraph">WWID의 예는<block ref="4f99c93f391ff0e2d6860a0f43807ae1" prefix=" " category="inline-code"></block>입니다.</block>
   <block id="95df4d86cda06c7a5f71afc3cb50e975" category="list-text">WWID를 "블랙리스트" 스탠자에 추가합니다.</block>
-  <block id="c759a9b7e4db09da8a25fb73d256f6b7" category="doc">ASM 미러링</block>
   <block id="411779633a68ad8ff4bb5f0b84de0e3d" category="doc">1단계: HP-UX Host Utilities를 설치합니다</block>
   <block id="7a5a6ee53a3c56e370cff4e4cb600d3a" category="paragraph">NetApp은 ONTAP LUN 관리를 지원하고 기술 지원이 구성 데이터 수집을 돕기 위해 Linux 호스트 유틸리티를 설치할 것을 적극 권장합니다.</block>
   <block id="5d17e83279fd5189b40ec31e6e0efc6c" category="inline-link-macro">HP-UX Host Utilities 6.0을 설치합니다</block>
   <block id="7b3d6a6184bc8044fb4eaa2361a0c137" category="paragraph"><block ref="a1822c628e463c7a9fa61c1a4713b4ef" category="inline-link-macro-rx"></block>..</block>
   <block id="cd30444b7075100f9dce64caf41ba2b7" category="doc">2단계: Linux Host Utilities를 설치합니다</block>
-  <block id="2f2f70e91ff2172f6a78bf052b441f39" category="paragraph"><block ref="806369b10c4f480029bde19415f580b3" category="inline-link-macro-rx"></block>..</block>
   <block id="a9764a4b476a4ae40670f2b10ab9b4aa" category="admonition">Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 초과 설정은 변경되지 않습니다.</block>
   <block id="0f8e25d5af08d115d6410aa42fa8c1e8" category="doc">5단계: ONTAP LUN에 대한 다중 경로 매개 변수를 사용자 지정합니다</block>
   <block id="3fe581ad5b991799c1f61a8549c04d3a" category="paragraph">호스트가 다른 공급업체의 LUN에 접속되어 있고 다중 경로 매개 변수 설정이 무시되는 경우 나중에 ONTAP LUN에 특별히 적용되는 파일에서 stanzas를 추가하여 수정해야<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 합니다. 이렇게 하지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다.</block>
@@ -1756,68 +1282,9 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="2dc85993483fece6ce86d25200665755" category="paragraph">다음 표는 ONTAP LUN에 대한 Linux 운영 체제 네이티브 컴파일 다중 경로 매개 변수 설정을 보여줍니다.</block>
   <block id="7d6ed8198fddc97f7e4e07dc8cb965c1" category="inline-link-macro">Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오</block>
   <block id="5c74c157af6548045320136db7e14e99" category="doc">ONTAP 스토리지용 HP-UX Host Utilities 6.0을 설치합니다</block>
-  <block id="f028744bf9b05cd3bcbd2c3f5c5b6c7f" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 7.0과 iSCSI를 구성합니다</block>
-  <block id="18497b88bac0854e6974e347ddc9188e" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.0 호스트에 Linux 호스트 유틸리티를 설치할 때 Host Utilities를 사용하면 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="999228127327d5abbf22fcd7674b2b9e" category="section-title">3단계: 호스트의 다중 경로 구성을 확인합니다</block>
-  <block id="b3adfc1f7e9ee7b157b8c51b912c425d" category="paragraph">RHEL 7.0에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="8c17d9c0a4a49ae4d62efebd1ab80463" category="section-title">6단계: 알려진 문제를 검토합니다</block>
-  <block id="c22862eab70fc7be44368d3c830d541d" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 7.0에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="58eaebf972358f1cf03d386a4ade1a0f" category="section-title">다음 단계</block>
-  <block id="81fb5fb5775603ea8dc6a17d5144ed1b" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 7.1과 iSCSI를 구성합니다</block>
-  <block id="f3b4f8a5dd70dc3e3693742e0a9322e3" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.1 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에 대한 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="f222205a26c665cad223780b22818899" category="paragraph">RHEL 7.1에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="37e494fb17255c38051ff4fddc7174c8" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 7.1에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="5ec150a01022c7ffb2ea509d43f90109" category="doc">ONTAP 스토리지로 FCP를 위한 RHEL 7.2와 iSCSI를 구성합니다</block>
-  <block id="b1107905bf3c0b6a8e21c1c2386a46b7" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.2 호스트에 Linux 호스트 유틸리티를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="03064e2ab43bcb41cd28538c650cc801" category="paragraph">RHEL 7.2에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="84687efd79661dbb35c09e4cb378c105" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 7.3과 iSCSI를 구성합니다</block>
-  <block id="56239a195859761293701022b4912788" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.3 호스트에 Linux 호스트 유틸리티를 설치할 때 Host Utilities를 사용하면 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="40500ccea85cefb8a7cdc5fb2ea83542" category="paragraph">RHEL 7.3에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="94b8c22baf0b7dbb095ce06101867445" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 7.4와 iSCSI를 구성합니다</block>
-  <block id="77fd16a6d6bbcf7742b66db7044d38d0" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.4 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="b694a9dee9557edf02ab0ed1dccf607b" category="paragraph">RHEL 7.4에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="7fcd36ef31bb4be8163b18808f720cf8" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 7.4에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="8bf5f20a701c13ae4d018b5abd001c43" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 7.5를 구성하고 iSCSI를 구성합니다</block>
-  <block id="2fb7c7d215e4b50a8a2e5fa321763db5" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.5 호스트에 Linux 호스트 유틸리티를 설치할 때 Host Utilities를 사용하면 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리하는 데 도움이 됩니다.</block>
-  <block id="7de3eddf93d1a9df0107c724709a4c9f" category="paragraph">RHEL 7.5에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="140e3674a28b4cad012da860eb79406e" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 7.5에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="893ed72283da3ba926b733baec01de08" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 7.6을 구성하고 iSCSI에 대해 RHEL 7.6을 구성합니다</block>
-  <block id="415cfc71545e8cd1669296214036dabd" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.6 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="6cdc6bc9e56b0bfee86d847aa312cf61" category="paragraph">RHEL 7.6에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="e98274a1b3143f4a92012b1d4cda192d" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 7.6에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="8b2495a611812b40fbc6679c56f6558b" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 7.7과 iSCSI를 구성합니다</block>
-  <block id="f1bbd5cfd8990934177f4646ea758902" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.7 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="928949f66d46c504ffa1af8de9ddecb8" category="paragraph">RHEL 7.7에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="dcf3a8ab5d4a9a8ecd9ba641aa581622" category="paragraph">RHEL 7.7과 ONTAP 스토리지 릴리스의 알려진 문제는 다음과 같습니다.</block>
-  <block id="308eafa363fd82257b5e625aa9a6685d" category="doc">ONTAP 스토리지를 사용하여 FCP에 대해 RHEL 7.8을 구성하고 iSCSI를 구성합니다</block>
-  <block id="2a8fe07603026aeb9ff1c1f9b3a65c30" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.8 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c9daa0a7a1d126dbbb88a455af454ef8" category="paragraph">RHEL 7.8에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="292012ffe2e958d006c6f92468b2faae" category="paragraph">ONTAP 스토리지 릴리스가 포함된 RHEL 7.8에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="39767a6684c0d280d8cc838145662ca8" category="doc">ONTAP 스토리지를 사용하여 FCP용 RHEL 7.9와 iSCSI를 구성합니다</block>
-  <block id="c03b2b8b8f3e7592387eb48c09025f97" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Red Hat Enterprise Linux(RHEL) 7.9 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="cdec23a6dd205642c08c3dae43a8bb57" category="paragraph">RHEL 7.9에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="4daca65b9dae2e242aaa6a2277999402" category="paragraph">RHEL 7.9 및 ONTAP 스토리지 릴리스에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="43d4d647f16dbd3d230e0439558b88db" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 12를 구성합니다</block>
-  <block id="dfeac90f4b243e13abf1a334467b65be" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 12 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="40821342e4bc79cbad2926f4ac5e6e9b" category="paragraph">SUSE Linux Enterprise Server 12에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="353e0178f08fe633ef44c53b8b81c881" category="paragraph">SUSE Linux Enterprise Server 12(ONTAP 스토리지 릴리스 포함) 에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="0732b891c880c9dbcb25e237489f2690" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 12 SP1을 구성합니다</block>
-  <block id="35442e4fb09a88ef3b61548c1d313ca6" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 12 SP1 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="027e454e384171d1e3c9995257d99e30" category="paragraph">SUSE Linux Enterprise Server 12 SP1의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="f988d88f2f216f30c645497165cfd810" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 12 SP2를 구성합니다</block>
-  <block id="17af054de7aff379d2535d2d3a741b6c" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 12 SP2 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="41a5cb180e7da4a03e67f0dc5ec70519" category="paragraph">SUSE Linux Enterprise Server 12 SP2에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="0aa50bc4fdeb93affeaf90946517497d" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 12 SP3을 구성합니다</block>
-  <block id="8d2181849ed202394c15c71268f18091" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 12 SP3 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c393951767294986be150803e0f8f4c7" category="paragraph">SUSE Linux Enterprise Server 12 SP3에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="2c498b7b9708c9f4569e22f6968134a6" category="paragraph">SUSE Linux Enterprise Server 12 SP3(ONTAP 스토리지 릴리스 포함) 에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="d4ac069c6a8649236291248f8cb48ad5" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 12 SP4를 구성합니다</block>
-  <block id="938545feadf1d265f32fc36e375443d5" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 12 SP4 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="ebfb843ce5c216e913ed4393a5b3edb5" category="paragraph">SUSE Linux Enterprise Server 12 SP4의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="6babcc3820e85723b8392d0c9c00e35f" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 SUSE Linux Enterprise Server 12 SP5를 구성합니다</block>
-  <block id="3a0736cdf2a565e3d5f79ecb7eee0b95" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. SUSE Linux Enterprise Server 12 SP5 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="43398cfb8eda87e25787443ae87a9706" category="paragraph">SUSE Linux Enterprise Server 12 SP5의 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="2d2ceaeb1cde218bda6ef5263308fea7" category="paragraph">ONTAP 스토리지 릴리스가 포함된 SUSE Linux Enterprise Server 12 SP5에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="d29ad9efbcae6053e82420f1cc871c51" category="paragraph">VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서 및 및 를<block ref="c45840700e4ab6d55371aa3a3251b306" category="inline-link-rx"></block> 참조하십시오.<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block></block>
   <block id="764c3360f3f7d6cb07c2ff1a79f2cf58" category="paragraph">VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서 및 및 를 <block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>참조하십시오.<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block></block>
   <block id="d04eb85f6d5ba5f0fcd2c894dea16fe5" category="paragraph">VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere용 ONTAP 툴 설명서, <block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>및 를 참조하십시오.<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block></block>
@@ -1873,7 +1340,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="6d9eef6a4c2617ee0a8dfdc9ae7a468a" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Citrix Xenserver 8.4 구성</block>
   <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">SAN 부팅 LUN을 생성하고 호스트에 매핑합니다.</block>
   <block id="23f9932633d90fac9929676a3d96b73c" category="list-text"><block ref="d3b050efbc8875625662ab7a3bc1d82e" category="inline-link-macro-rx"></block>..</block>
-  <block id="55e68527d8c164dc338b18da64611305" category="admonition">ONTAP LUN이 KVM 하이퍼바이저에 자동으로 매핑되므로 KVM(커널 기반 가상 머신) 설정을 구성할 필요가 없습니다.</block>
   <block id="83946a5f9a0c9e6468d1616ca938bdd0" category="list-text">RHEL 호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
   <block id="43075b4ae15209d42a33c26736b1a616" category="list-text">Rocky Linux 호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
   <block id="5b65dc582fc3a54b76dad70a8f267f3f" category="paragraph">Broadcom/Emulex FC 또는 Marvell/Qlogic FC 어댑터를 사용하여 NVMe/FC를 구성할 수 있습니다. 또한 NVMe/TCP 하위 시스템과 네임스페이스를 수동으로 검색해야 합니다.</block>
@@ -1889,135 +1355,7 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="9c5a13309f2776c548f1cdaad8fc39ea" category="sidebar">RL-10-FCP를 참조하십시오</block>
   <block id="e17ceddf1264512daf0c5ceaca0a2a0d" category="sidebar">RL-9-FCP를 참조하십시오</block>
   <block id="32abbb92208e586e49dce3e4e69b53e5" category="sidebar">RL-8-FCP를 참조하십시오</block>
-  <block id="d2e384028f122a3391609393d4a2635e" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.0 구성</block>
-  <block id="b7f92a2c197778c06a0c90dd30058b43" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="cf6c05052f2b786c1482bf0ffeb8248b" category="paragraph">CentOS 7.0에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="fc6c6adaa6932ae9bb4f8523a5b96422" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.1 구성</block>
-  <block id="ea41040fff9210213568690e103c3c6e" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.1 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="a9bfc717cd75f388ea17d7c53039b003" category="paragraph">CentOS 7.1에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="68376c8c22b8540972d010862788d0de" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.2 구성</block>
-  <block id="ebd6c56e2fb22c7365a110a4400b3e3f" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.2 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="4191601859d7a234ecfdd809ef7254bb" category="paragraph">CentOS 7.2에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="05358af870772ebc5bef63e897bf4728" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.3 구성</block>
-  <block id="d6e10fed24d6d29ec85417923159b76c" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.3 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="bf681187bcb154b7112f409c33a82e6b" category="paragraph">CentOS 7.3에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="148f54232f880f3d83186a7514ed656f" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.4 구성</block>
-  <block id="f50c262e25e0e28408113badfd06b284" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="d09d2873256392ae23e2087af611ab7a" category="paragraph">CentOS 7.4에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="045d005cf748f8868a4f799190dfe35c" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.4 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="da0f0cee5b5902b87e8d61311b7de818" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.5 구성</block>
-  <block id="e365476a27f4c1bc73f093801313c93d" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.5 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="4cabc1b52c28cb613dc6d5c3aad5095c" category="paragraph">CentOS 7.5에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="41c7f526069561bd962e7e0a3c3b5e09" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.5 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="6b9edcecd50c44b4970d4b47ebf5c742" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.6 구성</block>
-  <block id="8939d632c326d668740c43e490bd0c9a" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.6 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="e7d64eb1a737f3e4da5c41c38bf8989e" category="paragraph">CentOS 7.6에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="30a13201fd2baa06af07321cd1ab5581" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.6 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="67964124758fa8a3c37a596b2384f957" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.7 구성</block>
-  <block id="d6079b971eb4ab429e173a6d260758d3" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.7 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="a2d4e9d1c3726a1ed3c8c8deca6e9739" category="paragraph">CentOS 7.7에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="8fa46090515c1e239e7e30c63a10fd69" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.7 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="9ea80965b906e6221845b8f95917ee00" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.8 구성</block>
-  <block id="0f85f6e230aeea13b9179c9e79ef143b" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.8 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="181b93d51397aeac0aa45c182b1538f6" category="paragraph">CentOS 7.8에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="d08ccdb6faf142d94c2ef003531659ad" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.8 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="4984519991a90ef8109bebcddb1ef4a1" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 7.9 구성</block>
-  <block id="424fbbe58d081fac8928ddb2baa0049a" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. CentOS 7.9 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="4884d9c0ac331c0961ce8e16922aa141" category="paragraph">CentOS 7.9에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="e85e8ae42253cb29511a2226b89895d8" category="paragraph">ONTAP 스토리지를 탑재한 CentOS 7.9 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="ec2b69a90d4ad7c0b52ee36206d73d00" category="paragraph">구성에 따라 UEK 3 또는 UEK 4 탭을 선택하세요.</block>
-  <block id="cc8b422ca0fb64a2e3dca2a58a9fbd5a" category="open-title">UEK 3 를 참조하십시오</block>
-  <block id="cd63b2a656064944e61df028e283858e" category="paragraph">ALUA 기능이 있거나 없는 Oracle Linux UEK 3의 설정은 자동으로 업데이트됩니다. 설정 업데이트 후에는 "ALUA 핸들러"를 활성화해야 합니다.</block>
-  <block id="886f99c5fcfd8854183a6225b4c60133" category="list-text">ALUA와 비 ALUA가 작동하도록 커널에 다음 매개변수 값을 추가합니다.</block>
-  <block id="27db7405166029a1f86b33674f8f6427" category="list-text">initrd 이미지를 다시 만듭니다.</block>
-  <block id="797d7c769a6ede56bea7336cfa2b35b1" category="list-text">출력을 검토하세요 <block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block> 설정이 완료되었는지 확인하는 명령입니다.</block>
-  <block id="4409363a45cfa288ed524d4f0dc52e3e" category="open-title">UEK 4 를 참조하십시오</block>
-  <block id="5dd29161b38ded1b0182c73e6e601911" category="paragraph">Oracle Linux UEK 4의 경우 다음을 확인하십시오. <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 정의되어 있고 NetApp에서 권장하는 설정이 ONTAP LUN에 대해 구성되어 있는지 확인하세요.</block>
-  <block id="702585b74cd8e66c02a1414878b2ad93" category="paragraph">다음 예제 출력은 두 개의 활성/최적화 경로와 두 개의 활성/비최적화 경로가 있는 AFF 또는 FAS 구성에서 ONTAP LUN에 대한 올바른 매개변수 설정과 경로 상태를 보여줍니다.</block>
   <block id="9de6a58a42e3c57aa7665ee2c2c7a0e5" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Rocky Linux 8.10 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="06bee3156fdb14564c410b4498b097cb" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="b6723505a37d0b64b9b52432313b8852" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.0 구성</block>
-  <block id="c98016ceb7330c62da586826bc6e84a9" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.0 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="f11e8a65ee4d8f512c6910535126b064" category="paragraph">Oracle Linux 7.0에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다. Oracle Linux 7.0는 UEK(Unbreakable Enterprise Kernel) R3 및 UEK R4를 지원합니다. OS는 기본적으로 UEK R3 커널로 부팅됩니다.</block>
-  <block id="0a627dc7670881f913f0e4a165b6bb46" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.0에 권장되는 설정</block>
-  <block id="344a00417c7ae747fe1e1f05157b268a" category="admonition">당신은 사용할 수 있습니다 <block ref="e59ed221f87ba2a8cc499ac766b44342" category="inline-link-macro-rx"></block> Oracle Linux 7.0에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="ff2c93098bc2ed77e4400db37641ab6d" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 7.0 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="6456e9f56b06969f146b1d1619338d4b" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="4f8fe8e066f9b3399a0c008c020475e0" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.1 구성</block>
-  <block id="2e0c9484f52170f0e7cb55566ac20685" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.1 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="6c228ee909d31f7bcd007e9ed4649a71" category="paragraph">Oracle Linux 7.1에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다. Oracle Linux 7.1는 UEK(Unbreakable Enterprise Kernel) R3 및 UEK R4를 지원합니다. OS는 기본적으로 UEK R3 커널로 부팅됩니다.</block>
-  <block id="87c4bb6a09c350b4e58e1fc614d57260" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.1에 권장되는 설정</block>
-  <block id="67c538bb4f8a4ac7edf43176b308c7d5" category="admonition">당신은 사용할 수 있습니다 <block ref="5aae1127186c8a731e4f3f6ff6b462de" category="inline-link-macro-rx"></block> Oracle Linux 7.1에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="659d61ee85a168a0b75815e1dfd94f57" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="5fb9e5411853fa828e64a72e70e384d6" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.2 구성</block>
-  <block id="2eb3858da2328dcd865224d255f4a2b6" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.2 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="e25fc8d95e1dad63b4cfa1ec35e2ef55" category="paragraph">Oracle Linux 7.2에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다. Oracle Linux 7.2는 UEK(Unbreakable Enterprise Kernel) R3 및 UEK R4를 지원합니다. OS는 기본적으로 UEK R3 커널로 부팅됩니다.</block>
-  <block id="21ad379836594c32fa9b55f462aa5a46" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.2에 권장되는 설정</block>
-  <block id="2ee2e29c89c2fdebfe01f51a415ac0c9" category="admonition">당신은 사용할 수 있습니다 <block ref="367c3a0ce216d0240c944dddcf10cbf2" category="inline-link-macro-rx"></block> Oracle Linux 7.2에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="d9f78e876a2523bc7073d4bbf71a4717" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="d3ca13fd42b07e8c829e0fec66c524dc" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.3 구성</block>
-  <block id="8582efddebf5254a9b805a19482606a5" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.3 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="22475f552f79d61b9706b2155e686196" category="paragraph">Oracle Linux 7.3에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="f7172e0ad01f6ca6fe7ea08f533242bb" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.3에 권장되는 설정</block>
-  <block id="5eca29f114745b63b4b5ee4f36ec3983" category="admonition">당신은 사용할 수 있습니다 <block ref="6f9f271fbb5ffd2941f925190387cb1a" category="inline-link-macro-rx"></block> Oracle Linux 7.3에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="447e6759bea11b1141bc5c9e6cb4f050" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="1feef37e8a256ccf657fd1e42d5f3dd0" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.4 구성</block>
-  <block id="c86736cc38790c001659ab8f946c4e97" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.4 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="c7bba878361a729749e031736babdfe6" category="paragraph">Oracle Linux 7.4에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="97b4b704bbdef60360c0078084bbf4a6" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.4에 권장되는 설정</block>
-  <block id="60d6ee65ece18cf54d1efd1b3f89446f" category="admonition">당신은 사용할 수 있습니다 <block ref="289c5c407494866cd4b35ae1a329141a" category="inline-link-macro-rx"></block> Oracle Linux 7.4에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="857efccb3475eedc0c42537e2fcb83fd" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 7.4 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="60af987a6adfd89406c3413fa50e22b9" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="d8d8e25f0cce2948aabb266c40a056d5" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.5 구성</block>
-  <block id="7425f582fb982552925c458bcb876ff4" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.5 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="32604d53bcfecd53b3bb540875839b7b" category="paragraph">Oracle Linux 7.5에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="63a37003209dc4e3bdb571cad5190876" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.5에 권장되는 설정</block>
-  <block id="fba44d628a255dec883dc655d32a5c69" category="admonition">당신은 사용할 수 있습니다 <block ref="9b87ea4933c70a4cf4affde4b5d07098" category="inline-link-macro-rx"></block> Oracle Linux 7.5에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="fea9fa46f29f13cf5cb3e402c1d1a215" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 7.5 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="41a95b9a3cfa82bfee49e88f1a91bdd0" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="925f8f737aef8e7e29fd1fd38527ee03" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.6 구성</block>
-  <block id="d76c4aa2502462093072b91689ae0476" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.6 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="5e168086ac16161a42f57182b64a2991" category="paragraph">Oracle Linux 7.6에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="f1d9dc7ca279cc11e699d2e7d8b8670d" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.6에 권장되는 설정</block>
-  <block id="58e45da6ae9fabff94304160e2d04d12" category="admonition">당신은 사용할 수 있습니다 <block ref="97426b5175e08cbde827bdff11077444" category="inline-link-macro-rx"></block> Oracle Linux 7.6에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="bc94594feb59b2985db10baa434c4915" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 7.6 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="f0ae242773ac25e0299d1f19e2c02e46" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="528b1953178443d52e91dba7d4912c42" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.7 구성</block>
-  <block id="e2f7f52cc3a0f9de37f72ec92928ad54" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.7 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="1e39745910fe016521b2b1af6e1c7044" category="paragraph">Oracle Linux 7.7에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="2dcaea3be2feb02d0a5326fea60c82c8" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.7에 권장되는 설정</block>
-  <block id="c6eb671420d82d9f7e581a17b2b84e89" category="admonition">당신은 사용할 수 있습니다 <block ref="c3375b9f8e1e93422b8b2f39da68ba9a" category="inline-link-macro-rx"></block> Oracle Linux 7.7에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="2f5b4e3c6423a2dab85060145af5c0d4" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 7.7 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="17af8dcc16bd2d1729d53400bbe137ec" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="1cf0da8f840e8f75a66b3161228c2c56" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대해 Oracle Linux 7.8 구성</block>
-  <block id="2a3953ddb3e3c25e07f071aebdd96eae" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.8 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="dc4d92b823b5ab1ed756f433899dd228" category="paragraph">Oracle Linux 7.8에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="391e0c3366ff1c5390bf1a87b3069793" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.8에 권장되는 설정</block>
-  <block id="d33df830aa7d9debdd25832fbf3c591b" category="admonition">당신은 사용할 수 있습니다 <block ref="546d16e6b2676ba15683358a4d5a8268" category="inline-link-macro-rx"></block> Oracle Linux 7.8에 대한 Red Hat 호환 커널을 구성하는 방법.</block>
-  <block id="49bc285aef23a71bacd48919a2e7f500" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 7.8 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="1cba5f48cb37ac7a44c8cdc05a1d2bf3" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 Oracle Linux 7.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="f6e4752ee0d5cabe608a533393584ad2" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 7.9 구성</block>
-  <block id="468c5ba2511c159dfe38fb8cbe6d4355" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Oracle Linux 7.9 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
-  <block id="4f7d9a40817444cd028f405e140262b6" category="paragraph">Oracle Linux 7.9에 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="35571988552b93433dd9185ea0c1ca22" category="inline-link-macro">Red Hat Enterprise Linux(RHEL) 7.9에 권장되는 설정</block>
-  <block id="20583a975c87e103781e8c8c43404f2e" category="admonition">당신은 사용할 수 있습니다 <block ref="17e9fe7ec973757c89c438e3bb4550f7" category="inline-link-macro-rx"></block> Oracle Linux 7.9에 대한 Red Hat 호환 커널을 구성합니다.</block>
-  <block id="12f506f1dd3100eb63869051d94173e5" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 7.9 호스트에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="f81b596fa05185bc389b5d37043c9987" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="616f42b9d1cf230290811cbb3daaf2b2" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="0100c79208916b122fa3c6a115562118" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="9b61c034fbfad4ceea9ef6b8fe7c3cd2" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="aaeb5ffaaea47e55f6373257b1191aaf" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="cc64fe5ff3373bcd6b454373e2ea7601" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="5f88db38a580ac6bd80c3a353df0fff7" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="9874504d4668432b051678d515b18231" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="6dce2c0b1e66005b92a8131b37bc2ca6" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="0b088c29cf019a622aef2e06a8707d14" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 7.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="a5b922e7d189ddfd380722cbad08b7f3" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 SUSE Linux Enterprise Server 12에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="a6714f6a5c15e6b53cac3b72ca626587" category="summary">SUSE Linux Enterprise Server 12 SP1에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="4e00c4c72dba50d94956ab89b937145e" category="summary">SUSE Linux Enterprise Server 12 SP2에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="94dc6201856e91e2db374fc0be05514a" category="summary">SUSE Linux Enterprise Server 12 SP3에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="0f55f1c828d7228be745c9d52c08c612" category="summary">SUSE Linux Enterprise Server 12 SP4에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
-  <block id="7524604f05c4cb312f8b4368134ca71b" category="summary">SUSE Linux Enterprise Server 12 SP5에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
   <block id="338966e2b23b6122da979eca43ad6e4f" category="list-text">재시도 횟수에 제한이 없습니다(무기한 재시도).</block>
   <block id="d403d0cd9e43abcce3cb23b419142aa4" category="list-text">특정 항목을 수동으로 구성할 필요가 없습니다. <block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block> 사용 시 지속 시간 <block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 또는 <block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령어(옵션 -l).</block>
   <block id="c11a8d4b4a55c4406dbae65b3938c149" category="list-text">NVMe/TCP 컨트롤러는 경로 장애가 발생해도 시간 초과가 발생하지 않으며 무기한 연결 상태를 유지합니다.</block>
@@ -2029,8 +1367,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="5e6b9d21bf7f0ca26372e62301cfb233" category="list-text">Linux 호스트에 대한 dhchap 키를 생성합니다.</block>
   <block id="383a7f0b627766628c1401340e5c41da" category="paragraph">RHEL 9.4부터 NVMe/TCP 설정 <block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block> 자동으로 "꺼짐"으로 설정됩니다. 그 결과,</block>
   <block id="074a67ebd91595adc758b4c88e040371" category="paragraph">Rocky Linux 9.4부터 NVMe/TCP 설정 <block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block> 자동으로 "꺼짐"으로 설정됩니다. 그 결과,</block>
-  <block id="1b7514bd57f9cc1b09f9148e93151331" category="sidebar">Oracle Linux 7</block>
-  <block id="c60ede747aeb2a1a339beabc79de8ca2" category="sidebar">Oracle Linux 6</block>
   <block id="7b041227be300a97269b0c517c4d8a5c" category="paragraph"><block ref="b5c9ec30dafc3cdd07e22705d3fd28f9" prefix="" category="inline-code"></block></block>
   <block id="654a0efc10421b3fc1ee44ca772778aa" category="summary">SUSE Linux Enterprise Server 15 SP7에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
   <block id="3939f5ab0e1b02b11f96cac181c4e774" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 버전:</block>
@@ -2523,16 +1859,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="23ca7e804a2f969375c0a54dad8a855e" category="list-text">호스트 유틸리티가 포함된 압축 파일의 사본을 다운로드하세요.<block ref="237990affc48ceaf00880be7be2d0c19" category="inline-link-macro-rx"></block> 호스트의 디렉토리로.</block>
   <block id="8af7a3daa634a1fe75d982742d9c6988" category="list-text">실행 파일을 다운로드하세요<block ref="4d71adee66f8e315be0be498f4a01c67" category="inline-link-rx"></block> .</block>
   <block id="7b14446bb459cc461b85225eb36e5ddb" category="list-text">실행하다<block ref="2ae3756e5933ab49d9a7fd370e8bb672" prefix=" " category="inline-code"></block> 파일을 선택하고 화면의 지시를 따르세요.</block>
-  <block id="33fc47220446607f038d8aa5cbb2f85f" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.0 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="06d16027989212eb9ec30fbbceecc483" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.1 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="d6736620899a1598c3323f146c329a47" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 CentOS 7.2 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="c7093ee3b2d76f9f54e1c7967a8757ed" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="f51784140f9e4c18aaaaabc97ab88175" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.4 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="bdc9a2b049ed8b5764f50150bca8aacd" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.5 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="f3a268ccef73be1a6f14d0c5e46779f4" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.6 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="3950d47aea232c7c0f4d9f45a43bda17" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.7 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="d539ad578c66b9df653e9cf83bd0c001" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.8 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
-  <block id="696f3bd641d1ac208e9dcbc482739bd0" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 CentOS 7.9 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="3c7efd424a20046d29e4da88c0d5c486" category="summary">ONTAP 스토리지를 사용하여 FCP 및 iSCSI 프로토콜 작업을 위한 특정 매개변수와 설정을 사용하여 Citrix Hypervisor 8.2를 다중 경로로 구성합니다.</block>
   <block id="1f5a17864fe735a3a834371ab2c3043e" category="paragraph">Linux Host Utilities 소프트웨어 패키지는 Citrix Hypervisor 운영 체제를 지원하지 않습니다.</block>
   <block id="56eaee8dcecb52bd60025f4df180e2f4" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 HP-UX 11i v3 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
@@ -2793,7 +2119,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="28b031394cea76c997a81517dfc279f9" category="cell">NVMe-oF 호스트에서  <block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 명령을 사용하여 PDC를 생성할 수 있습니다. 이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다. 그러나 NVMe-oF 호스트를 사용하여 ONTAP 9.10.1 및 RHEL 9.0을 실행하는 경우<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
   <block id="38247dd9f4f50ed3b751d728ecd0c52c" category="sidebar">NVMeoF OL</block>
   <block id="8cf639f80087b38e9251e80ba60c10c4" category="paragraph">기본 다중 경로 매개변수는 ASA, AFF 및 FAS 구성을 지원합니다. 이러한 구성에서는 단일 ONTAP LUN에 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상이면 저장소 오류 발생 시 문제가 발생할 수 있습니다.</block>
-  <block id="eaf928b18adce16330b705bb6a23e4f4" category="paragraph">기본 다중 경로 매개변수는 AFF 및 FAS 구성을 지원합니다. 이러한 구성에서는 단일 ONTAP LUN에 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상이면 저장소 오류 발생 시 문제가 발생할 수 있습니다.</block>
   <block id="97a99753b959b6770bb6efa96e4103e1" category="list-text">SAN 부팅 구성 지원 및 알려진 문제를 확인하려면 Veritas 지원 포털(제품 매트릭스, 플랫폼 조회 및 HCL 매트릭스)을 참조하세요.</block>
   <block id="4e7c573ceae9156d0f116447987fcb67" category="inline-link-macro">Linux 호스트 유틸리티 설치</block>
   <block id="365cd0fee231b17435b3bfc6d63500c7" category="paragraph">NetApp 강력히 권장합니다 <block ref="62bc9fa3453f6553a0a2bc6b05aa75d4" category="inline-link-macro-rx"></block> ONTAP LUN 관리를 지원하고 기술 지원팀이 구성 데이터를 수집하는 데 도움을 줍니다.</block>
@@ -3039,11 +2364,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="0422b676b23565d9254736bb23761b86" category="paragraph">SUSE Linux Enterprise Server 15 SPx 호스트용 영구 검색 컨트롤러(PDC)를 생성할 수 있습니다. PDC는 NVMe 서브시스템 추가 또는 제거 작업과 검색 로그 페이지 데이터 변경 사항을 자동으로 감지하는 데 필요합니다.</block>
   <block id="901f1c68878375174aea2f1fcc29ab9d" category="paragraph">SUSE Linux Enterprise Server 15 SPx 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 안전한 대역 내 인증이 지원됩니다.</block>
   <block id="3e362dde2c1641ef8ebafc921955a1fe" category="paragraph">각 호스트 또는 컨트롤러는 다음 항목과 연결되어야 합니다.<block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block> 안전한 인증을 설정하는 핵심입니다. DH-HMAC-CHAP 키는 NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀 키의 조합입니다. NVMe 호스트 또는 컨트롤러는 피어를 인증하기 위해 피어와 연결된 키를 인식해야 합니다.</block>
-  <block id="6e22216a019f02036a882c864ab5e081" category="sidebar">12 SP5</block>
-  <block id="c3f2f825133141162a8668b66decc68e" category="sidebar">12 SP4</block>
-  <block id="815a8936ead491822a02c614365eb157" category="sidebar">12 SP3</block>
-  <block id="643c7133e701780bd200aa43a7ac19d5" category="sidebar">12 SP2</block>
-  <block id="a6cf0ca607a76b62fe0393451560cb3e" category="sidebar">12 SP1</block>
   <block id="5b0baa1d297171d8a0eb3e7b4eab041d" category="sidebar">15 SPx</block>
   <block id="f6cc17830d6056ab4b78496fa45d86c0" category="inline-link-macro">ONTAP 스토리지용 Windows 호스트 유틸리티 구성에 대해 알아보세요.</block>
   <block id="a270bf4f8c4b691ce8d28f78e05ad3ce" category="paragraph"><block ref="a270bf4f8c4b691ce8d28f78e05ad3ce" category="inline-link-macro-rx"></block></block>
@@ -3072,4 +2392,16 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="82ec7e195e913912e4bf387fbe3d1a1a" category="paragraph">FC 시스템에 필요한 Emulex 또는 QLogic HBA 드라이버를 설치하는 동안 Windows 호스트 유틸리티는 여러 매개변수를 확인하고 경우에 따라 수정합니다.</block>
   <block id="80359a24fbf8546b71fbe0e9a6a30e27" category="paragraph">HBA 문제 해결 시 이러한 설정값이 올바른지 확인하십시오. 정확한 값은 두 가지 요인에 따라 달라집니다.</block>
   <block id="dd1dd5ab98ce86b204797f25e5883980" category="sidebar">Windows 호스트 유틸리티 구성을 검토하세요.</block>
+  <block id="888a570bb866284d7849755568a6be53" category="summary">ONTAP 스토리지를 Linux 호스트 유틸리티와 함께 ​​사용하는 방법을 설명합니다.</block>
+  <block id="8cd31d3850bee4ee09238066a1eadf45" category="summary">이 문서에서는 ONTAP 과 함께 HP-UX 호스트 유틸리티 6.0을 사용하는 방법을 설명합니다.</block>
+  <block id="9f62e018dbee2e883e6b28abdebb8492" category="paragraph">&lt;stdin&gt;에서 해결되지 않은 지시문 - include::_include/hu/reuse_hu_asa_configuration.adoc[]</block>
+  <block id="72c83d503b24e8f097c9e8181032f70a" category="doc">Linux 호스트 유틸리티를 사용하여 ONTAP 스토리지를 사용하는 NVMe-oF 문제 해결</block>
+  <block id="af2b8056ad5664aa4340ade3fea943c6" category="paragraph">ONTAP 스토리지를 사용하는 Oracle Linux, RHEL, Rocky Linux 및 SUSE Linux Enterprise Server 호스트에서 NVMe-oF 오류를 해결합니다.</block>
+  <block id="457989a854da9cc379131be91a40a138" category="paragraph">문제 해결을 시작하기 전에, 사용 중인 구성이 규정을 준수하는지 확인하십시오.<block ref="b77f230f2effb14751e6164ceee6da3f" category="inline-link-rx"></block> 사양을 확인한 후 호스트 측 문제를 디버깅하기 위한 다음 단계로 진행하십시오.</block>
+  <block id="f8331da05f5bdb83bd91e68dbda73f8d" category="admonition">이 문제 해결 지침은 AIX, ESXi, Proxmox 및 Windows 호스트에는 적용되지 않습니다.</block>
+  <block id="872d5db3305b32e54793529162eed87f" category="paragraph">LPFC 또는 Qlogic(Qla2xxx)에 대한 자세한 로깅을 설정하십시오.</block>
+  <block id="fe040552b4fc83efe2ba593498969954" category="list-text">설정을 확인하세요:</block>
+  <block id="79c482cb23c057c0d600ecd3434dbb27" category="section-title">일반적인 "nvme-cli" 오류 및 해결 방법</block>
+  <block id="c481530fd3180128cebd4b0d3be77c0f" category="paragraph">문제가 계속 발생하는 경우, 다음 파일과 명령 출력 결과를 수집하여 문의해 주십시오. <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 추가적인 분류를 위해:</block>
+  <block id="0669c03dc492faf8d7b9fc2bd8512b73" category="sidebar">이전 호스트 유틸리티 릴리스</block>
 </blocks>

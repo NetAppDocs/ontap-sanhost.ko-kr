@@ -43,3 +43,5 @@ indexpage:
       url: https://docs.netapp.com/us-en/ontap/san-admin/index.html
     - title: SAN 구성
       url: https://docs.netapp.com/us-en/ontap/san-config/index.html
+    - title: 이전 호스트 유틸리티 릴리스
+      url: https://mysupport.netapp.com/documentation/productlibrary/index.html?archive=true&language=en&productID=61343
