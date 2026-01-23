@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-sles-15spx.html 
-keywords: host utilities, suse linux enterprise server 15 sp7, sp6, sp5, sp4, sp3, sp2, sp1, netapp, ontap, fcp, iscsi 
-summary: SUSE Linux Enterprise Server 15 SP7에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리합니다. 
+permalink: hu-sles-16spx.html 
+keywords: host utilities, suse linux enterprise server 16,netapp, ontap, fcp, iscsi 
+summary: SUSE Linux Enterprise Server 16에 Linux Host Utilities를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리하십시오. 
 ---
-= ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 SUSE Linux Enterprise Server 15 SPx 구성
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 지원하도록 SUSE Linux Enterprise Server 16을 구성합니다.
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: SUSE Linux Enterprise Server 15 SP7에 Linux 호스트 유틸리티를 
 
 
 [role="lead"]
-Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. SUSE Linux Enterprise Server 15 SPx 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.
+Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 도구를 제공합니다. SUSE Linux Enterprise Server 16 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN으로 FCP 및 iSCSI 프로토콜 작업을 관리하는 데 도움을 받을 수 있습니다.
 
 
 
@@ -36,22 +36,13 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 . 호스트를 재부팅하고 OS가 실행 중인지 확인하여 구성이 성공했는지 확인합니다.
 
 
-
-
-== 2단계: Linux Host Utilities를 설치합니다
-
-NetApp은 ONTAP LUN 관리를 지원하고 기술 지원이 구성 데이터 수집을 돕기 위해 Linux 호스트 유틸리티를 설치할 것을 적극 권장합니다.
-
-link:hu-luhu-80.html["Linux Host Utilities 8.0 설치"] .
-
-
-NOTE: Linux Host Utilities를 설치해도 Linux 호스트의 호스트 시간 초과 설정은 변경되지 않습니다.
+<stdin> - include::_include/hu/install-linux-host-utilities.adoc[]에서 해결되지 않은 지시문
 
 
 
 == 3단계: 호스트의 다중 경로 구성을 확인합니다
 
-SUSE Linux Enterprise Server 15 SPx에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.
+SUSE Linux Enterprise Server 16에서 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.
 
 호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
 
@@ -270,32 +261,8 @@ devices {
 
 == 6단계: 알려진 문제를 검토합니다
 
-ONTAP 스토리지가 포함된 SUSE Linux Enterprise Server 15 SPx에는 다음과 같은 알려진 문제가 있습니다.
+알려진 문제가 없습니다.
 
-[role="tabbed-block"]
-====
-.15 SP1
---
-[cols="1,2,3"]
-|===
-| NetApp 버그 ID | 제목 | 설명 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246622["1246622)를 참조하십시오"^] | 스토리지 페일오버 작업 중 Emulex LPe12002 8GB FC를 사용하는 SLES15SP1에서 원격 포트가 차단됨 상태로 전환됩니다. | 스토리지 페일오버 작업 중에 원격 포트가 Emulex LPe12002 8GB FC(Fibre Channel)를 통해 SLES15SP1에서 차단된 상태로 전송됩니다. 스토리지 노드가 최적 상태로 돌아가면 LIF도 함께 올라가고 원격 포트 상태가 "온라인"으로 표시되어야 합니다. 원격 포트 상태가 계속 "차단됨" 또는 "없음"으로 표시될 수 있습니다. 이 상태에서는 다중 경로 계층의 LUN에 대한 "장애 발생" 경로뿐만 아니라 해당 LUN에 대한 I/O 중단이 발생할 수 있습니다. 다음 샘플 명령에 대해 remoteport의 세부 정보를 확인할 수 있습니다.--- cat/sys/class/fc_host/host * /device/rport * /fc_remote_ports/rport * /port_name cat/sys/class/fc_host/device/rport * /fc_remote_ports/rport * /port_state-- 
-|===
---
-.15
---
-[cols="1,2,3"]
-|===
-| NetApp 버그 ID | 제목 | 설명 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1154309["1154309"^] | 매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다 | 매핑된 LUN이 20개 이상인 SLES 15 호스트는 재부팅 후 유지보수 모드로 전환될 수 있습니다. 유지보수 모드는 다음 메시지 이후에 단일 사용자 모드가 됩니다.
-`Give root password for maintenance (or press Control-D to continue)` 
-|===
---
-====
 
 
 == 다음 단계

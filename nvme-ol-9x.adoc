@@ -143,6 +143,7 @@ Broadcom/Emulex 또는 Marvell/QLogic 어댑터를 사용하여 NVMe/FC를 구�
 --
 Broadcom/Emulex 어댑터용 NVMe/FC를 구성합니다.
 
+.단계
 . 지원되는 어댑터 모델을 사용 중인지 확인합니다.
 +
 .. 모델 이름을 표시합니다:
@@ -333,6 +334,7 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 --
 NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다.  대신 NVMe/TCP를 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 있습니다. `connect` 또는 `connect-all` 수동으로 작업합니다.
 
+.단계
 . 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
 +
 [source, cli]
@@ -828,6 +830,7 @@ CLI 또는 구성 JSON 파일을 사용하여 안전한 인밴드 인증을 설�
 --
 CLI를 사용하여 보안 인밴드 인증을 설정합니다.
 
+.단계
 . 호스트 NQN 가져오기:
 +
 [source, cli]
@@ -920,6 +923,7 @@ ONTAP 컨트롤러 구성에서 여러 NVMe 서브시스템을 사용할 수 있
 
 사용하세요  `-o` JSON 파일을 생성하는 옵션입니다. 자세한 구문 옵션은 NVMe Connect - 모든 설명서 페이지를 참조하십시오.
 
+.단계
 . JSON 파일 구성:
 +
 .예제 보기
