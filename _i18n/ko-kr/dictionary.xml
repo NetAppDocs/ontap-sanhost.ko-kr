@@ -2035,7 +2035,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="c7c50320ea39956b088be548294af1e0" category="paragraph">10.0 이상</block>
   <block id="5d2e5ee168e90c0595b3cc1eee2ee6dd" category="cell">NVMe/FC 프로토콜을 사용하여 SAN 부팅이 활성화됩니다.</block>
   <block id="9d6d817f456752dac19e4b5c699bd30c" category="cell">그만큼<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지에는 타사 스크립트가 필요 없는 자동 연결 스크립트가 포함되어 있습니다.</block>
-  <block id="1115310dc5d902646a8153a110b7cbc7" category="cell">네이티브 udev 규칙<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 NVMe 멀티패스에 대한 라운드 로빈 로드 밸런싱을 제공합니다.</block>
   <block id="a63480986ae76ec294cfdac303f1cc61" category="cell">..에 대해 알아보세요</block>
   <block id="62287eeee3056dc397ebc956062f6d92" category="cell">10 시리즈</block>
   <block id="2ee39f4f778b47b40d3a961eef85042c" category="cell">9 시리즈</block>
@@ -2155,7 +2154,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="160316d24f765380a7e2c247ad512d7a" category="list-text">다음 예시 규칙에 나와 있는 것처럼 NetApp ONTAP 컨트롤러의 iopolicy를 설정하는 줄을 찾으십시오.</block>
   <block id="97a0ff99a93f7485dcb82a548fcca4a0" category="admonition">새로운 iopolicy는 일치하는 NetApp ONTAP 컨트롤러 장치에 자동으로 적용됩니다. 재부팅할 필요가 없습니다.</block>
   <block id="92520caa5da5fd65237a96731d101aee" category="list-text">호스트에서 각 ONTAP 네임스페이스에 대해 적절한 NVMe-oF 설정(예: 모델이 NetApp ONTAP 컨트롤러로 설정되고 로드 밸런싱 iopolicy가 라운드 로빈으로 설정됨)이 올바르게 표시되는지 확인하십시오.</block>
-  <block id="bf4dbd3d81297258bdb9391343d3d393" category="cell">네이티브 udev 규칙<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 이 패키지는 NVMe 멀티패스에 대한 큐 깊이 기반 로드 밸런싱을 제공합니다.</block>
   <block id="b62ae28652ddc6a2c9bb15373668f0d0" category="paragraph">9.6 이상</block>
   <block id="3bf7b9cd443b3cb0c9b741f8a4deb9dc" category="paragraph">RHEL 10.0은 NVMe-oF에 대한 기본 iopolicy를 다음과 같이 설정합니다.<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block> . RHEL 10.0을 사용하고 iopolicy를 변경하려는 경우<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> , udev 규칙 파일을 다음과 같이 수정합니다.</block>
   <block id="13c16c386fd131bec830d461d648a36c" category="list-text">ONTAP 시스템에서 다음 사항을 확인하십시오.<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> ONTAP 어레이의 해당 서브시스템에 대한 문자열:</block>
@@ -2299,7 +2297,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="e32699aee2530a886824102acbc184ef" category="cell"><block ref="e32699aee2530a886824102acbc184ef" category="inline-link-macro-rx"></block></block>
   <block id="7a07a307cffb48040275c1265a29ef15" category="inline-link-macro">RHEL 8.x에 대한 NVMe 구성</block>
   <block id="22cb5c5e0e10037e7d4925ec5d2dbf93" category="cell"><block ref="22cb5c5e0e10037e7d4925ec5d2dbf93" category="inline-link-macro-rx"></block></block>
-  <block id="b6c3e670b2b6b7ef2dc26da47cc59df9" category="paragraph">&lt;stdin&gt;에서 해결되지 않은 지시문 - include::_include/nvme/linux-validate-software-version-rockylinux.adoc[]</block>
   <block id="72c86330f335f27ea520136a0d95b881" category="sidebar">VE 9.x</block>
   <block id="af795b652b215e481ae2fd213d8bf52e" category="sidebar">VE 8.x</block>
   <block id="b1db54564fe54a4c74a975b18a791532" category="sidebar">7.x</block>
@@ -2398,7 +2395,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="55b4f27e868d94d08cb7b820fb7dcaf4" category="summary">SUSE Linux Enterprise Server 16에 Linux Host Utilities를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리하십시오.</block>
   <block id="651119b7fad3ebe0625718e781b85dbd" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 지원하도록 SUSE Linux Enterprise Server 16을 구성합니다.</block>
   <block id="536673265ab4b1de9fd943164c12494a" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 도구를 제공합니다. SUSE Linux Enterprise Server 16 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN으로 FCP 및 iSCSI 프로토콜 작업을 관리하는 데 도움을 받을 수 있습니다.</block>
-  <block id="c79c0bda7187ef54ad53cb84f69b4995" category="paragraph">&lt;stdin&gt; - include::_include/hu/install-linux-host-utilities.adoc[]에서 해결되지 않은 지시문</block>
   <block id="be0724c20eae9509bfecb55613ead45c" category="paragraph">SUSE Linux Enterprise Server 16에서 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="40b573003d21aeb3dbe3d1c46c3c87af" category="cell">사용 중인 RHEL 버전이 ...인 경우</block>
   <block id="8637f659452959aafbb4798db09998d6" category="cell">다음 내용을 알아보세요...</block>
@@ -2426,4 +2422,7 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="3f52de62927af66bbbcbf9a67e36d63c" category="paragraph">SUSE Linux Enterprise Server 16 호스트용 영구 검색 컨트롤러(PDC)를 생성할 수 있습니다. PDC는 NVMe 서브시스템 추가 또는 제거 작업과 검색 로그 페이지 데이터 변경 사항을 자동으로 감지하는 데 필요합니다.</block>
   <block id="3c8457e76486b7070b5f16df832bfb55" category="paragraph">SUSE Linux Enterprise Server 16 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 보안 인밴드 인증이 지원됩니다.</block>
   <block id="60940bf76e8a6f461e5cdf574e9a3897" category="sidebar">SLES-16-FCP</block>
+  <block id="2f2f70e91ff2172f6a78bf052b441f39" category="paragraph"><block ref="806369b10c4f480029bde19415f580b3" category="inline-link-macro-rx"></block>.</block>
+  <block id="ae3361bffdcc882805368ae077d6fcaf" category="cell"><block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지의 네이티브 udev 규칙은 NVMe 멀티패싱을 위한 큐 깊이 기반 로드 밸런싱을 제공합니다</block>
+  <block id="a30e163e966b967193e35b02c3ab5b4b" category="cell"><block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지의 네이티브 udev 규칙은 NVMe 멀티패싱을 위한 라운드 로빈 로드 밸런싱을 제공합니다</block>
 </blocks>

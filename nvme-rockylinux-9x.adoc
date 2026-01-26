@@ -61,9 +61,79 @@ Rocky Linux 커널 버전 예:
 ----
 5.14.0-570.12.1.el9_6.x86_64
 ----
+. "NVMe-CLI" 패키지를 설치합니다.
++
+[source, cli]
+----
+rpm -qa|grep nvme-cli
+----
++
+다음 예에서는 nvme-cli 패키지 버전을 보여줍니다.
+
++
+[listing]
+----
+nvme-cli-2.11-5.el9.x86_64
+----
+. 를 설치합니다 `libnvme` 패키지:
++
+[source, cli]
+----
+rpm -qa|grep libnvme
+----
++
+다음 예에서는 다음을 보여줍니다.  `libnvme` 패키지 버전:
+
++
+[listing]
+----
+libnvme-1.11.1-1.el9.x86_64
+----
+. Rocky Linux 호스트에서 hostnqn 문자열을 확인하세요.  `/etc/nvme/hostnqn` :
++
+[source, cli]
+----
+cat /etc/nvme/hostnqn
+----
++
+다음 예에서는 다음을 보여줍니다.  `hostnqn` 버전:
+
++
+[listing]
+----
+nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+----
+. ONTAP 시스템에서 다음 사항을 확인하십시오. `hostnqn` 문자열이 일치합니다 `hostnqn` ONTAP 어레이의 해당 서브시스템에 대한 문자열:
++
+[source, cli]
+----
+::> vserver nvme subsystem host show -vserver vs_coexistence_LPE36002
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing]
+----
+Vserver Subsystem Priority  Host NQN
+------- --------- --------  ------------------------------------------------
+vs_coexistence_LPE36002
+        nvme
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+        nvme_1
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+        nvme_2
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+        nvme_3
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+4 entries were displayed.
+----
+====
++
+
+NOTE: 를 누릅니다 `hostnqn` 문자열이 일치하지 않습니다. 를 사용하십시오 `vserver modify` 명령을 사용하여 를 업데이트합니다 `hostnqn` 와 일치하는 해당 ONTAP 배열 하위 시스템의 문자열입니다 `hostnqn` 문자열 시작 `/etc/nvme/hostnqn` 호스트.
 
 
-<stdin>에서 해결되지 않은 지시문 - include::_include/nvme/linux-validate-software-version-rockylinux.adoc[]
 
 
 
@@ -871,7 +941,6 @@ CLI나 구성 JSON 파일을 사용하여 안전한 인밴드 인증을 설정�
 --
 CLI를 사용하여 보안 인밴드 인증을 설정합니다.
 
-.단계
 . 호스트 NQN 가져오기:
 +
 [source, cli]
