@@ -1226,7 +1226,7 @@ DHHC-1:01:wkwAKk8r9Ip7qECKt7V5aIo/7Y1CH7DWkUfLfMxmseg39DFb:
 cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
 ----
 +
-다음 예와 비슷한 출력이 표시됩니다.
+다음 예와 비슷한 출력이 표시되어야 합니다.
 
 +
 [listing]

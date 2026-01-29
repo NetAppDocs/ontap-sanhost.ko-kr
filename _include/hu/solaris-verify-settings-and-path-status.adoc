@@ -4,7 +4,7 @@
 
 . ONTAP LUN을 사용하여 zpools에서 4KB 정렬 I/O가 지원되는지 확인하세요.
 +
-.. Solaris 호스트에 최신 지원 저장소 업데이트(SRU)가 설치되어 있는지 확인하세요.
+.. Solaris 호스트에 최신 Support Repository Update(SRU)가 설치되어 있는지 확인하십시오.
 +
 [source, cli]
 ----

@@ -155,7 +155,7 @@ LPe35002-M2
 cat /sys/class/scsi_host/host*/modeldesc
 ----
 +
-다음 예와 비슷한 출력이 표시됩니다.
+다음 예와 비슷한 출력이 표시되어야 합니다.
 
 +
 [listing]

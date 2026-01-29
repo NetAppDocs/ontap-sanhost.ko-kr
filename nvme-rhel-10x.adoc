@@ -168,7 +168,7 @@ SN1700E2P
 cat /sys/class/scsi_host/host*/modeldesc
 ----
 +
-다음 예와 비슷한 출력이 표시됩니다.
+다음 예와 비슷한 출력이 표시되어야 합니다.
 
 +
 [listing]
@@ -1012,7 +1012,7 @@ DHHC-1:01:2G7lsg9PMO00h1Wf1g4QtP0XT11kREz0qVuLm2xvZdbaWR/g:
 cat /sys/class/nvme-subsystem/nvme- subsys4/nvme4/dhchap_ctrl_secret
 ----
 +
-다음 예와 비슷한 출력이 표시됩니다.
+다음 예와 비슷한 출력이 표시되어야 합니다.
 
 +
 [listing]

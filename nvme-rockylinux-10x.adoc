@@ -172,7 +172,7 @@ LPe36002-M64
 cat /sys/class/scsi_host/host*/modeldesc
 ----
 +
-다음 예와 비슷한 출력이 표시됩니다.
+다음 예와 비슷한 출력이 표시되어야 합니다.
 
 +
 [listing]
@@ -979,7 +979,7 @@ aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
 cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
 ----
 +
-다음 예와 비슷한 출력이 표시됩니다.
+다음 예와 비슷한 출력이 표시되어야 합니다.
 
 +
 [listing]
