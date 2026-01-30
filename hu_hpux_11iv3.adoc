@@ -96,6 +96,9 @@ sanlun lun show
 --
 ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
 
+.예제 보기
+[%collapsible]
+=====
 [listing]
 ----
 # sanlun lun show -p vs39:/vol/hpux_vol_1_1/hpux_lun
@@ -116,6 +119,7 @@ up       primary    /dev/dsk/c6t0d2      fcd0    246_1c_hp
 up       primary    /dev/dsk/c10t0d2     fcd1    246_1d_hp
 up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
 ----
+=====
 --
 .AFF 또는 FAS 구성
 --
@@ -123,6 +127,9 @@ AFF 또는 FAS 구성에는 우선 순위가 높거나 낮은 두 개의 경로 
 
 다음 예에서는 활성/최적화 경로 2개와 활성/최적화되지 않은 경로 2개가 있는 ONTAP LUN에 대한 출력을 표시합니다.
 
+.예제 보기
+[%collapsible]
+=====
 [listing]
 ----
 # sanlun lun show -p vs39:/vol/vol24_3_0/lun24_0
@@ -143,6 +150,7 @@ up       primary    /dev/dsk/c41t4d5   fcd1    hpux_4     0
 up       secondary  /dev/dsk/c40t4d5   fcd0    hpux_3     1
 up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
 ----
+=====
 --
 ====
 

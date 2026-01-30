@@ -159,6 +159,9 @@ multipath -ll
 --
 ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
 
+.예제 보기
+[%collapsible]
+=====
 [listing]
 ----
 multipath -ll
@@ -170,6 +173,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   |- 11:0:10:1  sdml 69:464   active ready running
   |- 11:0:11:1  sdpt  131:304  active ready running
 ----
+=====
 --
 .AFF 또는 FAS 구성
 --
@@ -177,6 +181,9 @@ AFF 또는 FAS 구성에는 우선 순위가 높거나 낮은 두 개의 경로 
 
 다음 예에서는 활성/최적화 경로 2개와 활성/최적화되지 않은 경로 2개가 있는 ONTAP LUN에 대한 출력을 표시합니다.
 
+.예제 보기
+[%collapsible]
+=====
 [listing]
 ----
 multipath -ll
@@ -189,6 +196,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   |- 15:0:0:35 sdaj  66:48   active ready running
   |- 15:0:1:35 sdbx  68:176  active ready running
 ----
+=====
 --
 ====
 
@@ -197,7 +205,10 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 
 == 4단계: 호스트의 iSCSI 구성을 확인합니다
 
-호스트에 대해 다중 경로가 올바르게 구성되었는지 확인하려면 호스트에서  `timeout` 매개 변수를 설정하고 iSCSI 서비스가 실행 중이며 iSCSI 타겟에 연결되어 있는지 확인하십시오.
+호스트에 iSCSI가 올바르게 구성되어 있는지 확인하십시오.
+
+.이 작업에 대해
+iSCSI 호스트에서 다음 단계를 수행합니다.
 
 .단계
 . iSCSI 이니시에이터 패키지(iscsi-initiator-utils)가 설치되어 있는지 확인하십시오.

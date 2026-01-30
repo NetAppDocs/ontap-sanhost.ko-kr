@@ -205,7 +205,10 @@ size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 
 == 4단계: 호스트의 iSCSI 구성을 확인합니다
 
-호스트에 대해 다중 경로가 올바르게 구성되었는지 확인하려면 호스트에서  `timeout` 매개 변수를 설정하고 iSCSI 서비스가 실행 중이며 iSCSI 타겟에 연결되어 있는지 확인하십시오.
+호스트에 iSCSI가 올바르게 구성되어 있는지 확인하십시오.
+
+.이 작업에 대해
+iSCSI 호스트에서 다음 단계를 수행합니다.
 
 .단계
 . iSCSI 이니시에이터 패키지(iscsi-initiator-utils)가 설치되어 있는지 확인하십시오.
