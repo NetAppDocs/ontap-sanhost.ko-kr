@@ -144,7 +144,7 @@ Cmpl 00000000000000a8 Outstanding 0000000000000001
 
 == 기술 지원 문의 시기
 
-문제가 계속 발생하는 경우, 다음 파일과 명령 출력 결과를 수집하여 문의해 주십시오. link:mysupport.netapp.com["NetApp 지원"^] 추가적인 분류를 위해:
+문제가 계속 발생하는 경우, 다음 파일과 명령 출력 결과를 수집하여 link:https://mysupport.netapp.com["NetApp 지원"^] 추가 지원을 위해 문의해 주십시오.
 
 [source, cli]
 ----

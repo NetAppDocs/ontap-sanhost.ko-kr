@@ -289,11 +289,9 @@
   <block id="de6158aaf59eefd0e967674f80bf69a0" category="cell">1307653</block>
   <block id="6ba6a18088999d632ca174b9873a3b12" category="list-text">"NVMe-CLI" 패키지를 설치합니다.</block>
   <block id="e71d1275a2744aceb8d59932f2e5fe56" category="list-text">인커널 NVMe 다중 경로 지원:</block>
-  <block id="c98fed57553daff5a2cf2fa022d54254" category="section-title">NVMe/FC 구성</block>
   <block id="3ea394f2d9cebf2dfc911ba5e025db7a" category="section-title">Broadcom/Emulex</block>
   <block id="2ca464fc1baee04e879e92c84915029a" category="section-title">Marvell/QLogic</block>
   <block id="f4091bd53ceacc19d9ac766c9cdb9866" category="section-title">NVMe/TCP를 구성합니다</block>
-  <block id="55ab77cd94d55aaa364453f7cf104285" category="section-title">NVMe-oF를 검증합니다</block>
   <block id="0199c49af15b1997cf6d2ddd0ea8adf4" category="list-text">해당 modprobe qla2xxx conf 파일에 "ql2xextended_error_logging=0x1e400000" 값을 추가합니다.</block>
   <block id="e8a5a7214d896558232c2e63f40a05c2" category="cell">가능한 원인</block>
   <block id="7aebfa1e2291377e040de92d7f7f335f" category="cell">해결 방법</block>
@@ -596,15 +594,10 @@
   <block id="c44700394b9a4063439bc92ea42d5e41" category="inline-link-macro">Windows에 대한 고지 사항</block>
   <block id="9d9a9c7064b8193ac433a5365fe1afdb" category="list-text"><block ref="9d9a9c7064b8193ac433a5365fe1afdb" category="inline-link-macro-rx"></block></block>
   <block id="8637d6c1f3e0436f7f2ec935b829bd22" category="paragraph">예제 출력:</block>
-  <block id="b064015a3282fc489c69be4a7699cc91" category="section-title">소프트웨어 버전을 확인합니다</block>
-  <block id="52b5830420efb96c3a91beb52bac3b23" category="paragraph">* 출력 예: *</block>
   <block id="256141e56255da4626b3cd641b2f785a" category="list-text">를 확인합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 과 일치합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> ONTAP 배열의 해당 하위 시스템에 대한 문자열:</block>
-  <block id="2f749c740a41c151c1485b84206264ca" category="list-text">지원되는 어댑터 모델을 사용하고 있는지 확인합니다.</block>
-  <block id="fd3cbdb4a32644d25b951ee0b3bc5aae" category="open-title">NVMe/FC용 Marvell/QLogic FC 어댑터</block>
   <block id="25f321fe018cf20163dc0c70e2eea888" category="section-title">자세한 정보 로깅을 사용합니다</block>
   <block id="2401f6c892699dd24f7fa72c9a39b053" category="open-title">lpfc</block>
   <block id="db9afb1f05f1d6930c84839b76060ccc" category="open-title">qla2xxx</block>
-  <block id="6faca8b2572cd22ef1b619e4be0a8165" category="paragraph">NVMe/TCP에는 자동 연결 기능이 없습니다. 따라서 경로가 10분의 기본 시간 제한 내에 복원되지 않고 다운되면 NVMe/TCP가 자동으로 다시 연결되지 않습니다. 시간 초과를 방지하려면 페일오버 이벤트에 대한 재시도 기간을 최소 30분으로 설정해야 합니다.</block>
   <block id="6136261711c49bf0e8e1dcb22a2c524f" category="cell">해당 없음</block>
   <block id="c49c2dee17bca0bb7b37e30a531ae56e" category="cell">설치 프로그램에서 HBA 매개 변수를 설정하는 데 사용됩니다.</block>
   <block id="f5defee9801990370925a9ccd31788ad" category="cell">설치 프로그램에서 QLogic FC HBA 매개변수를 설정하는 데 사용됩니다.</block>
@@ -709,7 +702,6 @@
   <block id="532cbcbb7aad95ce1f00e4e3fb4b03f6" category="list-text">AIX 레벨 73-TL1-SP2-2320의 경우 를 설치합니다<block ref="9b3ffcc15ca4d75da623901d3832fc42" prefix=" " category="inline-code"></block> 패키지.</block>
   <block id="f17bfdf5999401bcdd6897f6d5dd675b" category="inline-link-macro">AIX에서 중간 수정 관리</block>
   <block id="bcdcf815cb913fe205982051fea55f20" category="paragraph">접미사 관리에 대한 자세한 내용은 을 참조하십시오 <block ref="d0c56d52e1733062faaa4c2667974f7c" category="inline-link-macro-rx"></block>.</block>
-  <block id="6ca857f7a44a21cfffda914cf9549710" category="paragraph">* 예제 출력 *</block>
   <block id="955736fca778773f397bfff3fb13554e" category="list-text">를 실행하여 어댑터에서 NVMe/FC 프로토콜 지원을 설정합니다<block ref="298944b0d52065fb6d4009e722898415" prefix=" " category="inline-code"></block> VIOS의 명령:</block>
   <block id="6cd5c80cb797f1e2d35f1d580ffe6d20" category="list-text">어댑터에서 지원이 활성화되었는지 확인합니다.</block>
   <block id="84b3e0604b5f47c082acaf2ab109e481" category="list-text">모든 어댑터에 대해 NVMe/FC 프로토콜을 활성화합니다.</block>
@@ -737,11 +729,8 @@
   <block id="9fd88788efc2039d4c86e3d60310b147" category="paragraph">가상 어댑터 목록을 검색합니다.</block>
   <block id="e31c4b8d2ef22d8837e50793ada5f2e9" category="cell">기본적으로 AIX 운영 체제는 NVMe/FC에 대해 모든 경로 다운(APD) 시간 초과 값 20초를 사용합니다.  하지만 ONTAP MetroCluster 자동 비계획 전환(AUSO) 및 Tiebreaker가 시작한 스위치오버 워크플로우가 APD 시간 초과 기간보다 약간 오래 걸릴 수 있으며, 이로 인해 I/O 오류가 발생할 수 있습니다.</block>
   <block id="9e10b0a5aea11686043890a4e7f7d67d" category="list-text">여러 경로를 사용할 수 있는지 확인합니다.</block>
-  <block id="e92702d12f6aa1afc14988d919e8a06e" category="list-text">명시적 dm-multipath 설정 없이 특정 호스트 버스 어댑터(HBA)의 동일한 호스트에서 NVMe 및 SCSI가 공존하는 트래픽을 사용하여 NVMe 네임스페이스를 주장하지 못하게 합니다.</block>
-  <block id="f6f33242227bf5d079f46a94f3780b75" category="paragraph">Broadcom/Emulex 또는 Marvell/Qlogic 어댑터에 대해 NVMe/FC를 구성할 수 있습니다.</block>
   <block id="10ce16d02c992727f1f013108c8de76e" category="list-text">권장 Broadcom을 사용하고 있는지 확인합니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 펌웨어 및 받은 편지함 드라이버:</block>
   <block id="42d18363818951017351b676627b6308" category="list-text">확인합니다<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 가 설정됩니다. 그러면 Marvell 어댑터가 NVMe/FC Initiator로 작동할 수 있습니다.</block>
-  <block id="4985227ddc1cd987688d7fe0d8873ec8" category="section-title">1MB I/O 활성화(옵션)</block>
   <block id="26bcb9f1cb6f391f4b2c18e676bb458d" category="open-title">NVMe/FC</block>
   <block id="8b7c42123642e2e4ea7dd426aeb2de58" category="open-title">NVMe/TCP</block>
   <block id="1976d7f704de389d9fe064e08ea35b2d" category="open-title">열</block>
@@ -753,8 +742,6 @@
   <block id="174bb021781f59df2db4c30e37782cb2" category="list-text">를 설치합니다<block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> 패키지:</block>
   <block id="6362c7afdb076db9b67492227263935e" category="admonition">를 누릅니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치하지 않습니다. 를 사용하십시오<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 명령을 사용하여 를 업데이트합니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 와 일치하는 해당 ONTAP 배열 하위 시스템의 문자열입니다<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열 시작<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트.</block>
   <block id="4dab1b4f451ec45a30431478018d4fd5" category="list-text">권장 Broadcom을 사용하고 있는지 확인합니다<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 펌웨어 및 받은 편지함 드라이버.</block>
-  <block id="b36540ee1aea09e40e2e7cb8bdd31c82" category="list-text">이니시에이터 포트가 가동 및 실행 중이며 타겟 LIF를 볼 수 있는지 확인합니다.</block>
-  <block id="18b65bc41e8c8da147a70b70eb89f63f" category="paragraph">다음 절차를 사용하여 NVMe-oF를 검증할 수 있습니다.</block>
   <block id="8872970684e912db5d3cedce11e8f59c" category="list-text">in-kernel NVMe multipath가 활성화되어 있는지 확인합니다.</block>
   <block id="f61222023dff7dff4f1f07b6593dfa16" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: NetApp ONTAP 컨트롤러로 설정된 모델 및 라운드 로빈으로 설정된 로드 밸런싱 IPolicy가 호스트에 올바르게 반영되는지 확인합니다.</block>
   <block id="43784ec2c1aaa42346ed96f22c8410b6" category="sidebar">9.2</block>
@@ -804,7 +791,6 @@
   <block id="88e9fff2ac8cc531b067dfa25e8e2e8c" category="section-title">Linux 커널에서 권장되는 드라이버 설정</block>
   <block id="684209c8b964ee194fb302d1403a0fc3" category="paragraph">Linux 커널과 함께 번들로 제공되는 기본 받은 편지함 드라이버를 사용하는 FC 환경을 구성하는 경우 드라이버의 기본값을 사용할 수 있습니다.</block>
   <block id="b666f8343a2e41c88c8766775c8dec12" category="paragraph">ONTAP를 사용하는 ESXi 8.x의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="a3d213368ad78179b0d9b7b5d93b6385" category="list-text">현재 NVMe-oF 프로토콜을 사용한 SAN 부팅은 지원되지 않습니다.</block>
   <block id="e681a3b45989b468533c4b90ee960bf9" category="cell">해당 없음</block>
   <block id="0a0990c5ca1e9aa6bb4871721a00290c" category="list-text">설치합니다 <block ref="7e5271dd15da7840bc647fc6451145a6" category="inline-link-macro-rx"></block> FC 및 NVMe 모두에 공통되는 드라이버 매개 변수를 설정합니다.</block>
   <block id="50f145df2b9dca1b51d6f136b1d6e045" category="section-title">비 ASA 구성</block>
@@ -902,14 +888,9 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="7cd95c816f8a04ff858a857e3e5a484d" category="sidebar">20.04</block>
   <block id="78550e91fbb2b5810210b43b287b7c4e" category="summary">ONTAP를 사용하여 Ubuntu 22.04용 NVMe-oF 호스트를 구성하는 방법</block>
   <block id="c6846e0213409c96ad77f710fa307642" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 ANA(Asymmetric Namespace Access)가 포함된 Ubuntu 22.04에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
-  <block id="71251761db71d74ce129581af51deea0" category="paragraph">ONTAP를 사용하는 Ubuntu 22.04의 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
-  <block id="c7b8b08d4869ac84fdd57c23e53885a4" category="list-text">네이티브 NVMe-CLI 패키지의 NetApp 플러그인은 NVMe/FC 네임스페이스에 대한 ONTAP 세부 정보를 표시합니다.</block>
-  <block id="ee255f2b3c440f68a5bcc9252dfbbd03" category="paragraph">Ubuntu 22.04에는 기본적으로 NVMe 네임스페이스에 대해 커널 내 NVMe 다중 경로가 활성화되어 있습니다. 따라서 명시적인 설정이 필요하지 않습니다.</block>
-  <block id="3621191bce4af482b56d942fb4c692d3" category="paragraph">다음 절차를 사용하여 지원되는 최소 Ubuntu 22.04 소프트웨어 버전을 확인할 수 있습니다.</block>
   <block id="daeaa7aff0b3adc4e01d754047800447" category="list-text">서버에 Ubuntu 22.04를 설치합니다. 설치가 완료되면 지정된 Ubuntu 22.04 커널을 실행하고 있는지 확인합니다.</block>
   <block id="8f3ce7816b499a01a35c5c583a9b91a5" category="list-text">Ubuntu 22.04 호스트에서 에서 hostnqn 문자열을 확인합니다<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
   <block id="9b581488b49c5ac223f72f44dce46098" category="list-text">노드에서 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에서 NVMe connect-all 명령을 실행하고 컨트롤러 손실 시간 초과 기간을 최소 30분 또는 1800초 동안 설정합니다.</block>
-  <block id="2d737bddc26fec4760722ea17aae3833" category="open-title">NVMe/TCP</block>
   <block id="90fc24312f4ab09ff404f0abfb26b105" category="cell">Jira ID입니다</block>
   <block id="fb99255f11e8a5c23d9e98c28ef9997d" category="cell">1593771</block>
   <block id="970c941050f97a801dd7266734957b39" category="cell">Red Hat Enterprise Linux 9.3 QLogic SAN 호스트가 스토리지 이동성 작업 중에 부분 다중 경로 손실이 발생합니다</block>
@@ -993,36 +974,17 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="4a69ba1535a62f4e118b39597d1edde0" category="section-title">ASA 구성</block>
   <block id="353cc9a5b9b1899de18cfe6696d32fff" category="list-text"><block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block>명령을 실행하고 호스트를 재부팅합니다.</block>
   <block id="7ed1d546734f7bd4b0ef96e269498a07" category="summary">ONTAP를 사용하여 Ubuntu 24.04용 NVMe-oF 호스트를 구성하는 방법</block>
-  <block id="60996b6ae2fc149121c64d77e545be4d" category="doc">ONTAP를 사용하는 Ubuntu 24.04에 대한 NVMe-oF 호스트 구성</block>
   <block id="36b519db67ced390f37880201669ceb0" category="paragraph">NVMe/FC(NVMe over Fibre Channel) 및 기타 전송을 포함한 NVMe-oF(NVMe over Fabrics)는 Ubuntu 24.04 및 ANA(Asymmetric Namespace Access)에서 지원됩니다. NVMe-oF 환경의 경우, ANA는 iSCSI 및 FC 환경에서 ALUA 다중 경로와 동일하며 커널 내 NVMe 다중 경로를 통해 구현됩니다.</block>
-  <block id="1cebcdc437378665b2b13986cfecf476" category="paragraph">ONTAP를 사용하는 Ubuntu 24.04의 NVMe-oF 호스트 구성에 대해 다음 지원을 사용할 수 있습니다.</block>
-  <block id="cb6a7f1c7c2b0754816bd169cec44fa7" category="paragraph">Ubuntu 24.04에는 기본적으로 NVMe 네임스페이스에 대해 커널 내 NVMe 다중 경로가 활성화되어 있습니다. 즉, 명시적인 설정이 필요하지 않습니다.</block>
   <block id="8f08cb72c5a7a46b7b7c4226b677247d" category="paragraph">현재 ONTAP에서 Ubuntu 24.04에 대해 NVMe-oF 프로토콜을 사용하여 SAN 부팅이 지원되지 않습니다.</block>
-  <block id="14b2bcdde3b94eba7e2f71e3f7f697ee" category="paragraph">다음 절차를 사용하여 지원되는 최소 Ubuntu 24.04 소프트웨어 버전을 확인할 수 있습니다.</block>
   <block id="c4d9b54b2cbafddba6cb828668bb5dfa" category="list-text">서버에 Ubuntu 24.04를 설치합니다. 설치가 완료되면 지정된 Ubuntu 24.04 커널을 실행하고 있는지 확인합니다.</block>
   <block id="6af8bb70dc7b638c43ad6228d8556ead" category="list-text">Ubuntu 24.04 호스트에서 다음 위치에서 hostnqn 문자열을<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 확인합니다.</block>
-  <block id="d99695e6a2bc736629304dfb41f083c2" category="list-text">의 문자열이<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ONTAP 배열의 해당 하위 시스템에 대한 문자열과<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 일치하는지<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 확인합니다.</block>
   <block id="945d72653662c95f9c7078a068a95e3a" category="admonition">문자열이 일치하지 않으면<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 명령을<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 사용하여<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 해당 ONTAP 배열 하위 시스템의 문자열을<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 호스트의 문자열과 일치하도록<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 업데이트합니다.</block>
   <block id="8d1bdd041ee1a1988425b0c6bdbb8684" category="paragraph">Broadcom/Emulex 어댑터용 NVMe/FC를 구성합니다.</block>
   <block id="a10050dbe2f6bc656e7e7bb8d22502a9" category="list-text">지원되는 어댑터 모델을 사용 중인지 확인합니다.</block>
-  <block id="a67280dcc378318a3dc4702ecf63d3ef" category="list-text"><block ref="eed65f7b111c5a679c9ebd52d64f1a7e" prefix="" category="inline-code"></block></block>
-  <block id="b8f6ddd724a8b8e74953ea5f8d0ed17f" category="list-text"><block ref="00f8f6c3e3c596defab169a6543cea71" prefix="" category="inline-code"></block></block>
-  <block id="6829ad73e092b3fd6e0df14f5709e4d1" category="list-text">권장 Broadcom 펌웨어 및 받은 편지함 드라이버를 사용하고 있는지<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 확인합니다.</block>
-  <block id="22ace6e1c575032bc0c5446c3e5fae03" category="list-text"><block ref="fbb7658d10be2c4db27511a6ae32756e" prefix="" category="inline-code"></block></block>
-  <block id="c5c93d83ef086318d9656de6331063f0" category="list-text"><block ref="40ef4ddbdd7977b19e5f6fc2f92ccdfd" prefix="" category="inline-code"></block></block>
-  <block id="e907323b98507b54f33720ae8fbfca83" category="paragraph">예상 출력은 3입니다.</block>
-  <block id="ca1e38ef1021d28d62b444c03b7d2cbd" category="list-text"><block ref="02634c9bfc2b6365f527e5ab8750abd5" prefix="" category="inline-code"></block></block>
-  <block id="293151d7d1e64e8099605ae4f4946ca7" category="list-text"><block ref="4b346cab565b7cd14816652d6ebe2807" prefix="" category="inline-code"></block></block>
-  <block id="8e6aa9b9f216193455a6353f967e119f" category="list-text"><block ref="56f637cd126b99eb02fe1ddc06ff71c5" prefix="" category="inline-code"></block></block>
   <block id="7e80c20fc9456778419a9603d273227b" category="paragraph">Ubuntu 24.04 GA 커널에 포함된 기본 받은 편지함 qla2xxx 드라이버에는 최신 업스트림 수정 사항이 있습니다. 이러한 수정 사항은 ONTAP 지원에 필수적입니다.</block>
   <block id="25d69e2db3ca7d51d3e21ac543d47915" category="paragraph">예상 아웃투트는 1입니다.</block>
-  <block id="4eb7059500e57471598a526a4ac18f38" category="paragraph">NVMe/TCP는 자동 연결 기능을 지원하지 않습니다. 대신 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 명령을 사용하여 NVMe/TCP 하위 시스템과 네임스페이스를 수동으로 검색할 수<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 있습니다.</block>
-  <block id="f9ff6d5cef4ac461a39536812496b2a8" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.</block>
   <block id="5922de8746f6bbeb2eeca1b8270454b3" category="admonition">Ubuntu 24.04부터 NVMe/TCP에 대한 Ctrl_Loss_TMO 시간 초과 기본 설정이 꺼집니다. 다시 시도 횟수(무제한 재시도)에는 제한이 없으며 또는<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령(option -l)을 사용할 때 특정 Ctrl_LOSS_TMO 시간 초과 기간을 수동으로 구성할 필요가<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 없습니다. 이 기본 동작에서는 경로 장애 발생 시 NVMe/TCP 컨트롤러가 시간 초과를 경험하지 않고 무기한 연결된 상태를 유지합니다.</block>
   <block id="25fe112b2528a69b5409b7266e42b118" category="paragraph">예상 출력은 "Y"입니다.</block>
-  <block id="d3565492c368dc728f9d13493c793986" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: 모델이 "NetApp ONTAP 컨트롤러"로 설정되고 로드 밸런싱 iopolicy가 "라운드 로빈"으로 설정됨)이 호스트에 올바르게 표시되는지 확인합니다.</block>
-  <block id="aca77ba2a0ce331ce07b00bc07442e14" category="list-text"><block ref="d077a463f31db192bc2166bfffcf8de0" prefix="" category="inline-code"></block></block>
-  <block id="b297fab030eb1c0e21f8c1c43eb2cefb" category="list-text"><block ref="8449e535ecd6773d321bf1358b514b8b" prefix="" category="inline-code"></block></block>
   <block id="198ef744f24c6814a980b52a8b628dbd" category="paragraph">ONTAP 릴리스가 포함된 Ubuntu 24.04의 NVMe-oF 호스트 구성에 대해 알려진 문제는 없습니다.</block>
   <block id="cd5fcfe02b1d4f040fde5ba738d7572a" category="sidebar">24.04</block>
   <block id="d7eeafe16e993a6db0f390553a4f2af4" category="paragraph">NVMe/TCP 프로토콜이 작업을 지원하지<block ref="c73910bff7459eb78b9c2d1e7c0e3ed7" prefix=" " category="inline-code"></block> 않습니다. 대신 NVMe/TCP 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 있습니다.</block>
@@ -1960,7 +1922,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="f41f106fe6317bf1fffbc4d33580f3d8" category="doc">ONTAP 스토리지를 위한 FCP 및 iSCSI를 위한 CentOS 8.x 구성</block>
   <block id="cf833d77734e30b1539d8f93f0b110b0" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. CentOS 8.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="f29ce90064042fdf54d7f129472e1a29" category="paragraph">CentOS 8.x에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="37818604bc325c12da17d12c5a11b2c6" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. <block ref="38e57a44e96058881795f8bd23b80525" category="inline-link-macro-rx"></block> Red Hat Enterprise Linux(RHEL) 8.x 시리즈용입니다.</block>
   <block id="2d0bfc473ee44f864dd566c0718022a0" category="summary">ONTAP 과 함께 Oracle Linux 8.x를 사용하는 방법을 설명합니다.</block>
   <block id="ba67fad4eca07067a073d76c746b6f4d" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 8.x 구성</block>
   <block id="dc041beabf1d67c4a880346af0ab38cb" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Oracle Linux 8.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
@@ -2382,7 +2343,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="872d5db3305b32e54793529162eed87f" category="paragraph">LPFC 또는 Qlogic(Qla2xxx)에 대한 자세한 로깅을 설정하십시오.</block>
   <block id="fe040552b4fc83efe2ba593498969954" category="list-text">설정을 확인하세요:</block>
   <block id="79c482cb23c057c0d600ecd3434dbb27" category="section-title">일반적인 "nvme-cli" 오류 및 해결 방법</block>
-  <block id="c481530fd3180128cebd4b0d3be77c0f" category="paragraph">문제가 계속 발생하는 경우, 다음 파일과 명령 출력 결과를 수집하여 문의해 주십시오. <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 추가적인 분류를 위해:</block>
   <block id="0669c03dc492faf8d7b9fc2bd8512b73" category="sidebar">이전 호스트 유틸리티 릴리스</block>
   <block id="2444d67396b745a440cfa96bf55da9c6" category="doc">NVMe-oF를 사용하여 ONTAP SAN 호스트를 구성하는 방법에 대해 알아보세요</block>
   <block id="55b4f27e868d94d08cb7b820fb7dcaf4" category="summary">SUSE Linux Enterprise Server 16에 Linux Host Utilities를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리하십시오.</block>
@@ -2450,4 +2410,62 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="32b0b2fb94c023fc633bfa7c0caf801f" category="section-title">2단계: 호스트의 iSCSI 구성을 확인합니다</block>
   <block id="961c1419cfe8060ce390b232d6e264c5" category="sidebar">HPE VME</block>
   <block id="c956a158e93a32e225bfb772f4b64394" category="sidebar">HPE VME 8.0.x</block>
+  <block id="1cb98d24e975e6c21662789b34e2d3c2" category="paragraph">CentOS Red Hat 호환 커널의 알려진 문제에 대해서는 Red Hat Enterprise Linux(RHEL) 8.x 시리즈의 <block ref="b64a4fb065ec8eadbc881ece1cbf7ba0" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
+  <block id="fef8ee7b94533bb078469a27722a8bba" category="list-text"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일이 있는지 확인합니다. 파일이 없으면 비어 있는 0바이트 파일을 생성합니다.</block>
+  <block id="2ce48a142c0e80ab8f317a99f9fe6ed3" category="summary">Oracle Linux 10 호스트에 Linux Host Utilities를 설치하여 ONTAP LUN으로 FCP 및 iSCSI 프로토콜 작업을 관리하십시오.</block>
+  <block id="ea29a45fe150e616e26859f8c3d6f7e6" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 위한 Oracle Linux 10 구성</block>
+  <block id="9b146d11e8cfc51a1ac9d01dc405828f" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 도구를 제공합니다. Oracle Linux 10 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
+  <block id="bd18c770f808d8ed650b8826f4be0370" category="paragraph">Oracle Linux 10에서 다중 경로를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="53b840df2d08c073f2534327f111dbf9" category="summary">ONTAP를 사용하는 Oracle Linux 10용 NVMe-oF 호스트 구성</block>
+  <block id="7230db89ca6861865150be7831e09274" category="doc">ONTAP 스토리지에 대해 NVMe-oF를 사용하여 Oracle Linux 10.x 구성</block>
+  <block id="d510a8ad0c1bbc5c8d97b199a8f0a853" category="paragraph">Oracle Linux 10.x용 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보십시오. 자세한 지원 및 기능 정보는 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
+  <block id="9f53c366466752fe327c961a6ac8050d" category="paragraph">Oracle Linux 10.x의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.</block>
+  <block id="434a4c1992d6e87fcab47a93c7ad1e82" category="paragraph">다음 절차를 사용하여 지원되는 최소 Oracle Linux 10.x 소프트웨어 버전을 확인하십시오.</block>
+  <block id="0ae5db6158a6e86bee0d9ecd4e04c8ac" category="list-text">서버에 Oracle Linux 10.x를 설치하십시오. 설치가 완료되면 지정된 Oracle Linux 10.x 커널이 실행 중인지 확인하십시오.</block>
+  <block id="9a1fc841d104b96cae7df9dfaadeaf1f" category="list-text">Oracle Linux 10.x 호스트에서<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열을<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>에서 확인합니다.</block>
+  <block id="026e7910f8597707ea78ced9009402b0" category="paragraph">Oracle Linux 10.x 호스트는 NVMe-oF에 대한 기본 iopolicy를 <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>로 설정합니다. udev 규칙 파일을 수정하여 iopolicy를 <block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>로 변경할 수 있습니다.</block>
+  <block id="93653ae68b7f62e4baef589277623491" category="paragraph">다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
+  <block id="6f412196079d9e58544081f4700ce25f" category="paragraph">다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
+  <block id="74ef0cdc12fc9f4e8b83d1a035e4f577" category="paragraph">Oracle Linux 10.x 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 보안 대역 내 인증이 지원됩니다.</block>
+  <block id="8ae4d61c82b1c9b58e4acbd1373806b2" category="cell">Oracle Linux 9.6부터 nvme는 "queue-depth" i/o 정책을 지원하며 기본 옵션으로 활성화되어 있습니다.</block>
+  <block id="d3c49c5822283d264df05a1fd8b0870e" category="inline-link-macro">Oracle Linux 10용 NVMe 구성</block>
+  <block id="7d3306fa564ca0cc7f3c887e0359e138" category="cell"><block ref="7d3306fa564ca0cc7f3c887e0359e138" category="inline-link-macro-rx"></block></block>
+  <block id="7d3905e0cba501e1167bfeb0ef23716d" category="inline-link-macro">ASA R2에 대해 알아보십시오</block>
+  <block id="c5aad2fbcc370dd1069cc7b310e5f818" category="paragraph"><block ref="1d871fa88754498eb3c93e5a73370e81" category="inline-link-macro-rx"></block> <block ref="e479a529e06da14c3826316f4b5d486e" category="inline-link-macro-rx"></block></block>
+  <block id="81d8d5962924b66a80a5c3110f594d9c" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF용으로 Ubuntu 22.04를 구성합니다</block>
+  <block id="7375c26540849f01a84eac6b85362a26" category="inline-link-macro">Ubuntu ONTAP 지원 및 기능</block>
+  <block id="3c317945c8c1e566a0973c6bfe2e23c8" category="paragraph">Ubuntu 22.04용 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보십시오. 자세한 지원 및 기능 정보는 <block ref="2596c465ddd6c92fd8b161574a0cd8ba" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
+  <block id="b5bdaf0b6b0807ef8e3508c017b220b1" category="paragraph">Ubuntu 22.04의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.</block>
+  <block id="6ddd22a26c1d066bc09e395480afb927" category="list-text">NVMe-oF 프로토콜을 사용한 SAN 부팅은 현재 ONTAP가 설치된 Ubuntu 22.04에서 지원되지 않습니다.</block>
+  <block id="5a62653e96ff80952f0f615590c366f3" category="paragraph">지원되는 구성에 대한 자세한 내용은 <block ref="a7003953f15e88b0eda85022d31017b5" category="inline-link-macro-rx"></block>을 참조하십시오.</block>
+  <block id="c421752fceed574575540b4537854630" category="section-title">1단계: Ubuntu 및 NVMe 소프트웨어를 설치하고 구성을 확인합니다</block>
+  <block id="5d98ed6d7426c19599636b584cbd8499" category="paragraph">Ubuntu 커널 버전 예:</block>
+  <block id="4febcb438e38d8ea26f146c7eb4cc6b0" category="list-text">ONTAP 시스템에서, <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>의 문자열과 일치하는지 확인하고, ONTAP 스토리지 시스템의 해당 하위 시스템에 대한 <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열과 일치하는지 확인합니다.</block>
+  <block id="cdb7d0ce548732d9f1fd2c399d2d64cb" category="paragraph">Broadcom/Emulex 또는 Marvell/Qlogic 어댑터용 NVMe/FC를 구성하거나 수동 검색 및 연결 작업을 사용하여 NVMe/TCP를 구성하십시오.</block>
+  <block id="3a3389ef589dfce02feb77c9c8bf0726" category="paragraph">다음 예와 유사한 출력이 표시됩니다.</block>
+  <block id="97f9a8bc058f969713afc7e49ff602ef" category="paragraph">다음과 유사한 출력이 표시됩니다.</block>
+  <block id="b5d49ed10fc06ec57d0952d3ebd54840" category="paragraph">NVMe/TCP는 자동 연결 기능을 제공하지 않습니다. 대신 NVMe/TCP<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템 및 네임스페이스를 검색할 수 있습니다.</block>
+  <block id="555b74e71738f2e402fc0de53b48fc8b" category="paragraph">경로에 장애가 발생하고 기본 시간 초과 기간인 10분 이내에 복구되지 않으면 NVMe/TCP가 자동으로 다시 연결되지 않습니다. 시간 초과를 방지하려면 페일오버 이벤트의 재시도 기간을 최소 30분으로 설정하십시오.</block>
+  <block id="bb89e9bace59fd7fd241efa108f91336" category="list-text">이니시에이터 포트가 지원되는 NVMe/TCP LIF를 통해 검색 로그 페이지 데이터를 가져올 수 있는지 확인하십시오.</block>
+  <block id="a00a6308352e2747153a9ae26be20fff" category="section-title">4단계: 다중 경로 구성 확인</block>
+  <block id="e3439a3f81a4e69f12df04a21d7a0a84" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF용으로 Ubuntu 24.04를 구성합니다</block>
+  <block id="5bb69d27124817d4ad8a88830c49b873" category="paragraph">Ubuntu 24.04용 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보십시오. 자세한 지원 및 기능 정보는 <block ref="2596c465ddd6c92fd8b161574a0cd8ba" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
+  <block id="acd22788128acb44c428e0f1cf6b4a4c" category="paragraph">Ubuntu 24.04의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.</block>
+  <block id="d16989a0a7cff1ea32aab2ccb4a37161" category="admonition">만약<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치하지 않으면, <block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 명령을 사용하여 해당 ONTAP 스토리지 시스템 서브시스템의 <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열을 호스트의 <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>에서 가져온 <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열과 일치하도록 업데이트하십시오.</block>
+  <block id="165acd219757dbbec65fbd5a24792898" category="list-text">권장되는 Broadcom<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 펌웨어와 내장 드라이버를 사용하고 있는지 확인하십시오.</block>
+  <block id="06bd4ba69054120ef18345db9c5cccca" category="paragraph">NVMe/TCP는 자동 연결 작업을 지원하지 않습니다. 대신 NVMe/TCP<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템 및 네임스페이스를 검색할 수 있습니다.</block>
+  <block id="fbb8c3634e390cf69c69cd1f449175c7" category="paragraph">== 5단계: 알려진 문제점 검토</block>
+  <block id="efaa7a41c95bd26123cf738971f624b5" category="summary">Ubuntu 호스트용 ONTAP 지원 및 기능에 대해 알아보십시오</block>
+  <block id="35408fbc8cac4acdf31c0e994b9e617f" category="cell">Ubuntu 호스트 버전</block>
+  <block id="f079c6de48aef64f8a494cd8ba7dc4b0" category="cell">네이티브 패키지의 NetApp 플러그인은 NVMe/FC 네임스페이스에 대한 ONTAP 세부 정보를 표시합니다.</block>
+  <block id="f6a7cbbb80d1a6558737078fc690dbd8" category="paragraph">22.04 이상</block>
+  <block id="3c18533c5f637891d53935135a3f19cd" category="cell">NVMe 및 SCSI 트래픽은 NVMe 네임스페이스 점유를 방지하기 위한 명시적인 dm-multipath 설정 없이 지정된 호스트 버스 어댑터(HBA)의 동일한 호스트에서 지원됩니다</block>
+  <block id="f11fee1c202f6e705b5fd13528d79f9f" category="cell">커널 내 NVMe 다중 경로는 NVMe 네임스페이스에 대해 기본적으로 활성화되어 있습니다. 따라서 명시적 구성이 필요하지 않습니다.</block>
+  <block id="141a30e0e3658704b53664b1d6d92012" category="cell">Ubuntu 버전이 ...인 경우</block>
+  <block id="79735da1d0f9dfbb1518d18d7249f5c6" category="inline-link-macro">Ubuntu 24.04용 NVMe 구성</block>
+  <block id="9fef4c15c5a56298164ab156cc0d11a3" category="cell"><block ref="9fef4c15c5a56298164ab156cc0d11a3" category="inline-link-macro-rx"></block></block>
+  <block id="e142a16151c5acc6ebb2be3ff16b7e3c" category="inline-link-macro">Ubuntu 22.04용 NVMe 구성</block>
+  <block id="549658667f6362886a369bc723e2a20d" category="cell"><block ref="549658667f6362886a369bc723e2a20d" category="inline-link-macro-rx"></block></block>
+  <block id="36efc339e29dbfc55b87bdb738345d78" category="paragraph">문제가 계속 발생하는 경우, 다음 파일과 명령 출력 결과를 수집하여 <block ref="ea2f4052f3eaf8e0d09bdf7668185025" category="inline-link-macro-rx"></block> 추가 지원을 위해 문의해 주십시오.</block>
+  <block id="43a1437f7f656cd8be7c996c58719e0a" category="sidebar">10.0</block>
 </blocks>

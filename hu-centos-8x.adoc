@@ -411,7 +411,7 @@ devices {
 
 알려진 문제가 없습니다.
 
-CentOS Red Hat 호환 커널의 알려진 문제는 다음을 참조하세요. link:hu-rhel-8x.html#known-problems-and-limitations["알려진 문제"] Red Hat Enterprise Linux(RHEL) 8.x 시리즈용입니다.
+CentOS Red Hat 호환 커널의 알려진 문제에 대해서는 Red Hat Enterprise Linux(RHEL) 8.x 시리즈의 link:hu-rhel-8x.html#step-7-review-the-known-issues["알려진 문제"]를 참조하십시오.
 
 
 

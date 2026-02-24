@@ -1,0 +1,1033 @@
+---
+sidebar: sidebar 
+permalink: nvme-ol-10x.html 
+keywords: nvme, oracle linux, 10, host configuration 
+summary: ONTAP를 사용하는 Oracle Linux 10용 NVMe-oF 호스트 구성 
+---
+= ONTAP 스토리지에 대해 NVMe-oF를 사용하여 Oracle Linux 10.x 구성
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Oracle Linux 호스트는 비대칭 네임스페이스 액세스(ANA)를 통해 NVMe over Fibre Channel(NVMe/FC) 및 NVMe over TCP(NVMe/TCP) 프로토콜을 지원합니다. ANA는 iSCSI 및 FCP 환경에서 ALUA(비대칭 논리 장치 액세스)와 동일한 다중 경로 기능을 제공합니다.
+
+Oracle Linux 10.x용 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보십시오. 자세한 지원 및 기능 정보는 link:nvme-ol-supported-features.html["Oracle Linux ONTAP 지원 및 기능"]를 참조하십시오.
+
+Oracle Linux 10.x의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습니다.
+
+* 그만큼 `nvme disconnect-all` 이 명령을 실행하면 루트와 데이터 파일 시스템의 연결이 모두 끊어지고 시스템이 불안정해질 수 있습니다.  NVMe-TCP 또는 NVMe-FC 네임스페이스를 통해 SAN에서 부팅하는 시스템에서는 이 명령을 실행하지 마세요.
+
+
+
+
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
+
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 간소화하고 확장성을 개선할 수 있습니다. 사용하다link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
+
+.단계
+. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["NVMe 네임스페이스를 생성하고 호스트에 매핑합니다."^] .
+. SAN 부팅 네임스페이스가 매핑된 포트에 대해 서버 BIOS에서 SAN 부팅을 활성화합니다.
++
+HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
+
+. 호스트를 재부팅하고 OS가 제대로 실행 중인지 확인하세요.
+
+
+
+
+== 2단계: Oracle Linux 및 NVMe 소프트웨어 설치 및 구성 확인
+
+다음 절차를 사용하여 지원되는 최소 Oracle Linux 10.x 소프트웨어 버전을 확인하십시오.
+
+.단계
+. 서버에 Oracle Linux 10.x를 설치하십시오. 설치가 완료되면 지정된 Oracle Linux 10.x 커널이 실행 중인지 확인하십시오.
++
+[source, cli]
+----
+uname -r
+----
++
+Oracle Linux 커널 버전 예:
+
++
+[listing]
+----
+6.12.0-100.28.2.el10uek.x86_64
+----
+. "NVMe-CLI" 패키지를 설치합니다.
++
+[source, cli]
+----
+rpm -qa|grep nvme-cli
+----
++
+다음 예에서는 다음을 보여줍니다.  `nvme-cli` 패키지 버전:
+
++
+[listing]
+----
+nvme-cli-2.13-2.0.1.el10.x86_64
+----
+. 를 설치합니다 `libnvme` 패키지:
++
+[source, cli]
+----
+rpm -qa|grep libnvme
+----
++
+다음 예에서는 다음을 보여줍니다.  `libnvme` 패키지 버전:
+
++
+[listing]
+----
+libnvme-1.13-1.el10.x86_64
+----
+. Oracle Linux 10.x 호스트에서 `hostnqn` 문자열을 `/etc/nvme/hostnqn`에서 확인합니다.
++
+[source, cli]
+----
+cat /etc/nvme/hostnqn
+----
++
+다음 예에서는 다음을 보여줍니다.  `hostnqn` 버전:
+
++
+[listing]
+----
+nqn.2014-08.org.nvmexpress:uuid:8397cecc-30f0-11e8-850f-7ed30aef0cc7
+----
+. ONTAP 시스템에서 다음을 확인하십시오. `hostnqn` 문자열이 일치합니다 `hostnqn` ONTAP 스토리지 시스템의 해당 하위 시스템에 대한 문자열:
++
+[source, cli]
+----
+vserver nvme subsystem host show -vserver vs_coexistence_emulex
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+Vserver Subsystem Priority  Host NQN
+------- --------- --------
+-------------------------------------------------------------------vs_coexistence_emulex
+nvme1
+regular   nqn.2014-08.org.nvmexpress:uuid:8397cecc-30f0-11e8-850f-7ed30aef0cc7
+nvme2
+regular    nqn.2014-08.org.nvmexpress:uuid:8397cecc-30f0-11e8-850f-7ed30aef0cc7
+
+----
+====
++
+
+NOTE: 문자열이 일치하지 않으면 `hostnqn` 명령을 사용하여 해당 ONTAP 배열 하위 시스템의 문자열을 `/etc/nvme/hostnqn` 호스트의 문자열과 일치하도록 `hostnqn` 업데이트할 `hostnqn` 수 `vserver modify` 있습니다.
+
+
+
+
+
+== 3단계: NVMe/FC 및 NVMe/TCP 구성
+
+Broadcom/Emulex 또는 Marvell/QLogic 어댑터를 사용하여 NVMe/FC를 구성하거나 수동 검색 및 연결 작업을 사용하여 NVMe/TCP를 구성합니다.
+
+[role="tabbed-block"]
+====
+.NVMe/FC - Broadcom/Emulex
+--
+Broadcom/Emulex 어댑터용 NVMe/FC를 구성합니다.
+
+.단계
+. 지원되는 어댑터 모델을 사용 중인지 확인합니다.
++
+.. 모델 이름을 표시합니다:
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modelname
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+LPe36002-M64-D
+LPe36002-M64-D
+----
+.. 모델 설명을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modeldesc
+----
++
+다음 예와 비슷한 출력이 표시되어야 합니다.
+
++
+[listing]
+----
+Emulex LPe36002-M64-D 2-Port 64Gb Fibre Channel Adapter
+Emulex LPe36002-M64-D 2-Port 64Gb Fibre Channel Adapter
+----
+
+
+. 권장 Broadcom을 사용하고 있는지 확인합니다 `lpfc` 펌웨어 및 받은 편지함 드라이버:
++
+.. 펌웨어 버전을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/fwrev
+----
++
+다음 예에서는 펌웨어 버전을 보여줍니다.
+
++
+[listing]
+----
+14.4.393.25, sli-4:6:d
+14.4.393.25, sli-4:6:d
+----
+.. 받은 편지함 드라이버 버전을 표시합니다.
++
+[source, cli]
+----
+cat /sys/module/lpfc/version
+----
++
+다음 예에서는 드라이버 버전을 보여줍니다.
+
++
+[listing]
+----
+0:14.4.0.2
+----
++
+지원되는 어댑터 드라이버 및 펌웨어 버전의 현재 목록은 를 참조하십시오link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
+
+
+
+. 확인합니다 `lpfc_enable_fc4_type` 가 로 설정되어 있습니다 `3`:
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+----
+. 이니시에이터 포트를 볼 수 있는지 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/<port_name>
+----
++
+다음 예에서는 포트 ID를 보여줍니다.
+
++
+[listing]
+----
+0x100000620b3c089c
+0x100000620b3c089d
+----
+. 이니시에이터 포트가 온라인 상태인지 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_state
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+Online
+Online
+----
+. NVMe/FC 이니시에이터 포트가 활성화되었고 타겟 포트가 표시되는지 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+----
++
+.예제 보기
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc0 WWPN x100000620b3c089c WWNN x200000620b3c089c DID x081300 *ONLINE*
+NVME RPORT       WWPN x2001d039eab0dadc WWNN x2000d039eab0dadc DID x080107 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2221d039eab0dadc WWNN x2220d039eab0dadc DID x080105 *TARGET DISCSRVC ONLINE*
+
+
+NVME Statistics
+LS: Xmt 000000713b Cmpl 000000713b Abort 00000001
+LS XMIT: Err 00000000  CMPL: xb 00000001 Err 00000001
+Total FCP Cmpl 00000000a513b8bb Issue 00000000a4f2485c OutIO ffffffffffde8fa1
+        abort 00006935 noxri 000004f0 nondlp 0002e119 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 0000693d Err 0009cb89
+
+
+NVME Initiator Enabled
+XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc1 WWPN x100000620b3c089d WWNN x200000620b3c089d DID x081900 *ONLINE*
+NVME RPORT       WWPN x2002d039eab0dadc WWNN x2000d039eab0dadc DID x080207 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2222d039eab0dadc WWNN x2220d039eab0dadc DID x080205 *TARGET DISCSRVC ONLINE*
+
+
+NVME Statistics
+LS: Xmt 0000007171 Cmpl 0000007171 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 00000000a509cecc Issue 00000000a4e7ed6c OutIO ffffffffffde1ea0
+        abort 000069c5 noxri 00000406 nondlp 000301e6 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 000069d6 Err 0009cbcds
+----
+=====
+
+
+--
+.NVMe/FC - Marvell/QLogic
+--
+Marvell/QLogic 어댑터용 NVMe/FC를 구성합니다.
+
+.단계
+. 지원되는 어댑터 드라이버 및 펌웨어 버전을 실행하고 있는지 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/symbolic_name
+----
++
+다음 예에서는 드라이버와 펌웨어 버전을 보여줍니다.
+
++
+[listing]
+----
+QLE2772 FW:v9.15.03 DVR:v10.02.09.300-k
+----
+. 확인합니다 `ql2xnvmeenable` 가 설정됩니다. 그러면 Marvell 어댑터가 NVMe/FC Initiator로 작동할 수 있습니다.
++
+[source, cli]
+----
+cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
+----
++
+예상 출력은 1입니다.
+
+
+
+--
+.NVMe/TCP
+--
+NVMe/TCP 프로토콜은 자동 연결 작업을 지원하지 않습니다.  대신 NVMe/TCP를 수행하여 NVMe/TCP 하위 시스템과 네임스페이스를 검색할 수 있습니다. `connect` 또는 `connect-all` 수동으로 작업합니다.
+
+.단계
+. 이니시에이터 포트가 지원되는 NVMe/TCP LIF에서 검색 로그 페이지 데이터를 가져올 수 있는지 확인합니다.
++
+[source, cli]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+.예제 보기
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme discover -t tcp -w 192.168.41.7 -a 192.168.41.10
+=====Discovery Log Entry 0======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  8
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:discovery
+traddr:  192.168.31.99
+eflags:  *explicit discovery connections*, *duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 1======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  6
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:discovery
+traddr:  192.168.30.99
+eflags:  *explicit discovery connections*, *duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 2======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  7
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:discovery
+traddr:  192.168.31.98
+eflags:  *explicit discovery connections*, *duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 3======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  5
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:discovery
+traddr:  192.168.30.98
+eflags:  *explicit discovery connections*, *duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 4======
+trtype:  tcp
+adrfam:  ipv4
+subtype: nvme subsystem
+treq:    not specified
+portid:  8
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:subsystem.subsys_kvm
+traddr:  192.168.31.99
+eflags:  none
+sectype: none
+=====Discovery Log Entry 5======
+trtype:  tcp
+adrfam:  ipv4
+subtype: nvme subsystem
+treq:    not specified
+portid:  6
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:subsystem.subsys_kvm
+traddr:  192.168.30.99
+eflags:  none
+sectype: none
+=====Discovery Log Entry 6======
+trtype:  tcp
+adrfam:  ipv4
+subtype: nvme subsystem
+treq:    not specified
+portid:  7
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:subsystem.subsys_kvm
+traddr:  192.168.31.98
+eflags:  none
+sectype: none
+=====Discovery Log Entry 7======
+trtype:  tcp
+adrfam:  ipv4
+subtype: nvme subsystem
+treq:    not specified
+portid:  5
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:subsystem.subsys_kvm
+traddr:  192.168.30.98
+eflags:  none
+sectype: none
+----
+=====
+. 다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.
++
+[source, cli]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+.예제 보기
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme discover -t tcp -w 192.168.41.7 -a 192.168.41.10
+nvme discover -t tcp -w 192.168.41.7 -a 192.168.41.11
+nvme discover -t tcp -w 192.168.48.7 -a 192.168.48.10
+nvme discover -t tcp -w 192.168.48.7 -a 192.168.48.11
+----
+=====
+. 를 실행합니다 `nvme connect-all` 노드에 걸쳐 지원되는 모든 NVMe/TCP 이니시에이터-타겟 LIF에 대한 명령:
++
+[source, cli]
+----
+nvme connect-all -t tcp -w host-traddr -a traddr
+----
++
+.예제 보기
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme connect-all -t tcp -w 192.168.41.7 -a 192.168.41.10
+nvme connect-all -t tcp -w 192.168.41.7 -a 192.168.41.11
+nvme connect-all -t tcp -w 192.168.48.7 -a 192.168.48.10
+nvme connect-all -t tcp -w 192.168.48.7 -a 192.168.48.11
+----
+=====
+
+
+[NOTE]
+====
+Oracle Linux 9.4부터 NVMe/TCP 설정  `ctrl_loss_tmo timeout` 자동으로 "꺼짐"으로 설정됩니다. 그 결과,
+
+* 재시도 횟수에 제한이 없습니다(무기한 재시도).
+* 특정 항목을 수동으로 구성할 필요가 없습니다.  `ctrl_loss_tmo timeout` 사용 시 지속 시간  `nvme connect` 또는  `nvme connect-all` 명령어(옵션 -l).
+* NVMe/TCP 컨트롤러는 경로 장애가 발생해도 시간 초과가 발생하지 않으며 무기한 연결 상태를 유지합니다.
+
+
+====
+--
+====
+
+
+== 4단계: 선택적으로 udev 규칙에서 iopolicy를 수정합니다.
+
+Oracle Linux 10.x 호스트는 NVMe-oF에 대한 기본 iopolicy를  `queue-depth`로 설정합니다. udev 규칙 파일을 수정하여 iopolicy를  `round-robin`로 변경할 수 있습니다.
+
+.단계
+. 루트 권한으로 텍스트 편집기에서 udev 규칙 파일을 엽니다.
++
+[source, cli]
+----
+/usr/lib/udev/rules.d/71-nvmf-netapp.rules
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+vi /usr/lib/udev/rules.d/71-nvmf-netapp.rules
+----
+. NetApp ONTAP 컨트롤러의 iopolicy를 설정하는 줄을 찾으십시오.
++
+다음 예시는 규칙의 예시를 보여줍니다.
+
++
+[listing]
+----
+ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}=="NetApp ONTAP Controller", ATTR{iopolicy}="queue-depth"
+----
+. 규칙을 수정하여  `queue-depth`이(가)  `round-robin`이(가) 되도록 합니다:
++
+[source, cli]
+----
+ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}=="NetApp ONTAP Controller", ATTR{iopolicy}="round-robin"
+----
+. udev 규칙을 다시 로드하고 변경 사항을 적용합니다.
++
+[source, cli]
+----
+udevadm control --reload
+udevadm trigger --subsystem-match=nvme-subsystem
+----
+. 하위 시스템의 현재 iopolicy를 확인하세요.  예를 들어 <하위 시스템>을 다음과 같이 바꾸세요. `nvme-subsys0` .
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/<subsystem>/iopolicy
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+round-robin.
+----
+
+
+
+NOTE: 새로운 iopolicy는 일치하는 NetApp ONTAP 컨트롤러 장치에 자동으로 적용됩니다. 재부팅이 필요 없습니다.
+
+
+
+== 5단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.
+
+ONTAP Identify Controller 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다.  즉, 최대 I/O 요청 크기는 1MB까지 가능합니다.  Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 다음을 늘려야 합니다. `lpfc` 의 가치 `lpfc_sg_seg_cnt` 매개변수를 기본값 64에서 256으로 변경합니다.
+
+
+NOTE: 이 단계는 Qlogic NVMe/FC 호스트에는 적용되지 않습니다.
+
+.단계
+.  `lpfc_sg_seg_cnt`매개변수를 256으로 설정합니다.
++
+[source, cli]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+다음 예와 비슷한 출력이 표시되어야 합니다.
+
++
+[listing]
+----
+options lpfc lpfc_sg_seg_cnt=256
+----
+.  `dracut -f`명령을 실행하고 호스트를 재부팅합니다.
+. 의 값이 256인지 `lpfc_sg_seg_cnt` 확인합니다.
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
+
+
+
+
+== 6단계: NVMe 부팅 서비스 확인
+
+그만큼 `nvmefc-boot-connections.service` 그리고 `nvmf-autoconnect.service` NVMe/FC에 포함된 부팅 서비스 `nvme-cli` 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다.
+
+부팅이 완료된 후 다음을 확인하세요.  `nvmefc-boot-connections.service` 그리고  `nvmf-autoconnect.service` 부팅 서비스가 활성화되었습니다.
+
+.단계
+. 가 활성화되어 있는지 `nvmf-autoconnect.service` 확인합니다.
++
+[source, cli]
+----
+systemctl status nvmf-autoconnect.service
+----
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing]
+----
+nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
+     Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: disabled)
+     Active: inactive (dead) since Tue 2026-02-02 09:48:11 EDT; 1 week 0 days ago
+   Main PID: 2620 (code=exited, status=0/SUCCESS)
+        CPU: 19ms
+
+Feb 02 09:48:11 sr630-13-169 systemd[1]: Starting Connect NVMe-oF subsystems automatically during boot...
+Feb 02 09:48:11 sr630-13-169 systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
+Feb 02 09:48:11 sr630-13-169 systemd[1]: Finished Connect NVMe-oF subsystems automatically during boot.
+----
+====
+. 가 활성화되어 있는지 `nvmefc-boot-connections.service` 확인합니다.
++
+[source, cli]
+----
+systemctl status nvmefc-boot-connections.service
+----
++
+.예제 출력을 표시합니다
+[%collapsible]
+====
+[listing]
+----
+nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
+     Loaded: loaded (/usr/lib/systemd/system/nvmefc-boot-connections.service; enabled; preset: enabled)
+     Active: inactive (dead) since Tue 2026-02-02 09:47:07 EDT; 1 week 0 days ago2
+   Main PID: 1651 (code=exited, status=0/SUCCESS)
+        CPU: 14ms
+
+Feb 02 09:47:07 sr630-13-169 systemd[1]: Starting Auto-connect to subsystems on FC-NVME devices found during boot...
+Feb 02 09:47:07 sr630-13-169 systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
+Feb 02 09:47:07 sr630-13-169 systemd[1]: Finished Auto-connect to subsystems on FC-NVME devices found during boot.
+----
+====
+
+
+
+
+== 7단계: 다중 경로 구성 확인
+
+커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
+
+.단계
+. in-kernel NVMe multipath가 활성화되어 있는지 확인합니다.
++
+[source, cli]
+----
+cat /sys/module/nvme_core/parameters/multipath
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+Y
+----
+. 해당 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: 모델이 NetApp ONTAP 컨트롤러로 설정되고 로드 밸런싱 iopolicy가 queue-depth로 설정됨)이 호스트에 올바르게 반영되었는지 확인하십시오.
++
+.. 하위 시스템을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/model
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
+.. 정책을 표시합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+----
++
+예를 들어, iopolicy에 설정된 값을 확인할 수 있습니다.
+
++
+[listing]
+----
+queue-depth
+queue-depth
+----
+
+
+. 호스트에서 네임스페이스가 생성되고 올바르게 검색되는지 확인합니다.
++
+[source, cli]
+----
+nvme list
+----
++
+.예제 보기
+[%collapsible]
+====
+[listing]
+----
+Node            Generic         SN                   Model                    Namespace  Usage                      Format         FW Rev
+--------------- --------------- -------------------- ------------------------ ---------- -------------------------- -------------  --------
+/dev/nvme10n1   /dev/ng10n1     81NQfNZTUE14AAAAAAAN NetApp ONTAP Controller   0x1          0.00   B /  21.47  GB   4 KiB +  0 B   9.18.1
+/dev/nvme10n2   /dev/ng10n2     81NQfNZTUE14AAAAAAAN NetApp ONTAP Controller   0x2          0.00   B /  21.47  GB   4 KiB +  0 B   9.18.1
+/dev/nvme12n1   /dev/ng12n1     81NQfNZTUE14AAAAAAAb NetApp ONTAP Controller   0x1          0.00   B /  21.47  GB   4 KiB +  0 B   9.18.1
+----
+====
+. 각 경로의 컨트롤러 상태가 라이브이고 올바른 ANA 상태인지 확인합니다.
++
+[source, cli]
+----
+nvme list-subsys /dev/<controller_ID>
+----
++
+
+NOTE: ONTAP 9.16.1부터 NVMe/FC 및 NVMe/TCP는 ASA r2 시스템에서 최적화된 모든 경로를 보고합니다.
+
++
+[role="tabbed-block"]
+====
+.NVMe/FC
+--
+다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.
+
+.AFF, FAS 및 ASA 예시 출력 표시
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+ nvme-subsys114 - NQN=nqn.1992-08.com.netapp:sn.9e30b9760a4911f08c87d039eab67a95:subsystem.sles_161_27
+                 hostnqn=nqn.2014-08.org.nvmexpress:uuid:f6517cae-3133-11e8-bbff-7ed30aef123f iopolicy=round-robin\
++- nvme114 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2360d039ea359e4a,host_traddr=nn-0x20000090fae0ec88:pn-0x10000090fae0ec88 *live optimized*
++- nvme115 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2362d039ea359e4a,host_traddr=nn-0x20000090fae0ec88:pn-0x10000090fae0ec88 *live non-optimized*
++- nvme116 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2361d039ea359e4a,host_traddr=nn-0x20000090fae0ec89:pn-0x10000090fae0ec89 *live optimized*
++- nvme117 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2363d039ea359e4a,host_traddr=nn-0x20000090fae0ec89:pn-0x10000090fae0ec89 *live non-optimized*
+----
+=====
+.ASA r2 예제 출력 표시
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys96 - NQN=nqn.1992-08.om.netapp:sn.b351b2b6777b11f0b3c2d039ea5cfc91:subsystem.nvme24
+                hostnqn=nqn.2014-08.org.nvmexpress:uuid:d3b581b4-c975-11e6-8425-0894ef31a074
+\
+ +- nvme203 *fc* traddr=nn-0x2011d039ea5cfc90:pn-0x2015d039ea5cfc90,host_traddr=nn-0x200000109bdacc76:pn-0x100000109bdacc76 *live optimized*
+ +- nvme25 *fc* traddr=nn-0x2011d039ea5cfc90:pn-0x2014d039ea5cfc90,host_traddr=nn-0x200000109bdacc75:pn-0x100000109bdacc75 *live optimized*
+ +- nvme30 *fc* traddr=nn-0x2011d039ea5cfc90:pn-0x2012d039ea5cfc90,host_traddr=nn-0x200000109bdacc75:pn-0x100000109bdacc75 *live optimized*
+ +- nvme32 *fc* traddr=nn-0x2011d039ea5cfc90:pn-0x2013d039ea5cfc90,host_traddr=nn-0x200000109bdacc76:pn-0x100000109bdacc76 *live optimized*
+----
+=====
+--
+.NVMe/TCP
+--
+다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.
+
+.AFF, FAS 및 ASA 예시 출력 표시
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys9 - NQN=nqn.1992-08.com.netapp:sn.9927e165694211f0b4f4d039eab31e9d:subsystem.nvme10
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b7c04f444d33
+\
+ +- nvme105 *tcp* traddr=192.168.39.10,trsvcid=4420,host_traddr=192.168.39.20,src_addr=192.168.39.20 *live optimized*
+ +- nvme153 *tcp* traddr=192.168.39.11,trsvcid=4420,host_traddr=192.168.39.20,src_addr=192.168.39.20 *live non-optimized*
+ +- nvme57 *tcp* traddr=192.168.38.11,trsvcid=4420,host_traddr=192.168.38.20,src_addr=192.168.38.20 *live non-optimized*
+ +- nvme9 *tcp* traddr=192.168.38.10,trsvcid=4420,host_traddr=192.168.38.20,src_addr=192.168.38.20 *live optimized*
+----
+=====
+.ASA r2 예제 출력 표시
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.17e32b6e8c7f11f09545d039eac03c33:subsystem.Bidirectional_DHCP_1_0
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0054-5110-8039-c3c04f523034
+\                                                                                                                                                                               +- nvme4 *tcp* traddr=192.168.20.28,trsvcid=4420,host_traddr=192.168.20.21,src_addr=192.168.20.21 *live optimized*
++- nvme5 *tcp* traddr=192.168.20.29,trsvcid=4420,host_traddr=192.168.20.21,src_addr=192.168.20.21 *live optimized*
++- nvme6 *tcp* traddr=192.168.21.28,trsvcid=4420,host_traddr=192.168.21.21,src_addr=192.168.21.21 *live optimized*
++- nvme7 *tcp* traddr=192.168.21.29,trsvcid=4420,host_traddr=192.168.21.21,src_addr=192.168.21.21 *live optimized*
+----
+=====
+--
+====
+. NetApp 플러그인에 각 ONTAP 네임스페이스 장치에 대한 올바른 값이 표시되는지 확인합니다.
++
+[role="tabbed-block"]
+====
+.열
+--
+[source, cli]
+----
+nvme netapp ontapdevices -o column
+----
+.예제 보기
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+Device           Vserver                  Namespace Path         NSID  UUID                                   Size
+---------------- ----------------------- ----------------------- ----- -------------------------------------- --------
+/dev/nvme1n1     vs_sanboot sanboot_169   /vol/nvme169/ns169      1    58443dbc-a472-45da-a5ef-3dd27c19d04b   171.80GB
+----
+=====
+--
+.JSON을 참조하십시오
+--
+[source, cli]
+----
+nvme netapp ontapdevices -o json
+----
+.예제 보기
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+{
+  "ONTAPdevices":[
+    {
+      "Device":"/dev/nvme11n1",
+      "Vserver":"vs_sanboot", "Subsystem":"sanboot_169",
+      "Namespace_Path": "/vol/nvme169/ns169",
+      "NSID":1,
+      "UUID":" 58443dbc-a472-45da-a5ef-3dd27c19d04b",
+      "LBA_Size":4096,
+      "Namespace_Size": 171798691840,
+      "UsedBytes": 6016638976,
+      "Version":"9.18.1"
+        }
+  ]
+}
+----
+=====
+--
+====
+
+
+
+
+== 8단계: 안전한 인밴드 인증 설정
+
+Oracle Linux 10.x 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 보안 대역 내 인증이 지원됩니다.
+
+각 호스트 또는 컨트롤러는 보안 인증을 설정하기 위해 DH-HMAC-CHAP 키와 연결되어야 합니다.  DH-HMAC-CHAP 키는 NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀번호의 조합입니다.  피어를 인증하려면 NVMe 호스트나 컨트롤러가 피어와 연결된 키를 인식해야 합니다.
+
+.단계
+CLI 또는 구성 JSON 파일을 사용하여 안전한 인밴드 인증을 설정합니다.  다른 하위 시스템에 대해 다른 dhchap 키를 지정해야 하는 경우 구성 JSON 파일을 사용하세요.
+
+[role="tabbed-block"]
+====
+.CLI를 참조하십시오
+--
+CLI를 사용하여 보안 인밴드 인증을 설정합니다.
+
+. 호스트 NQN 가져오기:
++
+[source, cli]
+----
+cat /etc/nvme/hostnqn
+----
+. Linux 호스트에 대한 dhchap 키를 생성합니다.
++
+다음 출력은 다음을 설명합니다. `gen-dhchap-key` 명령 매개변수:
+
++
+[listing]
+----
+nvme gen-dhchap-key -s optional_secret -l key_length {32|48|64} -m HMAC_function {0|1|2|3} -n host_nqn
+•	-s secret key in hexadecimal characters to be used to initialize the host key
+•	-l length of the resulting key in bytes
+•	-m HMAC function to use for key transformation
+0 = none, 1- SHA-256, 2 = SHA-384, 3=SHA-512
+•	-n host NQN to use for key transformation
+----
++
+다음 예에서는 HMAC이 3(SHA-512)으로 설정된 임의의 dhchap 키가 생성됩니다.
+
++
+[listing]
+----
+# nvme gen-dhchap-key -m 3 -n nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c4c04f425633
+DHHC-1:03:xhAfbAD5IVLZDxiVbmFEOA5JZ3F/ERqTXhHzZQJKgkYkTbPI9dhRyVtr4dBD+SGiAJO3by4FbnVtov1Lmk+86+nNc6k=:
+----
+. ONTAP 컨트롤러에서 호스트를 추가하고 두 dhchap 키를 모두 지정합니다.
++
+[source, cli]
+----
+vserver nvme subsystem host add -vserver <svm_name> -subsystem <subsystem> -host-nqn <host_nqn> -dhchap-host-secret <authentication_host_secret> -dhchap-controller-secret <authentication_controller_secret> -dhchap-hash-function {sha-256|sha-512} -dhchap-group {none|2048-bit|3072-bit|4096-bit|6144-bit|8192-bit}
+----
+. 호스트는 단방향 및 양방향이라는 두 가지 유형의 인증 방법을 지원합니다. 호스트에서 ONTAP 컨트롤러에 연결하고 선택한 인증 방법에 따라 dhchap 키를 지정합니다.
++
+[source, cli]
+----
+nvme connect -t tcp -w <host-traddr> -a <tr-addr> -n <host_nqn> -S <authentication_host_secret> -C <authentication_controller_secret>
+----
+. 의 유효성을 검사합니다 `nvme connect authentication` 호스트 및 컨트롤러 dhchap 키를 확인하여 명령:
++
+.. 호스트 dhchap 키를 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
+----
++
+.단방향 설정에 대한 출력 예제를 표시합니다
+[%collapsible]
+=====
+[listing]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
+DHHC-1:03:Y5VkkESgmtTGNdX842qemNpFK6BXYVwwnqErgt3IQKP5Fbjje\/JSBOjG5Ea3NBLRfuiAuUSDUto6eY\/GwKoRp6AwGkw=:
+DHHC-1:03:Y5VkkESgmtTGNdX842qemNpFK6BXYVwwnqErgt3IQKP5Fbjje\/JSBOjG5Ea3NBLRfuiAuUSDUto6eY\/GwKoRp6AwGkw=:
+DHHC-1:03:Y5VkkESgmtTGNdX842qemNpFK6BXYVwwnqErgt3IQKP5Fbjje\/JSBOjG5Ea3NBLRfuiAuUSDUto6eY\/GwKoRp6AwGkw=:
+DHHC-1:03:Y5VkkESgmtTGNdX842qemNpFK6BXYVwwnqErgt3IQKP5Fbjje\/JSBOjG5Ea3NBLRfuiAuUSDUto6eY\/GwKoRp6AwGkw=:
+----
+=====
+.. 컨트롤러 dhchap 키를 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_ctrl_secret
+----
++
+.에는 양방향 구성의 출력 예가 나와 있습니다
+[%collapsible]
+=====
+[listing]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys6/nvme*/dhchap_ctrl_secret
+DHHC-1:03:frpLlTrnOYtcWDxPzq4ccxU1UrH2FjV7hYw5s2XEDB+lo+TjMsOwHR\/NFtM0nBBidx+gdoyUcC5s6hOOtTLDGcz0Kbs=:
+DHHC-1:03:frpLlTrnOYtcWDxPzq4ccxU1UrH2FjV7hYw5s2XEDB+lo+TjMsOwHR\/NFtM0nBBidx+gdoyUcC5s6hOOtTLDGcz0Kbs=:
+DHHC-1:03:frpLlTrnOYtcWDxPzq4ccxU1UrH2FjV7hYw5s2XEDB+lo+TjMsOwHR\/NFtM0nBBidx+gdoyUcC5s6hOOtTLDGcz0Kbs=:
+DHHC-1:03:frpLlTrnOYtcWDxPzq4ccxU1UrH2FjV7hYw5s2XEDB+lo+TjMsOwHR\/NFtM0nBBidx+gdoyUcC5s6hOOtTLDGcz0Kbs=:
+----
+=====
+
+
+
+
+--
+.JSON을 참조하십시오
+--
+ONTAP 컨트롤러 구성에서 여러 NVMe 서브시스템을 사용할 수 있는 경우 파일을 명령과 함께 `nvme connect-all` 사용할 수 `/etc/nvme/config.json` 있습니다.
+
+사용하세요  `-o` JSON 파일을 생성하는 옵션입니다. 자세한 구문 옵션은 NVMe Connect - 모든 설명서 페이지를 참조하십시오.
+
+. JSON 파일 구성:
++
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+[
+  {
+    "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c4c04f425633",
+    "hostid":"4c4c4544-0056-5410-8048-c4c04f425633",
+    "dhchap_key":"DHHC-1:01:nFg06gV0FNpXqoiLOF0L+swULQpZU/PjU9v/McDeJHjTZFlF:",
+    "subsystems":[
+      {
+        "nqn":"nqn.1992-08.com.netapp:sn.09035a8d8c8011f0ac0fd039eabac370:subsystem.subsys",
+        "ports":[
+          {
+            "transport":"tcp",
+            "traddr":"192.168.30.69",
+            "host_traddr":"192.168.41.7",
+            "trsvcid":"4420",
+            "dhchap_ctrl_key":"DHHC-1:03:n3F8d+bvxKW/s+lEhqXaOohI2sxrQ9iLutzduuFq49JgdjjaFtTpDSO9kQl/bvZj+Bo3rdHh3xPXeP6a4xyhcRyqdds=:"
+          }
+        ]
+      }
+    ]
+  }
+]
+----
+=====
++
+
+NOTE: 위의 예제에서 는 `dhchap_key` 에 해당하고 에 `dhchap_secret` `dhchap_ctrl_key` `dhchap_ctrl_secret` 해당합니다.
+
+. config JSON 파일을 사용하여 ONTAP 컨트롤러에 연결합니다.
++
+[source, cli]
+----
+nvme connect-all -J /etc/nvme/config.json
+----
+. 각 하위 시스템에 대해 해당 컨트롤러에 대해 dhchap 암호가 활성화되어 있는지 확인합니다.
++
+.. 호스트 dhchap 키를 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
+----
++
+다음 예에서는 dhchap 키를 보여줍니다.
+
++
+[listing]
+----
+DHHC-1:01:nFg06gV0FNpXqoiLOF0L+swULQpZU/PjU9v/McDeJHjTZFlF:
+----
+.. 컨트롤러 dhchap 키를 확인합니다.
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
+----
++
+다음 예와 비슷한 출력이 표시되어야 합니다.
+
++
+[listing]
+----
+DHHC-1:03:n3F8d+bvxKW/s+lEhqXaOohI2sxrQ9iLutzduuFq49JgdjjaFtTpDSO9kQl/bvZj+Bo3rdHh3xPXeP6a4xyhcRyqdds=:
+----
+
+
+
+
+--
+====
+
+
+== 9단계: 알려진 문제를 검토합니다
+
+알려진 문제가 없습니다.
