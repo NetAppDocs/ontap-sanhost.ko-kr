@@ -315,10 +315,10 @@ $iscsiadm --mode node -l all
 $iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v automatic
 ----
 +
-다음 예와 비슷한 출력이 표시되어야 합니다.
+ `<target_name>`을(를) 호스트 부팅 시 자동으로 로그인할 대상 이름으로 바꾸십시오.  `<ip:port>`을(를) 대상의 IP 주소와 포트 번호로 바꾸십시오. 예를 들면 다음과 같습니다.
 
 +
-[listing]
+[source, cli]
 ----
 iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 -p 192.168.30.87:3260 -o update -n node.startup -v automatic
 ----
