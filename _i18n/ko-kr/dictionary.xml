@@ -518,7 +518,6 @@
   <block id="c7c7e4d1fc8a47f946a88914900694c3" category="list-text">HP-UX 11iv2</block>
   <block id="4feac8845db3a6b1f4e4ead570b6b3ad" category="list-text">HP-UX 11iv3</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">릴리스 정보</block>
-  <block id="cf5f238fca8b6e155078aa41c175743a" category="sidebar">9.0</block>
   <block id="fc42d5b62a406fecb7a634ca014f42c2" category="paragraph">7.0U3c부터 필요한 NVMe/TCP 모듈이 기본적으로 로드됩니다. 네트워크 및 NVMe/TCP 어댑터를 구성하려면 VMware vSphere 설명서를 참조하십시오.</block>
   <block id="209ae9abdc2efd05e90e3a97a8913a9b" category="section-title">NVMe/TCP를 검증합니다</block>
   <block id="e4dbb8bc2f2492f010d3f33dd68f00c8" category="list-text">NVMe/TCP 어댑터의 상태를 확인합니다.</block>
@@ -2468,4 +2467,9 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="22429905973644b59fef5bc5f1de5cc0" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 위한 Oracle Linux 10.x 구성</block>
   <block id="c095933cd33553034e8d119262dd097b" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 도구를 제공합니다. Oracle Linux 10.x 호스트에 Linux Host Utilities를 설치하면 Host Utilities를 사용하여 ONTAP LUN에서 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="53b0cb8dd1f208321bcde1fc420505d1" category="paragraph">Oracle Linux 10.x에서 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="6a2b4410790513f6bead3be5a1c5f033" category="paragraph">8.0 이상</block>
+  <block id="de99ebfc9b67fc827d4b885ffe66df51" category="section-title">3단계: 선택적으로 udev 규칙의 iopolicy를 수정합니다</block>
+  <block id="6c3cb6f0244406645b054fde3485555c" category="paragraph">Proxmox VE 9.0부터 NVMe-oF의 기본 iopolicy는<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>로 설정되어 있습니다. iopolicy를<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>로 변경하려면(이 또한 구성 가능한 옵션으로 제공됨) udev 규칙 파일을 다음과 같이 수정하십시오:</block>
+  <block id="3261e25ecb6c10cb23753dafcc11d3f3" category="list-text">다음 예시와 같이 규칙을 수정하여<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>를<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>로 변경하십시오:</block>
+  <block id="306924ca750fad388254a44133cf90dd" category="list-text">서브시스템의 현재 iopolicy를 확인하십시오. &lt;subsystem&gt;를 서브시스템 이름으로 바꾸십시오(예: nvme-subsys0).</block>
 </blocks>

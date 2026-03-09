@@ -44,7 +44,7 @@ uname -r
 +
 [listing]
 ----
-6.14.8-2-pve
+6.17.2-2-pve
 ----
 . "NVMe-CLI" 패키지를 설치합니다.
 +
@@ -86,7 +86,7 @@ cat /etc/nvme/hostnqn
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:39333550-3333-4753-4844-32594d4a524c
+nqn.2014-08.org.nvmexpress:uuid:39333550-3333-4753-4844-32594d4a5247
 ----
 . ONTAP 시스템에서 다음 사항을 확인하십시오. `hostnqn` 문자열이 일치합니다 `hostnqn` ONTAP 어레이의 해당 서브시스템에 대한 문자열:
 +
@@ -191,7 +191,7 @@ cat /sys/module/lpfc/version
 +
 [listing]
 ----
-0:14.4.0.7
+0:14.4.0.10
 ----
 
 
@@ -407,7 +407,66 @@ NVMe/TCP 설정 `ctrl_loss_tmo timeout` 자동으로 "꺼짐"으로 설정됩니
 ====
 
 
-== 3단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.
+== 3단계: 선택적으로 udev 규칙의 iopolicy를 수정합니다
+
+Proxmox VE 9.0부터 NVMe-oF의 기본 iopolicy는 `queue-depth`로 설정되어 있습니다. iopolicy를 `round-robin`로 변경하려면(이 또한 구성 가능한 옵션으로 제공됨) udev 규칙 파일을 다음과 같이 수정하십시오:
+
+.단계
+. 루트 권한으로 텍스트 편집기에서 udev 규칙 파일을 엽니다.
++
+[source, cli]
+----
+/usr/lib/udev/rules.d/71-nvmf-netapp.rules
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+vi /usr/lib/udev/rules.d/71-nvmf-netapp.rules
+----
+. 다음 예시 규칙에 나와 있는 것처럼 NetApp ONTAP 컨트롤러의 iopolicy를 설정하는 줄을 찾으십시오.
++
+[listing]
+----
+ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}=="NetApp ONTAP Controller", ATTR{iopolicy}="queue-depth"
+----
+. 다음 예시와 같이 규칙을 수정하여 `queue-depth`를 `round-robin`로 변경하십시오:
++
+[listing]
+----
+ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}=="NetApp ONTAP Controller", ATTR{iopolicy}="round-robin"
+----
+. udev 규칙을 다시 로드하고 변경 사항을 적용합니다.
++
+[source, cli]
+----
+udevadm control --reload
+udevadm trigger --subsystem-match=nvme-subsystem
+----
+. 서브시스템의 현재 iopolicy를 확인하십시오. <subsystem>를 서브시스템 이름으로 바꾸십시오(예: nvme-subsys0).
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/<subsystem>/iopolicy
+----
++
+다음과 같은 출력이 표시됩니다.
+
++
+[listing]
+----
+round-robin
+----
+
+
+
+NOTE: 새로운 iopolicy는 일치하는 NetApp ONTAP 컨트롤러 장치에 자동으로 적용됩니다. 재부팅이 필요 없습니다.
+
+
+
+== 4단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.
 
 ONTAP Identify Controller 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다.  즉, 최대 I/O 요청 크기는 1MB까지 가능합니다.  Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 다음을 늘려야 합니다. `lpfc` 의 가치 `lpfc_sg_seg_cnt` 매개변수를 기본값 64에서 256으로 변경합니다.
 
@@ -440,7 +499,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
-== 4단계: NVMe 부팅 서비스 확인
+== 5단계: NVMe 부팅 서비스 확인
 
 그만큼 `nvmefc-boot-connections.service` 그리고 `nvmf-autoconnect.service` NVMe/FC에 포함된 부팅 서비스 `nvme-cli` 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다.
 
@@ -461,15 +520,12 @@ systemctl status nvmf-autoconnect.service
 ----
 ○ nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
      Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: enabled)
-     Active: inactive (dead) since Thu 2025-10-16 18:00:39 IST; 6 days ago
- Invocation: e146e0b2c339432aad6e0555a528872c
-    Process: 1787 ExecStart=/usr/sbin/nvme connect-all --context=autoconnect (code=exited, status=0/SUCCESS)
-   Main PID: 1787 (code=exited, status=0/SUCCESS)
-   Mem peak: 2.4M
-        CPU: 12ms
-Oct 16 18:00:39 HPE-DL365-14-176 systemd[1]: Starting nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot...
-Oct 16 18:00:39 HPE-DL365-14-176 systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
-Oct 16 18:00:39 HPE-DL365-14-176 systemd[1]: Finished nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot.
+     Active: inactive (dead) since Fri 2026-02-20 22:00:40 IST; 2 days ago
+ Invocation: 48e3574eef064ff98928f840a62d787a
+    Process: 3507 ExecStart=/usr/sbin/nvme connect-all --context=autoconnect (code=exited, status=0/SUCCESS)
+   Main PID: 3507 (code=exited, status=0/SUCCESS)
+   Mem peak: 6.9M
+        CPU: 46ms
 ----
 ====
 . 가 활성화되어 있는지 `nvmefc-boot-connections.service` 확인합니다.
@@ -486,22 +542,22 @@ systemctl status nvmefc-boot-connections.service
 ----
 nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
      Loaded: loaded (/usr/lib/systemd/system/nvmefc-boot-connections.service; enabled; preset: enabled)
-     Active: inactive (dead) since Thu 2025-10-16 18:00:35 IST; 6 days ago
- Invocation: acf73ac1ef7a402198d6ecc4d075fab0
-    Process: 1173 ExecStart=/bin/sh -c echo add > /sys/class/fc/fc_udev_device/nvme_discovery (code=exited, status=0/SUCCESS)
-   Main PID: 1173 (code=exited, status=0/SUCCESS)
-   Mem peak: 2.1M
-        CPU: 11ms
+     Active: inactive (dead) since Fri 2026-02-20 22:00:11 IST; 2 days ago
+ Invocation: 6f6d180fdbcd4fa6ad861c50ba6a15e6
+    Process: 1193 ExecStart=/bin/sh -c echo add > /sys/class/fc/fc_udev_device/nvme_discovery (code=exited, status=0/SUCCESS)
+   Main PID: 1193 (code=exited, status=0/SUCCESS)
+   Mem peak: 2.2M
+        CPU: 10ms
 
-Oct 16 18:00:35 HPE-DL365-14-176 systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
-Oct 16 18:00:35 HPE-DL365-14-176 systemd[1]: Finished nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot.
+Feb 20 22:00:11 HPE-DL365-14-176 systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
+Feb 20 22:00:11 HPE-DL365-14-176 systemd[1]: Finished nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot.
 ----
 ====
 
 
 
 
-== 5단계: 다중 경로 구성 확인
+== 6단계: 다중 경로 구성 확인
 
 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
 
@@ -573,15 +629,35 @@ Node          Generic     SN                   Model                    Namespac
 ====
 . 각 경로의 컨트롤러 상태가 라이브이고 올바른 ANA 상태인지 확인합니다.
 +
+[source, cli]
+----
+nvme list-subsys /dev/<controller_ID>
+----
++
+
+NOTE: ONTAP 9.16.1부터 NVMe/FC 및 NVMe/TCP는 ASA r2 시스템에서 최적화된 모든 경로를 보고합니다.
+
++
 [role="tabbed-block"]
 ====
 .NVMe/FC
 --
-[source, cli]
+다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.
+
+.AFF, FAS 및 ASA 예시 출력 표시
+[%collapsible]
+=====
+[listing, subs="+quotes"]
 ----
-nvme list-subsys /dev/nvme3n9
+ nvme-subsys114 - NQN=nqn.1992-08.com.netapp:sn.9e30b9760a4911f08c87d039eab67a95:subsystem.sles_161_27
+                 hostnqn=nqn.2014-08.org.nvmexpress:uuid:f6517cae-3133-11e8-bbff-7ed30aef123f iopolicy=round-robin\
++- nvme114 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2360d039ea359e4a,host_traddr=nn-0x20000090fae0ec88:pn-0x10000090fae0ec88 *live optimized*
++- nvme115 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2362d039ea359e4a,host_traddr=nn-0x20000090fae0ec88:pn-0x10000090fae0ec88 *live non-optimized*
++- nvme116 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2361d039ea359e4a,host_traddr=nn-0x20000090fae0ec89:pn-0x10000090fae0ec89 *live optimized*
++- nvme117 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2363d039ea359e4a,host_traddr=nn-0x20000090fae0ec89:pn-0x10000090fae0ec89 *live non-optimized*
 ----
-.예제 보기
+=====
+.ASA r2 예제 출력 표시
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -589,20 +665,18 @@ nvme list-subsys /dev/nvme3n9
 nvme-subsys3 - NQN=nqn.1992-08.com.netapp:sn.94929fdb84eb11f0b624d039eac809ba:subsystem.sub_176
                hostnqn=nqn.2014-08.org.nvmexpress:uuid:39333550-3333-4753-4844-32594d4a524c
 \
- +- nvme1 *fc* traddr=nn-0x200dd039eac79573:pn-0x2010d039eac79573,host_traddr=nn-0x20005ced8c531949:pn-0x10005ced8c531949 *live optimized*
- +- nvme3 *fc* traddr=nn-0x200dd039eac79573:pn-0x200ed039eac79573,host_traddr=nn-0x20005ced8c531948:pn-0x10005ced8c531948 *live optimized*
-+- nvme5 *fc* traddr=nn-0x200dd039eac79573:pn-0x200fd039eac79573,host_traddr=nn-0x20005ced8c531949:pn-0x10005ced8c531949 *live non-optimized*
- +- nvme7 *fc* traddr=nn-0x200dd039eac79573:pn-0x2011d039eac79573,host_traddr=nn-0x20005ced8c531948:pn-0x10005ced8c531948 *live non-optimized*
++- nvme1 *fc* traddr=nn-0x200dd039eac79573:pn-0x2010d039eac79573,host_traddr=nn-0x20005ced8c531949:pn-0x10005ced8c531949 *live optimized*
++- nvme3 *fc* traddr=nn-0x200dd039eac79573:pn-0x200ed039eac79573,host_traddr=nn-0x20005ced8c531948:pn-0x10005ced8c531948 *live optimized*
++- nvme5 *fc* traddr=nn-0x200dd039eac79573:pn-0x200fd039eac79573,host_traddr=nn-0x20005ced8c531949:pn-0x10005ced8c531949 *live optimized*
++- nvme7 *fc* traddr=nn-0x200dd039eac79573:pn-0x2011d039eac79573,host_traddr=nn-0x20005ced8c531948:pn-0x10005ced8c531948 *live optimized*
 ----
 =====
 --
 .NVMe/TCP
 --
-[source, cli]
-----
-nvme list-subsys /dev/nvme2n3
-----
-.예제 보기
+다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.
+
+.AFF, FAS 및 ASA 예시 출력 표시
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -610,10 +684,24 @@ nvme list-subsys /dev/nvme2n3
 nvme-subsys2 - NQN=nqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:subsystem.sub_176
                hostnqn=nqn.2014-08.org.nvmexpress:uuid:39333550-3333-4753-4844-32594d4a524c
 \
- +- nvme2 *tcp* traddr=192.168.166.50,trsvcid=4420,host_traddr=192.168.166.73,src_addr=192.168.166.73 *live optimized*
- +- nvme4 *tcp* traddr=192.168.165.51,trsvcid=4420,host_traddr=192.168.165.73,src_addr=192.168.165.73 *live optimized*
++- nvme2 *tcp* traddr=192.168.166.50,trsvcid=4420,host_traddr=192.168.166.73,src_addr=192.168.166.73 *live optimized*
++- nvme4 *tcp* traddr=192.168.165.51,trsvcid=4420,host_traddr=192.168.165.73,src_addr=192.168.165.73 *live optimized*
 +- nvme6 *tcp* traddr=192.168.166.51,trsvcid=4420,host_traddr=192.168.166.73,src_addr=192.168.166.73 *live non-optimized*
- +- nvme8 *tcp* traddr=192.168.165.50,trsvcid=4420,host_traddr=192.168.165.73,src_addr=192.168.165.73 *live non-optimized*
++- nvme8 *tcp* traddr=192.168.165.50,trsvcid=4420,host_traddr=192.168.165.73,src_addr=192.168.165.73 *live non-optimized*
+----
+=====
+.ASA r2 예제 출력 표시
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys9 - NQN=nqn.1992-08.com.netapp:sn.9927e165694211f0b4f4d039eab31e9d:subsystem.nvme10
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b7c04f444d33
+\
+ +- nvme105 *tcp* traddr=192.168.39.10,trsvcid=4420,host_traddr=192.168.39.20,src_addr=192.168.39.20 *live optimized*
+ +- nvme153 *tcp* traddr=192.168.39.11,trsvcid=4420,host_traddr=192.168.39.20,src_addr=192.168.39.20 *live optimized*
+ +- nvme57 *tcp* traddr=192.168.38.11,trsvcid=4420,host_traddr=192.168.38.20,src_addr=192.168.38.20 *live optimized*
+ +- nvme9 *tcp* traddr=192.168.38.10,trsvcid=4420,host_traddr=192.168.38.20,src_addr=192.168.38.20 *live optimized*
 ----
 =====
 --
@@ -676,6 +764,6 @@ nvme netapp ontapdevices -o json
 
 
 
-== 6단계: 알려진 문제를 검토합니다
+== 7단계: 알려진 문제 검토
 
 알려진 문제가 없습니다.

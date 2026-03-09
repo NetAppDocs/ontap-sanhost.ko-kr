@@ -270,11 +270,11 @@ $iscsiadm --mode discovery --op update --type sendtargets --portal <target_IP>
 ====
 [listing]
 ----
-iscsiadm --mode discovery --op update --type sendtargets --portal  192.168.100.197
-192.168.100.197:3260,1046 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
-192.168.200.199:3260,1049 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
-192.168.100.199:3260,1048 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
-192.168.200.197:3260,1047 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+iscsiadm --mode discovery --op update --type sendtargets --portal 192.168.166.70
+192.168.166.70:3260,1042 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5
+192.168.165.71:3260,1045 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5
+192.168.165.70:3260,1044 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5
+192.168.166.71:3260,1043 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5
 ----
 ====
 . 타겟에 로그인합니다.
@@ -290,12 +290,12 @@ $iscsiadm --mode node -l all
 $iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v automatic
 ----
 +
-다음 예와 비슷한 출력이 표시되어야 합니다.
+ `<target_name>`을(를) 호스트 부팅 시 자동으로 로그인할 대상 이름으로 바꾸십시오.  `<ip:port>`을(를) 대상의 IP 주소와 포트 번호로 바꾸십시오. 예를 들면 다음과 같습니다.
 
 +
-[listing]
+[source, cli]
 ----
-iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 -p 192.168.100.197:3260 -o update -n node.startup -v automatic
+iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 -p 192.168.166.70:3260 -o update -n node.startup -v automatic
 ----
 . iSCSI 세션을 확인합니다.
 +
@@ -310,10 +310,10 @@ $iscsiadm --mode session
 [listing]
 ----
 iscsiadm --mode session
-tcp: [1] 192.168.200.197:3260,1047 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
-tcp: [2] 192.168.100.197:3260,1046 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
-tcp: [3] 192.168.100.199:3260,1048 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
-tcp: [4] 192.168.200.199:3260,1049 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [1] 192.168.166.71:3260,1043 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 (non-flash)
+tcp: [2] 192.168.165.71:3260,1045 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 (non-flash)
+tcp: [3] 192.168.165.70:3260,1044 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 (non-flash)
+tcp: [4] 192.168.166.70:3260,1042 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 (non-flash)
 ----
 ====
 
