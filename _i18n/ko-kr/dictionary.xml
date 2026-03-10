@@ -2367,10 +2367,7 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="1533ee126fd8f11e227dc3d689526f3c" category="paragraph">SUSE Linux Enterprise Server 16부터 NVMe-oF의 기본 iopolicy는<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>로 설정되어 있습니다. iopolicy를<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>로 변경하려면 udev 규칙 파일을 다음과 같이 수정하십시오.</block>
   <block id="f40fa917da76ec269347142ecd26f205" category="list-text">규칙을 수정하여 <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>이(가) <block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>이(가) 되도록 합니다:</block>
   <block id="922b0cabd672f72127f63daffda5daa8" category="admonition">ONTAP 9.16.1부터 NVMe/FC 및 NVMe/TCP는 ASA r2 시스템에서 최적화된 모든 경로를 보고합니다.</block>
-  <block id="729803330c2c3ddc5602fa6a32ed6680" category="paragraph">다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 시스템 및 ASA r2 시스템을 위한 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
-  <block id="457f54f6cefd10b25a3bedd3ee0e4fa3" category="example-title">AFF, FAS 및 ASA 예시 출력 표시</block>
   <block id="166d9b02aa39fa880a105b2a6f0e64cc" category="example-title">ASA r2 예제 출력 표시</block>
-  <block id="4cbc3c8523dd8f70db284b7defb44454" category="paragraph">다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 시스템 및 ASA r2 시스템을 위한 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
   <block id="3f52de62927af66bbbcbf9a67e36d63c" category="paragraph">SUSE Linux Enterprise Server 16 호스트용 영구 검색 컨트롤러(PDC)를 생성할 수 있습니다. PDC는 NVMe 서브시스템 추가 또는 제거 작업과 검색 로그 페이지 데이터 변경 사항을 자동으로 감지하는 데 필요합니다.</block>
   <block id="3c8457e76486b7070b5f16df832bfb55" category="paragraph">SUSE Linux Enterprise Server 16 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 보안 인밴드 인증이 지원됩니다.</block>
   <block id="60940bf76e8a6f461e5cdf574e9a3897" category="sidebar">SLES-16-FCP</block>
@@ -2472,4 +2469,12 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="6c3cb6f0244406645b054fde3485555c" category="paragraph">Proxmox VE 9.0부터 NVMe-oF의 기본 iopolicy는<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>로 설정되어 있습니다. iopolicy를<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>로 변경하려면(이 또한 구성 가능한 옵션으로 제공됨) udev 규칙 파일을 다음과 같이 수정하십시오:</block>
   <block id="3261e25ecb6c10cb23753dafcc11d3f3" category="list-text">다음 예시와 같이 규칙을 수정하여<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>를<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>로 변경하십시오:</block>
   <block id="306924ca750fad388254a44133cf90dd" category="list-text">서브시스템의 현재 iopolicy를 확인하십시오. &lt;subsystem&gt;를 서브시스템 이름으로 바꾸십시오(예: nvme-subsys0).</block>
+  <block id="98f6aa52f5f7e63bbceb451a95606fbb" category="paragraph">다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
+  <block id="838016fd6dff5a15cdfcd8e43e228f64" category="example-title">AFF, FAS 또는 ASA에 대한 예제 출력 표시</block>
+  <block id="bf9b5fcabbc1d24364d06d41207e081e" category="example-title">ASA r2의 예시 출력 결과를 보여줍니다.</block>
+  <block id="09dd888e7ce0f1463d7e4491d5442bc3" category="paragraph">다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
+  <block id="6038c845b6f070b1ef3421bdad6c09a0" category="example-title">AFF, FAS 또는 ASA 예시 출력을 표시합니다</block>
+  <block id="508e93b6f899f26c01374d86f06060a5" category="list-text">커널 키링에서 TLS PSK를 내보냅니다. 이렇게 하면 호스트 재부팅 중에도 키가 유지됩니다.</block>
+  <block id="1b569e78f049cfc0d5612ae09602f392" category="paragraph">다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
+  <block id="6d984a3ecdb3a900adb251dd0b78d708" category="paragraph">다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
 </blocks>

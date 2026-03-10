@@ -86,7 +86,7 @@ cat /etc/nvme/hostnqn
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:1536c9a6-f954-11ea-b24d-0a94efb46eaf
+nqn.2014-08.org.nvmexpress:uuid:1536XXXX-f954-XXXX-b24d-0a9XXXX46eaf
 ----
 . ONTAP 시스템에서 다음 사항을 확인하십시오. `hostnqn` 문자열이 일치합니다 `hostnqn` ONTAP 어레이의 해당 서브시스템에 대한 문자열:
 +
@@ -104,10 +104,10 @@ Vserver Subsystem Priority  Host NQN
 ------- --------- --------  ---------
 proxmox_120_122
 proxmox_120_122
-                  regular   nqn.2014-08.org.nvmexpress:uuid:1536c9a6-f954-11ea-b24d-0a94efb46eaf
+                  regular   nqn.2014-08.org.nvmexpress:uuid:1536XXXX-f954-XXXX-b24d-0a9XXXX46eaf
                   regular   nqn.2014-08.org.nvmexpress:uuid:991a7476-f9bf-11ea-8b73-0a94efb46c3b
 proxmox_120_122_tcp
-                  regular   nqn.2014-08.org.nvmexpress:uuid:1536c9a6-f954-11ea-b24d-0a94efb46eaf
+                  regular   nqn.2014-08.org.nvmexpress:uuid:1536XXXX-f954-XXXX-b24d-0a9XXXX46eaf
                   regular  nqn.2014-08.org.nvmexpress:uuid:991a7476-f9bf-11ea-8b73-0a94efb46c3b
 2 entries were displayed.
 ----

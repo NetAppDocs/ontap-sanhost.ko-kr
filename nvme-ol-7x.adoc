@@ -83,7 +83,7 @@ cat /etc/nvme/hostnqn
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:497ad959-e6d0-4987-8dc2-a89267400874
+nqn.2014-08.org.nvmexpress:uuid:497aXXXX-e6d0-XXXX-8dc2-a89XXXX00874
 ----
 . ONTAP 시스템에서 다음을 확인하십시오. `hostnqn` 문자열이 일치합니다 `hostnqn` ONTAP 스토리지 시스템의 해당 하위 시스템에 대한 문자열:
 +
@@ -100,7 +100,7 @@ nqn.2014-08.org.nvmexpress:uuid:497ad959-e6d0-4987-8dc2-a89267400874
 Vserver Subsystem Host NQN
 ------- --------- -------------------------------------- -----------
 ol_157_nvme_ss_10_0
-nqn.2014-08.org.nvmexpress:uuid:497ad959-e6d0-4987-8dc2-a89267400874
+nqn.2014-08.org.nvmexpress:uuid:497aXXXX-e6d0-XXXX-8dc2-a89XXXX00874
 ----
 ====
 +
