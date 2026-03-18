@@ -2417,7 +2417,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="026e7910f8597707ea78ced9009402b0" category="paragraph">Oracle Linux 10.x 호스트는 NVMe-oF에 대한 기본 iopolicy를 <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>로 설정합니다. udev 규칙 파일을 수정하여 iopolicy를 <block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>로 변경할 수 있습니다.</block>
   <block id="93653ae68b7f62e4baef589277623491" category="paragraph">다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
   <block id="6f412196079d9e58544081f4700ce25f" category="paragraph">다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
-  <block id="74ef0cdc12fc9f4e8b83d1a035e4f577" category="paragraph">Oracle Linux 10.x 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 보안 대역 내 인증이 지원됩니다.</block>
   <block id="8ae4d61c82b1c9b58e4acbd1373806b2" category="cell">Oracle Linux 9.6부터 nvme는 "queue-depth" i/o 정책을 지원하며 기본 옵션으로 활성화되어 있습니다.</block>
   <block id="d3c49c5822283d264df05a1fd8b0870e" category="inline-link-macro">Oracle Linux 10용 NVMe 구성</block>
   <block id="7d3306fa564ca0cc7f3c887e0359e138" category="cell"><block ref="7d3306fa564ca0cc7f3c887e0359e138" category="inline-link-macro-rx"></block></block>
@@ -2477,4 +2476,5 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="508e93b6f899f26c01374d86f06060a5" category="list-text">커널 키링에서 TLS PSK를 내보냅니다. 이렇게 하면 호스트 재부팅 중에도 키가 유지됩니다.</block>
   <block id="1b569e78f049cfc0d5612ae09602f392" category="paragraph">다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
   <block id="6d984a3ecdb3a900adb251dd0b78d708" category="paragraph">다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
+  <block id="8e9aa976f7a8a387e926c6bbb8588831" category="paragraph">Oracle Linux 10.x 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 안전한 대역 내 인증이 지원됩니다.</block>
 </blocks>
