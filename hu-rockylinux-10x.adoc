@@ -42,6 +42,8 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 NetApp은 ONTAP LUN 관리를 지원하고 기술 지원이 구성 데이터 수집을 돕기 위해 Linux 호스트 유틸리티를 설치할 것을 적극 권장합니다.
 
+Rocky Linux는 RHEL 호환 배포판이므로 별도의 Linux Host Utilities 패키지가 없습니다. 해당 RHEL 버전에 맞는 Linux Host Utilities 패키지를 사용하십시오.
+
 link:hu-luhu-80.html["Linux Host Utilities 8.0 설치"] .
 
 

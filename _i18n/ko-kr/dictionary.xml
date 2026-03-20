@@ -2477,4 +2477,5 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="1b569e78f049cfc0d5612ae09602f392" category="paragraph">다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
   <block id="6d984a3ecdb3a900adb251dd0b78d708" category="paragraph">다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
   <block id="8e9aa976f7a8a387e926c6bbb8588831" category="paragraph">Oracle Linux 10.x 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 안전한 대역 내 인증이 지원됩니다.</block>
+  <block id="e7f67da4e95cce9c0568e2b8ad82a925" category="paragraph">Rocky Linux는 RHEL 호환 배포판이므로 별도의 Linux Host Utilities 패키지가 없습니다. 해당 RHEL 버전에 맞는 Linux Host Utilities 패키지를 사용하십시오.</block>
 </blocks>
