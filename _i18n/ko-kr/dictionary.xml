@@ -669,8 +669,6 @@
   <block id="c3bd18851ce712c62533ac8c331b71d8" category="inline-link-macro">1420654)를 참조하십시오</block>
   <block id="7fa79b2d844dd78eb5ebb9aa901e8f14" category="cell"><block ref="7fa79b2d844dd78eb5ebb9aa901e8f14" category="inline-link-macro-rx"></block></block>
   <block id="6c5ab2230ea5f786135c35ed670ce6d6" category="cell">NVMe/FC 프로토콜을 ONTAP 버전 9.9.1과 함께 사용할 때 ONTAP 노드가 작동하지 않습니다</block>
-  <block id="85dcf040cfea5e44024dcdee365ef36f" category="cell">ONTAP 9.9.1에서는 NVMe "ABORT" 명령에 대한 지원이 도입되었습니다. ONTAP가 파트너 명령을 기다리는 NVMe fused 명령을 중단하기 위해 "abort" 명령을 수신하면 ONTAP 노드 중단이 발생합니다. 이 문제는 NVMe fused 명령(예: ESX) 및 파이버 채널(FC) 전송을 사용하는 호스트에서만 발생합니다.</block>
-  <block id="fe73a89d7c677ea4abb2a996360023fa" category="cell">1543660)을 참조하십시오</block>
   <block id="5a3b86e99232b3604afe4db20db45884" category="cell">vNVMe 어댑터를 사용하는 Linux VM에서 긴 모든 경로 중단(APD) 창이 발생할 때 I/O 오류가 발생합니다</block>
   <block id="9c72461f3069d27216e1faab60848be8" category="paragraph">vSphere 8.x 이상을 실행하고 vNVMe(vNVME) 어댑터를 사용하는 Linux VM에서 기본적으로 vNVMe 재시도 작업이 비활성화되어 I/O 오류가 발생합니다. APD(All Path Down) 또는 입출력 로드가 많을 때 이전 커널을 실행하는 Linux VM의 중단을 방지하기 위해 VMware는 vNVMe 재시도 작업을 비활성화하기 위해 조정 가능한 "VSCSIDisableNvmeRetry"를 도입했습니다.</block>
   <block id="03d0e633810a3de10e61ce29a7d4abb0" category="cell">호스트 패브릭의 네트워크 문제를 점검하고 수리하십시오. 그래도 문제가 해결되지 않으면 이 문제를 해결하는 패치로 업그레이드하십시오.</block>
@@ -905,7 +903,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="bc2c3049c0f4d679fb14b74cd64723c8" category="cell"><block ref="bc2c3049c0f4d679fb14b74cd64723c8" category="inline-link-macro-rx"></block></block>
   <block id="c96b4702a07478185cc851585d0055b6" category="inline-link-macro">NetApp vMSC(VMware vSphere Metro Storage Cluster)와 SnapMirror Active Sync가 있는 NetApp ONTAP</block>
   <block id="8b3f58063486fce853bcbb473e73c56f" category="list-text"><block ref="8b3f58063486fce853bcbb473e73c56f" category="inline-link-macro-rx"></block></block>
-  <block id="23c3f6b1dc0958b81d21563a91eecfa6" category="cell"><block ref="23c3f6b1dc0958b81d21563a91eecfa6" category="inline-link-macro-rx"></block></block>
   <block id="e59f05c9149caf590d63da27c24797cb" category="inline-link-macro">NetApp ® SnapMirror 액티브 동기화에서 VMware vSphere 6.x 및 7.x를 지원합니다</block>
   <block id="2a41c03d949869222b758867aff845ff" category="inline-link-macro">NetApp SnapMirror 액티브 동기화에서 VMware vSphere 6.x 및 7.x를 지원합니다</block>
   <block id="33bd005b46fadc3ac5ff4dc797b52e07" category="list-text">MetroCluster 구성을 사용하는 경우 NetApp는 AIX 운영 체제에서 짧은 I/O 시간 초과를 강제로 적용하는 것을 방지하기 위해 MetroCluster 계획되지 않은 전환 이벤트를 지원하기 위해 AIX NVMe/FC 기본 APD(All Path Down) 시간을 변경하는 것이 좋습니다. 추가 정보 및 기본 설정에 대한 권장 변경 사항은 NetApp 온라인 버그 - <block ref="31191f9686b6d08dd8653718c76edbf6" category="inline-link-macro-rx"></block>.</block>
@@ -2478,4 +2475,9 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="6d984a3ecdb3a900adb251dd0b78d708" category="paragraph">다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
   <block id="8e9aa976f7a8a387e926c6bbb8588831" category="paragraph">Oracle Linux 10.x 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 안전한 대역 내 인증이 지원됩니다.</block>
   <block id="e7f67da4e95cce9c0568e2b8ad82a925" category="paragraph">Rocky Linux는 RHEL 호환 배포판이므로 별도의 Linux Host Utilities 패키지가 없습니다. 해당 RHEL 버전에 맞는 Linux Host Utilities 패키지를 사용하십시오.</block>
+  <block id="f2797f4fff71e1241dbd27de578e26fe" category="inline-link-macro">CONTAPEXT-1126</block>
+  <block id="3bf0e426a8bb195e45d195cbc0249dfa" category="cell"><block ref="3bf0e426a8bb195e45d195cbc0249dfa" category="inline-link-macro-rx"></block></block>
+  <block id="63c3f0dce3adfd21858e4906af8b540e" category="cell">ONTAP 버전 9.9.1에서 NVMe/FC 프로토콜을 사용할 때 ONTAP 노드가 작동하지 않습니다</block>
+  <block id="75fe6ffd14185a732fe5c93e3655894f" category="cell">ONTAP 9.9.1에서는 NVMe "abort" 명령에 대한 지원이 도입되었습니다. ONTAP가 파트너 명령을 기다리는 NVMe 융합 명령을 중단하기 위한 "abort" 명령을 수신하면 ONTAP 노드 중단이 발생합니다. 이 문제는 NVMe 융합 명령(예: ESX)과 파이버 채널(FC) 전송을 사용하는 호스트에서만 발견됩니다.</block>
+  <block id="8f0a705220613d95434cdb5a4fcab23b" category="paragraph">Linux VM이 vSphere 8.x 이상을 실행하고 가상 NVMe(vNVMe) 어댑터를 사용하는 경우 vNVMe 재시도 작업이 기본적으로 비활성화되어 있어 I/O 오류가 발생합니다. 모든 경로 다운(APD) 또는 과도한 I/O 부하 시 이전 커널을 실행하는 Linux VM에서 중단을 방지하기 위해 VMware는 vNVMe 재시도 작업을 비활성화하는 튜닝 가능한 "VSCSIDisableNvmeRetry"를 도입했습니다.</block>
 </blocks>
