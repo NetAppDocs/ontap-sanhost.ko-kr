@@ -2490,4 +2490,18 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="46a4bf76409792ef5635ae3fa7be3eca" category="list-text">RHEL 9.6에서는 라운드 로빈이 기본 iopolicy이지만 queue-depth는 구성 가능한 옵션으로 사용할 수 있습니다.</block>
   <block id="b57931aaf40ed5847b49ce94e37ba2f9" category="list-text">RHEL 9.6 이전에는 round-robin이 유일하게 지원되는 NVMe-oF iopolicy입니다.</block>
   <block id="199f707ebb9eba2ff990f4e6b8a03a49" category="paragraph">RHEL 9.6을 사용 중이고 iopolicy를<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>로 변경하려면 udev 규칙 파일을 다음과 같이 수정하십시오.</block>
+  <block id="88694bea2b4bb7ab31183cf89c0abc9a" category="open-title">Oracle Linux 호스트</block>
+  <block id="d62485a7a064d77caa624ec7d9c16f56" category="paragraph">호스트에 대해 다중 경로가 올바르게 구성되었는지 확인하려면<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>이(가) 정의되어 있고 ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.</block>
+  <block id="8f398c60279f151c939d64302e2a552a" category="paragraph">*ASA 구성*</block>
+  <block id="00f6a93cbdaeca9a5c16456b45e56a06" category="paragraph">*AFF 또는 FAS 구성*</block>
+  <block id="4a801556fd7b17fe7fc88987832eab59" category="open-title">OLVM - ONTAP HA</block>
+  <block id="7ac9ef2526e3dbe23e271314793c2500" category="paragraph">Oracle Linux Virtualization Manager(OLVM)에서 VDSM 데몬은 하이퍼바이저의 기본 다중 경로 매개 변수를 제어합니다. <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>을(를) 직접 편집하지 마십시오. 대신 다중 경로 드롭인 파일을 사용하여 기본값을 재정의하십시오.</block>
+  <block id="f0b27027e6b67d9f11bb9a63118f7820" category="paragraph">ONTAP 고가용성(HA) 구성의 경우 NetApp에서는 다음 드롭인 파일을 사용하여 <block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> 및 <block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block>를 재정의할 것을 권장합니다. 다른 모든 다중 경로 매개변수는 Oracle Linux 호스트 매개변수 설정 표의 설정과 일치해야 합니다.</block>
+  <block id="2325a00c850562a31b6e1174103fdf34" category="list-text">드롭인 파일을 생성합니다.</block>
+  <block id="6af920fd32adf77980a7d950b4a43b42" category="list-text">다중 경로 데몬을 다시 로드합니다.</block>
+  <block id="8cd5bca10d68fe455b4aafcd2984b1ec" category="list-text">업데이트된 다중 경로 구성을 확인합니다.</block>
+  <block id="c131839a59f1dece3cf8f40a9f418f28" category="open-title">OLVM - ONTAP SnapMirror 액티브 동기화</block>
+  <block id="9ac038eaf430fd52f4f8187e511c2c64" category="paragraph">OLVM 호스트에서 ONTAP SnapMirror active sync를 사용하는 경우, 스토리지 페일오버 이벤트 발생 시 호스트 및 VM의 올바른 동작을 보장하기 위해 sanlock 및 다중 경로 시간 초과 매개 변수를 조정해야 합니다. 기본 OLVM 시간 초과 값은 다중 경로 복구가 완료되기 전에 임대 갱신 기간이 만료될 수 있으므로, 계획되지 않은 사이트 페일오버 중에 의도하지 않은 고가용성 VM 페일오버를 유발할 수 있습니다.</block>
+  <block id="48456488fd8e1ab35d02545499c661fe" category="inline-link">Oracle Linux Virtualization Manager - ONTAP SnapMirror Active Sync용 Sanlock 설정</block>
+  <block id="d586abe993be4482cf9a1c2a026a70c7" category="paragraph">NetApp 기술 자료 문서<block ref="5895161fcfd751cbe73c1e86aa55f0d8" category="inline-link-rx"></block>에 나와 있는 구성 단계를 따라 sanlock 및 다중 경로 시간 초과 값을 업데이트하여 스토리지 페일오버 이벤트 중에 다중 경로 복구가 완료될 수 있도록 임대 갱신 기간이 충분히 확보되도록 하십시오.</block>
 </blocks>
