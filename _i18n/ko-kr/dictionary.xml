@@ -895,7 +895,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="a98f12afd377cfff4657909446bff74a" category="cell">RHEL 17811을 참조하십시오</block>
   <block id="e764fe6b8f8825a307a87cedbef45678" category="sidebar">22.04</block>
   <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link-macro">NetApp ONTAP용 Amazon FSx</block>
-  <block id="b6758eb9c7ac57209dfad7db602a24d4" category="inline-link-macro">SnapMirror 액티브 동기화에 대해 AIX 호스트를 구성하는 방법</block>
   <block id="a9e760f9ba2dad33870cce967a12f75a" category="cell"><block ref="a9e760f9ba2dad33870cce967a12f75a" category="inline-link-macro-rx"></block></block>
   <block id="8a0e59d557c48debea02376efc489435" category="cell"><block ref="8a0e59d557c48debea02376efc489435" category="inline-link-macro-rx"></block></block>
   <block id="0d2b4c4b2840eab7bfae167b812970ef" category="cell"><block ref="0d2b4c4b2840eab7bfae167b812970ef" category="inline-link-macro-rx"></block></block>
@@ -1368,9 +1367,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="054877f3a4e22840052a9d35b9cef0e4" category="inline-link-macro">MetroCluster 구성에서 AIX 호스트 지원에 대한 고려 사항은 무엇입니까?</block>
   <block id="fd47c7e90e5d1a165a9f160bc5d6eb8d" category="paragraph">기본적으로 AIX OS는 LUN에 사용 가능한 경로가 없는 경우 더 짧은 I/O 시간 초과를 적용합니다.  이는 단일 스위치 SAN 패브릭을 포함하는 구성과 계획되지 않은 장애 조치를 경험하는 MetroCluster 구성에서 발생할 수 있습니다.  추가 정보 및 기본 설정에 대한 권장 변경 사항은 기술 자료 문서를 참조하세요.<block ref="5a78f40a3907cb552cb02e019660f8d8" category="inline-link-macro-rx"></block> .</block>
   <block id="c0b79db5f258f0c991a383cbdbf001dd" category="open-title">SnapMirror 액티브 싱크</block>
-  <block id="946ae0d0e8f27a2482322365b072fe17" category="paragraph">ONTAP 9.11.1부터 AIX 호스트에 대해 SnapMirror 활성 동기화가 지원됩니다.  AIX 구성의 기본 클러스터는 "활성" 클러스터입니다.</block>
-  <block id="60915f06c9c1330f3ed550adf149966e" category="paragraph">AIX 구성에서는 장애 조치가 중단됩니다.  각 장애 조치 시 I/O 작업을 재개하려면 호스트를 다시 검사해야 합니다.</block>
-  <block id="c6f7900c1810cbe72822a3151f7a41d8" category="paragraph">지식 기반 문서를 참조하세요.<block ref="d270a735f5e8b531c1d55de94a45b690" category="inline-link-macro-rx"></block> .</block>
   <block id="efffdf29fb8c22b09edba3371dc2b1b8" category="inline-link-macro">Linux Host Utilities 8.0 설치</block>
   <block id="5f31956444f1d0bde7a1ffb325106db8" category="paragraph"><block ref="cd52b6bcf27b8c7efa7bb2cae7dba9b4" category="inline-link-macro-rx"></block> .</block>
   <block id="3358e8b26d19a4499acfc0263dca6ce1" category="paragraph">Linux 호스트 유틸리티는 Linux 호스트에 연결된 ONTAP 스토리지를 관리하는 데 도움이 됩니다.  NetApp Linux 호스트 유틸리티를 설치할 것을 강력히 권장하지만 필수는 아닙니다.  이러한 유틸리티는 관리를 개선하고 NetApp 고객 지원팀이 구성에 대한 정보를 수집하는 데 도움을 줍니다.</block>
@@ -2504,4 +2500,9 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="9ac038eaf430fd52f4f8187e511c2c64" category="paragraph">OLVM 호스트에서 ONTAP SnapMirror active sync를 사용하는 경우, 스토리지 페일오버 이벤트 발생 시 호스트 및 VM의 올바른 동작을 보장하기 위해 sanlock 및 다중 경로 시간 초과 매개 변수를 조정해야 합니다. 기본 OLVM 시간 초과 값은 다중 경로 복구가 완료되기 전에 임대 갱신 기간이 만료될 수 있으므로, 계획되지 않은 사이트 페일오버 중에 의도하지 않은 고가용성 VM 페일오버를 유발할 수 있습니다.</block>
   <block id="48456488fd8e1ab35d02545499c661fe" category="inline-link">Oracle Linux Virtualization Manager - ONTAP SnapMirror Active Sync용 Sanlock 설정</block>
   <block id="d586abe993be4482cf9a1c2a026a70c7" category="paragraph">NetApp 기술 자료 문서<block ref="5895161fcfd751cbe73c1e86aa55f0d8" category="inline-link-rx"></block>에 나와 있는 구성 단계를 따라 sanlock 및 다중 경로 시간 초과 값을 업데이트하여 스토리지 페일오버 이벤트 중에 다중 경로 복구가 완료될 수 있도록 임대 갱신 기간이 충분히 확보되도록 하십시오.</block>
+  <block id="94ef234a2ec2f42dc97a266ae7901d7a" category="paragraph">SnapMirror 활성 동기화는 AIX 호스트에서 지원됩니다. 지원 동작은 ONTAP 릴리스에 따라 다릅니다.</block>
+  <block id="794db6ce05b1835a99e67a30b5ce986b" category="inline-link-macro">AIX용 SnapMirror 액티브 동기화 지원: ONTAP 릴리스별 동작 및 마이그레이션 지침</block>
+  <block id="510d8f08b1bcd3d37f5f38838ba87607" category="list-text">ONTAP 9.19.1부터 SnapMirror 액티브 동기화는 Active/Active 구성에서 지원되어 무중단 SnapMirror 액티브 동기화 작업을 수행할 수 있습니다. 기술 자료 문서 <block ref="689132335b86d0a731403daf22970080" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
+  <block id="58d09565b9d76aa8df134a3c88f349ef" category="inline-link-macro">ONTAP 9.11.1~9.18.1에서 SnapMirror 활성 동기화를 위해 AIX 호스트를 구성하는 방법</block>
+  <block id="edef79d6486b82062ad7b8f2b46174e2" category="list-text">ONTAP 9.11.1부터 9.18.1까지 SnapMirror 액티브 동기화는 Active/Standby 구성에서 지원됩니다. 기술 자료 문서 <block ref="170dab56a652357d4fe24ca37b0b9eea" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
 </blocks>
