@@ -551,7 +551,6 @@
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">클라우드 환경에서 호스트는 일반적으로 클라이언트라고 합니다. 이 콘텐츠의 모든 호스트별 정보는 클라우드 클라이언트에도 적용됩니다.</block>
   <block id="30f60d67f457bb040dffde52197a54da" category="paragraph-title">관련 정보</block>
   <block id="4c865e0cb70fa33868e69a5e88daad47" category="cell">1479047</block>
-  <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
   <block id="2fefce185e7d7498c7e3da22bac84294" category="cell">1508554</block>
   <block id="11613812ad376f15dc5ee5a9f425cea1" category="cell">NetApp Linux Host Utilities CLI에서 Emulex HBA 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다</block>
   <block id="796d3a90e43ce105cbf37298c5065f7e" category="sidebar">9.1</block>
@@ -1044,7 +1043,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="53aa5d6687de6e1ac7fc2fd3ae4ab539" category="doc">Linux Host Utilities 7.1을 설치합니다</block>
   <block id="d895168ecaf0f9622aa5a6fc78ac6433" category="admonition">Linux Host Utilities 소프트웨어는 NVMe/FC(NVMe over Fibre Channel) 및 NVMe/TCP(NVMe over TCP) 호스트 프로토콜을 지원하지 않습니다.</block>
   <block id="17f8692005ca3aae6a8d4543ddd9c587" category="paragraph">이전 버전의 Linux Host Utilities의 경우, 호스트 유틸리티 소프트웨어가 설치된 디렉토리로 이동하고 uninstall 명령을 입력하여 설치된 패키지를 제거합니다.</block>
-  <block id="a8ef8037d8bc65ce5c031566c94c1bdf" category="cell">RHEL 9.1에서 NetApp Linux SAN Host Utilities CLI는<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> HBA 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
   <block id="97cd8ca681a54160b844883a804a9d15" category="cell">RHEL 9.2에서 NetApp Linux SAN Host Utilities CLI는<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> HBA 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
   <block id="202b2328413819343791c425b58e837e" category="cell">RHEL 9.x에서 NetApp Linux SAN Host Utilities CLI<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block>는 Emulex HBA(호스트 버스 어댑터) 검색을 지원하는 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다.</block>
   <block id="61cdaad7945ab6e6f6569fdfe83fa2e4" category="summary">SAN Host Utility 릴리스에 대한 최신 정보를 알아보고 호스트 구성에 대한 설치 절차를 액세스합니다.</block>
@@ -1864,8 +1862,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="3d8c2f20c69104516adf8f11842395df" category="paragraph">동일한 호스트에서 NVMe와 SCSI 트래픽을 모두 실행하려면 NetApp ONTAP 네임스페이스에 커널 내 NVMe 멀티패스를 사용하고 ONTAP LUN에 dm-multipath를 사용할 것을 권장합니다.  dm-multipath가 ONTAP 네임스페이스 장치를 청구하지 못하도록 하려면 다음을 추가하여 제외합니다.<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 설정<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 파일:</block>
   <block id="5728fbd1a5c8ae099d988e87299f3dd9" category="paragraph">알려진 문제는 다음과 같습니다.</block>
   <block id="ac783620bd79a6f903c67f639a9962f6" category="section-title">5단계: 다중 경로 구성 확인</block>
-  <block id="3ac8a887d7c6b1750dee1f66e33d2041" category="cell">RHEL 9.0 NVMe-oF 호스트는 중복된 PDC(Persistent Discovery Controller)를 생성합니다.</block>
-  <block id="3ac93f7cf1853dfbc16c8472fc66d07d" category="cell">그만큼<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 주어진 하위 시스템에 대한 NVMe 컨트롤러 목록을 반환합니다.  RHEL 9.1에서 이 명령은 하위 시스템의 모든 네임스페이스에 대한 ANA 상태와 함께 컨트롤러를 표시합니다.  ANA 상태는 네임스페이스별 속성이므로 명령은 각 네임스페이스의 경로 상태를 포함하는 고유한 컨트롤러 항목을 표시해야 합니다.</block>
   <block id="ece25d4c541fbae683416549d3f4ac05" category="list-text">루트 권한으로 텍스트 편집기에서 udev 규칙 파일을 엽니다.</block>
   <block id="1cdf0be14ba09adc81c1095b08aa7aa2" category="list-text">규칙을 다음과 같이 수정하세요.<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block> 된다<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> :</block>
   <block id="47b12d977e58e4eab7ccd70d2694af53" category="paragraph">Rocky Linux 커널 버전 예:</block>
@@ -1934,7 +1930,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="9943f66abf8246a952197a36b6ebae0a" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 RHEL 9.x 구성</block>
   <block id="853337aa29013a97f96870e7d2f10f1e" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Red Hat Enterprise Linux(RHEL) 9.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="7bf7f9c71ffb97fd94ef9cfdd36ff7df" category="paragraph">RHEL 9.x에서는 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="072f2e7d6b820c2e2398ab458c0f3a82" category="paragraph">ONTAP 스토리지를 탑재한 RHEL 9.x에는 다음과 같은 알려진 문제가 있습니다.</block>
   <block id="cd243542bc9904c72b230932ea74f5f9" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Rocky Linux 8.x 구성</block>
   <block id="12a24a78e2e6166f7b0523bf7d3e9aa7" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Rocky Linux 8.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 통해 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="90fd31bfd08c82d921d995f40f9f7d08" category="paragraph">Rocky Linux 8.x에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
@@ -1962,7 +1957,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="02e6f562a82adc38b8762b8d4fc3c8c2" category="section-title">5단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.</block>
   <block id="e6b3c2c8d823bf042f0e8e9e02dabf14" category="section-title">6단계: NVMe 부팅 서비스 확인</block>
   <block id="378f49529e98279285d9a2eb0d2b3e5e" category="section-title">7단계: 다중 경로 구성 확인</block>
-  <block id="817977d49e0479a834f082c774ea3949" category="cell">RHEL 9.1에서는<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 명령은 주어진 하위 시스템에 대한 반복된 NVME 컨트롤러 목록을 반환합니다.</block>
   <block id="f12463db66bb26df5aae5e1aa393205f" category="summary">RHEL 호스트에 대한 ONTAP 지원 및 기능에 대해 알아보세요.</block>
   <block id="d4063c82026eda59b5c15cca38aa9b92" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능은 ONTAP 및 RHEL 버전에 따라 다릅니다.</block>
   <block id="21021ea0e52be8e9c599f4dff41e5be0" category="cell">특징</block>
@@ -2051,7 +2045,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="e52f83ac7ca8ca1b48908231ec897be1" category="paragraph">9.5 이상</block>
   <block id="92893b8c5051dff6e69f93181e523d01" category="cell">Oracle Linux 버전이 ..</block>
   <block id="e6c9ea0372e1bc5ee9ce19cebcf71eaf" category="cell">7시리즈</block>
-  <block id="28b031394cea76c997a81517dfc279f9" category="cell">NVMe-oF 호스트에서  <block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 명령을 사용하여 PDC를 생성할 수 있습니다. 이 명령을 사용하면 개시자-대상 조합당 하나의 PDC만 생성되어야 합니다. 그러나 NVMe-oF 호스트를 사용하여 ONTAP 9.10.1 및 RHEL 9.0을 실행하는 경우<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 가 실행될 때마다 중복 PDC가 생성됩니다. 이로 인해 호스트와 대상 모두에서 불필요한 리소스 사용이 발생합니다.</block>
   <block id="38247dd9f4f50ed3b751d728ecd0c52c" category="sidebar">NVMeoF OL</block>
   <block id="8cf639f80087b38e9251e80ba60c10c4" category="paragraph">기본 다중 경로 매개변수는 ASA, AFF 및 FAS 구성을 지원합니다. 이러한 구성에서는 단일 ONTAP LUN에 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상이면 저장소 오류 발생 시 문제가 발생할 수 있습니다.</block>
   <block id="97a99753b959b6770bb6efa96e4103e1" category="list-text">SAN 부팅 구성 지원 및 알려진 문제를 확인하려면 Veritas 지원 포털(제품 매트릭스, 플랫폼 조회 및 HCL 매트릭스)을 참조하세요.</block>
@@ -2505,5 +2498,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="58d09565b9d76aa8df134a3c88f349ef" category="inline-link-macro">ONTAP 9.11.1~9.18.1에서 SnapMirror 활성 동기화를 위해 AIX 호스트를 구성하는 방법</block>
   <block id="edef79d6486b82062ad7b8f2b46174e2" category="list-text">ONTAP 9.11.1부터 9.18.1까지 SnapMirror 액티브 동기화는 Active/Standby 구성에서 지원됩니다. 기술 자료 문서 <block ref="170dab56a652357d4fe24ca37b0b9eea" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
   <block id="d260773137ad0fe3e74f84c49c4bb99c" category="paragraph"><block ref="d91927ac11d01a60b7823e550f2dd7fb" category="inline-link-macro-rx"></block>.</block>
-  <block id="bdc9e3765d603a5091aec17191bf38ed" category="admonition">AIX에서는 MPIO가 활성화될 때까지 SAN 부팅 디스크에 하나의 경로만 표시되어야 합니다.  AIX 부팅 디스크를 설치하거나 마이그레이션할 때는 일반적으로 호스트의 FC 영역 설정을 일시적으로 제한하여 FC 이니시에이터 하나와 FC 타겟 하나만 포함하도록 해야 합니다.  호스트 유틸리티(PCM 패키지 포함)를 설치한 후 운영 체제를 재부팅하여 MPIO를 완전히 활성화할 수 있습니다.  그런 다음 추가 FC 이니시에이터와 FC 타겟을 영역에 추가합니다.  그런 다음<block ref="cec798dce2562ead48807f1d57e501c6" prefix=" " category="inline-code"></block> 및<block ref="a693727332d96028bddba10ff4667b0a" prefix=" " category="inline-code"></block>를 실행하여 사용 가능한 모든 경로를 포함하도록 부팅 구성을 업데이트합니다.</block>
+  <block id="895369022e2ee0b381f97a38ee89b758" category="admonition">AIX에서는 MPIO가 활성화될 때까지 SAN 부팅 디스크에 하나의 경로만 표시되도록 요구합니다. AIX 부팅 디스크를 설치하거나 마이그레이션할 때는 일반적으로 호스트의 FC 영역 설정을 일시적으로 제한하여 FC 이니시에이터 하나와 FC 타겟 하나만 포함하도록 해야 합니다. 호스트 유틸리티(PCM 패키지 포함)를 설치한 후 운영 체제를 재부팅하면 MPIO를 완전히 활성화할 수 있습니다. 재부팅 후 추가 FC 이니시에이터와 FC 타겟을 영역에 추가합니다. 그런 다음, <block ref="cec798dce2562ead48807f1d57e501c6" prefix=" " category="inline-code"></block> 및 <block ref="a693727332d96028bddba10ff4667b0a" prefix=" " category="inline-code"></block>을 실행하여 사용 가능한 모든 경로를 포함하도록 부팅 구성을 업데이트합니다.</block>
+  <block id="d475935aee712cb287d615a6e4a26bc1" category="paragraph">다음 예시는 <block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> 패키지 버전을 보여줍니다.</block>
 </blocks>

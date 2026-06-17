@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu-rhel-9x.html 
-keywords: host utilities, red hat, rhel, linux, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0, netapp, ontap, rhel 
+keywords: host utilities, red hat, rhel, linux, 9.8, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0, netapp, ontap 
 summary: ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하기 위해 RHEL 9.x 호스트에 Linux 호스트 유틸리티를 설치합니다. 
 ---
 = ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 RHEL 9.x 구성
@@ -266,18 +266,18 @@ $systemctl status iscsid
 ----
 ● iscsid.service - Open-iSCSI
      Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: disabled)
-     Active: active (running) since Tue 2025-12-02 11:36:21 EST; 2 weeks 1 day ago
+     Active: active (running) Tue 2026-05-12 06:29:55 EDT; 2 weeks 1 day ago
 TriggeredBy: ● iscsid.socket
        Docs: man:iscsid(8)
              man:iscsiuio(8)
              man:iscsiadm(8)
-   Main PID: 2263 (iscsid)
+   Main PID: 2021 (iscsid)
      Status: "Ready to process requests"
       Tasks: 1 (limit: 816061)
      Memory: 18.5M
         CPU: 14.480s
      CGroup: /system.slice/iscsid.service
-             └─2263 /usr/sbin/iscsid -f -d2
+             └─2021 /usr/sbin/iscsid -f -d2
 ----
 ====
 . iSCSI 타겟을 검색합니다.
@@ -409,47 +409,8 @@ devices {
 
 == 7단계: 알려진 문제 검토
 
-ONTAP 스토리지를 탑재한 RHEL 9.x에는 다음과 같은 알려진 문제가 있습니다.
+알려진 문제가 없습니다.
 
-[role="tabbed-block"]
-====
-.9.3
---
-[cols="20, 20, 50,20"]
-|===
-| NetApp 버그 ID | 제목 | 설명 | Jira ID입니다 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux 호스트 유틸리티 CLI에서 Emulex HBA(호스트 버스 어댑터) 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다 | RHEL 9.x에서 NetApp Linux SAN Host Utilities CLI `sanlun fcp show adapter -v`는 Emulex HBA(호스트 버스 어댑터) 검색을 지원하는 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다. | 해당 없음 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1593771["1593771"^] | Red Hat Enterprise Linux 9.3 QLogic SAN 호스트가 스토리지 이동성 작업 중에 부분 다중 경로 손실이 발생합니다 | ONTAP 스토리지 컨트롤러 테이크오버 작동 중에 다중 경로의 절반이 중단되거나 페일오버 모드로 전환된 다음 반환 워크플로우 중에 전체 경로 수로 복구해야 합니다. 하지만 RHEL(Red Hat Enterprise Linux) 9.3 QLogic 호스트를 사용하면 스토리지 페일오버 기브백 작업 후에 부분 다중 경로만 복구됩니다. | RHEL 17811을 참조하십시오 
-|===
---
-.9.2
---
-[cols="20,40,40"]
-|===
-| NetApp 버그 ID | 제목 | 설명 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux Host Utilities CLI에서 Emulex HBA 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다 | RHEL 9.2에서 NetApp Linux SAN Host Utilities CLI는 `sanlun fcp show adapter -v` HBA 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다. 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1537359["1537359)를 참조하십시오"^] | Emulex HBA를 사용하는 Red Hat Linux 9.2 SAN 부팅 호스트에서는 커널이 중단되는 작업이 발생합니다 | 스토리지 페일오버 반환 작업 중에 Emulex 호스트 버스 어댑터(HBA)가 설치된 Red Hat Linux 9.2 SAN 부팅 호스트에서 커널이 중단되는 작업이 발생합니다. 커널이 중단되면 운영 체제가 재부팅되고 `kdump` 가 구성되어 있으면 가 생성됩니다 `vmcore` 파일 아래에 있습니다 `/var/crash/` 디렉토리. 이 문제는 와 함께 삼각 측량을 진행 중입니다 `lpfc` 드라이버를 재생하지만 일관되게 재현할 수는 없습니다. 
-|===
---
-.9.1
---
-[cols="20,40,40"]
-|===
-| NetApp 버그 ID | 제목 | 설명 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux Host Utilities CLI에서 Emulex HBA 어댑터 검색을 지원하려면 추가 라이브러리 패키지 종속성이 필요합니다 | RHEL 9.1에서 NetApp Linux SAN Host Utilities CLI는 `sanlun fcp show adapter -v` HBA 검색을 지원하기 위한 라이브러리 패키지 종속성을 찾을 수 없기 때문에 실패합니다. 
-|===
---
-====
 
 
 == 다음 단계
