@@ -742,9 +742,7 @@
   <block id="f61222023dff7dff4f1f07b6593dfa16" category="list-text">각 ONTAP 네임스페이스에 대한 적절한 NVMe-oF 설정(예: NetApp ONTAP 컨트롤러로 설정된 모델 및 라운드 로빈으로 설정된 로드 밸런싱 IPolicy가 호스트에 올바르게 반영되는지 확인합니다.</block>
   <block id="43784ec2c1aaa42346ed96f22c8410b6" category="sidebar">9.2</block>
   <block id="9cdf71978b23a4023a75f102c03f30d0" category="list-text">지원되는 어댑터 모델을 사용하고 있는지 확인합니다.</block>
-  <block id="da80aa62fc6cf6b66539a5a3933874a8" category="cell"><block ref="da80aa62fc6cf6b66539a5a3933874a8" category="inline-link-rx"></block></block>
   <block id="5aae5284420b8ceb0aa0f5d959c566bc" category="list-text">다른 NVMe/TCP 이니시에이터-타겟 LIF 조합이 검색 로그 페이지 데이터를 성공적으로 가져올 수 있는지 확인합니다.</block>
-  <block id="675cd8e52ba395fba110b2ae7c90675b" category="cell">Emulex HBA를 사용하는 SAN LUN 유틸리티에는 라이브러리 패키지의 심볼 링크가 필요합니다</block>
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">ONTAP와 함께 VMware vSphere 8.x를 사용합니다</block>
   <block id="8d19958f3e338523c5e956fbddc3c9af" category="doc">ONTAP와 함께 VMware vSphere 6.5 및 6.7을 사용합니다</block>
   <block id="40db5019ed68654f4eb2cf21ec5021db" category="doc">ONTAP와 함께 VMware vSphere 7.x를 사용합니다</block>
@@ -1919,8 +1917,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="de4df2bb56a6dd96c5aa8b4ddfb1370c" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 Oracle Linux 9.x 구성</block>
   <block id="b72680c8c0c632d8365db7df592ffeb2" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Oracle Linux 9.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
   <block id="6d0d62455ddcc2e2663940d352dfd7ed" category="paragraph">Oracle Linux 9.x에서 멀티패스를 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
-  <block id="d02686596819e33bae1494c476cc4046" category="paragraph">ONTAP 스토리지를 탑재한 Oracle Linux 9.3, 9.2, 9.1 및 9.0에는 다음과 같은 알려진 문제가 있습니다.</block>
-  <block id="e2a4ffda52d4058942376ec8457e5e5f" category="cell">SAN 호스트에서 Linux Host Utilities CLI 명령인 "sanlun fcp show adapter -v"를 실행하면 호스트 버스 어댑터(HBA) 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시되면서 명령이 실패합니다. ---- [root@hostname ~]# sanlun fcp show adapter -v /usr/lib64/libHBAAPI.so 라이브러리를 찾을 수 없습니다. 라이브러리를 설치하는 패키지가 설치 및 로드되었는지 확인하세요. ----</block>
   <block id="a7a38198eff5258108ff6a5098a49e45" category="summary">ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리하려면 RHEL 8.x 호스트에 Linux 호스트 유틸리티를 설치합니다.</block>
   <block id="e2aef7fa2192be71ab8ffc57f8a8ec55" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI에 대한 RHEL 8.x 구성</block>
   <block id="000b577dcf01b1bbd6d531af999b0911" category="paragraph">Linux Host Utilities 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트에 대한 관리 및 진단 도구를 제공합니다. Red Hat Enterprise Linux(RHEL) 8.x 호스트에 Linux 호스트 유틸리티를 설치하면 호스트 유틸리티를 사용하여 ONTAP LUN을 사용하여 FCP 및 iSCSI 프로토콜 작업을 관리할 수 있습니다.</block>
@@ -2032,7 +2028,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="f97e7db99bb0a1e808378e53a69a896b" category="paragraph">NetApp 다음을 설정하는 것이 좋습니다.<block ref="d830763524c5d39cb33a1bd2b5c447f8" prefix=" " category="inline-code"></block> 에게<block ref="6bb61e3b7bce0931da574d19d1d82c88" prefix=" " category="inline-code"></block> 경로 손실이 발생할 경우 NVMe/TCP 개시자가 무기한으로 재연결을 시도합니다.</block>
   <block id="24fcd6330b6a9b7be58b3cd8ddc63f4f" category="section-title">5단계: 선택적으로 1MB I/O 크기를 활성화합니다.</block>
   <block id="7b132f02e8428aa01abb44962ec07147" category="section-title">2단계: Oracle Linux 및 NVMe 소프트웨어 설치 및 구성 확인</block>
-  <block id="be553660868a99ecfcefab234340f585" category="paragraph">Oracle Linux 9.5부터<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 그리고<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC에 포함된 부팅 서비스<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다.</block>
   <block id="cbce5c9568a686f91b2dfcf39622b287" category="paragraph">각 호스트 또는 컨트롤러는 보안 인증을 설정하기 위해 DH-HMAC-CHAP 키와 연결되어야 합니다.  DH-HMAC-CHAP 키는 NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀번호의 조합입니다.  피어를 인증하려면 NVMe 호스트나 컨트롤러가 피어와 연결된 키를 인식해야 합니다.</block>
   <block id="e908710b4eae6cf350cddad694d8c508" category="paragraph">CLI 또는 구성 JSON 파일을 사용하여 안전한 인밴드 인증을 설정합니다.  다른 하위 시스템에 대해 다른 dhchap 키를 지정해야 하는 경우 구성 JSON 파일을 사용하세요.</block>
   <block id="aadd5dd4ef730bc8b1907b50349be5cb" category="summary">Oracle Linux 호스트에 대한 ONTAP 지원 및 기능에 대해 알아보세요.</block>
@@ -2500,4 +2495,5 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="d260773137ad0fe3e74f84c49c4bb99c" category="paragraph"><block ref="d91927ac11d01a60b7823e550f2dd7fb" category="inline-link-macro-rx"></block>.</block>
   <block id="895369022e2ee0b381f97a38ee89b758" category="admonition">AIX에서는 MPIO가 활성화될 때까지 SAN 부팅 디스크에 하나의 경로만 표시되도록 요구합니다. AIX 부팅 디스크를 설치하거나 마이그레이션할 때는 일반적으로 호스트의 FC 영역 설정을 일시적으로 제한하여 FC 이니시에이터 하나와 FC 타겟 하나만 포함하도록 해야 합니다. 호스트 유틸리티(PCM 패키지 포함)를 설치한 후 운영 체제를 재부팅하면 MPIO를 완전히 활성화할 수 있습니다. 재부팅 후 추가 FC 이니시에이터와 FC 타겟을 영역에 추가합니다. 그런 다음, <block ref="cec798dce2562ead48807f1d57e501c6" prefix=" " category="inline-code"></block> 및 <block ref="a693727332d96028bddba10ff4667b0a" prefix=" " category="inline-code"></block>을 실행하여 사용 가능한 모든 경로를 포함하도록 부팅 구성을 업데이트합니다.</block>
   <block id="d475935aee712cb287d615a6e4a26bc1" category="paragraph">다음 예시는 <block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> 패키지 버전을 보여줍니다.</block>
+  <block id="a31e7639425bf11c737e817792079192" category="admonition">ONTAP 9.16.1부터 NVMe/FV 및 NVMe/TCP는 ASA r2 시스템에서 최적화된 모든 경로를 보고합니다.</block>
 </blocks>

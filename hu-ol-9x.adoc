@@ -465,15 +465,8 @@ devices {
 
 == 7단계: 알려진 문제 검토
 
-ONTAP 스토리지를 탑재한 Oracle Linux 9.3, 9.2, 9.1 및 9.0에는 다음과 같은 알려진 문제가 있습니다.
+알려진 문제가 없습니다.
 
-[cols="20,40,40"]
-|===
-| NetApp 버그 ID | 제목 | 설명 
-
-
-| https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | Emulex HBA를 사용하는 SAN LUN 유틸리티에는 라이브러리 패키지의 심볼 링크가 필요합니다 | SAN 호스트에서 Linux Host Utilities CLI 명령인 "sanlun fcp show adapter -v"를 실행하면 호스트 버스 어댑터(HBA) 검색에 필요한 라이브러리 종속성을 찾을 수 없다는 오류 메시지가 표시되면서 명령이 실패합니다. ---- [root@hostname ~]# sanlun fcp show adapter -v /usr/lib64/libHBAAPI.so 라이브러리를 찾을 수 없습니다. 라이브러리를 설치하는 패키지가 설치 및 로드되었는지 확인하세요. ---- 
-|===
 
 
 == 다음 단계
