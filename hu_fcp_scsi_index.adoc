@@ -4,7 +4,7 @@ permalink: hu_fcp_scsi_index.html
 keywords:  
 summary:  
 ---
-= 개요
+= FCP 및 iSCSI를 사용하여 ONTAP SAN 호스트를 구성하는 방법에 대해 알아보십시오.
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,4 +16,10 @@ summary:
 
 
 [role="lead"]
-ONTAP를 대상으로 사용하여 FCP 또는 iSCSI에 대한 특정 SAN 호스트를 구성할 수 있습니다. 먼저 SAN 도구 키트를 포함하는 관련 운영 체제 호스트 유틸리티 패키지를 설치합니다. 그런 다음 NetApp ONTAP LUN에 대한 다중 경로 설정을 확인합니다.
+특정 SAN 호스트 운영 체제(OS)에서 ONTAP 대상으로 FCP 및 iSCSI를 구성할 수 있습니다. 호스트 OS가 SAN 호스트 유틸리티 소프트웨어에서 지원되는 경우, 먼저 SAN 툴킷이 포함된 해당 OS 호스트 유틸리티 패키지를 설치해야 합니다. 그런 다음 모든 호스트 OS 유형에 대해 ONTAP LUN의 다중 경로 설정을 구성합니다.
+
+.관련 정보
+* link:https://docs.netapp.com/us-en/ontap/san-admin/configure-svm-fc-task.html["FC 프로토콜 관리에 대해 알아보기"^]
+* link:https://docs.netapp.com/us-en/ontap/san-admin/configure-network-best-performance-task.html["iSCSI 프로토콜 관리에 대해 알아보기"^]
+* https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["SAN 스토리지 프로비저닝에 대해 알아보기"^]
+

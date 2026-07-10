@@ -93,7 +93,7 @@ sidebar:
         url: "/hu_wuhu_troubleshoot.html"
   - title: FCP 및 iSCSI로 호스트를 구성합니다
     entries:
-    - title: 개요
+    - title: FCP 및 iSCSI를 사용하여 호스트를 구성하는 방법에 대해 알아봅니다.
       url: "/hu_fcp_scsi_index.html"
     - title: AIX 및 PowerVM/VIOS
       entries:
@@ -214,7 +214,7 @@ sidebar:
         url: "/hu_windows_2012r2.html"
   - title: NVMe-oF를 사용하여 호스트 구성
     entries:
-    - title: NVMe-oF 호스트 구성에 대해 알아보세요
+    - title: NVMe-oF를 사용하여 호스트를 구성하는 방법에 대해 알아보십시오.
       url: "/hu-nvme-index.html"
     - title: AIX
       url: "/nvme-aix.html"
