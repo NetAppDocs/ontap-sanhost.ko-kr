@@ -20,6 +20,7 @@ ESXi 8.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe
 
 
 
+[[supportability]]
 == 지원 가능성
 
 * ONTAP 9.16.1부터 새로 생성된 모든 NVMe 네임스페이스에 대해 기본적으로 공간 할당이 활성화됩니다.
@@ -29,6 +30,7 @@ ESXi 8.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe
 
 
 
+[[features]]
 == 피처
 
 * ESXi 이니시에이터 호스트는 동일한 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 실행할 수 있습니다. 를 참조하십시오 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 지원되는 FC 어댑터 및 컨트롤러 목록은 를 참조하십시오. 를 참조하십시오 link:https://mysupport.netapp.com/matrix/["NetApp 상호 운용성 매트릭스 툴"^] 를 참조하십시오.
@@ -37,6 +39,7 @@ ESXi 8.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe
 
 
 
+[[known-limitations]]
 == 알려진 제한 사항
 
 * RDM 매핑은 지원되지 않습니다.
@@ -44,6 +47,7 @@ ESXi 8.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe
 
 
 
+[[enable-nvmefc]]
 == NVMe/FC를 사용하도록 설정합니다
 
 NVMe/FC는 vSphere 릴리즈에서 기본적으로 활성화되어 있습니다.
@@ -77,6 +81,7 @@ nvme_fc nvme_ss  nqn.2014-08.org.nvmexpress:uuid:62a1xxxx-ba8c-xxxx-c954-000xxxx
 
 
 
+[[configure-broadcomemulex-and-marvellqlogic]]
 == Broadcom/Emulex 및 Marvell/Qlogic을 구성합니다
 
 를 클릭합니다 `lpfc` 드라이버 및 `qlnativefc` vSphere 8.x의 드라이버에는 기본적으로 NVMe/FC 기능이 활성화되어 있습니다.
@@ -85,6 +90,7 @@ nvme_fc nvme_ss  nqn.2014-08.org.nvmexpress:uuid:62a1xxxx-ba8c-xxxx-c954-000xxxx
 
 
 
+[[validate-nvmefc]]
 == NVMe/FC를 검증합니다
 
 다음 절차를 사용하여 NVMe/FC를 검증할 수 있습니다.
@@ -175,12 +181,14 @@ fc.20000024ff7f4a50:21000024ff7f4a50-fc.2004d039ea3ab21f:2007d039ea3ab21f-uuid.d
 
 
 
+[[configure-nvmetcp]]
 == NVMe/TCP를 구성합니다
 
 ESXi 8.x에서는 필요한 NVMe/TCP 모듈이 기본적으로 로드됩니다. 네트워크 및 NVMe/TCP 어댑터를 구성하려면 VMware vSphere 설명서를 참조하십시오.
 
 
 
+[[validate-nvmetcp]]
 == NVMe/TCP를 검증합니다
 
 다음 절차를 사용하여 NVMe/TCP를 검증할 수 있습니다.
@@ -271,6 +279,7 @@ tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.167:4420-uuid.f4f14337c3ad4a639edf0
 
 
 
+[[nvme-deallocate]]
 == NVMe 할당 해제
 
 ONTAP 9.16.1 이상에서 ESXi 8.0u2 이상에 대해 NVMe 할당 해제 명령이 지원됩니다.
@@ -302,6 +311,7 @@ VMware vSphere의 NVMe 할당 해제에 대한 자세한 내용은 을 참조하
 
 
 
+[[known-issues]]
 == 알려진 문제
 
 ONTAP를 사용하는 ESXi 8.x의 NVMe-oF 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.

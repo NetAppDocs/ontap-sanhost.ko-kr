@@ -20,6 +20,7 @@ summary: 호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성�
 
 
 
+[[list-all-host-initiators-mapped-to-host]]
 == 호스트에 매핑된 모든 호스트 이니시에이터를 나열합니다
 
 호스트에 매핑된 호스트 이니시에이터 목록을 검색할 수 있습니다.
@@ -120,6 +121,7 @@ bash-3.2#
 ====
 
 
+[[list-all-luns-mapped-to-host]]
 == 호스트에 매핑된 모든 LUN을 나열합니다
 
 호스트에 매핑된 모든 LUN 목록을 검색할 수 있습니다.
@@ -184,6 +186,7 @@ up     secondary path3   fcs1    fc_aix_4     1
 ====
 
 
+[[list-all-luns-mapped-to-host-from-a-given-svm]]
 == 해당 SVM에서 호스트에 매핑된 모든 LUN을 나열합니다
 
 지정된 SVM에서 호스트에 매핑된 모든 LUN 목록을 검색할 수 있습니다.
@@ -249,6 +252,7 @@ up      secondary  path3 fcs1    sanboot_4   1
 ====
 
 
+[[list-all-attributes-of-a-given-lun-mapped-to-host]]
 == 호스트에 매핑된 특정 LUN의 모든 특성을 나열합니다
 
 호스트에 매핑된 지정된 LUN의 모든 특성 목록을 검색할 수 있습니다.
@@ -314,6 +318,7 @@ up       secondary path3 fcs1    fc_aix_4   1
 ====
 
 
+[[list-ontap-lun-attributes-by-host-device-filename]]
 == 호스트 디바이스 파일 이름별 ONTAP LUN 속성 나열
 
 호스트 디바이스 파일 이름을 지정하여 ONTAP LUN 속성 목록을 검색할 수 있습니다.
@@ -365,6 +370,7 @@ hdisk1    fcs0    FCP     15g  C
 ====
 
 
+[[list-all-svm-target-lif-wwpns-attached-to-host]]
 == 호스트에 연결된 모든 SVM 타겟 LIF WWPN을 나열합니다
 
 호스트에 연결된 모든 SVM 타겟 LIF WWPN 목록을 검색할 수 있습니다.

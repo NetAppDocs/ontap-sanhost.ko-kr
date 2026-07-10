@@ -98,6 +98,7 @@ NVMe/FC를 지원하는 Power10 서버의 최소 서버 펌웨어 버전은 FW 1
 
 
 
+[[step-1-confirm-the-multipath-configuration-for-your-host]]
 == 1단계: 호스트에 대한 다중 경로 구성 확인
 
 AIX OS를 설치하면 NVMe 다중 경로에 사용되는 IBM MPIO가 기본적으로 활성화됩니다.
@@ -126,6 +127,7 @@ hdisk1  11        Enabled  Sel,Non       nvme60  fcnvme0, 9
 
 
 
+[[step-2-configure-nvmefc]]
 == 2단계: NVMe/FC 구성
 
 VIOS의 가상 파이버 채널(vFC)에서 NVMe/FC 프로토콜 지원이 비활성화되어 있으므로 VIOS에서 Broadcom/Emulex 어댑터에 대해 NVMe/FC를 구성해야 합니다.  NVMe/FC 프로토콜 지원은 기본적으로 물리적 FC에서 활성화됩니다.
@@ -284,6 +286,7 @@ vs_s922-55-lpar2 subsystem_s922-55-lpar2 nqn.2014-08.org.nvmexpress:uuid:64e0xxx
 
 
 
+[[step-3-validate-nvmefc]]
 == 3단계: NVMe/FC 검증
 
 ONTAP 네임스페이스가 NVMe/FC 구성에 맞는지 확인하세요.
@@ -324,6 +327,7 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
 
 
 
+[[step-4-review-the-known-issues]]
 == 4단계: 알려진 문제 검토
 
 ONTAP 스토리지가 있는 AIX의 NVMe/FC 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.
@@ -346,6 +350,7 @@ ONTAP 스토리지가 있는 AIX의 NVMe/FC 호스트 구성에는 다음과 같
 |===
 
 
+[[step-5-troubleshoot]]
 == 5단계: 문제 해결
 
 NVMe/FC 오류를 해결하기 전에 다음 사항을 준수하는 구성을 실행하고 있는지 확인하십시오.link:https://mysupport.netapp.com/matrix/["IMT"^] 명세서.  문제가 지속되면 문의하세요.link:https://mysupport.netapp.com["NetApp 지원"^] .

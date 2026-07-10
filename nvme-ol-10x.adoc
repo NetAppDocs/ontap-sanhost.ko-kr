@@ -27,6 +27,7 @@ Oracle Linux 10.x의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 �
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
 SAN 부팅을 사용하도록 호스트를 구성하여 배포를 간소화하고 확장성을 개선할 수 있습니다. 사용하다link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
@@ -42,6 +43,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 
 
+[[step-2-install-oracle-linux-and-nvme-software-and-verify-your-configuration]]
 == 2단계: Oracle Linux 및 NVMe 소프트웨어 설치 및 구성 확인
 
 다음 절차를 사용하여 지원되는 최소 Oracle Linux 10.x 소프트웨어 버전을 확인하십시오.
@@ -132,6 +134,7 @@ NOTE: 문자열이 일치하지 않으면 `hostnqn` 명령을 사용하여 해�
 
 
 
+[[step-3-configure-nvmefc-and-nvmetcp]]
 == 3단계: NVMe/FC 및 NVMe/TCP 구성
 
 Broadcom/Emulex 또는 Marvell/QLogic 어댑터를 사용하여 NVMe/FC를 구성하거나 수동 검색 및 연결 작업을 사용하여 NVMe/TCP를 구성합니다.
@@ -509,6 +512,7 @@ Oracle Linux 9.4부터 NVMe/TCP 설정  `ctrl_loss_tmo timeout` 자동으로 "�
 ====
 
 
+[[step-4-optionally-modify-the-iopolicy-in-the-udev-rules]]
 == 4단계: 선택적으로 udev 규칙에서 iopolicy를 수정합니다.
 
 Oracle Linux 10.x 호스트는 NVMe-oF에 대한 기본 iopolicy를  `queue-depth`로 설정합니다. udev 규칙 파일을 수정하여 iopolicy를  `round-robin`로 변경할 수 있습니다.
@@ -571,6 +575,7 @@ NOTE: 새로운 iopolicy는 일치하는 NetApp ONTAP 컨트롤러 장치에 자
 
 
 
+[[step-5-optionally-enable-1mb-io-for-nvmefc]]
 == 5단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.
 
 ONTAP Identify Controller 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다.  즉, 최대 I/O 요청 크기는 1MB까지 가능합니다.  Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 다음을 늘려야 합니다. `lpfc` 의 가치 `lpfc_sg_seg_cnt` 매개변수를 기본값 64에서 256으로 변경합니다.
@@ -604,6 +609,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-6-verify-nvme-boot-services]]
 == 6단계: NVMe 부팅 서비스 확인
 
 그만큼 `nvmefc-boot-connections.service` 그리고 `nvmf-autoconnect.service` NVMe/FC에 포함된 부팅 서비스 `nvme-cli` 패키지는 시스템이 부팅될 때 자동으로 활성화됩니다.
@@ -661,6 +667,7 @@ Feb 02 09:47:07 sr630-13-169 systemd[1]: Finished Auto-connect to subsystems on 
 
 
 
+[[step-7-verify-the-multipathing-configuration]]
 == 7단계: 다중 경로 구성 확인
 
 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
@@ -867,6 +874,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-8-set-up-secure-in-band-authentication]]
 == 8단계: 안전한 인밴드 인증 설정
 
 Oracle Linux 10.x 호스트와 ONTAP 컨트롤러 간에 NVMe/TCP를 통한 안전한 대역 내 인증이 지원됩니다.
@@ -1052,6 +1060,7 @@ DHHC-1:03:n3F8d+bvxKW/s+lEhqXaOohI2sxrQ9iLutzduuFq49JgdjjaFtTpDSO9kQl/bvZj+Bo3rd
 ====
 
 
+[[step-9-review-the-known-issues]]
 == 9단계: 알려진 문제를 검토합니다
 
 알려진 문제가 없습니다.

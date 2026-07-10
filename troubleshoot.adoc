@@ -25,6 +25,7 @@ NOTE: 이 문제 해결 지침은 AIX, ESXi, Proxmox 및 Windows 호스트에는
 
 
 
+[[enable-verbose-logging]]
 == 자세한 정보 로깅을 사용합니다
 
 구성에 문제가 있는 경우 자세한 정보 로깅은 문제 해결에 필요한 필수 정보를 제공할 수 있습니다.
@@ -87,6 +88,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 ====
 
 
+[[common-nvme-cli-errors-and-workarounds]]
 == 일반적인 "nvme-cli" 오류 및 해결 방법
 
 에 표시되는 오류입니다 `nvme-cli` 를 참조하십시오 `nvme discover`, `nvme connect`, 또는 `nvme connect-all` 작업 및 해결 방법은 다음 표에 나와 있습니다.
@@ -142,6 +144,7 @@ Cmpl 00000000000000a8 Outstanding 0000000000000001
 |===
 
 
+[[when-to-contact-technical-support]]
 == 기술 지원 문의 시기
 
 문제가 계속 발생하는 경우, 다음 파일과 명령 출력 결과를 수집하여 link:https://mysupport.netapp.com["NetApp 지원"^] 추가 지원을 위해 문의해 주십시오.

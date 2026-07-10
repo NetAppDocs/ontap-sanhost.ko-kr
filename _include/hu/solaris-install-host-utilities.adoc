@@ -4,6 +4,7 @@
 
 
 
+[[step-2-install-the-solaris-host-utilities]]
 == 2단계: Solaris 호스트 유틸리티 설치
 
 NetApp ONTAP LUN 관리를 지원하고 기술 지원팀의 구성 데이터 수집을 돕기 위해 Solaris 호스트 유틸리티를 설치할 것을 강력히 권장합니다.

@@ -22,6 +22,7 @@ Ubuntu 24.04의 NVMe-oF에는 다음과 같은 알려진 제한 사항이 있습
 
 
 
+[[step-1-install-ubuntu-and-nvme-software-and-verify-your-configuration]]
 == 1단계: Ubuntu 및 NVMe 소프트웨어를 설치하고 구성을 확인합니다
 
 NVMe-oF를 사용하도록 호스트를 구성하려면 호스트 및 NVMe 소프트웨어 패키지를 설치하고, 멀티패싱을 활성화하고, 호스트의 NQN 구성을 확인해야 합니다.
@@ -94,6 +95,7 @@ NOTE: 만약 `hostnqn` 문자열이 일치하지 않으면,  `vserver modify` �
 
 
 
+[[step-2-configure-nvmefc-and-nvmetcp]]
 == 2단계: NVMe/FC 및 NVMe/TCP 구성
 
 Broadcom/Emulex 또는 Marvell/Qlogic 어댑터용 NVMe/FC를 구성하거나 수동 검색 및 연결 작업을 사용하여 NVMe/TCP를 구성하십시오.
@@ -440,6 +442,7 @@ NOTE: Ubuntu 24.04부터 NVMe/TCP에 대한 Ctrl_Loss_TMO 시간 초과 기본 �
 ====
 
 
+[[step-3-optionally-enable-1mb-io-for-nvmefc]]
 == 3단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.
 
 ONTAP Identify Controller 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다.  즉, 최대 I/O 요청 크기는 1MB까지 가능합니다.  Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 다음을 늘려야 합니다. `lpfc` 의 가치 `lpfc_sg_seg_cnt` 매개변수를 기본값 64에서 256으로 변경합니다.
@@ -473,6 +476,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-4-verify-multipathing-configuration]]
 == 4단계: 다중 경로 구성 확인
 
 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.

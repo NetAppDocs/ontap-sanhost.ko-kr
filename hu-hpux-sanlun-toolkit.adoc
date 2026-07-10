@@ -42,6 +42,7 @@ SAN Toolkit은 AIX 및 PowerVM/VIOS OS 버전에서 지원됩니다.
 ====
 
 
+[[whats-next]]
 == 다음 단계
 
 link:hu_hpux_60_cmd.html["HP-UX 호스트 유틸리티 도구 사용에 대해 알아보세요"] .

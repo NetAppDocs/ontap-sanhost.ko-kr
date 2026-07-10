@@ -20,6 +20,7 @@ Windows 호스트 유틸리티는 Windows 호스트를 NetApp SAN의 가상 디�
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
 로컬 부팅이나 SAN 부팅을 사용하여 Windows OS를 부팅할 수 있습니다.  NetApp 배포를 간소화하고 확장성을 개선하기 위해 SAN 부팅을 사용할 것을 권장합니다.
@@ -51,6 +52,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 ====
 
 
+[[step-2-install-windows-hotfixes]]
 == 2단계: Windows 핫픽스 설치
 
 NetApp은 호스트 서버에 Microsoft Update 카탈로그에서 제공되는 * 최신 누적 업데이트 * 를 설치할 것을 권장합니다.
@@ -70,6 +72,7 @@ TIP: 많은 핫픽스를 적용하려면 Windows 호스트를 재부팅해야 �
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == 3단계: Windows 호스트 유틸리티 설치
 
 Windows 호스트 유틸리티는 NetApp SAN의 가상 디스크(LUN)에 호스트 컴퓨터를 연결할 수 있도록 하는 설명서가 포함된 소프트웨어 프로그램 세트입니다.  NetApp ONTAP LUN 관리를 지원하고 기술 지원팀이 구성 데이터를 수집하는 데 도움이 되는 최신 Windows 호스트 유틸리티를 다운로드하여 설치할 것을 권장합니다.
@@ -78,6 +81,7 @@ Windows 호스트 유틸리티 구성 및 설치 정보는 다음을 참조하�
 
 
 
+[[step-4-confirm-the-multipath-configuration-for-your-host]]
 == 4단계: 호스트에 대한 다중 경로 구성 확인
 
 Microsoft Multipath I/O(MPIO) 소프트웨어를 설치하고 Windows 호스트에 스토리지 시스템에 대한 경로가 두 개 이상 있는 경우 다중 경로를 활성화합니다.
@@ -156,12 +160,14 @@ image::nonasa.png[활성/최적화 경로 2개와 액티브/비최적화 경로 
 
 
 
+[[step-5-review-the-known-issues]]
 == 5단계: 알려진 문제 검토
 
 알려진 문제가 없습니다.
 
 
 
+[[whats-next]]
 == 다음 단계
 
 link:hu-wuhu-configuration.html["ONTAP 스토리지용 Windows 호스트 유틸리티 구성에 대해 알아보세요."]

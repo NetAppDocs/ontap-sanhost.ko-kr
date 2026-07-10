@@ -30,6 +30,7 @@ chkconfig multipathd on
 .매개 변수 설정을 표시합니다
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | 매개 변수 | 설정 

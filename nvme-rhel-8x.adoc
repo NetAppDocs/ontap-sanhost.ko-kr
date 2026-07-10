@@ -29,6 +29,7 @@ RHEL 8.x를 사용하는 NVMe-oF에는 다음과 같은 알려진 제한 사항�
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
 SAN 부팅을 사용하도록 호스트를 구성하여 배포를 간소화하고 확장성을 개선할 수 있습니다. 사용하다link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^] Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인하세요.
@@ -44,6 +45,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 
 
+[[step-2-install-rhel-and-nvme-software-and-verify-your-configuration]]
 == 2단계: RHEL 및 NVMe 소프트웨어 설치 및 구성 확인
 
 NVMe-oF를 사용하도록 호스트를 구성하려면 호스트 및 NVMe 소프트웨어 패키지를 설치하고, 멀티패싱을 활성화하고, 호스트의 NQN 구성을 확인해야 합니다.
@@ -150,6 +152,7 @@ defaults {
 
 
 
+[[step-3-configure-nvmefc-and-nvmetcp]]
 == 3단계: NVMe/FC 및 NVMe/TCP 구성
 
 Broadcom/Emulex 또는 Marvell/QLogic 어댑터를 사용하여 NVMe/FC를 구성하거나 수동 검색 및 연결 작업을 사용하여 NVMe/TCP를 구성합니다.
@@ -425,6 +428,7 @@ nvme connect-all -t tcp -w 192.168.1.31 -a 192.168.1.25 -l 1800
 ====
 
 
+[[step-4-optionally-enable-1mb-io-for-nvmefc]]
 == 4단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.
 
 ONTAP Identify Controller 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다.  즉, 최대 I/O 요청 크기는 1MB까지 가능합니다.  Broadcom NVMe/FC 호스트에 대해 1MB 크기의 I/O 요청을 발행하려면 다음을 늘려야 합니다. `lpfc` 의 가치 `lpfc_sg_seg_cnt` 매개변수를 기본값 64에서 256으로 변경합니다.
@@ -458,6 +462,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-5-verify-the-multipathing-configuration]]
 == 5단계: 다중 경로 구성 확인
 
 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
@@ -649,6 +654,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-6-review-the-known-issues]]
 == 6단계: 알려진 문제를 검토합니다
 
 알려진 문제는 다음과 같습니다.

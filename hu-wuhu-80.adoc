@@ -16,6 +16,7 @@ summary: Windows 호스트 유틸리티에는 Windows 호스트가 ONTAP 플랫�
 [role="lead"]
 Windows 호스트 유틸리티를 사용하여 Windows 호스트 컴퓨터를 NetApp 스토리지 시스템에 연결할 수 있습니다.
 
+[[supported-windows-versions-80]]
 Windows Host Utilities는 다음 버전의 Windows를 지원합니다.
 
 * Windows 2025 를 참조하십시오
@@ -46,6 +47,7 @@ Host Utilities는 다양한 Windows 호스트 구성, 프로토콜 및 다중 �
 
 
 
+[[step-1-verify-your-host-and-storage-system-configuration]]
 == 1단계: 호스트 및 스토리지 시스템 구성 확인
 
 Windows Host Utilities를 설치하기 전에 호스트 및 스토리지 시스템 구성이 지원되는지 확인하십시오.<<supported-windows-versions-80,지원되는 Windows 버전>> .
@@ -66,6 +68,7 @@ Windows Host Utilities를 설치하기 전에 호스트 및 스토리지 시스�
 
 
 
+[[step-2-configure-fc-hbas-and-switches]]
 == 2단계: FC HBA 및 스위치 구성
 
 스토리지 시스템에 대한 FC 접속을 위해 지원되는 하나 이상의 FC HBA(호스트 버스 어댑터)를 설치하고 구성합니다.
@@ -85,6 +88,7 @@ CAUTION: HBA 매개변수는 Windows 호스트 유틸리티 설치 프로그램�
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == 3단계: Windows 호스트 유틸리티 설치
 
 설치 프로그램은 Windows 호스트 유틸리티 패키지를 설치하고 Windows 레지스트리와 HBA 설정을 지정합니다.
@@ -147,6 +151,7 @@ NOTE: 로깅 및 기타 기능에 대한 표준 MSI(Microsoft Installer) 옵션�
 ====
 
 
+[[whats-next]]
 == 다음 단계
 
 link:hu-wuhu-configuration.html["ONTAP 스토리지용 Windows 호스트 유틸리티 구성에 대해 알아보세요."]

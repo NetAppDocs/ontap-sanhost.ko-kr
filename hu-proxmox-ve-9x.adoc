@@ -26,6 +26,7 @@ Proxmox VE 9.x에서 FCP 및 iSCSI를 사용할 때 다음과 같은 알려진 �
 
 
 
+[[step-1-confirm-the-multipath-configuration-for-your-host]]
 == 1단계: 호스트에 대한 다중 경로 구성 확인
 
 Proxmox VE 9.x에서는 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.
@@ -58,6 +59,7 @@ systemctl start multipathd
 .매개 변수 설정을 표시합니다
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | 매개 변수 | 설정 
@@ -204,6 +206,7 @@ multipath -ll
 
 
 
+[[step-2-confirm-the-iscsi-configuration-for-your-host]]
 == 2단계: 호스트의 iSCSI 구성을 확인합니다
 
 호스트에 iSCSI가 올바르게 구성되어 있는지 확인하십시오.
@@ -346,6 +349,7 @@ tcp: [4] 192.168.166.70:3260,1042 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624
 
 
 
+[[step-3-optionally-exclude-a-device-from-multipathing]]
 == 3단계: 선택적으로 다중 경로에서 장치 제외
 
 필요한 경우 원치 않는 디바이스의 WWID를 파일의 "블랙리스트" 스탠자에 추가하여 디바이스를 경로 다중화에서 제외할 수 `multipath.conf` 있습니다.
@@ -378,6 +382,7 @@ blacklist {
 
 
 
+[[step-4-customize-multipath-parameters-for-ontap-luns]]
 == 4단계: ONTAP LUN에 대한 다중 경로 매개변수 사용자 지정
 
 호스트가 다른 공급업체의 LUN에 접속되어 있고 다중 경로 매개 변수 설정이 무시되는 경우 나중에 ONTAP LUN에 특별히 적용되는 파일에서 stanzas를 추가하여 수정해야 `multipath.conf` 합니다. 이렇게 하지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다.
@@ -411,6 +416,7 @@ devices {
 ====
 
 
+[[step-5-review-the-known-issues]]
 == 5단계: 알려진 문제 검토
 
 알려진 문제가 없습니다.

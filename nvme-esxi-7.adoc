@@ -20,6 +20,7 @@ ESXi 7.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe
 
 
 
+[[supportability]]
 == 지원 가능성
 
 * ONTAP 9.7부터 VMware vSphere 릴리즈를 위해 NVMe/FC(NVMe over Fibre Channel) 지원이 추가되었습니다.
@@ -29,6 +30,7 @@ ESXi 7.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe
 
 
 
+[[features]]
 == 피처
 
 * ESXi 이니시에이터 호스트는 동일한 어댑터 포트를 통해 NVMe/FC 및 FCP 트래픽을 모두 실행할 수 있습니다. 지원되는 FC 어댑터 및 컨트롤러 목록은 를 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 참조하십시오. 지원되는 구성 및 버전의 최신 목록은 를 link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^]참조하십시오.
@@ -38,6 +40,7 @@ ESXi 7.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe
 
 
 
+[[known-limitations]]
 == 알려진 제한 사항
 
 다음 구성은 지원되지 않습니다.
@@ -48,6 +51,7 @@ ESXi 7.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe
 
 
 
+[[enable-nvmefc]]
 == NVMe/FC를 사용하도록 설정합니다
 
 . ESXi 호스트 NQN 문자열을 확인하여 ONTAP 스토리지의 해당 하위 시스템에 대한 호스트 NQN 문자열과 일치하는지 확인합니다.
@@ -66,6 +70,7 @@ Host NQN: nqn.2014-08.com.vmware:nvme:nvme-esx
 
 
 
+[[configure-broadcomemulex]]
 === Broadcom/Emulex를 구성합니다
 
 . 를 참조하여 필수 드라이버/펌웨어로 구성이 지원되는지 확인합니다link:https://mysupport.netapp.com/matrix/["상호 운용성 매트릭스 툴"^].
@@ -95,6 +100,7 @@ vmhba65   lpfc     link-up     fc.200000109b954570:100000109b954570             
 ----
 
 
+[[configure-marvellqlogic]]
 === Marvell/QLogic을 구성합니다
 
 .단계
@@ -129,6 +135,7 @@ vmhba65   qlnativefc  link-up     fc.20000024ff1817af:21000024ff1817af          
 
 
 
+[[validate-nvmefc]]
 == NVMe/FC를 검증합니다
 
 . ESXi 호스트에 NVMe/FC 어댑터가 나열되는지 확인합니다.
@@ -207,12 +214,14 @@ fc.200034800d6d7268:210034800d6d7268-fc.201700a098dfe3d1:201900a098dfe3d1-uuid.5
 
 
 
+[[configure-nvmetcp]]
 == NVMe/TCP를 구성합니다
 
 7.0U3c부터 필요한 NVMe/TCP 모듈이 기본적으로 로드됩니다. 네트워크 및 NVMe/TCP 어댑터를 구성하려면 VMware vSphere 설명서를 참조하십시오.
 
 
 
+[[validate-nvmetcp]]
 == NVMe/TCP를 검증합니다
 
 .단계
@@ -269,6 +278,7 @@ tcp.vmnic3:34:80:Od:30:ca:el-tcp.unknown-uuid.400bf333abf74ab8b96dc18ffadc3f99
 
 
 
+[[known-issues]]
 == 알려진 문제
 
 ONTAP를 사용하는 ESXi 7.x의 NVMe-of 호스트 구성에는 다음과 같은 알려진 문제가 있습니다.

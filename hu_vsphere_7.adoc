@@ -20,6 +20,7 @@ FC, FCoE 및 iSCSI 프로토콜을 사용하는 vSphere 7.x 릴리스에 대해 
 
 
 
+[[hypervisor-san-booting]]
 == 하이퍼바이저 SAN 부팅
 
 .시작하기 전에
@@ -41,6 +42,7 @@ HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별
 
 
 
+[[multipathing]]
 == 다중 경로
 
 ESXi는 NMP(Native Multipathing Plug-in)라는 확장 가능한 경로 다중화 모듈을 제공하여 하위 플러그인, SATP(Storage Array Type Plugins) 및 PSP(Path Selection Plugins)를 관리합니다. 이러한 SATP 규칙은 ESXi에서 기본적으로 사용할 수 있습니다.
@@ -62,6 +64,7 @@ system      tpgs_on        VMW_PSP_RR                   NetApp arrays with ALUA 
 ----
 
 
+[[non-asa-configurations]]
 === 비 ASA 구성
 
 비 ASA 구성의 경우 우선 순위가 서로 다른 두 개의 경로 그룹이 있어야 합니다. 우선 순위가 높은 경로는 활성/최적화입니다. 즉, 애그리게이트가 위치한 컨트롤러에서 서비스합니다. 우선 순위가 낮은 경로는 다른 컨트롤러에서 제공되기 때문에 활성 상태이지만 최적화되지 않습니다. 최적화되지 않은 경로는 최적화 경로를 사용할 수 없는 경우에만 사용됩니다.
@@ -181,6 +184,7 @@ fc.20000024ff171d37:21000024ff171d37-fc.202300a098ea5e27:201e00a098ea5e27-naa.60
 ----
 
 
+[[vvol]]
 == VVOL
 
 VVOL(가상 볼륨)은 가상 머신(VM) 디스크와 해당 스냅샷 및 고속 클론에 해당하는 VMware 오브젝트 유형입니다.
@@ -208,10 +212,12 @@ VVOL의 프로비저닝 및 관리에 대한 자세한 내용은 VMware vSphere�
 
 
 
+[[recommended-settings]]
 == 권장 설정
 
 
 
+[[ats-locking]]
 === ATS 잠금
 
 VAAI 호환 스토리지와 업그레이드된 VMFS5의 경우 ATS 잠금은 * 필수 * 이며 ONTAP LUN의 적절한 상호 운용성과 최적의 VMFS 공유 스토리지 I/O 성능을 위해 필요합니다. ATS 잠금 활성화에 대한 자세한 내용은 VMware 설명서를 참조하십시오.
@@ -234,6 +240,7 @@ NOTE: UNMAP을 작동하기 위해 VMware vSphere에 매핑된 모든 LUN에 대
 
 
 
+[[guest-os-timeouts]]
 === 게스트 OS 시간 초과
 
 권장 게스트 OS 튜닝을 사용하여 가상 머신을 수동으로 구성할 수 있습니다. 업데이트 조정 후 업데이트를 적용하려면 게스트를 재부팅해야 합니다.
@@ -255,6 +262,7 @@ NOTE: UNMAP을 작동하기 위해 VMware vSphere에 매핑된 모든 LUN에 대
 |===
 
 
+[[validating-the-vsphere-tunable]]
 === 튜닝 가능한 vSphere 검증
 
 다음 명령을 사용하여 HardwareAcceleratedLocking 설정을 확인합니다.
@@ -276,6 +284,7 @@ NOTE: UNMAP을 작동하기 위해 VMware vSphere에 매핑된 모든 LUN에 대
 ----
 
 
+[[validate-the-disk-iops-setting]]
 === 디스크 IOPS 설정을 확인합니다
 
 다음 명령을 사용하여 IOP 설정을 확인합니다.
@@ -296,6 +305,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[validating-the-qfullsamplesize]]
 === QFullSampleSize 유효성 검사
 
 다음 명령을 사용하여 QFullSampleSize를 확인합니다
@@ -317,6 +327,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[known-issues]]
 == 알려진 문제
 
 VMware vSphere 7.x 및 ONTAP 릴리즈에는 알려진 문제가 없습니다.

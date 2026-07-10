@@ -29,6 +29,7 @@ Rocky Linux 8.x에서 NVMe-oF를 사용할 때 다음과 같은 알려진 제한
 
 
 
+[[step-1-install-rocky-linux-and-nvme-software-and-verify-your-configuration]]
 == 1단계: Rocky Linux 및 NVMe 소프트웨어를 설치하고 구성을 확인합니다.
 
 NVMe-oF를 사용하도록 호스트를 구성하려면 호스트 및 NVMe 소프트웨어 패키지를 설치하고, 멀티패싱을 활성화하고, 호스트의 NQN 구성을 확인해야 합니다.
@@ -124,6 +125,7 @@ NOTE: 를 누릅니다 `hostnqn` 문자열이 일치하지 않습니다. 를 사
 
 
 
+[[step-2-configure-nvmefc-and-nvmetcp]]
 == 2단계: NVMe/FC 및 NVMe/TCP 구성
 
 Broadcom/Emulex 또는 Marvell/QLogic 어댑터를 사용하여 NVMe/FC를 구성하거나 수동 검색 및 연결 작업을 사용하여 NVMe/TCP를 구성합니다.
@@ -598,6 +600,7 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ====
 
 
+[[step-3-optionally-enable-1mb-io-for-nvmefc]]
 == 3단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.
 
 Broadcom 어댑터로 구성된 NVMe/FC에 대해 1MB 크기의 I/O 요청을 활성화할 수 있습니다. ONTAP은 컨트롤러 식별 데이터에서 최대 데이터 전송 크기(MDTS)를 8로 보고합니다. 이는 최대 I/O 요청 크기가 1MB까지 될 수 있음을 의미합니다. 1MB 크기의 I/O 요청을 실행하려면 lpfc 값을 늘려야 합니다.  `lpfc_sg_seg_cnt` 매개변수를 기본값 64에서 256으로 늘립니다.
@@ -628,6 +631,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-4-verify-the-multipathing-configuration]]
 == 4단계: 다중 경로 구성 확인
 
 커널 내 NVMe 다중 경로 상태, ANA 상태 및 ONTAP 네임스페이스가 NVMe-oF 구성에 적합한지 확인합니다.
@@ -813,6 +817,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-5-review-the-known-issues]]
 == 5단계: 알려진 문제 검토
 
 알려진 문제는 다음과 같습니다.

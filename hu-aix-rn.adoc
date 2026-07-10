@@ -22,6 +22,7 @@ Host Utilities에서 지원하는 운영 체제 버전 및 업데이트에 대�
 
 
 
+[[whats-new]]
 == 새로운 소식
 
 AIX Host Utilities 릴리스에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.
@@ -32,6 +33,7 @@ AIX Host Utilities 릴리스에는 다음과 같은 새로운 기능과 향상�
 
 
 
+[[known-problems-and-limitations]]
 == 알려진 문제 및 제한 사항
 
 특정 호스트의 성능에 영향을 미칠 수 있는 다음과 같은 알려진 문제 및 제한 사항을 숙지해야 합니다.

@@ -4,6 +4,7 @@
 
 
 
+[[step-4-confirm-the-multipath-configuration-for-your-host]]
 == 4단계: 호스트에 대한 다중 경로 구성 확인
 
 Microsoft Multipath I/O(MPIO) 소프트웨어를 설치하고 Windows 호스트에 스토리지 시스템에 대한 경로가 두 개 이상 있는 경우 다중 경로를 활성화합니다.

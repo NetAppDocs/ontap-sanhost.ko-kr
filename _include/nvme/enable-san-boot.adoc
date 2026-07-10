@@ -4,6 +4,7 @@
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == 1단계: 필요에 따라 SAN 부팅을 활성화합니다
 
 SAN 부팅을 사용하도록 호스트를 구성하여 배포를 단순화하고 확장성을 개선할 수 있습니다.

@@ -4,6 +4,7 @@
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == 3단계: Windows 호스트 유틸리티 설치
 
 설치 프로그램은 Windows 호스트 유틸리티 패키지를 설치하고 Windows 레지스트리와 HBA 설정을 지정합니다.

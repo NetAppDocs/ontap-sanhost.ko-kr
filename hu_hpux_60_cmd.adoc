@@ -20,6 +20,7 @@ summary: 이 문서에서는 ONTAP 과 함께 HP-UX 호스트 유틸리티 6.0�
 
 
 
+[[list-all-host-initiators-mapped-to-host]]
 == 호스트에 매핑된 모든 호스트 이니시에이터를 나열합니다
 
 호스트에 매핑된 모든 호스트 이니시에이터 목록을 검색합니다.
@@ -70,6 +71,7 @@ OS device name:    /dev/fclp3
 ====
 
 
+[[list-all-luns-mapped-to-host]]
 == 호스트에 매핑된 모든 LUN을 나열합니다
 
 호스트에 매핑된 모든 LUN 목록을 검색합니다.
@@ -105,6 +107,7 @@ up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                         
 ====
 
 
+[[list-all-luns-mapped-to-host-from-a-given-svm]]
 == 해당 SVM에서 호스트에 매핑된 모든 LUN을 나열합니다
 
 특정 SVM에서 호스트에 매핑된 모든 LUN 목록을 검색합니다.
@@ -139,6 +142,7 @@ up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                         
 ====
 
 
+[[list-all-attributes-of-a-given-lun-mapped-to-host]]
 == 호스트에 매핑된 특정 LUN의 모든 특성을 나열합니다
 
 호스트에 매핑된 지정된 LUN의 모든 속성 목록을 검색합니다.
@@ -174,6 +178,7 @@ up       secondary  /dev/dsk/c44t6d1     fclp1   hpux_6                         
 ====
 
 
+[[list-ontap-lun-attributes-by-host-device-filename]]
 == 호스트 디바이스 파일 이름별 ONTAP LUN 속성 나열
 
 지정된 호스트 장치 파일 이름으로 ONTAP LUN 속성 목록을 검색합니다.
@@ -207,6 +212,7 @@ vs_hp_cluster        /vol/chathpux_217_vol_en_1_14/hp_en_217_lun /dev/rdisk/disk
 ====
 
 
+[[list-all-svm-target-lif-wwpns-attached-to-host]]
 == 호스트에 연결된 모든 SVM 타겟 LIF WWPN을 나열합니다
 
 호스트에 연결된 모든 SVM 대상 LIF WWPN 목록을 검색합니다.
