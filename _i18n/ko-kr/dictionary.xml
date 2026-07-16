@@ -1362,7 +1362,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="c0b79db5f258f0c991a383cbdbf001dd" category="open-title">SnapMirror 액티브 싱크</block>
   <block id="efffdf29fb8c22b09edba3371dc2b1b8" category="inline-link-macro">Linux Host Utilities 8.0 설치</block>
   <block id="5f31956444f1d0bde7a1ffb325106db8" category="paragraph"><block ref="cd52b6bcf27b8c7efa7bb2cae7dba9b4" category="inline-link-macro-rx"></block> .</block>
-  <block id="3358e8b26d19a4499acfc0263dca6ce1" category="paragraph">Linux 호스트 유틸리티는 Linux 호스트에 연결된 ONTAP 스토리지를 관리하는 데 도움이 됩니다.  NetApp Linux 호스트 유틸리티를 설치할 것을 강력히 권장하지만 필수는 아닙니다.  이러한 유틸리티는 관리를 개선하고 NetApp 고객 지원팀이 구성에 대한 정보를 수집하는 데 도움을 줍니다.</block>
   <block id="10ca5ea421dcd3f1d3ffc993c36b7352" category="inline-link-macro">"sanlun" 유틸리티에 대해 알아보세요</block>
   <block id="237320d7446d5cfcc43ede01a894bf16" category="list-text"><block ref="f71314b5052c5e3bba533a90a34a7db3" category="inline-link-macro-rx"></block> .</block>
   <block id="8d0f1920f47f772db5dc821056891ae2" category="inline-link-macro">Solaris 호스트 유틸리티 도구 사용에 대해 알아보세요</block>
@@ -1500,7 +1499,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="b04ac3eadb66597daaa5c909511f8e43" category="summary">ONTAP 과 함께 Linux Host Utilities 8.0을 사용하는 방법을 설명합니다.</block>
   <block id="8f7edc1d0af50521632d636624077c1e" category="doc">ONTAP 스토리지용 Linux Host Utilities 8.0 설치</block>
   <block id="0d0d3c3c60d25468f496fa9728f6a214" category="paragraph">Linux Host Utilities 8.0은 다음과 같은 배포 유형을 지원합니다.</block>
-  <block id="fad99686a271ab31e763cc6e083d2fe1" category="paragraph">Linux Host Utilities를 설치해도 Linux 호스트의 설정은 변경되지 않습니다.</block>
   <block id="98d9c0b801e9d76fa04103ad022672e4" category="list-text">안정적인 작동을 위해 다음을 사용하십시오.<block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block> iSCSI, FC 또는 FCoE 구성이 지원되는지 확인하세요.</block>
   <block id="54d2be6229d60cd6144f8a215e8e77e9" category="list-text">공급업체 지원 사이트에서 제공하는 HBA(호스트 버스 어댑터) 관리 패키지를 설치합니다.  관리 소프트웨어를 사용하면<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> FC HBA에 대한 정보(예: WWPN)를 수집하는 명령입니다.</block>
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">다음 패키지가 올바르게 설치되었는지 확인하려면 공급업체의 설명서를 참조하세요.  이러한 패키지는 다음을 지원하는 데 필요합니다.<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block> 명령:</block>
@@ -2416,7 +2414,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="d16989a0a7cff1ea32aab2ccb4a37161" category="admonition">만약<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열이 일치하지 않으면, <block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 명령을 사용하여 해당 ONTAP 스토리지 시스템 서브시스템의 <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열을 호스트의 <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>에서 가져온 <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 문자열과 일치하도록 업데이트하십시오.</block>
   <block id="165acd219757dbbec65fbd5a24792898" category="list-text">권장되는 Broadcom<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 펌웨어와 내장 드라이버를 사용하고 있는지 확인하십시오.</block>
   <block id="06bd4ba69054120ef18345db9c5cccca" category="paragraph">NVMe/TCP는 자동 연결 작업을 지원하지 않습니다. 대신 NVMe/TCP<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 또는<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 작업을 수동으로 수행하여 NVMe/TCP 하위 시스템 및 네임스페이스를 검색할 수 있습니다.</block>
-  <block id="fbb8c3634e390cf69c69cd1f449175c7" category="paragraph">== 5단계: 알려진 문제점 검토</block>
   <block id="efaa7a41c95bd26123cf738971f624b5" category="summary">Ubuntu 호스트용 ONTAP 지원 및 기능에 대해 알아보십시오</block>
   <block id="35408fbc8cac4acdf31c0e994b9e617f" category="cell">Ubuntu 호스트 버전</block>
   <block id="f079c6de48aef64f8a494cd8ba7dc4b0" category="cell">네이티브 패키지의 NetApp 플러그인은 NVMe/FC 네임스페이스에 대한 ONTAP 세부 정보를 표시합니다.</block>
@@ -2505,4 +2502,7 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="6b9dd1af850387c3bbb1a8645b455f48" category="list-text"><block ref="6b9dd1af850387c3bbb1a8645b455f48" category="inline-link-rx"></block></block>
   <block id="5ea4a4d083b9b7faa4d73ebd6193eec3" category="sidebar">FCP 및 iSCSI를 사용하여 호스트를 구성하는 방법에 대해 알아봅니다.</block>
   <block id="46fa0acef0abce2c8d85781039d9ca0e" category="sidebar">NVMe-oF를 사용하여 호스트를 구성하는 방법에 대해 알아보십시오.</block>
+  <block id="9d32a296d3ce5f696e1fdfdc2b0f8b87" category="paragraph">Linux 호스트 유틸리티는 Linux 호스트에 연결된 ONTAP 스토리지를 관리하는 데 도움이 됩니다. NetApp은 Linux 호스트 유틸리티 설치를 강력히 권장하지만 필수 사항은 아닙니다. Linux 호스트 유틸리티는 관리 효율성을 높이고 NetApp 고객 지원 팀이 구성에 대한 정보를 수집하는 데 도움을 줍니다.</block>
+  <block id="83e24aa706fccba3ff4d736e0e31bf85" category="paragraph">Linux 호스트 유틸리티를 설치해도 호스트의 설정이나 동작은 변경되지 않습니다.</block>
+  <block id="80fd4adc269a85ce0df8e3b446ebf481" category="admonition">Linux Host Utilities는 libHBAAPI.so 라이브러리에 대한 설치 종속성이 있습니다. 호스트가 iSCSI 전용 구성을 위한 것이더라도 위에 나열된 패키지 중 하나를 설치해야 합니다. 또는 LUN 및 경로 관리를 위해 OS 수준의 도구를 사용할 수도 있습니다.</block>
 </blocks>
