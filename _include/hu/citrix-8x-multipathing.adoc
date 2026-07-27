@@ -5,13 +5,59 @@
 호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
 
 .단계
-. 다음을 확인하십시오.  `/etc/multipath.conf` 파일이 존재합니다. 파일이 없으면 0바이트 빈 파일을 만듭니다.
+. 해당  `/etc/multipath.conf` 파일을 찾습니다.
 +
+참조  `/etc/multipath.conf` 파일에 NetApp 장치별 구성 매개변수가 없는 경우 다음 사용자 지정  `.conf drop-in` 파일을 사용하여 해당 매개변수를 추가하십시오. 이 파일은 다음 위치에서 찾을 수 있습니다. `/etc/multipath/conf.d/`
+
++
+
+NOTE:  `/etc/multipath.conf` 파일은 시스템 업데이트 중에 파일 내용이 덮어쓰여질 수 있으므로 변경하지 마십시오.
+
++
+.파일 내용 표시
+[%collapsible]
+====
 [source, cli]
 ----
-touch /etc/multipath.conf
+$sudo tee -a /etc/multipath/conf.d/custom.conf >/dev/null <<'EOF'
+
+defaults {
+    polling_interval 5
+}
+
+blacklist {
+    wwid <Insert_LUN_wwid_string>
+    devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+    devnode "^hd[a-z]"
+    devnode "^cciss.*"
+}
+
+devices {
+    device {
+    vendor "NETAPP"
+    product "LUN.*"
+    user_friendly_names no
+    path_checker "tur"
+    prio "ontap"
+    detect_prio yes
+    path_grouping_policy "group_by_prio"
+    path_selector "service-time 0"
+    failback immediate
+    fast_io_fail_tmo 5
+    dev_loss_tmo infinity
+    no_path_retry queue
+    features "3 queue_if_no_path pg_init_retries 50"
+    flush_on_last_del yes
+    hardware_handler "0"
+    retain_attached_hw_handler yes
+    rr_weight uniform
+  }
+}
+
+EOF
 ----
-. 파일을 처음 생성할 때 `multipath.conf` 권장 설정을 로드하려면 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
+====
+. 처음으로 다중 경로를 구성할 때 권장 설정을 로드하기 위해 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
 +
 [source, cli]
 ----
@@ -22,7 +68,7 @@ systemctl enable multipathd
 ----
 systemctl start multipathd
 ----
-. 호스트를 부팅할 때마다 빈 0바이트 파일이 `/etc/multipath.conf` NetApp 권장 호스트 다중 경로 매개 변수를 기본 설정으로 자동으로 로드합니다. 호스트 운영 체제는 ONTAP LUN을 올바르게 인식하고 관리하는 다중 경로 매개 변수를 사용하여 컴파일되므로 호스트의 파일을 변경할 필요가 없습니다 `/etc/multipath.conf`.
+. 호스트를 부팅할 때마다  `/etc/multipath/conf.d/custom.conf` 파일은 NetApp 권장 호스트 다중 경로 매개변수를 기본 설정으로 자동으로 로드합니다.
 +
 다음 표는 ONTAP LUN에 대한 네이티브 Linux 운영 체제 컴파일 다중 경로 매개 변수 설정을 보여줍니다.
 
@@ -94,7 +140,7 @@ systemctl start multipathd
 +
 [source, cli]
 ----
-/sbin/mpathutil list
+/sbin/mpathutil status
 ----
 +
 기본 다중 경로 매개변수는 ASA, AFF 및 FAS 구성을 지원합니다. 이러한 구성에서는 단일 ONTAP LUN에 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상이면 저장소 오류 발생 시 문제가 발생할 수 있습니다.
