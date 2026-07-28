@@ -62,21 +62,82 @@ SAN 구성에 따라 호스트는 ASA, AFF 또는 FAS 구성을 사용하여 ONT
 다음 예제 출력은 ASA, AFF 또는 FAS 구성에 대한 ONTAP LUN의 올바른 설정을 보여줍니다.
 
 +
+
+NOTE: 권장되는 MPIO 정책은 부분집합을 사용하는 라운드 로빈 방식입니다.
+
++
 [role="tabbed-block"]
 ====
 .ASA 구성
 --
 ASA 구성에는 단일 우선순위를 갖는 활성/최적화된 경로 그룹이 하나 있어야 합니다.  컨트롤러는 경로를 서비스하고 모든 활성 경로에 I/O를 전송합니다.
 
+.CLI 예시 보기
+[%collapsible]
+=====
+[listing]
+----
+MPIO Disk13: 04 Paths, Round Robin with Subset, Symmetric Access
+    Controlling DSM: Microsoft DSM
+    SN: 600A09803831397A545D586E362D2F54
+    Supported Load Balance Policies: FOO RR RRWS LQD WP LB
+
+    Path ID          State              SCSI Address      Weight
+    -------------------------------------------------------------
+    0000000077060001 Active/Optimized   006|000|001|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1001, : 4
+
+    0000000077060000 Active/Optimized   006|000|000|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 2
+
+    0000000077050001 Active/Optimized   005|000|001|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1001, : 3
+
+    0000000077050000 Active/Optimized   005|000|000|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 1
+----
+=====
+.UI 예시 보기
+[%collapsible]
+=====
 image::asa.png[액티브/최적화 경로가 있는 ONTAP LUN의 스크린샷]
 
+=====
 --
 .AFF 또는 FAS 구성
 --
 AFF 또는 FAS 구성에는 우선순위가 다른 두 그룹의 경로가 있어야 합니다.  우선순위가 높은 경로는 활성/최적화되어 있으며 집계가 있는 컨트롤러에서 서비스를 제공합니다.  우선순위가 낮은 경로는 다른 컨트롤러에서 서비스를 받습니다.  이러한 경로는 활성화되어 있지만 최적화되어 있지 않으며 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
 
+.CLI 예시 보기
+[%collapsible]
+=====
+[listing]
+----
+MPIO Disk0: 04 Paths, Round Robin with Subset, Implicit Only
+    Controlling DSM: Microsoft DSM
+    SN: 600A0980383136724D5D546931437933
+    Supported Load Balance Policies: FOO RRWS LQD WP LB
+    Path ID          State              SCSI Address      Weight
+    -------------------------------------------------------------
+    0000000077010001 Active/Optimized   001|000|001|000   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 2
+
+    0000000077010000 Active/Unoptimized 001|000|000|000   0
+      TPG_State : Active/Unoptimized, TPG_Id: 1001, : 4
+
+    0000000077000001 Active/Unoptimized 000|000|001|000   0
+      TPG_State : Active/Unoptimized, TPG_Id: 1001, : 3
+
+    0000000077000000 Active/Optimized   000|000|000|000   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 1
+----
+=====
+.UI 예시 보기
+[%collapsible]
+=====
 image::nonasa.png[활성/최적화 경로 2개와 액티브/비최적화 경로 2개가 있는 ONTAP LUN 스크린샷]
 
+=====
 --
 ====
 
