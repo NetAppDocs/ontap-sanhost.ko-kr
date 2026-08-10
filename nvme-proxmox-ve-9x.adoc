@@ -448,7 +448,7 @@ ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}
 udevadm control --reload
 udevadm trigger --subsystem-match=nvme-subsystem
 ----
-. 서브시스템의 현재 iopolicy를 확인하십시오. <subsystem>를 서브시스템 이름으로 바꾸십시오(예: nvme-subsys0).
+. 서브시스템의 현재 iopolicy를 확인하십시오.
 +
 [source, cli]
 ----

@@ -98,12 +98,12 @@ libnvme-1.13-1.el9.x86_64
 cat /etc/nvme/hostnqn
 ----
 +
-다음 예에서는 다음을 보여줍니다.  `hostnqn` 버전:
+다음 예는 다음을 보여줍니다. `hostnqn` 값:
 
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:8397cecc-30f0-11e8-850f-7ed30aef0cc7
+nqn.2014-08.org.nvmexpress:uuid:8397xxxx-30f0-xxxx-850f-7ed3xxxf0cc7
 ----
 . ONTAP 시스템에서 다음을 확인하십시오. `hostnqn` 문자열이 일치합니다 `hostnqn` ONTAP 스토리지 시스템의 해당 하위 시스템에 대한 문자열:
 +
@@ -534,7 +534,7 @@ ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}
 udevadm control --reload
 udevadm trigger --subsystem-match=nvme-subsystem
 ----
-. 하위 시스템의 현재 iopolicy를 확인하세요.  예를 들어 <하위 시스템>을 다음과 같이 바꾸세요. `nvme-subsys0` .
+. 서브시스템의 현재 iopolicy를 확인하십시오.
 +
 [source, cli]
 ----

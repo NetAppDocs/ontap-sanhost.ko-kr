@@ -23,7 +23,7 @@ NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기�
 | 특징 | SUSE Linux Enterprise Server 호스트 버전 | ONTAP 버전 
 
 
-| NVMe/TCP는 ASA r2 시스템에 대한 모든 최적화된 경로를 보고합니다.  a| 
+| NVMe/FC 및 NVMe/TCP는 ASA r2 시스템에서 최적화된 모든 경로를 보고합니다.  a| 
 16
 | 9.16.1 이상 
 

@@ -745,9 +745,6 @@
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">ONTAP와 함께 VMware vSphere 8.x를 사용합니다</block>
   <block id="8d19958f3e338523c5e956fbddc3c9af" category="doc">ONTAP와 함께 VMware vSphere 6.5 및 6.7을 사용합니다</block>
   <block id="40db5019ed68654f4eb2cf21ec5021db" category="doc">ONTAP와 함께 VMware vSphere 7.x를 사용합니다</block>
-  <block id="8a4e695bd23e65bc1993b3356eeb2277" category="sidebar">AIX 호스트 유틸리티 릴리스 노트</block>
-  <block id="360baa7584a9f61d637775beeeeab041" category="sidebar">HP-UX Host Utilities 릴리스 정보</block>
-  <block id="e8496e75812b6bc1fac8161323e4bf5f" category="sidebar">Linux Host Utilities 릴리스 정보</block>
   <block id="83610226a06939c868c973094aaa036c" category="sidebar">SAN 호스트 설치 및 구성</block>
   <block id="984f04c55cb7e3836103c5de001d1b73" category="sidebar">SAN Host Utilities를 설치합니다</block>
   <block id="75fe51013726f2bbc2f27fa11e729441" category="sidebar">FCP 및 iSCSI로 호스트를 구성합니다</block>
@@ -1252,7 +1249,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="fb47e45e6131ce8573db817dc34e3ba6" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지 버전:</block>
   <block id="d14319cd9fe8bb3c15b66611ee50ab63" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> 패키지 버전:</block>
   <block id="353615218a31d80048bde6c36a52f6d6" category="list-text">호스트에서 hostnqn 문자열을 확인하세요. <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
-  <block id="49254d029fbf5a05d560c49c65e3682d" category="paragraph">다음 예에서는 다음을 보여줍니다. <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 버전:</block>
   <block id="3c4d68a984cfab18b058f7614517f26b" category="list-text">모델 이름을 표시합니다:</block>
   <block id="61e9eafd114033b79115785b3c135abb" category="paragraph">다음과 같은 출력이 표시됩니다.</block>
   <block id="d474b8d44546ee3743d50d33e3e43016" category="list-text">모델 설명을 표시합니다.</block>
@@ -1939,12 +1935,10 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="7b25b7a93bbe178f0d420e334d6ad6f8" category="example-title">NVMe/TCP 예제 보기</block>
   <block id="9b477ce27ea88f4f85280e9cdee7c154" category="section-title">4단계: 선택적으로 udev 규칙에서 iopolicy를 수정합니다.</block>
   <block id="ac81318c5111726b893fa8dcdc177d9f" category="list-text">udev 규칙을 다시 로드하고 변경 사항을 적용합니다.</block>
-  <block id="44d5823b8f69c86c4a41c13b72067d2e" category="list-text">하위 시스템의 현재 iopolicy를 확인하세요.  예를 들어 &lt;하위 시스템&gt;을 다음과 같이 바꾸세요.<block ref="621b1b464ec30e8b168fcad04cefe44c" prefix=" " category="inline-code"></block> .</block>
   <block id="02e6f562a82adc38b8762b8d4fc3c8c2" category="section-title">5단계: 선택적으로 NVMe/FC에 대해 1MB I/O를 활성화합니다.</block>
   <block id="e6b3c2c8d823bf042f0e8e9e02dabf14" category="section-title">6단계: NVMe 부팅 서비스 확인</block>
   <block id="378f49529e98279285d9a2eb0d2b3e5e" category="section-title">7단계: 다중 경로 구성 확인</block>
   <block id="f12463db66bb26df5aae5e1aa393205f" category="summary">RHEL 호스트에 대한 ONTAP 지원 및 기능에 대해 알아보세요.</block>
-  <block id="d4063c82026eda59b5c15cca38aa9b92" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능은 ONTAP 및 RHEL 버전에 따라 다릅니다.</block>
   <block id="21021ea0e52be8e9c599f4dff41e5be0" category="cell">특징</block>
   <block id="6f22b33e80795a1f6ae056be55236d14" category="cell">RHEL 호스트 버전</block>
   <block id="a7a75f073b67f15aafda088b8cefbc56" category="cell">RHEL 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통해 안전한 인밴드 인증이 지원됩니다.</block>
@@ -1970,7 +1964,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="ea103ce11fa3acd9ff613573f07e83a8" category="paragraph"><block ref="ea103ce11fa3acd9ff613573f07e83a8" category="inline-link-macro-rx"></block></block>
   <block id="46df6d1dcf1bfe1d293e698a53cb025f" category="inline-link-macro">Rocky Linux ONTAP 지원 및 기능</block>
   <block id="fc35bf5b5ac3f79b1fa6a280a58f05d4" category="summary">Rocky Linux에 대한 ONTAP 지원 및 기능에 대해 알아보세요.</block>
-  <block id="d4c250eac77deea13f8e9d9293a5aad2" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능은 ONTAP 및 Rocky Linux 버전에 따라 다릅니다.</block>
   <block id="3127b50785e82cd676744d9673a7bb86" category="cell">Rocky Linux 호스트 버전</block>
   <block id="2589c63c17df176e198728a79c3e5212" category="cell">"언제나"</block>
   <block id="2f7bb230c70819aeb10b45a709bcf48f" category="cell">"1"</block>
@@ -1980,7 +1973,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="e357b4342a0f3c9f0335b0a8236f0f56" category="admonition">기본적으로 Proxmox OS 기본 다중 경로 구성 세트<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block> 빈 0바이트를 사용하여 "*strict*"로 변경<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 호스트를 부팅할 때마다 구성 파일을 업데이트합니다.  이를 통해 호스트가 새로 제공된 ONTAP LUN을 다중 경로 장치로 검색하는 것을 방지할 수 있으며, 이는 해당 LUN이 자동으로 다중 경로 제어에 나타나지 않음을 의미합니다.  기존 ONTAP LUN은 재부팅 후에도 계속 검색되고 다중 경로로 제어됩니다.</block>
   <block id="d916cdb52453f1297e01a7f2fb93f68b" category="paragraph">다음 예에서는 두 개의 활성/최적화 경로와 두 개의 활성/비최적화 경로가 있는 ONTAP LUN에 대한 출력을 보여줍니다.</block>
   <block id="62f90d2b36f26e75648f8fbc863d2103" category="summary">Proxmox 호스트에 대한 ONTAP 지원 및 기능에 대해 알아보세요.</block>
-  <block id="2b32731d6a5ce83c7ab86fa39ec46a48" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능은 ONTAP 및 Proxmox 버전에 따라 다릅니다.</block>
   <block id="0a0891df749e36f8a1da70eeb7191ff8" category="cell">ONTAP 기능</block>
   <block id="458078e18e047c43a6e6db3e150f66f5" category="cell">Proxmox 호스트 버전</block>
   <block id="56884779bcdf2531adce3644feb5d5ad" category="cell">네이티브를 사용하여 NVMe/FC 및 NVMe/TCP 네임스페이스에 대한 ONTAP 세부 정보를 제공합니다.<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 패키지.</block>
@@ -2021,7 +2013,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="cbce5c9568a686f91b2dfcf39622b287" category="paragraph">각 호스트 또는 컨트롤러는 보안 인증을 설정하기 위해 DH-HMAC-CHAP 키와 연결되어야 합니다.  DH-HMAC-CHAP 키는 NVMe 호스트 또는 컨트롤러의 NQN과 관리자가 구성한 인증 비밀번호의 조합입니다.  피어를 인증하려면 NVMe 호스트나 컨트롤러가 피어와 연결된 키를 인식해야 합니다.</block>
   <block id="e908710b4eae6cf350cddad694d8c508" category="paragraph">CLI 또는 구성 JSON 파일을 사용하여 안전한 인밴드 인증을 설정합니다.  다른 하위 시스템에 대해 다른 dhchap 키를 지정해야 하는 경우 구성 JSON 파일을 사용하세요.</block>
   <block id="aadd5dd4ef730bc8b1907b50349be5cb" category="summary">Oracle Linux 호스트에 대한 ONTAP 지원 및 기능에 대해 알아보세요.</block>
-  <block id="5e793bc1edf7896fc852345e5935bc81" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능은 ONTAP 및 Oracle Linux 버전에 따라 다릅니다.</block>
   <block id="ca76f3f0a3ed2332a646952650c1cf27" category="cell">Oracle Linux 호스트 버전</block>
   <block id="fb4c2f51a68601e973070c8a2d8e5711" category="cell">Oracle Linux 호스트와 ONTAP 컨트롤러 간의 NVMe/TCP를 통해 안전한 인밴드 인증이 지원됩니다.</block>
   <block id="5af23e17fcc3aa14068c40f0b48ba010" category="paragraph">7.7 이상</block>
@@ -2244,7 +2235,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="1da01cb3100d9bb388efb9e186262255" category="admonition">ONTAP 컨트롤러에서 단계를 수행하도록 지정된 경우를 제외하고, 다음 단계를 SUSE Linux Enterprise Server 호스트에서 수행하십시오.</block>
   <block id="a057c529e976cb9f30353b3692c8e99b" category="list-text">호스트에서 각 ONTAP 네임스페이스에 대해 적절한 NVMe-oF 설정(예: 모델이 NetApp ONTAP 컨트롤러로 설정되고 로드 밸런싱 iopolicy가 queue-depth로 설정됨)이 올바르게 표시되는지 확인하십시오.</block>
   <block id="64ccbcb7ba85078e4aa581abf43277d6" category="summary">SUSE Linux Enterprise Server의 ONTAP 지원 및 기능에 대해 알아보세요.</block>
-  <block id="cf476c720a8f9dc9299ad07fa1d69acb" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기능은 ONTAP 및 SUSE Linux Enterprise Server 버전에 따라 다릅니다.</block>
   <block id="3479c5cdc0aaf6372342ed77cae0fc6b" category="cell">SUSE Linux Enterprise Server 호스트 버전</block>
   <block id="4b5813f3f046cb084dc505581155b3c7" category="cell">NVMe/TCP는 전송 계층 보안(TLS) 1.3 암호화를 지원합니다.</block>
   <block id="55a1f114e0c7d755d2afcf382d5dee5f" category="paragraph">15 SP6 이상</block>
@@ -2318,7 +2308,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="be0724c20eae9509bfecb55613ead45c" category="paragraph">SUSE Linux Enterprise Server 16에서 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="40b573003d21aeb3dbe3d1c46c3c87af" category="cell">사용 중인 RHEL 버전이 ...인 경우</block>
   <block id="8637f659452959aafbb4798db09998d6" category="cell">다음 내용을 알아보세요...</block>
-  <block id="06314aebedd665e513cf3a7e6c66f84b" category="cell">NVMe/TCP는 ASA r2 시스템에 대한 모든 최적화된 경로를 보고합니다.</block>
   <block id="c74d97b01eae257e44aa9d5bade97baf" category="paragraph">16</block>
   <block id="7ffe1b34523b105b2ec68027b4d78799" category="cell">SUSE Linux Enterprise Server 버전이 ...인 경우</block>
   <block id="4563b4da24891c746834232492d8a6e9" category="inline-link-macro">SUSE Linux Enterprise Server 16용 NVMe 구성</block>
@@ -2434,7 +2423,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="de99ebfc9b67fc827d4b885ffe66df51" category="section-title">3단계: 선택적으로 udev 규칙의 iopolicy를 수정합니다</block>
   <block id="6c3cb6f0244406645b054fde3485555c" category="paragraph">Proxmox VE 9.0부터 NVMe-oF의 기본 iopolicy는<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>로 설정되어 있습니다. iopolicy를<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>로 변경하려면(이 또한 구성 가능한 옵션으로 제공됨) udev 규칙 파일을 다음과 같이 수정하십시오:</block>
   <block id="3261e25ecb6c10cb23753dafcc11d3f3" category="list-text">다음 예시와 같이 규칙을 수정하여<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>를<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>로 변경하십시오:</block>
-  <block id="306924ca750fad388254a44133cf90dd" category="list-text">서브시스템의 현재 iopolicy를 확인하십시오. &lt;subsystem&gt;를 서브시스템 이름으로 바꾸십시오(예: nvme-subsys0).</block>
   <block id="98f6aa52f5f7e63bbceb451a95606fbb" category="paragraph">다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 또는 ASA r2 시스템용으로 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
   <block id="838016fd6dff5a15cdfcd8e43e228f64" category="example-title">AFF, FAS 또는 ASA에 대한 예제 출력 표시</block>
   <block id="bf9b5fcabbc1d24364d06d41207e081e" category="example-title">ASA r2의 예시 출력 결과를 보여줍니다.</block>
@@ -2450,10 +2438,7 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="63c3f0dce3adfd21858e4906af8b540e" category="cell">ONTAP 버전 9.9.1에서 NVMe/FC 프로토콜을 사용할 때 ONTAP 노드가 작동하지 않습니다</block>
   <block id="75fe6ffd14185a732fe5c93e3655894f" category="cell">ONTAP 9.9.1에서는 NVMe "abort" 명령에 대한 지원이 도입되었습니다. ONTAP가 파트너 명령을 기다리는 NVMe 융합 명령을 중단하기 위한 "abort" 명령을 수신하면 ONTAP 노드 중단이 발생합니다. 이 문제는 NVMe 융합 명령(예: ESX)과 파이버 채널(FC) 전송을 사용하는 호스트에서만 발견됩니다.</block>
   <block id="8f0a705220613d95434cdb5a4fcab23b" category="paragraph">Linux VM이 vSphere 8.x 이상을 실행하고 가상 NVMe(vNVMe) 어댑터를 사용하는 경우 vNVMe 재시도 작업이 기본적으로 비활성화되어 있어 I/O 오류가 발생합니다. 모든 경로 다운(APD) 또는 과도한 I/O 부하 시 이전 커널을 실행하는 Linux VM에서 중단을 방지하기 위해 VMware는 vNVMe 재시도 작업을 비활성화하는 튜닝 가능한 "VSCSIDisableNvmeRetry"를 도입했습니다.</block>
-  <block id="f4e65c6a7acad92f689e43c9eec48742" category="list-title">RHEL 10.x 릴리스의 iopolicy 변경 사항</block>
   <block id="439f9f6575b13433a06a0706d7693a1a" category="list-text">RHEL 10.1부터 기본 iopolicy는 queue-depth입니다.</block>
-  <block id="fd7719d49078cb118a29c8a86504fdf9" category="list-text">RHEL 10.0에서는 라운드 로빈이 기본 iopolicy이지만 queue-depth는 구성 가능한 옵션으로 사용할 수 있습니다.</block>
-  <block id="f28c692e063dee2ca7081bc028b1d7c5" category="paragraph">RHEL 10.0을 사용 중이고 iopolicy를 queue-depth로 변경하려면 udev 규칙 파일을 다음과 같이 수정하십시오.</block>
   <block id="729803330c2c3ddc5602fa6a32ed6680" category="paragraph">다음 예시 출력은 NVMe/FC를 사용하는 AFF, FAS, ASA 시스템 및 ASA r2 시스템을 위한 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
   <block id="457f54f6cefd10b25a3bedd3ee0e4fa3" category="example-title">AFF, FAS 및 ASA 예시 출력 표시</block>
   <block id="4cbc3c8523dd8f70db284b7defb44454" category="paragraph">다음 예시 출력은 NVMe/TCP를 사용하는 AFF, FAS, ASA 시스템 및 ASA r2 시스템을 위한 2노드 ONTAP 컨트롤러에서 호스팅되는 네임스페이스를 보여줍니다.</block>
@@ -2521,4 +2506,31 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="488a9fd122ccd8a3550ceee0ebaee2d4" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Ubuntu 26.04 호스트에 Linux 호스트 유틸리티를 설치하면 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리하는 데 도움이 되는 호스트 유틸리티를 사용할 수 있습니다.</block>
   <block id="418d880dfd6db1f0486f40a57a8c26ed" category="paragraph">Ubuntu 26.04에서 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
   <block id="7f61a1ef5c19b945998122fe336af401" category="sidebar">26.04</block>
+  <block id="e7aa4fd55ab7603b35f7969a6fcab20b" category="list-text">서브시스템의 현재 iopolicy를 확인하십시오.</block>
+  <block id="7fdeebee493b9a3e417668ecac67c728" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기능은 ONTAP 및 Oracle Linux 버전에 따라 다릅니다.</block>
+  <block id="b4979b8a9257fbc55c7cf680ad6bbf80" category="cell">NVMe/FC 및 NVMe/TCP는 ASA r2 시스템에서 최적화된 모든 경로를 보고합니다.</block>
+  <block id="11b1dc19c767a0b45a9e30a60b2b5afc" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기능은 ONTAP 및 Proxmox 버전에 따라 다릅니다.</block>
+  <block id="25aca67f3cb7f286630b231a00c56019" category="paragraph">RHEL 10.0에서 기본 iopolicy는 라운드 로빈 방식이지만, queue-depth를 구성 가능한 옵션으로 사용할 수 있습니다. RHEL 10.0을 사용 중인 경우 udev 규칙 파일을 수정하여 iopolicy를 queue-depth로 변경할 수 있습니다.</block>
+  <block id="60b443dae63268022d6d8cb29a7515ea" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기능은 ONTAP 및 RHEL 버전에 따라 다릅니다.</block>
+  <block id="c5b4acb51d8f8e0f3d63059f404108e9" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기능은 ONTAP 및 Rocky Linux 버전에 따라 다릅니다.</block>
+  <block id="f5d5b6b76188147e08fc97838c63aedb" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기능은 ONTAP 및 SUSE Linux Enterprise Server 버전에 따라 다릅니다.</block>
+  <block id="a51fa2ba34acedf17303d054b76e428a" category="summary">ONTAP를 사용하여 Ubuntu 26.04용 NVMe-oF 호스트를 구성하는 방법</block>
+  <block id="8fa0482546afb346040f4dbb39661276" category="doc">ONTAP 스토리지를 사용하여 NVMe-oF용으로 Ubuntu 26.04를 구성합니다</block>
+  <block id="9caf2fb1bf5982cc741a5c2f794f853b" category="paragraph">Ubuntu 26.04에서는 NVMe over Fabrics(NVMe-oF)와 NVMe over Fibre Channel(NVMe/FC) 및 기타 전송 방식을 지원하며, 비대칭 네임스페이스 액세스(ANA)도 지원합니다. NVMe-oF 환경에서 ANA는 iSCSI 및 FC 환경의 ALUA 다중 경로와 동일하며, 커널 내 NVMe 다중 경로로 구현됩니다.</block>
+  <block id="e8d64590f6be9f2c9ff88387a4abf120" category="paragraph">Ubuntu 26.04용 NVMe over Fabrics(NVMe-oF) 호스트를 구성하는 방법을 알아보십시오. 자세한 지원 및 기능 정보는 <block ref="2596c465ddd6c92fd8b161574a0cd8ba" category="inline-link-macro-rx"></block>를 참조하십시오.</block>
+  <block id="97ffae754cf814e6985756c1168c9a10" category="paragraph">Ubuntu 26.04에서 NVMe-oF를 사용할 때 다음과 같은 알려진 제한 사항이 있습니다.</block>
+  <block id="a46f34eff3c172bc38532f4cf3c4811f" category="list-text">NVMe-oF 프로토콜을 사용한 SAN 부팅은 현재 ONTAP가 설치된 Ubuntu 26.04에서 지원되지 않습니다.</block>
+  <block id="bf8b1fce81489d764be3d568743fdf83" category="list-text">서버에 Ubuntu 26.04를 설치하십시오. 설치가 완료되면 지정된 Ubuntu 26.04 커널이 실행 중인지 확인하십시오.</block>
+  <block id="ffadfa505e58f1ebeb4334eca156a444" category="list-text">Ubuntu 26.04 호스트에서 다음 경로의 hostnqn 문자열을 확인하십시오<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
+  <block id="8593527c6876ffc101e2719a307460da" category="open-title">NVMeFC - Broadcom/Emulex</block>
+  <block id="6fc67125255813aefa86f32cf03690d7" category="admonition">NVMe/TCP의 ctrl_loss_tmo 타임아웃 기본 설정은 비활성화되어 있습니다. 즉, 재시도 횟수에 제한이 없으며(무제한 재시도), <block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 또는 <block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 명령(옵션 -l)을 사용할 때 특정 ctrl_loss_tmo 타임아웃 시간을 수동으로 구성할 필요가 없습니다. 이 기본 동작으로 인해 NVMe/TCP 컨트롤러는 경로 오류 발생 시 타임아웃 없이 무기한으로 연결된 상태를 유지합니다.</block>
+  <block id="4cfdf8b595448e666801f57090310d89" category="paragraph">Ubuntu 26.04부터 NVMe-oF의 기본 iopolicy는 queue-depth로 설정되어 있습니다. udev 규칙을 수정하여 iopolicy를 round-robin으로 변경할 수 있습니다.</block>
+  <block id="a5d96de75a58472d649446a14603e93c" category="list-text">큐 깊이가 라운드 로빈 방식이 되도록 규칙을 수정합니다.</block>
+  <block id="411bc5073b166037282a0e3f0baec62e" category="section-title">6단계: 다중 경로 구성 확인</block>
+  <block id="2ea88a411245c2900b718e27f1abb86d" category="paragraph">ONTAP 릴리스가 포함된 Ubuntu 26.04의 NVMe-oF 호스트 구성에는 알려진 문제가 없습니다.</block>
+  <block id="670b11ff0cf7a92ff726ef7719f50975" category="paragraph">NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기능은 ONTAP 및 Ubuntu 버전에 따라 다릅니다.</block>
+  <block id="b6f1ce68e66757960f053cc99fd4aef6" category="paragraph">26.04 이상</block>
+  <block id="b74c1a6422fd773c6a4cf77ef14675ae" category="cell">NVMe-oF의 기본 iopolicy는 queue-depth로 설정되어 있습니다.</block>
+  <block id="86c05a1fbdedf558f48b1ce3a99d9fe8" category="inline-link-macro">Ubuntu 26.04용 NVMe 구성</block>
+  <block id="20f16eb182c0a9b085c8193d16ef0fb3" category="cell"><block ref="20f16eb182c0a9b085c8193d16ef0fb3" category="inline-link-macro-rx"></block></block>
 </blocks>

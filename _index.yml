@@ -13,11 +13,11 @@ indexpage:
     links:
     - title: SAN 호스트 구성에 대해 자세히 알아보십시오
       url: "/overview.html"
-    - title: AIX 호스트 유틸리티 릴리스 노트
+    - title: AIX Host Utilities 릴리스 정보
       url: "/hu-aix-release-notes.html"
-    - title: HP-UX Host Utilities 릴리스 정보
+    - title: HP-UX 호스트 유틸리티 릴리스 노트
       url: "/hu-hpux-release-notes.html"
-    - title: Linux Host Utilities 릴리스 정보
+    - title: Linux 호스트 유틸리티 릴리스 노트
       url: "/hu-luhu-release-notes.html"
     - title: Solaris 호스트 유틸리티 릴리스 노트
       url: "/hu-solaris-release-notes.html"

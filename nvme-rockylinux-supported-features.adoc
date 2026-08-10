@@ -16,7 +16,7 @@ summary: Rocky Linux에 대한 ONTAP 지원 및 기능에 대해 알아보세요
 
 
 [role="lead"]
-NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능은 ONTAP 및 Rocky Linux 버전에 따라 다릅니다.
+NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기능은 ONTAP 및 Rocky Linux 버전에 따라 다릅니다.
 
 [cols="50,25,25"]
 |===

@@ -16,11 +16,16 @@ summary: Proxmox 호스트에 대한 ONTAP 지원 및 기능에 대해 알아보
 
 
 [role="lead"]
-NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에 지원되는 기능은 ONTAP 및 Proxmox 버전에 따라 다릅니다.
+NVMe over Fabrics(NVMe-oF)를 사용한 호스트 구성에서 지원되는 기능은 ONTAP 및 Proxmox 버전에 따라 다릅니다.
 
 [cols="30,20,20"]
 |===
 | ONTAP 기능 | Proxmox 호스트 버전 | ONTAP 버전 
+
+
+| NVMe/FC 및 NVMe/TCP는 ASA r2 시스템에서 최적화된 모든 경로를 보고합니다.  a| 
+9.0 이상
+| 9.16.1 이상 
 
 
 | NVMe/TCP는 완벽하게 지원되는 엔터프라이즈 기능입니다.  a| 
