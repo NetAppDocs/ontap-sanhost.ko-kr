@@ -2516,4 +2516,9 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="ff77ba7bf94da41f58968cd6238bef1b" category="admonition">권장되는 MPIO 정책은 부분집합을 사용하는 라운드 로빈 방식입니다.</block>
   <block id="93499fb92b162d002d9b600c8e5d0fc9" category="example-title">CLI 예시 보기</block>
   <block id="ba15363da34b1cb74efc52c7595d9fcc" category="example-title">UI 예시 보기</block>
+  <block id="9a10cb01a5cb2622f636682b5ef50282" category="summary">Ubuntu 26.04 호스트에 Linux 호스트 유틸리티를 설치하여 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리합니다.</block>
+  <block id="625b4ec3300a714a63eb09a27822f147" category="doc">ONTAP 스토리지를 사용하여 FCP 및 iSCSI용 Ubuntu 26.04 구성</block>
+  <block id="488a9fd122ccd8a3550ceee0ebaee2d4" category="paragraph">Linux 호스트 유틸리티 소프트웨어는 ONTAP 스토리지에 연결된 Linux 호스트를 위한 관리 및 진단 툴을 제공합니다. Ubuntu 26.04 호스트에 Linux 호스트 유틸리티를 설치하면 ONTAP LUN을 사용한 FCP 및 iSCSI 프로토콜 작업을 관리하는 데 도움이 되는 호스트 유틸리티를 사용할 수 있습니다.</block>
+  <block id="418d880dfd6db1f0486f40a57a8c26ed" category="paragraph">Ubuntu 26.04에서 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.</block>
+  <block id="7f61a1ef5c19b945998122fe336af401" category="sidebar">26.04</block>
 </blocks>
