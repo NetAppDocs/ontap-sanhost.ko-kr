@@ -8,7 +8,7 @@
 +
 [source, cli]
 ----
-pkg info entire`
+pkg info entire
 ----
 .. ONTAP LUN이 있는지 확인하십시오. `ostype` LUN 크기에 관계없이 "Solaris"와 같이:
 +
@@ -60,7 +60,7 @@ root@sparc-s7-55-148:~# sanlun lun show -pv
 +
 [source, cli]
 ----
-mpathadm show lu <LUN>`
+mpathadm show lu <LUN>
 ----
 +
 다음 예제 출력은 ASA, AFF 또는 FAS 구성에서 ONTAP LUN의 올바른 경로 상태를 보여줍니다.  출력에서 각 LUN의 "액세스 상태"에 대한 경로 우선순위가 표시됩니다.

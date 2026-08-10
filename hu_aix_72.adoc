@@ -245,9 +245,5 @@ ONTAP 스토리지가 포함된 IBM AIX 7.2 및/또는 PowerVM(VIOS 3.1) 릴리�
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653"^] | 입출력 문제는 SFO 장애 및 직선형 I/O 중에 VIOS 3.1.1.10에서 발생합니다 | VIOS 3.1.1에서는 16GB 또는 32GB FC 어댑터로 지원되는 NPIV 클라이언트 디스크에서 입출력 장애가 발생할 수 있습니다. 또한 `vfchost` 드라이버가 클라이언트의 I/O 요청 처리를 중지할 수 있습니다. IBM APAR IJ22990 IBM APAR IJ23222를 적용하면 문제가 해결됩니다. | 해당 없음 
 |===
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 link:hu-aix-command-reference.html["AIX 호스트 유틸리티 도구 사용에 대해 알아보세요"] .

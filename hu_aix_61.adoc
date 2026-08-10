@@ -95,9 +95,5 @@ sanlun version
 ----
 
 
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 link:hu-aix-san-toolkit.html["AIX SAN 툴킷에 대해 알아보세요"] .

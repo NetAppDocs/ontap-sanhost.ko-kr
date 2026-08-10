@@ -34,9 +34,5 @@ data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
 
 NOTE: SAN 툴킷은 모든 AIX 호스트 구성과 전송 프로토콜에서 공통적으로 사용됩니다.  결과적으로 모든 구성 요소가 모든 구성에 적용되는 것은 아닙니다.  사용하지 않는 구성 요소는 시스템 성능에 영향을 미치지 않습니다.  SAN Toolkit은 AIX 및 PowerVM/VIOS OS 버전에서 지원됩니다.
 
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 link:hu-aix-command-reference.html["AIX 호스트 유틸리티 도구 사용에 대해 알아보세요"] .

@@ -396,11 +396,7 @@ devices {
 
 알려진 문제가 없습니다.
 
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 * link:hu-luhu-command-reference.html["Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오"] .
 * ONTAP LUN에 HPE VME 데이터 저장소를 구성한 다음 가상 머신을 구성하십시오. 자세한 내용은 HPE 공급업체 설명서를 참조하십시오.
 

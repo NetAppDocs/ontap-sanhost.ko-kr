@@ -121,7 +121,7 @@ MetroCluster 의 기본 설정에 대한 추가 정보 및 권장 변경 사항�
 --
 ** Solaris 가상화 옵션에는 Solaris Logical Domains(LDOM 또는 SPARC용 Oracle VM Server라고도 함), Solaris Dynamic Domains, Solaris Zones 및 Solaris Containers가 포함됩니다.  이러한 기술은 "오라클 가상 머신"이라고도 합니다.
 ** 예를 들어 특정 Solaris 논리 도메인 내의 Solaris 컨테이너와 같이 여러 옵션을 함께 사용할 수 있습니다.
-** NetApp Oracle에서 전체 구성을 지원하고 LUN에 직접 액세스할 수 있는 모든 파티션이 나열되는 Solaris 가상화 기술 사용을 지원합니다.link:https://imt.netapp.com/matrix/#welcome["IMT"] 지원되는 구성에서.  여기에는 루트 컨테이너, LDOM I/O 도메인, NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.
+** NetApp은 Oracle에서 전체 구성을 지원하고 LUN에 직접 액세스하는 모든 파티션이 지원되는 구성의 link:https://imt.netapp.com/matrix/#welcome["IMT"^]에 나열된 경우 Solaris 가상화 기술의 사용을 지원합니다. 여기에는 루트 컨테이너, LDOM I/O 도메인 및 NPIV를 사용하여 LUN에 액세스하는 LDOM이 포함됩니다.
 ** 가상화된 스토리지 리소스만 사용하는 파티션 또는 가상 머신(예: `vdsk` ONTAP LUN에 직접 액세스할 수 없으므로 특정 자격이 필요하지 않습니다.  LDOM I/O 도메인과 같이 기본 LUN에 직접 액세스할 수 있는 파티션이나 가상 머신이 나열되어 있는지 확인하기만 하면 됩니다.link:https://imt.netapp.com/matrix/#welcome["IMT"^] .
 
 
@@ -204,7 +204,7 @@ NOTE: 이후 `scsi-vhci-failover-override` 이(가) 적용되었습니다. `conf
 +
 [source, cli]
 ----
-pkg info entire`
+pkg info entire
 ----
 .. ONTAP LUN이 있는지 확인하십시오. `ostype` LUN 크기에 관계없이 "Solaris"와 같이:
 +
@@ -256,7 +256,7 @@ root@sparc-s7-55-148:~# sanlun lun show -pv
 +
 [source, cli]
 ----
-mpathadm show lu <LUN>`
+mpathadm show lu <LUN>
 ----
 +
 다음 예제 출력은 ASA, AFF 또는 FAS 구성에서 ONTAP LUN의 올바른 경로 상태를 보여줍니다.  출력에서 각 LUN의 "액세스 상태"에 대한 경로 우선순위가 표시됩니다.
@@ -445,9 +445,5 @@ ONTAP 스토리지를 탑재한 FCP 및 iSCSI용 Solaris 11.4 릴리스에는 �
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1345622["1345622)를 참조하십시오"^] | OS 기본 명령을 사용하는 ASA/PPorts를 사용하여 Solaris 호스트에서 비정상적인 경로 보고 | ASA(All SAN Array)를 사용하는 Solaris 11.4에서 간헐적인 경로 보고 문제가 발생합니다. | 해당 없음 
 |===
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 link:hu-solaris-command-reference.html["Solaris 호스트 유틸리티 도구 사용에 대해 알아보세요"] .

@@ -51,9 +51,5 @@ Linux Host Utilities 7.1의 경우 "sanlun" 유틸리티는 Citrix Xenserver, Re
 
 
 ====
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 link:hu-luhu-command-reference.html["Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오"] .

@@ -39,9 +39,5 @@ data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A09803830443
 
 NOTE: 이 툴킷은 모든 호스트 유틸리티 구성 및 프로토콜에서 공통적으로 사용됩니다.  결과적으로 모든 구성 요소가 모든 구성에 적용되는 것은 아닙니다.  사용하지 않는 구성 요소는 시스템 성능에 영향을 미치지 않습니다.
 
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 link:hu-solaris-command-reference.html["Solaris 호스트 유틸리티 도구 사용에 대해 알아보세요"] .

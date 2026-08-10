@@ -96,9 +96,5 @@ Make sure the package installing the library is installed & loaded` NetApp 버�
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp 온라인 버그"^] 가능한 경우 권장 해결 방법을 포함하여 대부분의 알려진 문제에 대한 전체 정보를 제공합니다.
 
-
-
-[[whats-next]]
-== 다음은 무엇입니까?
-
+.다음은 무엇입니까?
 link:hu-luhu-80.html["Linux 호스트 유틸리티 설치에 대해 알아보세요"]

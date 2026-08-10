@@ -228,9 +228,5 @@ up      secondary  path3  fcs1    fc_aix_4        1
 
 ONTAP 스토리지가 포함된 AIX 7.1 릴리스에는 알려진 문제가 없습니다.
 
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 link:hu-aix-command-reference.html["AIX 호스트 유틸리티 도구 사용에 대해 알아보세요"] .

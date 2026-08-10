@@ -451,11 +451,7 @@ ONTAP 스토리지가 포함된 SUSE Linux Enterprise Server 15 SPx에는 다음
 |===
 --
 ====
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 * link:hu-luhu-command-reference.html["Linux Host Utilities 툴 사용에 대해 자세히 알아보십시오"] .
 * ASM 미러링에 대해 알아보세요.
 +

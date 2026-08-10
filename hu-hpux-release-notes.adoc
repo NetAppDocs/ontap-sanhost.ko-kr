@@ -38,9 +38,5 @@ HP-UX Host Utilities 6.0은 다음 HP-UX OS 버전을 지원합니다.
 
 알려진 문제나 제한 사항은 없습니다.
 
-
-
-[[whats-next]]
-== 다음 단계
-
+.다음은 무엇입니까?
 link:hu_hpux_60.html["HP-UX 호스트 유틸리티 설치에 대해 알아보세요"]
