@@ -35,7 +35,7 @@ Windows 호스트는 스토리지 시스템 이벤트를 성공적으로 처리�
 
 [NOTE]
 ====
-Windows Host Utilities 7.2를 설치한 후에는 LimTransferSize 매개변수 값을 변경해야 합니다. <<nvme-parameter,NVME 매개변수>>을 참조하십시오.
+Windows Host Utilities 7.2를 설치한 후에는 LimTransferSize 매개변수 값을 변경해야 합니다. <<parameter-72,NVME 매개변수>>을 참조하십시오.
 
 Windows Host Utilities 8.0, 7.2 또는 7.1의 다른 모든 매개변수와 레지스트리 키의 경우 기술 지원에서 지시하지 않는 한 값을 변경할 필요가 없습니다.
 
@@ -160,9 +160,9 @@ Windows 호스트 유틸리티 8.0은 설치 중에 다음과 같은 NVMe Emulex
 [[review-the-configuration-settings-for-windows-host-utilities-7-2]]
 == Windows 호스트 유틸리티 7.2의 구성 설정을 검토하십시오.
 
-Windows 호스트 유틸리티 설치 프로그램은 설치 중에 사용자가 선택한 사항에 따라 Windows 레지스트리 값과 iSCSI 및 NVMe HBA 매개변수를 자동으로 설정합니다. 다음 값과 운영 체제 버전을 검토하십시오.
+[[parameter-72]]Windows 호스트 유틸리티 설치 프로그램은 설치 중에 사용자가 선택한 사항에 따라 Windows 레지스트리 값과 iSCSI 및 NVMe HBA 매개변수를 자동으로 설정합니다. 이러한 값과 운영 체제 버전을 검토하십시오.
 
-[#nvme-parameter,role="tabbed-block"]
+[role="tabbed-block"]
 ====
 .Windows 레지스트리 값
 --
