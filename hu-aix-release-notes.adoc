@@ -4,7 +4,7 @@ permalink: hu-aix-release-notes.html
 keywords: host utilities, aix, 6.1 netapp, 7.0, ontap, powervm 
 summary: AIX Host Utilities 6.1의 릴리스 정보 
 ---
-= AIX Host Utilities 릴리스 정보
+= ONTAP 스토리지용 AIX Host Utilities 릴리스 노트
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

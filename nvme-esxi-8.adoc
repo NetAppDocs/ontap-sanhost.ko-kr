@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: nvme-esxi-8.html 
-keywords: nvme, esxi, ontap, nvme/fc, hypervisor 
-summary: 'ESXi 8.x 및 ONTAP를 실행 중인 이니시에이터 호스트에 NVMe-oF(NVMe over Fabrics)를 타겟으로 구성할 수 있습니다.' 
+keywords: nvme, esxi, ontap, nvme fc, hypervisor 
+summary: ESXi 8.x를 실행하는 이니시에이터 호스트에서 ONTAP을 타겟으로 하여 NVMe over Fabrics를 구성합니다. 
 ---
-= ONTAP가 있는 ESXi 8.x용 NVMe-oF 호스트 구성
+= ONTAP 스토리지를 사용하여 NVMe-oF를 위한 ESXi 8.x 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -329,4 +329,4 @@ Linux VM이 vSphere 8.x 이상을 실행하고 가상 NVMe(vNVMe) 어댑터를 �
 
 |===
 .관련 정보
-link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["ONTAP 기반의 VMware vSphere"^] link:https://kb.vmware.com/s/article/2031038["NetApp MetroCluster(2031038)를 통한 VMware vSphere 5.x, 6.x 및 7.x 지원"^] link:https://kb.vmware.com/s/article/83370["NetApp SnapMirror 액티브 동기화에서 VMware vSphere 6.x 및 7.x를 지원합니다"^]
+link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["ONTAP 기반의 VMware vSphere"^]

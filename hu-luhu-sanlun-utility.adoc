@@ -4,7 +4,7 @@ permalink: hu-luhu-sanlun-utility.html
 keywords: host utilities, unified, oracle, linux, 8.0, netapp, ontap 
 summary: ONTAP 과 함께 Linux Host Utilities 8.0을 사용하는 방법을 설명합니다. 
 ---
-= ONTAP 스토리지용 "sanlun" 유틸리티에 대해 알아보세요
+= ONTAP 스토리지용 sanlun 유틸리티에 대해 알아보십시오
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

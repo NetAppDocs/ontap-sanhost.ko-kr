@@ -29,7 +29,7 @@ sidebar:
           url: "/hu-aix-70.html"
         - title: AIX 호스트 유틸리티 6.1 설치
           url: "/hu_aix_61.html"
-      - title: AIX SAN Tollkit에 대해 알아보세요
+      - title: SAN Tollkit에 대해 알아보십시오
         url: "/hu-aix-san-toolkit.html"
       - title: AIX 호스트 유틸리티 명령 참조
         url: "/hu-aix-command-reference.html"
@@ -93,7 +93,7 @@ sidebar:
         url: "/hu_wuhu_troubleshoot.html"
   - title: FCP 및 iSCSI로 호스트를 구성합니다
     entries:
-    - title: FCP 및 iSCSI를 사용하여 호스트를 구성하는 방법에 대해 알아봅니다.
+    - title: FCP 및 iSCSI 구성에 대해 알아보기
       url: "/hu_fcp_scsi_index.html"
     - title: AIX 및 PowerVM/VIOS
       entries:
@@ -216,7 +216,7 @@ sidebar:
         url: "/hu_windows_2012r2.html"
   - title: NVMe-oF를 사용하여 호스트 구성
     entries:
-    - title: NVMe-oF를 사용하여 호스트를 구성하는 방법에 대해 알아보십시오.
+    - title: NVMe-oF 구성에 대해 알아보기
       url: "/hu-nvme-index.html"
     - title: AIX
       url: "/nvme-aix.html"

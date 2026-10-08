@@ -4,7 +4,7 @@ permalink: hu-aix-command-reference.html
 keywords: host utilities, aix, powervm, vios, 3.1, 7.2, 7.0, netapp, ontap 
 summary: 호스트 유틸리티 툴을 사용하여 NetApp 스토리지 구성의 엔드 투 엔드 검증에 AIX 호스트 유틸리티 샘플 명령 참조를 사용할 수 있습니다. 
 ---
-= AIX 호스트 유틸리티 명령을 사용하여 ONTAP 스토리지 구성을 확인합니다.
+= ONTAP 스토리지 구성을 위한 AIX Host Utilities 명령
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

@@ -4,7 +4,7 @@ permalink: nvme-windows-2019.html
 keywords: nvme, windows, enterprise 
 summary: 'ONTAP LUN과 함께 작동하도록 Windows Server 2019를 실행하는 호스트에서 NVMe/FC(NVMe over Fibre Channel)를 구성할 수 있습니다.' 
 ---
-= ONTAP를 사용하는 Windows Server 2019용 NVMe/FC 호스트 구성
+= ONTAP 스토리지용 NVMe/FC를 사용하여 Windows Server 2019 구성
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

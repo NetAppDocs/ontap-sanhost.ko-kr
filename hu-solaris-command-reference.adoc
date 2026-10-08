@@ -4,7 +4,7 @@ permalink: hu-solaris-command-reference.html
 keywords: host utilities, unified, solaris, 8.0, netapp, ontap 
 summary: ONTAP 과 함께 Solaris Host Utilities 8.0을 사용하는 방법을 설명합니다. 
 ---
-= Solaris 호스트 유틸리티 명령을 사용하여 ONTAP 스토리지 구성을 확인합니다.
+= ONTAP 스토리지 구성을 확인하는 Solaris Host Utilities 명령
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
