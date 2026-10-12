@@ -154,6 +154,8 @@ ASA 구성에는 단일 우선순위를 갖는 활성/최적화된 경로 그룹
 =====
 [listing]
 ----
+C:\TOOLS>mpclaim -s -d 13
+
 MPIO Disk13: 04 Paths, Round Robin with Subset, Symmetric Access
     Controlling DSM: Microsoft DSM
     SN: 600A09803831397A545D586E362D2F54
@@ -190,6 +192,8 @@ AFF 또는 FAS 구성에는 우선순위가 다른 두 그룹의 경로가 있�
 =====
 [listing]
 ----
+C:\Windows\system32>mpclaim -s -d 0
+
 MPIO Disk0: 04 Paths, Round Robin with Subset, Implicit Only
     Controlling DSM: Microsoft DSM
     SN: 600A0980383136724D5D546931437933
