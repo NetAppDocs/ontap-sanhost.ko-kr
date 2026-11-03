@@ -2535,4 +2535,6 @@ FC 드라이버 바인딩이 에서 변경됩니다<block ref="b9ca0a083600812be
   <block id="108d95e5dc2ef949553c9a0fafc69b42" category="sidebar">SAN Tollkit에 대해 알아보십시오</block>
   <block id="99d9fff5cb102bc1af76475056d30628" category="sidebar">FCP 및 iSCSI 구성에 대해 알아보기</block>
   <block id="2577436e0a1529b400f7af13bf054dd3" category="sidebar">NVMe-oF 구성에 대해 알아보기</block>
+  <block id="e00f09f4cda9392c891c49988b80edc8" category="sidebar">SLES-FCP</block>
+  <block id="8becbe3ee64db6f436bf244fb25c7f57" category="sidebar">SLES-NVMe</block>
 </blocks>
