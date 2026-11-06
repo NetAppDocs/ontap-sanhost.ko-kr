@@ -109,6 +109,8 @@ sidebar:
         url: "/hu-centos-8x.html"
     - title: Citrix를 참조하십시오
       entries:
+      - title: Xenserver 9.0
+        url: "/hu-citrix-90.html"
       - title: 젠서버 8.4
         url: "/hu_citrix_84.html"
       - title: 하이퍼바이저 8.2

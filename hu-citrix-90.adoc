@@ -1,0 +1,319 @@
+---
+sidebar: sidebar 
+permalink: hu-citrix-90.html 
+keywords: host utilities, citrix, Xenserver, 9 series, netapp, ontap, san, boot 
+summary: ONTAP 스토리지를 사용하는 FCP 및 iSCSI 프로토콜 작업에 필요한 특정 매개변수 및 설정을 통해 멀티패싱을 지원하도록 Citrix Xenserver 9.0을 구성합니다. 
+---
+= ONTAP 스토리지를 사용하여 FCP 및 iSCSI를 위한 Citrix Xenserver 9.0 구성
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ONTAP 스토리지를 사용하는 FCP 및 iSCSI 프로토콜 작업에 필요한 특정 매개변수 및 설정을 통해 멀티패싱을 지원하도록 Citrix Xenserver 9.0을 구성합니다.
+
+[NOTE]
+====
+Linux Host Utilities 소프트웨어 패키지는 Citrix Xenserver 운영 체제를 지원하지 않습니다.
+
+====
+
+
+[[step-1-optionally-enable-san-booting]]
+== 1단계: 필요에 따라 SAN 부팅을 활성화합니다
+
+SAN 부팅을 사용하도록 호스트를 구성하여 배포를 단순화하고 확장성을 개선할 수 있습니다.
+
+.시작하기 전에
+를 사용하여 link:https://mysupport.netapp.com/matrix/#welcome["상호 운용성 매트릭스 툴"^]Linux OS, 호스트 버스 어댑터(HBA), HBA 펌웨어, HBA 부팅 BIOS 및 ONTAP 버전이 SAN 부팅을 지원하는지 확인합니다.
+
+.단계
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["SAN 부팅 LUN을 생성하고 호스트에 매핑합니다."^]..
+. SAN 부팅 LUN이 매핑되는 포트에 대해 서버 BIOS에서 SAN 부팅을 설정합니다.
++
+HBA BIOS를 활성화하는 방법에 대한 자세한 내용은 공급업체별 설명서를 참조하십시오.
+
+. 호스트를 재부팅하고 OS가 실행 중인지 확인하여 구성이 성공했는지 확인합니다.
+
+
+
+
+[[step-2-confirm-the-multipath-configuration-for-your-host]]
+== 2단계: 호스트에 대한 다중 경로 구성 확인
+
+Citrix Xenserver 9.0에서는 멀티패싱을 사용하여 ONTAP LUN을 관리할 수 있습니다.
+
+호스트에 대한 다중 경로가 올바르게 구성되었는지 확인하려면 파일이 정의되었는지 `/etc/multipath.conf`, ONTAP LUN에 대해 NetApp 권장 설정이 구성되어 있는지 확인하십시오.
+
+.단계
+. 해당  `/etc/multipath.conf` 파일을 찾습니다.
++
+참조  `/etc/multipath.conf` 파일에 NetApp 장치별 구성 매개변수가 없는 경우 다음 사용자 지정  `.conf drop-in` 파일을 사용하여 해당 매개변수를 추가하십시오. 이 파일은 다음 위치에서 찾을 수 있습니다. `/etc/multipath/conf.d/`
+
++
+
+NOTE:  `/etc/multipath.conf` 파일은 시스템 업데이트 중에 파일 내용이 덮어쓰여질 수 있으므로 변경하지 마십시오.
+
++
+.파일 내용 표시
+[%collapsible]
+====
+[source, cli]
+----
+$sudo tee -a /etc/multipath/conf.d/custom.conf >/dev/null <<'EOF'
+
+defaults {
+    polling_interval 5
+}
+
+blacklist {
+    wwid <Insert_LUN_wwid_string>
+    devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+    devnode "^hd[a-z]"
+    devnode "^cciss.*"
+}
+
+devices {
+    device {
+    vendor "NETAPP"
+    product "LUN.*"
+    user_friendly_names no
+    path_checker "tur"
+    prio "ontap"
+    detect_prio yes
+    path_grouping_policy "group_by_prio"
+    path_selector "service-time 0"
+    failback immediate
+    fast_io_fail_tmo 5
+    dev_loss_tmo infinity
+    no_path_retry queue
+    features "3 queue_if_no_path pg_init_retries 50"
+    flush_on_last_del yes
+    hardware_handler "0"
+    retain_attached_hw_handler yes
+    rr_weight uniform
+  }
+}
+
+EOF
+----
+====
+. 다중 경로를 처음 구성할 때는 권장 설정을 로드하기 위해 다중 경로 서비스를 활성화하고 시작해야 할 수 있습니다.
++
+[source, cli]
+----
+systemctl enable multipathd
+----
++
+[source, cli]
+----
+systemctl start multipathd
+----
+. 호스트를 부팅할 때마다  `/etc/multipath/conf.d/custom.conf` 파일은 NetApp 권장 호스트 다중 경로 매개변수를 기본 설정으로 자동으로 로드합니다.
++
+다음 표는 ONTAP LUN에 대한 네이티브 Linux 운영 체제 컴파일 다중 경로 매개 변수 설정을 보여줍니다.
+
++
+.매개 변수 설정을 표시합니다
+[%collapsible]
+====
+[[multipath-parameter-settings]]
+[cols="2"]
+|===
+| 매개 변수 | 설정 
+
+
+| detect_prio(사전 감지) | 예 
+
+
+| DEV_Loss_TMO | "무한대" 
+
+
+| 장애 복구 | 즉시 
+
+
+| Fast_IO_FAIL_TMO | 5 
+
+
+| 피처 | "3 queue_if_no_path pg_init_retries 50" 
+
+
+| Flush_on_last_del.(마지막 삭제 시 플러시 | "예" 
+
+
+| hardware_handler를 선택합니다 | "0" 
+
+
+| no_path_retry 를 선택합니다 | 대기열 
+
+
+| path_checker를 선택합니다 | "tur" 
+
+
+| path_grouping_policy | "group_by_prio(그룹 기준/원시)" 
+
+
+| 경로 선택 | "서비스 시간 0" 
+
+
+| polling_interval입니다 | 5 
+
+
+| 프리오 | "ONTAP" 
+
+
+| 제품 | LUN입니다 
+
+
+| Retain_attached_hw_handler 를 참조하십시오 | 예 
+
+
+| RR_WEIGHT | "균일" 
+
+
+| 사용자_친화적_이름 | 아니요 
+
+
+| 공급업체 | 넷엡 
+|===
+====
+. ONTAP LUN의 매개 변수 설정 및 경로 상태를 확인합니다.
++
+[source, cli]
+----
+multipath -ll
+----
++
+기본 다중 경로 매개변수는 ASA, AFF 및 FAS 구성을 지원합니다. 이러한 구성에서는 단일 ONTAP LUN에 4개 이상의 경로가 필요하지 않습니다. 경로가 4개 이상이면 저장소 오류 발생 시 문제가 발생할 수 있습니다.
+
++
+다음 출력 예는 ASA, AFF 또는 FAS 구성에 있는 ONTAP LUN에 대한 올바른 매개 변수 설정 및 경로 상태를 보여줍니다.
+
++
+[role="tabbed-block"]
+====
+.ASA 구성
+--
+ASA 구성은 지정된 LUN에 대한 모든 경로를 최적화하여 활성 상태를 유지합니다. 그 결과, 모든 경로를 통해 I/O 작업을 동시에 처리함으로써 성능이 향상됩니다.
+
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+/usr/sbin/mpathutil status
+show topology
+create: 3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
+size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 15:0:0:0  sdb  8:16    active ready running
+  |- 15:0:1:0  sdc  8:32    active ready running
+  |- 16:0:0:0  sdcf 69:48   active ready running
+  `- 16:0:1:0  sdcg 69:64   active ready running
+----
+=====
+--
+.AFF 또는 FAS 구성
+--
+AFF 또는 FAS 구성에는 우선순위가 높은 경로 그룹과 낮은 경로 그룹의 두 경로 그룹이 있어야 합니다. 우선순위가 높은 활성/최적화 경로는 애그리게이트가 위치한 컨트롤러에서 제공됩니다. 우선순위가 낮은 경로는 다른 컨트롤러에서 제공되므로 활성 상태이지만 최적화되지는 않습니다. 최적화되지 않은 경로는 최적화된 경로를 사용할 수 없는 경우에만 사용됩니다.
+
+다음 예에서는 활성/최적화 경로 2개와 활성/최적화되지 않은 경로 2개가 있는 ONTAP LUN에 대한 출력을 표시합니다.
+
+.예제 보기
+[%collapsible]
+=====
+[listing]
+----
+/usr/sbin/mpathutil status
+show topology
+create: 3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
+size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 15:0:0:0  sdb  8:16    active ready running
+  `- 15:0:1:0  sdc  8:32    active ready running
+`-+- policy='service-time 0' prio=50 status=active
+     |- 16:0:0:0  sdcf 69:48   active ready running
+     `- 16:0:1:0  sdcg 69:64   active ready running
+----
+=====
+--
+====
+
+
+
+
+[[step-3-optionally-exclude-a-device-from-multipathing]]
+== 3단계: 선택적으로 다중 경로에서 장치 제외
+
+필요한 경우, 원하지 않는 장치의 WWID를  `/etc/multipath/conf.d/custom.conf` 파일의 "blacklist" 항목에 추가하여 다중 경로에서 해당 장치를 제외할 수 있습니다.
+
+.단계
+. WWID 확인:
++
+[source, cli]
+----
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+"sda"는 블랙리스트에 추가할 로컬 SCSI 디스크입니다.
+
++
+WWID의 예는 `360030057024d0730239134810c0cb833`입니다.
+
+. WWID를 "블랙리스트" 스탠자에 추가합니다.
++
+[source, cli]
+----
+blacklist {
+        wwid   360030057024d0730239134810c0cb833
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+----
+
+
+
+
+[[step-4-customize-multipath-parameters-for-ontap-luns]]
+== 4단계: ONTAP LUN에 대한 다중 경로 매개변수 사용자 지정
+
+호스트가 다른 벤더의 LUN에 연결되어 있고 다중 경로 파라미터 설정이 재정의된 경우, 기존 스탠자를 수정하거나 ONTAP LUN에 특화된 새 스탠자를 `/etc/multipath/conf.d/custom.conf` 파일에 추가하여 설정을 수정해야 합니다. 파일에서 아래로 스크롤하여 호스트에 적용되는 변경 사항을 확인하십시오. 파라미터를 수정하지 않으면 ONTAP LUN이 예상대로 작동하지 않을 수 있습니다.
+
+
+CAUTION: ONTAP LUN에 대해 권장되는 매개 변수 설정을 재정의해서는 안 됩니다. 이러한 설정은 호스트 구성의 성능을 최적화하는 데 필요합니다. 자세한 내용은 NetApp 지원, OS 공급업체 또는 둘 다에 문의하십시오.
+
+다음 예에서는 재정의된 기본값을 수정하는 방법을 보여줍니다. 이 예에서는  `custom.conf drop-in` 파일이 ONTAP LUN과 호환되지 않는  `path_checker` 및  `no_path_retry`의 값을 정의하며, ONTAP 스토리지 어레이가 호스트에 여전히 연결되어 있기 때문에 이러한 매개변수를 제거할 수 없습니다. 대신, ONTAP LUN에 특별히 적용되는 디바이스 스탠자를  `custom.conf drop-in` 파일에 추가하여  `path_checker` 및  `no_path_retry`의 값을 수정합니다.
+
+.예제 보기
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+defaults {
+   path_checker      *readsector0*
+   no_path_retry     *fail*
+}
+
+devices {
+   device {
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
+   }
+}
+----
+====
+
+
+[[step-5-review-the-known-issues]]
+== 5단계: 알려진 문제 검토
+
+알려진 문제가 없습니다.
